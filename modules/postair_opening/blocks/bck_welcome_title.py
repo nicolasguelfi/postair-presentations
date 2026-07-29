@@ -40,7 +40,9 @@ HERO_PROMPT = (
 
 def build():
     st_marker("W01 — Title")
-    with st_block(s.project.containers.page_fill_center):
+    # page_fill_full: no side padding, so the 10/50/30/10 grid below is
+    # computed against the real window width (NG 2026-07-30).
+    with st_block(s.project.containers.page_fill_full):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_write(bs.over, "University of Luxembourg · Welcome Week", tag=t.div)
@@ -65,10 +67,11 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        # Hero image + host mascot side by side — fills the lower 2/3 of the
-        # slide instead of leaving it empty (auditorium space rule).
-        with st_grid(cols="72% 28%", gap="1vw",
+        # Window-width layout (NG): 10% free · hero 50% · Medio 30% · 10% free.
+        with st_grid(cols="10% 50% 30% 10%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
+            with g.cell():
+                st_space("h", "1px")
             with g.cell():
                 st_image(
                     s.project.cards.media_center, width="100%",
@@ -78,6 +81,9 @@ def build():
                     prompt=HERO_PROMPT, provider="openai", ai_size="1536x1024",
                 )
             with g.cell():
-                st_image(s.project.cards.media_center, width="min(28vw, 58.8vh)", uri="_SHARED/mascots/medio.rgba.png",
+                st_image(s.project.cards.media_center, width="100%",
+                         uri="_SHARED/mascots/medio.rgba.png",
                          alt="Medio, the panda moderator mascot, welcoming the audience")
                 st_write(bs.mascot_caption, "Medio — your host today", tag=t.div)
+            with g.cell():
+                st_space("h", "1px")
