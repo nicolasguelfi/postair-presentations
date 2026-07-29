@@ -23,7 +23,7 @@ from streamtex.styles import Style
 # ⚠ st_hover_tooltip REPLACES its default styles when title/term/def overrides
 # are given — the font-size MUST therefore be part of these constants.
 TOOLTIP_BG = "rgba(26, 34, 48, 0.96)"
-TOOLTIP_SCALE = "3vw"
+TOOLTIP_SCALE = "2.5vw"
 TOOLTIP_TITLE_CSS = f"font-size: calc(1.3 * {TOOLTIP_SCALE}); color: #7AB8F5; font-weight: 700;"
 TOOLTIP_TERM_CSS = f"font-size: calc(1.1 * {TOOLTIP_SCALE}); color: #2EC4B6; font-weight: 700;"
 TOOLTIP_DEF_CSS = f"font-size: calc(1.0 * {TOOLTIP_SCALE}); color: #F2EEE6; line-height: 1.45;"
