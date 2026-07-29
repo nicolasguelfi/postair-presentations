@@ -103,15 +103,6 @@ wheels = [
 ]
 
 [[package]]
-name = "cachetools"
-version = "7.1.6"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/55/af/861ebc2e318a5c3300e3eb63bc4d30f3d70a46d13b360093728ac0705eed/cachetools-7.1.6.tar.gz", hash = "sha256:c7a79e7f30ba9943c1cefd08cc36f006aaae086e017af9166f1d59d6170c47e1", size = 40572, upload-time = "2026-07-23T22:47:53.737Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9f/f2/2086ba18a925a73586c4d4e61d25f4a6058e56fd00d77ce8f1d361ab4c9b/cachetools-7.1.6-py3-none-any.whl", hash = "sha256:2c12e255780330af28b91bb7fb96cce4c766f04e38396b9a24510190a5827096", size = 16954, upload-time = "2026-07-23T22:47:52.397Z" },
-]
-
-[[package]]
 name = "certifi"
 version = "2026.7.22"
 source = { registry = "https://pypi.org/simple" }
@@ -589,7 +580,7 @@ requests = [
 
 [[package]]
 name = "google-genai"
-version = "2.14.0"
+version = "2.15.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -603,9 +594,9 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "websockets" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/dc/df/4f820054c99f29f2fe3de4a8a7c9534dd795302e4a07483a0cb07c3a29b6/google_genai-2.14.0.tar.gz", hash = "sha256:a9d1f4f362d76280f1be1340fcb3c86e63dbca128f6a4ae09d86ab47ff7148e8", size = 641055, upload-time = "2026-07-22T21:35:44.717Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/69/53/b2c9b0a74b817a393d388a2303ec4da8bda27ea744b23914480d1b024d84/google_genai-2.15.0.tar.gz", hash = "sha256:ef71bdb79ce9931bca1cf0a393c8cfb606e1075b6100fcdde02b7b467db8235d", size = 640674, upload-time = "2026-07-29T17:43:21.853Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ba/86/5ac5fb53e44cca4a6607fb917eb331fa237c65a103b9ec2e8e8acc8a42db/google_genai-2.14.0-py3-none-any.whl", hash = "sha256:ae7172cdd35695189b516b33a878e4132e5daa2dbc03a5b44cddfa8a82fad664", size = 1030738, upload-time = "2026-07-22T21:35:42.785Z" },
+    { url = "https://files.pythonhosted.org/packages/cf/86/2ef6d992955307bf525f305b44cb3e2066eb01636549607082a0407f7047/google_genai-2.15.0-py3-none-any.whl", hash = "sha256:f322a94c3c1ddb1b1cc536086708f5f8e13101347d062f63dcd7947b598c1d16", size = 1030459, upload-time = "2026-07-29T17:43:20.286Z" },
 ]
 
 [[package]]
@@ -1518,15 +1509,13 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "postair-pack" },
-    { name = "streamlit" },
     { name = "streamtex", extra = ["ai", "cli"] },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "postair-pack", editable = "postair_pack" },
-    { name = "streamlit", specifier = ">=1.54,<1.58" },
-    { name = "streamtex", extras = ["ai", "cli"], specifier = ">=0.7.20,<0.8" },
+    { name = "streamtex", extras = ["ai", "cli"], specifier = ">=0.7.21,<0.8" },
 ]
 
 [[package]]
@@ -2052,13 +2041,12 @@ wheels = [
 
 [[package]]
 name = "streamlit"
-version = "1.57.0"
+version = "1.60.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "altair" },
     { name = "anyio" },
     { name = "blinker" },
-    { name = "cachetools" },
     { name = "click" },
     { name = "gitpython" },
     { name = "httptools" },
@@ -2081,9 +2069,9 @@ dependencies = [
     { name = "watchdog", marker = "sys_platform != 'darwin'" },
     { name = "websockets" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5d/f8/b2daf7a5f8ae15527daf94406e771bb6075e958a01c3dde9eba79dc3c9a3/streamlit-1.57.0.tar.gz", hash = "sha256:0b028d305c1a1a757071b2c9504966787602842fc8af6e873795ca58d2b4d12f", size = 8678859, upload-time = "2026-04-28T22:13:32.238Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7a/46/fa437e9651af1dbe7e5b28a754fd9c36df656e4a14a2b5ecc1bcd1d90587/streamlit-1.60.0.tar.gz", hash = "sha256:09f2fdd2aabbd3b3560953795681dd675d5479ac82c21fc2dceadaf9bd484ea3", size = 9819884, upload-time = "2026-07-21T21:13:58.04Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d8/1a/3ca2293d8552bacea3e67e9600d2d1df7df4a325059769ad83d91c279595/streamlit-1.57.0-py3-none-any.whl", hash = "sha256:0d1d41972aeade5637dbb0e7f0eefa5312272f85304923d240a1b1f0475249c8", size = 9194216, upload-time = "2026-04-28T22:13:29.624Z" },
+    { url = "https://files.pythonhosted.org/packages/2f/69/7a1984df015d01875c9ac79bfda7c31492cc94f81a2625303ce4707188e5/streamlit-1.60.0-py3-none-any.whl", hash = "sha256:d167d67cf94537600a6e378d8aa0c31eabab26beb243e2a51de9842e2872e393", size = 10419153, upload-time = "2026-07-21T21:13:55.113Z" },
 ]
 
 [[package]]
@@ -2102,7 +2090,7 @@ wheels = [
 
 [[package]]
 name = "streamtex"
-version = "0.7.20"
+version = "0.7.21"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -2115,9 +2103,9 @@ dependencies = [
     { name = "streamlit-mermaid" },
     { name = "watchdog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/98/9c/aa6d7ef9b38b74dc1df1a7648c621cf68e1fa7a64e16b3a312ac035352a4/streamtex-0.7.20.tar.gz", hash = "sha256:048bcb1d7a07a4a4ee0a39ef0e57aaa2da4c4fa2d5df5f7a8f5ab3849f08be93", size = 394000, upload-time = "2026-06-29T18:20:20.8Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/52/16/fb5eaa7f5e3b12aba8ddd56aa974003d121cfadd15b32ee56ef4e0f49c68/streamtex-0.7.21.tar.gz", hash = "sha256:d80ca1fccb6721e72ddc5bfa093514f000079182c778e5591f322dce133b8b8c", size = 394664, upload-time = "2026-07-29T18:31:52.545Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7e/44/ba29b8132a961f06bb49c87f2036829c428dbf20b51f595ebf81a56489f1/streamtex-0.7.20-py3-none-any.whl", hash = "sha256:0c5caa9dfe37b9aa4684fb98aaf5bff3eb90f74df14d8cb110b1b2ada01c3401", size = 447019, upload-time = "2026-06-29T18:20:19.083Z" },
+    { url = "https://files.pythonhosted.org/packages/46/1d/2dc9d4576aa2464213767435a7cd61964f9db416d86422e1e52286b7f0fc/streamtex-0.7.21-py3-none-any.whl", hash = "sha256:6e71149ce9f436f75197f7bbaaa91e01bf013397c8ad5a5012f4e13a903d5268", size = 447792, upload-time = "2026-07-29T18:31:50.804Z" },
 ]
 
 [package.optional-dependencies]

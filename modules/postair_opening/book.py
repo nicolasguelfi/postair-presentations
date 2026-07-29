@@ -31,10 +31,17 @@ from streamtex import (
 )
 
 _MODULE_DIR = Path(__file__).parent
+if not (_MODULE_DIR / "static").exists():
+    # Test harnesses (streamlit AppTest) execute the script with a temporary
+    # __file__ — fall back to the working directory, which IS the module dir.
+    _MODULE_DIR = Path.cwd()
 
-_doc_version = tomllib.loads(
-    (_MODULE_DIR.parent.parent / "pyproject.toml").read_text(encoding="utf-8")
-).get("project", {}).get("version", "?")
+try:
+    _doc_version = tomllib.loads(
+        (_MODULE_DIR.parent.parent / "pyproject.toml").read_text(encoding="utf-8")
+    ).get("project", {}).get("version", "?")
+except OSError:
+    _doc_version = "?"
 
 # Static resolution: module first, shared assets (mascots) second.
 stx.set_static_sources([
