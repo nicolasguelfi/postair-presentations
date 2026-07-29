@@ -1,0 +1,177 @@
+# Hetzner/Coolify auto-deploy — triggered by every push to main.
+#
+# main IS production. Only the services whose files actually changed are
+# redeployed:
+#   - changes under modules/postair_<name>/**       → that service only
+#   - changes in shared files (Dockerfile, pyproject.toml, uv.lock,
+#     .stx-version, postair_pack/**, modules/shared-blocks/**, .github/**)
+#                                                    → ALL services
+#   - workflow_dispatch (manual run from the Actions tab) → ALL services
+#
+# Required secret: COOLIFY_API_TOKEN (Coolify → Security → API Tokens)
+
+name: Deploy to Hetzner
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  COOLIFY_URL: https://coolify.streamtex.org
+
+jobs:
+  deploy:
+    name: Trigger Coolify deploys
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Wait for streamtex version on PyPI
+        run: |
+          REQUIRED=$(cat .stx-version | tr -d '[:space:]')
+          echo "Required version from .stx-version: $REQUIRED"
+
+          MAX_ATTEMPTS=12
+          WAIT_SECONDS=30
+          for attempt in $(seq 1 $MAX_ATTEMPTS); do
+            PYPI=$(curl -s https://pypi.org/pypi/streamtex/json | python3 -c "import sys,json; print(json.load(sys.stdin)['info']['version'])")
+            echo "Attempt $attempt/$MAX_ATTEMPTS — PyPI has: $PYPI"
+
+            OK=$(python3 -c "
+          r = tuple(int(x) for x in '$REQUIRED'.split('.'))
+          p = tuple(int(x) for x in '$PYPI'.split('.'))
+          print('yes' if p >= r else 'no')
+          ")
+            if [ "$OK" = "yes" ]; then
+              echo "PyPI version $PYPI >= required $REQUIRED — proceeding"
+              exit 0
+            fi
+
+            if [ "$attempt" -lt "$MAX_ATTEMPTS" ]; then
+              echo "Version too old (need >= $REQUIRED, PyPI has $PYPI). Retrying in ${WAIT_SECONDS}s..."
+              sleep $WAIT_SECONDS
+            fi
+          done
+
+          echo "::error::PyPI still has streamtex==$PYPI after $MAX_ATTEMPTS attempts (need >= $REQUIRED). Publish to PyPI first!"
+          exit 1
+
+      - name: Detect changed files and select services
+        id: changed
+        run: |
+          # Service mapping: name → folder → Coolify UUID.
+          # Adding a module = adding one line here (and creating the Coolify app).
+          cat > /tmp/services.json << 'SERVICES'
+          {
+            "postair-opening": {"folder": "modules/postair_opening", "uuid": "f12d9utrj67uqwjqune5t4ip", "replicas": []}
+          }
+          SERVICES
+
+          EVENT="${{ github.event_name }}"
+
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            echo "Manual trigger — deploying ALL services"
+            echo "deploy_all=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          BEFORE="${{ github.event.before }}"
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "Initial push — deploying ALL services"
+            echo "deploy_all=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          changed_files=$(git diff --name-only "$BEFORE" "${{ github.sha }}")
+          echo "Changed files:"
+          echo "$changed_files"
+
+          # Shared files → deploy all
+          shared_patterns="^Dockerfile$|^entrypoint\.sh$|^nginx\.conf$|^\.stx-version$|^pyproject\.toml|^uv\.lock|^postair_pack/|^modules/shared-blocks/|^\.github/"
+          if echo "$changed_files" | grep -qE "$shared_patterns"; then
+            echo "Shared files changed — deploying ALL services"
+            echo "deploy_all=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Map changed paths to service UUIDs
+          echo "deploy_all=false" >> "$GITHUB_OUTPUT"
+          uuids=$(python3 -c "
+          import json
+          services = json.load(open('/tmp/services.json'))
+          changed = '''$changed_files'''.strip().split('\n')
+          to_deploy = set()
+          for f in changed:
+              for name, info in services.items():
+                  if f.startswith(info['folder'] + '/'):
+                      to_deploy.add(info['uuid'])
+                      for r in info.get('replicas', []):
+                          to_deploy.add(r)
+          print(' '.join(sorted(to_deploy)))
+          ")
+          echo "UUIDs to deploy: ${uuids:-none}"
+          echo "uuids=$uuids" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger Coolify deploys
+        if: steps.changed.outputs.deploy_all == 'true' || steps.changed.outputs.uuids != ''
+        env:
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
+        run: |
+          if [ -z "$COOLIFY_TOKEN" ]; then
+            echo "::error::COOLIFY_API_TOKEN secret is not set"
+            exit 1
+          fi
+
+          DEPLOY_ALL="${{ steps.changed.outputs.deploy_all }}"
+
+          if [ "$DEPLOY_ALL" = "true" ]; then
+            uuids=$(python3 -c "
+          import json; services=json.load(open('/tmp/services.json'))
+          all_uuids = []
+          for s in services.values():
+              all_uuids.append(s['uuid'])
+              all_uuids.extend(s.get('replicas', []))
+          print(' '.join(all_uuids))
+          ")
+          else
+            uuids="${{ steps.changed.outputs.uuids }}"
+          fi
+
+          # The cax21 server freezes beyond 4 concurrent builds — deploy in
+          # batches of 4 with a pause between batches.
+          deployed=0
+          failed=0
+          in_batch=0
+          for uuid in $uuids; do
+            if [ "$in_batch" -eq 4 ]; then
+              echo "Batch limit reached — waiting 300s before the next batch..."
+              sleep 300
+              in_batch=0
+            fi
+
+            echo "Deploying $uuid..."
+            result=$(curl -s "$COOLIFY_URL/api/v1/deploy?uuid=$uuid" \
+              -H "Authorization: Bearer $COOLIFY_TOKEN" \
+              -H "Accept: application/json")
+
+            if echo "$result" | grep -q "deployment queued"; then
+              msg=$(echo "$result" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['deployments'][0]['message'])" 2>/dev/null)
+              echo "  -> $msg"
+              deployed=$((deployed + 1))
+              in_batch=$((in_batch + 1))
+            else
+              echo "::error::Deploy failed for $uuid: $result"
+              failed=$((failed + 1))
+            fi
+          done
+
+          echo ""
+          echo "Summary: $deployed deployed, $failed failed"
+          [ "$failed" -eq 0 ] || exit 1
+
+      - name: No deploy needed
+        if: steps.changed.outputs.deploy_all != 'true' && steps.changed.outputs.uuids == ''
+        run: echo "No services affected by this push — skipping deploy."

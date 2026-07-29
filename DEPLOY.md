@@ -20,18 +20,33 @@ this repo, **one Coolify service per module**, each selecting its module via the
 
 Runtime env per app: `FOLDER`, `STX_SERVE_MODE` (dual).
 
-## Deploy / update
+## Deploy / update — `main` IS production
 
-Push to `main` then trigger via API:
+**Pushing to `main` deploys automatically** via
+`.github/workflows/hetzner-deploy.yml`: it waits for the required streamtex
+version on PyPI (`.stx-version`), detects which modules changed, and triggers
+only the affected Coolify services (all of them when a shared file changes).
+Builds go in batches of 4 with a 300 s pause — the cax21 freezes beyond that.
+
+Required GitHub secret: `COOLIFY_API_TOKEN` (already set).
+
+**Working rule**: develop and validate locally, commit on a work branch, and
+merge/push to `main` only when the version should go live.
+
+```bash
+# local validation before any push to main
+uv run --with ruff ruff check postair_pack modules
+cd modules/postair_opening && uv run streamlit run book.py
+```
+
+Manual deploy (bypass, e.g. redeploy without a code change): Actions tab →
+"Deploy to Hetzner" → Run workflow, or directly:
 
 ```bash
 TOKEN=$(grep '^COOLIFY_API_TOKEN=' .stx-deploy.env | cut -d= -f2-)
 URL=$(grep '^COOLIFY_URL=' .stx-deploy.env | cut -d= -f2-)
 curl -s "$URL/api/v1/deploy?uuid=<APP_UUID>" -H "Authorization: Bearer $TOKEN"
 ```
-
-(A GitHub Actions workflow à la ai4se6d can be added once several modules exist —
-remember the cax21 rule: max 4 concurrent builds, 300 s between batches.)
 
 ## Adding a module
 
