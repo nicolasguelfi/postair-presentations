@@ -1,17 +1,33 @@
-# sumvadis-streamtex — AI Day (Université du Luxembourg)
+# POSTAIR presentations — AI Day (University of Luxembourg)
 
-Ensemble des présentations StreamTeX de la conférence **AI Day** (3 h, 1500 primo-inscrits, 8-10 septembre 2026).
+StreamTeX presentation set for the **AI Day** conference (Welcome Week 2026,
+3 hours, 1500 first-year students): postures facing the AI revolution
+(POSTAIR survey), introduction to generative AI, studying with Mistral
+agents, and the UL AI guidelines.
 
-## Navigation
+## Structure
 
-- **`_project/PROJECT.md`** — document de conduite de projet (contexte, décisions, architecture, déploiement, processus). **Commencer ici.**
-- `_project/analysis/` — analyses des 6 sources (charte IA UL, AI4SE6D, mascottes, app sumvadis, streamtex-docs, ancien deck FC).
-- `_project/plans/` — plans détaillés slide par slide des 4 documents (GATE : validation avant production) :
-  - `plan-postair_opening.md` — Welcome + Survey + Results + Discussion + Break (110')
-  - `plan-postair_genai.md` — Introduction to AI & Generative AI (30')
-  - `plan-postair_mistral.md` — Mistral models & agents to study (20')
-  - `plan-postair_guidelines.md` — UL AI guidelines + Closing (20')
+- `postair_pack/` — local design pack: `postair_dark` design system (navy
+  canvas + papercut graphic line + Pixar mascots), slide components
+  (`axis_stack`), kit `postair-slides`.
+- `modules/postair_opening/` — pilot deck: Welcome · Survey · Results ·
+  Discussion · Break (110').
+- `modules/shared-blocks/` — mascot assets (36 WebP + videos), POSTAIR data
+  loader, palette widgets.
+- `Dockerfile` / `entrypoint.sh` / `nginx.conf` — dual-mode deployment
+  (see `DEPLOY.md`).
 
-## État
+## Run locally
 
-Phase actuelle : **plans en attente de validation**. Ensuite : pack `postair_pack` (design system + kit + composants) → prototype → production des 4 modules + hub → déploiement Hetzner (cf. PROJECT.md §9).
+```bash
+uv sync
+cd modules/postair_opening && uv run streamlit run book.py
+# open http://127.0.0.1:8501 — navigate with PageDown/PageUp
+```
+
+## Deployed
+
+- https://postair-opening.streamtex.org (Streamlit + static fallback on `/html/`)
+
+Mascots and generated images are 100 % AI-generated (mascoties studio /
+gpt-image-1). Survey engine: [sumvadis](https://app.sumvadis.ai).

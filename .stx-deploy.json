@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-29",
+  "infrastructure": {
+    "provider": "hetzner",
+    "server": {
+      "name": "streamtex-prod",
+      "id": 124306026,
+      "type": "cax21",
+      "arch": "arm64",
+      "location": "fsn1",
+      "os": "ubuntu-24.04",
+      "ipv4": "138.199.148.59"
+    },
+    "domain": {
+      "base": "streamtex.org",
+      "registrar": "ovh",
+      "wildcard_dns": "*.streamtex.org -> 138.199.148.59"
+    },
+    "coolify": {
+      "url": "https://coolify.streamtex.org",
+      "server_uuid": "i60ye92omrbeo4rbsfkw3ntb",
+      "project_uuid": "h13ylxrgkghvllh9znzzu1fk",
+      "environment": "production"
+    }
+  },
+  "services": {
+    "postair-opening": {
+      "uuid": "f12d9utrj67uqwjqune5t4ip",
+      "subdomain": "postair-opening",
+      "fqdn": "https://postair-opening.streamtex.org",
+      "repo": "https://github.com/nicolasguelfi/postair-presentations",
+      "branch": "main",
+      "folder": "modules/postair_opening",
+      "serve_mode": "dual"
+    }
+  }
+}
