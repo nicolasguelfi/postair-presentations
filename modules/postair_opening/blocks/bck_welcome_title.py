@@ -40,7 +40,7 @@ HERO_PROMPT = (
 
 def build():
     st_marker("W01 — Title")
-    # page_fill_full: no side padding, so the 10/50/30/10 grid below is
+    # page_fill_full: no side padding, so the 5/55/35/5 grid below is
     # computed against the real window width (NG 2026-07-30).
     with st_block(s.project.containers.page_fill_full):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -67,8 +67,8 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        # Window-width layout (NG): 10% free · hero 50% · Medio 30% · 10% free.
-        with st_grid(cols="10% 50% 30% 10%",
+        # Window-width layout (NG): 5% free · hero 55% · Medio 35% · 5% free.
+        with st_grid(cols="5% 55% 35% 5%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_space("h", "1px")
