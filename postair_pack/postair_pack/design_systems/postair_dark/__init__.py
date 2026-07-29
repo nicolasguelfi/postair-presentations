@@ -170,6 +170,39 @@ class _Cards:
     )
 
 
+class _Buttons:
+    # Big stage-action button (opens an external operator page). One clear
+    # action per line, readable from the presenter's position.
+    action_big = Style(
+        "display: block; background-color: #7AB8F5; color: #1A1A2E; font-weight: 800; "
+        "font-size: calc(var(--stx-scale-12, 32pt) * 1.2); line-height: 1.2; text-align: center; "
+        "padding: 2.2vh 1.6vw; border-radius: 18px; margin: 1.2vh 0; "
+        "box-shadow: 0 6px 24px rgba(122, 184, 245, 0.35);",
+        "postair_button_action_big",
+    )
+    action_amber = Style(
+        "display: block; background-color: #F39C12; color: #1A1A2E; font-weight: 800; "
+        "font-size: calc(var(--stx-scale-12, 32pt) * 1.2); line-height: 1.2; text-align: center; "
+        "padding: 2.2vh 1.6vw; border-radius: 18px; margin: 1.2vh 0; "
+        "box-shadow: 0 6px 24px rgba(243, 156, 18, 0.35);",
+        "postair_button_action_amber",
+    )
+
+
+class _Stage:
+    # Auditorium-giant tokens (join-code, short URLs).
+    code_giant = Style(
+        "font-size: calc(var(--stx-scale-17, 72pt) * 1.6); font-weight: 900; "
+        "letter-spacing: 0.08em; line-height: 1.05; color: #F39C12; text-align: center;",
+        "postair_stage_code_giant",
+    )
+    url_big = Style(
+        "font-size: calc(var(--stx-scale-13, 36pt) * 1.1); font-weight: 700; color: #7AB8F5; "
+        "text-align: center;",
+        "postair_stage_url_big",
+    )
+
+
 class DesignSystem:
     """POSTAIR dark design system (navy canvas, saturated accents, mascot stage)."""
 
@@ -179,3 +212,5 @@ class DesignSystem:
     body = _Body
     containers = _Containers
     cards = _Cards
+    buttons = _Buttons
+    stage = _Stage

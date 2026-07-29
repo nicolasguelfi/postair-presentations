@@ -97,11 +97,17 @@ marker_config = MarkerConfig(
 st_book(
     [
         # ── W — Welcome ─────────────────────────────────────────────
-        blocks.bck_wait_loop,        # W00 waiting loop (video, no info)
-        blocks.bck_welcome_title,    # W01 title + Medio + hero
-        blocks.bck_axes_radar,       # W05a big radar with "?"
-        blocks.bck_axes_registers,   # W05b-d Knowing / Acting / Becoming (3 slides)
-        # (prototype scope — W02/W03/W04/W06, S, R, D, B blocks follow after design GATE)
+        blocks.bck_wait_loop,         # W00 waiting loop (video, no info)
+        blocks.bck_welcome_title,     # W01 title + Medio + hero
+        blocks.bck_axes_radar,        # W05a big radar with "?"
+        blocks.bck_axes_registers,    # W05b-d Knowing / Acting / Becoming (3 slides)
+        # ── S — Survey (order: poster → how-to → join → live → results)
+        blocks.bck_survey_poster,     # S0 papercut poster
+        blocks.bck_survey_howto,      # S2 how to answer (before the join slide)
+        blocks.bck_survey_join,       # S1 join — 3 sub-slides (260908/09/10)
+        blocks.bck_survey_live,       # S3 image + big buttons → /live/<code>
+        blocks.bck_survey_results,    # S4 image + big buttons → /present/<code>
+        # (next: W02/W03/W04/W06, D discussion, B break)
     ],
     toc_config=toc,
     marker_config=marker_config,
