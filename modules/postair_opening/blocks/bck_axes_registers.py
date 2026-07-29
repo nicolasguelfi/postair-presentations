@@ -84,7 +84,8 @@ def build():
     first = True
     for name, subtitle, _nums in REGISTERS:
         if not first:
-            st_slide_break(marker_label=f"W05 — {name}")
+            st_slide_break(marker_label=f"W05 — {name}",
+                           config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
         else:
             st_marker(f"W05 — {name}")
         _register_slide(name, subtitle)

@@ -19,12 +19,14 @@ from streamtex.styles import Style
 
 # Tooltip palette + geometry (consumed by the shared st_info_tooltip wrapper).
 # Auditorium rule (NG 2026-07-29): panel = 2/3 of the viewport in both
-# dimensions, base font unit large enough to read from the back rows.
+# dimensions, content font large enough for the back rows.
+# ⚠ st_hover_tooltip REPLACES its default styles when title/term/def overrides
+# are given — the font-size MUST therefore be part of these constants.
 TOOLTIP_BG = "rgba(26, 34, 48, 0.96)"
-TOOLTIP_TITLE_CSS = "color: #7AB8F5; font-weight: 700;"
-TOOLTIP_TERM_CSS = "color: #2EC4B6; font-weight: 700;"
-TOOLTIP_DEF_CSS = "color: #F2EEE6;"
-TOOLTIP_SCALE = "4.5vw"
+TOOLTIP_SCALE = "3vw"
+TOOLTIP_TITLE_CSS = f"font-size: calc(1.3 * {TOOLTIP_SCALE}); color: #7AB8F5; font-weight: 700;"
+TOOLTIP_TERM_CSS = f"font-size: calc(1.1 * {TOOLTIP_SCALE}); color: #2EC4B6; font-weight: 700;"
+TOOLTIP_DEF_CSS = f"font-size: calc(1.0 * {TOOLTIP_SCALE}); color: #F2EEE6; line-height: 1.45;"
 TOOLTIP_WIDTH = "66vw"
 TOOLTIP_MAX_HEIGHT = "66vh"
 

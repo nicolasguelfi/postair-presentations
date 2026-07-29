@@ -55,7 +55,7 @@ def build():
             with g.cell():
                 st_space("h", "0.5vw")
             with g.cell():
-                st_image(s.none, width="100%", uri="images/postair_radar_question.svg",
+                st_image(s.project.cards.media_center, width="100%", uri="images/postair_radar_question.svg",
                          alt="Empty nine-axis POSTAIR radar chart with a large question mark "
                              "in the centre — axes: Trust, Optimism, Rationality, Speed, "
                              "Openness, Freedom/Control, Centralisation, Altruism, Transhumanism")

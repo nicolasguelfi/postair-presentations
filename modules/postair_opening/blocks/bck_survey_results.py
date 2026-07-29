@@ -55,7 +55,7 @@ def build():
         with st_grid(cols="55% 45%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_image(s.none, width="100%", editable=False, name="survey_results_reveal",
+                st_image(s.project.cards.media_center, width="100%", editable=False, name="survey_results_reveal",
                          alt="Papercut theatre curtain opening on a bright stage revealing a "
                              "large colorful paper radar chart under spotlights and confetti")
             with g.cell():

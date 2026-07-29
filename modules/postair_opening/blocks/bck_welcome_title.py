@@ -71,13 +71,13 @@ def build():
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_image(
-                    s.none, width="100%",
+                    s.project.cards.media_center, width="100%",
                     alt="Stylised campus at dawn under a rising amber AI orb, "
                         "crowd of silhouettes walking toward the entrance",
                     editable=IS_EDITABLE, name="welcome_title_hero",
                     prompt=HERO_PROMPT, provider="openai", ai_size="1536x1024",
                 )
             with g.cell():
-                st_image(s.none, width="min(16vw, 33.6vh)", uri="_SHARED/mascots/medio.rgba.png",
+                st_image(s.project.cards.media_center, width="min(28vw, 58.8vh)", uri="_SHARED/mascots/medio.rgba.png",
                          alt="Medio, the panda moderator mascot, welcoming the audience")
                 st_write(bs.mascot_caption, "Medio — your host today", tag=t.div)

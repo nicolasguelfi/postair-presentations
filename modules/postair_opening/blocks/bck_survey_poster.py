@@ -38,7 +38,7 @@ def build():
                         ("Finally", "We debate the most divisive questions of your cohort."),
                     ],
                 )
-        st_image(s.none, width="86%",
+        st_image(s.project.cards.media_center, width="86%",
                  editable=False, name="survey_poster",
                  alt="Papercut poster: a giant nine-spoke paper radar with a huge question "
                      "mark at its centre, surrounded by a cheerful crowd of paper silhouettes")

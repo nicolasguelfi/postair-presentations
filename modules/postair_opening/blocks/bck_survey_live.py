@@ -51,7 +51,7 @@ def build():
         with st_grid(cols="55% 45%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_image(s.none, width="100%", editable=False, name="survey_live_room",
+                st_image(s.project.cards.media_center, width="100%", editable=False, name="survey_live_room",
                          alt="Papercut amphitheatre: rows of paper silhouettes holding glowing "
                              "phones like lanterns while answering the survey")
             with g.cell():

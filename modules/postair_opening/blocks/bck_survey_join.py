@@ -70,7 +70,8 @@ def build():
     first = True
     for label, code in DAYS:
         if not first:
-            st_slide_break(marker_label=f"S1 — Join ({code})")
+            st_slide_break(marker_label=f"S1 — Join ({code})",
+                           config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
         else:
             st_marker(f"S1 — Join ({code})")
         _day_slide(label, code)
