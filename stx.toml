@@ -1,0 +1,18 @@
+# POSTAIR presentations — reuse architecture declaration.
+# Model: streamtex-docs/manuals/stx_manual_reuse/stx.toml (packs, no legacy [patterns]).
+
+[project]
+name = "postair-presentations"
+version = "0.1.0"
+
+[[packs]]
+type = "local"
+name = "postair-pack"
+path = "./postair_pack"
+primary = true
+
+[design_system]
+use = "postair_dark"
+
+[resolution]
+prefer = ["postair-pack"]

@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.stx_cache/
+.streamlit/cache/
+exports/
+html_exports/
+_ARCHIVED/
+.DS_Store
+
+# deploy secrets (never in git)
+.stx-deploy.env
+# project management (not published)
+_project/

@@ -1,0 +1,16 @@
+# postair-pack — POSTAIR / AI Day design pack.
+
+[manifest]
+format = "0.1"
+
+[pack]
+name = "postair-pack"
+version = "0.1.0"
+author = "Nicolas Guelfi"
+streamtex_compat = ">=0.7.20,<1.0"
+
+[entrypoint]
+module = "postair_pack"
+
+[scopes]
+slides = "Conference slide design (navy canvas, mascot figures, info tooltips)"

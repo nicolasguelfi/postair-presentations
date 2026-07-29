@@ -1,0 +1,44 @@
+"""axis_stack — one POSTAIR axis as a vertical column.
+
+Layout (auditorium rule — NG 2026-07-29):
+- ACCELERATOR pole on TOP (teal label + mascot), DECELERATOR pole BELOW
+  (white label + mascot);
+- both labels use the SAME font size (only the color differs);
+- a plain vertical stack inside a simple framed block — NO nested
+  responsive grids.
+
+The caller places N axis_stack columns side by side in ONE flat grid
+(e.g. ``st_grid(cols=3)`` for a register slide).
+"""
+
+from streamtex import st_block, st_image, st_write
+from streamtex.enums import Tags as t
+
+__component_meta__ = {
+    "name": "axis_stack",
+    "kind": "composition",
+    "since": "0.1.0",
+}
+
+
+def axis_stack(axis: dict, design_system, image_width: str = "min(12.8vw, 20.8vh)") -> None:
+    """Render one axis column.
+
+    Parameters
+    ----------
+    axis: dict with ``accel`` / ``decel`` pole dicts (``label``, ``mascot``,
+        ``image`` static uri) — see modules/shared-blocks/postair_data.py.
+    design_system: a POSTAIR-protocol design system (body + cards bundles).
+    image_width: CSS width of each mascot image (bounded by viewport height
+        so two stacked mascots + labels always fit one slide).
+    """
+    ds = design_system
+    with st_block(ds.cards.axis_frame):
+        for kind, label_style in (("accel", ds.body.pole_label_accel),
+                                  ("decel", ds.body.pole_label)):
+            pole = axis[kind]
+            with st_block(ds.cards.pole_cell):
+                st_write(label_style, pole["label"], tag=t.div)
+                st_image(ds.cards.media_center, width=image_width, uri=pole["image"],
+                         alt=f"{pole['mascot']} — mascot of the {pole['label']} posture")
+                st_write(ds.body.mascot_name, pole["mascot"], tag=t.div)

@@ -1,0 +1,18 @@
+{
+  "name": "welcome_title_hero",
+  "version": 2,
+  "timestamp": "2026-07-29T15:44:39.424923+00:00",
+  "source_type": "ai_generated",
+  "original_path": "/private/tmp/claude-501/-Volumes-Mac-Data-Win-data-data-backups-Dropbox-nicolas-guelfi-laposte-net-messir-Dropbox-Nicolas-Guelfi-users-NG-dev-dropbox-dvlpt-eclipse-git-github-streamtex-dev-streamtex/16ece3b4-f23b-4028-8c08-806a879c9384/scratchpad/styleboard/navy_flat.webp",
+  "prompt": "A modern European university campus inspired by the reference photo: a tall tower with a distinctive geometric lattice facade on a wide esplanade with young trees, a diverse crowd of students seen from behind walking together toward the entrance, a warm glowing amber orb rising above the tower like a new sun. Minimalist flat vector illustration on a deep navy background (#1A1A2E), soft internal gradients, limited palette: electric blue #7AB8F5, teal #2EC4B6, warm amber #F39C12 focal accent, generous dark negative space, calm and serious mood. NO text, NO logos, NO signage, NO photorealistic faces.",
+  "provider": "openai",
+  "model": null,
+  "size": "1536x1024",
+  "quality": null,
+  "base_image": null,
+  "revised_prompt": null,
+  "display_zoom": null,
+  "display_width": null,
+  "display_height": null,
+  "display_keep_ratio": true
+}

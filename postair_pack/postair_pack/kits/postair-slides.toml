@@ -1,0 +1,9 @@
+name = "postair-slides"
+description = "AI Day slide kit: postair_dark design system + slide conventions (navy canvas, mascots, info tooltips)"
+since = "2026-07-29"
+
+[design_system]
+ref = "postair_dark"
+
+[components]
+include = []

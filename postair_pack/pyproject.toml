@@ -1,0 +1,32 @@
+[project]
+name = "postair-pack"
+version = "0.1.0"
+description = "POSTAIR design pack: AI Day design system, components and kits (navy canvas + Pixar mascots)."
+authors = [{ name = "Nicolas Guelfi" }]
+requires-python = ">=3.11"
+dependencies = [
+    "streamtex>=0.7.20",
+]
+
+[project.entry-points."streamtex.packs"]
+postair-pack = "postair_pack"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["postair_pack*"]
+
+[tool.setuptools.package-data]
+postair_pack = [
+    "_pack_manifest.toml",
+    "kits/*.toml",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["F403", "F405", "E701", "E741"]

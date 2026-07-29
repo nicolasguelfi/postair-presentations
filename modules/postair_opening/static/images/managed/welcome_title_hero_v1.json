@@ -1,0 +1,18 @@
+{
+  "name": "welcome_title_hero",
+  "version": 1,
+  "timestamp": "2026-07-29T15:18:11.193671+00:00",
+  "source_type": "ai_generated",
+  "original_path": "/Volumes/Mac_Data/Win_data/data/backups/Dropbox-nicolas.guelfi@laposte.net/messir Dropbox/Nicolas Guelfi/users/NG/Projets/AISE/ROS/projects/sumvadis-central/sumvadis-presentations/sumvadis-streamtex/modules/postair_opening/static/images/ai/5950d54aa1cd47aa.webp",
+  "prompt": "Minimalist flat vector illustration on a deep navy background (#1A1A2E), soft internal gradients only, limited palette: electric blue #7AB8F5, teal #2EC4B6, warm amber #F39C12 as the SINGLE warm focal accent, muted coral #E07A6E sparingly. Abstract human silhouettes seen from behind, never faces. AI is always represented as a glowing amber orb or node, never anthropomorphic. Clean geometry, generous dark negative space. A stylised university campus at dawn seen from a distance, a warm glowing amber orb rising above its towers like a new sun, a diverse crowd of small abstract silhouettes seen from behind walking together toward the campus entrance. Wide 16:9 composition, one off-centre focal point, rising diagonal energy, generous dark negative space. NO text, NO photorealism, NO books, NO logos, NO national markers.",
+  "provider": "openai",
+  "model": null,
+  "size": "1536x1024",
+  "quality": null,
+  "base_image": null,
+  "revised_prompt": null,
+  "display_zoom": 70,
+  "display_width": null,
+  "display_height": null,
+  "display_keep_ratio": true
+}

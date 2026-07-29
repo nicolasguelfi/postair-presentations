@@ -1,0 +1,26 @@
+[project]
+name = "postair-presentations"
+version = "0.1.0"
+description = "AI Day — POSTAIR StreamTeX presentations (University of Luxembourg, Welcome Week 2026)"
+requires-python = ">=3.11"
+dependencies = [
+    "streamtex[ai,cli]>=0.7.20,<0.8",
+    # PyPI streamtex 0.7.20 predates the Streamlit>=1.58 widget-key fix
+    # (streamtex commit f512d3f). Unpin once streamtex>=0.7.21 is on PyPI.
+    "streamlit>=1.54,<1.58",
+    "postair-pack",
+]
+
+[tool.uv.sources]
+postair-pack = { path = "postair_pack", editable = true }
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["F403", "F405", "E701", "E741"]
+
+[tool.ruff.lint.per-file-ignores]
+# book.py: `import setup` MUST run first (sys.path for shared-blocks) — no isort.
+"modules/*/book.py" = ["I001", "E402"]

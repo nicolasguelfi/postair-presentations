@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: postair-pack
+Version: 0.1.0
+Summary: POSTAIR design pack: AI Day design system, components and kits (navy canvas + Pixar mascots).
+Author: Nicolas Guelfi
+Requires-Python: >=3.11
+Requires-Dist: streamtex>=0.7.20
