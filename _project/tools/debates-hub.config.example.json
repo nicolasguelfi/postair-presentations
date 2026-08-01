@@ -1,4 +1,5 @@
 {
-  "comment": "Copier en debates-hub.config.local.json (gitignore) et renseigner les chemins absolus DE CETTE MACHINE. Utilise par build_debates_content.py. Aucun chemin absolu en dur dans les scripts (meme convention que augmented-student/figures-hub.config.example.json). UNE seule cle est lue : le hub. Les portraits et les videos viennent des renditions publiees dans great-figures/media-manifest.json (regime CDN DD-28/DEC-035) — jamais du disque de la fabrique.",
-  "hub": "/chemin/vers/lu.uni.sage.publications.2025/ng.aiday.policy/ai-social-profiles"
+  "comment": "Copier en debates-hub.config.local.json (gitignore) et renseigner les chemins absolus DE CETTE MACHINE. Aucun chemin absolu en dur dans les scripts (meme convention que augmented-student/figures-hub.config.example.json). `hub` est lu par build_debates_content.py : les portraits et les videos viennent des renditions publiees dans great-figures/media-manifest.json (regime CDN DD-28/DEC-035), jamais du disque de la fabrique. `studio` est lu par check_shared_freeze.py, qui compare le gel de _SHARED/mascots a la source du studio.",
+  "hub": "/chemin/vers/lu.uni.sage.publications.2025/ng.aiday.policy/ai-social-profiles",
+  "studio": "/chemin/vers/GENAI/ai4video-projects/mascoties"
 }

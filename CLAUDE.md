@@ -49,6 +49,21 @@ Le pied de page doit rester à **0 sans référence imprimable**. Toute autre va
 Une figure n'apparaît que si elle porte **un portrait ET une vidéo**, chacun avec
 `clearance.channel == "public-ok"` — un portrait seul ne suffit pas.
 
+## Le second amont — le gel du studio
+
+`modules/shared-blocks/static/_SHARED/mascots/` est une **copie gelée** de
+`mascoties/shared/` (3 manifestes, 36 webp, 4 clips), faite à la main : c'est le
+seul tuyau de la chaîne sans outil de copie. Contrôle de fidélité :
+
+```bash
+uv run python _project/tools/check_shared_freeze.py
+```
+
+Il ne copie rien. Il compare les manifestes octet par octet, rapporte l'état de
+signature C2PA des deux côtés et signale les clips sans source. **Ne jamais enrichir
+un fichier du gel à la main** : ce serait créer une seconde vérité. Une évolution se
+demande au studio, puis le gel se refait.
+
 ## Généré / versionné
 
 - `modules/postair_*/static/data/content.json` est **généré**. Ne pas l'éditer à la main :
