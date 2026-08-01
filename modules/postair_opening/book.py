@@ -92,6 +92,12 @@ marker_config = MarkerConfig(
     prev_keys=["PageUp", "ArrowLeft"],
     draggable=True,
     collapsible=True,
+    # Auditorium rule: a slide must fill the screen. The library parks a
+    # marker 80 px below the top by default (room for a header), which
+    # pushed every section reached by scrolling — i.e. every sub-slide
+    # after the first of a block — out of the viewport at the bottom.
+    # 0 = the slide title sits flush at the top. Needs streamtex >= 0.7.22.
+    scroll_offset=0,
 )
 
 # Reading order IS this list — it is the single source of truth for the deck.
