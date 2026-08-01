@@ -1,7 +1,9 @@
 """Shared widgets for the POSTAIR presentations.
 
-Only palette wrappers live here — the tooltip itself is the native
-``st_hover_tooltip`` from streamtex (>= 0.7.8).
+Palette wrappers and the one widget that genuinely needs markup — the tooltip
+itself is the native ``st_hover_tooltip`` from streamtex (>= 0.7.8). Blocks
+never write markup themselves (design guideline, rule "stx-only"): when a
+slide needs behaviour the style system cannot express, it comes from here.
 """
 
 from postair_pack.design_systems.postair_dark import (
@@ -13,7 +15,7 @@ from postair_pack.design_systems.postair_dark import (
     TOOLTIP_TITLE_CSS,
     TOOLTIP_WIDTH,
 )
-from streamtex import st_hover_tooltip
+from streamtex import st_hover_tooltip, st_html
 
 
 def st_info_tooltip(title: str, entries: list[tuple[str, str]], **kw):
@@ -34,3 +36,48 @@ def st_info_tooltip(title: str, entries: list[tuple[str, str]], **kw):
     kw.setdefault("position", "left")
     kw.setdefault("scale", TOOLTIP_SCALE)
     return st_hover_tooltip(icon="ℹ️", title=title, entries=entries, **kw)
+
+
+def st_countdown(minutes: int, label: str = "Back in", height: int = 340) -> None:
+    """A live break countdown, readable from the back of an amphitheatre.
+
+    The clock starts when the slide is displayed, not when the deck is built:
+    the presenter reaches the break when they reach it, and a break screen
+    that already expired would be worse than none. It also prints the wall
+    time the room is expected back, because that is what people actually act
+    on once they are in the corridor.
+
+    Rendered through ``st_html`` — the single markup bridge — with an explicit
+    height, since a script needs the iframe to run. Sizes are in ``vw`` of the
+    iframe, so the digits follow the projection width.
+    """
+    html = f"""
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+            height:100%;font-family:'Source Sans Pro',sans-serif;color:#F2EEE6;">
+  <div style="font-size:3.2vw;color:#7AB8F5;font-weight:700;">{label}</div>
+  <div id="stx-countdown"
+       style="font-size:14vw;font-weight:900;letter-spacing:0.04em;line-height:1;
+              color:#F39C12;">--:--</div>
+  <div id="stx-countdown-at" style="font-size:2.6vw;color:#95A5A6;"></div>
+</div>
+<script>
+(function () {{
+  var end = Date.now() + {minutes} * 60 * 1000;
+  var out = document.getElementById('stx-countdown');
+  var at = document.getElementById('stx-countdown-at');
+  var back = new Date(end);
+  at.textContent = 'we resume at ' +
+    String(back.getHours()).padStart(2, '0') + ':' +
+    String(back.getMinutes()).padStart(2, '0');
+  function tick() {{
+    var left = Math.max(0, end - Date.now());
+    var m = Math.floor(left / 60000), s = Math.floor(left / 1000) % 60;
+    out.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    if (left === 0) {{ out.style.color = '#E07A6E'; clearInterval(timer); }}
+  }}
+  var timer = setInterval(tick, 1000);
+  tick();
+}})();
+</script>
+"""
+    st_html(html, height=height)

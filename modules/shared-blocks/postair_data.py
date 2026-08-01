@@ -69,6 +69,55 @@ def axes(family_en: str = "animals") -> dict[int, dict]:
     return result
 
 
+@lru_cache(maxsize=8)
+def axis_by_code(code: str, family_en: str = "animals") -> dict:
+    """One axis by its instrument code (``TRU``, ``SPE``, ``CEN``…).
+
+    The code is the join key between the questionnaire and the mascot cast:
+    a statement id such as ``TRU-04`` carries it, so a consumer holding survey
+    data can reach the mascots without knowing an axis number or an axis name
+    in any particular language.
+    """
+    for axis in axes(family_en).values():
+        if axis["axis_code"] == code:
+            return axis
+    raise KeyError(f"no axis with instrument code {code!r} in the frozen cast manifest")
+
+
+@lru_cache(maxsize=4)
+def archetypes(lang: str = "en") -> list[tuple[str, str]]:
+    """The six POSTAIR archetypes as ``(key, name)``, in the published order.
+
+    Names come from the shared ``i18n.json`` of the mascot studio — the same
+    file the survey application reads, so a rename propagates everywhere at
+    once. The file carries names only: the archetype *descriptions* live in
+    the study and are deliberately not duplicated here.
+    """
+    data = json.loads((_MASCOTS_DIR / "i18n.json").read_text(encoding="utf-8"))
+    return [(key, names[lang]) for key, names in data["archetypes"].items()]
+
+
+@lru_cache(maxsize=64)
+def mascot(name: str) -> dict:
+    """One mascot by its name — including the two moderators, which carry no axis.
+
+    Returns ``name``, ``image`` (static uri), ``description`` (FR tagline),
+    ``pole`` (EN pole label, empty for a moderator) and ``axis_name``. Blocks
+    that need a single mascot ask for it by name rather than by position, so
+    the call stays true when the cast is reordered.
+    """
+    for item in _cast_items():
+        if item.get("name") == name:
+            return {
+                "name": item["name"],
+                "image": _webp_uri(item),
+                "description": item.get("description", ""),
+                "pole": (item.get("pole_label_en") or "").replace("-", " ").capitalize(),
+                "axis_name": item.get("axis_name") or "",
+            }
+    raise KeyError(f"no mascot named {name!r} in the frozen cast manifest")
+
+
 def register_axes(register_name: str, family_en: str = "animals") -> list[dict]:
     """Axes of one register (by EN name), in pedagogical order."""
     nums = next(nums for name, _sub, nums in REGISTERS if name == register_name)
