@@ -19,3 +19,4 @@ Héritée de FC-260507 (R1-R13) et adaptée au duo « canvas navy + mascottes Pi
 - **R11 stx-only** : jamais de HTML/CSS brut dans un block (composition de `Style` ; `st_html` réservé aux widgets partagés).
 - **R12 Speaker notes** : discours complet dans le docstring du block.
 - **R13 Data-driven** : tout contenu issu du questionnaire/cast passe par `postair_data` (pas de copier-coller de labels).
+- **R14 Annotations de type dans un block** : `from streamtex import *` **masque le builtin `list`** (le module `streamtex/list.py`, celui de `st_list`). Une annotation `-> list[dict]` lève alors `TypeError: 'module' object is not subscriptable` **à l'import**, donc avant toute exécution. Tout block qui annote avec un générique doit ouvrir par `from __future__ import annotations`, qui laisse les annotations non évaluées. Constaté en production le 2026-08-01.

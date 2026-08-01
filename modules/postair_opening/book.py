@@ -109,14 +109,28 @@ st_book(
         # ── Welcome ─────────────────────────────────────────────────
         blocks.bck_wait_loop,         # looping video, no information revealed
         blocks.bck_welcome_title,     # title + Medio + hero image
+        blocks.bck_welcome_agenda,    # the nine sessions, break accented
         blocks.bck_axes_radar,        # empty radar, "?" at the centre
         blocks.bck_axes_registers,    # Knowing / Acting / Becoming (3 sub-slides)
+        blocks.bck_axes_company,      # both mascot families, film when it exists
         # ── Survey ──────────────────────────────────────────────────
         blocks.bck_survey_poster,     # opens the survey part, one full-frame image
         blocks.bck_survey_howto,      # how to answer — deliberately before the join
         blocks.bck_survey_join,       # QR + giant code, one sub-slide per day
         blocks.bck_survey_live,       # operator button → live monitoring
         blocks.bck_survey_results,    # operator button → results presentation
+        # ── Results ─────────────────────────────────────────────────
+        blocks.bck_results_radar_howto,  # example radar + the four posture codes
+        blocks.bck_results_archetypes,   # six reference points, not six boxes
+        blocks.bck_results_room,      # operator button → the room's own results
+        blocks.bck_results_meaning,   # a cohort is not a bloc
+        # ── Discussion ──────────────────────────────────────────────
+        blocks.bck_disc_method,       # the three rules of the debate
+        blocks.bck_disc_debates_link,  # hand-over to the debates deck
+        blocks.bck_disc_wrapup,       # no consensus, and that is normal
+        # ── Break ───────────────────────────────────────────────────
+        blocks.bck_break_countdown,   # live countdown + the whole company
+        blocks.bck_break_rewelcome,   # what the second half holds
     ],
     toc_config=toc,
     marker_config=marker_config,
