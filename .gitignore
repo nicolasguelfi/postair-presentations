@@ -11,5 +11,13 @@ _ARCHIVED/
 
 # deploy secrets (never in git)
 .stx-deploy.env
-# project management (not published)
-_project/
+# project management (not published) — plans, analyses, revues, prompts.
+# EXCEPTION : _project/tools/ EST versionne. Ces outils ne sont pas du pilotage,
+# ils sont le tuyau qui joint le hub POSTAIR (ai-social-profiles) a ce depot et
+# qui gele content.json : le document des debats n'existe que par eux. La regle
+# de l'ecosysteme s'applique — un artefact qui ne vit que sur le disque de
+# l'auteur est une dette, pas un choix (sumvadis/ECOSYSTEM.md).
+_project/*
+!_project/tools/
+# ... sauf la configuration de machine, qui reste locale (l'exemple suffit).
+_project/tools/*.local.json

@@ -1,0 +1,131 @@
+"""postair_debates — the debates of the nine axes (a navigable bank, not a talk).
+
+Fifth document of the POSTAIR set. See _project/plans/plan-postair_debates.md.
+
+The reading order below is a shelf order, not a narrative: the speaker opens
+the two or three axes the survey results showed as divisive and leaves the
+rest closed. That is why navigation — markers and the searchable table of
+contents — matters more here than in any other document of the set.
+"""
+
+import setup  # noqa: F401  — MUST run first (sys.path: module dir + shared-blocks)
+
+import tomllib
+from pathlib import Path
+
+import blocks
+import streamlit as st
+import streamtex as stx
+import streamtex.styles as sts
+from custom.themes import dark
+from streamtex import (
+    BannerConfig,
+    MarkerConfig,
+    NumberingMode,
+    PresentationConfig,
+    ScaleConfig,
+    SlideBreakConfig,
+    SlideBreakMode,
+    TOCConfig,
+    ViewMode,
+    set_presentation_config,
+    set_slide_break_config,
+    st_book,
+)
+
+_MODULE_DIR = Path(__file__).parent
+if not (_MODULE_DIR / "static").exists():
+    # Test harnesses (streamlit AppTest) execute the script with a temporary
+    # __file__ — fall back to the working directory, which IS the module dir.
+    _MODULE_DIR = Path.cwd()
+
+try:
+    _doc_version = tomllib.loads(
+        (_MODULE_DIR.parent.parent / "pyproject.toml").read_text(encoding="utf-8")
+    ).get("project", {}).get("version", "?")
+except OSError:
+    _doc_version = "?"
+
+# Static resolution: module first (the content manifest, the portraits),
+# shared assets (mascots) second.
+stx.set_static_sources([
+    str(_MODULE_DIR / "static"),
+    str(_MODULE_DIR.parent / "shared-blocks" / "static"),
+])
+
+st.set_page_config(
+    page_title="AI DAY — The debates",
+    page_icon="⚖️",
+    layout="wide",
+    initial_sidebar_state="auto",
+)
+
+sts.theme = dark
+
+set_presentation_config(PresentationConfig(
+    title="AI DAY — The debates of the nine axes",
+    aspect_ratio="16/9",
+    footer=True,
+    center_content=False,
+    enforce_ratio=False,
+    hide_streamlit_header=False,  # keep the sidebar toggle reachable
+))
+
+set_slide_break_config(SlideBreakConfig(
+    mode=SlideBreakMode.FULL,
+    space="30vh",
+))
+
+# Search matters more here than anywhere else: the speaker looks for an axis
+# by name, on stage, while the room waits.
+toc = TOCConfig(
+    numbering=NumberingMode.SIDEBAR_ONLY,
+    toc_position=None,
+    sidebar_max_level=2,
+    search=True,
+)
+
+marker_config = MarkerConfig(
+    auto_marker_on_toc=None,
+    next_keys=["PageDown", "ArrowRight"],
+    prev_keys=["PageUp", "ArrowLeft"],
+    draggable=True,
+    collapsible=True,
+    # Auditorium rule: a slide must fill the screen. Every sub-slide after the
+    # first of a block is reached by scrolling, and there are six of them per
+    # axis here — the default 80 px offset would push each one out of the
+    # viewport at the bottom. Needs streamtex >= 0.7.22.
+    scroll_offset=0,
+)
+
+# Reading order IS this list. No slide numbers anywhere in the code: blocks are
+# named after their axis, which is stable. The plan ↔ block mapping lives in
+# _project/plans/plan-postair_debates.md.
+st_book(
+    [
+        blocks.bck_debate_method,          # how the bank is used — for the speaker
+        # ── Knowing ─────────────────────────────────────────────────
+        blocks.bck_axis_trust,
+        blocks.bck_axis_optimism,
+        blocks.bck_axis_rationality,
+        # ── Acting ──────────────────────────────────────────────────
+        blocks.bck_axis_speed,
+        blocks.bck_axis_openness,
+        blocks.bck_axis_control,
+        # ── Becoming ────────────────────────────────────────────────
+        blocks.bck_axis_centralisation,
+        blocks.bck_axis_altruism,
+        blocks.bck_axis_transhumanism,
+        blocks.bck_debate_wrapup,          # the corpus behind the argument
+    ],
+    toc_config=toc,
+    marker_config=marker_config,
+    paginate=True,
+    view_modes=[ViewMode.PAGINATED],
+    banner=BannerConfig.hidden(),
+    page_width=100,
+    zoom=100,
+    # Auditorium base: 30pt body base ⇒ bullets ≈60pt, slide titles ≈80pt.
+    scale=ScaleConfig(base_pt_desktop=30),
+    doc_version=_doc_version,
+)
