@@ -19,7 +19,7 @@ from streamtex import st_hover_tooltip
 def st_info_tooltip(title: str, entries: list[tuple[str, str]], **kw):
     """Info tooltip with the POSTAIR palette and auditorium geometry pre-applied.
 
-    Convention (design guideline R4): placed immediately after the slide
+    Convention (design guideline, rule "Tooltip"): placed after the slide
     title, in the narrow right-hand cell of a ``92% 8%`` grid; opens
     downward, panel on the left side. Geometry and font unit come from the
     design system (2/3 viewport panel, large base font) — override per call

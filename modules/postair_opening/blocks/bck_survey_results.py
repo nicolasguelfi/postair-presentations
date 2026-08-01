@@ -1,4 +1,4 @@
-"""S4 — Survey results (image left, big buttons right).
+"""Survey results (image left, big buttons right).
 
 Each big button opens the results dashboard of one day's campaign
 (app.sumvadis.ai/present/<code>: room radar, modal posture per axis,
@@ -28,7 +28,7 @@ bs = BlockStyles
 
 
 def build():
-    st_marker("S4 — Results")
+    st_marker("Survey results")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():

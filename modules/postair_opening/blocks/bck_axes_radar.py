@@ -1,4 +1,4 @@
-"""W05a — The question of the day: what is YOUR posture facing AI?
+"""The question of the day: what is YOUR posture facing AI?
 
 SPEAKER NOTES:
 This is the pivot of the morning: we stop talking about "AI in general" and
@@ -24,7 +24,7 @@ bs = BlockStyles
 
 
 def build():
-    st_marker("W05a — Your posture?")
+    st_marker("Your posture?")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():

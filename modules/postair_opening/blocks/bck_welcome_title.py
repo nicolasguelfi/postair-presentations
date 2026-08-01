@@ -1,4 +1,4 @@
-"""W01 — Title slide: AI DAY — Facing the AI Revolution.
+"""Title slide: AI DAY — Facing the AI Revolution.
 
 SPEAKER NOTES:
 Warm welcome. Introduce yourself and the team. One sentence on why the
@@ -39,7 +39,7 @@ HERO_PROMPT = (
 
 
 def build():
-    st_marker("W01 — Title")
+    st_marker("Title — AI Day")
     # page_fill_full: no side padding, so the 5/55/35/5 grid below is
     # computed against the real window width (NG 2026-07-30).
     with st_block(s.project.containers.page_fill_full):

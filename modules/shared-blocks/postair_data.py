@@ -3,7 +3,7 @@
 Single source of truth: ``static/_SHARED/mascots/cast_final.json`` (frozen
 manifest of the mascoties studio). This module exposes the 9 axes grouped by
 register, with the accelerator pole FIRST (left column) — the sumvadis
-display convention requested for the register slides (W05b-d).
+display convention requested for the register slides.
 
 The accelerator side per axis comes from the ``effect`` field of the POSTAIR
 questionnaire (sumvadis ``packages/core/assets/postair/questionnaire.json``):

@@ -94,20 +94,23 @@ marker_config = MarkerConfig(
     collapsible=True,
 )
 
+# Reading order IS this list — it is the single source of truth for the deck.
+# No slide numbers anywhere in the code: numbering shifts on every design
+# iteration, block names do not. The plan ↔ block mapping lives in
+# _project/plans/plan-postair_opening.md.
 st_book(
     [
-        # ── W — Welcome ─────────────────────────────────────────────
-        blocks.bck_wait_loop,         # W00 waiting loop (video, no info)
-        blocks.bck_welcome_title,     # W01 title + Medio + hero
-        blocks.bck_axes_radar,        # W05a big radar with "?"
-        blocks.bck_axes_registers,    # W05b-d Knowing / Acting / Becoming (3 slides)
-        # ── S — Survey (order: poster → how-to → join → live → results)
-        blocks.bck_survey_poster,     # S0 papercut poster
-        blocks.bck_survey_howto,      # S2 how to answer (before the join slide)
-        blocks.bck_survey_join,       # S1 join — 3 sub-slides (260908/09/10)
-        blocks.bck_survey_live,       # S3 image + big buttons → /live/<code>
-        blocks.bck_survey_results,    # S4 image + big buttons → /present/<code>
-        # (next: W02/W03/W04/W06, D discussion, B break)
+        # ── Welcome ─────────────────────────────────────────────────
+        blocks.bck_wait_loop,         # looping video, no information revealed
+        blocks.bck_welcome_title,     # title + Medio + hero image
+        blocks.bck_axes_radar,        # empty radar, "?" at the centre
+        blocks.bck_axes_registers,    # Knowing / Acting / Becoming (3 sub-slides)
+        # ── Survey ──────────────────────────────────────────────────
+        blocks.bck_survey_poster,     # opens the survey part, one full-frame image
+        blocks.bck_survey_howto,      # how to answer — deliberately before the join
+        blocks.bck_survey_join,       # QR + giant code, one sub-slide per day
+        blocks.bck_survey_live,       # operator button → live monitoring
+        blocks.bck_survey_results,    # operator button → results presentation
     ],
     toc_config=toc,
     marker_config=marker_config,

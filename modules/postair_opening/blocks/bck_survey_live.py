@@ -1,4 +1,4 @@
-"""S3 — Live monitoring during the answering phase (image left, big buttons right).
+"""Live monitoring during the answering phase (image left, big buttons right).
 
 Each big button opens the live monitoring page of one day's campaign
 (app.sumvadis.ai/live/<code>: real-time counter, session timer) in a new tab.
@@ -27,7 +27,7 @@ bs = BlockStyles
 
 
 def build():
-    st_marker("S3 — Live monitoring")
+    st_marker("Live monitoring")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():

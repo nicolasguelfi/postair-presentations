@@ -1,4 +1,4 @@
-"""W00 — Waiting screen while the audience settles in.
+"""Waiting screen while the audience settles in.
 
 SPEAKER NOTES:
 Nothing to say — this screen runs on its own while the 1500 students enter
@@ -27,7 +27,7 @@ bs = BlockStyles
 
 
 def build():
-    st_marker("W00 — Waiting screen")
+    st_marker("Waiting screen")
     # Full-window video: no grid, no side margins — the player spans the
     # whole page width and scales automatically with the window.
     with st_block(s.project.containers.page_fill_full):

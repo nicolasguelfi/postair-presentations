@@ -151,7 +151,7 @@ class _Cards:
         "border-radius: 12px; padding: 2vh 1.5vw;",
         "postair_card_coral",
     )
-    # Axis pole cell: subtle surface for the mascot tables (W05b-d pattern).
+    # Axis pole cell: subtle surface for the mascot tables (register slides).
     # Every child (text AND image) is horizontally centered.
     pole_cell = Style(
         "background-color: rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.2vh 0.8vw; "

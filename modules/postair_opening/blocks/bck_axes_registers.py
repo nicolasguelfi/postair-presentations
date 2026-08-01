@@ -1,4 +1,4 @@
-"""W05b-d — The nine axes, three by three (Knowing / Acting / Becoming).
+"""The nine axes, three by three (Knowing / Acting / Becoming).
 
 Three sub-slides (one per register), fully data-driven from the frozen
 mascot manifest (postair_data → cast_final.json). Each axis is rendered by
@@ -84,9 +84,9 @@ def build():
     first = True
     for name, subtitle, _nums in REGISTERS:
         if not first:
-            st_slide_break(marker_label=f"W05 — {name}",
+            st_slide_break(marker_label=f"Axes — {name}",
                            config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
         else:
-            st_marker(f"W05 — {name}")
+            st_marker(f"Axes — {name}")
         _register_slide(name, subtitle)
         first = False

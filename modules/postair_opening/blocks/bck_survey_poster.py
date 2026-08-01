@@ -1,4 +1,4 @@
-"""S0 — Poster: the survey part opens with one single full-frame image.
+"""Poster: the survey part opens with one single full-frame image.
 
 SPEAKER NOTES:
 No speech needed — let the image land. One sentence to pivot: "Time to answer
@@ -21,7 +21,7 @@ bs = BlockStyles
 
 
 def build():
-    st_marker("S0 — The Survey (poster)")
+    st_marker("The Survey — poster")
     with st_block(s.project.containers.page_fill_center):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():

@@ -1,4 +1,4 @@
-"""S2 — How to answer (before the join slide).
+"""How to answer — shown just before the join slide.
 
 SPEAKER NOTES:
 Three minutes, calm and clear. 54 statements, six agreement levels, no middle
@@ -35,7 +35,7 @@ _BULLETS = [
 
 
 def build():
-    st_marker("S2 — How to answer")
+    st_marker("How to answer")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():

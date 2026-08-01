@@ -1,4 +1,4 @@
-"""S1 — Join the survey: one sub-slide per conference day (QR + giant code).
+"""Join the survey: one sub-slide per conference day (QR + giant code).
 
 Data-driven from custom/event.py (three daily sumvadis campaigns). The
 presenter navigates to the sub-slide of the current day.
@@ -70,9 +70,9 @@ def build():
     first = True
     for label, code in DAYS:
         if not first:
-            st_slide_break(marker_label=f"S1 — Join ({code})",
+            st_slide_break(marker_label=f"Join — {code}",
                            config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
         else:
-            st_marker(f"S1 — Join ({code})")
+            st_marker(f"Join — {code}")
         _day_slide(label, code)
         first = False
