@@ -118,6 +118,8 @@ st_book(
         # ── Welcome ─────────────────────────────────────────────────
         blocks.bck_wait_loop,         # looping video, no information revealed
         blocks.bck_welcome_title,     # title + Medio + hero image
+        blocks.bck_welcome_whole_university,  # three faculties, and the missing survey
+        blocks.bck_welcome_revolution,  # four figures, each with its counterpoint
         blocks.bck_welcome_agenda,    # the nine sessions, break accented
         blocks.bck_axes_radar,        # empty radar, "?" at the centre
         blocks.bck_axes_registers,    # Knowing / Acting / Becoming (3 sub-slides)
