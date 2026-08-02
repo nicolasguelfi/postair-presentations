@@ -16,6 +16,7 @@ class Custom:
     titles = DS.titles
     body = DS.body
     containers = DS.containers
+    grids = DS.grids
     cards = DS.cards
 
 

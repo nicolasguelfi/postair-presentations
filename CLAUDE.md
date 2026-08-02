@@ -85,12 +85,22 @@ même en mode static-only).
   d'URL) : le build Coolify tourne en CI, sans accès aux dépôts privés. Ce qui est
   versionné est la *désignation* des médias, jamais les médias. Regel :
   `sync_media.py --freeze` (machine de l'auteur).
-- **Les vidéos restent au CDN** : 51 masters de 12 Mo, ouverts deux ou trois fois dans la
-  séance ; les embarquer coûterait 612 Mo pour une interaction ponctuelle.
+- **Les vidéos de figures restent au CDN** : 51 masters de 12 Mo, ouverts deux ou trois
+  fois dans la séance ; les embarquer coûterait 612 Mo pour une interaction ponctuelle.
+- **Les clips de mascottes, eux, sont embarqués** : les 72 renditions « Postures »
+  (36 mascottes × 2 langues) pèsent 24 Mo au total et sont matérialisées depuis le
+  catalogue. L'écran d'attente tourne **vingt minutes devant la salle qui se remplit** —
+  le pire moment possible pour dépendre du réseau. Le deck nomme une mascotte
+  (`postair_data.mascot_clip`), jamais un fichier.
 - **Exceptions assumées** : les illustrations produites pour ces présentations restent
-  versionnées ici et ne vont jamais au CDN ; les 4 clips de mascottes et les 2
-  modérateurs sont encore versionnés faute d'entrée au catalogue amont (note :
+  versionnées ici et ne vont jamais au CDN ; les 2 modérateurs sont encore copiés du
+  studio faute d'entrée au catalogue amont (note :
   `_project/prompts/prompt-studio-medias-manquants.md`).
+- **Une décision en attente** : `_SHARED/mascots/videos/solyo_optimism_en.mp4` (2,9 Mo)
+  est le master de l'écran d'attente, en 1080×1080 à 1,9 Mb/s ; la rendition du CDN
+  désormais utilisée est en 720×720 à 295 kb/s. Le fichier est conservé le temps que
+  l'auteur juge la rendition en projection. Si elle tient, il part ; sinon, la
+  demande va à `commercials` — pas de fichier copié à la main en guise de réponse.
 
 ## Généré / versionné
 

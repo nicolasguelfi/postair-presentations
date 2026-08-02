@@ -72,7 +72,8 @@ def build():
                  " one — and how far you are from it", tag=t.div)
         st_space("v", "2vh")
         # ONE flat grid — six named cards, wrapping on a narrow window.
-        with st_grid(cols="repeat(auto-fit, minmax(min(260px, 80vw), 1fr))", gap="1.2vw",
+        with st_grid(cols=s.project.grids.balanced(len(_CARDS)), gap="1.2vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for (_key, name), card in zip(archetypes(), _CARDS):
                 with g.cell(), st_block(card):

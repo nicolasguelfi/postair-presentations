@@ -75,7 +75,8 @@ def build():
         st_write(bs.lead, "Open only the axes where ",
                  (s.project.titles.keyword, "this room"), " disagrees", tag=t.div)
         st_space("v", "2.5vh")
-        with st_grid(cols="repeat(auto-fit, minmax(min(300px, 85vw), 1fr))", gap="1.5vw",
+        with st_grid(cols=s.project.grids.balanced(len(_STEPS)), gap="1.5vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for step, detail in _STEPS:
                 with g.cell(), st_block(s.project.cards.blue):

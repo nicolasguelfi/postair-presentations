@@ -73,9 +73,11 @@ def _register_slide(name: str, subtitle: str) -> None:
         st_space("v", "1.5vh")
         # ONE flat responsive grid — 3 columns on a projector, stacking on
         # narrow windows; each cell is a self-contained axis stack.
-        with st_grid(cols="repeat(auto-fit, minmax(min(340px, 85vw), 1fr))", gap="1.5vw",
+        axes_here = register_axes(name)
+        with st_grid(cols=s.project.grids.balanced(len(axes_here)), gap="1.5vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
-            for axis in register_axes(name):
+            for axis in axes_here:
                 with g.cell():
                     axis_stack(axis, DS)
 

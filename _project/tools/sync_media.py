@@ -7,6 +7,7 @@ outil, depuis les catalogues amont, et se rechargent en vidant le dossier.
 
     modules/<module>/static/media/
         mascots/<nom>.webp     ← catalogue du studio (cartes-design.json)
+        clips/<axe>-<lg>.mp4   ← même catalogue, clé `video` (série « Postures »)
         figures/<sha>.<ext>    ← content.json (portraits + posters des figures)
         illustrations/…        ← VERSIONNÉ, produit pour ces présentations,
                                   jamais au CDN (décision NG 2026-08-01)
@@ -50,6 +51,15 @@ _MODULES = _REPO / "modules"
 MASCOT_MODULES = ["postair_opening", "postair_debates"]
 #: Les modules qui affichent des figures (portraits + posters).
 FIGURE_MODULES = ["postair_debates"]
+#: Les modules qui projettent un clip de mascotte.
+#:
+#: On matérialise TOUS les clips du catalogue, pas seulement celui qui est à
+#: l'écran aujourd'hui : l'outil ne connaît pas le contenu des slides, et le
+#: jour où le deck change de clip, rien ici ne doit bouger. Le coût est modeste
+#: — renditions légères, quelques dizaines de Mo — et il achète l'essentiel :
+#: l'écran d'attente tourne **vingt minutes devant la salle qui se remplit**,
+#: c'est le pire moment possible pour dépendre du réseau.
+CLIP_MODULES = ["postair_opening"]
 
 _TIMEOUT = 30
 
@@ -83,13 +93,16 @@ def mascot_catalogue(studio: str | None) -> list[tuple[str, str]]:
     return _read_studio(studio)
 
 
-def _read_studio(studio: str) -> list[tuple[str, str]]:
+def _studio_design(studio: str) -> dict:
     path = Path(studio) / "shared" / "cartes" / "cartes-design.json"
     if not path.exists():
         raise SystemExit(f"catalogue du studio introuvable : {path}")
-    design = json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _read_studio(studio: str) -> list[tuple[str, str]]:
     out = []
-    for key, entry in (design.get("assets") or {}).items():
+    for key, entry in (_studio_design(studio).get("assets") or {}).items():
         url = entry.get("url")
         if not url:
             raise SystemExit(f"asset sans URL dans le catalogue du studio : {key}")
@@ -97,11 +110,41 @@ def _read_studio(studio: str) -> list[tuple[str, str]]:
     return out
 
 
+def clip_catalogue(studio: str | None) -> list[tuple[str, str]]:
+    """(nom de fichier, URL) des clips « Postures ».
+
+    Même règle que les mascottes : le gel d'abord, le studio seulement pour
+    regeler. Un catalogue gelé antérieur à ce chantier ne porte pas de clé
+    ``clips`` — on rend alors une liste vide plutôt que d'échouer, et
+    ``--freeze`` la remplira.
+    """
+    if _FROZEN.exists():
+        frozen = json.loads(_FROZEN.read_text(encoding="utf-8"))
+        return [(e["file"], e["url"]) for e in frozen.get("clips", [])]
+    if not studio:
+        raise SystemExit(f"ni catalogue gelé ({_FROZEN.name}) ni chemin `studio` — rien à lire")
+    return _read_studio_clips(studio)
+
+
+def _read_studio_clips(studio: str) -> list[tuple[str, str]]:
+    """Les clips publiés par `commercials`, déclarés dans le catalogue du studio.
+
+    Chaque asset porte un objet ``video`` indexé par langue. Le nom local est
+    dérivé de la clé d'axe et de la langue — JAMAIS du nom content-adressé du
+    CDN, qui change à chaque republication et rendrait le deck faux en silence.
+    """
+    out = []
+    for key, entry in (_studio_design(studio).get("assets") or {}).items():
+        for lang, url in sorted((entry.get("video") or {}).items()):
+            out.append((f"{key}-{lang}.mp4", url))
+    return out
+
+
 def freeze(studio: str) -> None:
     """Regeler le catalogue depuis le studio. À lancer sur la machine de l'auteur."""
     entries = _read_studio(studio)
-    src = Path(studio) / "shared" / "cartes" / "cartes-design.json"
-    design = json.loads(src.read_text(encoding="utf-8"))
+    clips = _read_studio_clips(studio)
+    design = _studio_design(studio)
     _FROZEN.parent.mkdir(parents=True, exist_ok=True)
     _FROZEN.write_text(json.dumps({
         "_doc": "GÉNÉRÉ par _project/tools/sync_media.py --freeze depuis "
@@ -111,8 +154,10 @@ def freeze(studio: str) -> None:
         "source": "mascoties/shared/cartes/cartes-design.json",
         "design_version": design.get("version"),
         "mascots": [{"file": f, "url": u} for f, u in entries],
+        "clips": [{"file": f, "url": u} for f, u in clips],
     }, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"  catalogue gelé : {len(entries)} mascottes → {_FROZEN.relative_to(_REPO)}")
+    print(f"  catalogue gelé : {len(entries)} mascottes, {len(clips)} clips "
+          f"→ {_FROZEN.relative_to(_REPO)}")
 
 
 #: Les deux modérateurs n'ont AUCUNE entrée au CDN : le catalogue du studio
@@ -246,6 +291,12 @@ def main() -> None:
         total_written += w + wm
         print(f"  {module}/mascots   : {p + pm} présents, {m + mm} manquants "
               f"({len(moderators)} modérateurs copiés du studio, hors CDN)")
+    clips = clip_catalogue(studio)
+    for module in CLIP_MODULES:
+        p, m, w = sync(module, "clips", clips, args.check, args.force)
+        total_missing += m
+        total_written += w
+        print(f"  {module}/clips     : {p} présents, {m} manquants")
     for module in FIGURE_MODULES:
         figures = figure_catalogue(module)
         p, m, w = sync(module, "figures", figures, args.check, args.force)

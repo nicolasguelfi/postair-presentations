@@ -29,4 +29,5 @@ _project/tools/*.local.json
 # produites pour ces presentations, elles, restent versionnees ici et ne vont
 # jamais au CDN (decision NG 2026-08-01).
 modules/*/static/media/mascots/
+modules/*/static/media/clips/
 modules/*/static/media/figures/

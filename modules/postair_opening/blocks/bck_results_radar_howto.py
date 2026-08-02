@@ -73,8 +73,15 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        # ONE flat grid: the chart, then the four codes.
-        with st_grid(cols="52% repeat(auto-fit, minmax(min(180px, 40vw), 1fr))", gap="1vw",
+        # ONE flat grid: the chart, then the posture codes beside it.
+        #
+        # The floor is hand-set here rather than taken from `grids.balanced`:
+        # the helper reasons about the WHOLE grid width, and half of this one is
+        # already spent on the chart. Within the ~48% that remains, a 20% floor
+        # lets two columns stand and refuses a third — so the codes read as a
+        # block beside the chart, not as a thin strip under it.
+        with st_grid(cols="52% repeat(auto-fit, minmax(max(180px, 20%), 1fr))", gap="1vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_image(s.project.cards.media_center, width="100%",

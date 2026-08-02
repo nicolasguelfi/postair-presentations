@@ -83,14 +83,16 @@ def build():
         st_space("v", "1vh")
         # ONE flat grid — the moderator is a cell like the others, never a
         # column holding a second responsive grid.
-        with st_grid(cols="0.8fr repeat(auto-fit, minmax(min(240px, 70vw), 1fr))", gap="1.2vw",
+        second = _second_half()
+        with st_grid(cols=s.project.grids.balanced(1 + len(second)), gap="1.2vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
             with g.cell():
                 st_image(s.project.cards.media_center, width="min(16vw, 34vh)",
                          uri=medio["image"],
                          alt=f"{medio['name']}, the moderator mascot, restarting the session")
                 st_write(bs.mascot_name, medio["name"], tag=t.div)
-            for session, duration in _second_half():
+            for session, duration in second:
                 with g.cell(), st_block(s.project.cards.blue):
                     st_write(bs.promise, _PROMISE[session], tag=t.div)
                     st_write(bs.session, session, tag=t.div)

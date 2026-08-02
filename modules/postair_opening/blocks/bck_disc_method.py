@@ -79,7 +79,8 @@ def build():
                              alt=f"{m['name']}, mascot of the {m['pole'] or 'moderator'} posture")
                     st_write(bs.mascot_name, m["name"], tag=t.div)
         st_space("v", "2vh")
-        with st_grid(cols="repeat(auto-fit, minmax(min(280px, 85vw), 1fr))", gap="1.5vw",
+        with st_grid(cols=s.project.grids.balanced(len(_RULES)), gap="1.5vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for rule, detail in _RULES:
                 with g.cell(), st_block(s.project.cards.coral):

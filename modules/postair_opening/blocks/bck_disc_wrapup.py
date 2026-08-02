@@ -74,9 +74,11 @@ def build():
                  " — retake it at the end of the year", tag=t.div)
         st_space("v", "1.5vh")
         # ONE flat grid, the full company: eighteen cells, wrapping naturally.
-        with st_grid(cols="repeat(auto-fit, minmax(min(140px, 45vw), 1fr))", gap="0.6vw",
+        company = _all_poles()
+        with st_grid(cols=s.project.grids.balanced(len(company)), gap="0.6vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
-            for pole in _all_poles():
+            for pole in company:
                 with g.cell():
                     st_image(s.project.cards.media_center, width="min(8vw, 15vh)",
                              uri=pole["image"],

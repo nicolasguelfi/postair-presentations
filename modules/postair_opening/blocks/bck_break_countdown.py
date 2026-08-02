@@ -75,9 +75,11 @@ def build():
         st_countdown(_break_minutes())
         st_space("v", "1vh")
         # ONE flat grid — the company on stage while the room is out.
-        with st_grid(cols="repeat(auto-fit, minmax(min(120px, 40vw), 1fr))", gap="0.5vw",
+        company = _company()
+        with st_grid(cols=s.project.grids.balanced(len(company)), gap="0.5vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
-            for pole in _company():
+            for pole in company:
                 with g.cell():
                     st_image(s.project.cards.media_center, width="min(6.5vw, 12vh)",
                              uri=pole["image"],

@@ -71,7 +71,8 @@ def build():
         # ONE flat responsive grid: nine cells side by side on the projector,
         # wrapping on a narrow window. No nested grid — the mascot lives inside
         # its own cell, not in a sub-grid.
-        with st_grid(cols="repeat(auto-fit, minmax(min(200px, 80vw), 1fr))", gap="1vw",
+        with st_grid(cols=s.project.grids.balanced(len(AGENDA)), gap="1vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for session, duration, kind in AGENDA:
                 with g.cell(), st_block(_CARD[kind]):

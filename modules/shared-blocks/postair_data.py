@@ -56,6 +56,29 @@ def _webp_uri(item: dict) -> str:
     return "mascots/" + (name if item.get("axis") is None else name.replace(".png", ".webp"))
 
 
+def mascot_clip(name: str, lang: str = "en") -> str:
+    """L'URI du clip « Postures » d'une mascotte, relative au dossier des médias.
+
+    Les 72 clips (36 mascottes × 2 langues) sont publiés par le dépôt
+    ``commercials``, déclarés dans le catalogue du studio et matérialisés par
+    ``_project/tools/sync_media.py`` sous ``<module>/static/media/clips/``.
+
+    Le nom local est dérivé de la clé d'axe, jamais du nom content-adressé du
+    CDN : celui-ci change à chaque republication, et un deck qui le porterait
+    en dur deviendrait faux en silence.
+
+    Les deux modérateurs n'ont pas de clip — ils n'ont pas d'axe, et la série
+    « Postures » est construite axe par axe.
+    """
+    for item in _cast_items():
+        if item.get("name") != name:
+            continue
+        if item.get("axis") is None:
+            raise KeyError(f"{name} has no axis, and the Postures series has no clip for it")
+        return f"clips/{item['files']['rgb'].rsplit('.', 1)[0]}-{lang}.mp4"
+    raise KeyError(f"no mascot named {name!r} in the frozen cast manifest")
+
+
 @lru_cache(maxsize=4)
 def axes(family_en: str = "animals") -> dict[int, dict]:
     """Return {axis_num: axis info} for one mascot family.

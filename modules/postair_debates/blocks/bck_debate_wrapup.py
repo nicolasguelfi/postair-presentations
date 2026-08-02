@@ -70,7 +70,8 @@ def build():
         st_write(bs.lead, "Every one of them was ",
                  (s.project.titles.keyword, "argued before you were born"), tag=t.div)
         st_space("v", "3vh")
-        with st_grid(cols="repeat(auto-fit, minmax(min(280px, 85vw), 1fr))", gap="1.5vw",
+        with st_grid(cols=s.project.grids.balanced(len(counts)), gap="1.5vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for value, label in counts:
                 with g.cell(), st_block(s.project.cards.teal):

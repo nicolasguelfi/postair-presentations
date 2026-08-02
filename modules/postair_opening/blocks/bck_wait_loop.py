@@ -1,22 +1,44 @@
 """Waiting screen while the audience settles in.
 
+Data-driven from ``postair_data.mascot_clip``: the block names a mascot and a
+language, never a file. The bytes are materialised from the CDN catalogue by
+``_project/tools/sync_media.py`` — nothing here is versioned.
+
+The clip is square, and that is the whole layout problem of this slide.
+``st.video`` sizes itself on the WIDTH of its container and lets the height
+follow the aspect ratio, without ever consulting the window: served full width
+on a projector, a square clip is nearly two thousand pixels tall, overflows the
+screen, and resizing the window never puts it right. The stage container bounds
+the width by the available HEIGHT instead, so the video follows both dimensions
+of the window and stays whole.
+
 SPEAKER NOTES:
 Nothing to say — this screen runs on its own while the 1500 students enter
 the auditorium. One looping video, sound ON, no text, no information that
 would reveal what comes next. The operator clicks play once when projection
 starts (browsers block autoplay with sound).
 
-Video: Solyo's talking portrait (EN), mascoties release v03 — the frozen
-master validated by NG on 2026-08-01. The v02 master previously used here
-played its voice-over segments in the wrong order.
+Video: Solyo, the optimism mascot of the animal family, in the Postures series
+published by the commercials repository. If it ever needs to be another
+mascot, change the name below — every mascot of the cast has a clip in both
+languages, and they are all already in the container.
 """
 # @guideline: postair-minimal
 
-import streamtex as stx
+from pathlib import Path
+
 from custom.styles import Styles as s
+from postair_data import mascot_clip
 from streamtex import *
-from streamtex import st_marker, st_video
 from streamtex.enums import Tags as t
+
+#: The clip is 1080×1080 — a square. Width divided by height, so: one.
+_CLIP_RATIO = 1.0
+
+#: Blocks live in ``<module>/blocks/``; the media root is a sibling of that
+#: directory. Resolved from the file rather than the working directory, so the
+#: slide renders the same under Streamlit, under a test harness and at export.
+_MEDIA = Path(__file__).parent.parent / "static" / "media"
 
 
 class BlockStyles:
@@ -28,10 +50,10 @@ bs = BlockStyles
 
 def build():
     st_marker("Waiting screen")
-    # Full-window video: no grid, no side margins — the player spans the
-    # whole page width and scales automatically with the window.
     with st_block(s.project.containers.page_fill_full):
-        # st.video needs an absolute file path — resolve via static sources.
-        st_video(stx.resolve_static("_SHARED/mascots/videos/solyo_optimism_en.mp4"),
-                 loop=True)
-        st_write(bs.hint, "▶ play · loop · sound on", tag=t.div)
+        # The stage is bounded by the window height; the video fills it.
+        with st_block(s.project.containers.media_stage(_CLIP_RATIO)):
+            # st.video needs a real file path: the media folder is deliberately
+            # NOT a static source, so it cannot be resolved through them.
+            st_video(str(_MEDIA / mascot_clip("Solyo", "en")), loop=True)
+            st_write(bs.hint, "▶ play · loop · sound on", tag=t.div)

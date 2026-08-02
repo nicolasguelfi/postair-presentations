@@ -98,9 +98,11 @@ def build():
                  " — none of them is wrong", tag=t.div)
         st_space("v", "1.5vh")
         # ONE flat grid: eighteen cells, each stacking its two families.
-        with st_grid(cols="repeat(auto-fit, minmax(min(150px, 45vw), 1fr))", gap="0.6vw",
+        pairs = _poles_by_family()
+        with st_grid(cols=s.project.grids.balanced(len(pairs)), gap="0.6vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
-            for animal, obj in _poles_by_family():
+            for animal, obj in pairs:
                 with g.cell(), st_block(s.project.cards.pole_cell):
                     st_write(bs.pole, animal["label"], tag=t.div)
                     for m in (animal, obj):

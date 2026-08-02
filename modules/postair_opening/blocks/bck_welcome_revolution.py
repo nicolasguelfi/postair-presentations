@@ -89,13 +89,16 @@ def build():
                 st_info_tooltip(title="Where these figures come from",
                                 entries=_tooltip_entries())
         st_space("v", "2vh")
-        # ONE flat responsive grid: four figures side by side on the projector,
-        # wrapping on a narrow window. All four share a single card style —
-        # they hold the same role, and a colour per figure would suggest a
-        # ranking the evidence does not support.
-        with st_grid(cols="repeat(auto-fit, minmax(min(320px, 90vw), 1fr))", gap="1.2vw",
+        # ONE flat grid, laid out as a block rather than a strip: the design
+        # system picks the most balanced arrangement for the number of figures
+        # and stretches the rows to fill the screen. All cards share a single
+        # style — they hold the same role, and a colour per figure would
+        # suggest a ranking the evidence does not support.
+        shown = figures()
+        with st_grid(cols=s.project.grids.balanced(len(shown)), gap="1.2vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
-            for figure in figures():
+            for figure in shown:
                 with g.cell():
                     fact_card(DS,
                               value=text(figure["value"]),

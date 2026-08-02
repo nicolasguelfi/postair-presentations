@@ -115,7 +115,8 @@ def _figures(pole: dict, lang: str | None) -> None:
                          "closest to it — the strongest voices this corpus has to offer on "
                          "this side, and that absence is itself worth debating.", tag=t.div)
     st_space("v", "1.5vh")
-    with st_grid(cols="repeat(auto-fit, minmax(min(320px, 85vw), 1fr))", gap="1.2vw",
+    with st_grid(cols=s.project.grids.balanced(len(pole["figures"])), gap="1.2vw",
+                 grid_style=s.project.grids.stretch,
                  cell_styles=s.project.containers.grid_cell_top) as g:
         for f in pole["figures"]:
             with g.cell():
@@ -136,7 +137,8 @@ def _arguments(pole: dict, lang: str | None) -> None:
     _header(["And ", (s.project.titles.keyword, "today"), "? — ", pole_name],
             f"Contemporary arguments for {pole_name}", entries)
     st_space("v", "1.5vh")
-    with st_grid(cols="repeat(auto-fit, minmax(min(300px, 85vw), 1fr))", gap="1.2vw",
+    with st_grid(cols=s.project.grids.balanced(len(pole["arguments"])), gap="1.2vw",
+                 grid_style=s.project.grids.stretch,
                  cell_styles=s.project.containers.grid_cell_top) as g:
         for a in pole["arguments"]:
             with g.cell():

@@ -81,12 +81,14 @@ def build():
                 st_info_tooltip(title="What AI already does to these disciplines",
                                 entries=_tooltip_entries())
         st_space("v", "2vh")
-        # ONE flat responsive grid: three faculties side by side on the
-        # projector, wrapping on a narrow window. One card style for all three —
-        # no faculty is more concerned than another, and that is the message.
-        with st_grid(cols="repeat(auto-fit, minmax(min(320px, 90vw), 1fr))", gap="1.2vw",
+        # ONE flat grid, stretched to fill the screen. One card style for all
+        # three — no faculty is more concerned than another, and that is the
+        # message.
+        groups = disciplines()
+        with st_grid(cols=s.project.grids.balanced(len(groups)), gap="1.2vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
-            for group in disciplines():
+            for group in groups:
                 with g.cell():
                     faculty_card(DS,
                                  faculty=text(group["faculty"]),

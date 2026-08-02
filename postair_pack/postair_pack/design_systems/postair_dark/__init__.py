@@ -15,6 +15,9 @@ Color semantics (one meaning everywhere — text, marker, wash, image):
 - coral: human / debate
 """
 
+import math
+from functools import lru_cache
+
 from streamtex.styles import Style
 
 # Tooltip palette + geometry (consumed by the shared st_info_tooltip wrapper).
@@ -128,6 +131,92 @@ class _Containers:
         "postair_grid_cell_top",
     )
 
+    @staticmethod
+    @lru_cache(maxsize=16)
+    def media_stage(ratio: float = 1.0, height_vh: int = 84) -> Style:
+        """Cadre d'un média projeté, borné par la HAUTEUR de la fenêtre.
+
+        ``st.video`` et ``st.image`` ne se dimensionnent que par la LARGEUR de
+        leur conteneur : la hauteur suit le rapport de forme, sans jamais
+        consulter la fenêtre. Un clip carré servi sur toute la largeur d'un
+        projecteur fait donc presque deux mille pixels de haut — il déborde,
+        et redimensionner la fenêtre ne le remet jamais d'aplomb.
+
+        On borne donc la largeur du conteneur par la hauteur disponible :
+        ``ratio × height_vh``. Le média occupe alors au plus ``height_vh`` de
+        haut, reste centré, et suit les DEUX dimensions de la fenêtre — le
+        ``min(…, 100%)`` reprend la main dès que la fenêtre devient étroite.
+
+        ``ratio`` = largeur / hauteur du média : 1 pour un carré, 16/9 pour un
+        format large. C'est une propriété du fichier, pas un choix de mise en
+        page : la passer fausse produit un cadre trop grand ou trop petit.
+        """
+        slug = f"{ratio:.3f}".replace(".", "_").replace("-", "_")
+        return Style(
+            f"width: min({ratio * height_vh:.2f}vh, 100%); "
+            f"margin-left: auto; margin-right: auto;",
+            f"postair_media_stage_{slug}_{height_vh}",
+        )
+
+
+class _Grids:
+    """Grilles plates, réparties sur plusieurs lignes, qui remplissent l'écran.
+
+    Règle d'amphi (NG 2026-08-02) : une slide ne doit jamais montrer **une
+    seule ligne de nombreuses cellules minuscules** avec le reste de la hauteur
+    vide. ``repeat(auto-fit, minmax(200px, 1fr))`` fait exactement cela sur un
+    projecteur large — neuf éléments s'y rangent sur une ligne de 200 px.
+    """
+
+    #: Le conteneur de grille prend toute la hauteur restante et distribue ses
+    #: lignes à parts égales : deux lignes de cinq occupent l'écran, elles ne se
+    #: tassent pas en haut.
+    stretch = Style(
+        "flex: 1 1 auto; align-content: stretch; grid-auto-rows: 1fr;",
+        "postair_grid_stretch",
+    )
+
+    @staticmethod
+    def columns(count: int, cap: int = 6) -> int:
+        """Le nombre de colonnes le plus équilibré pour ``count`` éléments.
+
+        On part de la racine carrée — le rectangle le plus proche du carré —
+        et on retient, entre elle et la colonne suivante, celle qui laisse le
+        moins de vide sur la dernière ligne : dix-huit pôles donnent trois
+        lignes de six, pas quatre lignes de cinq dont une de trois. À égalité
+        on garde le moins de colonnes, donc les plus grandes cellules.
+
+        La fenêtre de recherche s'arrête volontairement à la colonne suivante.
+        Chercher un diviseur exact plus loin ferait ressortir les nombres
+        premiers sur une seule ligne — cinq éléments donneraient cinq colonnes,
+        très exactement le défaut qu'on corrige.
+
+        Jusqu'à trois éléments, une seule ligne : les cellules y sont déjà
+        larges d'un tiers d'écran, les répartir ne gagnerait rien.
+        """
+        if count <= 0:
+            return 1
+        if count <= 3:
+            return count
+        start = math.ceil(math.sqrt(count))
+        candidates = [c for c in (start, start + 1) if c <= cap] or [cap]
+        return min(candidates, key=lambda c: (c * math.ceil(count / c) - count, c))
+
+    @staticmethod
+    def balanced(count: int, cap: int = 6, min_px: int = 200) -> str:
+        """Le ``cols`` d'une grille équilibrée et responsive.
+
+        Le plancher en pourcentage **plafonne** le nombre de colonnes : posé
+        entre ``100/n`` et ``100/(n+1)``, il laisse tenir ``n`` colonnes et pas
+        une de plus, quelle que soit la largeur de l'écran. Le plancher en
+        pixels reprend la main sur une fenêtre étroite et fait retomber la
+        grille à moins de colonnes, puis à une seule — la mise en page reste
+        donc responsive dans les deux sens, sans point de rupture codé en dur.
+        """
+        cols = _Grids.columns(count, cap)
+        floor_pct = int((100 / cols + 100 / (cols + 1)) / 2)
+        return f"repeat(auto-fit, minmax(max({min_px}px, {floor_pct}%), 1fr))"
+
 
 class _Cards:
     # Reference-card washes: 10% wash + 4px dimension-colored left bar.
@@ -213,6 +302,7 @@ class DesignSystem:
     titles = _Titles
     body = _Body
     containers = _Containers
+    grids = _Grids
     cards = _Cards
     buttons = _Buttons
     stage = _Stage

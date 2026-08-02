@@ -58,7 +58,11 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        with st_grid(cols="repeat(auto-fit, minmax(min(420px, 88vw), 1fr))", gap="2vw",
+        # Two cells — the instructions and the scale. The pixel floor is raised
+        # well above the default: a bullet list needs room to breathe before it
+        # is worth splitting the screen at all.
+        with st_grid(cols=s.project.grids.balanced(2, min_px=420), gap="2vw",
+                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 with st_list(li_style=bs.bullet) as ul:
