@@ -52,8 +52,10 @@ Une figure n'apparaît que si elle porte **un portrait ET une vidéo**, chacun a
 ## Le second amont — le gel du studio
 
 `modules/shared-blocks/static/_SHARED/mascots/` est une **copie gelée** de
-`mascoties/shared/` (3 manifestes, 36 webp, 4 clips), faite à la main : c'est le
-seul tuyau de la chaîne sans outil de copie. Contrôle de fidélité :
+`mascoties/shared/`, faite à la main : c'est le seul tuyau de la chaîne sans outil de
+copie. Depuis le 2026-08-02 il n'y reste que **les 3 manifestes et les 4 clips** — les
+36 webp sont sortis du dépôt et viennent du CDN (cf. §Les médias). Les clips restent
+faute d'entrée au catalogue amont. Contrôle de fidélité :
 
 ```bash
 uv run python _project/tools/check_shared_freeze.py
@@ -63,6 +65,32 @@ Il ne copie rien. Il compare les manifestes octet par octet, rapporte l'état de
 signature C2PA des deux côtés et signale les clips sans source. **Ne jamais enrichir
 un fichier du gel à la main** : ce serait créer une seconde vérité. Une évolution se
 demande au studio, puis le gel se refait.
+
+## Les médias — servis, jamais inlinés, jamais dans git
+
+**Aucun média dans git.** Les octets sont matérialisés **au build** par
+`_project/tools/sync_media.py` depuis les catalogues amont, sous
+`modules/<module>/static/media/`, et servis par le conteneur lui-même : pendant la
+séance, aucun appel au CDN.
+
+**Un bloc ne passe jamais un chemin de fichier à `st_image`.** La librairie encode en
+base64 tout fichier qu'elle trouve sur le disque — les 54 portraits pèsent 2,7 Ko en URL
+contre ~23 Mo inlinés. `configure_image_path("app/static/media")` dans chaque `book.py`
+fait sortir les URI en URL relatives, servies par nginx depuis le disque (donc visibles
+même en mode static-only).
+
+- **Recharger tout** : vider `modules/<module>/static/media/`, relancer l'outil. Les URL
+  sont content-adressées — un fichier présent **est** à jour, sans revalidation.
+- **Le catalogue des mascottes est GELÉ** dans `_SHARED/media-catalogue.json` (8 Ko
+  d'URL) : le build Coolify tourne en CI, sans accès aux dépôts privés. Ce qui est
+  versionné est la *désignation* des médias, jamais les médias. Regel :
+  `sync_media.py --freeze` (machine de l'auteur).
+- **Les vidéos restent au CDN** : 51 masters de 12 Mo, ouverts deux ou trois fois dans la
+  séance ; les embarquer coûterait 612 Mo pour une interaction ponctuelle.
+- **Exceptions assumées** : les illustrations produites pour ces présentations restent
+  versionnées ici et ne vont jamais au CDN ; les 4 clips de mascottes et les 2
+  modérateurs sont encore versionnés faute d'entrée au catalogue amont (note :
+  `_project/prompts/prompt-studio-medias-manquants.md`).
 
 ## Généré / versionné
 
