@@ -41,6 +41,28 @@ sys.exit(1) if i < r else sys.exit(0)" || \
 # Copy all modules (shared-blocks included)
 COPY modules/ ./modules/
 
+# Materialise the media INSIDE the image, from the upstream catalogues.
+#
+# The container must be complete and autonomous: during the session it makes no
+# call to the CDN. But none of these bytes live in git — they arrive here by the
+# tool, and reload by emptying the folder. The URLs are content-addressed, so a
+# file that is present IS up to date: no revalidation, no staleness.
+#
+# Images only (~39 MB): the 51 presentation videos weigh 12 MB each, are opened
+# two or three times in a session, and would add 612 MB to the image for a
+# momentary interaction. They stay streamed from the CDN.
+#
+# The catalogue it reads is the FROZEN one, committed with the modules — a few
+# kilobytes of content-addressed URLs. That is what makes this step work in CI:
+# the build has no access to the private upstream repos, only to the network.
+# Regenerate it on the author's machine with `sync_media.py --freeze`.
+#
+# The two moderator mascots have no CDN entry at all and are the one exception:
+# they are copied from the studio, so a CI build leaves them missing. Debt to be
+# cleared by publishing them — see the note handed to the studio session.
+COPY _project/tools/ ./_project/tools/
+RUN uv run python _project/tools/sync_media.py
+
 # Nginx configuration for dual-mode (Streamlit + static HTML)
 COPY nginx.conf /etc/nginx/nginx.conf
 

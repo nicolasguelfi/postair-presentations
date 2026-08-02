@@ -53,6 +53,15 @@ stx.set_static_sources([
     str(_MODULE_DIR.parent / "shared-blocks" / "static"),
 ])
 
+# Les médias sont SERVIS, jamais inlinés. `st_image` encode en base64 tout
+# fichier qu'il trouve sur le disque : les 54 portraits pèseraient ~23 Mo de
+# base64 dans la page, contre 2,7 Ko en URL. Les octets vivent donc sous
+# `static/media/`, que les sources statiques ci-dessus ne sondent pas — l'URI
+# retombe ici et sort en URL relative, servie par le service statique de
+# Streamlit (`/app/static/media/…`), donc par le conteneur lui-même.
+# Matérialisation : `_project/tools/sync_media.py`.
+stx.configure_image_path("app/static/media")
+
 st.set_page_config(
     page_title="AI DAY — The debates",
     page_icon="⚖️",

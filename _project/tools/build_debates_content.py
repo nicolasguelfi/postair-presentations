@@ -128,6 +128,23 @@ def _verification_tier(v: str | None) -> int:
     return 1 if v.startswith("verbatim") else 2
 
 
+def _local_media(url: str | None) -> str | None:
+    """L'URI locale d'une image du CDN, telle que la slide doit la demander.
+
+    Le conteneur doit être autonome pendant la séance : les images sont
+    matérialisées sous ``static/media/figures/`` par ``sync_media.py`` et servies
+    par le conteneur lui-même. L'URI reste RELATIVE et introuvable via les
+    sources statiques — sans quoi ``st_image`` encoderait le fichier en base64 et
+    les 54 portraits pèseraient ~23 Mo dans la page, contre 2,7 Ko en URL.
+
+    L'URL du CDN est conservée à côté (``*_cdn``) : c'est la provenance, et le
+    repli si la matérialisation n'a pas eu lieu.
+    """
+    if not url:
+        return None
+    return "figures/" + url.rsplit("/", 1)[-1]
+
+
 def _reference(q: dict, match: dict | None) -> str | None:
     """The complete reference of a quote, in order of authority.
 
@@ -275,17 +292,23 @@ class Hub:
             if a.get("clearance", {}).get("channel") != "public-ok":
                 continue
             if a["role"] == "portrait":
-                out["portrait"] = a["renditions"].get("web-512")
+                out["portrait"] = _local_media(a["renditions"].get("web-512"))
+                out["portrait_cdn"] = a["renditions"].get("web-512")
                 out["portrait_source"] = a["source"]
             elif a["role"] == "video" and a["source"].endswith(f"__{lang}.mp4"):
                 name = a["source"].rsplit("/", 1)[-1]
                 kind = "presented" if name.startswith("ng__presente__") else "talk"
                 if out.get("video") and out.get("video_kind") == "talk":
                     continue                      # a figure's own talk wins
+                # Les vidéos restent au CDN : 51 masters de 12 Mo, ouverts deux
+                # ou trois fois dans la séance. Les embarquer coûterait 612 Mo
+                # pour une interaction ponctuelle — les images, elles, sont à
+                # l'écran en permanence et valent leurs 35 Mo.
                 out["video"] = a.get("url")
                 out["video_kind"] = kind
                 out["video_light"] = (a.get("renditions") or {}).get("video-050")
-                out["poster"] = a.get("poster")
+                out["poster"] = _local_media(a.get("poster"))
+                out["poster_cdn"] = a.get("poster")
         return out if out.get("portrait") and out.get("video") else None
 
     def arguments(self, axis: str, side: str, k: int) -> tuple[list[dict], int]:

@@ -46,6 +46,13 @@ fi
 # Nginx includes this before starting (see nginx.conf location = /html/).
 echo "return 302 /html/${TARGET};" > /app/static-html/.nginx-redirect.conf
 
+# Nginx snippet: serve /app/static/ from THIS module's static folder, on disk.
+# The deck references its media by URL (/app/static/media/...) rather than
+# inlining them in base64. Serving them here, and not by proxying Streamlit,
+# keeps the images visible in static-only mode — and keeps the container
+# independent of the CDN once the image is built.
+echo "alias /app/${FOLDER}/static/;" > /app/static-html/.nginx-media.conf
+
 # --- Start services based on mode ---
 
 case "$MODE" in

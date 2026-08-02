@@ -1,0 +1,151 @@
+{
+ "_doc": "GÉNÉRÉ par _project/tools/sync_media.py --freeze depuis mascoties/shared/cartes/cartes-design.json. Ne pas éditer à la main. Ce fichier ne contient que des URL content-adressées : les octets, eux, sont matérialisés au build et ne sont jamais versionnés.",
+ "source": "mascoties/shared/cartes/cartes-design.json",
+ "design_version": "2.0.0",
+ "mascots": [
+  {
+   "file": "axis-01-animals-left-self-reliance-solo.webp",
+   "url": "https://media.sumvadis.ai/axis-01-animals-left-self-reliance-solo/82db7a5c.webp"
+  },
+  {
+   "file": "axis-01-animals-right-trust-fido.webp",
+   "url": "https://media.sumvadis.ai/axis-01-animals-right-trust-fido/7d6f5cd5.webp"
+  },
+  {
+   "file": "axis-01-objects-left-self-reliance-nordo.webp",
+   "url": "https://media.sumvadis.ai/axis-01-objects-left-self-reliance-nordo/f7c49284.webp"
+  },
+  {
+   "file": "axis-01-objects-right-trust-buzo.webp",
+   "url": "https://media.sumvadis.ai/axis-01-objects-right-trust-buzo/ba5a87fc.webp"
+  },
+  {
+   "file": "axis-02-animals-left-pessimism-nimbo.webp",
+   "url": "https://media.sumvadis.ai/axis-02-animals-left-pessimism-nimbo/a3244d12.webp"
+  },
+  {
+   "file": "axis-02-animals-right-optimism-solyo.webp",
+   "url": "https://media.sumvadis.ai/axis-02-animals-right-optimism-solyo/586a0b24.webp"
+  },
+  {
+   "file": "axis-02-objects-left-pessimism-vido.webp",
+   "url": "https://media.sumvadis.ai/axis-02-objects-left-pessimism-vido/1450c6a1.webp"
+  },
+  {
+   "file": "axis-02-objects-right-optimism-pleno.webp",
+   "url": "https://media.sumvadis.ai/axis-02-objects-right-optimism-pleno/0a0920d5.webp"
+  },
+  {
+   "file": "axis-03-animals-left-emotion-pathos.webp",
+   "url": "https://media.sumvadis.ai/axis-03-animals-left-emotion-pathos/ac549fe3.webp"
+  },
+  {
+   "file": "axis-03-animals-right-rationality-logos.webp",
+   "url": "https://media.sumvadis.ai/axis-03-animals-right-rationality-logos/3d87666f.webp"
+  },
+  {
+   "file": "axis-03-objects-left-emotion-cardo.webp",
+   "url": "https://media.sumvadis.ai/axis-03-objects-left-emotion-cardo/1e7ae78a.webp"
+  },
+  {
+   "file": "axis-03-objects-right-rationality-ratio.webp",
+   "url": "https://media.sumvadis.ai/axis-03-objects-right-rationality-ratio/58484455.webp"
+  },
+  {
+   "file": "axis-04-animals-left-prudence-lento.webp",
+   "url": "https://media.sumvadis.ai/axis-04-animals-left-prudence-lento/49006be2.webp"
+  },
+  {
+   "file": "axis-04-animals-right-speed-rapo.webp",
+   "url": "https://media.sumvadis.ai/axis-04-animals-right-speed-rapo/0f352eb0.webp"
+  },
+  {
+   "file": "axis-04-objects-left-prudence-bici.webp",
+   "url": "https://media.sumvadis.ai/axis-04-objects-left-prudence-bici/ecfe06fb.webp"
+  },
+  {
+   "file": "axis-04-objects-right-speed-veloz.webp",
+   "url": "https://media.sumvadis.ai/axis-04-objects-right-speed-veloz/60113fee.webp"
+  },
+  {
+   "file": "axis-05-animals-left-resistance-piko.webp",
+   "url": "https://media.sumvadis.ai/axis-05-animals-left-resistance-piko/9ac9d5d7.webp"
+  },
+  {
+   "file": "axis-05-animals-right-openness-kuri.webp",
+   "url": "https://media.sumvadis.ai/axis-05-animals-right-openness-kuri/a5f629a4.webp"
+  },
+  {
+   "file": "axis-05-objects-left-resistance-muro.webp",
+   "url": "https://media.sumvadis.ai/axis-05-objects-left-resistance-muro/cc15bd27.webp"
+  },
+  {
+   "file": "axis-05-objects-right-openness-flora.webp",
+   "url": "https://media.sumvadis.ai/axis-05-objects-right-openness-flora/82390af7.webp"
+  },
+  {
+   "file": "axis-06-animals-left-freedom-libero.webp",
+   "url": "https://media.sumvadis.ai/axis-06-animals-left-freedom-libero/839babd2.webp"
+  },
+  {
+   "file": "axis-06-animals-right-control-guardo.webp",
+   "url": "https://media.sumvadis.ai/axis-06-animals-right-control-guardo/edcfba8b.webp"
+  },
+  {
+   "file": "axis-06-objects-left-freedom-campo.webp",
+   "url": "https://media.sumvadis.ai/axis-06-objects-left-freedom-campo/5217666b.webp"
+  },
+  {
+   "file": "axis-06-objects-right-control-serro.webp",
+   "url": "https://media.sumvadis.ai/axis-06-objects-right-control-serro/0baf3542.webp"
+  },
+  {
+   "file": "axis-07-animals-left-decentralisation-sardo.webp",
+   "url": "https://media.sumvadis.ai/axis-07-animals-left-decentralisation-sardo/a3eac1f9.webp"
+  },
+  {
+   "file": "axis-07-animals-right-centralisation-balo.webp",
+   "url": "https://media.sumvadis.ai/axis-07-animals-right-centralisation-balo/46717ab0.webp"
+  },
+  {
+   "file": "axis-07-objects-left-decentralisation-reto.webp",
+   "url": "https://media.sumvadis.ai/axis-07-objects-left-decentralisation-reto/0f14a6d7.webp"
+  },
+  {
+   "file": "axis-07-objects-right-centralisation-astro.webp",
+   "url": "https://media.sumvadis.ai/axis-07-objects-right-centralisation-astro/342d7604.webp"
+  },
+  {
+   "file": "axis-08-animals-left-individualism-ego.webp",
+   "url": "https://media.sumvadis.ai/axis-08-animals-left-individualism-ego/0ebfec23.webp"
+  },
+  {
+   "file": "axis-08-animals-right-altruism-unio.webp",
+   "url": "https://media.sumvadis.ai/axis-08-animals-right-altruism-unio/564b0f09.webp"
+  },
+  {
+   "file": "axis-08-objects-left-individualism-mio.webp",
+   "url": "https://media.sumvadis.ai/axis-08-objects-left-individualism-mio/07212437.webp"
+  },
+  {
+   "file": "axis-08-objects-right-altruism-dono.webp",
+   "url": "https://media.sumvadis.ai/axis-08-objects-right-altruism-dono/05e1d216.webp"
+  },
+  {
+   "file": "axis-09-animals-left-humanism-vita.webp",
+   "url": "https://media.sumvadis.ai/axis-09-animals-left-humanism-vita/079733e5.webp"
+  },
+  {
+   "file": "axis-09-animals-right-transhumanism-ultra.webp",
+   "url": "https://media.sumvadis.ai/axis-09-animals-right-transhumanism-ultra/bc9baf22.webp"
+  },
+  {
+   "file": "axis-09-objects-left-humanism-verso.webp",
+   "url": "https://media.sumvadis.ai/axis-09-objects-left-humanism-verso/814e36fb.webp"
+  },
+  {
+   "file": "axis-09-objects-right-transhumanism-silico.webp",
+   "url": "https://media.sumvadis.ai/axis-09-objects-right-transhumanism-silico/fbe8c826.webp"
+  }
+ ]
+}

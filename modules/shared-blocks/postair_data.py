@@ -37,7 +37,23 @@ def _cast_items() -> list[dict]:
 
 
 def _webp_uri(item: dict) -> str:
-    return "_SHARED/mascots/web/" + item["files"]["rgb"].replace(".png", ".webp")
+    """L'URI d'une mascotte, relative à la base d'images du module.
+
+    Elle DOIT rester introuvable sur le disque via les sources statiques :
+    ``st_image`` encode en base64 tout fichier qu'il trouve, et la planche des
+    36 mascottes pèserait alors 2,1 Mo de base64 dans la page, renvoyés à chaque
+    rerun. Introuvable, l'URI retombe sur ``configure_image_path`` et sort en URL
+    relative — quelques dizaines d'octets, servie par le conteneur lui-même.
+
+    Les octets vivent dans ``<module>/static/media/mascots/``, matérialisés
+    depuis le catalogue du studio par ``_project/tools/sync_media.py``.
+    """
+    name = item["files"]["rgb"]
+    # Les 36 mascottes d'axe sont publiées en webp au CDN ; les deux modérateurs
+    # n'y sont PAS publiés et sont copiés depuis le studio, où ils n'existent
+    # qu'en png. On demande donc chacun sous sa vraie extension — servir un png
+    # sous un nom .webp donnerait un type MIME faux.
+    return "mascots/" + (name if item.get("axis") is None else name.replace(".png", ".webp"))
 
 
 @lru_cache(maxsize=4)

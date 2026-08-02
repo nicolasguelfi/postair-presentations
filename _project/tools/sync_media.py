@@ -1,0 +1,263 @@
+#!/usr/bin/env python3
+"""Matérialiser dans chaque module les médias servis par le CDN.
+
+Le conteneur doit être **complet et autonome** : pendant la séance, aucun appel
+au CDN. Mais rien de tout cela ne vit dans git — les octets arrivent ici par cet
+outil, depuis les catalogues amont, et se rechargent en vidant le dossier.
+
+    modules/<module>/static/media/
+        mascots/<nom>.webp     ← catalogue du studio (cartes-design.json)
+        figures/<sha>.<ext>    ← content.json (portraits + posters des figures)
+        illustrations/…        ← VERSIONNÉ, produit pour ces présentations,
+                                  jamais au CDN (décision NG 2026-08-01)
+
+**Le rechargement est trivial, et c'est le CDN qui l'offre** : les objets sont
+content-adressés — l'URL porte le hash (``…/82db7a5c.webp``). Un fichier local
+qui porte ce nom *est* à jour, par construction. La synchro se réduit donc à
+« si le fichier du catalogue est absent, le télécharger » : ni revalidation, ni
+date, ni invalidation de cache. Recharger tout = supprimer le dossier.
+
+Pourquoi des fichiers et pas les URL du CDN directement : ``st_image`` encode en
+base64 tout fichier local, mais laisse passer une URL. Servis par le service
+statique de Streamlit (``/app/static/media/…``), ces fichiers sont référencés par
+une URL relative — pages légères ET conteneur autonome. Voir ``configure_image_path``
+dans le ``book.py`` de chaque module.
+
+Usage (depuis la racine du dépôt) :
+
+    uv run python _project/tools/sync_media.py            # télécharge ce qui manque
+    uv run python _project/tools/sync_media.py --check    # constate, n'écrit rien
+    uv run python _project/tools/sync_media.py --force    # re-télécharge tout
+
+Sortie 0 = tout est là · 1 = il manque des médias (avec ``--check``).
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+_TOOLS = Path(__file__).parent
+_REPO = _TOOLS.parent.parent
+_MODULES = _REPO / "modules"
+
+#: Les modules qui affichent des mascottes. Un module qui n'en affiche pas ne
+#: paie pas le poids : la synchro est par module, pas globale.
+MASCOT_MODULES = ["postair_opening", "postair_debates"]
+#: Les modules qui affichent des figures (portraits + posters).
+FIGURE_MODULES = ["postair_debates"]
+
+_TIMEOUT = 30
+
+
+def load_config() -> dict[str, str]:
+    local = _TOOLS / "debates-hub.config.local.json"
+    if not local.exists():
+        raise SystemExit(f"manque {local} — copier debates-hub.config.example.json")
+    return json.loads(local.read_text(encoding="utf-8"))
+
+
+#: Le catalogue gelé — quelques Ko d'URL, VERSIONNÉ. Sans lui, le build Coolify
+#: ne pourrait rien matérialiser : il tourne en CI, sans accès aux dépôts privés
+#: où vivent les catalogues. Même principe que `content.json` pour le hub : ce
+#: qui est versionné est la DÉSIGNATION des médias, jamais les médias.
+_FROZEN = _REPO / "modules" / "shared-blocks" / "static" / "_SHARED" / "media-catalogue.json"
+
+
+def mascot_catalogue(studio: str | None) -> list[tuple[str, str]]:
+    """(nom de fichier, URL) des 36 mascottes.
+
+    Lit le catalogue gelé s'il existe — le cas en CI et au build. Le studio, qui
+    est la source de vérité de ce qu'il produit, n'est lu que pour REGELER, sur
+    la machine de l'auteur (``--freeze``).
+    """
+    if _FROZEN.exists():
+        frozen = json.loads(_FROZEN.read_text(encoding="utf-8"))
+        return [(e["file"], e["url"]) for e in frozen["mascots"]]
+    if not studio:
+        raise SystemExit(f"ni catalogue gelé ({_FROZEN.name}) ni chemin `studio` — rien à lire")
+    return _read_studio(studio)
+
+
+def _read_studio(studio: str) -> list[tuple[str, str]]:
+    path = Path(studio) / "shared" / "cartes" / "cartes-design.json"
+    if not path.exists():
+        raise SystemExit(f"catalogue du studio introuvable : {path}")
+    design = json.loads(path.read_text(encoding="utf-8"))
+    out = []
+    for key, entry in (design.get("assets") or {}).items():
+        url = entry.get("url")
+        if not url:
+            raise SystemExit(f"asset sans URL dans le catalogue du studio : {key}")
+        out.append((f"{key}.webp", url))
+    return out
+
+
+def freeze(studio: str) -> None:
+    """Regeler le catalogue depuis le studio. À lancer sur la machine de l'auteur."""
+    entries = _read_studio(studio)
+    src = Path(studio) / "shared" / "cartes" / "cartes-design.json"
+    design = json.loads(src.read_text(encoding="utf-8"))
+    _FROZEN.parent.mkdir(parents=True, exist_ok=True)
+    _FROZEN.write_text(json.dumps({
+        "_doc": "GÉNÉRÉ par _project/tools/sync_media.py --freeze depuis "
+                "mascoties/shared/cartes/cartes-design.json. Ne pas éditer à la main. "
+                "Ce fichier ne contient que des URL content-adressées : les octets, eux, "
+                "sont matérialisés au build et ne sont jamais versionnés.",
+        "source": "mascoties/shared/cartes/cartes-design.json",
+        "design_version": design.get("version"),
+        "mascots": [{"file": f, "url": u} for f, u in entries],
+    }, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(f"  catalogue gelé : {len(entries)} mascottes → {_FROZEN.relative_to(_REPO)}")
+
+
+#: Les deux modérateurs n'ont AUCUNE entrée au CDN : le catalogue du studio
+#: compte 36 assets — 2 pôles × 9 axes × 2 familles — et aucun modérateur. Ils
+#: sont donc copiés depuis le studio, sur disque, en attendant leur publication.
+#: C'est une dette explicite, pas un choix : voir la note remise au studio.
+MODERATORS = ["moderator-animals-medio.rgba.png", "moderator-objects-voxo.rgba.png"]
+
+
+def moderator_sources(studio: str) -> list[tuple[str, Path]]:
+    """(nom de fichier attendu par le deck, chemin au studio) des modérateurs."""
+    cast = Path(studio) / "shared" / "cast"
+    out = []
+    for name in MODERATORS:
+        src = cast / name
+        if src.exists():
+            # On garde la VRAIE extension : servir un png sous un nom .webp
+            # donnerait un type MIME faux. `postair_data` demande donc les
+            # modérateurs en .png, et les mascottes d'axe en .webp.
+            out.append((name.replace(".rgba.png", ".png"), src))
+    return out
+
+
+def figure_catalogue(module: str) -> list[tuple[str, str]]:
+    """(nom de fichier, URL) des portraits et posters, depuis le manifeste gelé.
+
+    Les vidéos restent au CDN : 51 masters de 12 Mo, ouverts deux ou trois fois
+    dans la séance. Les embarquer coûterait 612 Mo pour une interaction ponctuelle,
+    alors que les images sont à l'écran en permanence.
+    """
+    manifest = _MODULES / module / "static" / "data" / "content.json"
+    if not manifest.exists():
+        return []
+    data = json.loads(manifest.read_text(encoding="utf-8"))
+    seen: dict[str, str] = {}
+    for pole in data["poles"]:
+        for fig in pole["figures"]:
+            media = fig.get("media") or {}
+            # `portrait` / `poster` sont les URI LOCALES que la slide demande ;
+            # `*_cdn` est la provenance, donc ce qu'il faut télécharger.
+            for role in ("portrait_cdn", "poster_cdn"):
+                url = media.get(role)
+                if url:
+                    seen[url.rsplit("/", 1)[-1]] = url
+    return sorted(seen.items())
+
+
+def fetch(url: str, target: Path) -> int:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with urllib.request.urlopen(url, timeout=_TIMEOUT) as r:
+            payload = r.read()
+    except (urllib.error.URLError, OSError) as e:
+        raise SystemExit(f"échec du téléchargement de {url} : {e}") from e
+    target.write_bytes(payload)
+    return len(payload)
+
+
+def sync(module: str, kind: str, entries: list[tuple[str, str]],
+         check: bool, force: bool) -> tuple[int, int, int]:
+    """Renvoie (présents, manquants, octets écrits)."""
+    root = _MODULES / module / "static" / "media" / kind
+    present = missing = written = 0
+    for name, url in entries:
+        target = root / name
+        if target.exists() and not force:
+            present += 1
+            continue
+        missing += 1
+        if check:
+            print(f"    manque {kind}/{name}")
+            continue
+        written += fetch(url, target)
+    return present, missing, written
+
+
+def copy_local(module: str, kind: str, entries: list[tuple[str, Path]],
+               check: bool, force: bool) -> tuple[int, int, int]:
+    """Comme ``sync``, mais depuis un fichier du studio plutôt qu'une URL."""
+    root = _MODULES / module / "static" / "media" / kind
+    present = missing = written = 0
+    for name, src in entries:
+        target = root / name
+        if target.exists() and not force:
+            present += 1
+            continue
+        missing += 1
+        if check:
+            print(f"    manque {kind}/{name} (source : {src})")
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        payload = src.read_bytes()
+        target.write_bytes(payload)
+        written += len(payload)
+    return present, missing, written
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--check", action="store_true",
+                    help="constater sans écrire ; sortie 1 s'il manque des médias")
+    ap.add_argument("--force", action="store_true",
+                    help="re-télécharger même ce qui est déjà là")
+    ap.add_argument("--freeze", action="store_true",
+                    help="regeler le catalogue depuis le studio (machine de l'auteur)")
+    args = ap.parse_args()
+
+    # En CI il n'y a ni configuration de machine ni dépôt privé : seul le
+    # catalogue gelé est lisible, et il suffit.
+    cfg = load_config() if (_TOOLS / "debates-hub.config.local.json").exists() else {}
+    studio = cfg.get("studio")
+
+    if args.freeze:
+        if not studio:
+            raise SystemExit("`--freeze` demande la clé `studio` dans la configuration locale")
+        freeze(studio)
+        return
+
+    total_missing = total_written = 0
+    mascots = mascot_catalogue(studio)
+    moderators = moderator_sources(studio) if studio else []
+    if len(moderators) != len(MODERATORS):
+        print(f"! {len(MODERATORS) - len(moderators)} modérateur(s) non copiable(s) : "
+              "ils n'ont aucune entrée au CDN et ne sont lisibles qu'au studio. "
+              "Sans le studio (cas du build CI), leurs slides afficheront une image "
+              "manquante — dette à lever par leur publication au CDN.", file=sys.stderr)
+    for module in MASCOT_MODULES:
+        p, m, w = sync(module, "mascots", mascots, args.check, args.force)
+        pm, mm, wm = copy_local(module, "mascots", moderators, args.check, args.force)
+        total_missing += m + mm
+        total_written += w + wm
+        print(f"  {module}/mascots   : {p + pm} présents, {m + mm} manquants "
+              f"({len(moderators)} modérateurs copiés du studio, hors CDN)")
+    for module in FIGURE_MODULES:
+        figures = figure_catalogue(module)
+        p, m, w = sync(module, "figures", figures, args.check, args.force)
+        total_missing += m
+        total_written += w
+        print(f"  {module}/figures   : {p} présents, {m} manquants")
+
+    if args.check:
+        print(f"=> {total_missing} média(s) manquant(s)")
+        sys.exit(1 if total_missing else 0)
+    print(f"=> {total_written / 1024 / 1024:.1f} Mo écrits")
+
+
+if __name__ == "__main__":
+    main()
