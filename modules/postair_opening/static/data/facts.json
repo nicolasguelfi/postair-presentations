@@ -1,0 +1,295 @@
+{
+  "metadata": {
+    "id": "postair-opening-facts",
+    "version": 1,
+    "languages": ["en"],
+    "default_language": "en",
+    "date": "2026-08-02",
+    "curated_by": "hand-curated for these presentations; not generated",
+    "sources_root": "ng.aiday.policy/ul-dcs-day/research",
+    "note": "Framing facts for the two scoping slides. Every figure carries its date, its population, its printable source and its counterpoint. Citation keys point at the upstream corpus where one exists; the bibliography itself is never copied here.",
+    "source_kinds": {
+      "primary": "the study itself was opened and read",
+      "reported-in": "the finding is reported by the cited source, whose own primary reference was not opened"
+    },
+    "display_order": ["student-use", "productivity", "detectors", "institutional-gap"]
+  },
+
+  "figures": [
+    {
+      "id": "student-use",
+      "value": { "en": "94 %" },
+      "claim": { "en": "of students use generative AI to help with assessed work" },
+      "population": {
+        "en": "1,054 full-time UK undergraduates, polled by Savanta in December 2025; weighted for gender, institution type and year of study; margin of error approximately 3 %"
+      },
+      "date": "2026-03-12",
+      "freshness": {
+        "en": "Six months before this event. The third annual edition of the same instrument, so the trend is measured, not assembled."
+      },
+      "trend": { "en": "89 % one year earlier, 53 % two years earlier" },
+      "counterpoint": {
+        "en": "Using it is not the same as handing it in. Only 12 % include AI-generated text directly in assessed work; the dominant uses are having concepts explained (61 %) and articles summarised (49 %).",
+        "source": { "kind": "primary", "citekey": "hepi-survey-2026" }
+      },
+      "caveat": {
+        "en": "UK undergraduates. No equivalent survey exists for Luxembourg."
+      },
+      "source": {
+        "kind": "primary",
+        "citekey": "hepi-survey-2026",
+        "reference": "Rose Stephenson and Charlotte Armstrong, Student Generative AI Survey 2026, HEPI Report 199, Higher Education Policy Institute, 12 March 2026.",
+        "verified": "2026-08-02"
+      }
+    },
+
+    {
+      "id": "productivity",
+      "value": { "en": "−40 %" },
+      "claim": { "en": "time on the task, and 18 % higher output quality, with generative AI" },
+      "population": {
+        "en": "453 college-educated professionals in a pre-registered randomised controlled trial on occupation-specific writing tasks; half given ChatGPT"
+      },
+      "date": "2023-07-14",
+      "freshness": {
+        "en": "Three years old, and kept deliberately: it remains the peer-reviewed anchor in Science for generative-AI productivity in knowledge work, and no larger randomised replication has displaced it."
+      },
+      "trend": {
+        "en": "The gain was largest for the weakest writers, compressing the spread between workers"
+      },
+      "counterpoint": {
+        "en": "The gain belongs to the task, not to the person. School students given an unguarded GPT-4 tutor scored 48 % higher while it was available and 17 % lower than the control group once it was taken away — a loss that disappeared when the tutor was constrained to give hints instead of answers.",
+        "source": {
+          "kind": "primary",
+          "citekey": "bastani-guardrails-2025",
+          "reference": "Hamsa Bastani, Osbert Bastani, Alp Sungu, Haosen Ge, Özge Kabakcı and Rei Mariman, ‘Generative AI without guardrails can harm learning: evidence from high school mathematics’, Proceedings of the National Academy of Sciences 122(26), e2422633122, 25 June 2025, doi:10.1073/pnas.2422633122.",
+          "population": { "en": "nearly 1,000 high-school mathematics students in Turkey, field experiment" },
+          "verified": "2026-08-02"
+        }
+      },
+      "caveat": {
+        "en": "The two studies answer different questions — professionals performing, students learning — and that is the point: performing well and learning are not the same measurement."
+      },
+      "source": {
+        "kind": "primary",
+        "citekey": "noy-zhang-2023",
+        "reference": "Shakked Noy and Whitney Zhang, ‘Experimental evidence on the productivity effects of generative artificial intelligence’, Science 381(6654), 187–192, 14 July 2023, doi:10.1126/science.adh2586.",
+        "verified": "2026-08-02"
+      }
+    },
+
+    {
+      "id": "detectors",
+      "value": { "en": "61 %" },
+      "claim": {
+        "en": "of essays by non-native English writers were wrongly flagged as AI-written — the average false-positive rate across seven detectors"
+      },
+      "population": {
+        "en": "91 human-written TOEFL essays by non-native English writers, against 88 essays by US eighth-graders which the same detectors classified almost perfectly"
+      },
+      "date": "2023-07-10",
+      "freshness": {
+        "en": "Three years old and still load-bearing: the peer-reviewed position in 2026 is unchanged (Giray, Roe and Diesta Espiritu, ‘AI writing detectors are ineffective, unreliable and harmful’, English Teaching: Practice & Critique, 2026, doi:10.1108/ETPC-07-2025-0155). Detection is a fast-moving field — re-check before citing this in any policy document."
+      },
+      "trend": {
+        "en": "42 % of students say fear of being accused of cheating makes them less likely to use AI at all, down from 53 % a year earlier (HEPI 2026)"
+      },
+      "counterpoint": {
+        "en": "The vendors dispute it. Turnitin reports a document-level false-positive rate below 1 % and its own study finds no statistically significant bias against English-language learners; the newest detectors claim to have closed the gap.",
+        "source": {
+          "kind": "primary",
+          "citekey": "turnitin-detection-faq",
+          "reference": "Turnitin, AI writing detection capabilities — frequently asked questions, Turnitin Knowledge Base.",
+          "verified": "2026-08-02, via Turnitin's current published claims; the FAQ page itself blocks automated retrieval"
+        }
+      },
+      "caveat": {
+        "en": "The authors call it a pilot on small samples, and most detectors tested were built on GPT-2. Turnitin's own detector was not among the seven. What the study establishes is the mechanism: detectors read plain vocabulary as machine-like — rewriting the same essays in richer English dropped the false-positive rate to 12 %. That mechanism is the one that matters in a multilingual university."
+      },
+      "source": {
+        "kind": "primary",
+        "citekey": "liang2023-bias",
+        "reference": "Weixin Liang, Mert Yuksekgonul, Yining Mao, Eric Wu and James Zou, ‘GPT detectors are biased against non-native English writers’, Patterns 4(7), 100779, 2023, doi:10.1016/j.patter.2023.100779.",
+        "verified": "2026-08-02"
+      }
+    },
+
+    {
+      "id": "institutional-gap",
+      "value": { "en": "68 %" },
+      "claim": {
+        "en": "of students say AI skills are essential to thrive — but only 48 % feel their teaching staff help them build those skills"
+      },
+      "population": {
+        "en": "1,054 full-time UK undergraduates, polled by Savanta in December 2025; weighted; margin of error approximately 3 %"
+      },
+      "date": "2026-03-12",
+      "freshness": {
+        "en": "Six months before this event."
+      },
+      "trend": {
+        "en": "Institutions are moving: 38 % now provide AI tools to their students, against 9 % two years earlier"
+      },
+      "counterpoint": {
+        "en": "The demand is not unanimous either. Half of students think their institution should provide AI tools — which means half do not — and a quarter disagree outright.",
+        "source": { "kind": "primary", "citekey": "hepi-survey-2026" }
+      },
+      "caveat": {
+        "en": "Self-reported perception, not an audit of what is actually provided. The gap is widest in Arts and Humanities, where 26 % feel supported against 53 % in STEM."
+      },
+      "source": {
+        "kind": "primary",
+        "citekey": "hepi-survey-2026",
+        "reference": "Rose Stephenson and Charlotte Armstrong, Student Generative AI Survey 2026, HEPI Report 199, Higher Education Policy Institute, 12 March 2026.",
+        "verified": "2026-08-02"
+      }
+    }
+  ],
+
+  "framing": [
+    {
+      "id": "long-wave",
+      "statement": {
+        "en": "None of this started in 2022. The benchmark against which every AI tutor is still measured — that one-to-one tutoring lifts students two standard deviations above classroom teaching — was published in 1984. Systematic reviews of AI in higher education were being written years before ChatGPT existed."
+      },
+      "counterpoint": {
+        "en": "What broke in 2022 was not the idea. It was the scale: a research field became something every student has in their pocket."
+      },
+      "note": {
+        "en": "Rendered as a sourced statement rather than a figure: a publication year has no population, and a figure without a population is an impression."
+      },
+      "sources": [
+        {
+          "kind": "primary",
+          "citekey": "bloom-2sigma",
+          "reference": "Benjamin S. Bloom, ‘The 2 sigma problem: the search for methods of group instruction as effective as one-to-one tutoring’, Educational Researcher 13(6), 4–16, 1984, doi:10.3102/0013189X013006004."
+        },
+        {
+          "kind": "primary",
+          "citekey": "zawacki-richter-2019",
+          "reference": "Olaf Zawacki-Richter, Victoria I. Marín, Melissa Bond and Franziska Gouverneur, ‘Systematic review of research on artificial intelligence applications in higher education — where are the educators?’, International Journal of Educational Technology in Higher Education 16, 39, 2019, doi:10.1186/s41239-019-0171-0."
+        },
+        {
+          "kind": "primary",
+          "citekey": "chiu-systematic-2023",
+          "reference": "Thomas K. F. Chiu, Qi Xia, Xinyan Zhou, Ching-Sing Chai and Miaoting Cheng, ‘Systematic literature review on opportunities, challenges, and future research recommendations of artificial intelligence in education’, Computers and Education: Artificial Intelligence 4, 100118, 2023, doi:10.1016/j.caeai.2022.100118."
+        }
+      ]
+    }
+  ],
+
+  "disciplines": [
+    {
+      "id": "fstm",
+      "faculty": { "en": "Science, Technology and Medicine" },
+      "examples": [
+        {
+          "en": "Introductory programming stopped being a filter. In 2022 OpenAI Codex already scored above the median student on a CS1 final exam; a year later it still beat median students on second-year data-structure exercises, though the margin narrowed on problems requiring novel design.",
+          "source": {
+            "kind": "primary",
+            "citekey": "finnie-ansley2022",
+            "reference": "James Finnie-Ansley, Paul Denny, Brett A. Becker, Andrew Luxton-Reilly and James Prather, ‘The robots are coming: exploring the implications of OpenAI Codex on introductory programming’, ACE 2022, ACM, 10–19, doi:10.1145/3511861.3511863; and Finnie-Ansley et al., ‘My AI wants to know if this will be on the exam: testing OpenAI’s Codex on CS2 programming exercises’, ACE 2023, ACM, 97–104, doi:10.1145/3576123.3576134."
+          },
+          "caveat": {
+            "en": "Measured on exams as they were written at the time. The result is as much about assessment design as about the model."
+          }
+        },
+        {
+          "en": "In medicine the danger is confidence, not error. Medical students working virtual patient cases with AI support and no human feedback produced the least accurate diagnoses of the whole cohort — and were the most confident of any group.",
+          "source": {
+            "kind": "reported-in",
+            "citekey": "hepi-survey-2026",
+            "reference": "Reported as case study one in Stephenson and Armstrong, Student Generative AI Survey 2026, HEPI Report 199, 12 March 2026; study by researchers at Queen Mary University of London, Erasmus University Rotterdam, the University of Campinas and McMaster University, using the Isabel Clinical Educator."
+          },
+          "caveat": {
+            "en": "Reported inside the HEPI survey; the underlying study was not opened. Cite the primary paper before using this in any policy setting."
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "fdef",
+      "faculty": { "en": "Law, Economics and Finance" },
+      "examples": [
+        {
+          "en": "Purpose-built legal research tools — sold to lawyers, marketed as hallucination-free — still invent law: on more than 200 open-ended legal queries, 17 % of Lexis+ AI answers and 33 % of Westlaw AI-Assisted Research answers were hallucinated.",
+          "source": {
+            "kind": "reported-in",
+            "citekey": "magesh-hallucination-free-2025",
+            "reference": "Varun Magesh, Faiz Surani, Matthew Dahl, Mirac Suzgun, Christopher D. Manning and Daniel E. Ho, ‘Hallucination-free? Assessing the reliability of leading AI legal research tools’, Journal of Empirical Legal Studies, 2025, doi:10.1111/jels.12413."
+          },
+          "caveat": {
+            "en": "Paywalled; figures taken from the authors’ open preprint and consistent secondary reporting. The vendors have updated their systems since the queries were run."
+          }
+        },
+        {
+          "en": "General-purpose models are far worse, and do not know it: asked specific, verifiable questions about randomly chosen US federal court cases, they hallucinated between 58 % of the time (GPT-4) and 88 % (Llama 2), and often accepted a false legal premise handed to them in the question.",
+          "source": {
+            "kind": "primary",
+            "citekey": "dahl-legal-fictions-2024",
+            "reference": "Matthew Dahl, Varun Magesh, Mirac Suzgun and Daniel E. Ho, ‘Large legal fictions: profiling legal hallucinations in large language models’, Journal of Legal Analysis 16(1), 64–93, 2024, doi:10.1093/jla/laae003."
+          },
+          "caveat": {
+            "en": "US case law. The failure mode — fluent, confident and wrong — transfers to any jurisdiction; the rates do not."
+          }
+        },
+        {
+          "en": "The edge is jagged, not general. Given eighteen realistic consulting tasks, 758 consultants using GPT-4 produced better and faster work on tasks inside the model’s competence — and worse work than the control group on tasks just outside it, because plausible wrong answers were accepted uncritically.",
+          "source": {
+            "kind": "primary",
+            "citekey": "dell-acqua-2023",
+            "reference": "Fabrizio Dell’Acqua, Edward McFowland III, Ethan Mollick et al., ‘Navigating the jagged technological frontier: field experimental evidence of the effects of AI on knowledge worker productivity and quality’, Harvard Business School Working Paper 24-013, 2023."
+          },
+          "caveat": {
+            "en": "A working paper, run inside one consulting firm, and co-authored with that firm. The concept it introduced — the jagged frontier — has outlived the specific numbers."
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "fhse",
+      "faculty": { "en": "Humanities, Education and Social Sciences" },
+      "examples": [
+        {
+          "en": "Writing in a second language is read as writing by a machine. Seven detectors wrongly flagged 61 % of essays by non-native English writers while classifying US eighth-grade essays almost perfectly — and rewriting the very same essays in richer vocabulary dropped the rate to 12 %. In a university where most students write in a language that is not their first, this is not an abstract concern.",
+          "source": {
+            "kind": "primary",
+            "citekey": "liang2023-bias",
+            "reference": "Weixin Liang, Mert Yuksekgonul, Yining Mao, Eric Wu and James Zou, ‘GPT detectors are biased against non-native English writers’, Patterns 4(7), 100779, 2023, doi:10.1016/j.patter.2023.100779."
+          },
+          "caveat": {
+            "en": "Pilot study, small samples, detectors mostly built on GPT-2. The mechanism it identifies — plain vocabulary read as machine-like — is what carries."
+          }
+        },
+        {
+          "en": "Access can raise the score and lower the learning. Nearly a thousand school students gained 48 % on practice problems with an unguarded GPT-4 tutor and then scored 17 % below the control group on the exam they sat without it. Constraining the same tutor to hints instead of answers removed the loss.",
+          "source": {
+            "kind": "primary",
+            "citekey": "bastani-guardrails-2025",
+            "reference": "Hamsa Bastani, Osbert Bastani, Alp Sungu, Haosen Ge, Özge Kabakcı and Rei Mariman, ‘Generative AI without guardrails can harm learning: evidence from high school mathematics’, Proceedings of the National Academy of Sciences 122(26), e2422633122, 2025, doi:10.1073/pnas.2422633122."
+          },
+          "caveat": {
+            "en": "School mathematics in Turkey, over weeks. Whether it holds over a degree, nobody has measured yet."
+          }
+        },
+        {
+          "en": "Arts and humanities students are the most sceptical and the least supported: 25 % think AI-written work would earn a good grade in their subject, against 46 % in STEM — and only 26 % feel their teaching staff help them build AI skills, against 53 % in STEM.",
+          "source": {
+            "kind": "primary",
+            "citekey": "hepi-survey-2026",
+            "reference": "Rose Stephenson and Charlotte Armstrong, Student Generative AI Survey 2026, HEPI Report 199, Higher Education Policy Institute, 12 March 2026."
+          },
+          "caveat": {
+            "en": "UK subject areas, which do not map cleanly onto this university’s three faculties. Read as a disciplinary gradient, not as a faculty measurement."
+          }
+        }
+      ]
+    }
+  ],
+
+  "no_faculty_data": {
+    "en": "No survey measures generative-AI adoption faculty by faculty at the University of Luxembourg. Every figure here comes from studies run elsewhere — mostly the United Kingdom and the United States — and describes a discipline, not this institution. Read them as what your field is already living through, not as a measurement of this room."
+  }
+}
