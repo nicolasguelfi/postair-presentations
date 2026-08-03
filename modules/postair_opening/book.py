@@ -12,6 +12,8 @@ import blocks
 import streamlit as st
 import streamtex as stx
 import streamtex.styles as sts
+from custom.refs import CONFIG as BIB_CONFIG
+from custom.refs import sources as bib_sources
 from custom.themes import dark
 from streamtex import (
     AIImageConfig,
@@ -116,35 +118,45 @@ marker_config = MarkerConfig(
 st_book(
     [
         # ── Welcome ─────────────────────────────────────────────────
-        blocks.bck_wait_loop,         # looping video, no information revealed
+        blocks.bck_wait_loop,         # looping video, full window, no information
         blocks.bck_welcome_title,     # title + Medio + hero image
         blocks.bck_welcome_whole_university,  # three faculties, and the missing survey
         blocks.bck_welcome_revolution,  # four figures, each with its counterpoint
-        blocks.bck_welcome_agenda,    # the nine sessions, break accented
-        blocks.bck_axes_radar,        # empty radar, "?" at the centre
+        blocks.bck_welcome_agenda,    # before the break, the break, after it
+        blocks.bck_axes_radar,        # the fairground wheel: which postures will you win
         blocks.bck_axes_registers,    # Knowing / Acting / Becoming (3 sub-slides)
-        blocks.bck_axes_company,      # both mascot families, film when it exists
+        blocks.bck_axes_company,      # the nine axes again, in the objects family
         # ── Survey ──────────────────────────────────────────────────
+        # Reading a radar and the six archetypes now come BEFORE the survey
+        # (NG 2026-08-03): the room understands what it is about to receive
+        # while it answers, and whoever finishes early has the archetype
+        # descriptions to read instead of a neighbour to talk to.
         blocks.bck_survey_poster,     # opens the survey part, one full-frame image
-        blocks.bck_survey_howto,      # how to answer — deliberately before the join
-        blocks.bck_survey_join,       # QR + giant code, one sub-slide per day
+        blocks.bck_survey_howto,      # how to answer — five properties, nothing else
+        blocks.bck_results_archetypes,   # six reference archetypes, not six boxes
+        blocks.bck_results_radar_howto,  # example radar + the four posture codes
+        blocks.bck_survey_troubleshooting,  # what to do when something goes wrong
+        blocks.bck_survey_join,       # QR + giant code, the day chosen by the speaker
         blocks.bck_survey_live,       # operator button → live monitoring
         blocks.bck_survey_results,    # operator button → results presentation
         # ── Results ─────────────────────────────────────────────────
-        blocks.bck_results_radar_howto,  # example radar + the four posture codes
-        blocks.bck_results_archetypes,   # six reference points, not six boxes
         blocks.bck_results_room,      # operator button → the room's own results
         blocks.bck_results_meaning,   # a cohort is not a bloc
         # ── Discussion ──────────────────────────────────────────────
         blocks.bck_disc_method,       # the three rules of the debate
-        blocks.bck_disc_debates_link,  # hand-over to the debates deck
-        blocks.bck_disc_wrapup,       # no consensus, and that is normal
-        # ── Break ───────────────────────────────────────────────────
-        blocks.bck_break_countdown,   # live countdown + the whole company
-        blocks.bck_break_rewelcome,   # what the second half holds
+        blocks.bck_disc_debates_link,  # hand-over to the debates deck, which closes the morning
+        # ── Appendix ────────────────────────────────────────────────
+        blocks.bck_refs_bibliography,  # never presented; opened when a figure is challenged
     ],
     toc_config=toc,
     marker_config=marker_config,
+    # La bibliographie se charge PAR ``st_book``, jamais avant lui : il vide le
+    # registre au début de sa construction, et tout ce qui aurait été chargé
+    # plus tôt disparaîtrait sans un mot — chaque référence deviendrait alors
+    # une clé inconnue. Règle NG (2026-08-03) : toute référence d'une
+    # présentation passe par le mécanisme BibTeX.
+    bib_sources=bib_sources(),
+    bib_config=BIB_CONFIG,
     paginate=True,
     view_modes=[ViewMode.PAGINATED],
     banner=BannerConfig.hidden(),

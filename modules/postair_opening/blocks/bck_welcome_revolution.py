@@ -32,7 +32,8 @@ is defensible, and none of it is ours to soften.
 
 from __future__ import annotations
 
-from custom.facts import figures, framing, sources, text
+from custom.facts import citekeys, figures, framing, text
+from custom.refs import reference
 from custom.styles import DS
 from custom.styles import Styles as s
 from postair_pack.components.fact_card import fact_card
@@ -64,7 +65,9 @@ def _tooltip_entries():
         for key in ("trend", "freshness", "counterpoint", "caveat"):
             if figure.get(key):
                 parts.append(text(figure[key]))
-        parts.extend(source["reference"] for source in sources(figure))
+        # La bibliographie n'est pas dans les données : les clés le sont, et la
+        # phrase sort du .bib. Une seule vérité, un seul endroit à corriger.
+        parts.append(reference(*citekeys(figure)))
         entries.append((term, " ".join(parts)))
 
     long_view = framing("long-wave")
@@ -72,8 +75,8 @@ def _tooltip_entries():
         text(long_view["headline"]),
         " ".join([text(long_view["statement"]),
                   text(long_view["counterpoint"]),
-                  text(long_view["note"])]
-                 + [source["reference"] for source in sources(long_view)]),
+                  text(long_view["note"]),
+                  reference(*citekeys(long_view))]),
     ))
     return entries
 

@@ -6,6 +6,7 @@ never write markup themselves (design guideline, rule "stx-only"): when a
 slide needs behaviour the style system cannot express, it comes from here.
 """
 
+import streamlit as st
 from postair_pack.design_systems.postair_dark import (
     TOOLTIP_BG,
     TOOLTIP_DEF_CSS,
@@ -16,6 +17,24 @@ from postair_pack.design_systems.postair_dark import (
     TOOLTIP_WIDTH,
 )
 from streamtex import st_hover_tooltip, st_html
+
+
+def st_stage_selector(options: list[str], key: str, label: str = "") -> str:
+    """A one-line chooser the SPEAKER drives, on a slide the room reads.
+
+    The only interactive control of these decks. It exists for one reason: a
+    slide that must show something different depending on the day, without the
+    other days being visible or reachable — three sub-slides put the three
+    codes one arrow-key apart, and a room that sees a code it should not use is
+    a room that can pollute another day's campaign.
+
+    Blocks never touch Streamlit directly (design guideline, rule "stx-only"):
+    when a slide needs behaviour the style system cannot express, it comes from
+    here. The key is passed in and must be a STABLE string — a generated one
+    would change at every rerun and reset the choice under the speaker's hand.
+    """
+    return st.selectbox(label or " ", options, index=0, key=key,
+                        label_visibility="collapsed")
 
 
 def st_info_tooltip(title: str, entries: list[tuple[str, str]], **kw):

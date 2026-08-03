@@ -1,0 +1,138 @@
+"""Les références du document — mécanisme BibTeX, et rien d'autre.
+
+Règle NG (2026-08-03) : **toute** référence d'une présentation passe par le
+mécanisme BibTeX de streamtex. Aucune phrase bibliographique n'est écrite à la
+main dans un bloc ni dans un fichier de contenu ; les données ne portent que des
+**clés de citation**, et la phrase imprimée est dérivée de ``references.bib``.
+
+Ce qu'on y gagne, concrètement : une correction se fait en un seul endroit ; la
+même entrée sert l'infobulle, la citation en ligne et la page de références ; et
+une clé inconnue se voit tout de suite au lieu de passer pour une référence
+plausible.
+
+Les blocs n'importent jamais ``streamtex.bib`` directement — ils demandent ici
+``reference(...)`` ou ``citation(...)``.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+from streamtex import (
+    BibConfig,
+    BibFormat,
+    CitationStyle,
+    cite,
+    format_entry,
+    get_bib_registry,
+    load_bib,
+    set_bib_config,
+)
+
+BIB = Path(__file__).parent.parent / "static" / "data" / "references.bib"
+
+#: Style d'affichage : auteur-année, lisible à voix haute depuis la scène.
+#:
+#: Tri par auteur, et surtout PAS par ordre de citation : le document est
+#: paginé, donc une seule slide s'exécute à la fois. L'ordre de citation
+#: dépendrait alors de ce que l'orateur a ouvert avant, et la page de
+#: références changerait d'ordre d'une séance à l'autre. Le tri alphabétique
+#: est le seul qui donne deux fois la même page.
+CONFIG = BibConfig(
+    format=BibFormat.APA,
+    citation_style=CitationStyle.AUTHOR_YEAR,
+    sort_by="author",
+    hover_enabled=True,
+    locale="en",
+)
+
+
+def sources() -> list[str]:
+    """Les sources bibliographiques du document, pour ``st_book(bib_sources=…)``.
+
+    Volontairement bruyant si le fichier manque : sans bibliographie, les
+    infobulles des deux slides de cadrage n'auraient plus une seule source, et
+    une slide de chiffres sans ses sources n'a rien à faire devant un
+    amphithéâtre. ``st_book`` avale les erreurs de chargement en un simple
+    avertissement de journal — on vérifie donc ici, où ça s'arrête.
+    """
+    if not BIB.exists():
+        raise FileNotFoundError(
+            f"{BIB.name} est absent — les références du document en sortent "
+            f"toutes, et rien ne doit être réécrit à la main à la place.")
+    return [str(BIB)]
+
+
+def _registry(keys):
+    """Le registre, garanti peuplé — quel que soit le chemin d'exécution.
+
+    Trois chemins font tourner ces blocs, et ils ne se ressemblent pas :
+
+    - l'application Streamlit passe par ``st_book``, qui **vide** le registre
+      au début de sa construction avant de le remplir depuis ``bib_sources`` ;
+    - ``stx export html`` n'appelle pas ``st_book`` du tout : il exécute les
+      blocs directement, sans jamais charger de bibliographie ;
+    - un test importe parfois un bloc seul.
+
+    Un chargement fait une seule fois, à un seul endroit, se fait donc écraser
+    ou manquer selon le chemin — et l'export, qui **avale** l'exception d'un
+    bloc en le sautant en silence, produirait un document amputé de ses trois
+    slides sourcées sans que rien ne le dise. Le registre est donc rempli à la
+    demande, et le réenregistrement est idempotent : le remplir deux fois ne
+    coûte rien, ne pas le remplir coûte trois slides.
+
+    Constaté en exécution le 2026-08-03, après une correction qui marchait à
+    l'export et cassait dans l'application.
+    """
+    registry = get_bib_registry()
+    if all(registry.get(key) is not None for key in keys):
+        return registry
+    if not BIB.exists():
+        raise FileNotFoundError(
+            f"{BIB.name} est absent — les références du document en sortent "
+            f"toutes, et rien ne doit être réécrit à la main à la place.")
+    set_bib_config(CONFIG)
+    registry.register_many(load_bib(str(BIB)))
+    return registry
+
+
+def reference(*keys: str) -> str:
+    """La ou les références complètes, formatées depuis le ``.bib``.
+
+    Marque au passage les clés comme citées : c'est ce qui alimente la carte au
+    survol d'une citation en ligne.
+    """
+    registry = _registry(keys)
+    out = []
+    for key in keys:
+        entry = registry.get(key)
+        if entry is None:
+            raise KeyError(
+                f"clé de citation inconnue : {key!r} — elle doit exister dans "
+                f"{BIB.name}, jamais être remplacée par un texte écrit à la main.")
+        registry.cite(key)
+        out.append(format_entry(entry, CONFIG.format))
+    return " ".join(out)
+
+
+def citation(*keys: str, prefix: str = "", suffix: str = "") -> str:
+    """La citation en ligne — « (Liang et al., 2023) » — à poser dans un texte."""
+    registry = _registry(keys)
+    for key in keys:
+        if registry.get(key) is None:
+            raise KeyError(f"clé de citation inconnue : {key!r}")
+    return cite(*keys, prefix=prefix, suffix=suffix)
+
+
+def all_entries() -> int:
+    """Peuple le registre avec TOUT le ``.bib`` et rend le nombre d'entrées.
+
+    La page de références liste toutes les entrées, pas seulement celles que la
+    séance a ouvertes : le document est paginé, donc les slides que l'orateur
+    n'a pas atteintes n'ont jamais tourné, et une liste « citées seulement »
+    se réduirait à ce qui a été cliqué ce matin-là.
+    """
+    registry = get_bib_registry()
+    set_bib_config(CONFIG)
+    registry.register_many(load_bib(str(BIB)))
+    return len(registry)

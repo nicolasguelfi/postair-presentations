@@ -11,8 +11,8 @@ goes wrong: PAUSE the campaign first (admin console), diagnose after.
 """
 # @guideline: postair-minimal
 
-from custom.event import DAYS, live_url
 from custom.styles import Styles as s
+from postair_event import DAYS, live_url
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -21,6 +21,7 @@ from streamtex.enums import Tags as t
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     button = s.project.ds.buttons.action_big
+    day = s.project.ds.buttons.action_day
 
 
 bs = BlockStyles
@@ -56,5 +57,7 @@ def build():
                              "phones like lanterns while answering the survey")
             with g.cell():
                 for label, code in DAYS:
-                    st_write(bs.button, f"Open live monitoring · {label}",
+                    # La date passe à la ligne, en dessous de l'action : c'est
+                    # l'action qu'on lit, c'est la date qu'on vérifie.
+                    st_write(bs.button, "Open live monitoring", (bs.day, label),
                              tag=t.div, link=live_url(code), no_link_decor=True)

@@ -15,6 +15,7 @@ an auditorium reads a number and a line, it does not read a sample description.
 
 from streamtex import st_block, st_space, st_write
 from streamtex.enums import Tags as t
+from streamtex.styles import StxStyles
 
 __component_meta__ = {
     "name": "fact_card",
@@ -40,10 +41,14 @@ def fact_card(design_system, value: str, claim: str, counterpoint: str,
         support.
     """
     ds = design_system
+    # Tout est centré dans la cellule (NG 2026-08-03) : le chiffre l'était déjà
+    # de fait, et une phrase courte alignée à gauche sous un grand nombre centré
+    # donnait une carte de travers.
+    centered = StxStyles.center_txt
     with st_block(card_style or ds.cards.blue):
-        st_write(ds.titles.slide_title, value, tag=t.div)
-        st_write(ds.body.body, claim, tag=t.div)
+        st_write(ds.titles.slide_title + centered, value, tag=t.div)
+        st_write(ds.body.body + centered, claim, tag=t.div)
         st_space("v", "1vh")
-        st_write(ds.body.body + ds.colors.coral, counterpoint, tag=t.div)
+        st_write(ds.body.body + ds.colors.coral + centered, counterpoint, tag=t.div)
         st_space("v", "0.6vh")
-        st_write(ds.body.caption, attribution, tag=t.div)
+        st_write(ds.body.caption + centered, attribution, tag=t.div)

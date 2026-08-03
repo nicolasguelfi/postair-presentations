@@ -70,6 +70,13 @@ class _Titles:
         "postair_title_register",
     )
     keyword = Style("color: #2EC4B6; font-weight: 700;", "postair_title_keyword")
+    # Minutage d'un créneau — sans couleur : elle vient du type de séance, et
+    # se compose par-dessus. Bornée par la largeur pour rester dans sa colonne.
+    duration = Style(
+        "font-size: min(2.8vw, calc(var(--stx-scale-13, 36pt) * 1.4)); font-weight: 800; "
+        "line-height: 1.1; text-align: center;",
+        "postair_title_duration",
+    )
 
 
 class _Body:
@@ -98,9 +105,32 @@ class _Body:
         "font-size: clamp(12pt, 2.2vw, var(--stx-scale-9, 22pt)); color: #95A5A6; text-align: center;",
         "postair_body_mascot_name",
     )
+    # Nom de créneau dans l'agenda : trois colonnes larges, donc plus grand que
+    # le corps courant, mais toujours borné par la largeur de sa colonne.
+    session_name = Style(
+        "font-size: min(2.4vw, var(--stx-scale-13, 36pt)); font-weight: 700; "
+        "line-height: 1.25; color: #F2EEE6; text-align: center;",
+        "postair_body_session_name",
+    )
     caption = Style(
         "font-size: var(--stx-scale-9, 22pt); font-style: italic; color: #95A5A6; opacity: 0.85;",
         "postair_body_caption",
+    )
+    # Liste courte, sans commentaire, sur une demi-slide : la contrainte n'est
+    # plus la place mais la dernière rangée. On monte donc au niveau d'un titre
+    # de slide, et on borne par la largeur pour qu'une fenêtre étroite ne fasse
+    # pas déborder la ligne.
+    bullet_giant = Style(
+        "font-size: min(4.2vw, calc(var(--stx-scale-15, 48pt) * 1.25)); font-weight: 700; "
+        "line-height: 1.45; color: #F2EEE6;",
+        "postair_body_bullet_giant",
+    )
+    # Nom d'archétype : le double du corps de texte (NG 2026-08-03). Six mots
+    # sur une slide, ils doivent se lire depuis le dernier rang.
+    name_double = Style(
+        "font-size: min(3.6vw, calc(var(--stx-scale-12, 32pt) * 2)); font-weight: 800; "
+        "line-height: 1.2; color: #FFFFFF; text-align: center;",
+        "postair_body_name_double",
     )
 
 
@@ -129,6 +159,39 @@ class _Containers:
     grid_cell_top = Style(
         "display: flex; align-items: flex-start; justify-content: center;",
         "postair_grid_cell_top",
+    )
+    # Cellule dont le contenu prend toute la hauteur ET toute la largeur : la
+    # colonne devient une vraie colonne, pas une pile posée en haut.
+    grid_cell_stretch = Style(
+        "display: flex; align-items: stretch; justify-content: stretch;",
+        "postair_grid_cell_stretch",
+    )
+    # Colonne de cartes réparties sur toute la hauteur disponible. Le pendant
+    # vertical de la règle d'amphi : on ne tasse pas quatre cartes en haut d'une
+    # colonne en laissant les deux tiers du bas vides.
+    column_stack = Style(
+        "display: flex; flex-direction: column; justify-content: space-between; "
+        "gap: 1vh; width: 100%;",
+        "postair_column_stack",
+    )
+    column_stack_centered = Style(
+        "display: flex; flex-direction: column; justify-content: center; "
+        "gap: 1vh; width: 100%;",
+        "postair_column_stack_centered",
+    )
+    # Média seul en scène, sur TOUTE la fenêtre : pas de titre, pas de marge,
+    # rien d'autre à l'écran. Le repère de position sert à poser une mention
+    # par-dessus le média sans lui reprendre un seul pixel de hauteur.
+    media_fullscreen = Style(
+        "position: relative; min-height: 100vh; width: 100%; display: flex; "
+        "flex-direction: column; justify-content: center; align-items: center; "
+        "padding: 0; margin: 0;",
+        "postair_media_fullscreen",
+    )
+    media_hint_overlay = Style(
+        "position: absolute; left: 0; right: 0; bottom: 1.5vh; text-align: center; "
+        "pointer-events: none;",
+        "postair_media_hint_overlay",
     )
 
     @staticmethod
@@ -254,6 +317,28 @@ class _Cards:
         "display: block; margin-left: auto; margin-right: auto; text-align: center;",
         "postair_card_media_center",
     )
+    @staticmethod
+    @lru_cache(maxsize=32)
+    def scale_step(index: int, count: int) -> Style:
+        """Une marche de l'échelle d'accord : corail à un bout, turquoise à l'autre.
+
+        La couleur est INTERPOLÉE entre les deux accents de la palette, elle
+        n'est pas choisie marche par marche : ajouter ou retirer un niveau ne
+        demande alors aucune décision graphique, et surtout aucune marche ne
+        peut passer pour « la bonne réponse » — le dégradé est continu, donc
+        neutre. Il n'y a pas de milieu, et c'est le sujet de la slide.
+        """
+        span = max(count - 1, 1)
+        ratio = min(max(index, 0), span) / span
+        coral, teal = (224, 122, 110), (46, 196, 182)
+        r, g, b = (round(a + (z - a) * ratio) for a, z in zip(coral, teal))
+        return Style(
+            f"background-color: rgba({r}, {g}, {b}, 0.16); "
+            f"border-left: 6px solid rgb({r}, {g}, {b}); "
+            f"border-radius: 10px; padding: 1.1vh 1vw; width: 100%;",
+            f"postair_scale_step_{index}_{count}",
+        )
+
     axis_frame = Style(
         "background-color: rgba(122, 184, 245, 0.06); border: 1px solid rgba(122, 184, 245, 0.25); "
         "border-radius: 16px; padding: 1.5vh 1vw;",
@@ -278,6 +363,24 @@ class _Buttons:
         "box-shadow: 0 6px 24px rgba(243, 156, 18, 0.35);",
         "postair_button_action_amber",
     )
+    # La date, à la ligne dans le bouton (NG 2026-08-03). ``display: block``
+    # sur le fragment suffit à le faire passer à la ligne : le bouton reste UN
+    # seul lien cliquable, ce que deux écritures superposées ne seraient pas.
+    action_day = Style(
+        "display: block; font-size: calc(var(--stx-scale-10, 26pt) * 1.1); "
+        "font-weight: 700; opacity: 0.8; margin-top: 0.4vh;",
+        "postair_button_action_day",
+    )
+    # Bouton unique d'une slide de passage : plus rien d'autre ne le concurrence,
+    # il prend donc la place. Borné par la largeur pour ne jamais déborder de sa
+    # cellule sur une fenêtre étroite.
+    action_amber_giant = Style(
+        "display: block; background-color: #F39C12; color: #1A1A2E; font-weight: 900; "
+        "font-size: min(4vw, calc(var(--stx-scale-15, 48pt) * 1.3)); line-height: 1.15; "
+        "text-align: center; padding: 5vh 2vw; border-radius: 24px; margin: 2vh 0; "
+        "box-shadow: 0 10px 40px rgba(243, 156, 18, 0.45);",
+        "postair_button_action_amber_giant",
+    )
 
 
 class _Stage:
@@ -291,6 +394,25 @@ class _Stage:
         "font-size: calc(var(--stx-scale-13, 36pt) * 1.1); font-weight: 700; color: #7AB8F5; "
         "text-align: center;",
         "postair_stage_url_big",
+    )
+    # Le code caché : même gabarit que le code géant, mais éteint. La slide de
+    # démonstration montre la PLACE du code sans jamais montrer un code — un
+    # étudiant qui la photographie n'emporte rien d'exploitable.
+    code_masked = Style(
+        "font-size: calc(var(--stx-scale-17, 72pt) * 1.6); font-weight: 900; "
+        "letter-spacing: 0.08em; line-height: 1.05; color: #95A5A6; opacity: 0.55; "
+        "text-align: center;",
+        "postair_stage_code_masked",
+    )
+    # L'emplacement du QR sur la même slide : un cadre vide, aux dimensions du
+    # vrai, pour que le passage d'une date à l'autre ne fasse pas sauter la
+    # mise en page.
+    qr_placeholder = Style(
+        "width: min(30vw, 52vh); aspect-ratio: 1 / 1; border-radius: 16px; "
+        "border: 4px dashed rgba(149, 165, 166, 0.45); "
+        "background-color: rgba(255, 255, 255, 0.03); display: flex; "
+        "align-items: center; justify-content: center; margin: 0 auto;",
+        "postair_stage_qr_placeholder",
     )
 
 

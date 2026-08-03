@@ -1,0 +1,18 @@
+{
+  "name": "axes_wheel",
+  "version": 3,
+  "timestamp": "2026-08-03T19:18:43.262178+00:00",
+  "source_type": "ai_generated",
+  "original_path": "/Volumes/Mac_Data/Win_data/data/backups/Dropbox-nicolas.guelfi@laposte.net/messir Dropbox/Nicolas Guelfi/users/NG/Projets/AISE/ROS/projects/sumvadis-central/sumvadis-presentations/sumvadis-streamtex/modules/postair_opening/static/images/ai/29a3dc5a751e8bc3.webp",
+  "prompt": "Layered paper-cut collage illustration, bright colored cardstock (yellow, coral, turquoise, lilac, leaf green), visible paper edges and soft drop shadows, playful handcrafted festive mood, luminous sky. Human figures as abstract paper silhouettes seen from behind, never faces. AI is always represented as a glowing warm amber paper sun or orb, never anthropomorphic. Clean layered composition. A big fairground prize wheel made of layered cut paper, seen head on and caught mid-spin with a soft motion blur at its rim, standing on a festive paper fairground stall under bunting. The wheel is divided into eight bright segments, alternating between a word and a question mark as you go round. Going clockwise from the top, the eight segments read: TRUST, then a large question mark, then SPEED, then a large question mark, then OPTIMISM, then a large question mark, then SURPRISE, then a large question mark. Those four words are the only words in the whole image; spell each one exactly as written here, letter for letter, in clean bold capitals, large enough to be read across a lecture hall. A warm amber paper orb glows above the stall like a small sun. Three young students stand in front of the stall, seen from beside the wheel with one hand on its rim is the man from the reference photograph — same face, same glasses, same bald head and short beard — shown at full length in three-quarter view, rendered as a photographic cut-out pasted flat into the collage with visible torn paper edges and a soft drop shadow, in the manner of a photomontage. He is the only photographic element; everything else is cut paper. Wide 16:9 composition, one off-centre focal point, rising diagonal energy. The only text in the image is the short words cut out of paper on the wheel segments; spell each one exactly as written, in clean bold capitals. NO logos, NO signage, NO photorealism.",
+  "provider": "openai",
+  "model": "gpt-image-1",
+  "size": "1536x1024",
+  "quality": null,
+  "base_image": "/Volumes/Mac_Data/Win_data/data/backups/Dropbox-nicolas.guelfi@laposte.net/messir Dropbox/Nicolas Guelfi/users/NG/dev-dropbox/dvlpt/eclipse/git/github/GENAI/ai4video-projects/augmented-student/assets/images/NG/_identity/portraits/ng__portrait__studio__v1.png",
+  "revised_prompt": null,
+  "display_zoom": 70,
+  "display_width": null,
+  "display_height": null,
+  "display_keep_ratio": true
+}

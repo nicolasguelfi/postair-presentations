@@ -22,7 +22,11 @@ from streamtex.enums import Tags as t
 _RULES = [
     ("Your questions", "the ones where this room splits"),
     ("Two minutes", "one question, one round"),
-    ("For, against, hands", "both sides speak before anyone counts"),
+    # « both sides speak before anyone counts » disait la même chose en une
+    # tournure qu'il fallait relire deux fois. Ce qu'elle voulait dire : sur
+    # chaque question on entend un argument pour, puis un contre, et le vote à
+    # main levée vient seulement après — jamais avant.
+    ("For, against, hands", "one argument each way, then the vote"),
 ]
 
 # The moderator flanked by an opposed pair — the visual grammar of a debate.

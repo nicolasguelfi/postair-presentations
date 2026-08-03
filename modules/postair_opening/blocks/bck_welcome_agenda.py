@@ -1,10 +1,21 @@
-"""Agenda of the day — the nine sessions as one flat timeline.
+"""Agenda of the day — before the break, the break, after the break.
 
-Data-driven from ``custom.event.AGENDA``: the block renders, it does not know
+Data-driven from ``postair_event.AGENDA``: the block renders, it does not know
 the programme. Colour follows the ``kind`` of each session — a session is
 framing blue, the discussion is coral (human/debate), the break is the single
 amber focal accent of the slide, and it carries Lento, the prudence mascot,
 because the break is the moment the room slows down.
+
+Three columns (NG 2026-08-03), and the shape carries the meaning: everything
+before the break on the left, the break alone in the middle, everything after
+on the right. Nine cards in a row said "nine equal things"; this says "two
+halves and a pause", which is how the room will actually live the morning —
+and it buys each card three times the width, so the wording and the timing can
+be read from the back.
+
+The split is read from the data, never counted by hand: the break is the entry
+whose ``kind`` is ``break``. Move it in ``postair_event.py`` and the columns
+follow.
 
 SPEAKER NOTES:
 Two minutes, no more. Say where we are (first session), point at the break so
@@ -15,9 +26,9 @@ it is the only moment of the day where logistics are the subject.
 """
 # @guideline: postair-minimal
 
-from custom.event import AGENDA
 from custom.styles import Styles as s
 from postair_data import mascot
+from postair_event import AGENDA
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -33,12 +44,19 @@ _DURATION = {"stage": s.project.colors.primary,
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
-    session = s.project.body.body + s.center_txt + s.bold
-    duration = s.project.titles.subtitle + s.center_txt + s.bold
+    session = s.project.body.session_name
+    duration = s.project.titles.duration
     mascot_name = s.project.body.mascot_name
 
 
 bs = BlockStyles
+
+
+def _columns():
+    """The agenda as three columns: before the break, the break, after it."""
+    kinds = [kind for _s, _d, kind in AGENDA]
+    pause = kinds.index("break")
+    return [AGENDA[:pause], AGENDA[pause:pause + 1], AGENDA[pause + 1:]]
 
 
 def build():
@@ -68,18 +86,24 @@ def build():
                     ],
                 )
         st_space("v", "2vh")
-        # ONE flat responsive grid: nine cells side by side on the projector,
-        # wrapping on a narrow window. No nested grid — the mascot lives inside
-        # its own cell, not in a sub-grid.
-        with st_grid(cols=s.project.grids.balanced(len(AGENDA)), gap="1vw",
+        # Three columns, each a flat stack — no nested grid. The floors are in
+        # percent so three columns hold on a projector and collapse to one on a
+        # narrow window, without a hard-coded breakpoint.
+        with st_grid(cols="repeat(auto-fit, minmax(max(260px, 28%), 1fr))", gap="1.2vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
-            for session, duration, kind in AGENDA:
-                with g.cell(), st_block(_CARD[kind]):
-                    st_write(bs.duration + _DURATION[kind], duration, tag=t.div)
-                    st_write(bs.session, session, tag=t.div)
-                    if kind == "break":
-                        st_image(s.project.cards.media_center, width="70%",
-                                 uri=lento["image"],
-                                 alt=f"{lento['name']}, the prudence mascot of the speed axis")
-                        st_write(bs.mascot_name, lento["name"], tag=t.div)
+                     cell_styles=s.project.containers.grid_cell_stretch) as g:
+            for column in _columns():
+                alone = len(column) == 1
+                stack = (s.project.containers.column_stack_centered if alone
+                         else s.project.containers.column_stack)
+                with g.cell(), st_block(stack):
+                    for session, duration, kind in column:
+                        with st_block(_CARD[kind]):
+                            st_write(bs.duration + _DURATION[kind], duration, tag=t.div)
+                            st_write(bs.session, session, tag=t.div)
+                            if kind == "break":
+                                st_image(s.project.cards.media_center, width="55%",
+                                         uri=lento["image"],
+                                         alt=f"{lento['name']}, the prudence mascot "
+                                             "of the speed axis")
+                                st_write(bs.mascot_name, lento["name"], tag=t.div)

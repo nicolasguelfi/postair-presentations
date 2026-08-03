@@ -126,6 +126,14 @@ st_book(
         blocks.bck_axis_altruism,
         blocks.bck_axis_transhumanism,
         blocks.bck_debate_wrapup,          # the corpus behind the argument
+        # ── Closing the morning ─────────────────────────────────────
+        # Moved here from the opening deck (NG 2026-08-03). The speaker is in
+        # this document when the debate ends, and closing the morning from the
+        # other tab meant switching back for three slides — a stage gesture
+        # with nothing behind it. The morning now ends where it is being run.
+        blocks.bck_disc_wrapup,            # no consensus, and that is normal
+        blocks.bck_break_countdown,        # live countdown + the whole company
+        blocks.bck_break_rewelcome,        # what the second half holds
     ],
     toc_config=toc,
     marker_config=marker_config,

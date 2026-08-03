@@ -14,9 +14,9 @@ properly beat five rushed.
 """
 # @guideline: postair-minimal
 
-from custom.event import DEBATES_URL
 from custom.styles import Styles as s
 from postair_data import mascot
+from postair_event import DEBATES_URL
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -24,8 +24,7 @@ from streamtex.enums import Tags as t
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
-    button = s.project.ds.buttons.action_amber
-    lead = s.project.body.bullet + s.center_txt
+    button = s.project.ds.buttons.action_amber_giant
     mascot_name = s.project.body.mascot_name
 
 
@@ -62,7 +61,13 @@ def build():
                          "the video is not the figure speaking but a presentation of them."),
                     ],
                 )
-        st_space("v", "1vh")
+        # Un franc espace sous le titre (NG 2026-08-03) : la slide ne porte plus
+        # qu'un bouton, et un bouton collé à son titre se lit comme une note de
+        # bas de page.
+        st_space("v", "6vh")
+        # La ligne annonçait un nombre de postures à défendre. Elle est retirée :
+        # personne ne sait encore combien d'axes la salle aura le temps de
+        # traiter, et une promesse chiffrée qu'on ne tient pas s'entend.
         with st_grid(cols="45% 55%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -71,8 +76,5 @@ def build():
                          alt=f"{voxo['name']}, the moderator mascot, opening the floor to debate")
                 st_write(bs.mascot_name, voxo["name"], tag=t.div)
             with g.cell():
-                st_write(bs.lead, "Eighteen postures, ",
-                         (s.project.titles.keyword, "three you will defend"), tag=t.div)
-                st_space("v", "2vh")
                 st_write(bs.button, "Open the debates", tag=t.div,
                          link=DEBATES_URL, no_link_decor=True)

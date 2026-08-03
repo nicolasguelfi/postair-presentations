@@ -31,7 +31,7 @@ _CARDS = [s.project.cards.amber, s.project.cards.blue, s.project.cards.teal,
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
-    name = s.project.body.body + s.center_txt + s.bold
+    name = s.project.body.name_double
     lead = s.project.body.bullet + s.center_txt
 
 
@@ -43,7 +43,7 @@ def build():
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Six ", (s.project.titles.keyword, "reference points"),
+                st_write(bs.title, "Six ", (s.project.titles.keyword, "reference archetypes"),
                          " — not six boxes",
                          tag=t.div, toc_lvl="+1", label="The six archetypes")
             with g.cell():
@@ -70,7 +70,10 @@ def build():
         st_space("v", "1vh")
         st_write(bs.lead, "The app shows the ", (s.project.titles.keyword, "nearest"),
                  " one — and how far you are from it", tag=t.div)
-        st_space("v", "2vh")
+        # Un franc espace avant les six noms (NG 2026-08-03) : ils sont le sujet
+        # de la slide, et une grille collée à sa phrase d'introduction se lit
+        # comme une légende.
+        st_space("v", "6vh")
         # ONE flat grid — six named cards, wrapping on a narrow window.
         with st_grid(cols=s.project.grids.balanced(len(_CARDS)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,

@@ -16,9 +16,9 @@ them as such rather than pretending they are live.
 """
 # @guideline: postair-minimal
 
-from custom.event import DAYS, present_url
 from custom.styles import Styles as s
 from postair_data import mascot
+from postair_event import DAYS, present_url
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t

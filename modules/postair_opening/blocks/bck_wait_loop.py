@@ -12,6 +12,13 @@ screen, and resizing the window never puts it right. The stage container bounds
 the width by the available HEIGHT instead, so the video follows both dimensions
 of the window and stays whole.
 
+The stage takes the WHOLE window (NG 2026-08-03): no title, no margin, nothing
+else on screen. ``media_stage(ratio, 100)`` lets the clip grow until it touches
+one edge of the window — the top and bottom on a wide screen, the two sides on
+a narrow one — and it stays proportional at every width in between, because
+both bounds are expressed in viewport units rather than in pixels. The play
+hint is laid OVER the video rather than under it, so it costs no height at all.
+
 SPEAKER NOTES:
 Nothing to say — this screen runs on its own while the 1500 students enter
 the auditorium. One looping video, sound ON, no text, no information that
@@ -50,10 +57,11 @@ bs = BlockStyles
 
 def build():
     st_marker("Waiting screen")
-    with st_block(s.project.containers.page_fill_full):
-        # The stage is bounded by the window height; the video fills it.
-        with st_block(s.project.containers.media_stage(_CLIP_RATIO)):
+    with st_block(s.project.containers.media_fullscreen):
+        # The stage is bounded by the FULL window height; the video fills it.
+        with st_block(s.project.containers.media_stage(_CLIP_RATIO, 100)):
             # st.video needs a real file path: the media folder is deliberately
             # NOT a static source, so it cannot be resolved through them.
             st_video(str(_MEDIA / mascot_clip("Solyo", "en")), loop=True)
+        with st_block(s.project.containers.media_hint_overlay):
             st_write(bs.hint, "▶ play · loop · sound on", tag=t.div)

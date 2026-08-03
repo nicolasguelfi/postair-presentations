@@ -24,11 +24,20 @@ AGENDA = [
 ]
 
 # (label shown on stage, 6-digit sumvadis join code)
+# Les codes ont été choisis par l'auteur (NG 2026-08-03) ; ils ne se déduisent
+# volontairement PAS de la date — un code devinable serait un code que la salle
+# de la veille peut essayer. Ils doivent correspondre exactement aux campagnes
+# créées dans la console /admin de sumvadis.
 DAYS = [
-    ("Monday 8 September", "260908"),
-    ("Tuesday 9 September", "260909"),
-    ("Wednesday 10 September", "260910"),
+    ("Monday 8 September", "201048"),
+    ("Tuesday 9 September", "101048"),
+    ("Wednesday 10 September", "091048"),
 ]
+
+#: Ce que le sélecteur affiche tant qu'aucun jour n'est choisi. La slide montre
+#: alors la PLACE du QR et un code masqué : elle s'explique sans rien livrer.
+#: Un étudiant de la séance de lundi ne doit pas repartir avec le code de mardi.
+NO_DAY = "Survey Date"
 
 
 def join_url(code: str) -> str:

@@ -29,6 +29,7 @@ at the primary source. If challenged, say which is which — it is written there
 from __future__ import annotations
 
 from custom.facts import disciplines, no_faculty_data, text
+from custom.refs import reference
 from custom.styles import DS
 from custom.styles import Styles as s
 from postair_pack.components.faculty_card import faculty_card
@@ -62,8 +63,9 @@ def _tooltip_entries():
             source = example.get("source") or {}
             if source.get("kind") == "reported-in":
                 parts.append("Reported inside the source below, not read at the original.")
-            if source.get("reference"):
-                parts.append(source["reference"])
+            if source.get("citekeys"):
+                # La phrase bibliographique vient du .bib, jamais des données.
+                parts.append(reference(*source["citekeys"]))
             term = f"{text(group['faculty'])} — {text(example['headline'])}"
             entries.append((term, " ".join(parts)))
     entries.append(("No figures for this university", text(no_faculty_data())))

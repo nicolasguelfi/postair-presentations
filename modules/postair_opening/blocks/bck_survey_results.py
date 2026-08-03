@@ -12,8 +12,8 @@ per-question detail to pick the debate questions.
 """
 # @guideline: postair-minimal
 
-from custom.event import DAYS, present_url
 from custom.styles import Styles as s
+from postair_event import DAYS, present_url
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -22,6 +22,7 @@ from streamtex.enums import Tags as t
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     button = s.project.ds.buttons.action_amber
+    day = s.project.ds.buttons.action_day
 
 
 bs = BlockStyles
@@ -60,5 +61,7 @@ def build():
                              "large colorful paper radar chart under spotlights and confetti")
             with g.cell():
                 for label, code in DAYS:
-                    st_write(bs.button, f"Open the results · {label}",
+                    # La date passe à la ligne, en dessous de l'action : c'est
+                    # l'action qu'on lit, c'est la date qu'on vérifie.
+                    st_write(bs.button, "Open the results", (bs.day, label),
                              tag=t.div, link=present_url(code), no_link_decor=True)

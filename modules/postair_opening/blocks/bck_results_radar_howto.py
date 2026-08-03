@@ -73,16 +73,16 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        # ONE flat grid: the chart, then the posture codes beside it.
-        #
-        # The floor is hand-set here rather than taken from `grids.balanced`:
-        # the helper reasons about the WHOLE grid width, and half of this one is
-        # already spent on the chart. Within the ~48% that remains, a 20% floor
-        # lets two columns stand and refuses a third — so the codes read as a
-        # block beside the chart, not as a thin strip under it.
-        with st_grid(cols="52% repeat(auto-fit, minmax(max(180px, 20%), 1fr))", gap="1vw",
+        # UNE ligne, DEUX cellules : le radar à gauche, les quatre codes à
+        # droite (NG 2026-08-03). L'ancienne grille laissait le nombre de
+        # colonnes se décider tout seul, et les deux derniers codes passaient
+        # sous le radar au lieu de rester à côté de lui.
+        # ``1fr`` pour la seconde colonne, jamais ``48 %`` : avec la gouttière,
+        # deux pourcentages qui font cent débordent.
+        with st_grid(cols="52% 1fr", gap="1vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
+                     cell_styles=[s.project.containers.column_stack_centered,
+                                  s.project.containers.grid_cell_stretch]) as g:
             with g.cell():
                 st_image(s.project.cards.media_center, width="100%",
                          uri="images/postair_radar_example.svg",
@@ -90,7 +90,16 @@ def build():
                              "concentric guides, with the centre marked as one pole and the rim "
                              "as the other")
                 st_write(bs.caption, "an example profile — not anyone's", tag=t.div)
-            for code, gloss, card in _CODES:
-                with g.cell(), st_block(card):
-                    st_write(bs.code, code, tag=t.div)
-                    st_write(bs.gloss, gloss, tag=t.div)
+            with g.cell():
+                # Exception assumée à la règle des grilles plates : les quatre
+                # codes forment un carré DANS la cellule de droite, et un carré
+                # ne s'obtient pas autrement. Elle reste responsive — le
+                # plancher en pixels fait retomber le carré en colonne dès que
+                # la fenêtre se resserre, avant que quoi que ce soit déborde.
+                with st_grid(cols="repeat(auto-fit, minmax(max(160px, 40%), 1fr))",
+                             gap="0.8vw", grid_style=s.project.grids.stretch,
+                             cell_styles=s.project.containers.grid_cell_centered) as codes:
+                    for code, gloss, card in _CODES:
+                        with codes.cell(), st_block(card):
+                            st_write(bs.code, code, tag=t.div)
+                            st_write(bs.gloss, gloss, tag=t.div)

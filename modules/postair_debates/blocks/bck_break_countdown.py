@@ -17,9 +17,9 @@ talking; the screen does the rest.
 # module: annotations must stay unevaluated.
 from __future__ import annotations
 
-from custom.event import AGENDA
 from custom.styles import Styles as s
 from postair_data import REGISTERS, register_axes
+from postair_event import AGENDA
 from shared_widgets import st_countdown, st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t

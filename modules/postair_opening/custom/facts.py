@@ -1,10 +1,15 @@
 """Access to the framing facts — the only content source of the two scoping slides.
 
 ``static/data/facts.json`` is hand-curated rather than generated: every figure
-was verified at its own source, carries its date, its population, its printable
-reference and its counterpoint. No number, claim or reference is ever typed into
+was verified at its own source, carries its date, its population, its citation
+keys and its counterpoint. No number, claim or reference is ever typed into
 a block — a block asks this module for a figure and renders what it gets. A
 correction is made in the JSON, never in a slide.
+
+**Les références ne sont PAS ici.** Une source porte des clés de citation ; la
+phrase bibliographique est dérivée de ``static/data/references.bib`` par
+``custom.refs``. Deux fichiers, deux rôles : celui-ci dit ce qu'on affirme,
+l'autre dit d'où ça vient — et l'appareil critique n'existe qu'une fois.
 
 Language follows the ecosystem convention: every translatable leaf is an object
 keyed by language code, and ``metadata.languages`` says which codes the file
@@ -113,4 +118,19 @@ def sources(entry: dict) -> list[dict]:
         if isinstance(node, dict) and node.get("source"):
             found.append(node["source"])
     found.extend(entry.get("sources", []))
-    return [s for s in found if s.get("reference")]
+    return [s for s in found if s.get("citekeys")]
+
+
+def citekeys(entry: dict) -> list[str]:
+    """Toutes les clés de citation d'une entrée, sans doublon, dans l'ordre.
+
+    Une entrée cite sa propre source, celle de son contrepoint, et le cas
+    échéant les travaux qui la confirment (``also``). C'est ce que la référence
+    imprimée doit couvrir : un chiffre projeté sans la publication qui le
+    conteste serait un chiffre arrangé.
+    """
+    keys: list[str] = []
+    for source in sources(entry):
+        keys.extend(source["citekeys"])
+    keys.extend(entry.get("also", []))
+    return list(dict.fromkeys(keys))
