@@ -53,9 +53,11 @@ Une figure n'apparaît que si elle porte **un portrait ET une vidéo**, chacun a
 
 `modules/shared-blocks/static/_SHARED/mascots/` est une **copie gelée** de
 `mascoties/shared/`, faite à la main : c'est le seul tuyau de la chaîne sans outil de
-copie. Depuis le 2026-08-02 il n'y reste que **les 3 manifestes et les 4 clips** — les
-36 webp sont sortis du dépôt et viennent du CDN (cf. §Les médias). Les clips restent
-faute d'entrée au catalogue amont. Contrôle de fidélité :
+copie. Depuis le 2026-08-02 il n'y reste que **les 3 manifestes et UN clip**
+(`videos/solyo_optimism_en.mp4`, le master 1080p de l'écran d'attente, gardé en
+sursis le temps de juger la rendition CDN en projection — voir `PROVENANCE.md`) —
+les 36 webp sont sortis du dépôt et viennent du CDN, et les clips passent par
+`media-catalogue.json` (section `crew` comprise, v2.2.0). Contrôle de fidélité :
 
 ```bash
 uv run python _project/tools/check_shared_freeze.py

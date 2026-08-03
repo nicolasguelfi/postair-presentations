@@ -57,9 +57,9 @@ COPY modules/ ./modules/
 # the build has no access to the private upstream repos, only to the network.
 # Regenerate it on the author's machine with `sync_media.py --freeze`.
 #
-# The two moderator mascots have no CDN entry at all and are the one exception:
-# they are copied from the studio, so a CI build leaves them missing. Debt to be
-# cleared by publishing them — see the note handed to the studio session.
+# The two moderator mascots come from the CDN like the rest since catalogue
+# v2.2.0 (crew section, 2026-08-02) — the old "no CDN entry" exception is gone;
+# a CI build materialises all 38 mascots from media-catalogue.json.
 COPY _project/tools/ ./_project/tools/
 RUN uv run python _project/tools/sync_media.py
 

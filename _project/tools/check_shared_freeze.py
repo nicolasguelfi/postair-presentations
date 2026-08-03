@@ -99,6 +99,13 @@ def main() -> int:
         say("(clé `studio` absente de la configuration — manifestes non comparés)")
 
     # --- webp -------------------------------------------------------------
+    # Depuis le 2026-08-02 le gel ne contient plus de webp (sortis du dépôt,
+    # servis par le CDN via media-catalogue.json) : l'absence du dossier web/
+    # est l'état NORMAL, à dire explicitement — un contrôle muet n'est pas un
+    # contrôle vert.
+    if not (FREEZE / "web").is_dir():
+        say("\nwebp : le gel n'en contient plus (sortis le 2026-08-02 — servis "
+            "par le CDN via media-catalogue.json) ; contrôle sans objet")
     webp = sorted((FREEZE / "web").glob("*.webp")) if (FREEZE / "web").is_dir() else []
     nus = [p for p in webp if not signed(p)]
     say(f"\nwebp du gel : {len(webp)} — signés C2PA : {len(webp) - len(nus)}/{len(webp)}")
