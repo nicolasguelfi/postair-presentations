@@ -92,10 +92,18 @@ même en mode static-only).
   catalogue. L'écran d'attente tourne **vingt minutes devant la salle qui se remplit** —
   le pire moment possible pour dépendre du réseau. Le deck nomme une mascotte
   (`postair_data.mascot_clip`), jamais un fichier.
-- **Exceptions assumées** : les illustrations produites pour ces présentations restent
-  versionnées ici et ne vont jamais au CDN ; les 2 modérateurs sont encore copiés du
-  studio faute d'entrée au catalogue amont (note :
-  `_project/prompts/prompt-studio-medias-manquants.md`).
+- **Le build n'a plus besoin d'aucun dépôt privé.** Depuis le catalogue v2.2.0
+  (2026-08-03), les 2 modérateurs sont publiés au CDN dans une section `crew`, sœur des
+  36 `assets`. Le contournement qui les copiait du studio est retiré : `sync_media.py`
+  ne lit le studio que pour `--freeze`. Ce que vous validez en local est donc
+  byte-identique à ce qui se déploie, sans exception.
+- **Un bloc ne code jamais un chemin de média en dur.** Il demande une mascotte par son
+  nom (`postair_data.mascot`). Trois slides portaient une URI écrite à la main vers des
+  fichiers partis au CDN et affichaient une image manquante — trouvées le 2026-08-03 en
+  contrôlant que chaque `src` de l'export pointe un fichier présent. Ce contrôle vaut
+  d'être refait après toute campagne média.
+- **Exception assumée** : les illustrations produites pour ces présentations restent
+  versionnées ici et ne vont jamais au CDN.
 - **Une décision en attente** : `_SHARED/mascots/videos/solyo_optimism_en.mp4` (2,9 Mo)
   est le master de l'écran d'attente, en 1080×1080 à 1,9 Mb/s ; la rendition du CDN
   désormais utilisée est en 720×720 à 295 kb/s. Le fichier est conservé le temps que

@@ -1,7 +1,7 @@
 {
  "_doc": "GÉNÉRÉ par _project/tools/sync_media.py --freeze depuis mascoties/shared/cartes/cartes-design.json. Ne pas éditer à la main. Ce fichier ne contient que des URL content-adressées : les octets, eux, sont matérialisés au build et ne sont jamais versionnés.",
  "source": "mascoties/shared/cartes/cartes-design.json",
- "design_version": "2.1.0",
+ "design_version": "2.2.0",
  "mascots": [
   {
    "file": "axis-01-animals-left-self-reliance-solo.webp",
@@ -146,6 +146,14 @@
   {
    "file": "axis-09-objects-right-transhumanism-silico.webp",
    "url": "https://media.sumvadis.ai/axis-09-objects-right-transhumanism-silico/fbe8c826.webp"
+  },
+  {
+   "file": "moderator-animals-medio.webp",
+   "url": "https://media.sumvadis.ai/moderator-animals-medio/fb027024.webp"
+  },
+  {
+   "file": "moderator-objects-voxo.webp",
+   "url": "https://media.sumvadis.ai/moderator-objects-voxo/9f7e2f05.webp"
   }
  ],
  "clips": [
@@ -436,6 +444,22 @@
   {
    "file": "axis-09-objects-right-transhumanism-silico-fr.mp4",
    "url": "https://media.sumvadis.ai/axis-09-objects-right-transhumanism-silico/clip-fr-e829acc7.mp4"
+  },
+  {
+   "file": "moderator-animals-medio-en.mp4",
+   "url": "https://media.sumvadis.ai/moderator-animals-medio/clip-en-181f267c.mp4"
+  },
+  {
+   "file": "moderator-animals-medio-fr.mp4",
+   "url": "https://media.sumvadis.ai/moderator-animals-medio/clip-fr-6310cb93.mp4"
+  },
+  {
+   "file": "moderator-objects-voxo-en.mp4",
+   "url": "https://media.sumvadis.ai/moderator-objects-voxo/clip-en-b7a995ec.mp4"
+  },
+  {
+   "file": "moderator-objects-voxo-fr.mp4",
+   "url": "https://media.sumvadis.ai/moderator-objects-voxo/clip-fr-6fc24deb.mp4"
   }
  ]
 }

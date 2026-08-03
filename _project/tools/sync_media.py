@@ -100,9 +100,21 @@ def _studio_design(studio: str) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _catalogued(design: dict):
+    """(clé, entrée) de tous les médias du catalogue : les axes, puis la troupe.
+
+    ``crew`` est une section **sœur** de ``assets``, jamais comptée dedans — le
+    contrat amont dit « 36 assets », et les modérateurs s'ajoutent à côté. Les
+    deux sections ont exactement la même forme ; ce dépôt consomme des médias et
+    n'a pas à distinguer les rôles, donc un seul traitement pour les deux.
+    """
+    for section in ("assets", "crew"):
+        yield from (design.get(section) or {}).items()
+
+
 def _read_studio(studio: str) -> list[tuple[str, str]]:
     out = []
-    for key, entry in (_studio_design(studio).get("assets") or {}).items():
+    for key, entry in _catalogued(_studio_design(studio)):
         url = entry.get("url")
         if not url:
             raise SystemExit(f"asset sans URL dans le catalogue du studio : {key}")
@@ -134,7 +146,7 @@ def _read_studio_clips(studio: str) -> list[tuple[str, str]]:
     CDN, qui change à chaque republication et rendrait le deck faux en silence.
     """
     out = []
-    for key, entry in (_studio_design(studio).get("assets") or {}).items():
+    for key, entry in _catalogued(_studio_design(studio)):
         for lang, url in sorted((entry.get("video") or {}).items()):
             out.append((f"{key}-{lang}.mp4", url))
     return out
@@ -158,27 +170,6 @@ def freeze(studio: str) -> None:
     }, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"  catalogue gelé : {len(entries)} mascottes, {len(clips)} clips "
           f"→ {_FROZEN.relative_to(_REPO)}")
-
-
-#: Les deux modérateurs n'ont AUCUNE entrée au CDN : le catalogue du studio
-#: compte 36 assets — 2 pôles × 9 axes × 2 familles — et aucun modérateur. Ils
-#: sont donc copiés depuis le studio, sur disque, en attendant leur publication.
-#: C'est une dette explicite, pas un choix : voir la note remise au studio.
-MODERATORS = ["moderator-animals-medio.rgba.png", "moderator-objects-voxo.rgba.png"]
-
-
-def moderator_sources(studio: str) -> list[tuple[str, Path]]:
-    """(nom de fichier attendu par le deck, chemin au studio) des modérateurs."""
-    cast = Path(studio) / "shared" / "cast"
-    out = []
-    for name in MODERATORS:
-        src = cast / name
-        if src.exists():
-            # On garde la VRAIE extension : servir un png sous un nom .webp
-            # donnerait un type MIME faux. `postair_data` demande donc les
-            # modérateurs en .png, et les mascottes d'axe en .webp.
-            out.append((name.replace(".rgba.png", ".png"), src))
-    return out
 
 
 def figure_catalogue(module: str) -> list[tuple[str, str]]:
@@ -205,14 +196,61 @@ def figure_catalogue(module: str) -> list[tuple[str, str]]:
     return sorted(seen.items())
 
 
+def _wrong_type(name: str, payload: bytes) -> str | None:
+    """Le contenu a-t-il la tête de ce que son nom annonce ?
+
+    Sur un réseau à portail captif, la page de connexion est renvoyée **avec un
+    code 200**. Sans ce contrôle elle serait écrite sous un nom de média, le
+    ``--check`` la compterait comme présente, et la slide afficherait une image
+    cassée le jour même.
+    """
+    head = payload[:16]
+    if name.endswith(".webp") and not (head[:4] == b"RIFF" and head[8:12] == b"WEBP"):
+        return "ce n'est pas un WebP"
+    if name.endswith(".mp4") and b"ftyp" not in head:
+        return "ce n'est pas un MP4"
+    return None
+
+
 def fetch(url: str, target: Path) -> int:
+    """Télécharger une ressource distante dans un fichier LOCAL.
+
+    Lecture seule côté serveur : un GET, rien d'autre. Ce dépôt ne écrit jamais
+    au CDN — ``target`` est un chemin sous ``modules/<module>/static/media/``.
+
+    Trois garde-fous, tous ici et donc tous **au build** : aucun n'ajoute quoi
+    que ce soit pendant la séance, où le CDN n'est jamais contacté. Aucun ne
+    peut se déclencher sur un fichier correct ; ils ne font que déplacer la
+    panne du pire moment (l'amphi) au moins cher (le build, où il suffit de
+    relancer).
+    """
     target.parent.mkdir(parents=True, exist_ok=True)
     try:
         with urllib.request.urlopen(url, timeout=_TIMEOUT) as r:
             payload = r.read()
+            announced = r.headers.get("content-length")
     except (urllib.error.URLError, OSError) as e:
         raise SystemExit(f"échec du téléchargement de {url} : {e}") from e
-    target.write_bytes(payload)
+
+    # Le réseau peut couper sans lever d'erreur : `read()` rend alors moins
+    # d'octets qu'annoncé, et le fichier serait écrit entier mais tronqué.
+    if announced and announced.isdigit() and int(announced) != len(payload):
+        raise SystemExit(f"téléchargement tronqué : {url} — {len(payload)} octets reçus, "
+                         f"{announced} annoncés. Rien n'a été écrit ; relancer.")
+
+    wrong = _wrong_type(target.name, payload)
+    if wrong:
+        raise SystemExit(f"contenu inattendu pour {url} — {wrong} ({len(payload)} octets). "
+                         "Un portail captif ou un proxy a sans doute répondu à la place "
+                         "du CDN. Rien n'a été écrit.")
+
+    # Écriture atomique : le nom final n'apparaît qu'une fois les octets
+    # complets sur le disque. Sinon un build interrompu laisserait un fichier
+    # partiel que le `--check` suivant compterait comme PRÉSENT — le conteneur
+    # se déclarerait complet en embarquant un média cassé.
+    tmp = target.with_name(target.name + ".part")
+    tmp.write_bytes(payload)
+    tmp.replace(target)
     return len(payload)
 
 
@@ -231,27 +269,6 @@ def sync(module: str, kind: str, entries: list[tuple[str, str]],
             print(f"    manque {kind}/{name}")
             continue
         written += fetch(url, target)
-    return present, missing, written
-
-
-def copy_local(module: str, kind: str, entries: list[tuple[str, Path]],
-               check: bool, force: bool) -> tuple[int, int, int]:
-    """Comme ``sync``, mais depuis un fichier du studio plutôt qu'une URL."""
-    root = _MODULES / module / "static" / "media" / kind
-    present = missing = written = 0
-    for name, src in entries:
-        target = root / name
-        if target.exists() and not force:
-            present += 1
-            continue
-        missing += 1
-        if check:
-            print(f"    manque {kind}/{name} (source : {src})")
-            continue
-        target.parent.mkdir(parents=True, exist_ok=True)
-        payload = src.read_bytes()
-        target.write_bytes(payload)
-        written += len(payload)
     return present, missing, written
 
 
@@ -278,19 +295,11 @@ def main() -> None:
 
     total_missing = total_written = 0
     mascots = mascot_catalogue(studio)
-    moderators = moderator_sources(studio) if studio else []
-    if len(moderators) != len(MODERATORS):
-        print(f"! {len(MODERATORS) - len(moderators)} modérateur(s) non copiable(s) : "
-              "ils n'ont aucune entrée au CDN et ne sont lisibles qu'au studio. "
-              "Sans le studio (cas du build CI), leurs slides afficheront une image "
-              "manquante — dette à lever par leur publication au CDN.", file=sys.stderr)
     for module in MASCOT_MODULES:
         p, m, w = sync(module, "mascots", mascots, args.check, args.force)
-        pm, mm, wm = copy_local(module, "mascots", moderators, args.check, args.force)
-        total_missing += m + mm
-        total_written += w + wm
-        print(f"  {module}/mascots   : {p + pm} présents, {m + mm} manquants "
-              f"({len(moderators)} modérateurs copiés du studio, hors CDN)")
+        total_missing += m
+        total_written += w
+        print(f"  {module}/mascots   : {p} présents, {m} manquants")
     clips = clip_catalogue(studio)
     for module in CLIP_MODULES:
         p, m, w = sync(module, "clips", clips, args.check, args.force)

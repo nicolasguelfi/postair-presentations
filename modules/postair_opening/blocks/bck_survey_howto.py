@@ -11,6 +11,7 @@ of the scale.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
+from postair_data import mascot
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -36,6 +37,7 @@ _BULLETS = [
 
 def build():
     st_marker("How to answer")
+    nimbo, solyo = mascot("Nimbo"), mascot("Solyo")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -72,11 +74,16 @@ def build():
             with g.cell():
                 with st_block(bs.scale_bar):
                     st_write(bs.scale_end, "Strongly disagree", tag=t.div)
+                    # Asked for by name, never by path: these two carried
+                    # hand-typed URIs into the frozen folder the 36 mascots left
+                    # when they moved to the CDN, and showed missing images.
                     st_image(s.project.cards.media_center, width="min(10vw, 18vh)",
-                             uri="_SHARED/mascots/web/axis-02-animals-left-pessimism-nimbo.webp",
-                             alt="Nimbo, the pessimist mole mascot, at the disagree end")
+                             uri=nimbo["image"],
+                             alt=f"{nimbo['name']}, the pessimist mole mascot, "
+                                 "at the disagree end")
                     st_write(s.project.body.mascot_name, "⬍  six levels  ⬍", tag=t.div)
                     st_image(s.project.cards.media_center, width="min(10vw, 18vh)",
-                             uri="_SHARED/mascots/web/axis-02-animals-right-optimism-solyo.webp",
-                             alt="Solyo, the optimist squirrel mascot, at the agree end")
+                             uri=solyo["image"],
+                             alt=f"{solyo['name']}, the optimist squirrel mascot, "
+                                 "at the agree end")
                     st_write(bs.scale_end, "Strongly agree", tag=t.div)

@@ -14,6 +14,7 @@ concrete method to study with AI.
 from custom.config import IS_EDITABLE
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.styles import Styles as s
+from postair_data import mascot
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -40,6 +41,7 @@ HERO_PROMPT = (
 
 def build():
     st_marker("Title — AI Day")
+    medio = mascot("Medio")
     # page_fill_full: no side padding, so the 5/55/35/5 grid below is
     # computed against the real window width (NG 2026-07-30).
     with st_block(s.project.containers.page_fill_full):
@@ -81,9 +83,13 @@ def build():
                     prompt=HERO_PROMPT, provider="openai", ai_size="1536x1024",
                 )
             with g.cell():
+                # Asked for by name, never by path: this slide used to carry a
+                # hand-typed URI to a file that no longer existed, and showed a
+                # missing image on the very first screen of the day.
                 st_image(s.project.cards.media_center, width="100%",
-                         uri="_SHARED/mascots/medio.rgba.png",
-                         alt="Medio, the panda moderator mascot, welcoming the audience")
-                st_write(bs.mascot_caption, "Medio — your host today", tag=t.div)
+                         uri=medio["image"],
+                         alt=f"{medio['name']}, the panda moderator mascot, "
+                             "welcoming the audience")
+                st_write(bs.mascot_caption, f"{medio['name']} — your host today", tag=t.div)
             with g.cell():
                 st_space("h", "1px")

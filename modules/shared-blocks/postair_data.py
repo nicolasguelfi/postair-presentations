@@ -47,13 +47,13 @@ def _webp_uri(item: dict) -> str:
 
     Les octets vivent dans ``<module>/static/media/mascots/``, matérialisés
     depuis le catalogue du studio par ``_project/tools/sync_media.py``.
+
+    Une seule règle pour tout le monde depuis le 2026-08-03 : le catalogue publie
+    tout en WebP. Les deux modérateurs faisaient exception — ils n'étaient pas au
+    CDN et étaient copiés du studio en png — jusqu'à la section ``crew`` du
+    catalogue v2.2.0, qui les publie comme les autres, signés C2PA.
     """
-    name = item["files"]["rgb"]
-    # Les 36 mascottes d'axe sont publiées en webp au CDN ; les deux modérateurs
-    # n'y sont PAS publiés et sont copiés depuis le studio, où ils n'existent
-    # qu'en png. On demande donc chacun sous sa vraie extension — servir un png
-    # sous un nom .webp donnerait un type MIME faux.
-    return "mascots/" + (name if item.get("axis") is None else name.replace(".png", ".webp"))
+    return "mascots/" + item["files"]["rgb"].replace(".png", ".webp")
 
 
 def mascot_clip(name: str, lang: str = "en") -> str:
