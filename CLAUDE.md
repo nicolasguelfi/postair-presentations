@@ -49,6 +49,15 @@ Le pied de page doit rester à **0 sans référence imprimable**. Toute autre va
 Une figure n'apparaît que si elle porte **un portrait ET une vidéo**, chacun avec
 `clearance.channel == "public-ok"` — un portrait seul ne suffit pas.
 
+**RÈGLE I3 (sumvadis design/11, lot L5, 2026-08-03) — un artefact GELÉ ne
+porte JAMAIS d'adresse de concept `/c/…`.** Les manifestes de ce dépôt
+(`media-catalogue.json`, `content.json`) et l'image Docker vivent sous le
+contrat « fichier présent = à jour, jamais revalidé » : une adresse `/c/`
+(dernier segment stable, contenu changeant) y servirait du périmé en silence
+et créerait des collisions de noms locaux. Dans un gel : uniquement des
+adresses contenu-adressées (l'actuel) ou des adresses de VERSION
+`/v/…/<horodatage>` — jamais `/c/`.
+
 ## Le second amont — le gel du studio
 
 `modules/shared-blocks/static/_SHARED/mascots/` est une **copie gelée** de
