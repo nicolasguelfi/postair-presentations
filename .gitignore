@@ -1,4 +1,7 @@
-.venv/
+# Sans barre finale : `.venv` est un LIEN vers ~/.venvs/<projet> (voir
+# MACHINE.md), et `.venv/` ne viserait que les vrais dossiers — le lien
+# serait proposé au commit, avec un chemin absolu vers un dossier personnel.
+.venv
 __pycache__/
 *.pyc
 .env

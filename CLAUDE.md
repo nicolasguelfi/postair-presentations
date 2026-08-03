@@ -15,6 +15,17 @@ sumvadis** :
 ⚠ Ce dépôt vit **hors de la racine `«git»/`** commune aux cinq autres : il est sous
 `NG/Projets/AISE/ROS/projects/sumvadis-central/sumvadis-presentations/`.
 
+⚠ Et il vit **dans un dossier Dropbox**. Tout ce qui est propre à une machine reste donc
+hors de l'arbre synchronisé : **`.venv` est un lien symbolique** vers
+`~/.venvs/sumvadis-streamtex`, et les 400 Mo vivent chez chaque poste. Aucune variable
+d'environnement n'est en jeu — `UV_PROJECT_ENVIRONMENT` n'existe qu'en variable globale,
+donc il s'appliquerait à *tous* les projets uv de la machine. uv respecte le lien
+(`uv sync` installe dans la cible et le conserve) et, si la cible manque, **échoue
+bruyamment** au lieu de reconstruire en douce dans Dropbox. Voir `MACHINE.md`.
+Un `.venv` réel ici pèse 426 Mo, épingle un interpréteur par chemin absolu, casse sur le
+second poste, et fait lire des fichiers périmés pendant les synchronisations — c'est
+arrivé le 2026-08-03.
+
 ## Le tuyau amont — sens unique, lecture seule
 
 `postair_debates` est **entièrement data-driven** : aucun nom de figure, aucune
