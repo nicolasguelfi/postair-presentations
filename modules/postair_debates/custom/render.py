@@ -31,6 +31,7 @@ from streamtex.enums import Tags as t
 
 from custom.content import axis_poles, text, warnings_for
 from custom.pole import faceoff_sides, mascots
+from custom.refs import citation_or
 from custom.styles import DS
 from custom.styles import Styles as s
 
@@ -89,15 +90,14 @@ def _figures(pole: dict, lang: str | None) -> None:
     for f in pole["figures"]:
         entries.append((f"{f['name']} ({f.get('dates', '')})",
                         f"{f.get('origin', '')} · {f.get('wave', '')} · score {f['score']} on "
-                        f"this axis. The profile is a reconstruction from primary sources: it "
-                        f"commits its author, never the figure."))
-    entries.append(("Videos", "Clicking a portrait opens the figure's presentation video. For "
-                              "the living people of this study the video presents them — the "
-                              "corpus never makes a living person speak through generative AI."))
-    entries.append(("References", "Every quotation is verbatim and verified. Where a reference "
-                                  "is still being established, the card says so rather than "
-                                  "looking sourced. The cards carry the caption form; the "
-                                  "complete references follow."))
+                        f"this axis."))
+    # Les règles de provenance (reconstruction, personnes vivantes) sont dites
+    # UNE fois, sur la slide Provenance en tête de document — plus jamais ici.
+    entries.append(("Videos", "Clicking a portrait opens the figure's presentation video. The "
+                              "provenance rules are on the Provenance slide, at the start."))
+    entries.append(("References", "Every quotation is verbatim and verified. The citation code "
+                                  "under each quotation opens the full reference on hover; the "
+                                  "References page at the end of the document lists them all."))
     # The full reference belongs here, not under the portrait: a dossier's
     # source entry is written to be complete, not to be read from row thirty.
     for f in pole["figures"]:
@@ -120,8 +120,11 @@ def _figures(pole: dict, lang: str | None) -> None:
                  cell_styles=s.project.containers.grid_cell_top) as g:
         for f in pole["figures"]:
             with g.cell():
+                # Code de citation natif dès que le hub aura promu la clé de la
+                # citation ; d'ici là, la chaîne de référence vérifiée du gel.
                 figure_card(f, DS, text(f["quote"], lang) or f["quote"].get("en") or "",
-                            f["quote"].get("reference"))
+                            citation_or(f["quote"].get("reference"),
+                                        *(f["quote"].get("citekeys") or [])))
 
 
 def _arguments(pole: dict, lang: str | None) -> None:
@@ -142,7 +145,13 @@ def _arguments(pole: dict, lang: str | None) -> None:
                  cell_styles=s.project.containers.grid_cell_top) as g:
         for a in pole["arguments"]:
             with g.cell():
-                argument_card(a, DS, text(a["title"], lang))
+                # La ligne de source est le code de citation natif — carte
+                # complète au survol — avec repli sur la chaîne du manifeste
+                # si la clé n'était pas gelée.
+                argument_card(a, DS, text(a["title"], lang),
+                              source_html=citation_or(
+                                  a.get("reference") or a.get("citekey") or "",
+                                  *([a["citekey"]] if a.get("citekey") else [])))
 
 
 def _faceoff(both: list[dict], lang: str | None) -> None:

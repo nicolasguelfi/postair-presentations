@@ -42,7 +42,7 @@ from pathlib import Path
 
 from custom.config import IS_EDITABLE
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE_WITH_TEXT
-from custom.refs import reference
+from custom.refs import citation
 from custom.styles import Styles as s
 from shared_widgets import st_info_tooltip
 from streamtex import *
@@ -60,6 +60,7 @@ _FALLBACK = "images/postair_radar_question.svg"
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
+    grounding = s.project.body.caption + s.center_txt
 
 
 bs = BlockStyles
@@ -120,9 +121,11 @@ def build():
                         ("Why a wheel", "Because nobody in this room knows their own answer yet. "
                                         "You are not being sorted into anything — you are about "
                                         "to discover which postures you already carry."),
-                        # La référence sort du .bib, comme toutes les autres.
-                        ("Scientific basis", "The instrument derives from the research article "
-                                             + reference("guelfi-postair")),
+                        # La référence n'est PAS ici : elle vit derrière le code
+                        # de citation visible sous la roue (un cite() dans un
+                        # panneau de survol serait un hover-dans-hover).
+                        ("Scientific basis", "The instrument derives from a published research "
+                                             "article — the citation under the wheel opens it."),
                         ("Anonymous", "The survey you are about to take is fully anonymous: your "
                                       "result is computed on YOUR device; only anonymous averages "
                                       "reach the room screen."),
@@ -130,27 +133,39 @@ def build():
                 )
         st_space("v", "1vh")
         # The wheel as large as the remaining viewport allows.
-        #
-        # ``uri`` est le REPLI, pas la source : dès qu'une version managée de
-        # ``axes_wheel`` existe, ``st_image`` la préfère et l'URI n'est plus
-        # lue. Rien à changer ici le jour de la génération.
-        ready = (_MANAGED / f"{_WHEEL}.webp").exists()
         with st_grid(cols="1fr 78% 1fr", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_space("h", "0.5vw")
             with g.cell():
-                st_image(
-                    s.project.cards.media_center, width="100%",
-                    uri="" if ready else _FALLBACK,
-                    alt=("Papercut fairground prize wheel, three segments naming an axis — "
-                         "trust, speed, optimism — the others marked with a large question "
-                         "mark, three students watching from the front and the host of the "
-                         "stall holding the rim") if ready else
-                        ("Empty nine-axis POSTAIR radar chart with a large question mark in "
-                         "the centre — axes: Trust, Optimism, Rationality, Speed, Openness, "
-                         "Freedom/Control, Centralisation, Altruism, Transhumanism"),
-                    editable=IS_EDITABLE, name=_WHEEL,
-                    prompt=WHEEL_PROMPT, provider="openai", ai_size="1536x1024",
-                )
+                _wheel_image()
             with g.cell():
                 st_space("h", "0.5vw")
+        st_space("v", "1vh")
+        # Le code de citation dans le texte VISIBLE de la slide : la carte au
+        # survol porte la référence complète et le lien vers l'article.
+        st_write(bs.grounding,
+                 "Anonymous, and grounded in a published scientific model ",
+                 citation("guelfi-postair"), tag=t.div)
+
+
+def _wheel_image():
+    """La roue — ou le radar vide tant qu'elle n'existe pas.
+
+    ``uri`` est le REPLI, pas la source : dès qu'une version managée de
+    ``axes_wheel`` existe, ``st_image`` la préfère et l'URI n'est plus lue.
+    Rien à changer ici le jour de la génération.
+    """
+    ready = (_MANAGED / f"{_WHEEL}.webp").exists()
+    st_image(
+        s.project.cards.media_center, width="100%",
+        uri="" if ready else _FALLBACK,
+        alt=("Papercut fairground prize wheel, three segments naming an axis — "
+             "trust, speed, optimism — the others marked with a large question "
+             "mark, three students watching from the front and the host of the "
+             "stall holding the rim") if ready else
+            ("Empty nine-axis POSTAIR radar chart with a large question mark in "
+             "the centre — axes: Trust, Optimism, Rationality, Speed, Openness, "
+             "Freedom/Control, Centralisation, Altruism, Transhumanism"),
+        editable=IS_EDITABLE, name=_WHEEL,
+        prompt=WHEEL_PROMPT, provider="openai", ai_size="1536x1024",
+    )

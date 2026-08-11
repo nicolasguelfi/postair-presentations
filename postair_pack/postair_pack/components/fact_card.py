@@ -9,8 +9,10 @@ point of the pattern: a figure projected alone reads as a verdict, and this deck
 does not project verdicts. If a figure has no counterpoint worth showing, it
 does not belong on the slide.
 
-Population, methodological caveat and full reference stay in the slide tooltip —
-an auditorium reads a number and a line, it does not read a sample description.
+Population and methodological caveat stay in the slide tooltip — an auditorium
+reads a number and a line, it does not read a sample description. The reference
+travels as a citation code inside ``attribution`` (full reference on hover):
+the caller appends it, this component just renders the string it is given.
 """
 
 from streamtex import st_block, st_space, st_write

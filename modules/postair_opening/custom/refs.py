@@ -1,17 +1,22 @@
 """Les références du document — mécanisme BibTeX, et rien d'autre.
 
-Règle NG (2026-08-03) : **toute** référence d'une présentation passe par le
-mécanisme BibTeX de streamtex. Aucune phrase bibliographique n'est écrite à la
-main dans un bloc ni dans un fichier de contenu ; les données ne portent que des
-**clés de citation**, et la phrase imprimée est dérivée de ``references.bib``.
+Règle NG (2026-08-03, précisée 2026-08-11) : **toute** référence d'une
+présentation passe par le mécanisme BibTeX de streamtex, dans sa forme comme
+dans sa provenance. Les données ne portent que des **clés de citation** ; la
+slide porte le **code** de citation dans son texte visible — « (Guelfi, 2025) »,
+carte complète au survol — et la phrase bibliographique n'est imprimée qu'à un
+seul endroit : la page References. Jamais dans une slide, jamais dans un panneau
+tooltip (un ``cite()`` dans un panneau de survol serait un hover-dans-hover,
+fragile en projection). Pattern canonique : le deck DCS et le manuel
+``stx_manual_advanced`` — voir la section références du CLAUDE.md du dépôt.
 
 Ce qu'on y gagne, concrètement : une correction se fait en un seul endroit ; la
-même entrée sert l'infobulle, la citation en ligne et la page de références ; et
-une clé inconnue se voit tout de suite au lieu de passer pour une référence
+même entrée sert la carte au survol, le code en ligne et la page de références ;
+et une clé inconnue se voit tout de suite au lieu de passer pour une référence
 plausible.
 
 Les blocs n'importent jamais ``streamtex.bib`` directement — ils demandent ici
-``reference(...)`` ou ``citation(...)``.
+``citation(...)``.
 """
 
 from __future__ import annotations
@@ -23,7 +28,6 @@ from streamtex import (
     BibFormat,
     CitationStyle,
     cite,
-    format_entry,
     get_bib_registry,
     load_bib,
     set_bib_config,
@@ -38,12 +42,20 @@ BIB = Path(__file__).parent.parent / "static" / "data" / "references.bib"
 #: dépendrait alors de ce que l'orateur a ouvert avant, et la page de
 #: références changerait d'ordre d'une séance à l'autre. Le tri alphabétique
 #: est le seul qui donne deux fois la même page.
+#: Calibrage projection de la carte au survol (API BibConfig ≥ 0.7.20), repris
+#: du deck DCS : le défaut de la librairie (420 px, corps ~12 px) est illisible
+#: en amphithéâtre. La carte est ``position:fixed``, donc insensible au zoom
+#: des slides — ces tailles sont littérales à l'écran.
 CONFIG = BibConfig(
     format=BibFormat.APA,
     citation_style=CitationStyle.AUTHOR_YEAR,
     sort_by="author",
     hover_enabled=True,
     locale="en",
+    cite_color="#aab2c0",          # code discret dans le texte, gris-bleu clair
+    card_width="780px",
+    card_font_scale=2.0,
+    card_css="#stx-bib-card{max-height:70vh;overflow-y:auto;}",
 )
 
 
@@ -96,31 +108,19 @@ def _registry(keys):
     return registry
 
 
-def reference(*keys: str) -> str:
-    """La ou les références complètes, formatées depuis le ``.bib``.
-
-    Marque au passage les clés comme citées : c'est ce qui alimente la carte au
-    survol d'une citation en ligne.
-    """
-    registry = _registry(keys)
-    out = []
-    for key in keys:
-        entry = registry.get(key)
-        if entry is None:
-            raise KeyError(
-                f"clé de citation inconnue : {key!r} — elle doit exister dans "
-                f"{BIB.name}, jamais être remplacée par un texte écrit à la main.")
-        registry.cite(key)
-        out.append(format_entry(entry, CONFIG.format))
-    return " ".join(out)
-
-
 def citation(*keys: str, prefix: str = "", suffix: str = "") -> str:
-    """La citation en ligne — « (Liang et al., 2023) » — à poser dans un texte."""
+    """Le code de citation visible — « (Liang et al., 2023) », carte au survol.
+
+    C'est la SEULE forme qu'une slide a le droit de porter : le code dans le
+    texte, la référence complète dans la carte et sur la page References. La
+    phrase formatée n'existe plus qu'à un endroit, ``st_bibliography``.
+    """
     registry = _registry(keys)
     for key in keys:
         if registry.get(key) is None:
-            raise KeyError(f"clé de citation inconnue : {key!r}")
+            raise KeyError(
+                f"clé de citation inconnue : {key!r} — elle doit exister dans "
+                f"{BIB.name}, jamais être remplacée par un texte écrit à la main.")
     return cite(*keys, prefix=prefix, suffix=suffix)
 
 

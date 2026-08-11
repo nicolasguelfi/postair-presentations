@@ -29,7 +29,8 @@ NATURES = {
 }
 
 
-def argument_card(argument: dict, design_system, title: str, badge_style=None) -> None:
+def argument_card(argument: dict, design_system, title: str, badge_style=None,
+                  source_html: str | None = None) -> None:
     """Render one argument column.
 
     Parameters
@@ -39,6 +40,10 @@ def argument_card(argument: dict, design_system, title: str, badge_style=None) -
     design_system: a POSTAIR-protocol design system.
     title: the argument's title, already resolved to the display language.
     badge_style: style of the nature badge; defaults to the keyword colour.
+    source_html: what the source line shows — typically a native citation code
+        (full reference on hover) built by the caller, which owns the
+        code-or-string decision. When None, falls back to the manifest's
+        reference string, the pre-bib behaviour.
     """
     ds = design_system
     with st_block(ds.cards.coral):
@@ -50,5 +55,6 @@ def argument_card(argument: dict, design_system, title: str, badge_style=None) -
         st_space("v", "0.6vh")
         if argument.get("person"):
             st_write(ds.body.pole_label, argument["person"], tag=t.div)
-        st_write(ds.body.caption,
-                 argument.get("reference") or argument.get("citekey") or "", tag=t.div)
+        if source_html is None:
+            source_html = argument.get("reference") or argument.get("citekey") or ""
+        st_write(ds.body.caption, source_html, tag=t.div)

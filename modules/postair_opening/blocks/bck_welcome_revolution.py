@@ -23,17 +23,18 @@ most of the people in front of you — what changed in 2022 was not the idea, it
 was that it arrived in everyone's pocket at once. That sentence is the bridge to
 the afternoon session on generative AI.
 
-If someone challenges a figure, the tooltip has the sample, the methodological
-caveat and the full reference for all four, including the vendors' rebuttal on
-the detector figure. Open it rather than improvising: everything on this slide
-is defensible, and none of it is ours to soften.
+If someone challenges a figure, the tooltip has the sample and the
+methodological caveat, including the vendors' rebuttal on the detector figure —
+and each card carries its citation code: hovering it opens the full reference
+with a link to the source. Open those rather than improvising: everything on
+this slide is defensible, and none of it is ours to soften.
 """
 # @guideline: postair-minimal
 
 from __future__ import annotations
 
 from custom.facts import citekeys, figures, framing, text
-from custom.refs import reference
+from custom.refs import citation
 from custom.styles import DS
 from custom.styles import Styles as s
 from postair_pack.components.fact_card import fact_card
@@ -54,8 +55,9 @@ def _tooltip_entries():
     """One entry per figure, then the long view — everything, in the data's order.
 
     Each entry carries what the card cannot hold: who was actually measured, why
-    a figure of that age is still on screen, the methodological reservation, and
-    every reference including the one that argues the other way.
+    a figure of that age is still on screen, and the methodological reservation.
+    The references are NOT here: they live behind the citation code on each
+    card — a cite() inside a hover panel would be a hover-within-a-hover.
     """
     entries = []
     for figure in figures():
@@ -65,9 +67,6 @@ def _tooltip_entries():
         for key in ("trend", "freshness", "counterpoint", "caveat"):
             if figure.get(key):
                 parts.append(text(figure[key]))
-        # La bibliographie n'est pas dans les données : les clés le sont, et la
-        # phrase sort du .bib. Une seule vérité, un seul endroit à corriger.
-        parts.append(reference(*citekeys(figure)))
         entries.append((term, " ".join(parts)))
 
     long_view = framing("long-wave")
@@ -75,8 +74,7 @@ def _tooltip_entries():
         text(long_view["headline"]),
         " ".join([text(long_view["statement"]),
                   text(long_view["counterpoint"]),
-                  text(long_view["note"]),
-                  reference(*citekeys(long_view))]),
+                  text(long_view["note"])]),
     ))
     return entries
 
@@ -103,10 +101,16 @@ def build():
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for figure in shown:
                 with g.cell():
+                    # Le code de citation vit dans le texte VISIBLE de la carte,
+                    # à côté de l'attribution ; la référence complète est dans
+                    # la carte au survol et sur la page References.
                     fact_card(DS,
                               value=text(figure["value"]),
                               claim=text(figure["claim"]),
                               counterpoint=text(figure["counterpoint"]["short"]),
-                              attribution=text(figure["source"].get("attribution")))
+                              attribution=(text(figure["source"].get("attribution"))
+                                           + " " + citation(*citekeys(figure))))
         st_space("v", "2vh")
-        st_write(bs.closing, text(framing("long-wave")["headline"]), tag=t.div)
+        long_view = framing("long-wave")
+        st_write(bs.closing, text(long_view["headline"]), " ",
+                 citation(*citekeys(long_view)), tag=t.div)

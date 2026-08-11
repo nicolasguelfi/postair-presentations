@@ -17,6 +17,8 @@ import blocks
 import streamlit as st
 import streamtex as stx
 import streamtex.styles as sts
+from custom.refs import CONFIG as BIB_CONFIG
+from custom.refs import sources as bib_sources
 from custom.themes import dark
 from streamtex import (
     BannerConfig,
@@ -113,6 +115,7 @@ marker_config = MarkerConfig(
 st_book(
     [
         blocks.bck_debate_method,          # how the bank is used — for the speaker
+        blocks.bck_provenance,             # said once here, no longer on every card
         # ── Knowing ─────────────────────────────────────────────────
         blocks.bck_axis_trust,
         blocks.bck_axis_optimism,
@@ -134,6 +137,7 @@ st_book(
         blocks.bck_disc_wrapup,            # no consensus, and that is normal
         blocks.bck_break_countdown,        # live countdown + the whole company
         blocks.bck_break_rewelcome,        # what the second half holds
+        blocks.bck_references,             # never presented; opened when challenged
     ],
     toc_config=toc,
     marker_config=marker_config,
@@ -145,4 +149,9 @@ st_book(
     # Auditorium base: 30pt body base ⇒ bullets ≈60pt, slide titles ≈80pt.
     scale=ScaleConfig(base_pt_desktop=30),
     doc_version=_doc_version,
+    # La bibliographie se charge PAR ``st_book``, jamais avant lui : il vide le
+    # registre au début de sa construction. Le .bib est GELÉ par
+    # build_debates_content.py — même contrat que content.json.
+    bib_sources=bib_sources(),
+    bib_config=BIB_CONFIG,
 )

@@ -1,8 +1,9 @@
 """AI concerns the whole University — one card per faculty, and one honest reserve.
 
 Data-driven from ``custom.facts``: the block renders, it does not know a single
-discipline. Each headline is the short form of a finding verified at its source;
-the full sentence, its reference and its caveat live in the tooltip.
+discipline. Each headline is the short form of a finding verified at its source
+and carries its citation code — full reference on hover ; the full sentence and
+its caveat live in the tooltip.
 
 Every claim here is about a *discipline*, never about this university. No survey
 measures generative-AI adoption faculty by faculty at the University of
@@ -20,16 +21,18 @@ numbers for this university, nobody has measured it, and these examples are what
 your field is already living through, not a measurement of this room." Saying it
 buys the credibility of everything that follows, including the survey.
 
-The tooltip carries the full sourced sentence and the caveat for each example,
-including the two that come reported inside another publication rather than read
-at the primary source. If challenged, say which is which — it is written there.
+The tooltip carries the full sentence and the caveat for each example, including
+the two that come reported inside another publication rather than read at the
+primary source. If challenged, say which is which — it is written there — and
+hover the citation code on the card: the full reference opens with a link to
+the source.
 """
 # @guideline: postair-minimal
 
 from __future__ import annotations
 
 from custom.facts import disciplines, no_faculty_data, text
-from custom.refs import reference
+from custom.refs import citation
 from custom.styles import DS
 from custom.styles import Styles as s
 from postair_pack.components.faculty_card import faculty_card
@@ -47,12 +50,14 @@ bs = BlockStyles
 
 
 def _tooltip_entries():
-    """The full sourced sentence behind every headline, faculty by faculty.
+    """The full sentence behind every headline, faculty by faculty.
 
     A headline on a card is a claim without its evidence. Here each one gets its
-    complete statement, its reservation and its reference — and, where the
-    finding was read inside another publication rather than at its own source,
-    that is said rather than smoothed over.
+    complete statement and its reservation — and, where the finding was read
+    inside another publication rather than at its own source, that is said
+    rather than smoothed over. The references are NOT here: they live behind
+    the citation code on each headline — a cite() inside a hover panel would
+    be a hover-within-a-hover.
     """
     entries = []
     for group in disciplines():
@@ -62,14 +67,20 @@ def _tooltip_entries():
                 parts.append(text(example["caveat"]))
             source = example.get("source") or {}
             if source.get("kind") == "reported-in":
-                parts.append("Reported inside the source below, not read at the original.")
-            if source.get("citekeys"):
-                # La phrase bibliographique vient du .bib, jamais des données.
-                parts.append(reference(*source["citekeys"]))
+                parts.append("Reported inside the source cited on the card, "
+                             "not read at the original.")
             term = f"{text(group['faculty'])} — {text(example['headline'])}"
             entries.append((term, " ".join(parts)))
     entries.append(("No figures for this university", text(no_faculty_data())))
     return entries
+
+
+def _headline(example) -> str:
+    """A card headline with its citation code — full reference on hover."""
+    keys = (example.get("source") or {}).get("citekeys")
+    if not keys:
+        return text(example["headline"])
+    return text(example["headline"]) + " " + citation(*keys)
 
 
 def build():
@@ -94,7 +105,7 @@ def build():
                 with g.cell():
                     faculty_card(DS,
                                  faculty=text(group["faculty"]),
-                                 headlines=[text(e["headline"]) for e in group["examples"]])
+                                 headlines=[_headline(e) for e in group["examples"]])
         st_space("v", "2vh")
         # The reserve, short enough to be read from the back row. Its full
         # wording — which countries, which studies, what they do and do not

@@ -8,12 +8,12 @@
   ],
   "default_language": "en",
   "generated_by": "_project/tools/build_debates_content.py",
-  "instrument_version": "1.8.7",
+  "instrument_version": "1.8.8",
   "debate_version": "2.3.2"
  },
  "version": 1,
  "generated_by": "_project/tools/build_debates_content.py",
- "instrument_version": "1.8.7",
+ "instrument_version": "1.8.8",
  "debate_version": "2.3.2",
  "poles": [
   {
@@ -141,8 +141,11 @@
      "quote": {
       "en": "we should be on our guard not to overestimate science and scientific methods … concerning investigations as to how to set an axe … science never troubles itself.",
       "fr": null,
-      "reference": "What Shall We Do 1886",
-      "reference_full": "What Shall We Do 1886",
+      "reference": "tolstoy1886-whatshallwedo",
+      "reference_full": "tolstoy1886-whatshallwedo",
+      "citekeys": [
+       "tolstoy1886-whatshallwedo"
+      ],
       "curated": false,
       "documents": [
        "TRU-02",
@@ -151,14 +154,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/823c2f5d-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/tolstoi/823c2f5d-512.png",
+      "portrait": "figures/08181b1e-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/tolstoi/08181b1e-512.png",
       "portrait_source": "figures/content/russia/tolstoi.leon/image/tolstoi.leon__pulid__chest__v2.png",
-      "video": "https://media.sumvadis.ai/tolstoi/b67f4765.mp4",
+      "video": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/tolstoi/dc3b8200-050.mp4",
-      "poster": "figures/d0b5f50a-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/tolstoi/d0b5f50a-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/tolstoi/5c80b8ea-050.mp4",
+      "poster": "figures/9d777b82-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/tolstoi/9d777b82-poster-512.png"
      }
     },
     {
@@ -174,6 +177,9 @@
       "fr": "Nous croyons que de l'éthique, de l'intérêt personnel éclairé et du bien commun émergera notre gouvernance.",
       "reference": "A Declaration of the Independence of Cyberspace, Davos, 8 February 1996",
       "reference_full": "A Declaration of the Independence of Cyberspace, Davos, 8 February 1996",
+      "citekeys": [
+       "barlow1996-declaration"
+      ],
       "curated": true,
       "documents": [
        "TRU-03",
@@ -182,14 +188,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/4388bc21-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/barlow/4388bc21-512.png",
+      "portrait": "figures/c75a5d70-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/barlow/c75a5d70-512.png",
       "portrait_source": "figures/content/united-states/barlow.john-perry/image/barlow.john-perry__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/barlow/3c850c12.mp4",
+      "video": "https://media.sumvadis.ai/barlow/00e26cc5.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/barlow/6df8a87f-050.mp4",
-      "poster": "figures/fdc021b4-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/barlow/fdc021b4-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/barlow/f4b16a43-050.mp4",
+      "poster": "figures/5ebcb4b3-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/barlow/5ebcb4b3-poster-512.png"
      }
     },
     {
@@ -203,8 +209,11 @@
      "quote": {
       "en": "The majority of scientists are contemptuous of this almost superstitious attitude… Their outlook was well summed up by Lady Lovelace over a hundred years ago",
       "fr": null,
-      "reference": "BBC 1951, followed by his systematic rebuttal of that majority outlook",
-      "reference_full": "BBC 1951, followed by his systematic rebuttal of that majority outlook",
+      "reference": "turing1951-bbc, followed by his systematic rebuttal of that majority outlook",
+      "reference_full": "turing1951-bbc, followed by his systematic rebuttal of that majority outlook",
+      "citekeys": [
+       "turing1951-bbc"
+      ],
       "curated": false,
       "documents": [
        "TRU-04"
@@ -212,14 +221,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/79527f55-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/turing/79527f55-512.png",
+      "portrait": "figures/e18e5d50-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/turing/e18e5d50-512.png",
       "portrait_source": "figures/content/united-kingdom/turing.alan/image/turing.alan__frame__chest.png",
-      "video": "https://media.sumvadis.ai/turing/9ff838af.mp4",
+      "video": "https://media.sumvadis.ai/turing/a9dfc4ff.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/turing/6046ec2b-050.mp4",
-      "poster": "figures/afe585a7-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/turing/afe585a7-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/turing/4787a7fd-050.mp4",
+      "poster": "figures/b3163255-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/turing/b3163255-poster-512.png"
      }
     }
    ],
@@ -403,8 +412,11 @@
      "quote": {
       "en": "I see no difference between the varieties carrying a BT gene… and the varieties created by conventional plant breeding.",
       "fr": null,
-      "reference": "Reason interview with Ronald Bailey, April 2000",
-      "reference_full": "Reason interview with Ronald Bailey, April 2000",
+      "reference": "borlaug2000-reason",
+      "reference_full": "borlaug2000-reason",
+      "citekeys": [
+       "borlaug2000-reason"
+      ],
       "curated": false,
       "documents": [
        "TRU-02",
@@ -413,14 +425,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/7810be50-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/borlaug/7810be50-512.png",
+      "portrait": "figures/bd2f5dec-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/borlaug/bd2f5dec-512.png",
       "portrait_source": "figures/content/united-states/borlaug.norman/image/borlaug.norman__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/borlaug/8728b468.mp4",
+      "video": "https://media.sumvadis.ai/borlaug/85015c73.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/borlaug/6ade3c5e-050.mp4",
-      "poster": "figures/20de75df-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/borlaug/20de75df-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/borlaug/6de3dfc3-050.mp4",
+      "poster": "figures/9f1d8645-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/borlaug/9f1d8645-poster-512.png"
      }
     },
     {
@@ -434,8 +446,11 @@
      "quote": {
       "en": "the director of the National Institutes of Health is requested to give immediate consideration to establishing an advisory committee...",
       "fr": null,
-      "reference": "Berg letter 1974",
-      "reference_full": "Berg letter 1974",
+      "reference": "berg1974-letter",
+      "reference_full": "berg1974-letter",
+      "citekeys": [
+       "berg1974-letter"
+      ],
       "curated": false,
       "documents": [
        "TRU-03"
@@ -443,8 +458,8 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/f585d20e-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/berg/f585d20e-512.png",
+      "portrait": "figures/6cbe48a1-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/berg/6cbe48a1-512.png",
       "portrait_source": "figures/content/united-states/berg.paul/image/berg.paul__frame__chest.jpeg",
       "video": "https://media.sumvadis.ai/berg/84011ea3.mp4",
       "video_kind": "presented",
@@ -464,8 +479,11 @@
      "quote": {
       "en": "agile national and international regulations — beyond voluntary guidelines",
       "fr": null,
-      "reference": "Written Testimony before the U.S. Senate Judiciary Subcommittee …",
-      "reference_full": "Written Testimony before the U.S. Senate Judiciary Subcommittee (\"Oversight of A.I.: Principles for Regulation\"), 2023-07-25",
+      "reference": "bengio2023-senate",
+      "reference_full": "bengio2023-senate",
+      "citekeys": [
+       "bengio2023-senate"
+      ],
       "curated": false,
       "documents": [
        "TRU-01"
@@ -664,8 +682,11 @@
      "quote": {
       "en": "What I see coming is a gigantic slaughterhouse, a molecular Auschwitz, in which valuable enzymes, hormones and so on will be extracted instead of gold teeth.",
       "fr": null,
-      "reference": "Heraclitean Fire 1978",
-      "reference_full": "Heraclitean Fire 1978",
+      "reference": "chargaff1978-heraclitean",
+      "reference_full": "chargaff1978-heraclitean",
+      "citekeys": [
+       "chargaff1978-heraclitean"
+      ],
       "curated": false,
       "documents": [
        "OPT-06"
@@ -673,14 +694,14 @@
       "verification": "Verbatim (verified via reproduction)"
      },
      "media": {
-      "portrait": "figures/dfb7533d-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/chargaff/dfb7533d-512.png",
+      "portrait": "figures/4fd42a07-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/chargaff/4fd42a07-512.png",
       "portrait_source": "figures/content/austria/chargaff.erwin/image/chargaff.erwin__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/chargaff/2580968c.mp4",
+      "video": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/chargaff/7ad9cce2-050.mp4",
-      "poster": "figures/c85888d4-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/chargaff/c85888d4-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/chargaff/00dbd16f-050.mp4",
+      "poster": "figures/86d352e2-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/chargaff/86d352e2-poster-512.png"
      }
     },
     {
@@ -696,6 +717,9 @@
       "fr": "Répéter l'erreur en manifestant, par la construction de réacteurs nucléaires, le même mépris de la vie humaine est la pire trahison possible de la mémoire des victimes de Hiroshima.",
       "reference": "History Repeats (Tokyo Postcard), The New Yorker, 28 March 2011",
       "reference_full": "History Repeats (Tokyo Postcard), The New Yorker, 28 March 2011",
+      "citekeys": [
+       "oe2011-newyorker"
+      ],
       "curated": true,
       "documents": [
        "OPT-01",
@@ -704,8 +728,8 @@
       "verification": "verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/82623711-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/oe/82623711-512.png",
+      "portrait": "figures/450bc375-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/oe/450bc375-512.png",
       "portrait_source": "figures/content/japan/oe.kenzaburo/image/oe.kenzaburo__crop11__pulid__chest.png",
       "video": "https://media.sumvadis.ai/oe/19b14574.mp4",
       "video_kind": "presented",
@@ -727,6 +751,9 @@
       "fr": "un crime contre la liberté, contre la santé et contre l'humanité, qui, avant que bien des années se soient écoulées, sera universellement tenu pour l'une des plus infâmes taches sur la civilisation du dix-neuvième siècle.",
       "reference": "Vaccination a Delusion: Its Penal Enforcement a Crime, London: Swan Sonnenschein, 1898 …",
       "reference_full": "Vaccination a Delusion: Its Penal Enforcement a Crime, London: Swan Sonnenschein, 1898 (closing sentence)",
+      "citekeys": [
+       "wallace1898-delusion"
+      ],
       "curated": true,
       "documents": [
        "OPT-04",
@@ -735,14 +762,14 @@
       "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/0ac8f479-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/wallace/0ac8f479-512.png",
+      "portrait": "figures/3707b2cd-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/wallace/3707b2cd-512.png",
       "portrait_source": "figures/content/united-kingdom/wallace.alfred-russel/image/wallace.alfred-russel__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/wallace/29ea3847.mp4",
+      "video": "https://media.sumvadis.ai/wallace/e28038df.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/wallace/c781ce9c-050.mp4",
-      "poster": "figures/78c8460c-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/wallace/78c8460c-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/wallace/47afd56f-050.mp4",
+      "poster": "figures/3f2ab961-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/wallace/3f2ab961-poster-512.png"
      }
     }
    ],
@@ -928,6 +955,9 @@
       "fr": "Nous allons assister à la naissance du centaure et nous verrons bientôt voler les premiers anges ! Nous devrons briser les portes de la vie pour en éprouver les verrous et les cadenas !",
       "reference": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, prologue …",
       "reference_full": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, prologue (R.W. Flint translation)",
+      "citekeys": [
+       "marinetti1909-manifesto"
+      ],
       "curated": true,
       "documents": [
        "OPT-03"
@@ -935,14 +965,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/b9c76e04-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/marinetti/b9c76e04-512.png",
+      "portrait": "figures/5cf530ca-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/marinetti/5cf530ca-512.png",
       "portrait_source": "figures/content/italy/marinetti.filippo-tommaso/image/marinetti.filippo-tommaso__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/marinetti/c47acd4c.mp4",
+      "video": "https://media.sumvadis.ai/marinetti/0084d933.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/marinetti/7abe6cb9-050.mp4",
-      "poster": "figures/ede0a668-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/marinetti/ede0a668-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/marinetti/b95a5fa7-050.mp4",
+      "poster": "figures/8a39ed64-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/marinetti/8a39ed64-poster-512.png"
      }
     },
     {
@@ -956,8 +986,11 @@
      "quote": {
       "en": "La prospérité de la France ne peut avoir lieu que par l'effet et en résultat des progrès des sciences, des beaux-arts et métiers.",
       "fr": null,
-      "reference": "Organisateur 1819",
-      "reference_full": "Organisateur 1819",
+      "reference": "saintsimon1819-organisateur",
+      "reference_full": "saintsimon1819-organisateur",
+      "citekeys": [
+       "saintsimon1819-organisateur"
+      ],
       "curated": false,
       "documents": [
        "OPT-01",
@@ -966,14 +999,14 @@
       "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/d60470a3-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/saint-simon/d60470a3-512.png",
+      "portrait": "figures/eae45309-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/saint-simon/eae45309-512.png",
       "portrait_source": "figures/content/france/saint-simon.henri/image/saint-simon.henri__pulid__chest.png",
-      "video": "https://media.sumvadis.ai/saint-simon/79cef567.mp4",
+      "video": "https://media.sumvadis.ai/saint-simon/74d5342d.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/saint-simon/6ae0c52c-050.mp4",
-      "poster": "figures/059ae20e-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/saint-simon/059ae20e-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/saint-simon/77a1011d-050.mp4",
+      "poster": "figures/33ce2432-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/saint-simon/33ce2432-poster-512.png"
      }
     },
     {
@@ -987,8 +1020,11 @@
      "quote": {
       "en": "So we find that the three possible solutions of the great problem of increasing human energy are answered by the three words: food, peace, work.",
       "fr": null,
-      "reference": "Century 1900",
-      "reference_full": "Century 1900",
+      "reference": "tesla1900-century",
+      "reference_full": "tesla1900-century",
+      "citekeys": [
+       "tesla1900-century"
+      ],
       "curated": false,
       "documents": [
        "OPT-01",
@@ -997,14 +1033,14 @@
       "verification": "Verbatim (verified via reproduction + collation)"
      },
      "media": {
-      "portrait": "figures/131f65a2-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/tesla/131f65a2-512.png",
+      "portrait": "figures/d733d921-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/tesla/d733d921-512.png",
       "portrait_source": "figures/content/serbia/tesla.nikola/image/tesla.nikola__frame__chest.png",
-      "video": "https://media.sumvadis.ai/tesla/82b8522a.mp4",
+      "video": "https://media.sumvadis.ai/tesla/462a2483.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/tesla/38707139-050.mp4",
-      "poster": "figures/95d91d97-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/tesla/95d91d97-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/tesla/aafbc8ad-050.mp4",
+      "poster": "figures/6c7f41a1-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/tesla/6c7f41a1-poster-512.png"
      }
     }
    ],
@@ -1190,6 +1226,9 @@
       "fr": "Nous avons partout profondément oublié que le paiement en espèces n'est pas l'unique lien entre les êtres humains",
       "reference": "Past and Present, London: Chapman and Hall, 1843",
       "reference_full": "Past and Present, London: Chapman and Hall, 1843",
+      "citekeys": [
+       "carlyle1843-pastpresent"
+      ],
       "curated": true,
       "documents": [
        "RAT-05"
@@ -1197,14 +1236,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/1f2fe238-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/carlyle/1f2fe238-512.png",
+      "portrait": "figures/e9cfd863-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/carlyle/e9cfd863-512.png",
       "portrait_source": "figures/content/united-kingdom/carlyle.thomas/image/carlyle.thomas__frame__elbows.jpeg",
-      "video": "https://media.sumvadis.ai/carlyle/a3494263.mp4",
+      "video": "https://media.sumvadis.ai/carlyle/34c074fa.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/carlyle/af453d18-050.mp4",
-      "poster": "figures/3934de72-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/carlyle/3934de72-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/carlyle/99ab78d9-050.mp4",
+      "poster": "figures/c6a2c068-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/carlyle/c6a2c068-poster-512.png"
      }
     },
     {
@@ -1218,8 +1257,11 @@
      "quote": {
       "en": "La civilisation est un bien invisible puisqu'elle porte non sur les choses, mais sur les invisibles liens qui les nouent l'une à l'autre.",
       "fr": null,
-      "reference": "Général X 1943",
-      "reference_full": "Général X 1943",
+      "reference": "saintexupery1943-generalx",
+      "reference_full": "saintexupery1943-generalx",
+      "citekeys": [
+       "saintexupery1943-generalx"
+      ],
       "curated": false,
       "documents": [
        "RAT-04",
@@ -1228,14 +1270,14 @@
       "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/19fe2ca7-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/saint-exupery/19fe2ca7-512.png",
+      "portrait": "figures/a4f1f2fc-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/saint-exupery/a4f1f2fc-512.png",
       "portrait_source": "figures/content/france/saint-exupery.antoine/image/saint-exupery.antoine__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/saint-exupery/e31e9268.mp4",
+      "video": "https://media.sumvadis.ai/saint-exupery/2677c5d2.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/saint-exupery/b524e714-050.mp4",
-      "poster": "figures/9cfcd824-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/saint-exupery/9cfcd824-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/saint-exupery/1a207f72-050.mp4",
+      "poster": "figures/9e1fe5a5-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/saint-exupery/9e1fe5a5-poster-512.png"
      }
     },
     {
@@ -1249,8 +1291,11 @@
      "quote": {
       "en": "la souffrance est une loi divine, mais je suis de ceux qui... affirment qu'on peut détruire la misère",
       "fr": null,
-      "reference": "Misère 1849",
-      "reference_full": "Misère 1849",
+      "reference": "hugo1849-misere",
+      "reference_full": "hugo1849-misere",
+      "citekeys": [
+       "hugo1849-misere"
+      ],
       "curated": false,
       "documents": [
        "RAT-05"
@@ -1258,14 +1303,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/d7b0763b-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/hugo/d7b0763b-512.png",
+      "portrait": "figures/bc978448-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/hugo/bc978448-512.png",
       "portrait_source": "figures/content/france/hugo.victor/image/hugo.victor__frame__chest.png",
-      "video": "https://media.sumvadis.ai/hugo/c1128405.mp4",
+      "video": "https://media.sumvadis.ai/hugo/08ddce6d.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/hugo/15acf139-050.mp4",
-      "poster": "figures/c08a170d-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/hugo/c08a170d-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/hugo/4a58d749-050.mp4",
+      "poster": "figures/4a41db7f-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/hugo/4a41db7f-poster-512.png"
      }
     }
    ],
@@ -1449,8 +1494,11 @@
      "quote": {
       "en": "quite small compared with the effects of X-rays used in medical practice … only a fraction of the increase in cosmic ray effect [of moving] from the seashore to … Colorado.",
       "fr": null,
-      "reference": "Our Nuclear Future 1958, chapter XV",
-      "reference_full": "Our Nuclear Future 1958, chapter XV",
+      "reference": "teller1958-nuclearfuture, chapter XV",
+      "reference_full": "teller1958-nuclearfuture, chapter XV",
+      "citekeys": [
+       "teller1958-nuclearfuture"
+      ],
       "curated": false,
       "documents": [
        "RAT-02"
@@ -1458,14 +1506,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/b4d8e7c0-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/teller/b4d8e7c0-512.png",
+      "portrait": "figures/91e74e45-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/teller/91e74e45-512.png",
       "portrait_source": "figures/content/hungary/teller.edward/image/teller.edward__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/teller/80052354.mp4",
+      "video": "https://media.sumvadis.ai/teller/1354adf2.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/teller/48475481-050.mp4",
-      "poster": "figures/578f1a16-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/teller/578f1a16-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/teller/9aa89fda-050.mp4",
+      "poster": "figures/00fc3b39-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/teller/00fc3b39-poster-512.png"
      }
     },
     {
@@ -1479,8 +1527,11 @@
      "quote": {
       "en": "philosophy and the sciences may no longer float in air, but rest on the solid foundation of experience of every kind, and the same well examined and weighed.",
       "fr": null,
-      "reference": "Instauration 1620, Epistle Dedicatory",
-      "reference_full": "Instauration 1620, Epistle Dedicatory",
+      "reference": "bacon1620-instauration, Epistle Dedicatory",
+      "reference_full": "bacon1620-instauration, Epistle Dedicatory",
+      "citekeys": [
+       "bacon1620-instauration"
+      ],
       "curated": false,
       "documents": [
        "RAT-01"
@@ -1488,14 +1539,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/baf2e7b5-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/bacon/baf2e7b5-512.png",
+      "portrait": "figures/f437d31e-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/bacon/f437d31e-512.png",
       "portrait_source": "figures/content/united-kingdom/bacon.francis/image/bacon.francis__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/bacon/edf6fbc1.mp4",
+      "video": "https://media.sumvadis.ai/bacon/27444853.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/bacon/acdd2dc0-050.mp4",
-      "poster": "figures/d8cb3e03-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/bacon/d8cb3e03-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/bacon/547b8680-050.mp4",
+      "poster": "figures/d7bc839f-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/bacon/d7bc839f-poster-512.png"
      }
     },
     {
@@ -1511,6 +1562,9 @@
       "fr": "Dans ma conception de l'éducation, je m'efforce d'être guidé par les lois de la nature et de coordonner toutes les actions physiques des êtres humains selon les lois très simples du « nombre et de la raison ».",
       "reference": "The Autobiography of Fukuzawa Yukichi (Fukuo Jiden, 1899), trans. Eiichi Kiyooka …",
       "reference_full": "The Autobiography of Fukuzawa Yukichi (Fukuo Jiden, 1899), trans. Eiichi Kiyooka, The Hokuseido Press, 1960 (\"My fundamental principle in education\")",
+      "citekeys": [
+       "fukuzawa1899-autobiography"
+      ],
       "curated": true,
       "documents": [
        "RAT-01"
@@ -1518,14 +1572,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/813ccce9-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/fukuzawa/813ccce9-512.png",
+      "portrait": "figures/24ccf8ba-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/fukuzawa/24ccf8ba-512.png",
       "portrait_source": "figures/content/japan/fukuzawa.yukichi/image/fukuzawa.yukichi__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/fukuzawa/b12bd66a.mp4",
+      "video": "https://media.sumvadis.ai/fukuzawa/e8420bca.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/fukuzawa/1d192077-050.mp4",
-      "poster": "figures/5a84468e-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/fukuzawa/5a84468e-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/fukuzawa/8b623e73-050.mp4",
+      "poster": "figures/3bbda6e5-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/fukuzawa/3bbda6e5-poster-512.png"
      }
     }
    ],
@@ -1709,8 +1763,11 @@
      "quote": {
       "en": "we have allowed these chemicals to be used with little or no advance investigation of their effect",
       "fr": null,
-      "reference": "Silent Spring 1962",
-      "reference_full": "Silent Spring 1962",
+      "reference": "carson1962-silentspring",
+      "reference_full": "carson1962-silentspring",
+      "citekeys": [
+       "carson1962-silentspring"
+      ],
       "curated": false,
       "documents": [
        "SPE-04"
@@ -1718,14 +1775,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/db2b411e-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/carson/db2b411e-512.png",
+      "portrait": "figures/9bf4354c-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/carson/9bf4354c-512.png",
       "portrait_source": "figures/content/united-states/carson.rachel/image/carson.rachel__frame__chest.png",
-      "video": "https://media.sumvadis.ai/carson/bdc03c51.mp4",
+      "video": "https://media.sumvadis.ai/carson/6f12e88c.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/carson/dc00c5c8-050.mp4",
-      "poster": "figures/aefbf361-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/carson/aefbf361-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/carson/5ef81089-050.mp4",
+      "poster": "figures/6e80212b-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/carson/6e80212b-poster-512.png"
      }
     },
     {
@@ -1739,8 +1796,11 @@
      "quote": {
       "en": "a change to a new type of music is something to beware of as a hazard of all our fortunes. For the modes of music are never disturbed without unsettling of the most fundamental political and social conventions",
       "fr": null,
-      "reference": "Republic IV 424c, Shorey trans",
-      "reference_full": "Republic IV 424c, Shorey trans",
+      "reference": "plato-republic, IV 424c, Shorey trans",
+      "reference_full": "plato-republic, IV 424c, Shorey trans",
+      "citekeys": [
+       "plato-republic"
+      ],
       "curated": false,
       "documents": [
        "SPE-06"
@@ -1748,14 +1808,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/79458d33-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/platon/79458d33-512.png",
+      "portrait": "figures/ed35b1d0-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/platon/ed35b1d0-512.png",
       "portrait_source": "figures/content/greece/plato/image/plato__frame__chest.png",
-      "video": "https://media.sumvadis.ai/platon/f326ac59.mp4",
+      "video": "https://media.sumvadis.ai/platon/504be6bd.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/platon/0c504562-050.mp4",
-      "poster": "figures/65ff90e6-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/platon/65ff90e6-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/platon/2885814e-050.mp4",
+      "poster": "figures/1c4f0c68-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/platon/1c4f0c68-poster-512.png"
      }
     },
     {
@@ -1771,6 +1831,9 @@
       "fr": "l'irréflexion — l'imprudence téméraire, la confusion sans espoir ou la répétition complaisante de « vérités » devenues triviales et vides — me semble compter parmi les caractéristiques marquantes de notre temps. Ce que je propose est donc très simple : ce n'est rien de plus que penser ce que nous faisons.",
       "reference": "The Human Condition, University of Chicago Press, 1958, Prologue, p. 5",
       "reference_full": "The Human Condition, University of Chicago Press, 1958, Prologue, p. 5",
+      "citekeys": [
+       "arendt1958-human"
+      ],
       "curated": true,
       "documents": [
        "SPE-01",
@@ -1779,14 +1842,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/f938b916-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/arendt/f938b916-512.png",
+      "portrait": "figures/8fd7db01-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/arendt/8fd7db01-512.png",
       "portrait_source": "figures/content/germany/arendt.hannah/image/arendt.hannah__frame__elbows.jpeg",
-      "video": "https://media.sumvadis.ai/arendt/e57a8c9d.mp4",
+      "video": "https://media.sumvadis.ai/arendt/0f0088e5.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/arendt/82121d2c-050.mp4",
-      "poster": "figures/1e22360b-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/arendt/1e22360b-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/arendt/ec12a62e-050.mp4",
+      "poster": "figures/11c784fb-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/arendt/11c784fb-poster-512.png"
      }
     }
    ],
@@ -1972,6 +2035,9 @@
       "fr": null,
       "reference": "brecht1932-radio",
       "reference_full": "brecht1932-radio",
+      "citekeys": [
+       "brecht1932-radio"
+      ],
       "curated": false,
       "documents": [
        "SPE-01",
@@ -1980,14 +2046,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/97aa16bf-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/brecht/97aa16bf-512.png",
+      "portrait": "figures/94338e63-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/brecht/94338e63-512.png",
       "portrait_source": "figures/content/germany/brecht.bertolt/image/brecht.bertolt__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/brecht/5afac871.mp4",
+      "video": "https://media.sumvadis.ai/brecht/2b2862e7.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/brecht/d2f93bbc-050.mp4",
-      "poster": "figures/7ab9f54e-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/brecht/7ab9f54e-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/brecht/8b12e98a-050.mp4",
+      "poster": "figures/041a1b2c-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/brecht/041a1b2c-poster-512.png"
      }
     },
     {
@@ -2001,8 +2067,11 @@
      "quote": {
       "en": "My personal desire would be to prohibit entirely the use of alternating currents.",
       "fr": null,
-      "reference": "Dangers 1889",
-      "reference_full": "Dangers 1889",
+      "reference": "edison1889-dangers",
+      "reference_full": "edison1889-dangers",
+      "citekeys": [
+       "edison1889-dangers"
+      ],
       "curated": false,
       "documents": [
        "SPE-04"
@@ -2010,14 +2079,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/e0afe77e-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/edison/e0afe77e-512.png",
+      "portrait": "figures/91294d3f-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/edison/91294d3f-512.png",
       "portrait_source": "figures/content/united-states/edison.thomas/image/edison.thomas__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/edison/e4e4cb40.mp4",
+      "video": "https://media.sumvadis.ai/edison/19d7d43c.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/edison/12f64bd2-050.mp4",
-      "poster": "figures/db9aa51f-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/edison/db9aa51f-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/edison/775bc243-050.mp4",
+      "poster": "figures/7c72716f-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/edison/7c72716f-poster-512.png"
      }
     },
     {
@@ -2031,8 +2100,11 @@
      "quote": {
       "en": "they appeared three times closer and nine times larger… Afterward I made another more perfect one… Finally, sparing no labor or expense…",
       "fr": null,
-      "reference": "Sidereus Nuncius 1610, 6r (Van Helden trans)",
-      "reference_full": "Sidereus Nuncius 1610, 6r (Van Helden trans)",
+      "reference": "galilei1610-sidereus, 6r, Van Helden trans",
+      "reference_full": "galilei1610-sidereus, 6r, Van Helden trans",
+      "citekeys": [
+       "galilei1610-sidereus"
+      ],
       "curated": false,
       "documents": [
        "SPE-02"
@@ -2040,14 +2112,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/c4eef319-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/galilee/c4eef319-512.png",
+      "portrait": "figures/9c62fa4a-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/galilee/9c62fa4a-512.png",
       "portrait_source": "figures/content/italy/galilei.galileo/image/galilei.galileo__master__kontext.png",
-      "video": "https://media.sumvadis.ai/galilee/24e89bf2.mp4",
+      "video": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/galilee/f737fa0e-050.mp4",
-      "poster": "figures/5b2a5964-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/galilee/5b2a5964-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/galilee/d7ad29c6-050.mp4",
+      "poster": "figures/6f1f114f-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/galilee/6f1f114f-poster-512.png"
      }
     }
    ],
@@ -2231,8 +2303,11 @@
      "quote": {
       "en": "It is a mistake to suppose that any technological innovation has a one-sided effect.",
       "fr": null,
-      "reference": "Technopoly 1992, chapter 1",
-      "reference_full": "Technopoly 1992, chapter 1",
+      "reference": "postman1992-technopoly, chapter 1",
+      "reference_full": "postman1992-technopoly, chapter 1",
+      "citekeys": [
+       "postman1992-technopoly"
+      ],
       "curated": false,
       "documents": [
        "OPE-02",
@@ -2241,14 +2316,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/c22a45ac-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/postman/c22a45ac-512.png",
+      "portrait": "figures/f639a90a-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/postman/f639a90a-512.png",
       "portrait_source": "figures/content/united-states/postman.neil/image/postman.neil__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/postman/f9b4a6f2.mp4",
+      "video": "https://media.sumvadis.ai/postman/10d677d1.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/postman/b1c052d4-050.mp4",
-      "poster": "figures/0b95ec5a-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/postman/0b95ec5a-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/postman/869bcf25-050.mp4",
+      "poster": "figures/e8fb7fd1-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/postman/e8fb7fd1-poster-512.png"
      }
     },
     {
@@ -2262,8 +2337,11 @@
      "quote": {
       "en": "I have lived some thirty years on this planet, and I have yet to hear the first syllable of valuable or even earnest advice from my seniors.",
       "fr": null,
-      "reference": "Walden 1854 (Economy)",
-      "reference_full": "Walden 1854 (Economy)",
+      "reference": "thoreau1854-walden, Economy",
+      "reference_full": "thoreau1854-walden, Economy",
+      "citekeys": [
+       "thoreau1854-walden"
+      ],
       "curated": false,
       "documents": [
        "OPE-04"
@@ -2271,14 +2349,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/cc0b4ec1-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/thoreau/cc0b4ec1-512.png",
+      "portrait": "figures/391e5c59-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/thoreau/391e5c59-512.png",
       "portrait_source": "figures/content/united-states/thoreau.henry-david/image/thoreau.henry-david__pulid__chest.png",
-      "video": "https://media.sumvadis.ai/thoreau/d3969f09.mp4",
+      "video": "https://media.sumvadis.ai/thoreau/a9cfb9b5.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/thoreau/e6a07190-050.mp4",
-      "poster": "figures/d6ab78c5-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/thoreau/d6ab78c5-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/thoreau/10244dac-050.mp4",
+      "poster": "figures/0c5890cb-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/thoreau/0c5890cb-poster-512.png"
      }
     },
     {
@@ -2292,8 +2370,11 @@
      "quote": {
       "en": "Je me défie de la machine qui est en moi… de ma façon d'employer des machines, de désirer et de multiplier les machines, de faire abus des machines.",
       "fr": null,
-      "reference": "Machinisme 1933",
-      "reference_full": "Machinisme 1933",
+      "reference": "duhamel1933-machinisme",
+      "reference_full": "duhamel1933-machinisme",
+      "citekeys": [
+       "duhamel1933-machinisme"
+      ],
       "curated": false,
       "documents": [
        "OPE-05",
@@ -2302,14 +2383,14 @@
       "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/75f2f19f-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/duhamel/75f2f19f-512.png",
+      "portrait": "figures/6665ba19-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/duhamel/6665ba19-512.png",
       "portrait_source": "figures/content/france/duhamel.georges/image/duhamel.georges__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/duhamel/cb9d0ca6.mp4",
+      "video": "https://media.sumvadis.ai/duhamel/69dfe407.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/duhamel/814e025b-050.mp4",
-      "poster": "figures/b5e32e32-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/duhamel/b5e32e32-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/duhamel/9dcdec81-050.mp4",
+      "poster": "figures/8c38e28c-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/duhamel/8c38e28c-poster-512.png"
      }
     }
    ],
@@ -2493,8 +2574,11 @@
      "quote": {
       "en": "This is why I have, over recent years, been working with a few people at MIT and elsewhere to develop Solid, an open-source project to restore the power and agency of individuals on the web.",
       "fr": null,
-      "reference": "Tim Berners-Lee, \"One Small Step for the Web…\" …",
-      "reference_full": "Tim Berners-Lee, \"One Small Step for the Web…\", first-person post announcing the Solid project and Inrupt, Medium, 29 September 2018",
+      "reference": "bernerslee2018-solid",
+      "reference_full": "bernerslee2018-solid",
+      "citekeys": [
+       "bernerslee2018-solid"
+      ],
       "curated": false,
       "documents": [
        "OPE-02",
@@ -2524,8 +2608,11 @@
      "quote": {
       "en": "no human intervention from the time the data were entered until the final results should be taken off ... all logical decisions ... built into the machine itself",
       "fr": null,
-      "reference": "Cybernetics 1948, Intro",
-      "reference_full": "Cybernetics 1948, Intro",
+      "reference": "wiener1948-cybernetics, Intro",
+      "reference_full": "wiener1948-cybernetics, Intro",
+      "citekeys": [
+       "wiener1948-cybernetics"
+      ],
       "curated": false,
       "documents": [
        "OPE-01",
@@ -2537,14 +2624,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/8fe56f1c-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/wiener/8fe56f1c-512.png",
+      "portrait": "figures/5f53d0c8-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/wiener/5f53d0c8-512.png",
       "portrait_source": "figures/content/united-states/wiener.norbert/image/wiener.norbert__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/wiener/f2517216.mp4",
+      "video": "https://media.sumvadis.ai/wiener/e3a15951.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/wiener/f2e1a216-050.mp4",
-      "poster": "figures/78319134-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/wiener/78319134-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/wiener/f6ea7078-050.mp4",
+      "poster": "figures/b7fcd490-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/wiener/b7fcd490-poster-512.png"
      }
     },
     {
@@ -2558,8 +2645,11 @@
      "quote": {
       "en": "dans les champs de l'observation le hasard ne favorise que les esprits préparés.",
       "fr": null,
-      "reference": "Douai 1854",
-      "reference_full": "Douai 1854",
+      "reference": "pasteur1854-douai",
+      "reference_full": "pasteur1854-douai",
+      "citekeys": [
+       "pasteur1854-douai"
+      ],
       "curated": false,
       "documents": [
        "OPE-01",
@@ -2568,14 +2658,14 @@
       "verification": "Verbatim (quoted under OPT)"
      },
      "media": {
-      "portrait": "figures/86ba331b-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/pasteur/86ba331b-512.png",
+      "portrait": "figures/c15b6537-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/pasteur/c15b6537-512.png",
       "portrait_source": "figures/content/france/pasteur.louis/image/pasteur.louis__frame__chest.png",
-      "video": "https://media.sumvadis.ai/pasteur/187fa5f4.mp4",
+      "video": "https://media.sumvadis.ai/pasteur/69c486cf.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/pasteur/b9ba6d11-050.mp4",
-      "poster": "figures/1dd037d7-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/pasteur/1dd037d7-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/pasteur/c81916f3-050.mp4",
+      "poster": "figures/9cc3e38b-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/pasteur/9cc3e38b-poster-512.png"
      }
     }
    ],
@@ -2759,8 +2849,11 @@
      "quote": {
       "en": "the police are prowling through the cities, the lies are streaming from the loudspeakers",
       "fr": null,
-      "reference": "Toad 1946",
-      "reference_full": "Toad 1946",
+      "reference": "orwell1946-toad",
+      "reference_full": "orwell1946-toad",
+      "citekeys": [
+       "orwell1946-toad"
+      ],
       "curated": false,
       "documents": [
        "CON-02"
@@ -2768,14 +2861,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/a7268767-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/orwell/a7268767-512.png",
+      "portrait": "figures/f06ce0c8-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/orwell/f06ce0c8-512.png",
       "portrait_source": "figures/content/united-kingdom/orwell.george/image/orwell.george__frame__chest.png",
-      "video": "https://media.sumvadis.ai/orwell/ec50562d.mp4",
+      "video": "https://media.sumvadis.ai/orwell/625e685d.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/orwell/420eeff6-050.mp4",
-      "poster": "figures/5a6013cf-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/orwell/5a6013cf-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/orwell/31eb0555-050.mp4",
+      "poster": "figures/1b4538e5-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/orwell/1b4538e5-poster-512.png"
      }
     },
     {
@@ -2791,6 +2884,9 @@
       "fr": null,
       "reference": "whitman1871-democratic-vistas",
       "reference_full": "whitman1871-democratic-vistas",
+      "citekeys": [
+       "whitman1871-democratic-vistas"
+      ],
       "curated": false,
       "documents": [
        "CON-01",
@@ -2799,14 +2895,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/ec975e25-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/whitman/ec975e25-512.png",
+      "portrait": "figures/97b21a2a-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/whitman/97b21a2a-512.png",
       "portrait_source": "figures/content/united-states/whitman.walt/image/whitman.walt__frame__chest__v2.png",
-      "video": "https://media.sumvadis.ai/whitman/9c8b10b0.mp4",
+      "video": "https://media.sumvadis.ai/whitman/29001c30.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/whitman/2e3f7870-050.mp4",
-      "poster": "figures/b8f42d93-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/whitman/b8f42d93-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/whitman/bede73dc-050.mp4",
+      "poster": "figures/72af0174-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/whitman/72af0174-poster-512.png"
      }
     },
     {
@@ -2820,8 +2916,11 @@
      "quote": {
       "en": "the ignominious California regulation SB1047, which would essentially kill open source AI and significantly slow down or stop AI innovation.",
       "fr": null,
-      "reference": "LeCun on X, 2024-06-06 (California SB 1047 and technology-vs-application regulation):",
-      "reference_full": "LeCun on X, 2024-06-06 (California SB 1047 and technology-vs-application regulation):",
+      "reference": "lecun2024-sb1047",
+      "reference_full": "lecun2024-sb1047",
+      "citekeys": [
+       "lecun2024-sb1047"
+      ],
       "curated": false,
       "documents": [
        "CON-05"
@@ -2829,8 +2928,8 @@
       "verification": "Verbatim (via search rendering)"
      },
      "media": {
-      "portrait": "figures/8c3e3cb4-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/lecun/8c3e3cb4-512.png",
+      "portrait": "figures/fa0eb55c-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/lecun/fa0eb55c-512.png",
       "portrait_source": "figures/content/france/lecun.yann/image/lecun.yann__source__01.jpg",
       "video": "https://media.sumvadis.ai/lecun/e10960f8.mp4",
       "video_kind": "presented",
@@ -3020,8 +3119,11 @@
      "quote": {
       "en": "In place of the pompous catalogue of the 'inalienable rights of man' comes the modest Magna Charta of a legally limited working-day",
       "fr": null,
-      "reference": "Capital X §7 (closing)",
-      "reference_full": "Capital X §7 (closing)",
+      "reference": "marx1867-capital10, §7 closing",
+      "reference_full": "marx1867-capital10, §7 closing",
+      "citekeys": [
+       "marx1867-capital10"
+      ],
       "curated": false,
       "documents": [
        "CON-01",
@@ -3030,14 +3132,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/99774739-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/marx/99774739-512.png",
+      "portrait": "figures/2215731b-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/marx/2215731b-512.png",
       "portrait_source": "figures/content/germany/marx.karl/image/marx.karl__frame__elbows.png",
-      "video": "https://media.sumvadis.ai/marx/2e944b2c.mp4",
+      "video": "https://media.sumvadis.ai/marx/4981d27c.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/marx/9c5d9f72-050.mp4",
-      "poster": "figures/a2b5ecb4-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/marx/a2b5ecb4-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/marx/879baec8-050.mp4",
+      "poster": "figures/307c21fb-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/marx/307c21fb-poster-512.png"
      }
     },
     {
@@ -3051,8 +3153,11 @@
      "quote": {
       "en": "there is absolutely no regulation that stops them from operating as they are currently operating",
       "fr": null,
-      "reference": "European Parliament, Special Committee on Artificial Intelligence in a Digital Age …",
-      "reference_full": "European Parliament, Special Committee on Artificial Intelligence in a Digital Age (AIDA), hearing of 2021-11-30, official verbatim transcript (EN), Gebru appearing as Independent Scholar",
+      "reference": "europarl2021-aida, p. 16",
+      "reference_full": "europarl2021-aida, p. 16",
+      "citekeys": [
+       "europarl2021-aida"
+      ],
       "curated": false,
       "documents": [
        "CON-05"
@@ -3060,8 +3165,8 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/0fa36cef-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/gebru/0fa36cef-512.png",
+      "portrait": "figures/13a2acd9-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/gebru/13a2acd9-512.png",
       "portrait_source": "figures/content/ethiopia/gebru.timnit/image/gebru.timnit__source__01.jpg",
       "video": "https://media.sumvadis.ai/gebru/69fd55ba.mp4",
       "video_kind": "presented",
@@ -3081,8 +3186,11 @@
      "quote": {
       "en": "Whatever agreements not to use H-bombs had been reached in time of peace, they would no longer be considered binding in time of war…",
       "fr": null,
-      "reference": "Manifesto 1955",
-      "reference_full": "Manifesto 1955",
+      "reference": "russell-einstein1955",
+      "reference_full": "russell-einstein1955",
+      "citekeys": [
+       "russell-einstein1955"
+      ],
       "curated": false,
       "documents": [
        "CON-01",
@@ -3094,11 +3202,11 @@
       "portrait": "figures/29d220ff-512.png",
       "portrait_cdn": "https://media.sumvadis.ai/einstein/29d220ff-512.png",
       "portrait_source": "figures/content/germany/einstein.albert/image/einstein.albert__source__01.jpg",
-      "video": "https://media.sumvadis.ai/einstein/a706bc51.mp4",
-      "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/einstein/f38bd72e-050.mp4",
-      "poster": "figures/9868c0ef-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/einstein/9868c0ef-poster-512.png"
+      "video": "https://media.sumvadis.ai/einstein/64c4a2be.mp4",
+      "video_kind": "presented",
+      "video_light": "https://media.sumvadis.ai/einstein/a0af1930-050.mp4",
+      "poster": "figures/48a9d006-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/einstein/48a9d006-poster-512.png"
      }
     }
    ],
@@ -3284,6 +3392,9 @@
       "fr": "chaque communauté devrait pouvoir déterminer ses propres normes en matière d'intervention de l'IA.",
       "reference": "\"Audrey Tang: A.I. should serve communities, not control them\", Compiler …",
       "reference_full": "\"Audrey Tang: A.I. should serve communities, not control them\", Compiler, 18 December 2025 (interview recorded at MozFest, Barcelona)",
+      "citekeys": [
+       "tang2025-compiler"
+      ],
       "curated": true,
       "documents": [
        "CEN-04",
@@ -3313,8 +3424,11 @@
      "quote": {
       "en": "the good governor in America is not the one who knows how the German or the Frenchman is governed, but the one who knows what elements his country is made of.",
       "fr": null,
-      "reference": "NA 1891",
-      "reference_full": "NA 1891",
+      "reference": "marti1891-nuestra-america",
+      "reference_full": "marti1891-nuestra-america",
+      "citekeys": [
+       "marti1891-nuestra-america"
+      ],
       "curated": false,
       "documents": [
        "CEN-02",
@@ -3323,14 +3437,14 @@
       "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/bdf52167-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/marti/bdf52167-512.png",
+      "portrait": "figures/ff4d46e0-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/marti/ff4d46e0-512.png",
       "portrait_source": "figures/content/cuba/marti.jose/image/marti.jose__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/marti/44d6f740.mp4",
+      "video": "https://media.sumvadis.ai/marti/980d7a63.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/marti/fdc649b8-050.mp4",
-      "poster": "figures/4cdca46d-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/marti/4cdca46d-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/marti/3e60eba4-050.mp4",
+      "poster": "figures/5a9f3cdd-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/marti/5a9f3cdd-poster-512.png"
      }
     },
     {
@@ -3346,6 +3460,9 @@
       "fr": "personne ne connaît la solution à tous les problèmes ; plutôt que de suivre aveuglément les prescriptions des autres, les Africains doivent penser et agir par eux-mêmes, et apprendre de leurs erreurs.",
       "reference": "The Challenge for Africa, Pantheon Books, 2009",
       "reference_full": "The Challenge for Africa, Pantheon Books, 2009",
+      "citekeys": [
+       "maathai2004-nobel"
+      ],
       "curated": true,
       "documents": [
        "CEN-04",
@@ -3355,14 +3472,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/4ae12e11-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/maathai/4ae12e11-512.png",
+      "portrait": "figures/19c6a260-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/maathai/19c6a260-512.png",
       "portrait_source": "figures/content/kenya/maathai.wangari/image/maathai.wangari__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/maathai/ab85a1cc.mp4",
+      "video": "https://media.sumvadis.ai/maathai/1af36454.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/maathai/3597b738-050.mp4",
-      "poster": "figures/dfc6b770-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/maathai/dfc6b770-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/maathai/bbc4fc68-050.mp4",
+      "poster": "figures/50498f9c-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/maathai/50498f9c-poster-512.png"
      }
     }
    ],
@@ -3546,8 +3663,11 @@
      "quote": {
       "en": "atomic weapons are a peril which affect everyone in the world, and in that sense a completely common problem, as common a problem as it was for the Allies to defeat the Nazis.",
       "fr": null,
-      "reference": "ALAS 1945",
-      "reference_full": "ALAS 1945",
+      "reference": "oppenheimer1945-alas",
+      "reference_full": "oppenheimer1945-alas",
+      "citekeys": [
+       "oppenheimer1945-alas"
+      ],
       "curated": false,
       "documents": [
        "CEN-01",
@@ -3556,14 +3676,14 @@
       "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/ba626ef1-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/oppenheimer/ba626ef1-512.png",
+      "portrait": "figures/ed9b6256-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/oppenheimer/ed9b6256-512.png",
       "portrait_source": "figures/content/united-states/oppenheimer.robert/image/oppenheimer.robert__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/oppenheimer/17b327e9.mp4",
+      "video": "https://media.sumvadis.ai/oppenheimer/e58c5f03.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/oppenheimer/98b86a4d-050.mp4",
-      "poster": "figures/2931fdfb-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/oppenheimer/2931fdfb-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/oppenheimer/88cf5731-050.mp4",
+      "poster": "figures/69588e81-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/oppenheimer/69588e81-poster-512.png"
      }
     },
     {
@@ -3577,8 +3697,11 @@
      "quote": {
       "en": "It is the ruling dynasty that demands crafts and their improvement. It causes the demand for them and makes them desirable. … the dynasty is the biggest market.",
       "fr": null,
-      "reference": "Muqaddima V, §18",
-      "reference_full": "Muqaddima V, §18",
+      "reference": "ibnkhaldun1377-muqaddima, V §18",
+      "reference_full": "ibnkhaldun1377-muqaddima, V §18",
+      "citekeys": [
+       "ibnkhaldun1377-muqaddima"
+      ],
       "curated": false,
       "documents": [
        "CEN-02",
@@ -3587,14 +3710,14 @@
       "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/757a1495-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/ibn-khaldun/757a1495-512.png",
+      "portrait": "figures/c3deb8aa-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/ibn-khaldun/c3deb8aa-512.png",
       "portrait_source": "figures/content/tunisia/ibn-khaldun/image/ibn-khaldun__master__kontext.png",
-      "video": "https://media.sumvadis.ai/ibn-khaldun/2e668a2a.mp4",
+      "video": "https://media.sumvadis.ai/ibn-khaldun/2861836e.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/ibn-khaldun/48a97601-050.mp4",
-      "poster": "figures/d284a974-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/ibn-khaldun/d284a974-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/ibn-khaldun/475de9c0-050.mp4",
+      "poster": "figures/8e7d0cc2-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/ibn-khaldun/8e7d0cc2-poster-512.png"
      }
     },
     {
@@ -3608,8 +3731,11 @@
      "quote": {
       "en": "This evil will be eradicated if princes and magistrates take care that good-for-nothing people … should be checked as far as possible. … rewards should be instituted to help and succor them, either by princes or by bishops and abbots, or from the public treasury.",
       "fr": null,
-      "reference": "Festina lente §25",
-      "reference_full": "Festina lente §25",
+      "reference": "erasmus1525-festina, §25",
+      "reference_full": "erasmus1525-festina, §25",
+      "citekeys": [
+       "erasmus1525-festina"
+      ],
       "curated": false,
       "documents": [
        "CEN-01",
@@ -3618,14 +3744,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/445fbc03-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/erasme/445fbc03-512.png",
+      "portrait": "figures/c44a4b14-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/erasme/c44a4b14-512.png",
       "portrait_source": "figures/content/netherlands/erasmus/image/erasmus__pulid__chest.png",
-      "video": "https://media.sumvadis.ai/erasme/31d740ac.mp4",
+      "video": "https://media.sumvadis.ai/erasme/5ecaa161.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/erasme/5ecb8562-050.mp4",
-      "poster": "figures/e71736df-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/erasme/e71736df-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/erasme/adcec877-050.mp4",
+      "poster": "figures/90f73311-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/erasme/90f73311-poster-512.png"
      }
     }
    ],
@@ -3809,8 +3935,11 @@
      "quote": {
       "en": "the capitalistic exploitation of the film denies consideration to modern man's legitimate claim to being reproduced",
       "fr": null,
-      "reference": "Work of Art 1936, §X",
-      "reference_full": "Work of Art 1936, §X",
+      "reference": "benjamin1935-workofart, §X",
+      "reference_full": "benjamin1935-workofart, §X",
+      "citekeys": [
+       "benjamin1935-workofart"
+      ],
       "curated": false,
       "documents": [
        "ALT-01",
@@ -3819,14 +3948,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/b5dba501-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/benjamin/b5dba501-512.png",
+      "portrait": "figures/5efd8841-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/benjamin/5efd8841-512.png",
       "portrait_source": "figures/content/germany/benjamin.walter/image/benjamin.walter__frame__elbows.jpeg",
-      "video": "https://media.sumvadis.ai/benjamin/05446cb1.mp4",
+      "video": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/benjamin/855ab73a-050.mp4",
-      "poster": "figures/0e2248fe-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/benjamin/0e2248fe-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/benjamin/fd23b351-050.mp4",
+      "poster": "figures/509c925b-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/benjamin/509c925b-poster-512.png"
      }
     },
     {
@@ -3842,6 +3971,9 @@
       "fr": "Aussi autonome que devienne notre technologie, son impact sur le monde — pour le meilleur ou pour le pire — restera toujours notre responsabilité.",
       "reference": "How to Make A.I. That's Good for People, The New York Times (opinion), 7 March 2018",
       "reference_full": "How to Make A.I. That's Good for People, The New York Times (opinion), 7 March 2018",
+      "citekeys": [
+       "li2018-nyt"
+      ],
       "curated": true,
       "documents": [
        "ALT-03"
@@ -3849,9 +3981,9 @@
       "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/5a2baab2-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/fei-fei-li/5a2baab2-512.png",
-      "portrait_source": "figures/content/china/li.fei-fei/image/li.fei-fei__frame__chest__v2.jpeg",
+      "portrait": "figures/73ef826f-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/fei-fei-li/73ef826f-512.png",
+      "portrait_source": "figures/content/china/li.fei-fei/image/li.fei-fei__source__01.jpg",
       "video": "https://media.sumvadis.ai/fei-fei-li/a41a59cc.mp4",
       "video_kind": "presented",
       "video_light": "https://media.sumvadis.ai/fei-fei-li/ce63d9be-050.mp4",
@@ -3870,8 +4002,11 @@
      "quote": {
       "en": "How could all of this have come from the Sages? Every sort of workman and administrator, the people of the towns and those of the countryside — none failed to take part.",
       "fr": null,
-      "reference": "Changxing ji 19:53b, letter (Sivin trans, DSB)",
-      "reference_full": "Changxing ji 19:53b, letter (Sivin trans, DSB)",
+      "reference": "sivin1975-dsb, Changxing ji 19:53b, letter",
+      "reference_full": "sivin1975-dsb, Changxing ji 19:53b, letter",
+      "citekeys": [
+       "sivin1975-dsb"
+      ],
       "curated": false,
       "documents": [
        "ALT-01"
@@ -3879,14 +4014,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/933ae7ec-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/shen-kuo/933ae7ec-512.png",
+      "portrait": "figures/ebcb4bdf-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/shen-kuo/ebcb4bdf-512.png",
       "portrait_source": "figures/content/china/shen.kuo/image/shen.kuo__frame__elbows.png",
-      "video": "https://media.sumvadis.ai/shen-kuo/4a63651d.mp4",
+      "video": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/shen-kuo/b161e963-050.mp4",
-      "poster": "figures/8c1b6468-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/shen-kuo/8c1b6468-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/shen-kuo/be306129-050.mp4",
+      "poster": "figures/6aa9ebe3-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/shen-kuo/6aa9ebe3-poster-512.png"
      }
     }
    ],
@@ -4072,6 +4207,9 @@
       "fr": "Si les bénéfices de l'augmentation de la productivité peuvent être partagés équitablement, ce sera un progrès merveilleux pour toute l'humanité.",
       "reference": "Nobel Prize banquet speech, Stockholm, 10 December 2024",
       "reference_full": "Nobel Prize banquet speech, Stockholm, 10 December 2024",
+      "citekeys": [
+       "hinton2024-nobel"
+      ],
       "curated": true,
       "documents": [
        "ALT-01"
@@ -4100,8 +4238,11 @@
      "quote": {
       "en": "Clearly then, the computer scientist has a heavy responsibility to make the fallibility and limitations of the systems he is capable of designing brilliantly clear.",
       "fr": null,
-      "reference": "Science 1972",
-      "reference_full": "Science 1972",
+      "reference": "weizenbaum1972-science",
+      "reference_full": "weizenbaum1972-science",
+      "citekeys": [
+       "weizenbaum1972-science"
+      ],
       "curated": false,
       "documents": [
        "ALT-03"
@@ -4109,14 +4250,14 @@
       "verification": "Verbatim (verified via reproduction)"
      },
      "media": {
-      "portrait": "figures/b85c48f4-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/weizenbaum/b85c48f4-512.png",
+      "portrait": "figures/bae75722-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/weizenbaum/bae75722-512.png",
       "portrait_source": "figures/content/germany/weizenbaum.joseph/image/weizenbaum.joseph__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/weizenbaum/21caa857.mp4",
+      "video": "https://media.sumvadis.ai/weizenbaum/9bf1b78c.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/weizenbaum/c688f0a8-050.mp4",
-      "poster": "figures/4cc2e333-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/weizenbaum/4cc2e333-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/weizenbaum/82902534-050.mp4",
+      "poster": "figures/8f8aa722-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/weizenbaum/8f8aa722-poster-512.png"
      }
     },
     {
@@ -4130,8 +4271,11 @@
      "quote": {
       "en": "the advocates of progress … understand their personal advantage, which thus is always contrary to the advantage of the masses.",
       "fr": null,
-      "reference": "Progress 1862",
-      "reference_full": "Progress 1862",
+      "reference": "tolstoy1862-progress",
+      "reference_full": "tolstoy1862-progress",
+      "citekeys": [
+       "tolstoy1862-progress"
+      ],
       "curated": false,
       "documents": [
        "ALT-04",
@@ -4140,14 +4284,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/823c2f5d-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/tolstoi/823c2f5d-512.png",
+      "portrait": "figures/08181b1e-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/tolstoi/08181b1e-512.png",
       "portrait_source": "figures/content/russia/tolstoi.leon/image/tolstoi.leon__pulid__chest__v2.png",
-      "video": "https://media.sumvadis.ai/tolstoi/b67f4765.mp4",
+      "video": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/tolstoi/dc3b8200-050.mp4",
-      "poster": "figures/d0b5f50a-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/tolstoi/d0b5f50a-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/tolstoi/5c80b8ea-050.mp4",
+      "poster": "figures/9d777b82-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/tolstoi/9d777b82-poster-512.png"
      }
     }
    ],
@@ -4331,8 +4475,11 @@
      "quote": {
       "en": "the mind had already entered a field of attraction so violent that it must immediately pass beyond, into new equilibrium ... or suffer dissipation altogether.",
       "fr": null,
-      "reference": "Education XXXIV",
-      "reference_full": "Education XXXIV",
+      "reference": "adams1907-education, ch. XXXIV",
+      "reference_full": "adams1907-education, ch. XXXIV",
+      "citekeys": [
+       "adams1907-education"
+      ],
       "curated": false,
       "documents": [
        "TRA-06"
@@ -4340,14 +4487,14 @@
       "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/a15b8e2d-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/henry-adams/a15b8e2d-512.png",
+      "portrait": "figures/6da182bb-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/henry-adams/6da182bb-512.png",
       "portrait_source": "figures/content/united-states/adams.henry/image/adams.henry__frame__elbows.jpeg",
-      "video": "https://media.sumvadis.ai/henry-adams/14a76bd8.mp4",
+      "video": "https://media.sumvadis.ai/henry-adams/58762b1e.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/henry-adams/a210bff5-050.mp4",
-      "poster": "figures/d88e69c5-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/henry-adams/d88e69c5-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/henry-adams/5fd157ea-050.mp4",
+      "poster": "figures/1dbfe4e0-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/henry-adams/1dbfe4e0-poster-512.png"
      }
     },
     {
@@ -4363,6 +4510,9 @@
       "fr": "Ce que nous écrivons, nous l'imprimons plus fortement dans notre esprit, car nous prenons notre temps pour lire et pour écrire.",
       "reference": "De Laude Scriptorum (In Praise of Scribes), composed 1492, printed 1494, ch. 6 …",
       "reference_full": "De Laude Scriptorum (In Praise of Scribes), composed 1492, printed 1494, ch. 6 — trans. Dorothea Salo, 2010 (CC-BY)",
+      "citekeys": [
+       "trithemius1492-laude"
+      ],
       "curated": true,
       "documents": [
        "TRA-01",
@@ -4371,14 +4521,14 @@
       "verification": "Verbatim (verified via reproduction)"
      },
      "media": {
-      "portrait": "figures/2e713cc0-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/trithemius/2e713cc0-512.png",
+      "portrait": "figures/50d04d24-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/trithemius/50d04d24-512.png",
       "portrait_source": "figures/content/germany/trithemius/image/trithemius__crop11__pulid__chest.png",
-      "video": "https://media.sumvadis.ai/trithemius/ed136cf7.mp4",
+      "video": "https://media.sumvadis.ai/trithemius/769eaa9d.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/trithemius/ceac6b36-050.mp4",
-      "poster": "figures/1fcf5372-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/trithemius/1fcf5372-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/trithemius/43bf6ddf-050.mp4",
+      "poster": "figures/e4be6ded-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/trithemius/e4be6ded-poster-512.png"
      }
     },
     {
@@ -4392,8 +4542,11 @@
      "quote": {
       "en": "Have we the right to counteract, irreversibly, the evolutionary wisdom of millions of years?",
       "fr": null,
-      "reference": "Genetic Meddling 1976",
-      "reference_full": "Genetic Meddling 1976",
+      "reference": "chargaff1976-meddling",
+      "reference_full": "chargaff1976-meddling",
+      "citekeys": [
+       "chargaff1976-meddling"
+      ],
       "curated": false,
       "documents": [
        "TRA-03",
@@ -4402,14 +4555,14 @@
       "verification": "Verbatim (via collation)"
      },
      "media": {
-      "portrait": "figures/dfb7533d-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/chargaff/dfb7533d-512.png",
+      "portrait": "figures/4fd42a07-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/chargaff/4fd42a07-512.png",
       "portrait_source": "figures/content/austria/chargaff.erwin/image/chargaff.erwin__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/chargaff/2580968c.mp4",
+      "video": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/chargaff/7ad9cce2-050.mp4",
-      "poster": "figures/c85888d4-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/chargaff/c85888d4-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/chargaff/00dbd16f-050.mp4",
+      "poster": "figures/86d352e2-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/chargaff/86d352e2-poster-512.png"
      }
     }
    ],
@@ -4593,8 +4746,11 @@
      "quote": {
       "en": "the one endowment of our nature which singles us out from all living creatures",
       "fr": null,
-      "reference": "Panegyricus 48 and Antidosis 254, Norlin trans",
-      "reference_full": "Panegyricus 48 and Antidosis 254, Norlin trans",
+      "reference": "isocrates-380-panegyricus, 48 and Antidosis 254, Norlin trans",
+      "reference_full": "isocrates-380-panegyricus, 48 and Antidosis 254, Norlin trans",
+      "citekeys": [
+       "isocrates-380-panegyricus"
+      ],
       "curated": false,
       "documents": [
        "TRA-01",
@@ -4604,14 +4760,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/d4d26fd1-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/isocrate/d4d26fd1-512.png",
+      "portrait": "figures/09695f5b-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/isocrate/09695f5b-512.png",
       "portrait_source": "figures/content/greece/isocrates/image/isocrates__master__t2i.png",
-      "video": "https://media.sumvadis.ai/isocrate/0c3be91b.mp4",
+      "video": "https://media.sumvadis.ai/isocrate/c3db233e.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/isocrate/d579697b-050.mp4",
-      "poster": "figures/8b60c1ef-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/isocrate/8b60c1ef-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/isocrate/53fda8eb-050.mp4",
+      "poster": "figures/cba87261-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/isocrate/cba87261-poster-512.png"
      }
     },
     {
@@ -4627,21 +4783,24 @@
       "fr": "En rendant le mécanisme capable de combiner des symboles généraux en des successions d'une variété et d'une étendue illimitées, un lien unificateur s'établit entre les opérations de la matière et les processus mentaux abstraits de la branche la plus abstraite de la science mathématique.",
       "reference": "Note A, translator's Notes signed A.A.L. to Menabrea …",
       "reference_full": "Note A, translator's Notes signed A.A.L. to Menabrea, Sketch of the Analytical Engine Invented by Charles Babbage, Taylor's Scientific Memoirs, vol. III, 1843, pp. 666-731",
+      "citekeys": [
+       "lovelace1843-notes"
+      ],
       "curated": true,
       "documents": [
        "TRA-01"
       ],
-      "verification": "verbatim"
+      "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/8c26c43d-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/lovelace/8c26c43d-512.png",
+      "portrait": "figures/330a5df4-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/lovelace/330a5df4-512.png",
       "portrait_source": "figures/content/united-kingdom/lovelace.ada/image/lovelace.ada__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/lovelace/510b0e51.mp4",
+      "video": "https://media.sumvadis.ai/lovelace/40aa6b2b.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/lovelace/9adc61bc-050.mp4",
-      "poster": "figures/ed61f47d-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/lovelace/ed61f47d-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/lovelace/32014185-050.mp4",
+      "poster": "figures/390a9d7f-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/lovelace/390a9d7f-poster-512.png"
      }
     },
     {
@@ -4655,8 +4814,11 @@
      "quote": {
       "en": "Certainly it is a great thing to add to the countless multitude of fixed stars visible hitherto by natural means and expose to our eyes innumerable others never seen before, which exceed tenfold the number of old and known ones",
       "fr": null,
-      "reference": "Sidereus Nuncius 1610, 5r (Van Helden trans)",
-      "reference_full": "Sidereus Nuncius 1610, 5r (Van Helden trans)",
+      "reference": "galilei1610-sidereus, 5r, Van Helden trans",
+      "reference_full": "galilei1610-sidereus, 5r, Van Helden trans",
+      "citekeys": [
+       "galilei1610-sidereus"
+      ],
       "curated": false,
       "documents": [
        "TRA-01",
@@ -4665,14 +4827,14 @@
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/c4eef319-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/galilee/c4eef319-512.png",
+      "portrait": "figures/9c62fa4a-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/galilee/9c62fa4a-512.png",
       "portrait_source": "figures/content/italy/galilei.galileo/image/galilei.galileo__master__kontext.png",
-      "video": "https://media.sumvadis.ai/galilee/24e89bf2.mp4",
+      "video": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/galilee/f737fa0e-050.mp4",
-      "poster": "figures/5b2a5964-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/galilee/5b2a5964-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/galilee/d7ad29c6-050.mp4",
+      "poster": "figures/6f1f114f-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/galilee/6f1f114f-poster-512.png"
      }
     }
    ],

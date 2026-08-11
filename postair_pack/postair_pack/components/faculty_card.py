@@ -10,7 +10,9 @@ component is required to say so on screen. The component therefore renders no
 rate and no proportion — only what has been established elsewhere about the
 work these faculties do.
 
-The full sentence, its source and its caveat stay in the slide tooltip.
+The full sentence and its caveat stay in the slide tooltip. The reference
+travels as a citation code inside each headline (full reference on hover):
+the caller appends it, this component just renders the strings it is given.
 """
 
 from streamtex import st_block, st_space, st_write

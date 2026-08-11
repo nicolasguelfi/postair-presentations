@@ -5,6 +5,7 @@ no figure name, quote, reference or argument is ever typed into a block. This
 tool joins the four upstream sources and freezes the join into
 
     modules/postair_debates/static/data/content.json
+    modules/postair_debates/static/data/references.bib
 
 It lives inside the module, not in the shared static tree: only this document
 consumes it, and the deploy workflow redeploys ALL services when a shared file
@@ -27,6 +28,15 @@ Sources (all read-only, paths from ``debates-hub.config.local.json``):
       editorial layer adds a French translation and a precise reference.
   great-figures/media-manifest.json
       Portrait and presentation-video renditions, with clearance.
+  references.bib (hub root) + great-figures/great-figures.bib
+      The BibTeX definitions behind the citekeys. The entries actually used by
+      the selection are frozen into the module's ``references.bib`` so the deck
+      renders native ``cite()`` codes with hover cards (règle bib canonique,
+      CLAUDE.md). Arguments carry editorial citekeys and get the full
+      mechanism; figure quotes only get one once the hub promotes their
+      ledger ``citekeys`` beyond ``heuristic`` confidence — a heuristic,
+      multi-candidate match is not a citation one may project to 1500 people,
+      so until then the frozen reference string remains the display.
 
 Selection rule — see `_project/plans/plan-postair_debates.md`.
 
@@ -49,6 +59,7 @@ from typing import Any
 _TOOLS = Path(__file__).parent
 _REPO = _TOOLS.parent.parent
 _OUT = _REPO / "modules" / "postair_debates" / "static" / "data" / "content.json"
+_BIB_OUT = _OUT.parent / "references.bib"
 
 # Pedagogical order of the axes — the three registers of the instrument.
 AXIS_ORDER = ["trust", "optimism", "rationality",          # Knowing
@@ -74,10 +85,24 @@ QUOTE_MIN, QUOTE_MAX = 60, 300
 #: hub decides that — ``quote-ledger.json`` >= 1.1.0 flags them ``analyst_note``
 #: and counts them in ``coverage.analyst_note_suspect``. We only read the flag;
 #: re-deriving it here would be a second opinion on someone else's data.
-_LEDGER_MIN_VERSION = "1.3.0"
+_LEDGER_MIN_VERSION = "1.4.0"
 #: Caption budget for a reference under a portrait, in characters. Median of the
 #: displayed references is 29; six ran past 120 before this cap existed.
 REFERENCE_MAX = 90
+
+#: A quote's ledger ``citekeys`` become projectable ONLY at these confidence
+#: levels. ``cited`` (ledger >= 1.4.0) means the dossier's ref field IS the
+#: bibliography key, written by the author — a single, authoritative citation.
+#: ``heuristic`` stays out: a multi-candidate guess by year (up to five keys
+#: for one quote) is a repair aid, not a citation one may project.
+_BIBKEY_TRUSTED = {"cited", "curated", "verified"}
+
+#: Where the citekeys resolve, in lookup order per role. Arguments are cited
+#: from the debate annex, whose bibliography is the hub root ``references.bib``;
+#: figure quotes are sourced in ``great-figures.bib``. A key found in both with
+#: different content is reported — never silently picked.
+_BIB_SOURCES = {"argument": ["references.bib", "great-figures/great-figures.bib"],
+                "quote": ["great-figures/great-figures.bib", "references.bib"]}
 
 
 def load_config() -> dict[str, str]:
@@ -178,6 +203,85 @@ def _short_reference(reference: str | None, limit: int = REFERENCE_MAX) -> str |
     return reference[:cut].rstrip(" ,;—(") + " …"
 
 
+def _matching_brace(text: str, start: int) -> int:
+    """Index of the ``}`` closing the ``{`` at *start* (brace counting)."""
+    depth = 0
+    for i in range(start, len(text)):
+        if text[i] == "{":
+            depth += 1
+        elif text[i] == "}":
+            depth -= 1
+            if depth == 0:
+                return i
+    return len(text) - 1
+
+
+def _bib_raw_entries(path: Path) -> dict[str, str]:
+    """Map citekey → raw ``@type{key, …}`` block, preserved byte for byte.
+
+    Raw extraction, not a parse-and-reformat: the frozen ``.bib`` must carry
+    exactly what the hub wrote — every field, every accent, every URL — and a
+    formatter would silently normalise or drop what it does not know.
+    """
+    text = path.read_text(encoding="utf-8")
+    entries: dict[str, str] = {}
+    i = 0
+    while (at := text.find("@", i)) != -1:
+        brace = text.find("{", at)
+        if brace == -1:
+            break
+        kind = text[at + 1:brace].strip().lower()
+        end = _matching_brace(text, brace)
+        if kind not in ("comment", "preamble", "string"):
+            comma = text.find(",", brace)
+            if brace < comma < end:
+                entries.setdefault(text[brace + 1:comma].strip(), text[at:end + 1])
+        i = end + 1
+    return entries
+
+
+def freeze_bib(hub_root: Path, data: dict) -> tuple[str, list[str]]:
+    """The frozen ``.bib`` of everything the selection cites, and its gaps.
+
+    Pure: returns (bib text, problem list) and writes nothing. Entries appear
+    once each, in first-citation order of the deck — a stable order, since the
+    manifest itself is frozen.
+    """
+    lookups = {role: [_bib_raw_entries(hub_root / rel) for rel in rels
+                      if (hub_root / rel).exists()]
+               for role, rels in _BIB_SOURCES.items()}
+    cited: list[tuple[str, str]] = []                      # (role, key), deck order
+    for pole in data["poles"]:
+        for f in pole["figures"]:
+            cited += [("quote", k) for k in f["quote"].get("citekeys") or []]
+        for a in pole["arguments"]:
+            if a.get("citekey"):
+                cited.append(("argument", a["citekey"]))
+
+    picked: dict[str, str] = {}
+    problems: list[str] = []
+    for role, key in cited:
+        found = [e[key] for e in lookups[role] if key in e]
+        if not found:
+            problems.append(f"clé `{key}` ({role}) absente des .bib du hub")
+            continue
+        if key in picked:
+            if picked[key] != found[0]:
+                problems.append(f"clé `{key}` définie différemment selon la source "
+                                f"— entrée déjà gelée conservée")
+            continue
+        if len(found) > 1 and found[0] != found[1]:
+            problems.append(f"clé `{key}` ({role}) diffère entre les deux .bib du hub "
+                            f"— {_BIB_SOURCES[role][0]} fait foi")
+        picked[key] = found[0]
+
+    head = ("% GÉNÉRÉ par _project/tools/build_debates_content.py — ne pas éditer :\n"
+            "% régénérer. Entrées extraites telles quelles des .bib du hub\n"
+            "% (references.bib, great-figures/great-figures.bib), limitées aux\n"
+            "% clés que le manifeste content.json cite réellement.\n")
+    return head + "\n" + "\n\n".join(picked.values()) + "\n", problems
+
+
 class Hub:
     """Read-only view over the four upstream sources."""
 
@@ -267,10 +371,17 @@ class Hub:
         ranked.sort(key=lambda r: r[:4])
         *_, q, match, items = ranked[0]
         full = _reference(q, match)
+        src = q.get("source") or {}
+        # Clés BibTeX : seulement si le hub les a promues au-delà de
+        # l'heuristique (voir _BIBKEY_TRUSTED). Tant qu'il ne le fait pas, la
+        # liste est vide et la slide affiche la chaîne de référence vérifiée.
+        bibkeys = (list(src.get("citekeys") or [])
+                   if src.get("citekeys_confidence") in _BIBKEY_TRUSTED else [])
         return {"en": (match or {}).get("text", {}).get("en") or q["text"],
                 "fr": (match or {}).get("text", {}).get("fr"),
                 "reference": _short_reference(full),
                 "reference_full": full,
+                "citekeys": bibkeys,
                 "curated": bool(match), "documents": items,
                 "verification": q.get("verification")}
 
@@ -524,9 +635,23 @@ def work_order(data: dict) -> str:
                 f"- référence actuelle : {q['reference'] or '**aucune**'}",
                 f"- texte : « {' '.join(q['en'].split())} »", ""]
     missing_ref = sum(1 for *_, needs in rows if "référence" in needs)
+    # La dette BibTeX est comptée à part : elle ne bloque pas la projection
+    # (la chaîne gelée reste affichée) mais dit ce qui manque pour que les
+    # citations de figures aient, comme les arguments, leur code cite() avec
+    # carte au survol. La promotion se fait DANS LE HUB, jamais ici.
+    displayed: dict = {}
+    for pole in data["poles"]:
+        for f in pole["figures"]:
+            displayed.setdefault((f["id"], f["quote"]["en"][:60]), f["quote"])
+    no_bibkey = sum(1 for q in displayed.values() if not q.get("citekeys"))
+    bib_problems = data.get("bib_problems") or []
     out += ["---", "",
             f"**{missing_ref} sans référence imprimable · "
-            f"{sum(1 for *_, n in rows if 'traduction FR' in n)} sans traduction française.**", ""]
+            f"{sum(1 for *_, n in rows if 'traduction FR' in n)} sans traduction française · "
+            f"{no_bibkey} citations sans clé BibTeX promue (repli chaîne gelée) · "
+            f"{len(bib_problems)} problème(s) de gel .bib.**", ""]
+    for p in bib_problems:
+        out.append(f"- gel .bib : {p}")
     return "\n".join(out)
 
 
@@ -542,6 +667,12 @@ def main() -> None:
     warn_if_hub_dirty(hub_root)
     hub = Hub(hub_root)
     data = build(hub)
+    # Le .bib se calcule sur les trois chemins : le work-order rapporte ses
+    # manques, et l'écriture le gèle à côté du manifeste. Les problèmes ne
+    # rejoignent PAS data["warnings"] — ceux-là sont gelés dans le manifeste
+    # et filtrés par pôle pour l'affichage en slide, pas pour l'outillage.
+    bib_text, bib_problems = freeze_bib(Path(hub_root), data)
+    data["bib_problems"] = bib_problems
 
     if args.work_order:
         print(work_order(data))
@@ -556,12 +687,19 @@ def main() -> None:
             print(f"wrote {args.report}")
         return
 
+    data.pop("bib_problems", None)      # rapporté sur stderr, jamais gelé
     _OUT.parent.mkdir(parents=True, exist_ok=True)
     _OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    _BIB_OUT.write_text(bib_text, encoding="utf-8")
+    n_entries = sum(1 for line in bib_text.splitlines() if line.startswith("@"))
     print(f"wrote {_OUT.relative_to(_REPO)} — {len(data['poles'])} poles, "
           f"{data['figures_used']} figures, {len(data['warnings'])} warning(s)")
+    print(f"wrote {_BIB_OUT.relative_to(_REPO)} — {n_entries} entrées BibTeX gelées, "
+          f"{len(bib_problems)} problème(s)")
     for w in data["warnings"]:
         print("  !", w)
+    for p in bib_problems:
+        print("  ! bib:", p)
 
 
 if __name__ == "__main__":
