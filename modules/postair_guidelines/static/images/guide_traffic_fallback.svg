@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `guide_traffic` (U4) : le feu tricolore de
+       carton, trois lumières vert/orange/rouge, silhouettes de dos. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- le corps du feu, carton lilas à deux couches -->
+  <rect x="668" y="100" width="264" height="640" rx="48" fill="#B79CED" filter="url(#ds)"/>
+  <rect x="692" y="124" width="216" height="592" rx="36" fill="#FFF8EA"/>
+  <rect x="770" y="740" width="60" height="120" fill="#B79CED" filter="url(#ds)"/>
+  <!-- les trois lumières, disques de papier superposés -->
+  <g filter="url(#ds)">
+    <circle cx="800" cy="230" r="84" fill="#7FB069"/><circle cx="778" cy="208" r="22" fill="#BDE6A8"/>
+    <circle cx="800" cy="420" r="84" fill="#F39C12"/><circle cx="778" cy="398" r="22" fill="#FFD34D"/>
+    <circle cx="800" cy="610" r="84" fill="#FF6F61"/><circle cx="778" cy="588" r="22" fill="#FFB3A7"/>
+  </g>
+  <!-- le chemin et les trois silhouettes qui regardent -->
+  <path d="M0 800 L260 782 L560 806 L900 784 L1240 808 L1600 788 L1600 900 L0 900 Z"
+        fill="#2EC4B6" filter="url(#ds)"/>
+  <g fill="#1A1A2E" filter="url(#ds)">
+    <g transform="translate(430,700)"><circle r="30"/><path d="M-30 25 q30 -20 60 0 l7 110 h-74 z"/></g>
+    <g transform="translate(560,724)"><circle r="24"/><path d="M-24 20 q24 -16 48 0 l5 88 h-58 z"/></g>
+    <g transform="translate(1120,712)"><circle r="27"/><path d="M-27 22 q27 -18 54 0 l6 98 h-66 z"/></g>
+  </g>
+</svg>

@@ -1,9 +1,13 @@
 """Reflex 3 — the three risk levels (U4). The ONLY tricolour slide.
 
-Three cards, green / orange / red — a deliberate, single derogation from the
-postair palette (plan U4, décision de design à confirmer au prototype) : the
-traffic-light semantics IS the message, and it appears exactly once in the
-whole day. Data-driven from ``custom.facts`` (section ``risk_levels``).
+The dominant visual is a PAPERCUT traffic light — the tricolour lives inside
+the illustration, in the day's graphic line (rappel NG 2026-08-11 : la ligne
+des visuels est le papier découpé coloré, jamais une ligne navy plate). Below
+it, three cards with green / orange / red washes — the deliberate, single
+derogation from the postair palette (plan U4, décision de design à confirmer
+au prototype) : the traffic-light semantics IS the message, and it appears
+exactly once in the whole day. Data-driven from ``custom.facts`` (section
+``risk_levels``).
 
 SPEAKER NOTES:
 Three minutes — this is the mental model they will reuse weekly. One level at
@@ -15,12 +19,24 @@ Close on the frame line: levels are vigilance signals, not prohibitions.
 # @guideline: postair-minimal
 
 from custom.facts import citekeys, section, text
+from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
+from custom.visuals import hero_image
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 from streamtex.styles import Style
+
+_TRAFFIC_PROMPT = (
+    AI_PREFIX
+    + "A tall friendly paper traffic light at the centre, with three big "
+      "round paper lights stacked vertically — leaf green on top, warm "
+      "orange in the middle, coral red at the bottom — each light a layered "
+      "paper disc with a soft glow. Three small abstract paper silhouettes "
+      "seen from behind look up at it from a papercut path."
+    + AI_SUFFIX_LANDSCAPE
+)
 
 #: Dérogation tricolore assumée (une seule slide du jour) : trois lavis aux
 #: couleurs sémantiques, calqués sur la géométrie des cartes du DS.
@@ -65,16 +81,22 @@ def build():
                                 "assessed learning objective » is always high risk — "
                                 "that is the one to remember.")],
                 )
-        st_space("v", "2.5vh")
+        st_space("v", "1vh")
+        hero_image(
+            "guide_traffic", _TRAFFIC_PROMPT, "images/guide_traffic_fallback.svg",
+            alt_ready=("Papercut traffic light with three big lights — green, orange, "
+                       "red — three paper silhouettes looking up at it"),
+            alt_fallback=("Papercut traffic light with green, orange and red lights"),
+            width="44%",
+        )
+        st_space("v", "1.5vh")
         with st_grid(cols=s.project.grids.balanced(len(data["levels"])), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for lv in data["levels"]:
                 with g.cell(), st_block(_WASH[lv["id"]]):
-                    st_write(bs.icon, lv["icon"], tag=t.div)
-                    st_write(bs.label, text(lv["label"]), tag=t.div)
-                    st_space("v", "0.8vh")
+                    st_write(bs.icon, lv["icon"], " ", (bs.label, text(lv["label"])),
+                             tag=t.div)
                     st_write(bs.line, text(lv["line"]), tag=t.div)
-        st_space("v", "2.5vh")
-        st_write(bs.frame, text(data["frame"]), tag=t.div)
-        st_write(bs.cite, citation(*citekeys(data)), tag=t.div)
+        st_space("v", "1.5vh")
+        st_write(bs.frame, text(data["frame"]), " ", citation(*citekeys(data)), tag=t.div)

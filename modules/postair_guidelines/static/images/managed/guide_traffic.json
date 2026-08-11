@@ -1,0 +1,18 @@
+{
+  "name": "guide_traffic",
+  "version": 1,
+  "timestamp": "2026-08-11T16:00:09.817680+00:00",
+  "source_type": "ai_generated",
+  "original_path": "/Volumes/Mac_Data/Win_data/data/backups/Dropbox-nicolas.guelfi@laposte.net/messir Dropbox/Nicolas Guelfi/users/NG/Projets/AISE/ROS/projects/sumvadis-central/sumvadis-presentations/sumvadis-presentations/sumvadis-streamtex/modules/postair_guidelines/static/images/ai/f108bab56513ca55.webp",
+  "prompt": "Layered paper-cut collage illustration, bright colored cardstock (yellow, coral, turquoise, lilac, leaf green), visible paper edges and soft drop shadows, playful handcrafted festive mood, luminous sky. Human figures as abstract paper silhouettes seen from behind, never faces. AI is always represented as a glowing warm amber paper sun or orb, never anthropomorphic. Clean layered composition. A tall friendly paper traffic light at the centre, with three big round paper lights stacked vertically — leaf green on top, warm orange in the middle, coral red at the bottom — each light a layered paper disc with a soft glow. Three small abstract paper silhouettes seen from behind look up at it from a papercut path. Wide 16:9 composition, one off-centre focal point, rising diagonal energy. NO text, NO logos, NO signage, NO photorealism.",
+  "provider": "openai",
+  "model": "gpt-image-1",
+  "size": "1536x1024",
+  "quality": null,
+  "base_image": null,
+  "revised_prompt": null,
+  "display_zoom": null,
+  "display_width": null,
+  "display_height": null,
+  "display_keep_ratio": true
+}
