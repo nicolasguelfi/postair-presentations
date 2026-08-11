@@ -7,8 +7,7 @@
 # jour (postair_event.AGENDA) — pas un choix éditorial de ce fichier.
 #
 # En attente de production (à ajouter ici le jour où leur module existe) :
-# postair_mistral (« Using Mistral models & agents to study », 20'),
-# postair_guidelines (« The UL AI guidelines » 15' + Closing 5').
+# postair_mistral (« Using Mistral models & agents to study », 20').
 
 [collection]
 title = "AI DAY — The presentations"
@@ -38,3 +37,11 @@ emoji = "🤖"
 button_label = "Open the deck"
 project_url = "https://postair-genai.streamtex.org"
 order = 3
+
+[projects.guidelines]
+title = "The UL AI Guidelines — and Closing"
+description = "The official rules in five reflexes: permitted by default, say it, three risk levels, the red lines, the final test — then the closing of the day."
+emoji = "📋"
+button_label = "Open the deck"
+project_url = "https://postair-guidelines.streamtex.org"
+order = 4

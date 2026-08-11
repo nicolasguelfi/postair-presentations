@@ -52,6 +52,15 @@
       "folder": "modules/postair_genai",
       "serve_mode": "dual"
     },
+    "postair-guidelines": {
+      "uuid": "cx1yh8ef3kyg1uf50m1w0wmi",
+      "subdomain": "postair-guidelines",
+      "fqdn": "https://postair-guidelines.streamtex.org",
+      "repo": "https://github.com/nicolasguelfi/postair-presentations",
+      "branch": "main",
+      "folder": "modules/postair_guidelines",
+      "serve_mode": "dual"
+    },
     "postair-collection": {
       "uuid": "g5hnjmauge8443965yywvijs",
       "subdomain": "postair-collection",

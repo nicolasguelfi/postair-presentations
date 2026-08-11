@@ -69,7 +69,8 @@ jobs:
             "postair-opening": {"folder": "modules/postair_opening", "uuid": "f12d9utrj67uqwjqune5t4ip", "replicas": []},
             "postair-debates": {"folder": "modules/postair_debates", "uuid": "o655voa4o0r1gw9k1lhkujtg", "replicas": []},
             "postair-genai": {"folder": "modules/postair_genai", "uuid": "ki72ol1fqgno2g1rpi0t2m7o", "replicas": []},
-            "postair-collection": {"folder": "modules/postair_collection", "uuid": "g5hnjmauge8443965yywvijs", "replicas": []}
+            "postair-collection": {"folder": "modules/postair_collection", "uuid": "g5hnjmauge8443965yywvijs", "replicas": []},
+            "postair-guidelines": {"folder": "modules/postair_guidelines", "uuid": "cx1yh8ef3kyg1uf50m1w0wmi", "replicas": []}
           }
           SERVICES
 

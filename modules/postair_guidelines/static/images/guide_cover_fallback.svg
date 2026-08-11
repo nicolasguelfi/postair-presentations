@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+
+  <circle cx="800" cy="230" r="110" fill="#F39C12" filter="url(#ds)"/>
+  <circle cx="772" cy="202" r="28" fill="#FFD34D"/>
+  <rect x="600" y="330" width="400" height="440" rx="14" fill="#FFF8EA" filter="url(#ds)"/>
+  <rect x="620" y="352" width="360" height="396" rx="10" fill="none" stroke="#B79CED" stroke-width="5"/>
+  <rect x="580" y="520" width="440" height="52" fill="#FF6F61" filter="url(#ds)"/>
+  <circle cx="800" cy="546" r="56" fill="#FF6F61" filter="url(#ds)"/>
+  <circle cx="800" cy="546" r="34" fill="#FFD34D"/>
+  <polygon points="700,770 900,770 860,830 740,830" fill="#2EC4B6" filter="url(#ds)"/>
+  <path d="M0 810 L240 794 L520 818 L820 796 L1140 820 L1420 798 L1600 814 L1600 900 L0 900 Z" fill="#7FB069" filter="url(#ds)"/>
+</svg>

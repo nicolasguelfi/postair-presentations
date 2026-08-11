@@ -1,0 +1,148 @@
+{
+ "metadata": {
+  "id": "postair-guidelines-facts",
+  "version": 1,
+  "languages": ["en"],
+  "default_language": "en",
+  "note": "Hand-curated from the OFFICIAL text: Guidelines on the Use of Generative AI for Teaching and Learning, I2TL, v1.0, 2026-02-16 (markdown v03). Every tooltip cites its section; the two verbatims (default rule, final responsibility line) are copied from the document. Sources carry ONLY citation keys."
+ },
+
+ "identity": {
+  "title_exact": {"en": "Guidelines on the Use of Generative AI for Teaching and Learning"},
+  "issuer": {"en": "Institute for Innovative Teaching and Learning (I²TL), University of Luxembourg — contact I2TL@uni.lu"},
+  "version_line": {"en": "Version 1.0 · 16 February 2026 · 19 pages · for students AND teachers"},
+  "nature": {"en": "A foundational framework, not a disciplinary code: it explains how to use generative AI critically, ethically and transparently, and refers misconduct to the existing academic procedures. Anchored in the EU AI Act's approach: risk levels, transparency, human oversight, bias awareness."},
+  "structure": {"en": "1 Introduction (p.3) · 2 Guidelines for learning (p.4) · 3 AI tools supported by UL (p.5) · 4 Using GenAI effectively and responsibly (p.6) · 5 Guidelines for teaching (p.9) · 6 Assessment adaptation (p.12) · 7 Resources (p.16) · Appendix 1 disclaimers (p.18) · Appendix 2 student checklist (p.19). This session covers the student sections: 2, 3, 4 and the two appendices."},
+  "source": {"citekeys": ["i2tl2026-guidelines"]}
+ },
+
+ "default_rule": {
+  "big": {"en": "By default: PERMITTED"},
+  "sub": {"en": "the course rules always come first"},
+  "verbatim": {"en": "In the absence of explicit course directives, students MAY use generative AI to support their learning — within academic integrity, transparency, and respect of third-party rights."},
+  "caveats": [
+   {"en": "The syllabus PRIMES: a course can restrict or forbid, explicitly and with pedagogical justification"},
+   {"en": "In doubt → ask the teacher BEFORE using it"}
+  ],
+  "anecdote": {"en": "The default rule became permissive after the community consultation — the openness is deliberate, not an oversight."},
+  "source": {"citekeys": ["i2tl2026-guidelines"]}
+ },
+
+ "disclosure": {
+  "big": {"en": "Say it — five things"},
+  "items": [
+   {"n": "1", "short": {"en": "Which tool"}, "detail": {"en": "Name the tool(s) and version you used."}},
+   {"n": "2", "short": {"en": "For what"}, "detail": {"en": "The purpose: brainstorm, draft, translate, debug…"}},
+   {"n": "3", "short": {"en": "How much"}, "detail": {"en": "The extent of the use — a paragraph, the structure, the whole draft."}},
+   {"n": "4", "short": {"en": "What YOU did with it"}, "detail": {"en": "Edited, corrected, rewrote, integrated — the output is a material, not a result."}},
+   {"n": "5", "short": {"en": "How you verified"}, "detail": {"en": "How sources and claims were validated against reliable references."}}
+  ],
+  "example": {"en": "« I used Copilot to brainstorm the outline; all arguments and sources are mine and verified. »"},
+  "prompts_tip": {"en": "Teachers may require your prompt history, a usage log and your verification evidence — keep your conversations."},
+  "annex_note": {"en": "Appendix 1 provides ready-to-use disclaimers per category (brainstorming, proofreading, translation, code, content generation) — copy and adapt. Footnote of the appendix: those examples were themselves generated with Copilot, then revised."},
+  "source": {"citekeys": ["i2tl2026-guidelines"]}
+ },
+
+ "risk_levels": {
+  "big": {"en": "Three risk levels"},
+  "levels": [
+   {"id": "low", "icon": "🟢", "label": {"en": "LOW"},
+    "line": {"en": "YOU are the source — the AI polishes"},
+    "detail": {"en": "You know the answer; the AI works on the surface: proofreading, form, organising your own ideas."}},
+   {"id": "medium", "icon": "🟠", "label": {"en": "MODERATE"},
+    "line": {"en": "You explore — and you VERIFY"},
+    "detail": {"en": "You are learning the topic: summaries and syntheses of complex material help, but you check omissions, distortions and inventions against reliable sources."}},
+   {"id": "high", "icon": "🔴", "label": {"en": "HIGH"},
+    "line": {"en": "You delegate what you cannot verify"},
+    "detail": {"en": "You depend on the AI for claims you cannot check — or the AI replaces the assessed learning objective itself. Hallucinations, fabricated citations, overconfidence."}}
+  ],
+  "frame": {"en": "Risk levels are signals to raise verification and rigour — not reasons to avoid AI."},
+  "source": {"citekeys": ["i2tl2026-guidelines", "parmentier-vicens-2025"]}
+ },
+
+ "red_lines": {
+  "big": {"en": "The red lines"},
+  "cards": [
+   {"icon": "🎭", "short": {"en": "Passing AI off as you"},
+    "detail": {"en": "Submitting AI output as entirely your own without disclosure; letting AI be the central intellectual contribution when the assessment targets YOUR reasoning; impersonation."}},
+   {"icon": "🧪", "short": {"en": "Fabricating"},
+    "detail": {"en": "Generating or altering data, results, citations or evidence; citing unverified or non-existent sources."}},
+   {"icon": "🕳️", "short": {"en": "Concealing"},
+    "detail": {"en": "Chaining tools to hide AI involvement or to circumvent integrity safeguards."}},
+   {"icon": "🔐", "short": {"en": "Sensitive data & protected material"},
+    "detail": {"en": "Personal or sensitive data into AI tools; other people's data or protected course material into external tools; uploading protected teaching material without authorisation."}},
+   {"icon": "📝", "short": {"en": "AI in exams"},
+    "detail": {"en": "Using AI against the course rules — in exams and controlled assessments above all."}}
+  ],
+  "footer": {"en": "Ten practices are listed as potential academic misconduct (section 4, p.8) — these five families cover them. Unless the course explicitly allows it; in doubt, ask BEFORE."},
+  "source": {"citekeys": ["i2tl2026-guidelines"]}
+ },
+
+ "tools": {
+  "big": {"en": "The tools UL gives you"},
+  "supported": {"en": "Microsoft Copilot with your UL account — the supported choice: your data stays inside UL's M365 environment and does not train the general models."},
+  "unigpt": {"en": "UniGPT: the internal secure assistant (February 2026) — staff only for now."},
+  "outside": {"en": "Public free tools pay themselves with your data — never put personal, sensitive or protected material there."},
+  "equity": [
+   {"en": "If a course REQUIRES AI, a path with free tools must exist — premium subscriptions must not buy grades"},
+   {"en": "Conscientious objection is possible via the Committee for Reasonable Adjustments (CAR)"}
+  ],
+  "source": {"citekeys": ["i2tl2026-guidelines"]}
+ },
+
+ "suspicion": {
+  "big": {"en": "If misuse is suspected"},
+  "line": {"en": "Standard disciplinary procedure · solid evidence required · a « detector » alone is NEVER enough · your rights are protected"},
+  "cards": [
+   {"icon": "⚖️", "short": {"en": "Standard procedure"},
+    "detail": {"en": "The existing UL academic-conduct procedure applies — these guidelines create no new tribunal."}},
+   {"icon": "🚫", "short": {"en": "Detection is not proof"},
+    "detail": {"en": "A presumed « AI detection » is not a sufficient basis: detectors are unreliable and biased against non-native writers."}},
+   {"icon": "🛡️", "short": {"en": "Your process protects you"},
+    "detail": {"en": "Drafts, prompts, versions: showing your process is your best defence — one more reason to keep them."}}
+  ],
+  "source": {"citekeys": ["i2tl2026-guidelines", "liang2023-bias", "giray-detectors-2026"]}
+ },
+
+ "checklist": {
+  "big": {"en": "Before you submit — the final test"},
+  "items": [
+   {"en": "Course rules checked (allowed · restricted · forbidden — ask if unclear)"},
+   {"en": "Only permitted uses"},
+   {"en": "Everything that matters verified (facts, citations)"},
+   {"en": "Data and copyright protected"},
+   {"en": "Disclosure ready (+ prompt log if required)"}
+  ],
+  "final": {"en": "« I can explain and defend the work in my own words, including in an oral follow-up. »"},
+  "tip": {"en": "Appendix 2 is this checklist — photograph this slide."},
+  "source": {"citekeys": ["i2tl2026-guidelines"]}
+ },
+
+ "loop": {
+  "big": {"en": "You now have all four"},
+  "steps": [
+   {"icon": "🎡", "label": {"en": "Your posture"}, "session": {"en": "the morning: nine axes, your radar, the debates"}},
+   {"icon": "🤖", "label": {"en": "Understanding"}, "session": {"en": "GenAI: what it is, what it gets wrong"}},
+   {"icon": "⚡", "label": {"en": "Practice"}, "session": {"en": "Mistral: build your own study agent"}},
+   {"icon": "📋", "label": {"en": "The rules"}, "session": {"en": "these guidelines: use it well, openly"}}
+  ],
+  "source": {"citekeys": ["guelfi-postair"]}
+ },
+
+ "next": {
+  "big": {"en": "And now?"},
+  "items": [
+   {"en": "Your survey result stays at /r/<your code> — anonymous, yours"},
+   {"en": "All the decks of today stay online — one hub, four documents"},
+   {"en": "The Mistral walkthrough too — rebuild your agent at home"},
+   {"en": "Retake the survey at the end of the year: postures move"}
+  ],
+  "hub_url": {"en": "postair-collection.streamtex.org"},
+  "contacts": {"en": "Guidelines: I2TL@uni.lu · the speakers stay around during the break"}
+ },
+
+ "thanks": {
+  "big": {"en": "Welcome to the University of Luxembourg — make AI yours."},
+  "credits": {"en": "AI Day team · the POSTAIR study and its 55 figures · sumvadis (the live survey) · 38 mascots, 100 % generative AI · built with streamtex"}
+ }
+}
