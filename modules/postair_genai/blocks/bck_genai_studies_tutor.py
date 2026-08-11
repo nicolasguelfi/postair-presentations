@@ -1,0 +1,72 @@
+"""And for your studies — the tireless tutor (G9a).
+
+Découpage NG (2026-08-11) : l'ancienne slide « studies » portait deux messages
+opposés — scindée en deux. Celle-ci est le versant positif : le bureau
+augmenté en image dominante, et ce que l'IA fait POUR l'apprentissage.
+
+SPEAKER NOTES:
+Ninety seconds. This is the good news slide: a tutor that never tires, never
+judges, and adapts to your pace — the four lines are the recommended uses,
+the guidelines session details them. Do not open the caveat here: the next
+slide carries it, and it lands harder when this one was generous.
+"""
+# @guideline: postair-minimal
+
+from custom.facts import section, text
+from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
+from custom.styles import Styles as s
+from custom.visuals import hero_image
+from shared_widgets import st_info_tooltip
+from streamtex import *
+from streamtex.enums import Tags as t
+
+
+class BlockStyles:
+    title = s.project.titles.slide_title + s.center_txt
+    item = s.project.body.bullet + s.center_txt
+
+
+bs = BlockStyles
+
+_DESK_PROMPT = (
+    AI_PREFIX
+    + "A student desk seen from the side: an open paper notebook, a small "
+      "stack of colourful paper books, a desk lamp — and a warm amber paper "
+      "orb hovering just above the notebook, lighting the page. The student, "
+      "an abstract paper silhouette seen from behind, writes in the notebook "
+      "with a pencil."
+    + AI_SUFFIX_LANDSCAPE
+)
+
+
+def build():
+    st_marker("Your tutor")
+    data = section("studies")
+    with st_block(s.project.containers.page_fill_top):
+        with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
+            with g.cell():
+                st_write(bs.title, "A ", (s.project.titles.keyword, "tireless tutor"),
+                         ", 24/7", tag=t.div, toc_lvl="+1", label="Your tutor")
+            with g.cell():
+                st_info_tooltip(
+                    title="Recommended uses",
+                    entries=[
+                        ("What the guidelines recommend", "Clarification, training "
+                         "material, study plans, brainstorming — the UL guidelines "
+                         "session details every recommended use."),
+                        ("The four uses on screen", " · ".join(
+                            text(item) for item in data["do"])),
+                    ],
+                )
+        st_space("v", "1vh")
+        hero_image(
+            "genai_desk", _DESK_PROMPT, "images/genai_desk_fallback.svg",
+            alt_ready=("Papercut student desk with open notebook, book stack, and an "
+                       "amber orb lighting the page while the student writes"),
+            alt_fallback=("Papercut desk, silhouette writing, amber orb hovering over "
+                          "the notebook"),
+            width="58%",
+        )
+        st_space("v", "1.5vh")
+        for item in data["do"]:
+            st_write(bs.item, "▸ ", text(item), tag=t.div)

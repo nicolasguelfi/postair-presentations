@@ -1,0 +1,212 @@
+% POSTAIR — GenAI session bibliography.
+%
+% SOURCE UNIQUE des références de ce document (règle bib canonique, CLAUDE.md) :
+% les faits vivent dans facts.json et ne portent QUE des clés de citation ; la
+% phrase imprimée est dérivée d'ici, jamais recopiée là-bas. Une correction se
+% fait donc en un seul endroit, et le même appareil critique sert la carte au
+% survol, le code en ligne et la page de références.
+%
+% CONVENTION D'ÉCRITURE — le lecteur de ce fichier est streamtex, pas LaTeX :
+% il n'interprète NI les accolades de protection de casse, NI les séquences
+% d'échappement TeX, et imprime tel quel ce qu'il lit. On écrit donc en UTF-8
+% direct, sans {AI}, sans \"O, sans -- ni ---. Un texte projeté devant 1500
+% personnes ne doit jamais montrer une accolade.
+%
+% Les entrées partagées avec postair_opening (hepi-survey-2026, noy-zhang-2023,
+% dahl-legal-fictions-2024, guelfi-postair) sont copiées VERBATIM depuis son
+% references.bib — une divergence entre les deux serait deux vérités.
+
+@article{turing1950-mind,
+  author  = {Alan M. Turing},
+  title   = {Computing Machinery and Intelligence},
+  journal = {Mind},
+  volume  = {59},
+  number  = {236},
+  pages   = {433–460},
+  year    = {1950},
+  doi     = {10.1093/mind/LIX.236.433}
+}
+
+@article{mccarthy1955-dartmouth,
+  author  = {John McCarthy and Marvin L. Minsky and Nathaniel Rochester and Claude E. Shannon},
+  title   = {A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence, August 31, 1955},
+  journal = {AI Magazine},
+  volume  = {27},
+  number  = {4},
+  pages   = {12–14},
+  year    = {2006},
+  doi     = {10.1609/aimag.v27i4.1904},
+  note    = {Réimpression du texte de 1955 — l'acte de naissance du terme « artificial intelligence »}
+}
+
+@techreport{lighthill1973-survey,
+  author      = {James Lighthill},
+  title       = {Artificial Intelligence: A General Survey},
+  institution = {Science Research Council},
+  address     = {London},
+  year        = {1973},
+  note        = {Le rapport dont la réception a précipité le premier « hiver de l'IA » britannique}
+}
+
+@inproceedings{krizhevsky2012-alexnet,
+  author    = {Alex Krizhevsky and Ilya Sutskever and Geoffrey E. Hinton},
+  title     = {ImageNet Classification with Deep Convolutional Neural Networks},
+  booktitle = {Advances in Neural Information Processing Systems 25},
+  year      = {2012},
+  note      = {AlexNet : la victoire ImageNet 2012 qui a relancé l'apprentissage profond}
+}
+
+@inproceedings{vaswani2017-attention,
+  author    = {Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Lukasz Kaiser and Illia Polosukhin},
+  title     = {Attention Is All You Need},
+  booktitle = {Advances in Neural Information Processing Systems 30},
+  year      = {2017},
+  note      = {L'architecture Transformer, socle de tous les grands modèles de langage actuels}
+}
+
+@misc{hu2023-fastest,
+  author       = {Krystal Hu},
+  title        = {ChatGPT sets record for fastest-growing user base — analyst note},
+  howpublished = {Reuters},
+  year         = {2023},
+  month        = {2},
+  url          = {https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-base-analyst-note-2023-02-01/},
+  note         = {100 millions d'utilisateurs mensuels estimés deux mois après le lancement (analyse UBS)}
+}
+
+@techreport{hepi-survey-2026,
+  author      = {Rose Stephenson and Charlotte Armstrong},
+  title       = {Student Generative AI Survey 2026},
+  journal     = {HEPI Report 199, Higher Education Policy Institute},
+  institution = {Higher Education Policy Institute},
+  number      = {199},
+  year        = {2026},
+  month       = {3},
+  url         = {https://www.hepi.ac.uk/2026/03/12/student-generative-ai-survey-2026/},
+  note        = {1054 full-time UK undergraduates polled by Savanta in December 2025;
+                 third annual edition of the same instrument}
+}
+
+@article{wei2022-emergent,
+  author  = {Jason Wei and Yi Tay and Rishi Bommasani and Colin Raffel and Barret Zoph and Sebastian Borgeaud and Dani Yogatama and Maarten Bosma and Denny Zhou and Donald Metzler and Ed H. Chi and Tatsunori Hashimoto and Oriol Vinyals and Percy Liang and Jeff Dean and William Fedus},
+  title   = {Emergent Abilities of Large Language Models},
+  journal = {Transactions on Machine Learning Research},
+  year    = {2022},
+  url     = {https://arxiv.org/abs/2206.07682}
+}
+
+@inproceedings{schaeffer2023-mirage,
+  author    = {Rylan Schaeffer and Brando Miranda and Sanmi Koyejo},
+  title     = {Are Emergent Abilities of Large Language Models a Mirage?},
+  booktitle = {Advances in Neural Information Processing Systems 36},
+  year      = {2023},
+  url       = {https://arxiv.org/abs/2304.15004},
+  note      = {Le contrepoint : une partie des « capacités émergentes » disparaît quand on change la métrique}
+}
+
+@misc{cottier2024-costs,
+  author       = {Ben Cottier and Robi Rahman and Loredana Fattorini and Nestor Maslej and David Owen},
+  title        = {The rising costs of training frontier AI models},
+  howpublished = {arXiv:2405.21015},
+  year         = {2024},
+  url          = {https://arxiv.org/abs/2405.21015},
+  note         = {Coût de calcul des modèles de pointe en croissance d'environ 2,4 fois par an depuis 2016}
+}
+
+@techreport{iea2025-energy,
+  author      = {International Energy Agency},
+  title       = {Energy and AI},
+  institution = {IEA, World Energy Outlook Special Report},
+  year        = {2025},
+  month       = {4},
+  url         = {https://www.iea.org/reports/energy-and-ai},
+  note        = {Les centres de données pèsent environ 1,5 % de l'électricité mondiale en 2024 ;
+                 leur consommation pourrait plus que doubler d'ici 2030, l'IA en premier moteur}
+}
+
+@misc{mata-avianca-2023,
+  author       = {United States District Court, Southern District of New York},
+  title        = {Mata v. Avianca, Inc., No. 22-cv-1461 (PKC) — Opinion and Order on Sanctions},
+  howpublished = {S.D.N.Y., 22 June 2023},
+  year         = {2023},
+  url          = {https://www.courtlistener.com/docket/63107798/mata-v-avianca-inc/},
+  note         = {Six précédents inventés par ChatGPT et déposés tels quels ; avocats sanctionnés —
+                 le cas d'école des références fabriquées avec aplomb}
+}
+
+@article{dahl-legal-fictions-2024,
+  author  = {Matthew Dahl and Varun Magesh and Mirac Suzgun and Daniel E. Ho},
+  title   = {Large legal fictions: profiling legal hallucinations in large language models},
+  journal = {Journal of Legal Analysis},
+  volume  = {16},
+  number  = {1},
+  pages   = {64–93},
+  year    = {2024},
+  doi     = {10.1093/jla/laae003}
+}
+
+@inproceedings{buolamwini2018-gendershades,
+  author    = {Joy Buolamwini and Timnit Gebru},
+  title     = {Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification},
+  booktitle = {Proceedings of Machine Learning Research 81 (Conference on Fairness, Accountability and Transparency)},
+  pages     = {77–91},
+  year      = {2018},
+  url       = {https://proceedings.mlr.press/v81/buolamwini18a.html}
+}
+
+@inproceedings{bender2021-parrots,
+  author    = {Emily M. Bender and Timnit Gebru and Angelina McMillan-Major and Shmargaret Shmitchell},
+  title     = {On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?},
+  booktitle = {Proceedings of the ACM Conference on Fairness, Accountability, and Transparency (FAccT '21)},
+  year      = {2021},
+  doi       = {10.1145/3442188.3445922}
+}
+
+@misc{kosmyna2025-cognitive-debt,
+  author       = {Nataliya Kosmyna and Eugene Hauptmann and Ye Tong Yuan and Jessica Situ and Xian-Hao Liao and Ashly Vivian Beresnitzky and Iris Braunstein and Pattie Maes},
+  title        = {Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task},
+  howpublished = {arXiv:2506.08872},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2506.08872},
+  note         = {Étude EEG (MIT Media Lab) : connectivité cérébrale et mémorisation de son propre
+                 texte plus faibles quand l'essai est écrit avec un LLM}
+}
+
+@techreport{dec2025-assessment,
+  author      = {Digital Education Council},
+  title       = {The Next Era of Assessment: A Global Review of AI in Assessment Design},
+  institution = {Digital Education Council, in partnership with Pearson},
+  year        = {2025},
+  note        = {Trois régimes d'évaluation à l'ère de l'IA — AI-Free, AI-Assisted, AI-Integrated ;
+                 la référence du plan pour « l'examen reste humain »}
+}
+
+@article{noy-zhang-2023,
+  author  = {Shakked Noy and Whitney Zhang},
+  title   = {Experimental evidence on the productivity effects of generative artificial intelligence},
+  journal = {Science},
+  volume  = {381},
+  number  = {6654},
+  pages   = {187–192},
+  year    = {2023},
+  doi     = {10.1126/science.adh2586}
+}
+
+@techreport{wef2025-jobs,
+  author      = {World Economic Forum},
+  title       = {The Future of Jobs Report 2025},
+  institution = {World Economic Forum},
+  year        = {2025},
+  month       = {1},
+  url         = {https://www.weforum.org/publications/the-future-of-jobs-report-2025/},
+  note        = {Enquête employeurs, 55 économies : 39 % des compétences clés changent d'ici 2030 ;
+                 pensée analytique et littératie IA en tête des compétences montantes}
+}
+
+@article{guelfi-postair,
+  author  = {Nicolas Guelfi},
+  title   = {Understanding human postures in front of the AI revolution},
+  journal = {University of Luxembourg},
+  year    = {2026},
+  note    = {The instrument behind the nine axes and the six archetypes}
+}

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `genai_brain` : le cerveau est un muscle — un
+       cerveau de papier corail soulève son haltère ; l'orbe ambre attend à
+       côté, posé, spectateur. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- le cerveau : deux hémisphères de papier corail à circonvolutions -->
+  <g filter="url(#ds)">
+    <path d="M560 470 q-90 -30 -80 -130 q8 -84 96 -104 q30 -80 120 -70 q40 -50 110 -30 q80 -70 160 -6 q90 -20 120 60 q80 30 62 120 q30 90 -60 130 q-20 70 -110 64 q-60 50 -130 20 q-90 40 -160 -14 q-90 20 -128 -40 z"
+          fill="#FF6F61"/>
+    <g stroke="#FFF8EA" stroke-width="12" fill="none" stroke-linecap="round">
+      <path d="M600 300 q60 -40 110 6"/>
+      <path d="M700 220 q70 -26 120 24"/>
+      <path d="M860 210 q66 6 96 60"/>
+      <path d="M640 400 q60 30 130 6"/>
+      <path d="M820 330 q70 -10 130 30"/>
+    </g>
+  </g>
+  <!-- les bras de papier et l'haltère levée -->
+  <g filter="url(#ds)">
+    <path d="M520 380 q-110 -20 -140 -140" stroke="#FF6F61" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <path d="M1060 380 q110 -20 140 -140" stroke="#FF6F61" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <rect x="300" y="196" width="980" height="30" rx="15" fill="#7a6a4f"/>
+    <rect x="252" y="140" width="90" height="146" rx="22" fill="#2EC4B6"/>
+    <rect x="1238" y="140" width="90" height="146" rx="22" fill="#2EC4B6"/>
+    <rect x="176" y="164" width="66" height="98" rx="18" fill="#B79CED"/>
+    <rect x="1338" y="164" width="66" height="98" rx="18" fill="#B79CED"/>
+  </g>
+  <!-- gouttes d'effort -->
+  <g fill="#7AB8F5" filter="url(#ds)">
+    <path d="M540 180 q14 26 0 40 q-14 -14 0 -40 z"/>
+    <path d="M1080 200 q14 26 0 40 q-14 -14 0 -40 z"/>
+  </g>
+  <!-- l'orbe ambre posé au sol, spectateur -->
+  <circle cx="1310" cy="700" r="76" fill="#F39C12" filter="url(#ds)"/>
+  <circle cx="1288" cy="678" r="20" fill="#FFD34D"/>
+  <!-- sol de papier -->
+  <path d="M0 790 L240 772 L520 796 L820 774 L1140 798 L1420 776 L1600 792 L1600 900 L0 900 Z"
+        fill="#7FB069" filter="url(#ds)"/>
+</svg>

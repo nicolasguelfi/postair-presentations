@@ -1,0 +1,64 @@
+"""Access to the session facts — the only content source of the twelve slides.
+
+``static/data/facts.json`` is hand-curated: every figure, milestone, example
+and claim was verified at its source and carries its citation keys. No number,
+claim or reference is ever typed into a block — a block asks this module for a
+section and renders what it gets. A correction is made in the JSON, never in a
+slide.
+
+**Les références ne sont PAS ici.** Une source porte des clés de citation ; la
+phrase bibliographique est dérivée de ``static/data/references.bib`` par
+``custom.refs``. Deux fichiers, deux rôles : celui-ci dit ce qu'on affirme,
+l'autre dit d'où ça vient — et l'appareil critique n'existe qu'une fois.
+
+Language follows the ecosystem convention: every translatable leaf is an
+object keyed by language code, and ``metadata.languages`` says which codes the
+file actually carries. ``text()`` falls back to the default language rather
+than leaving a hole on a projected screen.
+"""
+
+from __future__ import annotations
+
+import json
+from functools import lru_cache
+from pathlib import Path
+
+_FACTS = Path(__file__).parent.parent / "static" / "data" / "facts.json"
+
+
+@lru_cache(maxsize=1)
+def manifest() -> dict:
+    if not _FACTS.exists():
+        raise FileNotFoundError(
+            f"{_FACTS.name} is missing — the session has no content without "
+            f"it, and nothing may be typed into a block instead.")
+    return json.loads(_FACTS.read_text(encoding="utf-8"))
+
+
+def default_language() -> str:
+    return manifest().get("metadata", {}).get("default_language", "en")
+
+
+def text(node, lang: str | None = None) -> str:
+    """One translatable leaf, in ``lang``, falling back to the default language."""
+    if node is None:
+        return ""
+    if isinstance(node, str):
+        return node
+    lang = lang or default_language()
+    return node.get(lang) or node.get(default_language()) or ""
+
+
+def section(name: str):
+    """One top-level section of the manifest — loud when it is missing."""
+    data = manifest().get(name)
+    if data is None:
+        raise KeyError(
+            f"facts.json has no section {name!r} — the slide that asked has "
+            f"no content, and nothing may be typed into a block instead.")
+    return data
+
+
+def citekeys(node: dict) -> list[str]:
+    """The citation keys of a sourced node (empty list when unsourced)."""
+    return list((node.get("source") or {}).get("citekeys") or [])

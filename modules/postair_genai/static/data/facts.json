@@ -1,0 +1,208 @@
+{
+ "metadata": {
+  "id": "postair-genai-facts",
+  "version": 1,
+  "languages": ["en"],
+  "default_language": "en",
+  "note": "Hand-curated. Every claim verified at its source; sources carry ONLY citation keys — the printed sentence derives from references.bib (règle bib canonique)."
+ },
+
+ "pocket": {
+  "lead": {"en": "You have been using AI for years"},
+  "items": [
+   {"id": "autocomplete", "icon": "⌨️", "label": {"en": "Autocomplete"},
+    "detail": {"en": "Your keyboard predicts your next word — a small language model, running on your phone."}},
+   {"id": "photos", "icon": "📷", "label": {"en": "Photo filters"},
+    "detail": {"en": "Portrait mode, night mode, face unlock: neural networks process every shot."}},
+   {"id": "reco", "icon": "🎬", "label": {"en": "Recommendations"},
+    "detail": {"en": "What you watch, hear and scroll next is ranked by prediction models trained on billions of choices."}},
+   {"id": "translate", "icon": "🌍", "label": {"en": "Translation"},
+    "detail": {"en": "Instant translation between ~100 languages runs on the same Transformer architecture as chatbots."}},
+   {"id": "assistants", "icon": "💬", "label": {"en": "Assistants"},
+    "detail": {"en": "ChatGPT, Copilot, Le Chat: the newcomers — the first AI you TALK to."}}
+  ],
+  "distinction": {
+   "classic": {"en": "Classic AI predicts or classifies: it ranks your feed, spots your face, filters spam. It chooses among existing things."},
+   "generative": {"en": "Generative AI produces NEW content: text, images, sound, code. It writes the next thing instead of picking it."}
+  }
+ },
+
+ "timeline": [
+  {"id": "turing", "year": "1950", "label": {"en": "The Turing test"},
+   "detail": {"en": "Can a machine hold a conversation indistinguishable from a human's? The question that started the field."},
+   "source": {"citekeys": ["turing1950-mind"]}},
+  {"id": "dartmouth", "year": "1956", "label": {"en": "The name: « AI »"},
+   "detail": {"en": "A summer workshop at Dartmouth coins the term « artificial intelligence » — and predicts fast progress."},
+   "source": {"citekeys": ["mccarthy1955-dartmouth"]}},
+  {"id": "winters", "year": "1974–1993", "label": {"en": "Two AI winters"},
+   "detail": {"en": "Twice, promises outran results and funding collapsed. The field learned humility the hard way."},
+   "source": {"citekeys": ["lighthill1973-survey"]}},
+  {"id": "deep", "year": "2012", "label": {"en": "Deep learning works"},
+   "detail": {"en": "AlexNet crushes the ImageNet vision contest: neural networks plus GPUs plus data finally deliver."},
+   "source": {"citekeys": ["krizhevsky2012-alexnet"]}},
+  {"id": "transformers", "year": "2017", "label": {"en": "Transformers"},
+   "detail": {"en": "« Attention Is All You Need » — the architecture every current large language model is built on."},
+   "source": {"citekeys": ["vaswani2017-attention"]}},
+  {"id": "chatgpt", "year": "2022", "label": {"en": "ChatGPT"},
+   "detail": {"en": "An estimated 100 million users two months after launch — the fastest-adopted consumer application of its time."},
+   "source": {"citekeys": ["hu2023-fastest"]}},
+  {"id": "agents", "year": "2026", "label": {"en": "The year of agents"},
+   "detail": {"en": "Models that use tools in a loop to pursue a goal — the frontier you will see live in the Mistral session."},
+   "source": {"citekeys": []}}
+ ],
+
+ "prediction": {
+  "sentence_head": {"en": "Luxembourg is a"},
+  "blank": {"en": "____"},
+  "candidates": [
+   {"word": {"en": "country"}, "prob": "78 %", "share": 0.78},
+   {"word": {"en": "grand duchy"}, "prob": "12 %", "share": 0.12},
+   {"word": {"en": "cheese"}, "prob": "0.1 %", "share": 0.001}
+  ],
+  "punch": {"en": "That is ALL a language model does — and it is enormous."},
+  "tooltip": [
+   {"term": {"en": "Tokens"}, "def": {"en": "The model reads and writes in fragments of words (tokens), a few characters each. « Luxembourg » is 2–3 tokens."}},
+   {"term": {"en": "Probabilities"}, "def": {"en": "For every next token the model scores its whole vocabulary and samples among the most probable — learned from billions of pages of text."}},
+   {"term": {"en": "Temperature"}, "def": {"en": "A dial on the sampling: low = always the safest word, high = more surprising choices. Same question, different answers — by design, not by bug."}},
+   {"term": {"en": "Predicting vs understanding"}, "def": {"en": "To predict well at this scale, models build internal representations of grammar, facts and reasoning patterns. Whether that deserves the word « understanding » is an open scientific debate — honest people disagree."}}
+  ]
+ },
+
+ "scale": {
+  "sliders": [
+   {"label": {"en": "Data"}, "value": {"en": "≈ the public web"},
+    "detail": {"en": "Training corpora sample most of the accessible public web, plus books and code."}},
+   {"label": {"en": "Compute"}, "value": {"en": "×2.4 per year"},
+    "detail": {"en": "The training compute cost of frontier models has grown about 2.4× per year since 2016 — the largest runs cost tens to hundreds of millions of euros."},
+    "source": {"citekeys": ["cottier2024-costs"]}},
+   {"label": {"en": "Energy"}, "value": {"en": "≈ 1.5 % → ×2 by 2030"},
+    "detail": {"en": "Data centres used about 1.5 % of world electricity in 2024; that could more than double by 2030, with AI as the main driver."},
+    "source": {"citekeys": ["iea2025-energy"]}}
+  ],
+  "emergence": {
+   "claim": {"en": "Scale produces capabilities nobody programmed"},
+   "detail": {"en": "Abilities like multi-step arithmetic or translation appear abruptly past certain scales — « emergent abilities »."},
+   "counterpoint": {"en": "Part of that abruptness may be an artefact of how we measure — the mirage debate is open."},
+   "source": {"citekeys": ["wei2022-emergent", "schaeffer2023-mirage"]}
+  }
+ },
+
+ "capabilities": [
+  {"id": "write", "icon": "✍️", "label": {"en": "Write"},
+   "example": {"en": "Drafts, letters, summaries in your style — professional writers gain ~40 % speed in controlled trials."},
+   "source": {"citekeys": ["noy-zhang-2023"]}},
+  {"id": "translate", "icon": "🌍", "label": {"en": "Translate"},
+   "example": {"en": "Between ~100 languages, instantly — including Luxembourgish, imperfectly."}},
+  {"id": "code", "icon": "💻", "label": {"en": "Code"},
+   "example": {"en": "From a sentence to a working program — and it explains someone else's code too."}},
+  {"id": "summarise", "icon": "📚", "label": {"en": "Summarise"},
+   "example": {"en": "A 60-page report into one page — with the risk of losing exactly the nuance you needed."}},
+  {"id": "create", "icon": "🎨", "label": {"en": "Create media"},
+   "example": {"en": "Images, music, video from a text description — every illustration of this deck was made that way."}},
+  {"id": "reason", "icon": "🧩", "label": {"en": "Reason (a bit)"},
+   "example": {"en": "Step-by-step problem solving improves fast, but remains unreliable without verification."}},
+  {"id": "act", "icon": "⚡", "label": {"en": "Act — agents"},
+   "example": {"en": "A model that uses tools in a loop (search, files, code) to pursue a goal — next session, live."},
+   "accent": true}
+ ],
+
+ "hallucination": {
+  "display_case": {
+   "quote": {"en": "Varghese v. China Southern Airlines Co., Ltd., 925 F.3d 1339 (11th Cir. 2019)"},
+   "verdict": {"en": "This case does not exist. ChatGPT invented it — with a full docket number, quotes and internal citations — and two lawyers filed it in a New York federal court."},
+   "source": {"citekeys": ["mata-avianca-2023"]}
+  },
+  "claims": [
+   {"short": {"en": "It does not « know » — it predicts"},
+    "detail": {"en": "The model optimises plausibility, not truth. A fluent, confident answer is what it is built to produce — even when wrong."}},
+   {"short": {"en": "Plausible ≠ true"},
+    "detail": {"en": "On precise legal questions, large language models hallucinated in 69 % to 88 % of cases in a systematic profiling study."},
+    "source": {"citekeys": ["dahl-legal-fictions-2024"]}},
+   {"short": {"en": "Verification is non-negotiable"},
+    "detail": {"en": "Anything that matters gets checked at the source. This is the bridge to the UL guidelines: high risk = delegating what you cannot verify."}}
+  ]
+ },
+
+ "concerns": [
+  {"id": "bias", "icon": "⚖️", "label": {"en": "Bias in, bias out"},
+   "message": {"en": "Trained on our biases, it industrialises them"},
+   "punch": {"en": "Error rate up to 34.7 % on darker-skinned women — under 1 % on lighter-skinned men"},
+   "detail": {"en": "Commercial face classifiers erred up to 34.7 % on darker-skinned women against under 1 % on lighter-skinned men — the training data's imbalance, industrialised."},
+   "source": {"citekeys": ["buolamwini2018-gendershades", "bender2021-parrots"]}},
+  {"id": "control", "icon": "🏛️", "label": {"en": "Who controls the models?"},
+   "message": {"en": "A handful of companies train the frontier models"},
+   "punch": {"en": "What Europe builds itself is a sovereignty question — Mistral, next session"},
+   "detail": {"en": "A handful of companies train the frontier models. What Europe builds itself is a sovereignty question — the Mistral session is part of the answer."}},
+  {"id": "data", "icon": "🔐", "label": {"en": "Your data is the raw material"},
+   "message": {"en": "Free tools pay themselves with your conversations"},
+   "punch": {"en": "Read what you accept — keep personal and sensitive data out"},
+   "detail": {"en": "Free tools pay themselves with your conversations. Read what you accept — and keep personal and sensitive data out."}},
+  {"id": "brain", "icon": "🧠", "label": {"en": "The brain is a muscle"},
+   "message": {"en": "Delegate the effort, and the muscle melts"},
+   "punch": {"en": "EEG study: weaker brain connectivity, weaker memory of your own text"},
+   "detail": {"en": "In an EEG study, students writing essays with an LLM showed weaker brain connectivity and remembered their own text less — delegation has a cognitive price. Assessment is being redesigned around that fact: AI-free, AI-assisted, AI-integrated."},
+   "source": {"citekeys": ["kosmyna2025-cognitive-debt", "dec2025-assessment"]}}
+ ],
+
+ "capability_faculty": [
+  {"faculty": {"en": "Science & engineering"},
+   "example": {"en": "Code assistants draft, test and explain programs — the FSTM way in: build with it, then break it to understand it."}},
+  {"faculty": {"en": "Law, economics, finance"},
+   "example": {"en": "Contract review and case-law search accelerate massively — and G7 shows why a jurist verifies every citation it returns."}},
+  {"faculty": {"en": "Humanities, education, social sciences"},
+   "example": {"en": "Transcription, translation and thematic coding of interviews — the analysis and the interpretation stay the researcher's."}}
+ ],
+
+ "studies": {
+  "do": [
+   {"en": "A tireless tutor, 24/7 — have concepts explained until they click"},
+   {"en": "Quizzes and flashcards generated from YOUR course notes"},
+   {"en": "Outlines and first drafts — then the thinking is yours"},
+   {"en": "A patient language partner for the language you are learning"}
+  ],
+  "dont": [
+   {"en": "The exam stays human — and so does the learning"},
+   {"en": "Used as a shortcut, it replaces exactly the effort that builds the skill"},
+   {"en": "94 % of UK students already use it for assessed work — the question is HOW, not whether"}
+  ],
+  "dont_source": {"citekeys": ["hepi-survey-2026"]},
+  "paradox": {"en": "Well used, it accelerates learning. Used instead of learning, it cancels it."}
+ },
+
+ "careers": [
+  {"id": "health", "faculty": {"en": "Medicine & health"},
+   "pair": {"en": "the clinician + AI"},
+   "detail": {"en": "Imaging triage, protein structures, paperwork — and a human who decides, explains and carries responsibility."}},
+  {"id": "law", "faculty": {"en": "Law, economics, finance"},
+   "pair": {"en": "the jurist + AI"},
+   "detail": {"en": "Research and drafting accelerate; judgement, strategy and accountability do not delegate."}},
+  {"id": "science", "faculty": {"en": "Science & engineering"},
+   "pair": {"en": "the researcher + AI"},
+   "detail": {"en": "Hypothesis search, code, literature triage — and the experiment, the proof and the doubt stay yours."}}
+ ],
+ "careers_frame": {
+  "claim": {"en": "Transformation, not disappearance"},
+  "detail": {"en": "Employers surveyed across 55 economies expect 39 % of core skills to change by 2030; analytical thinking and AI literacy top the rising list."},
+  "source": {"citekeys": ["wef2025-jobs"]},
+  "rising_skill": {"en": "The skill that rises fastest: JUDGING what the AI produced"}
+ },
+
+ "actor": {
+  "line": {"en": "The revolution is here. Your posture is your compass."},
+  "verbs": [{"en": "Stay informed"}, {"en": "Test things"}, {"en": "Keep doubting"}],
+  "mascots": ["Kuri", "Solyo", "Lento"],
+  "mascot_why": {"en": "Curiosity to explore, optimism to build, prudence to verify — three postures walking together."},
+  "source": {"citekeys": ["guelfi-postair"]}
+ },
+
+ "takeaways": [
+  {"n": "1", "short": {"en": "Predicting ≠ knowing"},
+   "detail": {"en": "A language model produces the plausible next word. Fluency is not truth."}},
+  {"n": "2", "short": {"en": "Verify everything that matters"},
+   "detail": {"en": "References, numbers, names: check at the source before you rely on it."}},
+  {"n": "3", "short": {"en": "A learning tool, not a replacement"},
+   "detail": {"en": "Let it explain and train you; never let it do the learning in your place."}},
+  {"n": "4", "short": {"en": "Your posture is yours"},
+   "detail": {"en": "Nine axes, no right answer — but not choosing is also a choice."}}
+ ]
+}

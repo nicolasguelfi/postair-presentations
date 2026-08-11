@@ -48,7 +48,7 @@ _MODULES = _REPO / "modules"
 
 #: Les modules qui affichent des mascottes. Un module qui n'en affiche pas ne
 #: paie pas le poids : la synchro est par module, pas globale.
-MASCOT_MODULES = ["postair_opening", "postair_debates"]
+MASCOT_MODULES = ["postair_opening", "postair_debates", "postair_genai"]
 #: Les modules qui affichent des figures (portraits + posters).
 FIGURE_MODULES = ["postair_debates"]
 #: Les modules qui projettent un clip de mascotte.

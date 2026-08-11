@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `genai_data` : les bulles de conversation
+       coulent comme une rivière vers l'entonnoir-orbe — vos données, leur
+       matière première. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- la rivière de papier turquoise qui descend vers l'entonnoir -->
+  <path d="M0 300 C 300 260, 520 360, 780 380 C 1000 396, 1120 420, 1190 470 L1240 560 L1060 560 C 900 480, 500 430, 0 430 Z"
+        fill="#2EC4B6" opacity="0.55" filter="url(#ds)"/>
+  <!-- bulles de conversation en papier vif, emportées par le courant -->
+  <g filter="url(#ds)">
+    <g transform="translate(190,300) rotate(-7)"><rect x="-70" y="-46" width="140" height="86" rx="24" fill="#FFD34D"/><polygon points="-24,38 -2,38 -20,66"/></g>
+    <g transform="translate(430,330) rotate(5)"><rect x="-62" y="-42" width="124" height="78" rx="22" fill="#FF6F61"/><polygon points="-20,34 0,34 -16,58"/></g>
+    <g transform="translate(660,360) rotate(-4)"><rect x="-54" y="-38" width="108" height="70" rx="20" fill="#B79CED"/><polygon points="-18,30 0,30 -14,52"/></g>
+    <g transform="translate(880,400) rotate(6)"><rect x="-46" y="-32" width="92" height="60" rx="17" fill="#7FB069"/><polygon points="-15,26 1,26 -12,44"/></g>
+    <g transform="translate(1060,440) rotate(-5)"><rect x="-38" y="-27" width="76" height="50" rx="14" fill="#FFD34D"/><polygon points="-12,21 2,21 -10,37"/></g>
+  </g>
+  <!-- l'entonnoir de carton et l'orbe qui avale -->
+  <polygon points="1120,520 1400,520 1300,660 1220,660" fill="#FF6F61" filter="url(#ds)"/>
+  <circle cx="1260" cy="740" r="88" fill="#F39C12" filter="url(#ds)"/>
+  <circle cx="1236" cy="716" r="24" fill="#FFD34D"/>
+  <!-- la silhouette qui regarde partir sa conversation -->
+  <g fill="#1A1A2E" filter="url(#ds)">
+    <g transform="translate(150,620)"><circle r="30"/><path d="M-30 25 q30 -20 60 0 l7 118 h-74 z"/></g>
+  </g>
+  <path d="M0 812 L260 794 L560 818 L900 796 L1240 820 L1600 800 L1600 900 L0 900 Z"
+        fill="#7FB069" filter="url(#ds)"/>
+</svg>

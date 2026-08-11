@@ -1,0 +1,40 @@
+# AI Day — le livre des modules (modèle : stx_manuals_collection de streamtex-docs).
+#
+# Ajouter un module = ajouter une section [projects.xxx] ici (rien d'autre à
+# coder : bck_home lit ce fichier). L'URL locale est le défaut ; en déploiement
+# Coolify, la variable d'environnement STX_URL_XXX (clé en MAJUSCULES, tirets
+# devenus soulignés) la surcharge. L'ordre est celui de l'agenda officiel du
+# jour (postair_event.AGENDA) — pas un choix éditorial de ce fichier.
+#
+# En attente de production (à ajouter ici le jour où leur module existe) :
+# postair_mistral (« Using Mistral models & agents to study », 20'),
+# postair_guidelines (« The UL AI guidelines » 15' + Closing 5').
+
+[collection]
+title = "AI DAY — The presentations"
+description = "University of Luxembourg · 8, 9 and 10 September 2026 · three identical sessions"
+cards_per_row = 3
+
+[projects.opening]
+title = "Opening — Facing the AI Revolution"
+description = "Welcome · Survey · Results · Discussion. The morning up to the break: the nine axes, the survey, the room's own results."
+emoji = "🎡"
+button_label = "Open the deck"
+project_url = "https://postair-opening.streamtex.org"
+order = 1
+
+[projects.debates]
+title = "The debates of the nine axes"
+description = "A navigable bank, not a talk: both poles of every axis — historical figures, sourced quotations, contemporary arguments."
+emoji = "⚖️"
+button_label = "Open the bank"
+project_url = "https://postair-debates.streamtex.org"
+order = 2
+
+[projects.genai]
+title = "Introduction to AI & Generative AI"
+description = "Seventy years in thirty minutes: where it comes from, how it works, what it gets wrong, what that changes for you."
+emoji = "🤖"
+button_label = "Open the deck"
+project_url = "https://postair-genai.streamtex.org"
+order = 3

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `genai_mirror` (biais) : balance de carton
+       déséquilibrée, sphères ambre d'un côté, une seule turquoise de l'autre. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- miroir de papier légèrement voilé, en fond -->
+  <g transform="rotate(4 1210 420)" filter="url(#ds)">
+    <ellipse cx="1210" cy="420" rx="200" ry="270" fill="#B79CED"/>
+    <ellipse cx="1210" cy="420" rx="160" ry="228" fill="#FFF8EA"/>
+    <path d="M1130 300 q60 90 -20 240" stroke="#B79CED" stroke-width="14" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- pied de la balance -->
+  <polygon points="560,780 640,780 616,470 584,470" fill="#FF6F61" filter="url(#ds)"/>
+  <polygon points="470,800 730,800 700,760 500,760" fill="#FF6F61" filter="url(#ds)"/>
+  <!-- fléau incliné, en carton jaune -->
+  <g transform="rotate(-13 600 470)">
+    <rect x="240" y="452" width="720" height="34" rx="17" fill="#FFD34D" filter="url(#ds)"/>
+    <!-- plateau gauche, bas, chargé de sphères ambre -->
+    <line x1="280" y1="486" x2="222" y2="620" stroke="#7a6a4f" stroke-width="7"/>
+    <line x1="280" y1="486" x2="338" y2="620" stroke="#7a6a4f" stroke-width="7"/>
+    <path d="M190 620 h180 a90 52 0 0 1 -180 0 z" fill="#7FB069" filter="url(#ds)"/>
+    <g fill="#F39C12" filter="url(#ds)">
+      <circle cx="240" cy="606" r="26"/><circle cx="286" cy="596" r="32"/><circle cx="332" cy="608" r="22"/>
+    </g>
+    <!-- plateau droit, haut, presque vide -->
+    <line x1="920" y1="486" x2="862" y2="620" stroke="#7a6a4f" stroke-width="7"/>
+    <line x1="920" y1="486" x2="978" y2="620" stroke="#7a6a4f" stroke-width="7"/>
+    <path d="M830 620 h180 a90 52 0 0 1 -180 0 z" fill="#7FB069" filter="url(#ds)"/>
+    <circle cx="920" cy="608" r="16" fill="#2EC4B6" filter="url(#ds)"/>
+  </g>
+  <circle cx="600" cy="470" r="30" fill="#F39C12" filter="url(#ds)"/>
+  <!-- sol de papier -->
+  <path d="M0 812 L240 794 L520 818 L820 796 L1140 820 L1420 798 L1600 814 L1600 900 L0 900 Z"
+        fill="#2EC4B6" filter="url(#ds)"/>
+</svg>

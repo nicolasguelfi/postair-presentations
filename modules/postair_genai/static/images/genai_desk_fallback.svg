@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `genai_desk` : le bureau augmenté — la
+       silhouette écrit, l'orbe ambre éclaire la page comme une lampe amie. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- halo de l'orbe sur la page -->
+  <polygon points="900,340 700,640 1100,640" fill="#FFD34D" opacity="0.4"/>
+  <!-- le bureau de carton -->
+  <rect x="240" y="620" width="1120" height="34" rx="17" fill="#FF6F61" filter="url(#ds)"/>
+  <rect x="300" y="654" width="44" height="196" fill="#FF6F61" filter="url(#ds)"/>
+  <rect x="1256" y="654" width="44" height="196" fill="#FF6F61" filter="url(#ds)"/>
+  <!-- le cahier ouvert -->
+  <g filter="url(#ds)">
+    <path d="M760 596 q120 -36 240 0 q120 -36 240 0 l0 26 q-120 -32 -240 0 q-120 -32 -240 0 z" fill="#FFF8EA"/>
+    <line x1="1000" y1="566" x2="1000" y2="620" stroke="#B79CED" stroke-width="6"/>
+  </g>
+  <!-- pile de livres en papier vif -->
+  <g filter="url(#ds)">
+    <rect x="380" y="576" width="190" height="34" rx="10" fill="#2EC4B6"/>
+    <rect x="398" y="542" width="154" height="34" rx="10" fill="#FFD34D"/>
+    <rect x="412" y="508" width="126" height="34" rx="10" fill="#B79CED"/>
+  </g>
+  <!-- la silhouette au travail, de dos, crayon en main -->
+  <g fill="#1A1A2E" filter="url(#ds)">
+    <circle cx="600" cy="420" r="48"/>
+    <path d="M552 460 q48 -32 96 0 l12 160 h-120 z"/>
+    <path d="M648 500 q80 30 120 84" stroke="#1A1A2E" stroke-width="28" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- l'orbe ambre au-dessus de la page -->
+  <circle cx="900" cy="330" r="96" fill="#F39C12" filter="url(#ds)"/>
+  <circle cx="874" cy="304" r="24" fill="#FFD34D"/>
+  <!-- sol -->
+  <path d="M0 828 L260 812 L560 832 L900 812 L1240 834 L1600 814 L1600 900 L0 900 Z"
+        fill="#7FB069" filter="url(#ds)"/>
+</svg>
