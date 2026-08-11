@@ -16,4 +16,11 @@ CLAUDE.md
 settings.local.json
 *.bak-*
 notes.txt
-_project/
+# _project reste hors de l'image — SAUF tools/, que le Dockerfile copie pour
+# matérialiser les médias au build (sync_media.py). L'exclusion totale a cassé
+# TOUS les builds entre le 03/08 (ajout du COPY) et le 11/08 : le Dockerfile
+# échouait sur « /_project/tools: not found » et les services tournaient sur
+# leurs anciens conteneurs sans que rien ne le signale.
+_project/*
+!_project/tools
+_project/tools/*.local.json
