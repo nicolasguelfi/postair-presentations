@@ -33,6 +33,33 @@
       "branch": "main",
       "folder": "modules/postair_opening",
       "serve_mode": "dual"
+    },
+    "postair-debates": {
+      "uuid": "o655voa4o0r1gw9k1lhkujtg",
+      "subdomain": "postair-debates",
+      "fqdn": "https://postair-debates.streamtex.org",
+      "repo": "https://github.com/nicolasguelfi/postair-presentations",
+      "branch": "main",
+      "folder": "modules/postair_debates",
+      "serve_mode": "dual"
+    },
+    "postair-genai": {
+      "uuid": "ki72ol1fqgno2g1rpi0t2m7o",
+      "subdomain": "postair-genai",
+      "fqdn": "https://postair-genai.streamtex.org",
+      "repo": "https://github.com/nicolasguelfi/postair-presentations",
+      "branch": "main",
+      "folder": "modules/postair_genai",
+      "serve_mode": "dual"
+    },
+    "postair-collection": {
+      "uuid": "g5hnjmauge8443965yywvijs",
+      "subdomain": "postair-collection",
+      "fqdn": "https://postair-collection.streamtex.org",
+      "repo": "https://github.com/nicolasguelfi/postair-presentations",
+      "branch": "main",
+      "folder": "modules/postair_collection",
+      "serve_mode": "dual"
     }
   }
 }
