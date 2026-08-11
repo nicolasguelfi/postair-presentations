@@ -3,14 +3,10 @@
 Layout: a vertical stack inside one grid cell — portrait, caption, quotation,
 reference. The caller places three of them side by side in ONE flat grid.
 
-Two provenance rules are carried by the card itself, not by a tooltip, because
-they must be visible on the projected slide:
-
-- the portrait opens the figure's presentation video, and for a living person
-  that video is somebody presenting them, never the person made to speak by
-  generative AI — the caption says which;
-- the axis score is a reconstruction from primary sources; it commits its
-  author and never the figure.
+The provenance rules (reconstructed postures commit their author; a living
+person is never made to speak by generative AI) are NOT repeated on the card:
+since 2026-08-11 they are stated once, on the deck's standalone provenance
+slide — fifty-four repetitions turned an honesty clause into wallpaper.
 
 A quotation whose reference is still unresolved upstream renders with a visible
 reserve rather than silently looking sourced.
@@ -45,7 +41,6 @@ def figure_card(figure: dict, design_system, quote_text: str,
     """
     ds = design_system
     media = figure.get("media") or {}
-    presented = media.get("video_kind") == "presented"
     with st_block(ds.cards.axis_frame):
         st_image(ds.cards.media_center, width=portrait_width,
                  uri=media.get("portrait"), link=media.get("video"),
@@ -59,7 +54,3 @@ def figure_card(figure: dict, design_system, quote_text: str,
         st_write(ds.body.body, f"“{quote_text}”", tag=t.div)
         st_space("v", "0.6vh")
         st_write(ds.body.caption, reference or UNRESOLVED_REFERENCE, tag=t.div)
-        st_write(ds.body.caption,
-                 "video: a presentation of this living person, not their own words"
-                 if presented else "reconstructed profile — commits its author, not the figure",
-                 tag=t.div)
