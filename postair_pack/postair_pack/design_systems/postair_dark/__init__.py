@@ -50,22 +50,27 @@ class _Colors:
 class _Titles:
     # Titles and subtitles ×1.5 (NG 2026-07-29) — the multiplier is applied
     # on the responsive scale token so everything still follows ScaleConfig.
+    # Chaque gros jeton porte AUSSI un plafond vw (NG 2026-08-12) : sur un
+    # écran étroit, la taille devient proportionnelle à la largeur — en
+    # projection le jeton pt reste seul maître (le plafond ne mord qu'en
+    # dessous de ~1400 px).
     hero = Style(
-        "font-size: calc(var(--stx-scale-17, 72pt) * 1.5); font-weight: 800; letter-spacing: -0.5px; "
+        "font-size: min(9vw, calc(var(--stx-scale-17, 72pt) * 1.5)); font-weight: 800; letter-spacing: -0.5px; "
         "line-height: 1.1; color: #FFFFFF;",
         "postair_title_hero",
     )
     slide_title = Style(
-        "font-size: calc(var(--stx-scale-15, 48pt) * 1.5); font-weight: 700; letter-spacing: -0.5px; "
+        "font-size: min(7vw, calc(var(--stx-scale-15, 48pt) * 1.5)); font-weight: 700; letter-spacing: -0.5px; "
         "line-height: 1.15; color: #FFFFFF;",
         "postair_title_slide",
     )
     subtitle = Style(
-        "font-size: calc(var(--stx-scale-12, 32pt) * 1.5); font-weight: 400; line-height: 1.25; color: #7AB8F5;",
+        "font-size: min(5vw, calc(var(--stx-scale-12, 32pt) * 1.5)); font-weight: 400; "
+        "line-height: 1.25; color: #7AB8F5;",
         "postair_title_subtitle",
     )
     register_title = Style(
-        "font-size: calc(var(--stx-scale-16, 60pt) * 1.5); font-weight: 800; letter-spacing: -0.5px; "
+        "font-size: min(8vw, calc(var(--stx-scale-16, 60pt) * 1.5)); font-weight: 800; letter-spacing: -0.5px; "
         "line-height: 1.1; color: #F39C12;",
         "postair_title_register",
     )
@@ -81,11 +86,11 @@ class _Titles:
 
 class _Body:
     bullet = Style(
-        "font-size: var(--stx-scale-13, 36pt); line-height: 1.5; color: #F2EEE6;",
+        "font-size: min(4.6vw, var(--stx-scale-13, 36pt)); line-height: 1.5; color: #F2EEE6;",
         "postair_body_bullet",
     )
     body = Style(
-        "font-size: var(--stx-scale-12, 32pt); line-height: 1.4; color: #F2EEE6;",
+        "font-size: min(4.2vw, var(--stx-scale-12, 32pt)); line-height: 1.4; color: #F2EEE6;",
         "postair_body_text",
     )
     # Pole labels of an axis stack — SAME size for both poles (only the
@@ -113,7 +118,7 @@ class _Body:
         "postair_body_session_name",
     )
     caption = Style(
-        "font-size: var(--stx-scale-9, 22pt); font-style: italic; color: #95A5A6; opacity: 0.85;",
+        "font-size: min(3.4vw, var(--stx-scale-9, 22pt)); font-style: italic; color: #95A5A6; opacity: 0.85;",
         "postair_body_caption",
     )
     # Liste courte, sans commentaire, sur une demi-slide : la contrainte n'est
@@ -266,7 +271,7 @@ class _Grids:
         return min(candidates, key=lambda c: (c * math.ceil(count / c) - count, c))
 
     @staticmethod
-    def balanced(count: int, cap: int = 6, min_px: int = 280) -> str:
+    def balanced(count: int, cap: int = 6, min_px: int = 340) -> str:
         """Le ``cols`` d'une grille équilibrée et responsive.
 
         Le plancher en pourcentage **plafonne** le nombre de colonnes : posé

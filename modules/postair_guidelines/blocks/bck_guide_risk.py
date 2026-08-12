@@ -92,7 +92,7 @@ def build():
         st_space("v", "1.5vh")
         with st_grid(cols=s.project.grids.balanced(len(data["levels"])), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for lv in data["levels"]:
                 with g.cell(), st_block(_WASH[lv["id"]]):
                     st_write(bs.icon, lv["icon"], " ", (bs.label, text(lv["label"])),

@@ -119,7 +119,7 @@ def build():
         # ONE flat grid: nine cells, each a self-contained axis card.
         with st_grid(cols=_COLS, gap="0.8vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for axis in _axes_in_order():
                 with g.cell(), st_block(s.project.containers.column_stack_centered):
                     st_write(bs.axis_name, axis["axis_name"], tag=t.div)

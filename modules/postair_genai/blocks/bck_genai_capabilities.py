@@ -53,7 +53,7 @@ def build():
         # Sept cartes sur une grille équilibrée ; « agents » est LA carte ambre.
         with st_grid(cols=s.project.grids.balanced(len(caps)), gap="1vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for c in caps:
                 with g.cell(), st_block(s.project.cards.amber if c.get("accent")
                                         else s.project.cards.blue):

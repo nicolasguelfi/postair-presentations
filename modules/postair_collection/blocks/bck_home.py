@@ -82,7 +82,7 @@ def build():
             chunk = _PROJECTS[r * _CARDS_PER_ROW:(r + 1) * _CARDS_PER_ROW]
             with st_grid(cols=s.project.grids.balanced(len(chunk)), gap="1.5vw",
                          grid_style=s.project.grids.stretch,
-                         cell_styles=s.project.containers.grid_cell_top) as g:
+                         cell_styles=s.project.containers.grid_cell_centered) as g:
                 for project in chunk:
                     with g.cell():
                         _card(project)

@@ -54,7 +54,7 @@ def build():
         st_space("v", "2.5vh")
         with st_grid(cols=s.project.grids.balanced(len(items)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for item in items:
                 with g.cell(), st_block(s.project.cards.blue):
                     st_write(bs.number, item["n"], tag=t.div)

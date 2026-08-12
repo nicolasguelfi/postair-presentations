@@ -98,7 +98,7 @@ def build():
         shown = figures()
         with st_grid(cols=s.project.grids.balanced(len(shown)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for figure in shown:
                 with g.cell():
                     # Le code de citation vit dans le texte VISIBLE de la carte,

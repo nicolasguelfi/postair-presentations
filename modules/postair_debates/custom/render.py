@@ -117,7 +117,7 @@ def _figures(pole: dict, lang: str | None) -> None:
     st_space("v", "1.5vh")
     with st_grid(cols=s.project.grids.balanced(len(pole["figures"])), gap="1.2vw",
                  grid_style=s.project.grids.stretch,
-                 cell_styles=s.project.containers.grid_cell_top) as g:
+                 cell_styles=s.project.containers.grid_cell_centered) as g:
         for f in pole["figures"]:
             with g.cell():
                 # Code de citation natif dès que le hub aura promu la clé de la
@@ -142,7 +142,7 @@ def _arguments(pole: dict, lang: str | None) -> None:
     st_space("v", "1.5vh")
     with st_grid(cols=s.project.grids.balanced(len(pole["arguments"])), gap="1.2vw",
                  grid_style=s.project.grids.stretch,
-                 cell_styles=s.project.containers.grid_cell_top) as g:
+                 cell_styles=s.project.containers.grid_cell_centered) as g:
         for a in pole["arguments"]:
             with g.cell():
                 # La ligne de source est le code de citation natif — carte

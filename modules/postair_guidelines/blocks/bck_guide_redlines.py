@@ -58,7 +58,7 @@ def build():
         st_space("v", "2.5vh")
         with st_grid(cols=s.project.grids.balanced(len(data["cards"])), gap="1vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for c in data["cards"]:
                 with g.cell(), st_block(s.project.cards.coral):
                     st_write(bs.icon, c["icon"], tag=t.div)

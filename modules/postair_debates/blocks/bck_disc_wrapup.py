@@ -77,7 +77,7 @@ def build():
         company = _all_poles()
         with st_grid(cols=s.project.grids.balanced(len(company)), gap="0.6vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for pole in company:
                 with g.cell():
                     st_image(s.project.cards.media_center, width="min(8vw, 15vh)",

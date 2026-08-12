@@ -86,7 +86,7 @@ def build():
         # ONE flat grid, laid out as a block rather than a strip.
         with st_grid(cols=s.project.grids.balanced(len(_TIPS)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for case, fix, card in _TIPS:
                 with g.cell(), st_block(card):
                     st_write(bs.case, case, tag=t.div)

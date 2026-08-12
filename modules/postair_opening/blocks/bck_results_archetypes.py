@@ -77,7 +77,7 @@ def build():
         # ONE flat grid — six named cards, wrapping on a narrow window.
         with st_grid(cols=s.project.grids.balanced(len(_CARDS)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for (_key, name), card in zip(archetypes(), _CARDS):
                 with g.cell(), st_block(card):
                     st_write(bs.name, name, tag=t.div)

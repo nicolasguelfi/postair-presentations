@@ -60,7 +60,7 @@ def build():
         # code de citation. La ligne est portée par la rangée de points.
         with st_grid(cols=s.project.grids.balanced(len(milestones)), gap="0.8vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for i, m in enumerate(milestones):
                 with g.cell(), st_block(s.project.cards.blue):
                     st_html(f'<div style="text-align:center;padding-top:0.5vh;">'

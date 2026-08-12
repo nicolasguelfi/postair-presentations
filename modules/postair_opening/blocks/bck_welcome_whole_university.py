@@ -100,7 +100,7 @@ def build():
         groups = disciplines()
         with st_grid(cols=s.project.grids.balanced(len(groups)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_top) as g:
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             for group in groups:
                 with g.cell():
                     faculty_card(DS,
