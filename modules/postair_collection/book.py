@@ -12,6 +12,7 @@ from pathlib import Path
 
 import blocks
 import streamlit as st
+from postair_display import PROFILES, auto_profile
 import streamtex as stx
 import streamtex.styles as sts
 from custom.themes import dark
@@ -63,6 +64,8 @@ set_presentation_config(PresentationConfig(
 toc = TOCConfig(numbering=NumberingMode.SIDEBAR_ONLY, toc_position=None, search=False)
 
 # Une seule page, pas de pagination : c'est un hub, pas un deck.
+auto_profile()
+
 st_book(
     [
         blocks.bck_home,
@@ -74,4 +77,5 @@ st_book(
     page_width=100,
     zoom=100,
     doc_version=_doc_version,
+    presentation_profiles=PROFILES,
 )

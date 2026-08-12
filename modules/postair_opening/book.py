@@ -10,6 +10,7 @@ from pathlib import Path
 
 import blocks
 import streamlit as st
+from postair_display import PROFILES, SCALE, auto_profile
 import streamtex as stx
 import streamtex.styles as sts
 from custom.refs import CONFIG as BIB_CONFIG
@@ -21,7 +22,6 @@ from streamtex import (
     MarkerConfig,
     NumberingMode,
     PresentationConfig,
-    ScaleConfig,
     SlideBreakConfig,
     SlideBreakMode,
     TOCConfig,
@@ -115,6 +115,10 @@ marker_config = MarkerConfig(
 # No slide numbers anywhere in the code: numbering shifts on every design
 # iteration, block names do not. The plan ↔ block mapping lives in
 # _project/plans/plan-postair_opening.md.
+# Profil adapté à l'appareil, appliqué UNE fois avant st_book — le choix
+# manuel (sidebar) prime ensuite. Voir postair_display.
+auto_profile()
+
 st_book(
     [
         # ── Welcome ─────────────────────────────────────────────────
@@ -164,6 +168,7 @@ st_book(
     zoom=100,
     # Auditorium base: 30pt body base ⇒ bullets ≈60pt, slide titles ≈80pt,
     # heroes ≈120pt (all DS tokens follow via var(--stx-scale-K)).
-    scale=ScaleConfig(base_pt_desktop=30),
+    scale=SCALE,  # base amphi 30pt + rétrécissements mobiles renforcés (postair_display)
     doc_version=_doc_version,
+    presentation_profiles=PROFILES,
 )

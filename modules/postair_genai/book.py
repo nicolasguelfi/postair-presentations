@@ -12,6 +12,7 @@ from pathlib import Path
 
 import blocks
 import streamlit as st
+from postair_display import PROFILES, SCALE, auto_profile
 import streamtex as stx
 import streamtex.styles as sts
 from custom.refs import CONFIG as BIB_CONFIG
@@ -23,7 +24,6 @@ from streamtex import (
     MarkerConfig,
     NumberingMode,
     PresentationConfig,
-    ScaleConfig,
     SlideBreakConfig,
     SlideBreakMode,
     TOCConfig,
@@ -109,6 +109,10 @@ marker_config = MarkerConfig(
 # Reading order IS this list — it is the single source of truth for the deck.
 # No slide numbers anywhere in the code: numbering shifts on every design
 # iteration, block names do not.
+# Profil adapté à l'appareil, appliqué UNE fois avant st_book — le choix
+# manuel (sidebar) prime ensuite. Voir postair_display.
+auto_profile()
+
 st_book(
     [
         blocks.bck_genai_title,          # G1  · hero + the promise
@@ -144,6 +148,7 @@ st_book(
     page_width=100,
     zoom=100,
     # Auditorium base: 30pt body base ⇒ bullets ≈60pt, slide titles ≈80pt.
-    scale=ScaleConfig(base_pt_desktop=30),
+    scale=SCALE,  # base amphi 30pt + rétrécissements mobiles renforcés (postair_display)
     doc_version=_doc_version,
+    presentation_profiles=PROFILES,
 )
