@@ -130,7 +130,7 @@
     "detail": {"en": "Article 3(60), verbatim: « AI-generated or manipulated image, audio or video content that resembles existing persons, objects, places, entities or events and would falsely appear to a person to be authentic or truthful. » NOT every generated image: a stylised illustration or an obviously synthetic diagram is not a deepfake. What you publish that IS one must be labelled as artificially generated (article 50(4)); for evidently artistic, creative or satirical works the disclosure may be limited so it does not hamper the work."}},
    {"icon": "🏷️", "short": {"en": "Generated content is marked by design"},
     "article": {"en": "art. 50(2)"},
-    "detail": {"en": "Article 50(2): providers of generative systems must mark outputs in a machine-readable format so AI-generated or altered content is detectable. The tools do it for you — your side of the duty is simple: never strip or conceal the mark, which is also the guidelines' red line on concealment."}},
+    "detail": {"en": "Article 50(2): providers of generative systems must mark outputs in a machine-readable format so AI-generated or altered content is detectable. The tools do it for you — your side of the duty is simple: never strip or conceal the mark, which is also the guidelines' red line on concealment. And if your tool does NOT mark? That is the tool provider's infringement, never yours — the law does not ask YOU to watermark anything. Your protection is your written disclosure and your kept prompts."}},
    {"icon": "📣", "short": {"en": "You declare when you publish"},
     "article": {"en": "art. 50(4)"},
     "detail": {"en": "Deployer duties, article 50(4): a deepfake you disseminate must be labelled; an AI-generated or manipulated TEXT published to inform the public on matters of public interest must disclose its artificial origin — unless a human has reviewed it and someone assumes editorial responsibility. Purely personal, non-professional use is outside the Regulation (article 2(10)) — but coursework you hand in or publish is not « purely personal »."}}
@@ -140,6 +140,14 @@
    {"when": {"en": "2 August 2026"}, "what": {"en": "IN FORCE — transparency (art. 50), enforcement of prohibitions (art. 5, applicable since 2 Feb 2025) and of general-purpose model duties (art. 53–55: documentation, copyright policy, training-data summaries)"}},
    {"when": {"en": "2 December 2027"}, "what": {"en": "High-risk systems (Annex III) — including EDUCATION: admission, evaluation of learning outcomes, exam proctoring (postponed by the 2026 Omnibus)"}},
    {"when": {"en": "2 August 2028"}, "what": {"en": "High-risk AI embedded in regulated products (Annex I)"}}
+  ],
+  "faq": [
+   {"q": {"en": "Provider? Deployer? In plain words"},
+    "a": {"en": "The PROVIDER makes or distributes the AI tool (OpenAI, Mistral, the startup you found…). The DEPLOYER uses it under their own name for something that reaches other people. As a student you are usually a simple user; you act as a deployer when you PUBLISH what the AI made, and you become a provider the day you BUILD a tool that others use."}},
+   {"q": {"en": "My tool does not mark its images — must I add a mark? "},
+    "a": {"en": "No. The machine-readable mark (art. 50(2)) is the TOOL provider's legal duty — you have neither the obligation nor the technical means to watermark content yourself. What is yours: (1) in coursework, ALWAYS say you used AI — the one-sentence disclosure of the guidelines, whatever the tool; (2) if you publish a deepfake, label it visibly (« AI-generated ») — a plain written mention is what the law expects from you; (3) never remove an existing mark. Good practice: prefer tools that signed the Code of Practice."}},
+   {"q": {"en": "Does this apply to EVERY generated image?"},
+    "a": {"en": "Three different rules, three different answers. Machine-readable marking: every generated output — but it is the tool's job, not yours. The visible « deepfake » label: ONLY content matching art. 3(60) — it resembles real people, places or events and could pass for authentic; a stylised illustration, a papercut scene or a diagram needs no legal label. The university disclosure: YES, every AI use in your coursework, whatever the content — that rule comes from the UL guidelines, not from the AI Act."}}
   ],
   "channels": {"en": "Complaint Tool (art. 85, open to any natural or legal person) · downstream-provider channel (art. 89(2), for breaches of art. 53–55) · Whistleblower Tool. Over 180 organisations signed the Code of Practice on Transparency of AI-generated Content."},
   "source": {"citekeys": ["eu-ai-act-2024", "ec2026-enforcement", "eu2026-omnibus"]}

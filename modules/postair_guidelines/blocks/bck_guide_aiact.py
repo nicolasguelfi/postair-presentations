@@ -70,6 +70,11 @@ def build():
                     title="Applicable law, with the article numbers",
                     entries=[(f"{c['icon']} {text(c['short'])} — {text(c['article'])}",
                               text(c["detail"])) for c in data["cards"]]
+                            # FAQ en langage non-spécialiste (exigence NG) : qui est
+                            # fournisseur/déployeur, que faire si l'outil ne marque
+                            # pas, et ce qui vaut pour TOUTE image générée.
+                            + [(f"❓ {text(f['q'])}", text(f["a"]))
+                               for f in data["faq"]]
                             + [(f"📅 {text(tl['when'])}", text(tl["what"]))
                                for tl in data["timeline"]]
                             + [("Who enforces, where to complain", text(data["channels"]))],
