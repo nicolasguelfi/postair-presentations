@@ -118,6 +118,33 @@
   "source": {"citekeys": ["i2tl2026-guidelines"]}
  },
 
+ "ai_act": {
+  "big": {"en": "The course rules say if you MAY — the law says what you MUST declare"},
+  "since": {"en": "Enforced since 2 August 2026 — AI Office, national authorities, EDPS"},
+  "cards": [
+   {"icon": "🤖", "short": {"en": "An AI declares itself"},
+    "article": {"en": "art. 50(1)"},
+    "detail": {"en": "Chatbots and interactive AI systems must tell you that you are dealing with AI, not a human — unless it is obvious from context. Article 50(1): a duty of the system's provider, and your right as a user."}},
+   {"icon": "🎭", "short": {"en": "« Deepfake » has a legal definition"},
+    "article": {"en": "art. 3(60)"},
+    "detail": {"en": "Article 3(60), verbatim: « AI-generated or manipulated image, audio or video content that resembles existing persons, objects, places, entities or events and would falsely appear to a person to be authentic or truthful. » NOT every generated image: a stylised illustration or an obviously synthetic diagram is not a deepfake. What you publish that IS one must be labelled as artificially generated (article 50(4)); for evidently artistic, creative or satirical works the disclosure may be limited so it does not hamper the work."}},
+   {"icon": "🏷️", "short": {"en": "Generated content is marked by design"},
+    "article": {"en": "art. 50(2)"},
+    "detail": {"en": "Article 50(2): providers of generative systems must mark outputs in a machine-readable format so AI-generated or altered content is detectable. The tools do it for you — your side of the duty is simple: never strip or conceal the mark, which is also the guidelines' red line on concealment."}},
+   {"icon": "📣", "short": {"en": "You declare when you publish"},
+    "article": {"en": "art. 50(4)"},
+    "detail": {"en": "Deployer duties, article 50(4): a deepfake you disseminate must be labelled; an AI-generated or manipulated TEXT published to inform the public on matters of public interest must disclose its artificial origin — unless a human has reviewed it and someone assumes editorial responsibility. Purely personal, non-professional use is outside the Regulation (article 2(10)) — but coursework you hand in or publish is not « purely personal »."}}
+  ],
+  "punch": {"en": "Build an AI (project, hackathon, startup) and you become a PROVIDER — transparency by design. And some uses are simply forbidden: emotion inference in education is prohibited (art. 5(1)(f))."},
+  "timeline": [
+   {"when": {"en": "2 August 2026"}, "what": {"en": "IN FORCE — transparency (art. 50), enforcement of prohibitions (art. 5, applicable since 2 Feb 2025) and of general-purpose model duties (art. 53–55: documentation, copyright policy, training-data summaries)"}},
+   {"when": {"en": "2 December 2027"}, "what": {"en": "High-risk systems (Annex III) — including EDUCATION: admission, evaluation of learning outcomes, exam proctoring (postponed by the 2026 Omnibus)"}},
+   {"when": {"en": "2 August 2028"}, "what": {"en": "High-risk AI embedded in regulated products (Annex I)"}}
+  ],
+  "channels": {"en": "Complaint Tool (art. 85, open to any natural or legal person) · downstream-provider channel (art. 89(2), for breaches of art. 53–55) · Whistleblower Tool. Over 180 organisations signed the Code of Practice on Transparency of AI-generated Content."},
+  "source": {"citekeys": ["eu-ai-act-2024", "ec2026-enforcement", "eu2026-omnibus"]}
+ },
+
  "loop": {
   "big": {"en": "You now have all four"},
   "steps": [

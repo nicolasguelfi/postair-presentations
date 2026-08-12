@@ -1,4 +1,4 @@
-"""postair_guidelines — the last two slots of the AI Day (UL guidelines 15' + Closing 5').
+"""postair_guidelines — the last two slots of the AI Day (UL guidelines 15'+3' AI Act + Closing 5').
 
 Seventh document of the POSTAIR set. See _project/plans/plan-postair_guidelines.md —
 the plan ↔ block mapping is one to one (U1…U8, C1…C3), plus the References appendix.
@@ -120,6 +120,7 @@ st_book(
         blocks.bck_guide_tools,        # U6 · the UL bubble vs the open cloud
         blocks.bck_guide_suspicion,    # U7 · balanced scale — detection is not proof
         blocks.bck_guide_checklist,    # U8 · the final test, verbatim
+        blocks.bck_guide_aiact,        # U9 · the AI Act — enforced since 2026-08-02
         blocks.bck_close_loop,         # C1 · the four things they now have
         blocks.bck_close_next,         # C2 · the QR to the hub, what stays online
         blocks.bck_close_thanks,       # C3 · mascot family photo, applause
