@@ -65,7 +65,10 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        with st_grid(cols="72% 28%", cell_styles=s.project.containers.grid_cell_centered) as g:
+        # breakpoint : sous 520 px (téléphone), l'image et Kuri s'empilent au
+        # lieu de s'étrangler côte à côte.
+        with st_grid(cols="72% 28%", breakpoint="520px",
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 hero_image(
                     "guide_greenlight", _GREEN_PROMPT,

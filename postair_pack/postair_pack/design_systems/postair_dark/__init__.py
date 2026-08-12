@@ -266,7 +266,7 @@ class _Grids:
         return min(candidates, key=lambda c: (c * math.ceil(count / c) - count, c))
 
     @staticmethod
-    def balanced(count: int, cap: int = 6, min_px: int = 200) -> str:
+    def balanced(count: int, cap: int = 6, min_px: int = 280) -> str:
         """Le ``cols`` d'une grille équilibrée et responsive.
 
         Le plancher en pourcentage **plafonne** le nombre de colonnes : posé

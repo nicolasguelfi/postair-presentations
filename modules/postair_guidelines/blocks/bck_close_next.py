@@ -47,7 +47,9 @@ def build():
                     ],
                 )
         st_space("v", "1.5vh")
-        with st_grid(cols="55% 45%", cell_styles=s.project.containers.grid_cell_centered) as g:
+        # breakpoint : sous 520 px, le QR passe au-dessus de la liste.
+        with st_grid(cols="55% 45%", breakpoint="520px",
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 # QR versionné (static/images/qr/), généré vers le hub collection.
                 st_image(s.project.cards.media_center, width="18vw",
