@@ -12,16 +12,13 @@ sub-slide still breaks so PageDown advances one screen at a time.
 
 from __future__ import annotations
 
-from postair_pack.components.argument_card import argument_card
-from postair_pack.components.figure_card import figure_card
-from postair_pack.components.pole_faceoff import pole_faceoff
-from postair_pack.components.pole_identity import pole_identity
 from shared_widgets import st_info_tooltip
 from streamtex import (
     SlideBreakConfig,
     SlideBreakMode,
     st_block,
     st_grid,
+    st_image,
     st_marker,
     st_slide_break,
     st_space,
@@ -34,12 +31,23 @@ from custom.pole import faceoff_sides, mascots
 from custom.refs import citation_or
 from custom.styles import DS
 from custom.styles import Styles as s
+from postair_pack.components.argument_card import argument_card
+from postair_pack.components.hero_split import hero_split
+from postair_pack.components.pole_faceoff import pole_faceoff
+from postair_pack.components.pole_identity import pole_identity
 
 
 class RenderStyles:
     title = s.project.titles.slide_title + s.center_txt
     subtitle = s.project.titles.subtitle + s.center_txt
     banner = s.project.body.body + s.center_txt
+    # La slide une-figure (NG 2026-08-13) : nom en très grand, méta et
+    # référence discrètes, verbatim en corps de lecture.
+    figure_name = s.project.body.name_double + s.center_txt
+    figure_meta = s.project.body.mascot_name + s.center_txt
+    figure_stance = s.project.body.body + s.project.colors.keyword + s.center_txt
+    quote = s.project.body.bullet + s.center_txt
+    figure_ref = s.project.body.caption + s.center_txt
 
 
 rs = RenderStyles
@@ -84,28 +92,8 @@ def _identity(pole: dict, lang: str | None) -> None:
     pole_identity(both, [text(x["text"], lang) for x in pole["statements"]], DS)
 
 
-def _figures(pole: dict, lang: str | None) -> None:
-    pole_name = text(pole["pole"], lang)
-    entries = []
-    for f in pole["figures"]:
-        entries.append((f"{f['name']} ({f.get('dates', '')})",
-                        f"{f.get('origin', '')} · {f.get('wave', '')} · score {f['score']} on "
-                        f"this axis."))
-    # Les règles de provenance (reconstruction, personnes vivantes) sont dites
-    # UNE fois, sur la slide Provenance en tête de document — plus jamais ici.
-    entries.append(("Videos", "Clicking a portrait opens the figure's presentation video. The "
-                              "provenance rules are on the Provenance slide, at the start."))
-    entries.append(("References", "Every quotation is verbatim and verified. The citation code "
-                                  "under each quotation opens the full reference on hover; the "
-                                  "References page at the end of the document lists them all."))
-    # The full reference belongs here, not under the portrait: a dossier's
-    # source entry is written to be complete, not to be read from row thirty.
-    for f in pole["figures"]:
-        full = f["quote"].get("reference_full")
-        if full and full != f["quote"].get("reference"):
-            entries.append((f"{f['name']} — full reference", full))
-    _header(["Who thought this ", (s.project.titles.keyword, "before us"), " — ", pole_name],
-            f"The three figures of {pole_name}", entries)
+def _pole_banner(pole: dict) -> None:
+    """L'avertissement « aucune figure ne défend ce pôle », s'il existe."""
     for warning in warnings_for(pole["axis"]):
         if pole["pole"].get("abbr", {}).get("en", "") in warning:
             st_space("v", "1vh")
@@ -114,22 +102,61 @@ def _figures(pole: dict, lang: str | None) -> None:
                          "No figure in this study champions this pole. These are the three "
                          "closest to it — the strongest voices this corpus has to offer on "
                          "this side, and that absence is itself worth debating.", tag=t.div)
-    st_space("v", "1.5vh")
-    with st_grid(cols=s.project.grids.balanced(len(pole["figures"])), gap="1.2vw",
-                 grid_style=s.project.grids.stretch,
-                 cell_styles=s.project.containers.grid_cell_centered) as g:
-        for f in pole["figures"]:
-            with g.cell():
-                # Code de citation natif dès que le hub aura promu la clé de la
-                # citation ; d'ici là, la chaîne de référence vérifiée du gel.
-                figure_card(f, DS, text(f["quote"], lang) or f["quote"].get("en") or "",
-                            citation_or(f["quote"].get("reference"),
-                                        *(f["quote"].get("citekeys") or [])))
+
+
+def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
+    """UNE figure par slide (NG 2026-08-13, 1 idée = 1 slide).
+
+    Le portrait — enfin grand — à gauche sur ~la moitié de la largeur, et à
+    droite : nom, méta télégraphique, le VERBATIM (intouchable), le code de
+    citation. L'ancienne grille de trois cartes coupait les citations au pli
+    sur les dix-huit exemplaires du gabarit.
+    """
+    pole_name = text(pole["pole"], lang)
+    entries = [(f"{f['name']} ({f.get('dates', '')})",
+                f"{f.get('origin', '')} · {f.get('wave', '')} · score {f['score']} on "
+                f"this axis."),
+               ("Video", "Clicking the portrait opens the figure's presentation video. "
+                         "The provenance rules are on the Provenance slide, at the start."),
+               ("Reference", "The quotation is verbatim and verified; its citation code "
+                             "opens the full reference on hover, and the References page "
+                             "lists them all.")]
+    full = f["quote"].get("reference_full")
+    if full and full != f["quote"].get("reference"):
+        entries.append(("Full reference", full))
+    _header(["Before us — ", (s.project.titles.keyword, pole_name)],
+            f"{f['name']} — {pole_name}", entries)
+    if index == 0:
+        _pole_banner(pole)
+    st_space("v", "1vh")
+    media = f.get("media") or {}
+    with hero_split(s, image=lambda: st_image(
+            DS.cards.media_center, width="min(38vw, 66vh)",
+            uri=media.get("portrait"), link=media.get("video"),
+            alt=f"Portrait of {f['name']} — click to play the presentation video")):
+        st_write(rs.figure_name, f["name"], tag=t.div)
+        st_write(rs.figure_meta,
+                 " · ".join(x for x in (f.get("dates"), f.get("origin"),
+                                        f.get("wave")) if x), tag=t.div)
+        st_write(rs.figure_stance,
+                 f"{text(pole['axis_name'], lang)} · {pole_name} · "
+                 f"{_EFFECT[pole['effect']]}", tag=t.div)
+        st_space("v", "1vh")
+        quote = text(f["quote"], lang) or f["quote"].get("en") or ""
+        st_write(rs.quote, f"“{quote}”", tag=t.div)
+        st_space("v", "0.6vh")
+        st_write(rs.figure_ref,
+                 citation_or(f["quote"].get("reference"),
+                             *(f["quote"].get("citekeys") or [])), tag=t.div)
 
 
 def _arguments(pole: dict, lang: str | None) -> None:
     pole_name = text(pole["pole"], lang)
-    entries = [(text(a["title"], lang), text(a.get("text"), lang) or "")
+    # Attribution COURTE à l'écran (« Andrew Ng ») — la titulature complète
+    # (« co-founder of Google Brain, professor at Stanford ») vit au tooltip.
+    entries = [(text(a["title"], lang),
+                " — ".join(x for x in (a.get("person"),
+                                       text(a.get("text"), lang) or "") if x))
                for a in pole["arguments"]]
     entries.append(("Symmetry", "The opposite pole has its own three arguments, of the same "
                                 "three natures. Never open this slide without the other one — "
@@ -148,7 +175,9 @@ def _arguments(pole: dict, lang: str | None) -> None:
                 # La ligne de source est le code de citation natif — carte
                 # complète au survol — avec repli sur la chaîne du manifeste
                 # si la clé n'était pas gelée.
+                person_short = (a.get("person") or "").split(",")[0].strip() or None
                 argument_card(a, DS, text(a["title"], lang),
+                              person=person_short,
                               source_html=citation_or(
                                   a.get("reference") or a.get("citekey") or "",
                                   *([a["citekey"]] if a.get("citekey") else [])))
@@ -172,15 +201,29 @@ def _faceoff(both: list[dict], lang: str | None) -> None:
     _header([left, " ⇄ ", right], f"{left} ⇄ {right}", entries, label=f"{left} ⇄ {right}")
     st_space("v", "2vh")
     pole_faceoff(faceoff_sides(both, lang), DS)
+    st_space("v", "2vh")
+    # Le protocole, VISIBLE (NG 2026-08-13) : la slide-pivot du débat ne
+    # doit plus dépendre du tooltip pour être comprise.
+    st_write(rs.banner, "show of hands → one argument each bench → the measurement",
+             tag=t.div)
 
 
 def axis_slides(axis: str, lang: str | None = None) -> None:
-    """The seven sub-slides of one axis, accelerator pole first."""
+    """Les sous-slides d'un axe, pôle accélérateur d'abord.
+
+    Depuis le 2026-08-13 : identité du pôle, puis UNE slide PAR figure (trois
+    par pôle), puis les arguments contemporains — onze slides par axe plus le
+    face-à-face. Le deck est paginé et le présentateur n'ouvre que les axes
+    clivants : le nombre de pages n'est pas un coût, la lisibilité en est un.
+    """
     both = axis_poles(axis)
     first = True
     for pole in both:
         pole_name = text(pole["pole"], lang)
-        for part in (_identity, _figures, _arguments):
+        parts = [_identity] + \
+            [(lambda p, lg, ff=f, i=i: _figure(p, ff, i, lg))
+             for i, f in enumerate(pole["figures"])] + [_arguments]
+        for part in parts:
             if first:
                 st_marker(pole_name)
                 first = False

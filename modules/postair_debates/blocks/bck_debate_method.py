@@ -20,11 +20,17 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 _STEPS = [
-    ("Read the room first", "open the results page, find the divisive axes"),
-    ("Two or three axes", "never all nine, never in order"),
-    ("Both poles, always", "the material is symmetrical — use it that way"),
+    ("Read the room first", "results page → divisive axes"),
+    ("Two or three axes", "never all nine · never in order"),
+    ("Both poles, always", "symmetrical corpus → play BOTH poles"),
 ]
+
+#: La roue des neuf axes — le visuel que la salle a déjà vu dans l'ouverture ;
+#: copie versionnée du SVG d'opening (illustration, exception assumée).
+_RADAR = "images/postair_radar_question.svg"
 
 
 class BlockStyles:
@@ -74,11 +80,13 @@ def build():
         st_space("v", "1vh")
         st_write(bs.lead, "Open only the axes where ",
                  (s.project.titles.keyword, "this room"), " disagrees", tag=t.div)
-        st_space("v", "2.5vh")
-        with st_grid(cols=s.project.grids.balanced(len(_STEPS)), gap="1.5vw",
-                     grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
+        st_space("v", "2vh")
+        # Gabarit par défaut (NG 2026-08-13) : la roue des axes à gauche —
+        # l'écran n'est plus vide à moitié — et les trois règles empilées.
+        with hero_split(s, image=lambda: st_image(
+                s.project.cards.media_center, width="min(38vw, 60vh)", uri=_RADAR,
+                alt="The nine-axes wheel, each axis ending in a question mark")):
             for step, detail in _STEPS:
-                with g.cell(), st_block(s.project.cards.blue):
+                with st_block(s.project.cards.blue):
                     st_write(bs.step, step, tag=t.div)
                     st_write(bs.detail, detail, tag=t.div)

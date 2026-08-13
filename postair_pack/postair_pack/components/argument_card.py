@@ -30,7 +30,7 @@ NATURES = {
 
 
 def argument_card(argument: dict, design_system, title: str, badge_style=None,
-                  source_html: str | None = None) -> None:
+                  source_html: str | None = None, person: str | None = None) -> None:
     """Render one argument column.
 
     Parameters
@@ -44,6 +44,9 @@ def argument_card(argument: dict, design_system, title: str, badge_style=None,
         (full reference on hover) built by the caller, which owns the
         code-or-string decision. When None, falls back to the manifest's
         reference string, the pre-bib behaviour.
+    person: attribution to display; when None, the manifest's ``person`` is
+        shown as-is. Depuis le 2026-08-13 l'appelant passe la forme COURTE
+        (« Andrew Ng ») — la titulature complète vit dans le tooltip.
     """
     ds = design_system
     with st_block(ds.cards.coral):
@@ -53,8 +56,9 @@ def argument_card(argument: dict, design_system, title: str, badge_style=None,
         st_space("v", "0.6vh")
         st_write(ds.body.body, title, tag=t.div)
         st_space("v", "0.6vh")
-        if argument.get("person"):
-            st_write(ds.body.pole_label, argument["person"], tag=t.div)
+        shown = person if person is not None else argument.get("person")
+        if shown:
+            st_write(ds.body.pole_label, shown, tag=t.div)
         if source_html is None:
             source_html = argument.get("reference") or argument.get("citekey") or ""
         st_write(ds.body.caption, source_html, tag=t.div)

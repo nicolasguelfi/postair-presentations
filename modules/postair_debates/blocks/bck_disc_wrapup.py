@@ -70,8 +70,8 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        st_write(bs.lead, "Your posture today is ", (s.project.titles.keyword, "a snapshot"),
-                 " — retake it at the end of the year", tag=t.div)
+        st_write(bs.lead, "posture = ", (s.project.titles.keyword, "snapshot"),
+                 " → retake at year end", tag=t.div)
         st_space("v", "1.5vh")
         # ONE flat grid, the full company: eighteen cells, wrapping naturally.
         company = _all_poles()
