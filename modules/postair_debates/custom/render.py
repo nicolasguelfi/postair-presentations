@@ -165,7 +165,13 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
         _pole_banner(pole)
     st_space("v", "1vh")
     media = f.get("media") or {}
-    with hero_split(s, image=lambda: st_image(
+    quote = text(f["quote"], lang) or f["quote"].get("en") or ""
+    # Le corpus autorise 300 caractères (borne de la salle) mais la colonne
+    # n'en affiche ~180 qu'à taille pleine : au-delà, la ligne de référence
+    # passait sous le pli (constaté sur Marinetti et Arendt, 2026-08-13). Le
+    # zoom suit la longueur pour que TOUT reste au-dessus du pli.
+    zoom = 100 if len(quote) <= 180 else (90 if len(quote) <= 240 else 80)
+    with hero_split(s, zoom=zoom, image=lambda: st_image(
             DS.cards.media_center, width="min(38vw, 66vh)",
             uri=media.get("portrait"), link=media.get("video"),
             alt=f"Portrait of {f['name']} — click to play the presentation video")):
@@ -177,7 +183,6 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
                  f"{text(pole['axis_name'], lang)} · {pole_name} · "
                  f"{_EFFECT[pole['effect']]}", tag=t.div)
         st_space("v", "1vh")
-        quote = text(f["quote"], lang) or f["quote"].get("en") or ""
         st_write(rs.quote, f"“{quote}”", tag=t.div)
         st_space("v", "0.6vh")
         st_write(rs.figure_ref,

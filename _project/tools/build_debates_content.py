@@ -607,12 +607,49 @@ class Hub:
         return picked, len(pool)
 
 
+def _dedupe_by_scarcity(hub: Hub, poles: list[dict], warnings: list[str]) -> None:
+    """La même phrase sur deux pôles : elle reste où la figure n'a rien d'autre.
+
+    La sélection est pôle-d'abord (schéma NG) : chaque pôle choisit, par
+    figure, SA citation la plus révélatrice — sans regarder les autres pôles.
+    Trois figures paraissent sur deux pôles, et une phrase peut légitimement
+    documenter deux axes ; projetée deux fois devant la même salle, elle
+    ressemblerait pourtant à une erreur de montage. L'arbitrage ne suit pas
+    l'ordre de traitement des axes (premier arrivé, premier servi — c'est ce
+    qui avait éjecté Chargaff de Humanism) : la phrase partagée va au pôle où
+    la figure n'a PAS d'alternative, et l'autre pôle prend sa deuxième
+    meilleure. Si aucun des deux n'a d'alternative, les deux la gardent — dit
+    bruyamment, jamais résolu en silence.
+    """
+    entries = collections.defaultdict(list)
+    for pole in poles:
+        for f in pole["figures"]:
+            entries[(f["id"], _norm(f["quote"]["en"]))].append((pole, f))
+    for (fid, norm), holders in entries.items():
+        if len(holders) < 2:
+            continue
+        alts = [hub.quote(fid, p["axis"], p["side"], exclude=frozenset({norm}))
+                for p, _ in holders]
+        if all(a is None for a in alts):
+            names = " et ".join(f"{p['axis']}/{p['pole']['abbr']['en']}" for p, _ in holders)
+            warnings.append(f"{fid}: same quote kept on {names} — no alternative "
+                            f"on either axis, arbitrate in the hub")
+            continue
+        # Le pôle sans alternative garde la phrase ; à défaut d'un tel pôle,
+        # le premier dans l'ordre pédagogique des axes la garde.
+        keep = next((i for i, a in enumerate(alts) if a is None), 0)
+        for i, (pole, f) in enumerate(holders):
+            if i == keep:
+                continue
+            f["quote"] = alts[i]
+            if not f["quote"]["reference"]:
+                warnings.append(f"{pole['axis']}/{pole['pole']['abbr']['en']}/{fid}: "
+                                f"quote has no printable reference — resolve it "
+                                f"from the dossier")
+
+
 def build(hub: Hub) -> dict:
     used: collections.Counter[str] = collections.Counter()
-    # Ce que chaque figure a déjà dit dans le deck : trois figures paraissent
-    # sur deux pôles, et la même phrase projetée deux fois ferait douter de
-    # tout le corpus.
-    spoken: dict[str, set[str]] = collections.defaultdict(set)
     poles, warnings = [], []
     for axis in AXIS_ORDER:
         meta = hub.axis[axis]
@@ -623,8 +660,7 @@ def build(hub: Hub) -> dict:
                 if axis not in scores:
                     continue
                 distance = (100 - scores[axis]) if side == "right" else scores[axis]
-                quote = hub.quote(fid, axis, side, exclude=frozenset(spoken[fid]))
-                assets = hub.assets(fid)
+                quote, assets = hub.quote(fid, axis, side), hub.assets(fid)
                 if quote and assets:
                     candidates.append((distance, fid, quote, assets))
             candidates.sort(key=lambda c: c[0])
@@ -658,7 +694,6 @@ def build(hub: Hub) -> dict:
                 warnings.append(f"{axis}/{pole['abbr']['en']}: only {len(picked)} figures")
             for p in picked:
                 used[p["id"]] += 1
-                spoken[p["id"]].add(_norm(p["quote"]["en"]))
                 if not p["quote"]["reference"]:
                     warnings.append(f"{axis}/{pole['abbr']['en']}/{p['id']}: quote has no "
                                     f"printable reference — resolve it from the dossier")
@@ -672,6 +707,7 @@ def build(hub: Hub) -> dict:
                                for i in hub.pole_items(axis, side)],
                 "figures": picked, "arguments": arguments, "argument_pool": pool_size,
             })
+    _dedupe_by_scarcity(hub, poles, warnings)
     # Ecosystem convention (NG, 2026-08-01): a shared or translated resource
     # declares the languages it actually carries, and every translatable leaf
     # is an object keyed by language code — the shape of questionnaire.json,

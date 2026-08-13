@@ -813,46 +813,33 @@
      "wave": "Genetic engineering",
      "score": 10,
      "quote": {
-      "en": "Have we the right to counteract, irreversibly, the evolutionary wisdom of millions of years?",
+      "en": "What I see coming is a gigantic slaughterhouse, a molecular Auschwitz, in which valuable enzymes, hormones and so on will be extracted instead of gold teeth.",
       "fr": null,
-      "reference": "chargaff1976-meddling",
-      "reference_full": "chargaff1976-meddling",
+      "reference": "chargaff1978-heraclitean",
+      "reference_full": "chargaff1978-heraclitean",
       "citekeys": [
-       "chargaff1976-meddling"
+       "chargaff1978-heraclitean"
       ],
       "curated": false,
       "documents": [
-       "OPT-04",
-       "OPT-05"
+       "OPT-06"
       ],
       "reasoning": [
        {
-        "item": "OPT-04",
+        "item": "OPT-06",
         "statement": {
-         "en": "I believe AI will create more problems than it will solve.",
-         "fr": "Je pense que l'IA créera plus de problèmes qu'elle n'en résoudra."
+         "en": "When I think about a future shaped by AI, I feel more fear than hope.",
+         "fr": "Quand je pense à un avenir façonné par l'IA, je ressens plus de crainte que d'espoir."
         },
         "response": 5,
         "direction": "toward",
-        "anchor": "chargaff1976-meddling: 'the awesome irreversibility'; chargaff1978-heraclitean: 'molecular Auschwitz' — more problems than solutions",
-        "confidence": "high",
-        "transposition": null
-       },
-       {
-        "item": "OPT-05",
-        "statement": {
-         "en": "I expect AI, on balance, to do lasting damage to society.",
-         "fr": "Je m'attends à ce que, au total, l'IA cause des dommages durables à la société."
-        },
-        "response": 5,
-        "direction": "toward",
-        "anchor": "chargaff1978-heraclitean: 'an irreversible attack on the biosphere… I could only wish that mine had not been guilty of it'",
+        "anchor": "chargaff1978-heraclitean: the 'molecular Auschwitz' dread; chargaff1976-meddling: fear dominant",
         "confidence": "high",
         "transposition": null
        }
       ],
       "anchored": false,
-      "verification": "Verbatim (verified via collation)"
+      "verification": "Verbatim (verified via reproduction)"
      },
      "media": {
       "portrait": "figures/4fd42a07-512.png",
@@ -5923,62 +5910,64 @@
      }
     },
     {
-     "id": "wallace",
-     "name": "Alfred Russel Wallace",
-     "dates": "1823-1913",
-     "origin": "England",
+     "id": "chargaff",
+     "name": "Erwin Chargaff",
+     "dates": "1905-2002",
+     "origin": "Austria/USA",
      "stance": "skeptic",
-     "wave": "Microbiology and vaccination",
-     "score": 13,
+     "wave": "Genetic engineering",
+     "score": 12,
      "quote": {
-      "en": "nothing can possibly be more objectionable, even if we admit that they might be effectual",
-      "fr": "rien ne saurait être plus condamnable, même à supposer que ces mesures puissent être efficaces",
-      "reference": "\"Human Selection\", The Fortnightly Review 48 (n.s.), September 1890",
-      "reference_full": "\"Human Selection\", The Fortnightly Review 48 (n.s.), September 1890",
-      "citekeys": [],
-      "curated": true,
+      "en": "Have we the right to counteract, irreversibly, the evolutionary wisdom of millions of years?",
+      "fr": null,
+      "reference": "chargaff1976-meddling",
+      "reference_full": "chargaff1976-meddling",
+      "citekeys": [
+       "chargaff1976-meddling"
+      ],
+      "curated": false,
       "documents": [
-       "TRA-01",
-       "TRA-05"
+       "TRA-03",
+       "TRA-04"
       ],
       "reasoning": [
        {
-        "item": "TRA-01",
+        "item": "TRA-03",
         "statement": {
-         "en": "I am in favour of technologies that raise human mental abilities beyond their natural level.",
-         "fr": "Je suis favorable aux technologies qui portent les capacités mentales humaines au-delà de leur niveau naturel."
+         "en": "Humanity should use technology to overcome its biological limits.",
+         "fr": "L'humanité devrait utiliser la technologie pour dépasser ses limites biologiques."
         },
         "response": 1,
         "direction": "toward",
-        "anchor": "wallace1890-humanselection: opposed technological/eugenic augmentation of the human stock; improvement via conditions, not artificial enhancement",
-        "confidence": "medium",
-        "transposition": "raise mental abilities beyond natural level → augment the human body/stock by technology"
+        "anchor": "chargaff1976-meddling: biological limits are 'the evolutionary wisdom of millions of years' to be respected, not overcome",
+        "confidence": "high",
+        "transposition": null
        },
        {
-        "item": "TRA-05",
+        "item": "TRA-04",
         "statement": {
-         "en": "Beyond medical care, education and training are the only acceptable ways of improving human abilities.",
-         "fr": "En dehors des soins médicaux, l'éducation, la formation et l'entraînement sont les seules manières acceptables d'améliorer les capacités humaines."
+         "en": "Human beings should remain as nature made them.",
+         "fr": "Les êtres humains devraient rester tels que la nature les a faits."
         },
         "response": 5,
         "direction": "toward",
-        "anchor": "wallace1890-humanselection: 'improve their environment' — education and social conditions as the proper improvement path, explicitly against eugenic/technological means",
+        "anchor": "chargaff1978-heraclitean (reported): 'two nuclei man should never have touched… the cell nucleus' — humans should remain as nature/evolution made them",
         "confidence": "high",
         "transposition": null
        }
       ],
-      "anchored": false,
-      "verification": "Verbatim"
+      "anchored": true,
+      "verification": "Verbatim (via collation)"
      },
      "media": {
-      "portrait": "figures/3707b2cd-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/wallace/3707b2cd-512.png",
-      "portrait_source": "figures/content/united-kingdom/wallace.alfred-russel/image/wallace.alfred-russel__frame__chest.jpeg",
-      "video": "https://media.sumvadis.ai/wallace/e28038df.mp4",
+      "portrait": "figures/4fd42a07-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/chargaff/4fd42a07-512.png",
+      "portrait_source": "figures/content/austria/chargaff.erwin/image/chargaff.erwin__frame__chest__v2.jpeg",
+      "video": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/wallace/47afd56f-050.mp4",
-      "poster": "figures/3f2ab961-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/wallace/3f2ab961-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/chargaff/00dbd16f-050.mp4",
+      "poster": "figures/86d352e2-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/chargaff/86d352e2-poster-512.png"
      }
     }
    ],
