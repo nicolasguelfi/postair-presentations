@@ -37,6 +37,7 @@ from streamtex import *
 from streamtex import st_video, st_zoom
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
 from postair_pack.components.axis_stack import axis_stack
 
 # Dropped in by the mascot studio when it exists; absent today.
@@ -110,7 +111,8 @@ def build():
                 )
         if film.exists():
             # st.video needs an absolute path — resolve via static sources.
-            st_video(stx.resolve_static(_FILM))
+            with ai_marked(fit=False, top=True):
+                st_video(stx.resolve_static(_FILM))
             st_space("v", "30vh")
             return
         st_space("v", "1vh")

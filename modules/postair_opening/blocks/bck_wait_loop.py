@@ -39,6 +39,8 @@ from postair_data import mascot_clip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 #: The clip is 1080×1080 — a square. Width divided by height, so: one.
 _CLIP_RATIO = 1.0
 
@@ -62,6 +64,7 @@ def build():
         with st_block(s.project.containers.media_stage(_CLIP_RATIO, 100)):
             # st.video needs a real file path: the media folder is deliberately
             # NOT a static source, so it cannot be resolved through them.
-            st_video(str(_MEDIA / mascot_clip("Solyo", "en")), loop=True)
+            with ai_marked(fit=False, top=True):
+                st_video(str(_MEDIA / mascot_clip("Solyo", "en")), loop=True)
         with st_block(s.project.containers.media_hint_overlay):
             st_write(bs.hint, "▶ play · loop · sound on", tag=t.div)

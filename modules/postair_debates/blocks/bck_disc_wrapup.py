@@ -25,6 +25,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -80,7 +82,8 @@ def build():
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for pole in company:
                 with g.cell():
-                    st_image(s.project.cards.media_center, width="min(8vw, 15vh)",
-                             uri=pole["image"],
-                             alt=f"{pole['mascot']}, mascot of the {pole['label']} posture")
+                    with ai_marked():
+                        st_image(s.project.cards.media_center, width="min(8vw, 15vh)",
+                                 uri=pole["image"],
+                                 alt=f"{pole['mascot']}, mascot of the {pole['label']} posture")
                     st_write(bs.mascot_name, pole["mascot"], tag=t.div)

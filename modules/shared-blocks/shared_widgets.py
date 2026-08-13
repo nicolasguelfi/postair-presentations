@@ -7,6 +7,8 @@ slide needs behaviour the style system cannot express, it comes from here.
 """
 
 import streamlit as st
+from streamtex import st_hover_tooltip, st_html
+
 from postair_pack.design_systems.postair_dark import (
     TOOLTIP_BG,
     TOOLTIP_DEF_CSS,
@@ -16,7 +18,6 @@ from postair_pack.design_systems.postair_dark import (
     TOOLTIP_TITLE_CSS,
     TOOLTIP_WIDTH,
 )
-from streamtex import st_hover_tooltip, st_html
 
 
 def st_stage_selector(options: list[str], key: str, label: str = "") -> str:

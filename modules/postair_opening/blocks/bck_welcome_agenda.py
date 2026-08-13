@@ -33,6 +33,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 _CARD = {"stage": s.project.cards.blue,
          "debate": s.project.cards.coral,
          "break": s.project.cards.amber}
@@ -102,8 +104,9 @@ def build():
                             st_write(bs.duration + _DURATION[kind], duration, tag=t.div)
                             st_write(bs.session, session, tag=t.div)
                             if kind == "break":
-                                st_image(s.project.cards.media_center, width="55%",
-                                         uri=lento["image"],
-                                         alt=f"{lento['name']}, the prudence mascot "
-                                             "of the speed axis")
+                                with ai_marked():
+                                    st_image(s.project.cards.media_center, width="55%",
+                                             uri=lento["image"],
+                                             alt=f"{lento['name']}, the prudence mascot "
+                                                 "of the speed axis")
                                 st_write(bs.mascot_name, lento["name"], tag=t.div)

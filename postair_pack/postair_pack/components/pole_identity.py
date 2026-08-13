@@ -14,6 +14,8 @@ The rendering is identical; the rule on flat grids stays intact.
 from streamtex import st_block, st_grid, st_image, st_space, st_write
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 __component_meta__ = {
     "name": "pole_identity",
     "kind": "composition",
@@ -39,8 +41,11 @@ def pole_identity(mascots, statements, design_system,
                  cell_styles=ds.containers.grid_cell_centered) as g:
         with g.cell():
             for m in mascots:
-                st_image(ds.cards.media_center, width=mascot_width, uri=m["image"],
-                         alt=f"{m['mascot']} — mascot of the {m['label']} posture")
+                # Mascotte = média synthétique par construction (toute la
+                # famille sort du catalogue gelé) : pastille DD-35 d'office.
+                with ai_marked():
+                    st_image(ds.cards.media_center, width=mascot_width, uri=m["image"],
+                             alt=f"{m['mascot']} — mascot of the {m['label']} posture")
                 st_write(ds.body.mascot_name, m["mascot"], tag=t.div)
         with g.cell():
             for statement in statements:

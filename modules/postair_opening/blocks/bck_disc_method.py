@@ -19,6 +19,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 _RULES = [
     ("Your questions", "the ones where this room splits"),
     ("Two minutes", "one question, one round"),
@@ -77,10 +79,11 @@ def build():
             for name in _STAGE:
                 m = mascot(name)
                 with g.cell():
-                    st_image(s.project.cards.media_center,
-                             width="min(20vw, 40vh)" if name == "Medio" else "min(14vw, 30vh)",
-                             uri=m["image"],
-                             alt=f"{m['name']}, mascot of the {m['pole'] or 'moderator'} posture")
+                    with ai_marked():
+                        st_image(s.project.cards.media_center,
+                                 width="min(20vw, 40vh)" if name == "Medio" else "min(14vw, 30vh)",
+                                 uri=m["image"],
+                                 alt=f"{m['name']}, mascot of the {m['pole'] or 'moderator'} posture")
                     st_write(bs.mascot_name, m["name"], tag=t.div)
         st_space("v", "2vh")
         with st_grid(cols=s.project.grids.balanced(len(_RULES)), gap="1.5vw",

@@ -14,6 +14,8 @@ is the point — a network failure must not end the debate.
 from streamtex import st_block, st_grid, st_image, st_write
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 __component_meta__ = {
     "name": "pole_faceoff",
     "kind": "composition",
@@ -44,6 +46,8 @@ def pole_faceoff(sides, design_system, mascot_width: str = "min(15vw, 30vh)") ->
                     st_write(ds.body.pole_label_accel
                              if side.get("effect") == "accelerator" else ds.body.pole_label,
                              side["label"], tag=t.div)
-                    st_image(ds.cards.media_center, width=mascot_width, uri=side["image"],
-                             alt=f"{side['mascot']} — mascot of the {side['label']} posture")
+                    # Mascotte = média synthétique par construction : DD-35 d'office.
+                    with ai_marked():
+                        st_image(ds.cards.media_center, width=mascot_width, uri=side["image"],
+                                 alt=f"{side['mascot']} — mascot of the {side['label']} posture")
                     st_write(ds.body.mascot_name, side["mascot"], tag=t.div)

@@ -13,10 +13,13 @@ per-question detail to pick the debate questions.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
+from custom.visuals import is_synthetic
 from postair_event import DAYS, present_url
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
+
+from postair_pack.components.ai_mark import ai_marked
 
 
 class BlockStyles:
@@ -56,9 +59,10 @@ def build():
         with st_grid(cols="55% 45%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_image(s.project.cards.media_center, width="100%", editable=False, name="survey_results_reveal",
-                         alt="Papercut theatre curtain opening on a bright stage revealing a "
-                             "large colorful paper radar chart under spotlights and confetti")
+                with ai_marked(is_synthetic("survey_results_reveal"), fit=False):
+                    st_image(s.project.cards.media_center, width="100%", editable=False, name="survey_results_reveal",
+                             alt="Papercut theatre curtain opening on a bright stage revealing a "
+                                 "large colorful paper radar chart under spotlights and confetti")
             with g.cell():
                 for label, code in DAYS:
                     # La date passe à la ligne, en dessous de l'action : c'est

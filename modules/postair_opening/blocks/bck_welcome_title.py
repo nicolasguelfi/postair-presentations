@@ -14,10 +14,13 @@ concrete method to study with AI.
 from custom.config import IS_EDITABLE
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.styles import Styles as s
+from custom.visuals import is_synthetic
 from postair_data import mascot
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
+
+from postair_pack.components.ai_mark import ai_marked
 
 
 class BlockStyles:
@@ -75,21 +78,23 @@ def build():
             with g.cell():
                 st_space("h", "1px")
             with g.cell():
-                st_image(
-                    s.project.cards.media_center, width="100%",
-                    alt="Stylised campus at dawn under a rising amber AI orb, "
-                        "crowd of silhouettes walking toward the entrance",
-                    editable=IS_EDITABLE, name="welcome_title_hero",
-                    prompt=HERO_PROMPT, provider="openai", ai_size="1536x1024",
-                )
+                with ai_marked(is_synthetic("welcome_title_hero"), fit=False):
+                    st_image(
+                        s.project.cards.media_center, width="100%",
+                        alt="Stylised campus at dawn under a rising amber AI orb, "
+                            "crowd of silhouettes walking toward the entrance",
+                        editable=IS_EDITABLE, name="welcome_title_hero",
+                        prompt=HERO_PROMPT, provider="openai", ai_size="1536x1024",
+                    )
             with g.cell():
                 # Asked for by name, never by path: this slide used to carry a
                 # hand-typed URI to a file that no longer existed, and showed a
                 # missing image on the very first screen of the day.
-                st_image(s.project.cards.media_center, width="100%",
-                         uri=medio["image"],
-                         alt=f"{medio['name']}, the panda moderator mascot, "
-                             "welcoming the audience")
+                with ai_marked():
+                    st_image(s.project.cards.media_center, width="100%",
+                             uri=medio["image"],
+                             alt=f"{medio['name']}, the panda moderator mascot, "
+                                 "welcoming the audience")
                 st_write(bs.mascot_caption, f"{medio['name']} — your host today", tag=t.div)
             with g.cell():
                 st_space("h", "1px")

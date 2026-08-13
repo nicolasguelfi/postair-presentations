@@ -550,6 +550,9 @@ class Hub:
                 out["portrait"] = _local_media(a["renditions"].get("web-512"))
                 out["portrait_cdn"] = a["renditions"].get("web-512")
                 out["portrait_source"] = a["source"]
+                # Le drapeau DD-35 voyage avec le média : c'est lui qui pose la
+                # pastille « ✦ AI » sur la slide, jamais une liste locale.
+                out["portrait_ai"] = bool(a.get("ai_generated"))
             elif a["role"] == "video" and a["source"].endswith(f"__{lang}.mp4"):
                 name = a["source"].rsplit("/", 1)[-1]
                 kind = "presented" if name.startswith("ng__presente__") else "talk"
@@ -561,6 +564,7 @@ class Hub:
                 # l'écran en permanence et valent leurs 35 Mo.
                 out["video"] = a.get("url")
                 out["video_kind"] = kind
+                out["video_ai"] = bool(a.get("ai_generated"))
                 out["video_light"] = (a.get("renditions") or {}).get("video-050")
                 out["poster"] = _local_media(a.get("poster"))
                 out["poster_cdn"] = a.get("poster")

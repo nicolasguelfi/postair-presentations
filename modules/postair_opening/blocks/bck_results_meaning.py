@@ -22,6 +22,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 # One axis, its two poles: the clearest possible illustration that both sides
 # live in the same room. Read by name — never by position in the cast.
 _FACE_OFF = ("Rapo", "Lento")
@@ -77,7 +79,8 @@ def build():
                         continue
                     with st_block(s.project.cards.pole_cell):
                         st_write(bs.pole, side["pole"], tag=t.div)
-                        st_image(s.project.cards.media_center, width="min(16vw, 34vh)",
-                                 uri=side["image"],
-                                 alt=f"{side['name']}, mascot of the {side['pole']} posture")
+                        with ai_marked():
+                            st_image(s.project.cards.media_center, width="min(16vw, 34vh)",
+                                     uri=side["image"],
+                                     alt=f"{side['name']}, mascot of the {side['pole']} posture")
                         st_write(bs.mascot_name, side["name"], tag=t.div)

@@ -23,6 +23,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -82,6 +84,7 @@ def build():
             for name in names:
                 m = mascot(name)
                 with g.cell():
-                    st_image(s.project.cards.media_center, width="7vw",
-                             uri=m["image"], alt=f"Mascot {m['name']}")
+                    with ai_marked():
+                        st_image(s.project.cards.media_center, width="7vw",
+                                 uri=m["image"], alt=f"Mascot {m['name']}")
                     st_write(bs.mascot_name, m["name"], tag=t.div)

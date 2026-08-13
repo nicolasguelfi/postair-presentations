@@ -14,6 +14,8 @@ The caller places N axis_stack columns side by side in ONE flat grid
 from streamtex import st_block, st_image, st_write
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 __component_meta__ = {
     "name": "axis_stack",
     "kind": "composition",
@@ -45,6 +47,9 @@ def axis_stack(axis: dict, design_system, image_width: str = "min(12.8vw, 20.8vh
             pole = axis[kind]
             with st_block(ds.cards.pole_cell):
                 st_write(label_style, pole["label"], tag=t.div)
-                st_image(ds.cards.media_center, width=image_width, uri=pole["image"],
-                         alt=f"{pole['mascot']} — mascot of the {pole['label']} posture")
+                # Mascotte = média synthétique par construction (toute la
+                # famille sort du catalogue gelé) : pastille DD-35 d'office.
+                with ai_marked():
+                    st_image(ds.cards.media_center, width=image_width, uri=pole["image"],
+                             alt=f"{pole['mascot']} — mascot of the {pole['label']} posture")
                 st_write(ds.body.mascot_name, pole["mascot"], tag=t.div)

@@ -23,6 +23,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.ai_mark import ai_marked
+
 _PROMISE = {
     "Introduction to AI & Generative AI": "understand",
     "Using Mistral models & agents to study": "practice",
@@ -88,9 +90,10 @@ def build():
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_image(s.project.cards.media_center, width="min(16vw, 34vh)",
-                         uri=medio["image"],
-                         alt=f"{medio['name']}, the moderator mascot, restarting the session")
+                with ai_marked():
+                    st_image(s.project.cards.media_center, width="min(16vw, 34vh)",
+                             uri=medio["image"],
+                             alt=f"{medio['name']}, the moderator mascot, restarting the session")
                 st_write(bs.mascot_name, medio["name"], tag=t.div)
             for session, duration in second:
                 with g.cell(), st_block(s.project.cards.blue):

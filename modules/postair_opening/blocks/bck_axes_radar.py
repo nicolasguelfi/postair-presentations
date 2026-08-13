@@ -44,9 +44,12 @@ from custom.config import IS_EDITABLE
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE_WITH_TEXT
 from custom.refs import citation
 from custom.styles import Styles as s
+from custom.visuals import is_synthetic
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
+
+from postair_pack.components.ai_mark import ai_marked
 
 #: Le nom managé de la roue, et l'endroit où l'éditeur l'enregistre.
 _WHEEL = "axes_wheel"
@@ -156,16 +159,17 @@ def _wheel_image():
     Rien à changer ici le jour de la génération.
     """
     ready = (_MANAGED / f"{_WHEEL}.webp").exists()
-    st_image(
-        s.project.cards.media_center, width="100%",
-        uri="" if ready else _FALLBACK,
-        alt=("Papercut fairground prize wheel, three segments naming an axis — "
-             "trust, speed, optimism — the others marked with a large question "
-             "mark, three students watching from the front and the host of the "
-             "stall holding the rim") if ready else
-            ("Empty nine-axis POSTAIR radar chart with a large question mark in "
-             "the centre — axes: Trust, Optimism, Rationality, Speed, Openness, "
-             "Freedom/Control, Centralisation, Altruism, Transhumanism"),
-        editable=IS_EDITABLE, name=_WHEEL,
-        prompt=WHEEL_PROMPT, provider="openai", ai_size="1536x1024",
-    )
+    with ai_marked(ready and is_synthetic(_WHEEL), fit=False):
+        st_image(
+            s.project.cards.media_center, width="100%",
+            uri="" if ready else _FALLBACK,
+            alt=("Papercut fairground prize wheel, three segments naming an axis — "
+                 "trust, speed, optimism — the others marked with a large question "
+                 "mark, three students watching from the front and the host of the "
+                 "stall holding the rim") if ready else
+                ("Empty nine-axis POSTAIR radar chart with a large question mark in "
+                 "the centre — axes: Trust, Optimism, Rationality, Speed, Openness, "
+                 "Freedom/Control, Centralisation, Altruism, Transhumanism"),
+            editable=IS_EDITABLE, name=_WHEEL,
+            prompt=WHEEL_PROMPT, provider="openai", ai_size="1536x1024",
+        )

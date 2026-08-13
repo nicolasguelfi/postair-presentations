@@ -15,6 +15,7 @@ minimum. Pattern repris de la roue de ``postair_opening/bck_axes_radar`` :
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from streamtex import st_image
@@ -22,6 +23,7 @@ from streamtex import st_image
 from custom.config import IS_EDITABLE
 from custom.prompts import AI_SUFFIX_LANDSCAPE, AI_SUFFIX_PORTRAIT, AI_SUFFIX_SQUARE
 from custom.styles import Styles as s
+from postair_pack.components.ai_mark import ai_marked
 
 _MANAGED = Path(__file__).parent.parent / "static" / "images" / "managed"
 
@@ -51,10 +53,28 @@ def hero_image(name: str, prompt: str, fallback: str, alt_ready: str,
     if variant and AI_SUFFIX_LANDSCAPE in prompt:
         prompt = prompt.replace(AI_SUFFIX_LANDSCAPE, suffix)
     ready = (_MANAGED / f"{full_name}.webp").exists()
-    st_image(
-        s.project.cards.media_center, width=width,
-        uri="" if ready else fallback,
-        alt=alt_ready if ready else alt_fallback,
-        editable=IS_EDITABLE, name=full_name,
-        prompt=prompt, provider="openai", ai_size=ai_size,
-    )
+    # La pastille DD-35 découle du sidecar (source_type), jamais d'une liste :
+    # une image managée générée par IA est marquée d'office, le repli SVG
+    # (dessiné, versionné) ne l'est pas. fit=False : l'image remplit sa cellule.
+    with ai_marked(ready and is_synthetic(full_name), fit=False):
+        st_image(
+            s.project.cards.media_center, width=width,
+            uri="" if ready else fallback,
+            alt=alt_ready if ready else alt_fallback,
+            editable=IS_EDITABLE, name=full_name,
+            prompt=prompt, provider="openai", ai_size=ai_size,
+        )
+
+
+def is_synthetic(full_name: str) -> bool:
+    """Le drapeau du sidecar de l'image managée — la donnée décide."""
+    sidecar = _MANAGED / f"{full_name}.json"
+    if not sidecar.exists():
+        # Image managée sans sidecar : provenance inconnue — marquer est le
+        # défaut sûr, l'absence de marque doit se MÉRITER par la donnée.
+        return True
+    try:
+        meta = json.loads(sidecar.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return True
+    return meta.get("source_type") == "ai_generated"

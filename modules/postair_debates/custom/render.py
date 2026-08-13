@@ -31,6 +31,7 @@ from custom.pole import faceoff_sides, mascots
 from custom.refs import citation_or
 from custom.styles import DS
 from custom.styles import Styles as s
+from postair_pack.components.ai_mark import ai_marked
 from postair_pack.components.argument_card import argument_card
 from postair_pack.components.hero_split import hero_split
 from postair_pack.components.pole_faceoff import pole_faceoff
@@ -152,7 +153,12 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
                 f"{f.get('origin', '')} · {f.get('wave', '')} · score {f['score']} on "
                 f"this axis."),
                ("Video", "Clicking the portrait opens the figure's presentation video. "
-                         "The provenance rules are on the Provenance slide, at the start."),
+                         + ("It is an AI-generated talking portrait — synthetic face and "
+                            "voice, built from documented sources. "
+                            if (f.get("media") or {}).get("video_kind") == "talk" else
+                            "A living person is never made to speak by generative AI: "
+                            "the author presents the figure on camera. ")
+                         + "The provenance rules are on the Provenance slide, at the start."),
                ("Reference", "The quotation is verbatim and verified; its citation code "
                              "opens the full reference on hover, and the References page "
                              "lists them all.")]
@@ -171,10 +177,17 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
     # passait sous le pli (constaté sur Marinetti et Arendt, 2026-08-13). Le
     # zoom suit la longueur pour que TOUT reste au-dessus du pli.
     zoom = 100 if len(quote) <= 180 else (90 if len(quote) <= 240 else 80)
-    with hero_split(s, zoom=zoom, image=lambda: st_image(
-            DS.cards.media_center, width="min(38vw, 66vh)",
-            uri=media.get("portrait"), link=media.get("video"),
-            alt=f"Portrait of {f['name']} — click to play the presentation video")):
+    def _portrait() -> None:
+        # La pastille DD-35 suit le drapeau gelé du manifeste (portrait_ai),
+        # jamais une liste locale. fit=True : la marque épouse le portrait,
+        # plus étroit que sa cellule.
+        with ai_marked(media.get("portrait_ai", False)):
+            st_image(DS.cards.media_center, width="min(38vw, 66vh)",
+                     uri=media.get("portrait"), link=media.get("video"),
+                     alt=f"Portrait of {f['name']} — click to play the "
+                         f"presentation video")
+
+    with hero_split(s, zoom=zoom, image=_portrait):
         st_write(rs.figure_name, f["name"], tag=t.div)
         st_write(rs.figure_meta,
                  " · ".join(x for x in (f.get("dates"), f.get("origin"),
