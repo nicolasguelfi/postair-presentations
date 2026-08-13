@@ -22,6 +22,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -61,22 +63,19 @@ def build():
                                 "on the next slide — they stay available after today.")],
                 )
         st_space("v", "1vh")
-        hero_image(
-            "guide_loop", _LOOP_PROMPT, "images/guide_loop_fallback.svg",
-            alt_ready=("Papercut campus at midday under a radiant amber sun, silhouettes "
-                       "walking out carrying lanterns"),
-            alt_fallback=("Papercut campus under a high amber sun, silhouettes leaving "
-                          "with lanterns"),
-            width="58%",
-        )
-        st_space("v", "1.5vh")
-        with st_grid(cols=s.project.grids.balanced(len(data["steps"])), gap="1vw",
-                     grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
+        # Gabarit par défaut (NG 2026-08-13) : le campus carré à gauche, les
+        # quatre acquis EMPILÉS à droite — la 2e rangée était coupée au pli.
+        with hero_split(s, image=lambda: hero_image(
+                "guide_loop", _LOOP_PROMPT, "images/guide_loop_fallback.svg",
+                alt_ready=("Papercut campus at midday under a radiant amber sun, "
+                           "silhouettes walking out carrying lanterns"),
+                alt_fallback=("Papercut campus under a high amber sun, silhouettes "
+                              "leaving with lanterns"),
+                variant="sq")):
             for step in data["steps"]:
-                with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.icon, step["icon"], tag=t.div)
-                    st_write(bs.label, text(step["label"]), tag=t.div)
-        st_space("v", "1.5vh")
-        st_write(bs.big, "You have everything to start well ",
-                 citation(*citekeys(data)), tag=t.div)
+                with st_block(s.project.cards.blue):
+                    st_write(bs.label, step["icon"], "  ", text(step["label"]),
+                             tag=t.div)
+            st_space("v", "0.5vh")
+            st_write(bs.big, "You have everything to start well ",
+                     citation(*citekeys(data)), tag=t.div)

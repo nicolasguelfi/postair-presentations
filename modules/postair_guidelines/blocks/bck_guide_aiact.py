@@ -31,6 +31,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -82,25 +84,21 @@ def build():
         st_space("v", "0.5vh")
         st_write(bs.since, text(data["since"]), tag=t.div)
         st_space("v", "1vh")
-        hero_image(
-            "guide_aiact", _AIACT_PROMPT, "images/guide_aiact_fallback.svg",
-            alt_ready=("Papercut open book of law on a pedestal, small amber orbs "
-                       "around it each carrying a visible paper tag, silhouettes "
-                       "watching"),
-            alt_fallback=("Papercut law book with labelled amber orbs around it"),
-            width="46%",
-        )
-        st_space("v", "1.5vh")
-        st_write(bs.big, text(data["big"]), tag=t.div)
-        st_space("v", "1.5vh")
-        with st_grid(cols=s.project.grids.balanced(len(data["cards"])), gap="1vw",
-                     grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
-            for c in data["cards"]:
-                with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.icon, c["icon"], tag=t.div)
-                    st_write(bs.short, text(c["short"]), tag=t.div)
-                    st_write(bs.article, text(c["article"]), tag=t.div)
-        st_space("v", "1.5vh")
-        st_write(bs.punch, text(data["punch"]), tag=t.div)
-        st_write(bs.cite, citation(*citekeys(data)), tag=t.div)
+        # Découpage NG (2026-08-13) : cette slide porte LA LOI (le cadre et
+        # son calendrier) ; « vous, concrètement » (les 4 cartes d'articles et
+        # le punch fournisseur) a SA slide, juste après.
+        with hero_split(s, image=lambda: hero_image(
+                "guide_aiact", _AIACT_PROMPT, "images/guide_aiact_fallback.svg",
+                alt_ready=("Papercut open book of law on a pedestal, small amber "
+                           "orbs around it each carrying a visible paper tag, "
+                           "silhouettes watching"),
+                alt_fallback=("Papercut law book with labelled amber orbs around it"),
+                variant="sq")):
+            with st_block(s.project.cards.amber):
+                st_write(bs.big, text(data["big"]), tag=t.div)
+            st_space("v", "0.5vh")
+            for tl in data["timeline"]:
+                st_write(bs.short, text(tl["when"]), " · ", text(tl["short"]),
+                         tag=t.div)
+            st_space("v", "0.5vh")
+            st_write(bs.cite, citation(*citekeys(data)), tag=t.div)

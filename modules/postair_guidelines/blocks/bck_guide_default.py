@@ -24,10 +24,12 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
-    verbatim = s.project.titles.subtitle + s.center_txt
+    verbatim = s.project.body.bullet + s.center_txt
     caveat = s.project.body.bullet + s.project.colors.amber + s.center_txt + s.bold
     cite = s.project.body.caption + s.center_txt
     mascot_name = s.project.body.mascot_name + s.center_txt
@@ -65,27 +67,23 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        # breakpoint : sous 520 px (téléphone), l'image et Kuri s'empilent au
-        # lieu de s'étrangler côte à côte.
-        with st_grid(cols="72% 28%", breakpoint="520px",
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
-                hero_image(
-                    "guide_greenlight", _GREEN_PROMPT,
-                    "images/guide_greenlight_fallback.svg",
-                    alt_ready=("Papercut traffic light with one big green light beside "
-                               "a road, a silhouette walking past confidently"),
-                    alt_fallback=("Papercut green light beside a road"),
-                    width="88%",
-                )
-            with g.cell():
-                kuri = mascot("Kuri")
-                st_image(s.project.cards.media_center, width="9vw",
-                         uri=kuri["image"], alt="Kuri, the curiosity mascot")
-                st_write(bs.mascot_name, kuri["name"], tag=t.div)
-        st_space("v", "1vh")
-        st_write(bs.verbatim, "« ", text(rule["verbatim"]), " » ",
-                 citation(*citekeys(rule)), tag=t.div)
-        st_space("v", "1vh")
-        for caveat in rule["caveats"]:
-            st_write(bs.caveat, text(caveat), tag=t.div)
+        # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche, LA règle
+        # verbatim boxée à droite — elle était coupée à mi-phrase sous le pli.
+        with hero_split(s, zoom=92, image=lambda: hero_image(
+                "guide_greenlight", _GREEN_PROMPT,
+                "images/guide_greenlight_fallback.svg",
+                alt_ready=("Papercut traffic light with one big green light beside "
+                           "a road, a silhouette walking past confidently"),
+                alt_fallback=("Papercut green light beside a road"),
+                variant="sq")):
+            with st_block(s.project.cards.blue):
+                st_write(bs.verbatim, "« ", text(rule["verbatim"]), " » ",
+                         citation(*citekeys(rule)), tag=t.div)
+            st_space("v", "0.5vh")
+            for caveat in rule["caveats"]:
+                st_write(bs.caveat, text(caveat), tag=t.div)
+            st_space("v", "0.5vh")
+            kuri = mascot("Kuri")
+            st_image(s.project.cards.media_center, width="min(7vw, 13vh)",
+                     uri=kuri["image"], alt="Kuri, the curiosity mascot")
+            st_write(bs.mascot_name, kuri["name"], tag=t.div)

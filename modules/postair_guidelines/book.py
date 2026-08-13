@@ -120,7 +120,8 @@ st_book(
         blocks.bck_guide_tools,        # U6 · the UL bubble vs the open cloud
         blocks.bck_guide_suspicion,    # U7 · balanced scale — detection is not proof
         blocks.bck_guide_checklist,    # U8 · the final test, verbatim
-        blocks.bck_guide_aiact,        # U9 · the AI Act — enforced since 2026-08-02
+        blocks.bck_guide_aiact,        # U9a · the AI Act — the law and its calendar
+        blocks.bck_guide_aiact_you,    # U9b · the AI Act — you, concretely
         blocks.bck_close_loop,         # C1 · the four things they now have
         blocks.bck_close_next,         # C2 · the QR to the hub, what stays online
         blocks.bck_close_thanks,       # C3 · mascot family photo, applause

@@ -28,6 +28,8 @@ from streamtex import *
 from streamtex.enums import Tags as t
 from streamtex.styles import Style
 
+from postair_pack.components.hero_split import hero_split
+
 _TRAFFIC_PROMPT = (
     AI_PREFIX
     + "A tall friendly paper traffic light at the centre, with three big "
@@ -82,21 +84,21 @@ def build():
                                 "that is the one to remember.")],
                 )
         st_space("v", "1vh")
-        hero_image(
-            "guide_traffic", _TRAFFIC_PROMPT, "images/guide_traffic_fallback.svg",
-            alt_ready=("Papercut traffic light with three big lights — green, orange, "
-                       "red — three paper silhouettes looking up at it"),
-            alt_fallback=("Papercut traffic light with green, orange and red lights"),
-            width="44%",
-        )
-        st_space("v", "1.5vh")
-        with st_grid(cols=s.project.grids.balanced(len(data["levels"])), gap="1.2vw",
-                     grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
+        # Gabarit par défaut (NG 2026-08-13) : le feu tricolore carré à gauche,
+        # les trois niveaux EMPILÉS à droite — ils étaient coupés à 40 % sous
+        # le pli, le contenu opérationnel de la slide.
+        with hero_split(s, image=lambda: hero_image(
+                "guide_traffic", _TRAFFIC_PROMPT, "images/guide_traffic_fallback.svg",
+                alt_ready=("Papercut traffic light with three big lights — green, "
+                           "orange, red — three paper silhouettes looking up at it"),
+                alt_fallback=("Papercut traffic light with green, orange and red "
+                              "lights"),
+                variant="sq")):
             for lv in data["levels"]:
-                with g.cell(), st_block(_WASH[lv["id"]]):
+                with st_block(_WASH[lv["id"]]):
                     st_write(bs.icon, lv["icon"], " ", (bs.label, text(lv["label"])),
                              tag=t.div)
                     st_write(bs.line, text(lv["line"]), tag=t.div)
-        st_space("v", "1.5vh")
-        st_write(bs.frame, text(data["frame"]), " ", citation(*citekeys(data)), tag=t.div)
+            st_space("v", "0.5vh")
+            st_write(bs.frame, text(data["frame"]), " ",
+                     citation(*citekeys(data)), tag=t.div)

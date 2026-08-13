@@ -22,6 +22,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -58,12 +60,17 @@ def build():
                              for c in data["cards"]],
                 )
         st_space("v", "1vh")
-        hero_image(
-            "guide_balance", _BALANCE_PROMPT, "images/guide_balance_fallback.svg",
-            alt_ready=("Papercut balanced scale of justice, an amber orb in one pan "
-                       "and documents in the other, calm sky"),
-            alt_fallback=("Papercut balanced scale of justice"),
-            width="52%",
-        )
-        st_space("v", "1.5vh")
-        st_write(bs.line, text(data["line"]), " ", citation(*citekeys(data)), tag=t.div)
+        # Gabarit par défaut (NG 2026-08-13) : balance carrée à gauche, les
+        # quatre garanties EMPILÉES à droite (le pavé d'une seule ligne se
+        # lisait comme un paragraphe).
+        with hero_split(s, image=lambda: hero_image(
+                "guide_balance", _BALANCE_PROMPT,
+                "images/guide_balance_fallback.svg",
+                alt_ready=("Papercut balanced scale of justice, an amber orb in one "
+                           "pan and documents in the other, calm sky"),
+                alt_fallback=("Papercut balanced scale of justice"),
+                variant="sq")):
+            for part in text(data["line"]).split(" · "):
+                st_write(bs.line, "▸ ", part, tag=t.div)
+            st_space("v", "0.5vh")
+            st_write(bs.cite, citation(*citekeys(data)), tag=t.div)
