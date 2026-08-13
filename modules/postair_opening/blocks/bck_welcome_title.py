@@ -79,7 +79,8 @@ def build():
                 st_space("h", "1px")
             with g.cell():
                 with ai_marked(is_synthetic("welcome_title_hero"), fit=False,
-                               media_width=managed_media_width("welcome_title_hero")):
+                               media_width=managed_media_width("welcome_title_hero"),
+                               top=IS_EDITABLE):
                     st_image(
                         s.project.cards.media_center, width="100%",
                         alt="Stylised campus at dawn under a rising amber AI orb, "

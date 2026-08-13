@@ -12,6 +12,7 @@ Usage :
     uv run python run-postair.py opening genai      # un sous-ensemble
     uv run python run-postair.py --list             # noms et ports
     uv run python run-postair.py --kill             # arrêter tous les streamlit
+    uv run python run-postair.py --fresh …          # purge caches puis relance
     uv run python run-postair.py --no-browser …     # sans ouvrir le navigateur
 
 Ports 8511-8515 (distincts de run-manuals, 8501-8507 : les deux jeux peuvent
@@ -119,6 +120,36 @@ def launch(name: str, selected: list[str]) -> subprocess.Popen | None:
     return None
 
 
+def fresh(selected: list[str]) -> None:
+    """Repartir d'un état propre AVANT relance — répond à « est-ce que je
+    regarde la bonne version ? » (NG 2026-08-13).
+
+    Purge ce que le poste peut purger : processus, bytecode, et le cache de
+    pages streamtex (`.stx_cache` — son hash ne voit ni ``postair_pack``, ni
+    ``shared-blocks``, ni ``custom/visuals.py`` : TOC/marqueurs/recherche
+    peuvent survivre à une modification de ces couches). Deux caches restent
+    HORS de portée d'un script et sont rappelés à l'écran ; le cache des
+    médias (``static/media/``) est un cache VOULU (contenu-adressé) et ne se
+    vide que sur décision explicite — jamais ici.
+    """
+    kill_all()
+    removed = 0
+    roots = [SCRIPT_DIR / MODULES[n]["path"] for n in selected]
+    roots += [SCRIPT_DIR / "postair_pack", SCRIPT_DIR / "modules" / "shared-blocks"]
+    for root in roots:
+        for cache in list(root.rglob("__pycache__")) + list(root.glob(".stx_cache")):
+            for f in sorted(cache.rglob("*"), reverse=True):
+                f.unlink(missing_ok=True) if f.is_file() else f.rmdir()
+            cache.rmdir()
+            removed += 1
+    print(f"Caches purgés : {removed} dossier(s) (__pycache__, .stx_cache).")
+    print("Restent à VOTRE main, dans le navigateur :")
+    print("  - recharger l'onglet (F5) — l'éditeur garde ses réglages en session ;")
+    print("  - rechargement forcé (Cmd+Shift+R) — le navigateur cache les médias.")
+    print("Le cache des médias (static/media/) est contenu-adressé, donc voulu ;")
+    print("pour le refaire : vider le dossier puis relancer sync_media.py.")
+
+
 def kill_all() -> None:
     print("Arrêt de tous les processus streamlit…")
     if sys.platform == "win32":
@@ -143,6 +174,9 @@ def main() -> None:
     ap.add_argument("--list", action="store_true", help="liste les modules et ports")
     ap.add_argument("--kill", action="store_true", help="arrête tous les streamlit")
     ap.add_argument("--no-browser", action="store_true", help="n'ouvre pas le navigateur")
+    ap.add_argument("--fresh", action="store_true",
+                    help="arrête tout, purge __pycache__ et .stx_cache, puis relance "
+                         "(les caches du NAVIGATEUR restent à rafraîchir : F5 / Cmd+Shift+R)")
     args = ap.parse_args()
 
     if args.list:
@@ -157,6 +191,8 @@ def main() -> None:
     unknown = [m for m in selected if m not in MODULES]
     if unknown:
         sys.exit(f"module(s) inconnu(s) : {', '.join(unknown)} — voir --list")
+    if args.fresh:
+        fresh(selected)
     for name in selected:
         check_module(name)
 

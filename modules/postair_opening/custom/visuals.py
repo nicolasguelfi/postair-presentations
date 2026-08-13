@@ -56,8 +56,12 @@ def hero_image(name: str, prompt: str, fallback: str, alt_ready: str,
     # La pastille DD-35 découle du sidecar (source_type), jamais d'une liste :
     # une image managée générée par IA est marquée d'office, le repli SVG
     # (dessiné, versionné) ne l'est pas. fit=False : l'image remplit sa cellule.
+    # En mode ÉDITEUR, st_image rend l'image PLUS la barre « Edit Image » :
+    # la pastille bas-droite tomberait sous l'image, sur la barre. Elle passe
+    # en HAUT-droite le temps de l'édition ; la projection fait foi (bas).
     with ai_marked(ready and is_synthetic(full_name), fit=False,
-                   media_width=managed_media_width(full_name, width)):
+                   media_width=managed_media_width(full_name, width),
+                   top=IS_EDITABLE):
         st_image(
             s.project.cards.media_center, width=width,
             uri="" if ready else fallback,

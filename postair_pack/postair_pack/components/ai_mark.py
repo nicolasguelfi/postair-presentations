@@ -91,6 +91,17 @@ def ai_marked(marked: bool = True, label: str = "AI", fit: bool = True,
                 f"right: calc((100% - {media_width}) / 2 + 0.6em);"),
             chip.style_id,
         )
-    with st_block(_WRAP_FIT if fit else _WRAP_FILL):
+    # Géométrie constatée (2026-08-13) : ``st_block`` rend un div de hauteur
+    # NULLE placé APRÈS son contenu — la pastille « bas » flotte donc au-dessus
+    # de la ligne qui suit le média, pile sur son coin inférieur. Pour ``top``
+    # (mode éditeur : la barre « Edit Image » s'intercale sous l'image),
+    # l'ancre s'émet AVANT le média : la pastille descend de 0.6em sous cette
+    # ligne et se pose sur le coin SUPÉRIEUR de l'image, au-dessus de la barre.
+    if top:
+        with st_block(_WRAP_FIT if fit else _WRAP_FILL):
+            st_write(chip, f"✦ {label}", tag=t.div)
         yield
-        st_write(chip, f"✦ {label}", tag=t.div)
+    else:
+        with st_block(_WRAP_FIT if fit else _WRAP_FILL):
+            yield
+            st_write(chip, f"✦ {label}", tag=t.div)

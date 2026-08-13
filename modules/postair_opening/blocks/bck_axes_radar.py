@@ -160,7 +160,8 @@ def _wheel_image():
     """
     ready = (_MANAGED / f"{_WHEEL}.webp").exists()
     with ai_marked(ready and is_synthetic(_WHEEL), fit=False,
-                   media_width=managed_media_width(_WHEEL)):
+                   media_width=managed_media_width(_WHEEL),
+                   top=IS_EDITABLE):
         st_image(
             s.project.cards.media_center, width="100%",
             uri="" if ready else _FALLBACK,
