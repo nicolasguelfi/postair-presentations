@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -134,10 +135,15 @@ def _whitelist_hashes(module: str) -> dict[str, str]:
 
 def check_module(module: str, keep: Path | None = None) -> list[str]:
     out_dir = keep or Path(tempfile.mkdtemp(prefix=f"stx-gate-{module}-"))
+    # Export en mode PROJECTION, quel que soit le .env d'auteur : c'est ce que
+    # la salle verra. (En mode éditeur la pastille passe AVANT l'image — barre
+    # « Edit Image » oblige — et l'association « pastille → média précédent »
+    # ne tiendrait plus. ``config.py`` lit l'environnement avant le .env.)
+    env = dict(os.environ, STX_EDITABLE="false")
     r = subprocess.run(["uv", "run", "stx", "export", "html",
                         f"modules/{module}", "-o", str(out_dir),
                         "--asset-mode", "external"],
-                       cwd=_REPO, capture_output=True, text=True)
+                       cwd=_REPO, capture_output=True, text=True, env=env)
     if r.returncode != 0:
         return [f"{module}: export en échec — {r.stderr.strip()[-300:]}"]
     html_files = list(out_dir.rglob("*.html"))
@@ -152,15 +158,22 @@ def check_module(module: str, keep: Path | None = None) -> list[str]:
         # L'export APLATIT les blocs (les conteneurs ne gardent que des
         # coquilles vides ; contenu et pastille sortent en frères consécutifs,
         # constaté le 2026-08-13). L'association se fait donc par l'ordre du
-        # document : chaque pastille marque le média qui la précède
-        # immédiatement — c'est exactement ce que ``ai_marked`` émet.
+        # document : ``ai_marked`` émet la pastille juste APRÈS le média
+        # (variante bas) ou juste AVANT (variante haut — vidéos, mode
+        # éditeur). Chaque pastille marque donc le média non marqué le plus
+        # PROCHE, côté amont ou aval.
         marked_ids: set[int] = set()
         media_sorted = sorted(dom.media, key=lambda m: m[0])
         for chip in sorted(dom.chips):
             before = [m for m in media_sorted
                       if m[0] < chip and m[0] not in marked_ids]
-            if before:
-                marked_ids.add(before[-1][0])
+            after = [m for m in media_sorted
+                     if m[0] > chip and m[0] not in marked_ids]
+            candidates = ([before[-1]] if before else []) + \
+                         ([after[0]] if after else [])
+            if candidates:
+                closest = min(candidates, key=lambda m: abs(m[0] - chip))
+                marked_ids.add(closest[0])
         for nid, tag, src in media_sorted:
             if re.match(r"^(https?:|data:|blob:)", src):
                 continue
