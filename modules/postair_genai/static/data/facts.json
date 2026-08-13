@@ -204,5 +204,57 @@
    "detail": {"en": "Let it explain and train you; never let it do the learning in your place."}},
   {"n": "4", "short": {"en": "Your posture is yours"},
    "detail": {"en": "Nine axes, no right answer — but not choosing is also a choice."}}
- ]
+ ],
+ "augment": [
+  {
+   "id": "medical",
+   "icon": "🩺",
+   "label": {"en": "The diagnosis: 85 % vs 20 %"},
+   "ai_value": {"en": "85.5 %"},
+   "ai_label": {"en": "specialised AI orchestrator"},
+   "human_value": {"en": "20 %"},
+   "human_label": {"en": "21 experienced physicians"},
+   "message": {"en": "On medicine's hardest cases, a specialised AI far outperforms the unaided doctor"},
+   "loyalty": {"en": "304 NEJM clinical puzzles · physicians without internet or colleagues · preprint, 2025"},
+   "detail": {"en": "Microsoft's MAI-DxO orchestrator solved 304 New England Journal of Medicine clinicopathological puzzles sequentially — ordering tests one by one — and reached 80 to 85.5 % correct diagnoses; 21 experienced physicians on the same cases averaged about 20 %. Honest framing: these are the hardest published cases in medicine, the physicians were deprived of internet, textbooks and colleagues, and the study is a 2025 preprint, not yet peer-reviewed."},
+   "source": {"citekeys": ["nori2025sequential"]}
+  },
+  {
+   "id": "twist",
+   "icon": "🤝",
+   "label": {"en": "The twist: the tool alone is not enough"},
+   "bars": [
+    {"who": {"en": "AI alone"}, "value": {"en": "92 %"}, "tone": "amber"},
+    {"who": {"en": "Physician alone"}, "value": {"en": "74 %"}, "tone": "blue"},
+    {"who": {"en": "Physician + AI"}, "value": {"en": "76 %"}, "tone": "teal"}
+   ],
+   "message": {"en": "Same tool, same doctors — two points gained. Collaboration is not improvised: it is learned"},
+   "loyalty": {"en": "Randomized clinical trial · 50 physicians with their usual tools · peer-reviewed, 2024"},
+   "detail": {"en": "In a randomized clinical trial, GPT-4 alone scored a median 92 % on diagnostic reasoning across six complex clinical vignettes; 50 physicians using their conventional resources scored 74 % — and the physicians GIVEN GPT-4 scored only 76 %. Handing over the tool changed almost nothing: knowing how to work with it is a skill in itself, which is exactly what these study years are for."},
+   "source": {"citekeys": ["goh2024llm"]}
+  },
+  {
+   "id": "justice",
+   "icon": "⚖️",
+   "label": {"en": "The case file, read in full"},
+   "headline": {"en": "−24.7 % crime, same jailing rate"},
+   "headline_sub": {"en": "when the algorithm's risk prediction replaces the judge's — hundreds of thousands of New York bail decisions"},
+   "second": {"en": "And in the lab, an LLM judging a real case file follows the precedent — where real federal judges followed their sympathy"},
+   "counterpoint": {"en": "Not every algorithm, though: a widely deployed commercial risk tool did no better than untrained laypeople"},
+   "message": {"en": "Where humans have moods, a well-built tool has constancy"},
+   "detail": {"en": "Two solid results, one caution. Kleinberg et al. (Quarterly Journal of Economics, 2018): on New York pre-trial release decisions, following a machine-learning risk prediction instead of the judge would cut crime by up to 24.7 % at an unchanged jailing rate — a policy simulation on real dossiers, not a deployment. Posner and Saran (2026) replicated a controlled experiment run on 31 real US federal judges with GPT-4o judging the same full case file: the model follows precedent and ignores the defendant's sympathy — the judges did the opposite. Practitioner anecdote: on the briefs alone, Claude decided 27 of 37 US Supreme Court cases the same way as the Court (Unikowsky 2024 — an essay, not peer review). And the famous \"AI predicts judges at 79 %\" figure classifies the text of ALREADY-written judgments; on genuinely future cases it drops to 58–68 %. Predicting a risk is not rendering justice — proportionality, dignity and the right to be heard stay human."},
+   "source": {"citekeys": ["kleinberg2018human"]},
+   "second_source": {"citekeys": ["posner2026judgeai"]},
+   "counterpoint_source": {"citekeys": ["dressel2018accuracy"]}
+  }
+ ],
+ "future": {
+  "label": {"en": "You will all be project managers"},
+  "message": {"en": "Advanced generative assistants are joining professional production in most jobs — your place moves up: directing, judging, taking responsibility"},
+  "punch": {"en": "How do you have it done, if you do not know how to do it?"},
+  "punch_original": {"en": "« Comment faire faire, si nous ne savons pas faire ? »"},
+  "answer": {"en": "You can only direct what you can judge — learning the craft during your studies is what makes you the manager, not the managed"},
+  "detail": {"en": "Employers surveyed across 55 economies expect 39 % of core skills to change by 2030, with AI literacy and analytical thinking rising fastest. Directing an assistant that produces in seconds requires exactly what a degree builds: knowing the domain well enough to specify, to judge the output, and to take responsibility for it."},
+  "source": {"citekeys": ["wef2025-jobs"]}
+ }
 }

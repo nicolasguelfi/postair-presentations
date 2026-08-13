@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `genai_conductor` : la silhouette-chef
+       d'orchestre sur son podium, l'équipe d'orbes ambre aux pupitres, les
+       feuilles colorées qui s'envolent. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFD34D" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FFD34D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <path d="M0 770 Q 400 700 800 760 T 1600 740 V900 H0 Z" fill="#7FB069" filter="url(#ds)"/>
+  <path d="M0 845 Q 500 790 1000 838 T 1600 828 V900 H0 Z" fill="#2EC4B6" filter="url(#ds)"/>
+  <!-- le chef d'orchestre, de dos, bras levés, sur son podium -->
+  <g filter="url(#ds)">
+    <rect x="250" y="640" width="260" height="80" rx="14" fill="#FF6F61"/>
+    <circle cx="380" cy="330" r="58" fill="#1A1A2E"/>
+    <path d="M380 378 q -100 0 -112 192 h224 q -12 -192 -112 -192 z" fill="#1A1A2E"/>
+    <path d="M300 430 q -60 -60 -80 -120" fill="none" stroke="#1A1A2E" stroke-width="32" stroke-linecap="round"/>
+    <path d="M460 430 q 60 -60 80 -120" fill="none" stroke="#1A1A2E" stroke-width="32" stroke-linecap="round"/>
+    <path d="M540 310 l 70 -46" stroke="#8a6f4d" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <!-- l'équipe d'orbes aux pupitres, chacune produit ses feuilles -->
+  <g filter="url(#ds)">
+    <polygon points="860,700 1000,700 980,620 880,620" fill="#B79CED"/>
+    <circle cx="930" cy="560" r="58" fill="#F39C12"/>
+    <circle cx="913" cy="543" r="16" fill="#FFD34D"/>
+    <polygon points="1090,720 1230,720 1210,640 1110,640" fill="#FFD34D"/>
+    <circle cx="1160" cy="580" r="58" fill="#F39C12"/>
+    <circle cx="1143" cy="563" r="16" fill="#FFD34D"/>
+    <polygon points="1320,690 1460,690 1440,610 1340,610" fill="#FF6F61"/>
+    <circle cx="1390" cy="550" r="58" fill="#F39C12"/>
+    <circle cx="1373" cy="533" r="16" fill="#FFD34D"/>
+  </g>
+  <circle cx="1160" cy="570" r="230" fill="url(#glow)" opacity="0.6"/>
+  <!-- les feuilles de papier qui s'envolent vers le ciel -->
+  <g filter="url(#ds)">
+    <rect x="900" y="380" width="90" height="64" rx="8" fill="#2EC4B6" transform="rotate(-14 945 412)"/>
+    <rect x="1120" y="330" width="90" height="64" rx="8" fill="#FF6F61" transform="rotate(10 1165 362)"/>
+    <rect x="1350" y="370" width="90" height="64" rx="8" fill="#B79CED" transform="rotate(-8 1395 402)"/>
+    <rect x="1040" y="210" width="80" height="56" rx="8" fill="#FFD34D" transform="rotate(16 1080 238)"/>
+    <rect x="1260" y="180" width="80" height="56" rx="8" fill="#7FB069" transform="rotate(-12 1300 208)"/>
+  </g>
+  <g fill="#FFFFFF" filter="url(#ds)" opacity="0.9">
+    <ellipse cx="200" cy="120" rx="100" ry="36"/>
+    <ellipse cx="700" cy="90" rx="80" ry="28"/>
+  </g>
+</svg>

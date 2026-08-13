@@ -117,6 +117,9 @@ st_book(
         blocks.bck_genai_prediction,     # G4  · THE pedagogical slide: predict
         blocks.bck_genai_scale,          # G5  · data + compute + energy, emergence
         blocks.bck_genai_capabilities,   # G6  · seven capabilities, agents in amber
+        blocks.bck_genai_augment_medical,   # G6b · augmentation: 85 % vs 20 %
+        blocks.bck_genai_augment_twist,     # G6c · the tool alone is not enough
+        blocks.bck_genai_augment_justice,   # G6d · the case file, read in full
         blocks.bck_genai_hallucinations,  # G7 · the fabricated case, projected
         # G8, découpé en quatre (NG 2026-08-11) : un message fort, une image
         # forte, un texte en gros — jamais quatre revers sur une slide.
@@ -128,6 +131,7 @@ st_book(
         blocks.bck_genai_studies_tutor,  # G9a · the tireless tutor
         blocks.bck_genai_studies_exam,   # G9b · the exam stays human
         blocks.bck_genai_careers,        # G10 · transformation, not disappearance
+        blocks.bck_genai_future_pm,      # G10b · project manager of your assistants
         blocks.bck_genai_actor,          # G11 · the loop back to the posture
         blocks.bck_genai_takeaways,      # G12 · four cards to photograph
         blocks.bck_refs_bibliography,    # never presented; opened when challenged

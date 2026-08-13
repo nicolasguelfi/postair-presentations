@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `genai_twist` : la silhouette et l'orbe côte à
+       côte, tournés vers le même grand graphique de papier sur chevalet. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFD34D" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFD34D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <path d="M0 790 Q 420 700 840 770 T 1600 750 V900 H0 Z" fill="#B79CED" filter="url(#ds)"/>
+  <path d="M0 850 Q 520 790 1040 840 T 1600 830 V900 H0 Z" fill="#7FB069" filter="url(#ds)"/>
+  <!-- le chevalet et le grand graphique de barres découpées -->
+  <g filter="url(#ds)">
+    <polygon points="930,830 970,830 1030,300 990,300" fill="#8a6f4d"/>
+    <polygon points="1330,830 1290,830 1230,300 1270,300" fill="#8a6f4d"/>
+    <rect x="900" y="180" width="460" height="440" rx="18" fill="#FFD34D"/>
+    <rect x="930" y="210" width="400" height="380" rx="12" fill="#FFF7E8"/>
+    <rect x="980" y="300" width="70" height="260" rx="10" fill="#F39C12"/>
+    <rect x="1090" y="390" width="70" height="170" rx="10" fill="#FF6F61"/>
+    <rect x="1200" y="370" width="70" height="190" rx="10" fill="#2EC4B6"/>
+  </g>
+  <!-- la silhouette, de dos, tournée vers le graphique -->
+  <g filter="url(#ds)">
+    <circle cx="420" cy="430" r="60" fill="#1A1A2E"/>
+    <path d="M420 478 q -105 0 -117 205 h234 q -12 -205 -117 -205 z" fill="#1A1A2E"/>
+    <path d="M352 683 h136 v100 h-136 z" fill="#1A1A2E"/>
+    <path d="M495 540 q 80 -30 150 -100" fill="none" stroke="#1A1A2E" stroke-width="34" stroke-linecap="round"/>
+  </g>
+  <!-- l'orbe, à hauteur d'épaule, tourné vers le même graphique -->
+  <circle cx="700" cy="420" r="190" fill="url(#glow)"/>
+  <g filter="url(#ds)">
+    <circle cx="700" cy="420" r="95" fill="#F39C12"/>
+    <circle cx="673" cy="393" r="27" fill="#FFD34D"/>
+  </g>
+  <g fill="#FFFFFF" filter="url(#ds)" opacity="0.9">
+    <ellipse cx="250" cy="130" rx="100" ry="36"/>
+    <ellipse cx="1440" cy="150" rx="90" ry="32"/>
+  </g>
+</svg>
