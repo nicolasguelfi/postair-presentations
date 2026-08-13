@@ -25,9 +25,35 @@ from __future__ import annotations
 
 from contextlib import contextmanager
 
-from streamtex import st_block, st_write
+from streamtex import MediaOverlay, st_block, st_write
 from streamtex.enums import Tags as t
 from streamtex.styles import Style
+
+#: La convention DD-35 à l'échelle amphi, passée au slot natif de ``st_image``
+#: (0.7.23). Le libellé et la géométrie de coin viennent de ``MediaOverlay`` ;
+#: ce CSS surcharge le style par défaut de la librairie en cascade.
+DD35_CSS = (
+    "background: rgba(113, 113, 122, 0.35); color: #FFFFFF; "
+    "border-radius: 999px; padding: 0.1em 0.7em; font-weight: 700; "
+    "text-transform: uppercase; letter-spacing: 0.08em; "
+    "font-size: clamp(11px, 1.05vw, 22px); line-height: 1.7;"
+)
+
+
+def dd35_overlay(marked: bool = True, label: str = "AI",
+                 position: str = "bottom-right") -> MediaOverlay | None:
+    """Le ``MediaOverlay`` DD-35 pour ``st_image(overlay=…)`` — ``None`` sinon.
+
+    Le drapeau de données décide (``ai_generated``/``is_synthetic``), jamais le
+    bloc. Depuis la 0.7.23 la pastille est rendue DANS la boîte de l'image
+    (zoom d'éditeur compris, barre « Edit Image » exclue) : plus aucun calcul
+    de décalage ni de variante haute côté consommateur.
+    """
+    if not marked:
+        return None
+    return MediaOverlay(text=f"✦ {label}", position=position, css=DD35_CSS,
+                        aria_label="AI-generated media (art. 50 EU AI Act "
+                                   "disclosure)")
 
 #: Le conteneur marqué épouse son média. ``fit`` : largeur au contenu (média à
 #: largeur explicite, ex. un portrait en ``min(38vw, 66vh)``) ; sinon pleine
@@ -61,6 +87,10 @@ _CHIP_TOP = Style(_CHIP_CSS + " top: 0.6em;", "pa_ai_mark")
 def ai_marked(marked: bool = True, label: str = "AI", fit: bool = True,
               top: bool = False, media_width: str | None = None):
     """Enveloppe le rendu d'un média et y superpose la pastille « ✦ AI ».
+
+    Depuis streamtex 0.7.23, réservé aux VIDÉOS (``st.video`` est une iframe,
+    le slot natif ne la couvre pas — phase 2 du plan) : toute IMAGE passe par
+    ``st_image(overlay=dd35_overlay(...))``.
 
     :param marked: le drapeau de données du média (``ai_generated``). Faux =
         aucun conteneur ajouté — le passage du drapeau est systématique, c'est

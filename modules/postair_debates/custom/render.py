@@ -31,7 +31,7 @@ from custom.pole import faceoff_sides, mascots
 from custom.refs import citation_or
 from custom.styles import DS
 from custom.styles import Styles as s
-from postair_pack.components.ai_mark import ai_marked
+from postair_pack.components.ai_mark import dd35_overlay
 from postair_pack.components.argument_card import argument_card
 from postair_pack.components.hero_split import hero_split
 from postair_pack.components.pole_faceoff import pole_faceoff
@@ -178,14 +178,11 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
     # zoom suit la longueur pour que TOUT reste au-dessus du pli.
     zoom = 100 if len(quote) <= 180 else (90 if len(quote) <= 240 else 80)
     def _portrait() -> None:
-        # La pastille DD-35 suit le drapeau gelé du manifeste (portrait_ai),
-        # jamais une liste locale. fit=True : la marque épouse le portrait,
-        # plus étroit que sa cellule.
-        with ai_marked(media.get("portrait_ai", False)):
-            st_image(DS.cards.media_center, width="min(38vw, 66vh)",
-                     uri=media.get("portrait"), link=media.get("video"),
-                     alt=f"Portrait of {f['name']} — click to play the "
-                         f"presentation video")
+        st_image(DS.cards.media_center, width="min(38vw, 66vh)",
+                 uri=media.get("portrait"), link=media.get("video"),
+                 alt=f"Portrait of {f['name']} — click to play the "
+                     f"presentation video",
+            overlay=dd35_overlay(media.get("portrait_ai", False)))
 
     with hero_split(s, zoom=zoom, image=_portrait):
         st_write(rs.figure_name, f["name"], tag=t.div)

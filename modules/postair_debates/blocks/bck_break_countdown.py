@@ -24,7 +24,7 @@ from shared_widgets import st_countdown, st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
-from postair_pack.components.ai_mark import ai_marked
+from postair_pack.components.ai_mark import dd35_overlay
 
 
 class BlockStyles:
@@ -83,8 +83,8 @@ def build():
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for pole in company:
                 with g.cell():
-                    with ai_marked():
-                        st_image(s.project.cards.media_center, width="min(6.5vw, 12vh)",
-                                 uri=pole["image"],
-                                 alt=f"{pole['mascot']}, mascot of the {pole['label']} posture")
+                    st_image(s.project.cards.media_center, width="min(6.5vw, 12vh)",
+                             uri=pole["image"],
+                             alt=f"{pole['mascot']}, mascot of the {pole['label']} posture",
+                             overlay=dd35_overlay())
                     st_write(bs.mascot_name, pole["mascot"], tag=t.div)

@@ -23,7 +23,7 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
-from postair_pack.components.ai_mark import ai_marked
+from postair_pack.components.ai_mark import dd35_overlay
 
 
 class BlockStyles:
@@ -84,7 +84,7 @@ def build():
             for name in names:
                 m = mascot(name)
                 with g.cell():
-                    with ai_marked():
-                        st_image(s.project.cards.media_center, width="7vw",
-                                 uri=m["image"], alt=f"Mascot {m['name']}")
+                    st_image(s.project.cards.media_center, width="7vw",
+                             uri=m["image"], alt=f"Mascot {m['name']}",
+                             overlay=dd35_overlay())
                     st_write(bs.mascot_name, m["name"], tag=t.div)

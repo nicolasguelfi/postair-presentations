@@ -19,7 +19,7 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
-from postair_pack.components.ai_mark import ai_marked
+from postair_pack.components.ai_mark import dd35_overlay
 
 
 class BlockStyles:
@@ -61,10 +61,10 @@ def build():
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for member in crew:
                 with g.cell():
-                    with ai_marked():
-                        st_image(s.project.cards.media_center, width="6vw",
-                                 uri=member["image"],
-                                 alt=f"Mascot {member['mascot']}")
+                    st_image(s.project.cards.media_center, width="6vw",
+                             uri=member["image"],
+                             alt=f"Mascot {member['mascot']}",
+                             overlay=dd35_overlay())
                     st_write(bs.name, member["mascot"], tag=t.div)
         st_space("v", "2vh")
         st_write(bs.big, text(data["big"]), tag=t.div)

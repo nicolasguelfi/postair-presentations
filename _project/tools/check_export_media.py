@@ -57,6 +57,7 @@ class _Dom(HTMLParser):
         self.node_parent: dict[int, int] = {}
         self.node_style: dict[int, str] = {}
         self.node_tag: dict[int, str] = {}
+        self.node_class: dict[int, str] = {}
         self.media: list[tuple[int, str, str]] = []   # (nœud, tag, src)
         self.chips: list[int] = []
         self._next = 0
@@ -69,6 +70,7 @@ class _Dom(HTMLParser):
         self.node_parent[nid] = self.parents[-1] if self.parents else -1
         self.node_tag[nid] = tag
         self.node_style[nid] = a.get("style", "")
+        self.node_class[nid] = a.get("class", "")
         if tag in ("img", "video", "source", "audio"):
             src = a.get("src") or ""
             if src:
@@ -155,15 +157,18 @@ def check_module(module: str, keep: Path | None = None) -> list[str]:
     for html in html_files:
         dom = _Dom()
         dom.feed(html.read_text(encoding="utf-8"))
-        # L'export APLATIT les blocs (les conteneurs ne gardent que des
-        # coquilles vides ; contenu et pastille sortent en frères consécutifs,
-        # constaté le 2026-08-13). L'association se fait donc par l'ordre du
-        # document : ``ai_marked`` émet la pastille juste APRÈS le média
-        # (variante bas) ou juste AVANT (variante haut — vidéos, mode
-        # éditeur). Chaque pastille marque donc le média non marqué le plus
-        # PROCHE, côté amont ou aval.
+        # Depuis streamtex 0.7.23 la pastille des IMAGES est STRUCTURELLE :
+        # ``st_image(overlay=…)`` émet ``stx-media-box`` autour de l'img et de
+        # la pastille — un ancêtre porteur de cette classe suffit. Le repli par
+        # PROXIMITÉ (pastille ``ai_marked`` la plus proche, amont ou aval — les
+        # blocs sont aplatis à l'export) ne sert plus qu'aux VIDÉOS, en
+        # attendant la phase 2 du slot natif.
         marked_ids: set[int] = set()
         media_sorted = sorted(dom.media, key=lambda m: m[0])
+        for nid, _tag, _src in media_sorted:
+            if any("stx-media-box" in dom.node_class.get(a, "")
+                   for a in dom.ancestors(nid)):
+                marked_ids.add(nid)
         for chip in sorted(dom.chips):
             before = [m for m in media_sorted
                       if m[0] < chip and m[0] not in marked_ids]

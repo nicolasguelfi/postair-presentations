@@ -23,7 +23,7 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
-from postair_pack.components.ai_mark import ai_marked
+from postair_pack.components.ai_mark import dd35_overlay
 
 
 class BlockStyles:
@@ -68,10 +68,10 @@ def build():
         with st_grid(cols="45% 55%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                with ai_marked():
-                    st_image(s.project.cards.media_center, width="min(22vw, 46vh)",
-                             uri=medio["image"],
-                             alt=f"{medio['name']}, the moderator mascot, presenting the results")
+                st_image(s.project.cards.media_center, width="min(22vw, 46vh)",
+                         uri=medio["image"],
+                         alt=f"{medio['name']}, the moderator mascot, presenting the results",
+                         overlay=dd35_overlay())
                 st_write(bs.mascot_name, medio["name"], tag=t.div)
                 st_write(bs.caption, "your answers, live", tag=t.div)
             with g.cell():

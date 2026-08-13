@@ -23,7 +23,7 @@ from streamtex import st_image
 from custom.config import IS_EDITABLE
 from custom.prompts import AI_SUFFIX_LANDSCAPE, AI_SUFFIX_PORTRAIT, AI_SUFFIX_SQUARE
 from custom.styles import Styles as s
-from postair_pack.components.ai_mark import ai_marked
+from postair_pack.components.ai_mark import dd35_overlay
 
 _MANAGED = Path(__file__).parent.parent / "static" / "images" / "managed"
 
@@ -55,43 +55,16 @@ def hero_image(name: str, prompt: str, fallback: str, alt_ready: str,
     ready = (_MANAGED / f"{full_name}.webp").exists()
     # La pastille DD-35 découle du sidecar (source_type), jamais d'une liste :
     # une image managée générée par IA est marquée d'office, le repli SVG
-    # (dessiné, versionné) ne l'est pas. fit=False : l'image remplit sa cellule.
-    # En mode ÉDITEUR, st_image rend l'image PLUS la barre « Edit Image » :
-    # la pastille bas-droite tomberait sous l'image, sur la barre. Elle passe
-    # en HAUT-droite le temps de l'édition ; la projection fait foi (bas).
-    with ai_marked(ready and is_synthetic(full_name), fit=False,
-                   media_width=managed_media_width(full_name, width),
-                   top=IS_EDITABLE):
-        st_image(
-            s.project.cards.media_center, width=width,
-            uri="" if ready else fallback,
-            alt=alt_ready if ready else alt_fallback,
-            editable=IS_EDITABLE, name=full_name,
-            prompt=prompt, provider="openai", ai_size=ai_size,
-        )
-
-
-def managed_media_width(full_name: str, width: str = "100%") -> str | None:
-    """La largeur RÉELLEMENT affichée du média, pour ancrer la pastille.
-
-    ``st_image`` applique le ``display_zoom`` du sidecar par rapport à son
-    conteneur (``width = f"{zoom}%"``) : la pastille doit suivre le bord de
-    l'image réduite, pas celui du conteneur. À défaut de réglage d'éditeur,
-    c'est la largeur passée par le bloc qui fait foi ; ``None`` = le média
-    remplit son conteneur, rien à décaler.
-    """
-    sidecar = _MANAGED / f"{full_name}.json"
-    if sidecar.exists():
-        try:
-            meta = json.loads(sidecar.read_text(encoding="utf-8"))
-        except (OSError, ValueError):
-            meta = {}
-        if meta.get("display_width"):
-            return str(meta["display_width"])
-        zoom = meta.get("display_zoom")
-        if zoom not in (None, 100):
-            return f"{zoom}%"
-    return None if width == "100%" else width
+    # (dessiné, versionné) ne l'est pas. Le slot natif (0.7.23) la rend DANS
+    # la boîte de l'image — zoom d'éditeur suivi, barre « Edit Image » exclue.
+    st_image(
+        s.project.cards.media_center, width=width,
+        uri="" if ready else fallback,
+        alt=alt_ready if ready else alt_fallback,
+        editable=IS_EDITABLE, name=full_name,
+        prompt=prompt, provider="openai", ai_size=ai_size,
+        overlay=dd35_overlay(ready and is_synthetic(full_name)),
+    )
 
 
 def is_synthetic(full_name: str) -> bool:

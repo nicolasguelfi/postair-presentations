@@ -24,7 +24,7 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
-from postair_pack.components.ai_mark import ai_marked
+from postair_pack.components.ai_mark import dd35_overlay
 from postair_pack.components.hero_split import hero_split
 
 
@@ -85,7 +85,7 @@ def build():
                 st_write(bs.caveat, text(caveat), tag=t.div)
             st_space("v", "0.5vh")
             kuri = mascot("Kuri")
-            with ai_marked():
-                st_image(s.project.cards.media_center, width="min(7vw, 13vh)",
-                         uri=kuri["image"], alt="Kuri, the curiosity mascot")
+            st_image(s.project.cards.media_center, width="min(7vw, 13vh)",
+                     uri=kuri["image"], alt="Kuri, the curiosity mascot",
+                     overlay=dd35_overlay())
             st_write(bs.mascot_name, kuri["name"], tag=t.div)
