@@ -76,11 +76,11 @@ adresses contenu-adressées (l'actuel) ou des adresses de VERSION
 
 `modules/shared-blocks/static/_SHARED/mascots/` est une **copie gelée** de
 `mascoties/shared/`, faite à la main : c'est le seul tuyau de la chaîne sans outil de
-copie. Depuis le 2026-08-02 il n'y reste que **les 3 manifestes et UN clip**
-(`videos/solyo_optimism_en.mp4`, le master 1080p de l'écran d'attente, gardé en
-sursis le temps de juger la rendition CDN en projection — voir `PROVENANCE.md`) —
-les 36 webp sont sortis du dépôt et viennent du CDN, et les clips passent par
-`media-catalogue.json` (section `crew` comprise, v2.2.0). Contrôle de fidélité :
+copie. Depuis le 2026-08-14 il n'y reste que **les 3 manifestes** — les 36 webp
+viennent du CDN, les clips passent par `media-catalogue.json` (sections `crew` et
+`films` comprises), et le dernier master en sursis (`solyo_optimism_en.mp4`) a été
+purgé quand l'écran d'attente est passé au film `axes-intro` (voir `PROVENANCE.md`).
+Contrôle de fidélité :
 
 ```bash
 uv run python _project/tools/check_shared_freeze.py
@@ -139,11 +139,12 @@ même en mode static-only).
   d'être refait après toute campagne média.
 - **Exception assumée** : les illustrations produites pour ces présentations restent
   versionnées ici et ne vont jamais au CDN.
-- **Une décision en attente** : `_SHARED/mascots/videos/solyo_optimism_en.mp4` (2,9 Mo)
-  est le master de l'écran d'attente, en 1080×1080 à 1,9 Mb/s ; la rendition du CDN
-  désormais utilisée est en 720×720 à 295 kb/s. Le fichier est conservé le temps que
-  l'auteur juge la rendition en projection. Si elle tient, il part ; sinon, la
-  demande va à `commercials` — pas de fichier copié à la main en guise de réponse.
+- **L'écran d'attente joue le film `axes-intro`** (décision NG 2026-08-14) : une
+  *production* du studio (« Les 9 axes — la phrase mémo », 68 s), déclarée dans la
+  section `films` de `cartes-design.json` avec des adresses de VERSION `/v/…`
+  (règle I3 — jamais `/c/`), gelée au catalogue et matérialisée comme les clips
+  sous `static/media/clips/`. Les blocs la nomment par `postair_data.film_clip`.
+  L'ancien arbitrage sur le master Solyo est clos : master purgé le même jour.
 
 ## Les références bibliographiques — le pattern canonique streamtex, pour TOUS les modules
 

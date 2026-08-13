@@ -28,10 +28,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import streamtex as stx
 from custom.styles import DS
 from custom.styles import Styles as s
-from postair_data import REGISTERS, axes, register_axes
+from postair_data import REGISTERS, axes, film_clip, register_axes
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex import st_video, st_zoom
@@ -40,9 +39,11 @@ from streamtex.enums import Tags as t
 from postair_pack.components.ai_mark import ai_marked
 from postair_pack.components.axis_stack import axis_stack
 
-# Dropped in by the mascot studio when it exists; absent today.
-_FILM = "_SHARED/mascots/videos/axes_intro_en_1080p.mp4"
-_SHARED_STATIC = Path(__file__).resolve().parents[3] / "shared-blocks" / "static"
+#: Le film des axes (« Les 9 axes — la phrase mémo », 68 s) — nommé au
+#: catalogue (section `films` du studio, NG 2026-08-14), matérialisé par
+#: sync_media sous static/media/clips/. Le chemin mort vers le gel manuel
+#: (_SHARED/mascots/videos/) a vécu : ce dossier est vide depuis le 02/08.
+_MEDIA = Path(__file__).parent.parent / "static" / "media"
 
 #: Neuf cartes sur DEUX lignes (NG 2026-08-03) : cinq puis quatre. Le plancher
 #: en pourcentage plafonne à cinq colonnes — posé entre 100/5 et 100/6, il en
@@ -80,7 +81,7 @@ def _axes_in_order() -> list[dict]:
 
 def build():
     st_marker("The whole company")
-    film = _SHARED_STATIC / _FILM
+    film = _MEDIA / film_clip("axes-intro", "en")
     with st_block(s.project.containers.page_fill_full if film.exists()
                   else s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -110,9 +111,10 @@ def build():
                     ],
                 )
         if film.exists():
-            # st.video needs an absolute path — resolve via static sources.
+            # st.video veut un chemin réel ; le dossier des médias n'est pas
+            # une source statique, on passe le chemin absolu matérialisé.
             with ai_marked(fit=False, top=True):
-                st_video(stx.resolve_static(_FILM))
+                st_video(str(film))
             st_space("v", "30vh")
             return
         st_space("v", "1vh")

@@ -15,31 +15,17 @@ divulgation lisible par machine.
 Source : `mascoties/shared/cartes/web/` — **identiques à l'octet près**, 36/36 signées
 C2PA `RIGHT-ON-SKILL`, `digitalSourceType = trainedAlgorithmicMedia`.
 
-## Les clips (`videos/`) — un seul reste, et il est en sursis
+## Les clips (`videos/`) — le dossier a disparu (2026-08-14)
 
-Source : le dépôt **`sumvadis-commercials`**, série « Postures », release `v02`. C'est un
-dépôt DIFFÉRENT du studio — d'où le verdict « orphelin » de `check_shared_freeze.py`, qui
-ne cherche que dans `mascoties`.
-
-**Ce dossier n'a plus lieu d'être.** Depuis le 2026-08-02, `commercials` publie les
-72 renditions « Postures » au CDN et les déclare dans `cartes-design.json` ; le deck les
-matérialise par `_project/tools/sync_media.py` sous `<module>/static/media/clips/`. Trois
-des quatre copies n'étaient référencées par aucun bloc et ont été retirées.
-
-| fichier gelé | master de release (`productions/02-serie-postures/releases/v02/`) | sha256 du fichier gelé |
-|---|---|---|
-| `solyo_optimism_en.mp4` | `ep01_solyo_en_1x1_v2.mp4` | `15142a897064c80458dd39adf961e771...` |
-
-Chaque fichier est la copie du master de release (1080x1080), **signée sur la copie** — le
-master versionné n'est jamais modifié.
-
-Clearance vérifiée avant copie : `channel = public-ok`, `ai_label` posé.
-
-**Pourquoi celui-ci survit** : c'est l'écran d'attente, projeté plein écran devant la
-salle qui se remplit. Le master est en 1080×1080 à 1,9 Mb/s, la rendition du CDN en
-720×720 à 295 kb/s. Le bloc utilise désormais la rendition ; ce fichier est conservé le
-temps que l'auteur juge le rendu en projection. Décision à prendre, puis ce dossier
-disparaît.
+Il ne restait qu'un fichier en sursis, `solyo_optimism_en.mp4` (master 1080×1080 de
+l'ancien écran d'attente, gardé le temps de juger la rendition CDN en projection).
+La décision est tombée autrement : **l'écran d'attente joue désormais le film
+`axes-intro`** (« Les 9 axes — la phrase mémo », production du studio, section
+`films` de `cartes-design.json`, adresses de VERSION `/v/…` — règle I3),
+matérialisé comme tous les clips par `_project/tools/sync_media.py` sous
+`<module>/static/media/clips/`. L'arbitrage Solyo est devenu sans objet ; le
+master a été purgé, décision NG du 2026-08-14. Le gel ne contient plus que les
+trois manifestes.
 
 ## Pour rafraîchir
 

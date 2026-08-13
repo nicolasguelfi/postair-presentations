@@ -56,6 +56,24 @@ def _webp_uri(item: dict) -> str:
     return "mascots/" + item["files"]["rgb"].replace(".png", ".webp")
 
 
+def film_clip(key: str, lang: str = "en") -> str:
+    """L'URI d'un FILM du studio (section ``films`` du catalogue), ex. l'intro
+    des axes. Même contrat que ``mascot_clip`` : le bloc nomme une œuvre et une
+    langue, jamais un fichier ; les octets sont matérialisés par
+    ``sync_media.py`` sous ``<module>/static/media/clips/``.
+
+    Clé inconnue au catalogue gelé = erreur BRUYANTE tout de suite — le défaut
+    silencieux serait un écran d'attente noir devant la salle qui se remplit.
+    """
+    fname = f"{key}-{lang}.mp4"
+    catalogue = json.loads(
+        (_MASCOTS_DIR.parent / "media-catalogue.json").read_text(encoding="utf-8"))
+    if not any(c["file"] == fname for c in catalogue.get("clips", [])):
+        raise KeyError(f"film {fname!r} absent du catalogue gelé — "
+                       f"section `films` du studio puis regel (sync_media --freeze)")
+    return f"clips/{fname}"
+
+
 def mascot_clip(name: str, lang: str = "en") -> str:
     """L'URI du clip « Postures » d'une mascotte, relative au dossier des médias.
 

@@ -8,6 +8,7 @@ outil, depuis les catalogues amont, et se rechargent en vidant le dossier.
     modules/<module>/static/media/
         mascots/<nom>.webp     ← catalogue du studio (cartes-design.json)
         clips/<axe>-<lg>.mp4   ← même catalogue, clé `video` (série « Postures »)
+        clips/<film>-<lg>.mp4  ← même catalogue, section `films` (productions)
         figures/<sha>.<ext>    ← content.json (portraits + posters des figures)
         illustrations/…        ← VERSIONNÉ, produit pour ces présentations,
                                   jamais au CDN (décision NG 2026-08-01)
@@ -138,6 +139,25 @@ def clip_catalogue(studio: str | None) -> list[tuple[str, str]]:
     return _read_studio_clips(studio)
 
 
+def _read_studio_films(studio: str) -> list[tuple[str, str]]:
+    """Les productions vidéo du studio (section ``films`` du catalogue).
+
+    Hors série « Postures » : des films nommés (l'intro des axes), déclarés
+    avec des adresses de VERSION ``/v/…/<horodatage>`` — immuables, donc
+    admissibles dans le gel (règle I3) là où un ``/c/`` servirait du périmé
+    en silence. Le nom local est ``<clé>-<langue>.mp4``, jamais dérivé de
+    l'adresse.
+    """
+    out = []
+    films = _studio_design(studio).get("films") or {}
+    for key, entry in sorted(films.items()):
+        if key.startswith("_"):
+            continue
+        for lang, url in sorted((entry.get("video") or {}).items()):
+            out.append((f"{key}-{lang}.mp4", url))
+    return out
+
+
 def _read_studio_clips(studio: str) -> list[tuple[str, str]]:
     """Les clips publiés par `commercials`, déclarés dans le catalogue du studio.
 
@@ -155,7 +175,7 @@ def _read_studio_clips(studio: str) -> list[tuple[str, str]]:
 def freeze(studio: str) -> None:
     """Regeler le catalogue depuis le studio. À lancer sur la machine de l'auteur."""
     entries = _read_studio(studio)
-    clips = _read_studio_clips(studio)
+    clips = _read_studio_clips(studio) + _read_studio_films(studio)
     design = _studio_design(studio)
     _FROZEN.parent.mkdir(parents=True, exist_ok=True)
     _FROZEN.write_text(json.dumps({
