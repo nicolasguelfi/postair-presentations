@@ -16,7 +16,7 @@ cards_per_row = 3
 
 [projects.opening]
 title = "Opening — Facing the AI Revolution"
-description = "Welcome · Survey · Results · Discussion. The morning up to the break: the nine axes, the survey, the room's own results."
+description = "welcome · 9 axes · survey · the room's results · discussion"
 emoji = "🎡"
 button_label = "Open the deck"
 project_url = "https://postair-opening.streamtex.org"
@@ -24,7 +24,7 @@ order = 1
 
 [projects.debates]
 title = "The debates of the nine axes"
-description = "A navigable bank, not a talk: both poles of every axis — historical figures, sourced quotations, contemporary arguments."
+description = "a bank, not a talk · both poles · figures · verbatims · today's arguments"
 emoji = "⚖️"
 button_label = "Open the bank"
 project_url = "https://postair-debates.streamtex.org"
@@ -32,7 +32,7 @@ order = 2
 
 [projects.genai]
 title = "Introduction to AI & Generative AI"
-description = "Seventy years in thirty minutes: where it comes from, how it works, what it gets wrong, what that changes for you."
+description = "70 years · how it works · what it gets wrong · your place"
 emoji = "🤖"
 button_label = "Open the deck"
 project_url = "https://postair-genai.streamtex.org"
@@ -40,7 +40,7 @@ order = 3
 
 [projects.guidelines]
 title = "The UL AI Guidelines — and Closing"
-description = "The official rules in five reflexes: permitted by default, say it, three risk levels, the red lines, the final test — then the closing of the day."
+description = "permitted by default · say it · 3 risk levels · red lines · final test · AI Act"
 emoji = "📋"
 button_label = "Open the deck"
 project_url = "https://postair-guidelines.streamtex.org"

@@ -10,7 +10,6 @@ keeps the family's face.
 """
 # @guideline: postair-minimal
 
-import math
 import os
 import tomllib
 from pathlib import Path
@@ -58,12 +57,13 @@ bs = BlockStyles
 
 
 def _card(project: dict) -> None:
+    # Compact (NG 2026-08-13) : emoji EN LIGNE avec le titre — quatre cartes
+    # 2×2 tiennent dans un écran laptop sans coupe.
     with st_block(s.project.cards.blue):
-        st_write(bs.emoji, project["emoji"], tag=t.div)
-        st_write(bs.card_title, project["title"], tag=t.div)
-        st_space("v", "0.8vh")
+        st_write(bs.card_title, project["emoji"], "  ", project["title"], tag=t.div)
+        st_space("v", "0.6vh")
         st_write(bs.card_desc, project["description"], tag=t.div)
-        st_space("v", "1.2vh")
+        st_space("v", "1vh")
         st_html(f'<a href="{project["url"]}" target="_blank" rel="noopener" '
                 f'style="{bs.button_css}">{project["button_label"]}</a>')
 
@@ -76,20 +76,16 @@ def build():
                  tag=t.div, toc_lvl="1", label="AI Day")
         st_space("v", "0.5vh")
         st_write(bs.subtitle, meta.get("description", ""), tag=t.div)
-        st_space("v", "3vh")
-        rows = math.ceil(len(_PROJECTS) / _CARDS_PER_ROW)
-        for r in range(rows):
-            chunk = _PROJECTS[r * _CARDS_PER_ROW:(r + 1) * _CARDS_PER_ROW]
-            with st_grid(cols=s.project.grids.balanced(len(chunk)), gap="1.5vw",
-                         grid_style=s.project.grids.stretch,
-                         cell_styles=s.project.containers.grid_cell_centered) as g:
-                for project in chunk:
-                    with g.cell():
-                        _card(project)
-            if r < rows - 1:
-                st_space("v", "1.5vw")
+        st_space("v", "2vh")
+        # UNE grille équilibrée (NG 2026-08-13) : quatre cartes = 2×2, sans
+        # rangée orpheline pleine largeur ni carte coupée en bas d'écran.
+        with st_grid(cols=s.project.grids.balanced(len(_PROJECTS)), gap="1.5vw",
+                     grid_style=s.project.grids.stretch,
+                     cell_styles=s.project.containers.grid_cell_top) as g:
+            for project in _PROJECTS:
+                with g.cell():
+                    _card(project)
         st_space("v", "3vh")
         st_write(bs.footer,
-                 "One Coolify service per module — this hub links them; it projects "
-                 "nothing itself. Modules still in production (Mistral, UL guidelines) "
-                 "join this page the day they exist.", tag=t.div)
+                 "one service per deck · this hub only links · Mistral joins the day "
+                 "it exists", tag=t.div)
