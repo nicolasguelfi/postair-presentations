@@ -91,6 +91,16 @@ signature C2PA des deux côtés et signale les clips sans source. **Ne jamais en
 un fichier du gel à la main** : ce serait créer une seconde vérité. Une évolution se
 demande au studio, puis le gel se refait.
 
+## Le thème — un module = un `.streamlit/config.toml`
+
+Le conteneur fait `cd` dans le module avant de lancer Streamlit : le thème
+sombre vient du `config.toml` LOCAL au module, jamais d'un défaut global.
+**Tout nouveau module copie celui d'opening à l'identique** (thème +
+`enableStaticServing`, qui rend aussi les médias visibles en lancement
+local). Constaté le 2026-08-13 : genai, guidelines et collection ont tourné
+en thème clair en production — textes blancs sur fond blanc — parce que ce
+fichier manquait.
+
 ## Les médias — servis, jamais inlinés, jamais dans git
 
 **Aucun média dans git.** Les octets sont matérialisés **au build** par
