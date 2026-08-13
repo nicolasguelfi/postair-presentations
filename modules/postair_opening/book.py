@@ -120,8 +120,13 @@ st_book(
         # ── Welcome ─────────────────────────────────────────────────
         blocks.bck_wait_loop,         # looping video, full window, no information
         blocks.bck_welcome_title,     # title + Medio + hero image
-        blocks.bck_welcome_whole_university,  # three faculties, and the missing survey
-        blocks.bck_welcome_revolution,  # four figures, each with its counterpoint
+        blocks.bck_faculty_fstm,      # AI in FSTM — 1 faculté = 1 slide (NG 2026-08-13)
+        blocks.bck_faculty_fdef,      # AI in FDEF
+        blocks.bck_faculty_fhse,      # AI in FHSE + la réserve d'honnêteté
+        blocks.bck_already_usage,     # 94 % — un chiffre = une slide
+        blocks.bck_already_productivity,  # −40 % temps · +18 % qualité
+        blocks.bck_already_detectors,  # 61 % non-natifs lus « IA »
+        blocks.bck_already_skills,    # 68 % « vital » + la ligne long-wave
         blocks.bck_welcome_agenda,    # before the break, the break, after it
         blocks.bck_axes_radar,        # the fairground wheel: which postures will you win
         blocks.bck_axes_registers,    # Knowing / Acting / Becoming (3 sub-slides)

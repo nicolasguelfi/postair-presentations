@@ -144,7 +144,7 @@ def build():
         # Le code de citation dans le texte VISIBLE de la slide : la carte au
         # survol porte la référence complète et le lien vers l'article.
         st_write(bs.grounding,
-                 "Anonymous, and grounded in a published scientific model ",
+                 "anonymous · published scientific model ",
                  citation("guelfi-postair"), tag=t.div)
 
 

@@ -42,3 +42,10 @@ AI_SUFFIX_LANDSCAPE_WITH_TEXT = (
     "the wheel segments; spell each one exactly as written, in clean bold "
     "capitals. NO logos, NO signage, NO photorealism."
 )
+
+# L'orientation par défaut du gabarit hero_split (NG 2026-08-13) : l'image
+# CARRÉE à gauche sur ~50 % de la largeur.
+AI_SUFFIX_SQUARE = (
+    " Square composition, one off-centre focal point, rising diagonal "
+    "energy. NO text, NO logos, NO signage, NO photorealism."
+)

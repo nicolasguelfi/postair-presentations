@@ -69,7 +69,7 @@ def build():
                 )
         st_space("v", "1vh")
         st_write(bs.lead, "The app shows the ", (s.project.titles.keyword, "nearest"),
-                 " one — and how far you are from it", tag=t.div)
+                 " one + your distance to it", tag=t.div)
         # Un franc espace avant les six noms (NG 2026-08-03) : ils sont le sujet
         # de la slide, et une grille collée à sa phrase d'introduction se lit
         # comme une légende.

@@ -37,10 +37,11 @@ from custom.facts import citekeys, figures, framing, text
 from custom.refs import citation
 from custom.styles import DS
 from custom.styles import Styles as s
-from postair_pack.components.fact_card import fact_card
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
+
+from postair_pack.components.fact_card import fact_card
 
 
 class BlockStyles:

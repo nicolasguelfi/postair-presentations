@@ -32,11 +32,12 @@ import streamtex as stx
 from custom.styles import DS
 from custom.styles import Styles as s
 from postair_data import REGISTERS, axes, register_axes
-from postair_pack.components.axis_stack import axis_stack
 from shared_widgets import st_info_tooltip
 from streamtex import *
-from streamtex import st_video
+from streamtex import st_video, st_zoom
 from streamtex.enums import Tags as t
+
+from postair_pack.components.axis_stack import axis_stack
 
 # Dropped in by the mascot studio when it exists; absent today.
 _FILM = "_SHARED/mascots/videos/axes_intro_en_1080p.mp4"
@@ -51,7 +52,7 @@ _COLS = "repeat(auto-fit, minmax(max(220px, 18%), 1fr))"
 
 #: Deux mascottes empilées dans une carte deux fois moins haute qu'une slide de
 #: registre : l'image se borne par la HAUTEUR autant que par la largeur.
-_IMAGE_WIDTH = "min(9vw, 13vh)"
+_IMAGE_WIDTH = "min(7vw, 9.5vh)"
 
 
 class BlockStyles:
@@ -117,10 +118,16 @@ def build():
                  (s.project.titles.keyword, "none of them is wrong"), tag=t.div)
         st_space("v", "1.5vh")
         # ONE flat grid: nine cells, each a self-contained axis card.
-        with st_grid(cols=_COLS, gap="0.8vw",
+        # st_zoom (NG 2026-08-13) : la seule slide du deck à 18 cellules —
+        # la réduction proportionnelle locale fait tenir les deux rangées
+        # SANS changer le layout ; les étiquettes s'élargissent d'autant
+        # (fin du « Transhumani-sm » coupé).
+        with st_zoom(60), st_grid(cols=_COLS, gap="0.8vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
+                     cell_styles=s.project.containers.grid_cell_top) as g:
             for axis in _axes_in_order():
+                # Le nom d'axe du manifeste est français sur un deck anglais et
+                # redondant avec les deux pôles affichés (NG 2026-08-13) : les
+                # étiquettes de pôles portent la tension à elles seules.
                 with g.cell(), st_block(s.project.containers.column_stack_centered):
-                    st_write(bs.axis_name, axis["axis_name"], tag=t.div)
-                    axis_stack(axis, DS, image_width=_IMAGE_WIDTH)
+                    axis_stack(axis, DS, image_width=_IMAGE_WIDTH, compact=True)

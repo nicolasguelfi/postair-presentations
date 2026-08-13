@@ -30,12 +30,12 @@ from streamtex.enums import Tags as t
 #: (situation, ce qu'on fait). Ordonnés par probabilité décroissante : les deux
 #: premiers arrivent à coup sûr avec quinze cents personnes dans la salle.
 _TIPS = [
-    ("Wifi struggling?", "Turn it off — use your mobile data", s.project.cards.amber),
+    ("Wifi struggling?", "wifi OFF → mobile data", s.project.cards.amber),
     ("Finished early?", "Read the six archetype descriptions", s.project.cards.teal),
     ("QR won't scan?", "Type the address and the code by hand", s.project.cards.blue),
     ("Lost the page?", "Reopen it — your answers are saved", s.project.cards.blue),
     ("Battery low?", "Pair up with a neighbour and share one", s.project.cards.coral),
-    ("Something else?", "Raise a hand — someone will come to you", s.project.cards.coral),
+    ("Something else?", "raise a hand → we come to you", s.project.cards.coral),
 ]
 
 

@@ -17,10 +17,11 @@ postures. On Becoming, insist that 'accelerator' does not mean 'good'.
 from custom.styles import DS
 from custom.styles import Styles as s
 from postair_data import REGISTERS, register_axes
-from postair_pack.components.axis_stack import axis_stack
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
+
+from postair_pack.components.axis_stack import axis_stack
 
 
 class BlockStyles:
@@ -74,12 +75,15 @@ def _register_slide(name: str, subtitle: str) -> None:
         # ONE flat responsive grid — 3 columns on a projector, stacking on
         # narrow windows; each cell is a self-contained axis stack.
         axes_here = register_axes(name)
+        # align-start (NG 2026-08-13) : le centrage vertical décalait les
+        # colonnes en escalier quand leurs étiquettes n'avaient pas le même
+        # nombre de lignes.
         with st_grid(cols=s.project.grids.balanced(len(axes_here)), gap="1.5vw",
                      grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
+                     cell_styles=s.project.containers.grid_cell_top) as g:
             for axis in axes_here:
                 with g.cell():
-                    axis_stack(axis, DS)
+                    axis_stack(axis, DS, image_width="min(10vw, 13.5vh)")
 
 
 def build():

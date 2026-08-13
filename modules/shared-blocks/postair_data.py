@@ -25,7 +25,7 @@ ACCEL_SIDE = {1: "right", 2: "right", 3: "right", 4: "right", 5: "right",
 REGISTERS = [
     ("Knowing", "how I judge / whom I trust", [1, 2, 3]),
     ("Acting", "how fast / under which rules I deploy", [4, 5, 6]),
-    ("Becoming", "which social order / which human condition results", [7, 8, 9]),
+    ("Becoming", "which social order · which human condition", [7, 8, 9]),
 ]
 
 

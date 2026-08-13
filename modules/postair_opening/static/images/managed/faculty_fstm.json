@@ -1,0 +1,18 @@
+{
+  "name": "faculty_fstm",
+  "version": 1,
+  "timestamp": "2026-08-13T14:09:27.714763+00:00",
+  "source_type": "ai_generated",
+  "original_path": "/Volumes/Mac_Data/Win_data/data/backups/Dropbox-nicolas.guelfi@laposte.net/messir Dropbox/Nicolas Guelfi/users/NG/Projets/AISE/ROS/projects/sumvadis-central/sumvadis-presentations/sumvadis-presentations/sumvadis-streamtex/modules/postair_opening/static/images/ai/153e84338b484db4.webp",
+  "prompt": "Layered paper-cut collage illustration, bright colored cardstock (yellow, coral, turquoise, lilac, leaf green), visible paper edges and soft drop shadows, playful handcrafted festive mood, luminous sky. Human figures as abstract paper silhouettes seen from behind, never faces. AI is always represented as a glowing warm amber paper sun or orb, never anthropomorphic. Clean layered composition. A papercut science and technology scene: a large paper laptop showing cut-out code blocks, a paper flask and a small paper gear beside it, a glowing warm amber paper orb hovering over the desk; one abstract paper silhouette seen from behind. Wide 16:9 composition, one off-centre focal point, rising diagonal energy. NO text, NO logos, NO signage, NO photorealism.",
+  "provider": "openai",
+  "model": "gpt-image-1",
+  "size": "1536x1024",
+  "quality": null,
+  "base_image": null,
+  "revised_prompt": null,
+  "display_zoom": null,
+  "display_width": null,
+  "display_height": null,
+  "display_keep_ratio": true
+}

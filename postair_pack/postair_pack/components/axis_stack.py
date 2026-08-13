@@ -21,7 +21,8 @@ __component_meta__ = {
 }
 
 
-def axis_stack(axis: dict, design_system, image_width: str = "min(12.8vw, 20.8vh)") -> None:
+def axis_stack(axis: dict, design_system, image_width: str = "min(12.8vw, 20.8vh)",
+               compact: bool = False) -> None:
     """Render one axis column.
 
     Parameters
@@ -31,11 +32,16 @@ def axis_stack(axis: dict, design_system, image_width: str = "min(12.8vw, 20.8vh
     design_system: a POSTAIR-protocol design system (body + cards bundles).
     image_width: CSS width of each mascot image (bounded by viewport height
         so two stacked mascots + labels always fit one slide).
+    compact: étiquettes de pôle bornées plus bas (NG 2026-08-13) — pour les
+        grilles serrées (neuf cartes) où le plancher 16pt cassait les mots
+        en césures sauvages (« Opennes-s », « Rationalit-y »).
     """
     ds = design_system
+    label_pair = ((ds.body.pole_label_accel_compact, ds.body.pole_label_compact)
+                  if compact else (ds.body.pole_label_accel, ds.body.pole_label))
     with st_block(ds.cards.axis_frame):
-        for kind, label_style in (("accel", ds.body.pole_label_accel),
-                                  ("decel", ds.body.pole_label)):
+        for kind, label_style in (("accel", label_pair[0]),
+                                  ("decel", label_pair[1])):
             pole = axis[kind]
             with st_block(ds.cards.pole_cell):
                 st_write(label_style, pole["label"], tag=t.div)

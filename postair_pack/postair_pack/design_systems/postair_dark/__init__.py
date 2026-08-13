@@ -110,6 +110,18 @@ class _Body:
         "line-height: 1.2; text-align: center;",
         "postair_body_pole_label_accel",
     )
+    # Variante compacte (NG 2026-08-13) : pour les grilles serrées — plancher
+    # 11pt, plus de césures dans une carte d'un cinquième d'écran.
+    pole_label_compact = Style(
+        "font-size: clamp(11pt, 1.6vw, 22pt); font-weight: 700; color: #FFFFFF; "
+        "line-height: 1.2; text-align: center; overflow-wrap: normal;",
+        "postair_body_pole_label_c",
+    )
+    pole_label_accel_compact = Style(
+        "font-size: clamp(11pt, 1.6vw, 22pt); font-weight: 700; color: #2EC4B6; "
+        "line-height: 1.2; text-align: center; overflow-wrap: normal;",
+        "postair_body_pole_label_accel_c",
+    )
     mascot_name = Style(
         "font-size: clamp(12pt, 2.2vw, var(--stx-scale-9, 22pt)); color: #95A5A6; text-align: center;",
         "postair_body_mascot_name",

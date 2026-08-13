@@ -64,7 +64,7 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        st_write(bs.lead, "Both poles of every axis are ",
+        st_write(bs.lead, "both poles · every axis · ",
                  (s.project.titles.keyword, "in this room"), tag=t.div)
         st_space("v", "2vh")
         # ONE flat grid: mascot · versus · mascot.

@@ -35,10 +35,11 @@ from custom.facts import disciplines, no_faculty_data, text
 from custom.refs import citation
 from custom.styles import DS
 from custom.styles import Styles as s
-from postair_pack.components.faculty_card import faculty_card
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
+
+from postair_pack.components.faculty_card import faculty_card
 
 
 class BlockStyles:

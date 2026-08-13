@@ -32,8 +32,10 @@ from streamtex.enums import Tags as t
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
-    bullet = s.project.body.bullet_giant
-    alert = s.project.body.bullet_giant + s.project.colors.critical
+    # bullet (36pt) au lieu de bullet_giant : les 5 puces tiennent ENTIÈRES
+    # à l'écran — la 5e (le point crucial) était coupée en plein mot.
+    bullet = s.project.body.bullet
+    alert = s.project.body.bullet + s.project.colors.critical
     level = s.project.body.body + s.center_txt + s.bold
     caption = s.project.body.caption + s.center_txt
 
@@ -47,7 +49,7 @@ _PROPERTIES = [
     ("Six levels", ""),
     ("No right answer", ""),
     ("Answer for YOURSELF", ""),
-    ("No opinion is ", "not a middle answer"),
+    ("“No opinion” ", "≠ a middle answer"),
 ]
 
 #: L'échelle telle que la salle la rencontrera. Dessinée ici faute de capture :
@@ -74,7 +76,7 @@ def _scale() -> None:
             st_write(bs.level, label, tag=t.div)
         st_space("v", "0.6vh")
     st_space("v", "0.8vh")
-    st_write(bs.caption, "plus a separate “no opinion” button — outside the scale",
+    st_write(bs.caption, "separate “no opinion” button — OUTSIDE the scale",
              tag=t.div)
 
 
