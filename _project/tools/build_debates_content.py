@@ -51,6 +51,7 @@ from __future__ import annotations
 import argparse
 import collections
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -144,6 +145,69 @@ def warn_if_hub_dirty(hub_root: str) -> None:
 
 def _norm(text: str) -> str:
     return "".join(c for c in text.lower() if c.isalnum())[:60]
+
+
+def _flat(text: str) -> str:
+    """Le texte réduit à ses caractères alphanumériques, en minuscules."""
+    return "".join(c for c in (text or "").lower() if c.isalnum())
+
+
+#: Les fragments que l'auteur a cités *entre apostrophes* dans un ``anchor`` de
+#: profil : ce sont les phrases exactes sur lesquelles repose la réponse validée.
+_ANCHOR_FRAGMENT = re.compile(r"'([^']{20,})'")
+
+
+#: Une énumération reprise telle quelle (« (a) », « 1) ») trahit un extrait
+#: découpé au milieu d'une liste.
+_ENUMERATION = re.compile(r"^\(?[a-z0-9][).]")
+
+
+def _promoted_keys(q: dict) -> list[str]:
+    """Les clés BibTeX projetables d'une citation du registre.
+
+    Seules celles que le hub a promues au-delà de l'heuristique donnent le
+    mécanisme natif ``cite()`` avec carte au survol ; sinon la slide affiche la
+    chaîne de référence gelée (règle bib canonique, CLAUDE.md).
+    """
+    src = q.get("source") or {}
+    if src.get("citekeys_confidence") not in _BIBKEY_TRUSTED:
+        return []
+    return list(src.get("citekeys") or [])
+
+
+def _fragmentation(text: str) -> int:
+    """Ce qui empêche une citation d'être lue en huit secondes depuis le fond.
+
+    Deux défauts se cumulent : commencer en plein milieu d'une phrase, et être
+    recousue à partir de morceaux séparés par des points de suspension. La
+    règle historique ne pesait que la longueur — 150 caractères en trois
+    tronçons restent illisibles en projection.
+    """
+    penalty = 0
+    if text[:1].islower() or _ENUMERATION.match(text):
+        penalty += 1
+    if "…" in text or "..." in text:
+        penalty += 1
+    return penalty
+
+
+def _anchored(quote_text: str, anchor: str | None) -> bool:
+    """La citation contient-elle une phrase que l'``anchor`` désigne ?
+
+    L'``anchor`` d'un profil justifie la réponse de la figure à un énoncé, et
+    cite très souvent le passage exact qui la fonde. Une citation qui contient
+    ce passage est une pièce à conviction ; une citation seulement *reliée* au
+    même énoncé n'est qu'un texte du même dossier.
+    """
+    if not anchor:
+        return False
+    haystack = _flat(quote_text)
+    for fragment in _ANCHOR_FRAGMENT.findall(anchor):
+        for piece in re.split(r"…|\.\.\.", fragment):
+            needle = _flat(piece)
+            if len(needle) >= 15 and needle in haystack:
+                return True
+    return False
 
 
 def _verification_tier(v: str | None) -> int:
@@ -320,9 +384,16 @@ class Hub:
             e = json.loads(path.read_text(encoding="utf-8"))
             self.editorial[e["id"]] = e
         self.scores = {}
+        self.responses = {}
+        self.annotations = {}
         for path in sorted((gf / "profiles").glob("*.json")):
             p = json.loads(path.read_text(encoding="utf-8"))
             self.scores[p["figure"]] = self._axis_scores(p["responses"])
+            # La réponse validée à CHAQUE énoncé, et sa justification sourcée
+            # (``annotations[<item>].anchor``). C'est le raisonnement de
+            # l'auteur : la slide n'a jamais à en inventer un.
+            self.responses[p["figure"]] = p["responses"]
+            self.annotations[p["figure"]] = p.get("annotations") or {}
 
     def _axis_scores(self, responses: dict[str, Any]) -> dict[str, float]:
         """0 = fully the left pole, 100 = fully the right pole (master-table scale)."""
@@ -338,8 +409,62 @@ class Hub:
         return [i for i in self.items[axis]
                 if ("right" if self.cards[i]["polarity"] == 1 else "left") == side]
 
-    def quote(self, fid: str, axis: str, side: str) -> dict | None:
-        """The figure's best displayable quote documenting this pole."""
+    def pushes_toward(self, fid: str, item: str, axis: str, side: str) -> bool | None:
+        """La réponse validée de la figure à `item` pousse-t-elle vers `side` ?
+
+        Le lien ``axis_items`` du registre dit qu'une citation *parle* d'un
+        énoncé, jamais si elle l'approuve. La réponse du profil, elle, le dit :
+        approuver un énoncé du pôle y pousse, contester un énoncé du pôle opposé
+        aussi. ``None`` quand la figure n'a pas répondu (« NSP »).
+        """
+        value = self.responses.get(fid, {}).get(item)
+        if value is None or value == "NSP":
+            return None
+        agrees = value >= 3
+        return agrees if item in self.pole_items(axis, side) else not agrees
+
+    def reasoning(self, fid: str, items: list[str], axis: str, side: str) -> list[dict]:
+        """Pourquoi cette figure est sur ce pôle, dans les mots du hub.
+
+        Un enregistrement par énoncé documenté : l'énoncé lui-même, la réponse
+        validée, l'ancre sourcée et sa confiance. Rien n'est rédigé ici — le
+        gel photographie ``profiles/<id>.json``.
+        """
+        out = []
+        for item in items:
+            note = (self.annotations.get(fid, {}) or {}).get(item) or {}
+            card = self.cards.get(item) or {}
+            pushes = self.pushes_toward(fid, item, axis, side)
+            out.append({"item": item,
+                        "statement": card.get("question"),
+                        "response": self.responses.get(fid, {}).get(item),
+                        "direction": None if pushes is None else
+                                     ("toward" if pushes else "against"),
+                        "anchor": note.get("anchor"),
+                        "confidence": note.get("confidence"),
+                        "transposition": note.get("transposition")})
+        return out
+
+    def quote(self, fid: str, axis: str, side: str,
+              exclude: frozenset[str] = frozenset()) -> dict | None:
+        """The figure's best displayable quote documenting this pole.
+
+        Le classement suit l'ordre des preuves, pas celui de la mise en page
+        (règle P3, 2026-08-13). Longtemps le seul critère discriminant fut la
+        longueur — « la plus proche de 150 caractères » —, ce qui revenait à
+        choisir une phrase pour sa taille parmi des textes seulement *reliés*
+        au même énoncé. Passent désormais devant, dans cet ordre :
+
+        1. la citation documente un énoncé de CE pôle ;
+        2. les réponses validées de la figure aux énoncés documentés poussent
+           toutes vers ce pôle (``pushes_toward``) — le registre dit de quoi la
+           citation parle, le profil dit de quel côté la figure se range ;
+        3. le nombre d'énoncés ainsi corroborés (deux valent mieux qu'un) ;
+        4. la citation contient le passage que l'``anchor`` du profil désigne —
+           c'est la pièce sur laquelle l'auteur a fondé la réponse ;
+        5. puis, comme avant, l'édition bilingue, le degré de vérification et
+           enfin la longueur, qui ne départage plus que des égalités.
+        """
         curated = {_norm(q["text"]["en"]): q
                    for q in (self.editorial.get(fid, {}).get("quotes") or [])
                    if q.get("text", {}).get("en")}
@@ -361,14 +486,29 @@ class Hub:
             if q.get("source_status") == "unresolved-key":
                 continue
             match = curated.get(_norm(text))
+            display = (match or {}).get("text", {}).get("en") or text
+            # Une figure présente sur deux pôles ne redit pas la même phrase.
+            if _norm(display) in exclude:
+                continue
+            pushes = [self.pushes_toward(fid, i, axis, side) for i in sorted(items)]
+            corroborating = sum(1 for p in pushes if p)
+            contradicting = sum(1 for p in pushes if p is False)
+            anchored = any(_anchored(text, (self.annotations.get(fid, {}).get(i) or {}).get("anchor"))
+                           for i in items)
             ranked.append(((0 if items & on_pole else 1),      # documents THIS pole
+                           (1 if contradicting else 0),        # aucune réponse ne dit l'inverse
+                           (0 if _reference(q, match) else 1),  # référence imprimable (règle du pied de page)
+                           -corroborating,                     # le plus d'énoncés corroborés
+                           _fragmentation(display),            # phrase entière plutôt que morceaux recousus
+                           (0 if anchored else 1),             # porte le passage que l'anchor cite
+                           (0 if _promoted_keys(q) else 1),    # code cite() natif plutôt que chaîne gelée
                            (0 if match else 1),                # bilingual + precise reference
                            _verification_tier(q.get("verification")),
                            abs(len(text) - 150),               # closest to the ideal slide length
                            q, match, sorted(items)))
         if not ranked:
             return None
-        ranked.sort(key=lambda r: r[:4])
+        ranked.sort(key=lambda r: r[:10])
         *_, q, match, items = ranked[0]
         full = _reference(q, match)
         src = q.get("source") or {}
@@ -383,6 +523,10 @@ class Hub:
                 "reference_full": full,
                 "citekeys": bibkeys,
                 "curated": bool(match), "documents": items,
+                "reasoning": self.reasoning(fid, items, axis, side),
+                "anchored": any(_anchored(q["text"],
+                                          (self.annotations.get(fid, {}).get(i) or {}).get("anchor"))
+                                for i in items),
                 "verification": q.get("verification")}
 
     def assets(self, fid: str, lang: str = "en") -> dict | None:
@@ -465,6 +609,10 @@ class Hub:
 
 def build(hub: Hub) -> dict:
     used: collections.Counter[str] = collections.Counter()
+    # Ce que chaque figure a déjà dit dans le deck : trois figures paraissent
+    # sur deux pôles, et la même phrase projetée deux fois ferait douter de
+    # tout le corpus.
+    spoken: dict[str, set[str]] = collections.defaultdict(set)
     poles, warnings = [], []
     for axis in AXIS_ORDER:
         meta = hub.axis[axis]
@@ -475,7 +623,8 @@ def build(hub: Hub) -> dict:
                 if axis not in scores:
                     continue
                 distance = (100 - scores[axis]) if side == "right" else scores[axis]
-                quote, assets = hub.quote(fid, axis, side), hub.assets(fid)
+                quote = hub.quote(fid, axis, side, exclude=frozenset(spoken[fid]))
+                assets = hub.assets(fid)
                 if quote and assets:
                     candidates.append((distance, fid, quote, assets))
             candidates.sort(key=lambda c: c[0])
@@ -509,6 +658,7 @@ def build(hub: Hub) -> dict:
                 warnings.append(f"{axis}/{pole['abbr']['en']}: only {len(picked)} figures")
             for p in picked:
                 used[p["id"]] += 1
+                spoken[p["id"]].add(_norm(p["quote"]["en"]))
                 if not p["quote"]["reference"]:
                     warnings.append(f"{axis}/{pole['abbr']['en']}/{p['id']}: quote has no "
                                     f"printable reference — resolve it from the dossier")

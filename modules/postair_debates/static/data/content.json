@@ -139,18 +139,43 @@
      "wave": "Railway and telegraph",
      "score": 7,
      "quote": {
-      "en": "we should be on our guard not to overestimate science and scientific methods … concerning investigations as to how to set an axe … science never troubles itself.",
+      "en": "hastily brought together by means of telegraphs and telephones and railways",
       "fr": null,
-      "reference": "tolstoy1886-whatshallwedo",
-      "reference_full": "tolstoy1886-whatshallwedo",
-      "citekeys": [
-       "tolstoy1886-whatshallwedo"
-      ],
+      "reference": "Kingdom 1894",
+      "reference_full": "Kingdom 1894",
+      "citekeys": [],
       "curated": false,
       "documents": [
-       "TRU-02",
-       "TRU-04"
+       "TRU-01",
+       "TRU-05"
       ],
+      "reasoning": [
+       {
+        "item": "TRU-01",
+        "statement": {
+         "en": "I trust public institutions to regulate AI in the general interest.",
+         "fr": "Je fais confiance aux institutions publiques pour réguler l'IA dans l'intérêt général."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "tolstoy1894-kingdom: the State that governs the technology is a coercive apparatus (special-train flogging), not a regulator acting in the general interest",
+        "confidence": "high",
+        "transposition": "public institutions → the tsarist State and its bureaucracy"
+       },
+       {
+        "item": "TRU-05",
+        "statement": {
+         "en": "I believe the bodies in charge of overseeing AI serve their own interests first.",
+         "fr": "Je pense que les organismes chargés de surveiller l'IA servent d'abord leurs propres intérêts."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "tolstoy1900-slavery: the men of science defend the order that frees them from toil (Fiat cultura, pereat justitia); tolstoy1894-kingdom: State supervision of citizens' loyalty",
+        "confidence": "high",
+        "transposition": "oversight bodies → State, Church and the scientific establishment"
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -185,6 +210,33 @@
        "TRU-03",
        "TRU-06"
       ],
+      "reasoning": [
+       {
+        "item": "TRU-03",
+        "statement": {
+         "en": "Certification of an AI system by an official body reassures me about using it.",
+         "fr": "La certification d'un système d'IA par un organisme officiel me rassure quant à son utilisation."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "barlow1996-declaration: legitimacy from 'ethics, enlightened self-interest, and the commonweal', not official certification",
+        "confidence": "medium",
+        "transposition": "official certification → state/official authority he rejects"
+       },
+       {
+        "item": "TRU-06",
+        "statement": {
+         "en": "As far as I can, I check claims about AI myself rather than accepting official statements.",
+         "fr": "Dans la mesure du possible, je vérifie moi-même les affirmations sur l'IA plutôt que d'accepter les déclarations officielles."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "barlow1996-declaration: reject official statements; governance emerges from the community, not officialdom",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -207,18 +259,44 @@
      "wave": "Computer, cybernetics, automation",
      "score": 10,
      "quote": {
-      "en": "The majority of scientists are contemptuous of this almost superstitious attitude… Their outlook was well summed up by Lady Lovelace over a hundred years ago",
+      "en": "(a) An unwillingness to admit the possibility that mankind can have any rivals in intellectual power. This occurs as much amongst intellectual people as amongst others: they have more to lose.",
       "fr": null,
-      "reference": "turing1951-bbc, followed by his systematic rebuttal of that majority outlook",
-      "reference_full": "turing1951-bbc, followed by his systematic rebuttal of that majority outlook",
-      "citekeys": [
-       "turing1951-bbc"
-      ],
+      "reference": "IM 1948 (opening list of objections)",
+      "reference_full": "IM 1948 (opening list of objections)",
+      "citekeys": [],
       "curated": false,
       "documents": [
-       "TRU-04"
+       "TRU-02",
+       "TRU-05"
       ],
-      "verification": "Verbatim (source verified)"
+      "reasoning": [
+       {
+        "item": "TRU-02",
+        "statement": {
+         "en": "When recognised experts state that an AI system is safe, I generally trust their judgement.",
+         "fr": "Quand des experts reconnus déclarent qu'un système d'IA est sûr, je fais généralement confiance à leur jugement."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "turing1950-mind §6: single-handed refutation of nine authoritative objections; turing1948-im: the learned class's 'unwillingness to admit… rivals in intellectual power'",
+        "confidence": "high",
+        "transposition": "experts declaring a system safe → authoritative expert pronouncements on what machines can(not) do"
+       },
+       {
+        "item": "TRU-05",
+        "statement": {
+         "en": "I believe the bodies in charge of overseeing AI serve their own interests first.",
+         "fr": "Je pense que les organismes chargés de surveiller l'IA servent d'abord leurs propres intérêts."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "turing1948-im: 'This occurs as much amongst intellectual people as amongst others: they have more to lose' — motivated reasoning of the era's epistemic authorities",
+        "confidence": "medium",
+        "transposition": "oversight bodies → the learned class pronouncing on the machines"
+       }
+      ],
+      "anchored": true,
+      "verification": "Verbatim"
      },
      "media": {
       "portrait": "figures/e18e5d50-512.png",
@@ -422,6 +500,33 @@
        "TRU-02",
        "TRU-03"
       ],
+      "reasoning": [
+       {
+        "item": "TRU-02",
+        "statement": {
+         "en": "When recognised experts state that an AI system is safe, I generally trust their judgement.",
+         "fr": "Quand des experts reconnus déclarent qu'un système d'IA est sûr, je fais généralement confiance à leur jugement."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "borlaug2000-plantphysiol / borlaug2000-reason: repeatedly invokes the scientific consensus that fertilizers, pesticides and GMOs are safe; 'I see no difference between the varieties carrying a BT gene… and the varieties created by conventional plant breeding' — trusts expert safety judgement (inverse of Carson's TRU-02)",
+        "confidence": "high",
+        "transposition": "experts say a system is safe → agricultural scientists / regulators say the technology is safe"
+       },
+       {
+        "item": "TRU-03",
+        "statement": {
+         "en": "Certification of an AI system by an official body reassures me about using it.",
+         "fr": "La certification d'un système d'IA par un organisme officiel me rassure quant à son utilisation."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "borlaug2001-tuskegee: defers to the agencies 'charged with ensuring that GMOs, within reasonable risk levels, are safe' — official science-based certification reassures him",
+        "confidence": "medium",
+        "transposition": "official certification → regulatory agency approval of the technology"
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -444,17 +549,30 @@
      "wave": "Genetic engineering",
      "score": 67,
      "quote": {
-      "en": "the director of the National Institutes of Health is requested to give immediate consideration to establishing an advisory committee...",
+      "en": "Others, reflecting their intuition and expertise, argued that such cells, viruses and recombinant DNAs posed no risk at all. The overwhelming assessment today is that the latter view was correct.",
       "fr": null,
-      "reference": "berg1974-letter",
-      "reference_full": "berg1974-letter",
-      "citekeys": [
-       "berg1974-letter"
-      ],
+      "reference": "Berg retrospective 2004",
+      "reference_full": "Berg retrospective 2004",
+      "citekeys": [],
       "curated": false,
       "documents": [
-       "TRU-03"
+       "TRU-02"
       ],
+      "reasoning": [
+       {
+        "item": "TRU-02",
+        "statement": {
+         "en": "When recognised experts state that an AI system is safe, I generally trust their judgement.",
+         "fr": "Quand des experts reconnus déclarent qu'un système d'IA est sûr, je fais généralement confiance à leur jugement."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "berg2004-nobelessay: expert scientific judgement vindicated ('the overwhelming assessment today is that the latter view was correct')",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -488,6 +606,21 @@
       "documents": [
        "TRU-01"
       ],
+      "reasoning": [
+       {
+        "item": "TRU-01",
+        "statement": {
+         "en": "I trust public institutions to regulate AI in the general interest.",
+         "fr": "Je fais confiance aux institutions publiques pour réguler l'IA dans l'intérêt général."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "bengio2023-senate (2023-07-25): 'agile national and international regulations — beyond voluntary guidelines', oversight 'anchored in new international institutions'",
+        "confidence": "high",
+        "transposition": "public institutions → governments/regulators and the international expert panels he engages"
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (via reproduction)"
      },
      "media": {
@@ -680,18 +813,46 @@
      "wave": "Genetic engineering",
      "score": 10,
      "quote": {
-      "en": "What I see coming is a gigantic slaughterhouse, a molecular Auschwitz, in which valuable enzymes, hormones and so on will be extracted instead of gold teeth.",
+      "en": "Have we the right to counteract, irreversibly, the evolutionary wisdom of millions of years?",
       "fr": null,
-      "reference": "chargaff1978-heraclitean",
-      "reference_full": "chargaff1978-heraclitean",
+      "reference": "chargaff1976-meddling",
+      "reference_full": "chargaff1976-meddling",
       "citekeys": [
-       "chargaff1978-heraclitean"
+       "chargaff1976-meddling"
       ],
       "curated": false,
       "documents": [
-       "OPT-06"
+       "OPT-04",
+       "OPT-05"
       ],
-      "verification": "Verbatim (verified via reproduction)"
+      "reasoning": [
+       {
+        "item": "OPT-04",
+        "statement": {
+         "en": "I believe AI will create more problems than it will solve.",
+         "fr": "Je pense que l'IA créera plus de problèmes qu'elle n'en résoudra."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "chargaff1976-meddling: 'the awesome irreversibility'; chargaff1978-heraclitean: 'molecular Auschwitz' — more problems than solutions",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPT-05",
+        "statement": {
+         "en": "I expect AI, on balance, to do lasting damage to society.",
+         "fr": "Je m'attends à ce que, au total, l'IA cause des dommages durables à la société."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "chargaff1978-heraclitean: 'an irreversible attack on the biosphere… I could only wish that mine had not been guilty of it'",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
+      "verification": "Verbatim (verified via collation)"
      },
      "media": {
       "portrait": "figures/4fd42a07-512.png",
@@ -725,6 +886,33 @@
        "OPT-01",
        "OPT-05"
       ],
+      "reasoning": [
+       {
+        "item": "OPT-01",
+        "statement": {
+         "en": "Overall, I expect artificial intelligence to improve everyday life over the next ten years.",
+         "fr": "Dans l'ensemble, je m'attends à ce que l'intelligence artificielle améliore la vie quotidienne au cours des dix prochaines années."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "oe2011-newyorker: reactors 'the same disrespect for human life is the worst possible betrayal of the memory of Hiroshima's victims'",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPT-05",
+        "statement": {
+         "en": "I expect AI, on balance, to do lasting damage to society.",
+         "fr": "Je m'attends à ce que, au total, l'IA cause des dommages durables à la société."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "oe2011-newyorker: man-made catastrophe, 'disrespect for human life'; oe1965-hiroshima: 'a nakedly exposed wound inflicted on all mankind'",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "verbatim (source verified)"
      },
      "media": {
@@ -747,18 +935,43 @@
      "wave": "Microbiology and vaccination",
      "score": 13,
      "quote": {
-      "en": "a crime against liberty, against health, and against humanity, which will, before many years have passed, be universally held to be one of the foulest blots on the civilization of the nineteenth century.",
-      "fr": "un crime contre la liberté, contre la santé et contre l'humanité, qui, avant que bien des années se soient écoulées, sera universellement tenu pour l'une des plus infâmes taches sur la civilisation du dix-neuvième siècle.",
-      "reference": "Vaccination a Delusion: Its Penal Enforcement a Crime, London: Swan Sonnenschein, 1898 …",
-      "reference_full": "Vaccination a Delusion: Its Penal Enforcement a Crime, London: Swan Sonnenschein, 1898 (closing sentence)",
-      "citekeys": [
-       "wallace1898-delusion"
-      ],
-      "curated": true,
+      "en": "This Essay has been written for the purpose of influencing Parliament, and securing the speedy abolition of the unjust, cruel, and pernicious Vaccination laws.",
+      "fr": null,
+      "reference": "Delusion* 1898",
+      "reference_full": "Delusion* 1898",
+      "citekeys": [],
+      "curated": false,
       "documents": [
-       "OPT-04",
-       "OPT-05"
+       "OPT-01",
+       "OPT-04"
       ],
+      "reasoning": [
+       {
+        "item": "OPT-01",
+        "statement": {
+         "en": "Overall, I expect artificial intelligence to improve everyday life over the next ten years.",
+         "fr": "Dans l'ensemble, je m'attends à ce que l'intelligence artificielle améliore la vie quotidienne au cours des dix prochaines années."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "wallace1898-delusion: vaccination 'a delusion', its laws 'unjust, cruel, and pernicious'; no expectation of benefit from the substituted technology",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPT-04",
+        "statement": {
+         "en": "I believe AI will create more problems than it will solve.",
+         "fr": "Je pense que l'IA créera plus de problèmes qu'elle n'en résoudra."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "wallace1898-delusion: vaccination creates more problems than it solves — 'a crime against liberty, against health, and against humanity'",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim"
      },
      "media": {
@@ -951,17 +1164,69 @@
      "wave": "Motor, automobile, aviation",
      "score": 97,
      "quote": {
-      "en": "We are going to be present at the birth of the centaur and we shall soon see the first angels fly! We must break down the gates of life to test the bolts and the padlocks!",
-      "fr": "Nous allons assister à la naissance du centaure et nous verrons bientôt voler les premiers anges ! Nous devrons briser les portes de la vie pour en éprouver les verrous et les cadenas !",
-      "reference": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, prologue …",
-      "reference_full": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, prologue (R.W. Flint translation)",
-      "citekeys": [
-       "marinetti1909-manifesto"
-      ],
+      "en": "We declare that the splendor of the world has been enriched by a new beauty: the beauty of speed. A racing automobile … a roaring motor car which seems to run on machine-gun fire, is more beautiful than the Victory of Samothrace.",
+      "fr": "Nous déclarons que la splendeur du monde s'est enrichie d'une beauté nouvelle : la beauté de la vitesse. Une automobile de course … une automobile rugissante, qui semble courir sur de la mitraille, est plus belle que la Victoire de Samothrace.",
+      "reference": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, point 4 …",
+      "reference_full": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, point 4 (R.W. Flint translation)",
+      "citekeys": [],
       "curated": true,
       "documents": [
-       "OPT-03"
+       "OPT-01",
+       "OPT-03",
+       "OPT-04",
+       "OPT-05"
       ],
+      "reasoning": [
+       {
+        "item": "OPT-01",
+        "statement": {
+         "en": "Overall, I expect artificial intelligence to improve everyday life over the next ten years.",
+         "fr": "Dans l'ensemble, je m'attends à ce que l'intelligence artificielle améliore la vie quotidienne au cours des dix prochaines années."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "marinetti1909-manifesto, point 4: 'the splendor of the world has been enriched by a new beauty: the beauty of speed... more beautiful than the Victory of Samothrace'",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPT-03",
+        "statement": {
+         "en": "When I hear about a new AI capability, my first thought is about the opportunities it could open up.",
+         "fr": "Quand j'entends parler d'une nouvelle capacité de l'IA, ma première pensée va aux opportunités qu'elle pourrait ouvrir."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "marinetti1909-manifesto (prologue): 'We are going to be present at the birth of the centaur... We must break down the gates of life' — first thought is exhilarated possibility",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPT-04",
+        "statement": {
+         "en": "I believe AI will create more problems than it will solve.",
+         "fr": "Je pense que l'IA créera plus de problèmes qu'elle n'en résoudra."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "marinetti1909-manifesto: the machine is pure gain, the 'new beauty'; no counter-pole in the machine-apology corpus",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPT-05",
+        "statement": {
+         "en": "I expect AI, on balance, to do lasting damage to society.",
+         "fr": "Je m'attends à ce que, au total, l'IA cause des dommages durables à la société."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "marinetti1909-manifesto, point 10: the destruction he wills is of the past (creative destruction as a good), not lasting damage done by the machine",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -996,6 +1261,33 @@
        "OPT-01",
        "OPT-02"
       ],
+      "reasoning": [
+       {
+        "item": "OPT-01",
+        "statement": {
+         "en": "Overall, I expect artificial intelligence to improve everyday life over the next ten years.",
+         "fr": "Dans l'ensemble, je m'attends à ce que l'intelligence artificielle améliore la vie quotidienne au cours des dix prochaines années."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "saintsimon1819-organisateur (Parabole): producers are 'la fleur de la société', who 'hâtent le plus sa civilisation ainsi que sa prospérité'; saintsimon1823-catechisme: industrial class 'la plus importante de toutes'",
+        "confidence": "high",
+        "transposition": "AI → the machine/industry as engine of prosperity"
+       },
+       {
+        "item": "OPT-02",
+        "statement": {
+         "en": "I believe AI will help solve major challenges such as disease or climate change.",
+         "fr": "Je pense que l'IA aidera à résoudre de grands défis comme les maladies ou le changement climatique."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "saintsimon1825-christianisme: industry/science to improve 'l'existence morale et physique de la classe la plus nombreuse'; saintsimon1819-organisateur: prosperity via progress of sciences and crafts",
+        "confidence": "medium",
+        "transposition": "major challenges → the condition of the poorest/most numerous class"
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim"
      },
      "media": {
@@ -1030,6 +1322,33 @@
        "OPT-01",
        "OPT-02"
       ],
+      "reasoning": [
+       {
+        "item": "OPT-01",
+        "statement": {
+         "en": "Overall, I expect artificial intelligence to improve everyday life over the next ten years.",
+         "fr": "Dans l'ensemble, je m'attends à ce que l'intelligence artificielle améliore la vie quotidienne au cours des dix prochaines années."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "tesla1926-colliers: domestic life 'freed from all labor through beneficent wireless power' (as-told-to, convergent with tesla1900-century program); tesla1935-liberty: 'electric millennium… in a few decades'",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPT-02",
+        "statement": {
+         "en": "I believe AI will help solve major challenges such as disease or climate change.",
+         "fr": "Je pense que l'IA aidera à résoudre de grands défis comme les maladies ou le changement climatique."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "tesla1900-century: nitrogen fixation to feed the world + harnessing the sun's energy; tesla1935-liberty: droughts/floods ended, wheat for all",
+        "confidence": "high",
+        "transposition": "major challenges → food, energy, war"
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (verified via reproduction + collation)"
      },
      "media": {
@@ -1222,18 +1541,57 @@
      "wave": "Steam engine, industrialisation",
      "score": 10,
      "quote": {
-      "en": "We have profoundly forgotten everywhere that Cash-payment is not the sole relation of human beings",
-      "fr": "Nous avons partout profondément oublié que le paiement en espèces n'est pas l'unique lien entre les êtres humains",
-      "reference": "Past and Present, London: Chapman and Hall, 1843",
-      "reference_full": "Past and Present, London: Chapman and Hall, 1843",
-      "citekeys": [
-       "carlyle1843-pastpresent"
-      ],
-      "curated": true,
+      "en": "It is not what a man outwardly has or wants that constitutes the happiness or misery of him. … It is the feeling of injustice that is insupportable to all men.",
+      "fr": null,
+      "reference": "Chartism 1839 (ch. V)",
+      "reference_full": "Chartism 1839 (ch. V)",
+      "citekeys": [],
+      "curated": false,
       "documents": [
-       "RAT-05"
+       "RAT-04",
+       "RAT-05",
+       "RAT-06"
       ],
-      "verification": "Verbatim (source verified)"
+      "reasoning": [
+       {
+        "item": "RAT-04",
+        "statement": {
+         "en": "What I feel about an AI system matters more to me than the statistics about it.",
+         "fr": "Ce que je ressens à propos d'un système d'IA compte davantage pour moi que les statistiques à son sujet."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "carlyle1829-signs: the science of Dynamics set above Mechanics; carlyle1839-chartism: 'to the ear of wisdom they are inarticulate prayers'",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "RAT-05",
+        "statement": {
+         "en": "Decisions about AI should above all respect moral values, even when the numbers point elsewhere.",
+         "fr": "Les décisions sur l'IA devraient avant tout respecter des valeurs morales, même quand les chiffres indiquent autre chose."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "carlyle1839-chartism: 'It is the feeling of injustice that is insupportable to all men'; carlyle1843-pastpresent: cash-nexus critique",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "RAT-06",
+        "statement": {
+         "en": "When a technology makes me uneasy, I take that feeling seriously even without hard evidence.",
+         "fr": "Quand une technologie me met mal à l'aise, je prends ce ressenti au sérieux même sans preuve tangible."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "carlyle1829-signs: the essay's whole method — reading moral 'signs' of the age against statistical reassurance (synthesis, not a single anchor)",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
+      "verification": "Verbatim (verified in two editions)"
      },
      "media": {
       "portrait": "figures/e9cfd863-512.png",
@@ -1267,6 +1625,33 @@
        "RAT-04",
        "RAT-05"
       ],
+      "reasoning": [
+       {
+        "item": "RAT-04",
+        "statement": {
+         "en": "What I feel about an AI system matters more to me than the statistics about it.",
+         "fr": "Ce que je ressens à propos d'un système d'IA compte davantage pour moi que les statistiques à son sujet."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "saintexupery1943-generalx: 'la civilisation est un bien invisible… les invisibles liens' — what matters is precisely the unmeasurable",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "RAT-05",
+        "statement": {
+         "en": "Decisions about AI should above all respect moral values, even when the numbers point elsewhere.",
+         "fr": "Les décisions sur l'IA devraient avant tout respecter des valeurs morales, même quand les chiffres indiquent autre chose."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "saintexupery1943-generalx: 'Rendre aux hommes une signification spirituelle'; saintexupery1943-otage: 'Respect de l'homme ! Là est la pierre de touche !'",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim"
      },
      "media": {
@@ -1289,17 +1674,82 @@
      "wave": "Railway and telegraph",
      "score": 13,
      "quote": {
-      "en": "la souffrance est une loi divine, mais je suis de ceux qui... affirment qu'on peut détruire la misère",
+      "en": "Voilà la triste infirmité de notre temps ; l'utile tout sec, jamais le beau.",
       "fr": null,
-      "reference": "hugo1849-misere",
-      "reference_full": "hugo1849-misere",
-      "citekeys": [
-       "hugo1849-misere"
-      ],
+      "reference": "Adèle 1837",
+      "reference_full": "Adèle 1837",
+      "citekeys": [],
       "curated": false,
       "documents": [
-       "RAT-05"
+       "RAT-01",
+       "RAT-02",
+       "RAT-03",
+       "RAT-04",
+       "RAT-06"
       ],
+      "reasoning": [
+       {
+        "item": "RAT-01",
+        "statement": {
+         "en": "My opinion of an AI system depends mainly on measurable facts and figures.",
+         "fr": "Mon opinion sur un système d'IA dépend principalement de faits et de chiffres mesurables."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "hugo1837-adele: judges the train aesthetically ('l'utile tout sec, jamais le beau'), not by metrics (low value on synthesis)",
+        "confidence": "medium",
+        "transposition": null
+       },
+       {
+        "item": "RAT-02",
+        "statement": {
+         "en": "Decisions about AI should be based on a comparison of measured costs and benefits.",
+         "fr": "Les décisions sur l'IA devraient reposer sur une comparaison des coûts et des bénéfices mesurés."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "hugo1849-misere: 'tant que le possible n'est pas fait, le devoir n'est pas rempli' — duty over cost-benefit",
+        "confidence": "medium",
+        "transposition": null
+       },
+       {
+        "item": "RAT-03",
+        "statement": {
+         "en": "When I evaluate a technology, I set my emotions aside.",
+         "fr": "Quand j'évalue une technologie, je mets mes émotions de côté."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "hugo1837-adele: emotion/sublime is his register — not set aside",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "RAT-04",
+        "statement": {
+         "en": "What I feel about an AI system matters more to me than the statistics about it.",
+         "fr": "Ce que je ressens à propos d'un système d'IA compte davantage pour moi que les statistiques à son sujet."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "hugo1837-adele: feeling/beauty primary in evaluating the technology",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "RAT-06",
+        "statement": {
+         "en": "When a technology makes me uneasy, I take that feeling seriously even without hard evidence.",
+         "fr": "Quand une technologie me met mal à l'aise, je prends ce ressenti au sérieux même sans preuve tangible."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "hugo1837-adele: the aesthetic unease ('triste infirmité de notre temps') taken seriously without further evidence",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -1492,18 +1942,57 @@
      "wave": "Atomic energy and weapons",
      "score": 83,
      "quote": {
-      "en": "quite small compared with the effects of X-rays used in medical practice … only a fraction of the increase in cosmic ray effect [of moving] from the seashore to … Colorado.",
+      "en": "It is important that we should approach the subject with an open mind and with as few emotions as is humanly possible. The emotions have their necessary place when we get to the stage in which we want to decide our actions.",
       "fr": null,
-      "reference": "teller1958-nuclearfuture, chapter XV",
-      "reference_full": "teller1958-nuclearfuture, chapter XV",
-      "citekeys": [
-       "teller1958-nuclearfuture"
-      ],
+      "reference": "Our Nuclear Future 1958 (ch. VIII)",
+      "reference_full": "Our Nuclear Future 1958 (ch. VIII)",
+      "citekeys": [],
       "curated": false,
       "documents": [
-       "RAT-02"
+       "RAT-01",
+       "RAT-03",
+       "RAT-04"
       ],
-      "verification": "Verbatim (source verified)"
+      "reasoning": [
+       {
+        "item": "RAT-01",
+        "statement": {
+         "en": "My opinion of an AI system depends mainly on measurable facts and figures.",
+         "fr": "Mon opinion sur un système d'IA dépend principalement de faits et de chiffres mesurables."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "teller1958-nuclearfuture (ch. VIII): 'approach the subject with … as few emotions as is humanly possible'; danger quantified in roentgens",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "RAT-03",
+        "statement": {
+         "en": "When I evaluate a technology, I set my emotions aside.",
+         "fr": "Quand j'évalue une technologie, je mets mes émotions de côté."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "teller1958-nuclearfuture: 'with as few emotions as is humanly possible' during analysis; emotion reserved for the decision stage (kept from the extreme)",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "RAT-04",
+        "statement": {
+         "en": "What I feel about an AI system matters more to me than the statistics about it.",
+         "fr": "Ce que je ressens à propos d'un système d'IA compte davantage pour moi que les statistiques à son sujet."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "teller1958-nuclearfuture: feeling has its place only at the decision stage, subordinate to the facts",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
+      "verification": "Verbatim"
      },
      "media": {
       "portrait": "figures/91e74e45-512.png",
@@ -1525,17 +2014,43 @@
      "wave": "New science / telescope",
      "score": 80,
      "quote": {
-      "en": "philosophy and the sciences may no longer float in air, but rest on the solid foundation of experience of every kind, and the same well examined and weighed.",
+      "en": "Of all signs there is none more certain or worthy than that of the fruits produced",
       "fr": null,
-      "reference": "bacon1620-instauration, Epistle Dedicatory",
-      "reference_full": "bacon1620-instauration, Epistle Dedicatory",
-      "citekeys": [
-       "bacon1620-instauration"
-      ],
+      "reference": "NO 1620, I.73",
+      "reference_full": "NO 1620, I.73",
+      "citekeys": [],
       "curated": false,
       "documents": [
-       "RAT-01"
+       "RAT-01",
+       "RAT-02"
       ],
+      "reasoning": [
+       {
+        "item": "RAT-01",
+        "statement": {
+         "en": "My opinion of an AI system depends mainly on measurable facts and figures.",
+         "fr": "Mon opinion sur un système d'IA dépend principalement de faits et de chiffres mesurables."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "bacon1620-novum-organum I.70/I.73: experience and fruits as demonstration; bacon1620-instauration: 'experience of every kind … well examined and weighed'",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "RAT-02",
+        "statement": {
+         "en": "Decisions about AI should be based on a comparison of measured costs and benefits.",
+         "fr": "Les décisions sur l'IA devraient reposer sur une comparaison des coûts et des bénéfices mesurés."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "bacon1620-novum-organum I.73: fruits as 'sureties and vouchers'; bacon1625-essays: utility-and-necessity test for innovations",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -1558,17 +2073,43 @@
      "wave": "Steam engine, industrialisation",
      "score": 80,
      "quote": {
-      "en": "In my interpretation of education, I try to be guided by the laws of nature and I try to co-ordinate all the physical actions of human beings by the very simple laws of “number and reason”.",
-      "fr": "Dans ma conception de l'éducation, je m'efforce d'être guidé par les lois de la nature et de coordonner toutes les actions physiques des êtres humains selon les lois très simples du « nombre et de la raison ».",
-      "reference": "The Autobiography of Fukuzawa Yukichi (Fukuo Jiden, 1899), trans. Eiichi Kiyooka …",
-      "reference_full": "The Autobiography of Fukuzawa Yukichi (Fukuo Jiden, 1899), trans. Eiichi Kiyooka, The Hokuseido Press, 1960 (\"My fundamental principle in education\")",
-      "citekeys": [
-       "fukuzawa1899-autobiography"
-      ],
-      "curated": true,
+      "en": "I find two things lacking; that is to say, a lack of studies in number and reason in material culture, and a lack of the idea of independence in spiritual culture.",
+      "fr": null,
+      "reference": "Autobiography",
+      "reference_full": "Autobiography",
+      "citekeys": [],
+      "curated": false,
       "documents": [
-       "RAT-01"
+       "RAT-01",
+       "RAT-02"
       ],
+      "reasoning": [
+       {
+        "item": "RAT-01",
+        "statement": {
+         "en": "My opinion of an AI system depends mainly on measurable facts and figures.",
+         "fr": "Mon opinion sur un système d'IA dépend principalement de faits et de chiffres mesurables."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "fukuzawa1899-autobiography: the 'number and reason' creed; fukuzawa1875-bunmeiron pp.17-18: 'the facts are demonstrable and irrefutable'",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "RAT-02",
+        "statement": {
+         "en": "Decisions about AI should be based on a comparison of measured costs and benefits.",
+         "fr": "Les décisions sur l'IA devraient reposer sur une comparaison des coûts et des bénéfices mesurés."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "fukuzawa1899-autobiography: 'a lack of studies in number and reason in material culture' diagnosed as the East's deficit; economics teaching (Wayland) as his chosen instrument",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -1772,6 +2313,21 @@
       "documents": [
        "SPE-04"
       ],
+      "reasoning": [
+       {
+        "item": "SPE-04",
+        "statement": {
+         "en": "An AI system should be proven safe before it is deployed.",
+         "fr": "Un système d'IA devrait être prouvé sûr avant d'être déployé."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "carson1962-silentspring ch.2 + carson1963-senate: advance investigation required before use — precautionary principle avant la lettre",
+        "confidence": "high",
+        "transposition": "proven safe before deploy → proven safe before releasing chemicals"
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -1805,6 +2361,21 @@
       "documents": [
        "SPE-06"
       ],
+      "reasoning": [
+       {
+        "item": "SPE-06",
+        "statement": {
+         "en": "Slowing down AI development would be wise, even if this delays its benefits.",
+         "fr": "Ralentir le développement de l'IA serait sage, même si cela retarde ses bénéfices."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "plato-republic IV 424c: new modes of music never disturbed without unsettling the most fundamental conventions — watch and slow innovation",
+        "confidence": "medium",
+        "transposition": "slowing AI development → watching/slowing cultural-technical innovation"
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -1839,6 +2410,33 @@
        "SPE-01",
        "SPE-06"
       ],
+      "reasoning": [
+       {
+        "item": "SPE-01",
+        "statement": {
+         "en": "New AI systems should be made available quickly so that society benefits as soon as possible.",
+         "fr": "Les nouveaux systèmes d'IA devraient être rendus disponibles rapidement pour que la société en bénéficie au plus tôt."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "arendt1958-human Prologue p. 5: thoughtlessness 'among the outstanding characteristics of our time'; deployment-first is the pathology her book opposes",
+        "confidence": "medium",
+        "transposition": null
+       },
+       {
+        "item": "SPE-06",
+        "statement": {
+         "en": "Slowing down AI development would be wise, even if this delays its benefits.",
+         "fr": "Ralentir le développement de l'IA serait sage, même si cela retarde ses bénéfices."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "arendt1958-human Prologue pp. 3, 5: know-how outrunning thought is the danger; §26 p. 191: 'moderation, of keeping within bounds... political virtue par excellence' — no formal moratorium program documented",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -2043,6 +2641,33 @@
        "SPE-01",
        "SPE-06"
       ],
+      "reasoning": [
+       {
+        "item": "SPE-01",
+        "statement": {
+         "en": "New AI systems should be made available quickly so that society benefits as soon as possible.",
+         "fr": "Les nouveaux systèmes d'IA devraient être rendus disponibles rapidement pour que la société en bénéficie au plus tôt."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "brecht1932-radio: 'the increasing concentration of mechanical means... tendencies that should be accelerated' — the technical dynamic to be accelerated toward the transformed use",
+        "confidence": "medium",
+        "transposition": "quick availability → acceleration of the apparatus toward its emancipatory use"
+       },
+       {
+        "item": "SPE-06",
+        "statement": {
+         "en": "Slowing down AI development would be wise, even if this delays its benefits.",
+         "fr": "Ralentir le développement de l'IA serait sage, même si cela retarde ses bénéfices."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "brecht1932-radio: the mechanical/specialisation 'tendencies that should be accelerated' — the opposite of a deceleration wish",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -2076,6 +2701,21 @@
       "documents": [
        "SPE-04"
       ],
+      "reasoning": [
+       {
+        "item": "SPE-04",
+        "statement": {
+         "en": "An AI system should be proven safe before it is deployed.",
+         "fr": "Un système d'IA devrait être prouvé sûr avant d'être déployé."
+        },
+        "response": 2,
+        "direction": "toward",
+        "anchor": "generally deploys fast (disagreement); DISCLOSED exception — edison1889-dangers demanded AC be restricted/prohibited until safe, a genuine precaution stance (self-interested), so not the extreme",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -2109,6 +2749,21 @@
       "documents": [
        "SPE-02"
       ],
+      "reasoning": [
+       {
+        "item": "SPE-02",
+        "statement": {
+         "en": "I would rather adopt an AI tool early and accept some defects than wait for a perfect version.",
+         "fr": "Je préférerais adopter un outil d'IA tôt en acceptant quelques défauts plutôt que d'attendre une version parfaite."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "galilei1610-sidereus 6r: shipped the 3x/9x instrument, then 'another more perfect one' — adopt the imperfect version, iterate in the open",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -2313,6 +2968,33 @@
        "OPE-02",
        "OPE-03"
       ],
+      "reasoning": [
+       {
+        "item": "OPE-02",
+        "statement": {
+         "en": "I readily give up a way of working that suits me to adopt a new technology.",
+         "fr": "J'abandonne volontiers une façon de travailler qui me convient pour adopter une nouvelle technologie."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "postman1999-bridge: adoption is conditional on answering the six questions first — changes his way of working only when the case is proven, not because a tool is new",
+        "confidence": "medium",
+        "transposition": null
+       },
+       {
+        "item": "OPE-03",
+        "statement": {
+         "en": "I feel comfortable in situations where I have to learn an unfamiliar technology.",
+         "fr": "Je me sens à l'aise dans les situations où je dois apprendre une technologie que je ne connais pas."
+        },
+        "response": 2,
+        "direction": "toward",
+        "anchor": "postman2003-obituary (Reported): documented, sustained avoidance of digital tools implies low comfort/interest — inferred from behaviour, not stated",
+        "confidence": "low",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -2335,7 +3017,7 @@
      "wave": "Railway and telegraph",
      "score": 27,
      "quote": {
-      "en": "I have lived some thirty years on this planet, and I have yet to hear the first syllable of valuable or even earnest advice from my seniors.",
+      "en": "I had three pieces of limestone on my desk, but I was terrified to find that they required to be dusted daily, when the furniture of my mind was all undusted still, and I threw them out the window in disgust.",
       "fr": null,
       "reference": "thoreau1854-walden, Economy",
       "reference_full": "thoreau1854-walden, Economy",
@@ -2344,8 +3026,36 @@
       ],
       "curated": false,
       "documents": [
-       "OPE-04"
+       "OPE-01",
+       "OPE-06"
       ],
+      "reasoning": [
+       {
+        "item": "OPE-01",
+        "statement": {
+         "en": "I like to try new AI tools as soon as I can access them.",
+         "fr": "J'aime essayer les nouveaux outils d'IA dès que j'y ai accès."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "thoreau1854-walden (Economy): 'But I am wiser than that. I have learned that the swiftest traveller is he that goes afoot' (the Fitchburg refusal); the limestone pieces thrown out 'in disgust'",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPE-06",
+        "statement": {
+         "en": "Frequent technological change tires me more than it stimulates me.",
+         "fr": "Les changements technologiques fréquents me fatiguent plus qu'ils ne me stimulent."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "thoreau1863-life-without-principle: 'What an infinite bustle!... It interrupts my dreams. There is no sabbath'; thoreau1854-walden (Economy): 'pretty toys, which distract our attention from serious things'",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -2368,19 +3078,44 @@
      "wave": "Motor, automobile, aviation",
      "score": 33,
      "quote": {
-      "en": "Je me défie de la machine qui est en moi… de ma façon d'employer des machines, de désirer et de multiplier les machines, de faire abus des machines.",
+      "en": "Le livre est l'ami de la solitude. Il nourrit l'individualisme libérateur. Dans la lecture solitaire, l'homme qui se cherche lui-même a quelque chance de se rencontrer.",
       "fr": null,
-      "reference": "duhamel1933-machinisme",
-      "reference_full": "duhamel1933-machinisme",
-      "citekeys": [
-       "duhamel1933-machinisme"
-      ],
+      "reference": "Défense 1937",
+      "reference_full": "Défense 1937",
+      "citekeys": [],
       "curated": false,
       "documents": [
-       "OPE-05",
-       "OPE-06"
+       "OPE-01",
+       "OPE-04"
       ],
-      "verification": "Verbatim"
+      "reasoning": [
+       {
+        "item": "OPE-01",
+        "statement": {
+         "en": "I like to try new AI tools as soon as I can access them.",
+         "fr": "J'aime essayer les nouveaux outils d'IA dès que j'y ai accès."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "duhamel1937-defense: he resists the new 'arts dynamiques' (cinema, radio) in favour of the older discipline of the book",
+        "confidence": "medium",
+        "transposition": "new AI tools → the era's new machines and media"
+       },
+       {
+        "item": "OPE-04",
+        "statement": {
+         "en": "I prefer to keep my proven ways of doing things rather than adopt new tools.",
+         "fr": "Je préfère garder mes façons de faire qui ont fait leurs preuves plutôt que d'adopter de nouveaux outils."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "duhamel1937-defense: 'le livre est l'ami de la solitude' — the proven discipline of reading defended over the new media",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
+      "verification": "Verbatim (collation)"
      },
      "media": {
       "portrait": "figures/6665ba19-512.png",
@@ -2584,6 +3319,33 @@
        "OPE-02",
        "OPE-04"
       ],
+      "reasoning": [
+       {
+        "item": "OPE-02",
+        "statement": {
+         "en": "I readily give up a way of working that suits me to adopt a new technology.",
+         "fr": "J'abandonne volontiers une façon de travailler qui me convient pour adopter une nouvelle technologie."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "bernerslee2018-solid (2018): abandons the status-quo Web he created to re-architect it with Solid",
+        "confidence": "medium",
+        "transposition": null
+       },
+       {
+        "item": "OPE-04",
+        "statement": {
+         "en": "I prefer to keep my proven ways of doing things rather than adopt new tools.",
+         "fr": "Je préfère garder mes façons de faire qui ont fait leurs preuves plutôt que d'adopter de nouveaux outils."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "bernerslee2018-solid: does not keep to proven ways — pivots his own field",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (via reproduction)"
      },
      "media": {
@@ -2621,6 +3383,69 @@
        "OPE-04",
        "OPE-05"
       ],
+      "reasoning": [
+       {
+        "item": "OPE-01",
+        "statement": {
+         "en": "I like to try new AI tools as soon as I can access them.",
+         "fr": "J'aime essayer les nouveaux outils d'IA dès que j'y ai accès."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "wiener1948-cybernetics: the 1940 Bush memorandum specifying the modern digital computer — he originates the technology, not adopts it",
+        "confidence": "high",
+        "transposition": "try new tools ASAP → invents/builds at the frontier (stronger than the item)"
+       },
+       {
+        "item": "OPE-02",
+        "statement": {
+         "en": "I readily give up a way of working that suits me to adopt a new technology.",
+         "fr": "J'abandonne volontiers une façon de travailler qui me convient pour adopter une nouvelle technologie."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "wiener1948-cybernetics + wiener1964-godgolem: founded a new cross-disciplinary field (cybernetics)",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPE-03",
+        "statement": {
+         "en": "I feel comfortable in situations where I have to learn an unfamiliar technology.",
+         "fr": "Je me sens à l'aise dans les situations où je dois apprendre une technologie que je ne connais pas."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "polymath across mathematics, engineering, physiology, neurology; comfort with unfamiliar technique is his default",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPE-04",
+        "statement": {
+         "en": "I prefer to keep my proven ways of doing things rather than adopt new tools.",
+         "fr": "Je préfère garder mes façons de faire qui ont fait leurs preuves plutôt que d'adopter de nouveaux outils."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "wiener1948-cybernetics: frontier originator — the opposite of keeping to proven ways",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPE-05",
+        "statement": {
+         "en": "I only start using a new technology when I have no other choice.",
+         "fr": "Je ne commence à utiliser une nouvelle technologie que lorsque je n'ai pas d'autre choix."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "wiener1948-cybernetics / wiener1964-godgolem: builds first, does not wait for necessity",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -2655,6 +3480,33 @@
        "OPE-01",
        "OPE-03"
       ],
+      "reasoning": [
+       {
+        "item": "OPE-01",
+        "statement": {
+         "en": "I like to try new AI tools as soon as I can access them.",
+         "fr": "J'aime essayer les nouveaux outils d'IA dès que j'y ai accès."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "career of first-mover method adoption (crystallography→fermentation→immunology) and driving the first human rabies trial (pasteur1885-meister)",
+        "confidence": "high",
+        "transposition": "try new tools ASAP → adopt/create the newest method at the frontier"
+       },
+       {
+        "item": "OPE-03",
+        "statement": {
+         "en": "I feel comfortable in situations where I have to learn an unfamiliar technology.",
+         "fr": "Je me sens à l'aise dans les situations où je dois apprendre une technologie que je ne connais pas."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "crossed field after field, remaking his way of working each time (factual)",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (quoted under OPT)"
      },
      "media": {
@@ -2858,6 +3710,21 @@
       "documents": [
        "CON-02"
       ],
+      "reasoning": [
+       {
+        "item": "CON-02",
+        "statement": {
+         "en": "I accept that the use of AI systems be monitored for the sake of everyone's safety.",
+         "fr": "J'accepte que l'usage des systèmes d'IA soit surveillé au nom de la sécurité de tous."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "orwell1946-toad: 'the police are prowling through the cities'; telescreen (orwell1949-1984, fiction) — monitoring is his nightmare, not his proposal",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -2892,6 +3759,33 @@
        "CON-01",
        "CON-04"
       ],
+      "reasoning": [
+       {
+        "item": "CON-01",
+        "statement": {
+         "en": "Strict rules on AI use are necessary, even if they limit individual freedom.",
+         "fr": "Des règles strictes sur l'usage de l'IA sont nécessaires, même si elles limitent la liberté individuelle."
+        },
+        "response": 2,
+        "direction": "toward",
+        "anchor": "whitman1871-democratic-vistas: 'perfect individualism' — strict rules limiting freedom are not his instrument",
+        "confidence": "low",
+        "transposition": "strict AI rules → strict rules on the technology"
+       },
+       {
+        "item": "CON-04",
+        "statement": {
+         "en": "Everyone should remain free to use AI as they see fit.",
+         "fr": "Chacun devrait rester libre d'utiliser l'IA comme il l'entend."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "whitman1871-democratic-vistas: 'perfect individualism'; the open-road freedom register of Leaves of Grass",
+        "confidence": "low",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -2925,6 +3819,21 @@
       "documents": [
        "CON-05"
       ],
+      "reasoning": [
+       {
+        "item": "CON-05",
+        "statement": {
+         "en": "Excessive regulation of AI worries me more than the absence of regulation.",
+         "fr": "L'excès de régulation de l'IA m'inquiète davantage que son absence."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "his stated worry IS over-regulation: 'Regulating research and development in AI is incredibly counterproductive' (lecun2023-ft, 2023-10-19); SB1047 'would essentially kill open source AI' (lecun2024-sb1047, 2024-07-12); no documented concern about an absence of regulation",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (via search rendering)"
      },
      "media": {
@@ -3129,6 +4038,33 @@
        "CON-01",
        "CON-04"
       ],
+      "reasoning": [
+       {
+        "item": "CON-01",
+        "statement": {
+         "en": "Strict rules on AI use are necessary, even if they limit individual freedom.",
+         "fr": "Des règles strictes sur l'usage de l'IA sont nécessaires, même si elles limitent la liberté individuelle."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "marx1867-capital15 §9: factory legislation as 'the necessary product of modern industry'; marx1867-capital10 §7: the 'modest Magna Charta' preferred over the 'inalienable rights of man' — freedom of contract deliberately limited",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "CON-04",
+        "statement": {
+         "en": "Everyone should remain free to use AI as they see fit.",
+         "fr": "Chacun devrait rester libre d'utiliser l'IA comme il l'entend."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "marx1867-capital10 §7: the law as 'an all-powerful social barrier' against nominally free individual contract — strong disagreement with use-as-they-see-fit",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -3162,6 +4098,21 @@
       "documents": [
        "CON-05"
       ],
+      "reasoning": [
+       {
+        "item": "CON-05",
+        "statement": {
+         "en": "Excessive regulation of AI worries me more than the absence of regulation.",
+         "fr": "L'excès de régulation de l'IA m'inquiète davantage que son absence."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "europarl2021-aida (2021-11-30): 'there is absolutely no regulation that stops them from operating as they are currently operating' — the absence of regulation is her stated alarm, not its excess",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -3184,18 +4135,43 @@
      "wave": "Atomic energy and weapons",
      "score": 87,
      "quote": {
-      "en": "Whatever agreements not to use H-bombs had been reached in time of peace, they would no longer be considered binding in time of war…",
+      "en": "the American government must keep the control of atomic energy, not because socialism is necessarily desirable, but because atomic energy was developed by the government and it would be unthinkable to turn over this property of the people to any individual or group of individuals.",
       "fr": null,
-      "reference": "russell-einstein1955",
-      "reference_full": "russell-einstein1955",
-      "citekeys": [
-       "russell-einstein1955"
-      ],
+      "reference": "Atlantic 1945",
+      "reference_full": "Atlantic 1945",
+      "citekeys": [],
       "curated": false,
       "documents": [
        "CON-01",
-       "CON-03"
+       "CON-04"
       ],
+      "reasoning": [
+       {
+        "item": "CON-01",
+        "statement": {
+         "en": "Strict rules on AI use are necessary, even if they limit individual freedom.",
+         "fr": "Des règles strictes sur l'usage de l'IA sont nécessaires, même si elles limitent la liberté individuelle."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "einstein1945-atlantic + einstein1947-un: enforcement powers accepted at sovereignty (freedom) cost",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "CON-04",
+        "statement": {
+         "en": "Everyone should remain free to use AI as they see fit.",
+         "fr": "Chacun devrait rester libre d'utiliser l'IA comme il l'entend."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "einstein1945-atlantic: 'unthinkable to turn over this property of the people to any individual'",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -3400,6 +4376,33 @@
        "CEN-04",
        "CEN-06"
       ],
+      "reasoning": [
+       {
+        "item": "CEN-04",
+        "statement": {
+         "en": "Decisions about AI use are best taken locally, by the communities concerned.",
+         "fr": "Les décisions sur l'usage de l'IA sont mieux prises localement, par les communautés concernées."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "tang2025-compiler (2025): 'each community should be able to determine its own norms'; Plurality subsidiarity — decisions belong with the communities concerned",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "CEN-06",
+        "statement": {
+         "en": "Each organisation should set its own rules for AI use, rather than follow rules imposed from outside.",
+         "fr": "Chaque organisation devrait fixer ses propres règles d'usage de l'IA, plutôt que de suivre des règles imposées de l'extérieur."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "tang2025-compiler (2025): community self-governance, each community sets its own AI norms — read as self-governance of the concerned communities; note this is communitarian self-rule, NOT corporate self-regulation, which she opposes (tang2020-restofworld: distrust of capitalist top-down power) — hence 4 not 5",
+        "confidence": "medium",
+        "transposition": "organisations' own rules → self-governing communities' own norms"
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim"
      },
      "media": {
@@ -3422,7 +4425,7 @@
      "wave": "Electricity",
      "score": 24,
      "quote": {
-      "en": "the good governor in America is not the one who knows how the German or the Frenchman is governed, but the one who knows what elements his country is made of.",
+      "en": "Government must be born from the country. The spirit of the government must be that of the country. The form of the government must accord with the country's own constitution. Government is nothing more than the equilibrium of the country's natural elements.",
       "fr": null,
       "reference": "marti1891-nuestra-america",
       "reference_full": "marti1891-nuestra-america",
@@ -3431,9 +4434,75 @@
       ],
       "curated": false,
       "documents": [
+       "CEN-01",
        "CEN-02",
+       "CEN-03",
+       "CEN-04",
        "CEN-05"
       ],
+      "reasoning": [
+       {
+        "item": "CEN-01",
+        "statement": {
+         "en": "AI should be governed by common rules set at the international level.",
+         "fr": "L'IA devrait être encadrée par des règles communes fixées au niveau international."
+        },
+        "response": 2,
+        "direction": "toward",
+        "anchor": "marti1891-nuestra-america: government born from the country (disagree-direction), tempered by the united-march counterweight — common rules among peers partially compatible",
+        "confidence": "medium",
+        "transposition": "international rules → US-led continental schemes vs coordination among equal republics"
+       },
+       {
+        "item": "CEN-02",
+        "statement": {
+         "en": "A single authority responsible for AI regulation would be more effective than many separate authorities.",
+         "fr": "Une autorité unique chargée de la régulation de l'IA serait plus efficace que de nombreuses autorités séparées."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "marti1891-nuestra-america: 'el buen gobernante… sabe con qué elementos está hecho su país' — against uniform, centrally defined models of rule",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "CEN-03",
+        "statement": {
+         "en": "The global risks of AI can only be addressed through centralised decisions.",
+         "fr": "Les risques mondiaux de l'IA ne peuvent être traités que par des décisions centralisées."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "marti1895-mercado: life's work to prevent the powerful hub from spreading over the Antilles — resistance to centralised handling of the era's dangers",
+        "confidence": "medium",
+        "transposition": "centralised decisions → the centralising United States over the Americas"
+       },
+       {
+        "item": "CEN-04",
+        "statement": {
+         "en": "Decisions about AI use are best taken locally, by the communities concerned.",
+         "fr": "Les décisions sur l'usage de l'IA sont mieux prises localement, par les communautés concernées."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "marti1891-nuestra-america: 'El gobierno ha de nacer del país…' — kept from 5 by the coordination-among-equals counterweight",
+        "confidence": "high",
+        "transposition": "local communities → each sovereign republic's own elements"
+       },
+       {
+        "item": "CEN-05",
+        "statement": {
+         "en": "I prefer several independent approaches to AI governance over one single framework.",
+         "fr": "Je préfère plusieurs approches indépendantes de la gouvernance de l'IA plutôt qu'un cadre unique."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "marti1891-nuestra-america: no imported single framework; each people from its own elements — kept from 5 by the united-march counterweight",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim"
      },
      "media": {
@@ -3469,6 +4538,45 @@
        "CEN-05",
        "CEN-06"
       ],
+      "reasoning": [
+       {
+        "item": "CEN-04",
+        "statement": {
+         "en": "Decisions about AI use are best taken locally, by the communities concerned.",
+         "fr": "Les décisions sur l'usage de l'IA sont mieux prises localement, par les communautés concernées."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "maathai2004-nobel: 'solutions to most of our problems must come from us'; communities as 'primary custodians and beneficiaries'; maathai2009-challenge: 'Africans need to think and act for themselves' — her decentralisation signature",
+        "confidence": "high",
+        "transposition": "communities concerned → the local/grassroots communities she organised"
+       },
+       {
+        "item": "CEN-05",
+        "statement": {
+         "en": "I prefer several independent approaches to AI governance over one single framework.",
+         "fr": "Je préfère plusieurs approches indépendantes de la gouvernance de l'IA plutôt qu'un cadre unique."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "maathai2004-nobel/2009-challenge: values diverse, locally-adapted, culturally-rooted approaches over one imposed framework",
+        "confidence": "medium",
+        "transposition": null
+       },
+       {
+        "item": "CEN-06",
+        "statement": {
+         "en": "Each organisation should set its own rules for AI use, rather than follow rules imposed from outside.",
+         "fr": "Chaque organisation devrait fixer ses propres règles d'usage de l'IA, plutôt que de suivre des règles imposées de l'extérieur."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "maathai2004-nobel: community self-determination over development affecting it (agreement on the COMMUNITY reading, not corporate free-rein)",
+        "confidence": "medium",
+        "transposition": "each organisation → each community setting its own path"
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -3673,6 +4781,33 @@
        "CEN-01",
        "CEN-03"
       ],
+      "reasoning": [
+       {
+        "item": "CEN-01",
+        "statement": {
+         "en": "AI should be governed by common rules set at the international level.",
+         "fr": "L'IA devrait être encadrée par des règles communes fixées au niveau international."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "oppenheimer1945-alas: atomic weapons 'a completely common problem', handled 'not unilaterally', 'a pilot plant for a new type of international collaboration'; oppenheimer1945-scroll: 'unite or perish'",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "CEN-03",
+        "statement": {
+         "en": "The global risks of AI can only be addressed through centralised decisions.",
+         "fr": "Les risques mondiaux de l'IA ne peuvent être traités que par des décisions centralisées."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "oppenheimer1945-alas: the peril 'affect[s] everyone in the world' → 'complete sense of community responsibility'",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim"
      },
      "media": {
@@ -3695,19 +4830,57 @@
      "wave": "Crafts and techniques of urban civilisation",
      "score": 63,
      "quote": {
-      "en": "It is the ruling dynasty that demands crafts and their improvement. It causes the demand for them and makes them desirable. … the dynasty is the biggest market.",
+      "en": "The crafts are firmly rooted in a city only when sedentary culture is firmly rooted and of long duration.",
       "fr": null,
-      "reference": "ibnkhaldun1377-muqaddima, V §18",
-      "reference_full": "ibnkhaldun1377-muqaddima, V §18",
-      "citekeys": [
-       "ibnkhaldun1377-muqaddima"
-      ],
+      "reference": "Muqaddima V, §17",
+      "reference_full": "Muqaddima V, §17",
+      "citekeys": [],
       "curated": false,
       "documents": [
        "CEN-02",
-       "CEN-06"
+       "CEN-04",
+       "CEN-05"
       ],
-      "verification": "Verbatim"
+      "reasoning": [
+       {
+        "item": "CEN-02",
+        "statement": {
+         "en": "A single authority responsible for AI regulation would be more effective than many separate authorities.",
+         "fr": "Une autorité unique chargée de la régulation de l'IA serait plus efficace que de nombreuses autorités séparées."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "Muqaddima V,18: 'the dynasty is the biggest market … the demand of the common people … is not general' — a single central power, not scattered demand, perfects the crafts",
+        "confidence": "medium",
+        "transposition": null
+       },
+       {
+        "item": "CEN-04",
+        "statement": {
+         "en": "Decisions about AI use are best taken locally, by the communities concerned.",
+         "fr": "Les décisions sur l'usage de l'IA sont mieux prises localement, par les communautés concernées."
+        },
+        "response": 2,
+        "direction": "toward",
+        "anchor": "Muqaddima V,16: 'A small or Bedouin civilization needs only the simple crafts … neither perfect nor well developed' — the local unit does not develop technique",
+        "confidence": "medium",
+        "transposition": null
+       },
+       {
+        "item": "CEN-05",
+        "statement": {
+         "en": "I prefer several independent approaches to AI governance over one single framework.",
+         "fr": "Je préfère plusieurs approches indépendantes de la gouvernance de l'IA plutôt qu'un cadre unique."
+        },
+        "response": 2,
+        "direction": "toward",
+        "anchor": "Muqaddima V,17/19: craft-flourishing correlates with one strong continuous dynasty; fragmentation with decline (descriptive, not advocacy)",
+        "confidence": "low",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
+      "verification": "Verbatim (with the Spain/Egypt examples)"
      },
      "media": {
       "portrait": "figures/c3deb8aa-512.png",
@@ -3729,18 +4902,56 @@
      "wave": "Printing press",
      "score": 60,
      "quote": {
-      "en": "This evil will be eradicated if princes and magistrates take care that good-for-nothing people … should be checked as far as possible. … rewards should be instituted to help and succor them, either by princes or by bishops and abbots, or from the public treasury.",
+      "en": "If this situation continues as it has begun, and the Sum of Things is brought under the control of a few, we will wind up burdened with a barbarous tyranny like the Turks. The world will obey the whims of one man, or of a few … Such is the wish of whoever would be the Universal Dictator.",
       "fr": null,
-      "reference": "erasmus1525-festina, §25",
-      "reference_full": "erasmus1525-festina, §25",
-      "citekeys": [
-       "erasmus1525-festina"
-      ],
+      "reference": "Festina lente §22",
+      "reference_full": "Festina lente §22",
+      "citekeys": [],
       "curated": false,
       "documents": [
        "CEN-01",
+       "CEN-02",
        "CEN-03"
       ],
+      "reasoning": [
+       {
+        "item": "CEN-01",
+        "statement": {
+         "en": "AI should be governed by common rules set at the international level.",
+         "fr": "L'IA devrait être encadrée par des règles communes fixées au niveau international."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "erasmus1524-libero / erasmus1526-hyperaspistes: one universal Church, general councils, against the sects; remedy addressed to princes generally (erasmus1525-festina §25)",
+        "confidence": "medium",
+        "transposition": "international rules → universal Church + common norms across Christendom"
+       },
+       {
+        "item": "CEN-02",
+        "statement": {
+         "en": "A single authority responsible for AI regulation would be more effective than many separate authorities.",
+         "fr": "Une autorité unique chargée de la régulation de l'IA serait plus efficace que de nombreuses autorités séparées."
+        },
+        "response": 3,
+        "direction": "toward",
+        "anchor": "church unity endorsed, but erasmus1525-festina §22: horror of 'the Sum of Things brought under the control of a few… Universal Dictator'",
+        "confidence": "low",
+        "transposition": null
+       },
+       {
+        "item": "CEN-03",
+        "statement": {
+         "en": "The global risks of AI can only be addressed through centralised decisions.",
+         "fr": "Les risques mondiaux de l'IA ne peuvent être traités que par des décisions centralisées."
+        },
+        "response": 2,
+        "direction": "against",
+        "anchor": "erasmus1525-festina §25: the remedy is plural and distributed (princes AND magistrates AND bishops AND public treasury), not centralised",
+        "confidence": "low",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -3945,6 +5156,33 @@
        "ALT-01",
        "ALT-05"
       ],
+      "reasoning": [
+       {
+        "item": "ALT-01",
+        "statement": {
+         "en": "The benefits of AI should be shared across society, even if that reduces my personal advantage.",
+         "fr": "Les bénéfices de l'IA devraient être partagés dans la société, même si cela réduit mon avantage personnel."
+        },
+        "response": 4,
+        "direction": "against",
+        "anchor": "benjamin1935-workofart: 'modern man's legitimate claim to being reproduced' + Epilogue: 'The masses have a right to change property relations'",
+        "confidence": "high",
+        "transposition": "benefits → access to cultural production"
+       },
+       {
+        "item": "ALT-05",
+        "statement": {
+         "en": "It is up to each person to secure their own access to the benefits of AI.",
+         "fr": "C'est à chacun de s'assurer son propre accès aux bénéfices de l'IA."
+        },
+        "response": 1,
+        "direction": "against",
+        "anchor": "benjamin1935-workofart §X: access is a collective claim denied by capital, not an individual achievement",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -3978,6 +5216,21 @@
       "documents": [
        "ALT-03"
       ],
+      "reasoning": [
+       {
+        "item": "ALT-03",
+        "statement": {
+         "en": "When I use AI, I think about the consequences for other people.",
+         "fr": "Quand j'utilise l'IA, je pense aux conséquences pour les autres."
+        },
+        "response": 4,
+        "direction": "against",
+        "anchor": "li2018-nyt (2018-03-07): 'However autonomous our technology becomes, its impact on the world — for better or worse — will always be our responsibility.'",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim"
      },
      "media": {
@@ -4011,6 +5264,21 @@
       "documents": [
        "ALT-01"
       ],
+      "reasoning": [
+       {
+        "item": "ALT-01",
+        "statement": {
+         "en": "The benefits of AI should be shared across society, even if that reduces my personal advantage.",
+         "fr": "Les bénéfices de l'IA devraient être partagés dans la société, même si cela réduit mon avantage personnel."
+        },
+        "response": 4,
+        "direction": "against",
+        "anchor": "sivin1975-dsb: Changxing ji 19:53b — technique as a collective creation whose credit is shared across society, against elite monopoly of invention",
+        "confidence": "medium",
+        "transposition": "benefits of AI shared → credit and fruits of technique shared across society"
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -4214,6 +5482,21 @@
       "documents": [
        "ALT-01"
       ],
+      "reasoning": [
+       {
+        "item": "ALT-01",
+        "statement": {
+         "en": "The benefits of AI should be shared across society, even if that reduces my personal advantage.",
+         "fr": "Les bénéfices de l'IA devraient être partagés dans la société, même si cela réduit mon avantage personnel."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "hinton2024-nobel (2024-12-10): 'If the benefits of the increased productivity can be shared equally, it will be a wonderful advance for all of humanity'; UBI advocacy (hinton2024-newsnight, 2024-05)",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified via Nobel X post)"
      },
      "media": {
@@ -4236,18 +5519,44 @@
      "wave": "Artificial intelligence",
      "score": 83,
      "quote": {
-      "en": "Clearly then, the computer scientist has a heavy responsibility to make the fallibility and limitations of the systems he is capable of designing brilliantly clear.",
+      "en": "The knowledge of behavior of German academics during the Hitler time weighed on me very heavily. I was born in Germany, I couldn't relax and sit by and watch the university in which I now participated behaving in the same way. I had to become engaged in social and political questions.",
       "fr": null,
-      "reference": "weizenbaum1972-science",
-      "reference_full": "weizenbaum1972-science",
-      "citekeys": [
-       "weizenbaum1972-science"
-      ],
+      "reference": "Tech 1985",
+      "reference_full": "Tech 1985",
+      "citekeys": [],
       "curated": false,
       "documents": [
-       "ALT-03"
+       "ALT-02",
+       "ALT-06"
       ],
-      "verification": "Verbatim (verified via reproduction)"
+      "reasoning": [
+       {
+        "item": "ALT-02",
+        "statement": {
+         "en": "I would accept a personal cost so that everyone can benefit from AI.",
+         "fr": "J'accepterais un coût personnel pour que tout le monde puisse bénéficier de l'IA."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "dembart1977-nyt: 'I have pronounced heresy and I am a heretic' — documented professional price paid to warn the public (mccarthy1976-unreasonable as the trace of the attack)",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "ALT-06",
+        "statement": {
+         "en": "In my choices about AI, my own interest comes before the collective interest.",
+         "fr": "Dans mes choix concernant l'IA, mon intérêt propre passe avant l'intérêt collectif."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "weizenbaum1985-tech: 'The knowledge of behavior of German academics during the Hitler time weighed on me very heavily… I had to become engaged' — collective duty above career interest; weizenbaum2015-islands: 'I stayed true to who I was' (Reported)",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
+      "verification": "Verbatim (source verified)"
      },
      "media": {
       "portrait": "figures/bae75722-512.png",
@@ -4281,6 +5590,33 @@
        "ALT-04",
        "ALT-06"
       ],
+      "reasoning": [
+       {
+        "item": "ALT-04",
+        "statement": {
+         "en": "If sharing an AI advantage with others meant losing my personal edge, I would keep it for myself.",
+         "fr": "Si partager un avantage lié à l'IA devait me faire perdre mon avance personnelle, je le garderais pour moi."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "tolstoy1862-progress: personal advantage from progress named as the corrupting motive",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "ALT-06",
+        "statement": {
+         "en": "In my choices about AI, my own interest comes before the collective interest.",
+         "fr": "Dans mes choix concernant l'IA, mon intérêt propre passe avant l'intérêt collectif."
+        },
+        "response": 0,
+        "direction": "toward",
+        "anchor": "tolstoy1900-slavery + tolstoy1886-whatshallwedo: the collective good of the people placed before self-interest as a moral law",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -4473,7 +5809,7 @@
      "wave": "Electricity",
      "score": 32,
      "quote": {
-      "en": "the mind had already entered a field of attraction so violent that it must immediately pass beyond, into new equilibrium ... or suffer dissipation altogether.",
+      "en": "the forces would continue to educate, and the mind would continue to react. All the teacher could hope was to teach it reaction.",
       "fr": null,
       "reference": "adams1907-education, ch. XXXIV",
       "reference_full": "adams1907-education, ch. XXXIV",
@@ -4482,8 +5818,36 @@
       ],
       "curated": false,
       "documents": [
-       "TRA-06"
+       "TRA-04",
+       "TRA-05"
       ],
+      "reasoning": [
+       {
+        "item": "TRA-04",
+        "statement": {
+         "en": "Human beings should remain as nature made them.",
+         "fr": "Les êtres humains devraient rester tels que la nature les a faits."
+        },
+        "response": 3,
+        "direction": "toward",
+        "anchor": "adams1907-education XXXIV: he mourns the older human order being overwhelmed — a conservative worry, but he is a fatalist, not a 'should remain natural' advocate",
+        "confidence": "low",
+        "transposition": null
+       },
+       {
+        "item": "TRA-05",
+        "statement": {
+         "en": "Beyond medical care, education and training are the only acceptable ways of improving human abilities.",
+         "fr": "En dehors des soins médicaux, l'éducation, la formation et l'entraînement sont les seules manières acceptables d'améliorer les capacités humaines."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "adams1907-education XXXIV: 'the forces would continue to educate, and the mind would continue to react' — human path located in education/mental reaction, though he doubts it suffices",
+        "confidence": "low",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim"
      },
      "media": {
@@ -4518,6 +5882,33 @@
        "TRA-01",
        "TRA-02"
       ],
+      "reasoning": [
+       {
+        "item": "TRA-01",
+        "statement": {
+         "en": "I am in favour of technologies that raise human mental abilities beyond their natural level.",
+         "fr": "Je suis favorable aux technologies qui portent les capacités mentales humaines au-delà de leur niveau naturel."
+        },
+        "response": 2,
+        "direction": "toward",
+        "anchor": "trithemius1492-laude ch.6: favours the mind-augmentation that disciplines (copying) over the era's technology (print) which he doubts as an augmentation — kept low",
+        "confidence": "low",
+        "transposition": "raise mental abilities → augmentation through the era's technology (writing/print)"
+       },
+       {
+        "item": "TRA-02",
+        "statement": {
+         "en": "If a medically safe implant improved memory, I would consider using it for myself.",
+         "fr": "Si un implant médicalement sûr améliorait la mémoire, j'envisagerais de l'utiliser pour moi-même."
+        },
+        "response": 3,
+        "direction": "against",
+        "anchor": "trithemius1492-laude ch.6 (Salo 2010): 'What we write we imprint more forcefully on our minds' — copying embraced as a memory/mind-augmenting practice; heavy transposition",
+        "confidence": "low",
+        "transposition": "a memory-improving tool used for oneself → the memory-discipline of hand-copying"
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (verified via reproduction)"
      },
      "media": {
@@ -4532,37 +5923,62 @@
      }
     },
     {
-     "id": "chargaff",
-     "name": "Erwin Chargaff",
-     "dates": "1905-2002",
-     "origin": "Austria/USA",
+     "id": "wallace",
+     "name": "Alfred Russel Wallace",
+     "dates": "1823-1913",
+     "origin": "England",
      "stance": "skeptic",
-     "wave": "Genetic engineering",
-     "score": 12,
+     "wave": "Microbiology and vaccination",
+     "score": 13,
      "quote": {
-      "en": "Have we the right to counteract, irreversibly, the evolutionary wisdom of millions of years?",
-      "fr": null,
-      "reference": "chargaff1976-meddling",
-      "reference_full": "chargaff1976-meddling",
-      "citekeys": [
-       "chargaff1976-meddling"
-      ],
-      "curated": false,
+      "en": "nothing can possibly be more objectionable, even if we admit that they might be effectual",
+      "fr": "rien ne saurait être plus condamnable, même à supposer que ces mesures puissent être efficaces",
+      "reference": "\"Human Selection\", The Fortnightly Review 48 (n.s.), September 1890",
+      "reference_full": "\"Human Selection\", The Fortnightly Review 48 (n.s.), September 1890",
+      "citekeys": [],
+      "curated": true,
       "documents": [
-       "TRA-03",
-       "TRA-04"
+       "TRA-01",
+       "TRA-05"
       ],
-      "verification": "Verbatim (via collation)"
+      "reasoning": [
+       {
+        "item": "TRA-01",
+        "statement": {
+         "en": "I am in favour of technologies that raise human mental abilities beyond their natural level.",
+         "fr": "Je suis favorable aux technologies qui portent les capacités mentales humaines au-delà de leur niveau naturel."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "wallace1890-humanselection: opposed technological/eugenic augmentation of the human stock; improvement via conditions, not artificial enhancement",
+        "confidence": "medium",
+        "transposition": "raise mental abilities beyond natural level → augment the human body/stock by technology"
+       },
+       {
+        "item": "TRA-05",
+        "statement": {
+         "en": "Beyond medical care, education and training are the only acceptable ways of improving human abilities.",
+         "fr": "En dehors des soins médicaux, l'éducation, la formation et l'entraînement sont les seules manières acceptables d'améliorer les capacités humaines."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "wallace1890-humanselection: 'improve their environment' — education and social conditions as the proper improvement path, explicitly against eugenic/technological means",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
+      "verification": "Verbatim"
      },
      "media": {
-      "portrait": "figures/4fd42a07-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/chargaff/4fd42a07-512.png",
-      "portrait_source": "figures/content/austria/chargaff.erwin/image/chargaff.erwin__frame__chest__v2.jpeg",
-      "video": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
+      "portrait": "figures/3707b2cd-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/wallace/3707b2cd-512.png",
+      "portrait_source": "figures/content/united-kingdom/wallace.alfred-russel/image/wallace.alfred-russel__frame__chest.jpeg",
+      "video": "https://media.sumvadis.ai/wallace/e28038df.mp4",
       "video_kind": "talk",
-      "video_light": "https://media.sumvadis.ai/chargaff/00dbd16f-050.mp4",
-      "poster": "figures/86d352e2-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/chargaff/86d352e2-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/wallace/47afd56f-050.mp4",
+      "poster": "figures/3f2ab961-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/wallace/3f2ab961-poster-512.png"
      }
     }
    ],
@@ -4757,6 +6173,45 @@
        "TRA-03",
        "TRA-04"
       ],
+      "reasoning": [
+       {
+        "item": "TRA-01",
+        "statement": {
+         "en": "I am in favour of technologies that raise human mental abilities beyond their natural level.",
+         "fr": "Je suis favorable aux technologies qui portent les capacités mentales humaines au-delà de leur niveau naturel."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "isocrates-354-antidosis 253–254 + isocrates-380-panegyricus 48: logos raises humans above their natural/beast level — 'the one endowment of our nature which singles us out from all living creatures'; the pro-augmentation pole opposite Plato",
+        "confidence": "high",
+        "transposition": "raising mental abilities → the mind-augmenting power of written logos/paideia (author's doctrine)"
+       },
+       {
+        "item": "TRA-03",
+        "statement": {
+         "en": "Humanity should use technology to overcome its biological limits.",
+         "fr": "L'humanité devrait utiliser la technologie pour dépasser ses limites biologiques."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "isocrates-354-antidosis 254: by the power of speech humans 'escaped the life of wild beasts' — logos/paideia used to transcend the beastlike natural condition",
+        "confidence": "high",
+        "transposition": "overcoming biological limits → transcending the animal condition through logos and education"
+       },
+       {
+        "item": "TRA-04",
+        "statement": {
+         "en": "Human beings should remain as nature made them.",
+         "fr": "Les êtres humains devraient rester tels que la nature les a faits."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "isocrates-354-antidosis 254: humans should NOT remain in their beastlike natural state but be elevated by speech and education — direct anti-thesis of 'remain as nature made them'",
+        "confidence": "high",
+        "transposition": null
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -4790,6 +6245,21 @@
       "documents": [
        "TRA-01"
       ],
+      "reasoning": [
+       {
+        "item": "TRA-01",
+        "statement": {
+         "en": "I am in favour of technologies that raise human mental abilities beyond their natural level.",
+         "fr": "Je suis favorable aux technologies qui portent les capacités mentales humaines au-delà de leur niveau naturel."
+        },
+        "response": 4,
+        "direction": "toward",
+        "anchor": "lovelace1843-notes Note A: 'a uniting link is established between the operations of matter and the abstract mental processes' + Note G: 'indirect and reciprocal influence on science itself'",
+        "confidence": "medium",
+        "transposition": "mental augmentation → the Analytical Engine extending human analysis (author's doctrine)"
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim"
      },
      "media": {
@@ -4824,6 +6294,33 @@
        "TRA-01",
        "TRA-03"
       ],
+      "reasoning": [
+       {
+        "item": "TRA-01",
+        "statement": {
+         "en": "I am in favour of technologies that raise human mental abilities beyond their natural level.",
+         "fr": "Je suis favorable aux technologies qui portent les capacités mentales humaines au-delà de leur niveau naturel."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "galilei1610-sidereus 5r: adding to the stars 'visible hitherto by natural means… innumerable others never seen before'; 6r: 'a thousand times larger and more than thirty times closer than… the natural faculty only'",
+        "confidence": "high",
+        "transposition": "mental abilities → the era's augmentation of the human senses (telescope doctrine)"
+       },
+       {
+        "item": "TRA-03",
+        "statement": {
+         "en": "Humanity should use technology to overcome its biological limits.",
+         "fr": "L'humanité devrait utiliser la technologie pour dépasser ses limites biologiques."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "galilei1610-sidereus 5r/6r: the augmentation manifesto; galilei1632-dialogo Day 1: celebration of writing as communication-augmentation ('what sublimity of mind… twenty characters upon a page')",
+        "confidence": "high",
+        "transposition": "biological limits → the born limits of natural vision"
+       }
+      ],
+      "anchored": true,
       "verification": "Verbatim (source verified)"
      },
      "media": {

@@ -104,6 +104,40 @@ def _pole_banner(pole: dict) -> None:
                          "this side, and that absence is itself worth debating.", tag=t.div)
 
 
+def _why_here(f: dict, pole_name: str, lang: str | None) -> list[tuple[str, str]]:
+    """Pourquoi CETTE figure est sur CE pôle — dans les mots du hub.
+
+    Le registre des citations dit de quel énoncé une citation *parle*, jamais
+    si la figure l'approuve ; c'est le profil qui le dit, par sa réponse
+    validée et son ``anchor`` sourcé. Les deux voyagent maintenant dans le gel
+    (règle P1, 2026-08-13) : la slide affirmait une position sans jamais la
+    justifier, et personne dans la salle ne pouvait relier le verbatim au pôle.
+
+    Rien n'est rédigé ici. Une reformulation locale de ce raisonnement serait
+    une seconde vérité — la règle du tuyau amont l'interdit.
+    """
+    out = []
+    for r in (f["quote"].get("reasoning") or []):
+        statement = text(r.get("statement"), lang) or ""
+        response = r.get("response")
+        stance = ("agrees" if isinstance(response, int) and response >= 3
+                  else "disagrees") if response is not None else "did not answer"
+        parts = [f"“{statement}” — {f['name']} {stance}"]
+        if isinstance(response, int):
+            parts[0] += f" ({response}/5)"
+        parts[0] += (f", which points to {pole_name}." if r.get("direction") == "toward"
+                     else f", which points AWAY from {pole_name} — the figure is here on "
+                          f"its overall score for the axis, not on this statement.")
+        if r.get("anchor"):
+            parts.append(f"Evidence: {r['anchor']}.")
+        if r.get("transposition"):
+            parts.append(f"Transposed to AI: {r['transposition']}.")
+        if r.get("confidence"):
+            parts.append(f"Confidence of the inference: {r['confidence']}.")
+        out.append((f"Why this pole — {r['item']}", " ".join(parts)))
+    return out
+
+
 def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
     """UNE figure par slide (NG 2026-08-13, 1 idée = 1 slide).
 
@@ -113,7 +147,8 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
     sur les dix-huit exemplaires du gabarit.
     """
     pole_name = text(pole["pole"], lang)
-    entries = [(f"{f['name']} ({f.get('dates', '')})",
+    entries = _why_here(f, pole_name, lang) + [
+               (f"{f['name']} ({f.get('dates', '')})",
                 f"{f.get('origin', '')} · {f.get('wave', '')} · score {f['score']} on "
                 f"this axis."),
                ("Video", "Clicking the portrait opens the figure's presentation video. "
