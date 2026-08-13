@@ -216,7 +216,10 @@
    "human_label": {"en": "21 experienced physicians"},
    "message": {"en": "On medicine's hardest cases, a specialised AI far outperforms the unaided doctor"},
    "loyalty": {"en": "304 NEJM clinical puzzles · physicians without internet or colleagues · preprint, 2025"},
+   "confirm": {"en": "Confirmed in live dialogue, images included: a multimodal agent surpassed primary-care physicians on 7 of 9 multimodal axes (randomized blinded study, 105 scenarios — patient actors, not real patients)"},
+   "confirm_source": {"citekeys": ["saab2025-amie"]},
    "detail": {"en": "Microsoft's MAI-DxO orchestrator solved 304 New England Journal of Medicine clinicopathological puzzles sequentially — ordering tests one by one — and reached 80 to 85.5 % correct diagnoses; 21 experienced physicians on the same cases averaged about 20 %. Honest framing: these are the hardest published cases in medicine, the physicians were deprived of internet, textbooks and colleagues, and the study is a 2025 preprint, not yet peer-reviewed."},
+   "amie_detail": {"en": "AMIE (Google DeepMind, 2025): in a randomized, BLINDED OSCE-style study, the multimodal agent built on Gemini 2.0 Flash held full diagnostic conversations over 105 scenarios — interpreting smartphone skin photos, ECGs and clinical document PDFs — and was rated by specialists as superior to primary-care physicians on 7 of 9 multimodal axes and 29 of 32 non-multimodal axes, diagnostic accuracy included. The authors' own working assumptions: patient ACTORS, not real patients; text-chat consultations, an unusual medium for physicians that hides non-verbal cues; a scenario set that under-represents both the complexity of real multimodal data and the expertise of clinicians. Their verbatim conclusion: further research is needed before real-world translation — a prospective consented study in a real clinical setting (Beth Israel Deaconess Medical Center) is underway."},
    "source": {"citekeys": ["nori2025sequential"]}
   },
   {

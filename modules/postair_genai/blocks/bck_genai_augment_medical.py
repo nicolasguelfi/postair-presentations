@@ -10,8 +10,13 @@ SPEAKER NOTES:
 Two minutes. Let the two numbers land before speaking. Then read the grey
 loyalty line OUT LOUD — hardest published cases, physicians cut off from
 internet and colleagues, preprint — the room must hear that you know the
-study's limits; that is what makes the number credible. Bridge to next
-slide: "so should the doctor just hand over? Watch the twist."
+study's limits; that is what makes the number credible. If challenged on
+"puzzles are not consultations", the AMIE line answers: in a randomized
+BLINDED study of full diagnostic conversations — skin photos, ECGs and
+documents included — the multimodal agent still beat the physicians on 7 of
+9 multimodal axes; and its authors still say actors are not patients, and
+run a real-hospital study before claiming more. Bridge to next slide: "so
+should the doctor just hand over? Watch the twist."
 """
 # @guideline: postair-minimal
 
@@ -58,7 +63,9 @@ def build():
             with g.cell():
                 st_info_tooltip(title=text(fact["label"]),
                                 entries=[("Verified at the source",
-                                          text(fact["detail"]))])
+                                          text(fact["detail"])),
+                                         ("The multimodal check — AMIE",
+                                          text(fact["amie_detail"]))])
         st_space("v", "1vh")
         hero_image(
             "genai_diagnosis", _HERO_PROMPT, "images/genai_diagnosis_fallback.svg",
@@ -82,3 +89,6 @@ def build():
                  citation(*citekeys(fact)), tag=t.div)
         st_space("v", "0.5vh")
         st_write(bs.loyalty, text(fact["loyalty"]), tag=t.div)
+        st_space("v", "0.5vh")
+        st_write(bs.loyalty, text(fact["confirm"]), " ",
+                 citation(*fact["confirm_source"]["citekeys"]), tag=t.div)
