@@ -1,0 +1,18 @@
+{
+  "name": "genai_data_pt",
+  "version": 1,
+  "timestamp": "2026-08-13T12:01:35.744471+00:00",
+  "source_type": "ai_generated",
+  "original_path": "/Volumes/Mac_Data/Win_data/data/backups/Dropbox-nicolas.guelfi@laposte.net/messir Dropbox/Nicolas Guelfi/users/NG/Projets/AISE/ROS/projects/sumvadis-central/sumvadis-presentations/sumvadis-presentations/sumvadis-streamtex/modules/postair_genai/static/images/ai/a2d1cef072b083ae.webp",
+  "prompt": "Layered paper-cut collage illustration, bright colored cardstock (yellow, coral, turquoise, lilac, leaf green), visible paper edges and soft drop shadows, playful handcrafted festive mood, luminous sky. Human figures as abstract paper silhouettes seen from behind, never faces. AI is always represented as a glowing warm amber paper sun or orb, never anthropomorphic. Clean layered composition. A river of colourful paper speech bubbles flowing across the frame and pouring into a large paper funnel that feeds a glowing warm amber paper orb; one abstract paper silhouette seen from behind watches its own speech bubble float away. Vertical portrait composition, one off-centre focal point, rising diagonal energy. NO text, NO logos, NO signage, NO photorealism.",
+  "provider": "openai",
+  "model": "gpt-image-1",
+  "size": "1024x1536",
+  "quality": null,
+  "base_image": null,
+  "revised_prompt": null,
+  "display_zoom": null,
+  "display_width": null,
+  "display_height": null,
+  "display_keep_ratio": true
+}

@@ -1,0 +1,18 @@
+{
+  "name": "genai_desk_sq",
+  "version": 1,
+  "timestamp": "2026-08-13T12:02:17.370604+00:00",
+  "source_type": "ai_generated",
+  "original_path": "/Volumes/Mac_Data/Win_data/data/backups/Dropbox-nicolas.guelfi@laposte.net/messir Dropbox/Nicolas Guelfi/users/NG/Projets/AISE/ROS/projects/sumvadis-central/sumvadis-presentations/sumvadis-presentations/sumvadis-streamtex/modules/postair_genai/static/images/ai/296af083a8c50f0a.webp",
+  "prompt": "Layered paper-cut collage illustration, bright colored cardstock (yellow, coral, turquoise, lilac, leaf green), visible paper edges and soft drop shadows, playful handcrafted festive mood, luminous sky. Human figures as abstract paper silhouettes seen from behind, never faces. AI is always represented as a glowing warm amber paper sun or orb, never anthropomorphic. Clean layered composition. A student desk seen from the side: an open paper notebook, a small stack of colourful paper books, a desk lamp — and a warm amber paper orb hovering just above the notebook, lighting the page. The student, an abstract paper silhouette seen from behind, writes in the notebook with a pencil. Square composition, one off-centre focal point, rising diagonal energy. NO text, NO logos, NO signage, NO photorealism.",
+  "provider": "openai",
+  "model": "gpt-image-1",
+  "size": "1024x1024",
+  "quality": null,
+  "base_image": null,
+  "revised_prompt": null,
+  "display_zoom": null,
+  "display_width": null,
+  "display_height": null,
+  "display_keep_ratio": true
+}
