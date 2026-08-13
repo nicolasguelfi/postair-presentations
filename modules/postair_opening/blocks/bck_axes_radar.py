@@ -44,7 +44,7 @@ from custom.config import IS_EDITABLE
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE_WITH_TEXT
 from custom.refs import citation
 from custom.styles import Styles as s
-from custom.visuals import is_synthetic
+from custom.visuals import is_synthetic, managed_media_width
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -159,7 +159,8 @@ def _wheel_image():
     Rien à changer ici le jour de la génération.
     """
     ready = (_MANAGED / f"{_WHEEL}.webp").exists()
-    with ai_marked(ready and is_synthetic(_WHEEL), fit=False):
+    with ai_marked(ready and is_synthetic(_WHEEL), fit=False,
+                   media_width=managed_media_width(_WHEEL)):
         st_image(
             s.project.cards.media_center, width="100%",
             uri="" if ready else _FALLBACK,

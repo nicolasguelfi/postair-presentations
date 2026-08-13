@@ -56,7 +56,8 @@ def hero_image(name: str, prompt: str, fallback: str, alt_ready: str,
     # La pastille DD-35 découle du sidecar (source_type), jamais d'une liste :
     # une image managée générée par IA est marquée d'office, le repli SVG
     # (dessiné, versionné) ne l'est pas. fit=False : l'image remplit sa cellule.
-    with ai_marked(ready and is_synthetic(full_name), fit=False):
+    with ai_marked(ready and is_synthetic(full_name), fit=False,
+                   media_width=managed_media_width(full_name, width)):
         st_image(
             s.project.cards.media_center, width=width,
             uri="" if ready else fallback,
@@ -64,6 +65,29 @@ def hero_image(name: str, prompt: str, fallback: str, alt_ready: str,
             editable=IS_EDITABLE, name=full_name,
             prompt=prompt, provider="openai", ai_size=ai_size,
         )
+
+
+def managed_media_width(full_name: str, width: str = "100%") -> str | None:
+    """La largeur RÉELLEMENT affichée du média, pour ancrer la pastille.
+
+    ``st_image`` applique le ``display_zoom`` du sidecar par rapport à son
+    conteneur (``width = f"{zoom}%"``) : la pastille doit suivre le bord de
+    l'image réduite, pas celui du conteneur. À défaut de réglage d'éditeur,
+    c'est la largeur passée par le bloc qui fait foi ; ``None`` = le média
+    remplit son conteneur, rien à décaler.
+    """
+    sidecar = _MANAGED / f"{full_name}.json"
+    if sidecar.exists():
+        try:
+            meta = json.loads(sidecar.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            meta = {}
+        if meta.get("display_width"):
+            return str(meta["display_width"])
+        zoom = meta.get("display_zoom")
+        if zoom not in (None, 100):
+            return f"{zoom}%"
+    return None if width == "100%" else width
 
 
 def is_synthetic(full_name: str) -> bool:

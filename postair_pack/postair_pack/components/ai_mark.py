@@ -59,7 +59,7 @@ _CHIP_TOP = Style(_CHIP_CSS + " top: 0.6em;", "pa_ai_mark")
 
 @contextmanager
 def ai_marked(marked: bool = True, label: str = "AI", fit: bool = True,
-              top: bool = False):
+              top: bool = False, media_width: str | None = None):
     """Enveloppe le rendu d'un média et y superpose la pastille « ✦ AI ».
 
     :param marked: le drapeau de données du média (``ai_generated``). Faux =
@@ -71,10 +71,26 @@ def ai_marked(marked: bool = True, label: str = "AI", fit: bool = True,
         (média rendu en ``width="100%"``).
     :param top: pastille en HAUT-droite — seulement quand le bord bas porte
         les contrôles vidéo natifs.
+    :param media_width: largeur CSS du média AFFICHÉ quand elle diffère de
+        celle du conteneur (``display_zoom`` d'un sidecar → ``"80%"``, ou la
+        largeur passée au bloc). ``st_image`` calcule sa réduction PAR RAPPORT
+        au conteneur : rétrécir le conteneur la doublerait — on décale donc la
+        pastille de la marge, jamais le conteneur (constaté 2026-08-13 sur la
+        roue des axes, pastille posée hors de l'image réduite à 80 %).
     """
     if not marked:
         yield
         return
+    chip = _CHIP_TOP if top else _CHIP_BOTTOM
+    if media_width:
+        # Média centré dans le conteneur : la marge de droite vaut la moitié
+        # de la différence des largeurs.
+        chip = Style(
+            str(chip).replace(
+                "right: 0.6em;",
+                f"right: calc((100% - {media_width}) / 2 + 0.6em);"),
+            chip.style_id,
+        )
     with st_block(_WRAP_FIT if fit else _WRAP_FILL):
         yield
-        st_write(_CHIP_TOP if top else _CHIP_BOTTOM, f"✦ {label}", tag=t.div)
+        st_write(chip, f"✦ {label}", tag=t.div)

@@ -8,7 +8,7 @@ Nothing on this slide reveals the mechanics; the how-to comes next.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
-from custom.visuals import is_synthetic
+from custom.visuals import is_synthetic, managed_media_width
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -41,7 +41,8 @@ def build():
                         ("Finally", "We debate the most divisive questions of your cohort."),
                     ],
                 )
-        with ai_marked(is_synthetic("survey_poster"), fit=False):
+        with ai_marked(is_synthetic("survey_poster"), fit=False,
+                       media_width=managed_media_width("survey_poster", "86%")):
             st_image(s.project.cards.media_center, width="86%",
                      editable=False, name="survey_poster",
                      alt="Papercut poster: a giant nine-spoke paper radar with a huge question "

@@ -14,7 +14,7 @@ concrete method to study with AI.
 from custom.config import IS_EDITABLE
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.styles import Styles as s
-from custom.visuals import is_synthetic
+from custom.visuals import is_synthetic, managed_media_width
 from postair_data import mascot
 from shared_widgets import st_info_tooltip
 from streamtex import *
@@ -78,7 +78,8 @@ def build():
             with g.cell():
                 st_space("h", "1px")
             with g.cell():
-                with ai_marked(is_synthetic("welcome_title_hero"), fit=False):
+                with ai_marked(is_synthetic("welcome_title_hero"), fit=False,
+                               media_width=managed_media_width("welcome_title_hero")):
                     st_image(
                         s.project.cards.media_center, width="100%",
                         alt="Stylised campus at dawn under a rising amber AI orb, "
