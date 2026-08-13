@@ -20,6 +20,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -59,14 +61,13 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        hero_image(
-            "genai_desk", _DESK_PROMPT, "images/genai_desk_fallback.svg",
-            alt_ready=("Papercut student desk with open notebook, book stack, and an "
-                       "amber orb lighting the page while the student writes"),
-            alt_fallback=("Papercut desk, silhouette writing, amber orb hovering over "
-                          "the notebook"),
-            width="58%",
-        )
-        st_space("v", "1.5vh")
-        for item in data["do"]:
-            st_write(bs.item, "▸ ", text(item), tag=t.div)
+        with hero_split(s, image=lambda: hero_image(
+                "genai_desk", _DESK_PROMPT, "images/genai_desk_fallback.svg",
+                alt_ready=("Papercut student desk with open notebook, book stack, "
+                           "and an amber orb lighting the page while the student "
+                           "writes"),
+                alt_fallback=("Papercut desk, silhouette writing, amber orb hovering "
+                              "over the notebook"),
+                variant="sq")):
+            for item in data["do"]:
+                st_write(bs.item, "▸ ", text(item), tag=t.div)

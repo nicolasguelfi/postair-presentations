@@ -21,6 +21,7 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import hero_image
+from postair_pack.components.hero_split import hero_split
 
 
 class SlideStyles:
@@ -100,10 +101,13 @@ def build_limit(concern_id: str) -> None:
                                 entries=[("Documented, not speculative",
                                           text(concern["detail"]))])
         st_space("v", "1vh")
-        hero_image(name, prompt, fallback,
-                   alt_ready=alt, alt_fallback=alt, width="56%")
-        st_space("v", "1.5vh")
-        st_write(ss.message, text(concern["message"]), tag=t.div)
-        keys = citekeys(concern)
-        st_write(ss.punch, text(concern["punch"]),
-                 *((" ", citation(*keys)) if keys else ()), tag=t.div)
+        # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche ~50 %,
+        # message + punch empilés à droite — plus rien sous le pli.
+        with hero_split(s, image=lambda: hero_image(
+                name, prompt, fallback, alt_ready=alt, alt_fallback=alt,
+                variant="sq")):
+            st_write(ss.message, text(concern["message"]), tag=t.div)
+            st_space("v", "1vh")
+            keys = citekeys(concern)
+            st_write(ss.punch, text(concern["punch"]),
+                     *((" ", citation(*keys)) if keys else ()), tag=t.div)

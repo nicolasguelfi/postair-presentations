@@ -25,7 +25,14 @@ AI_SUFFIX_LANDSCAPE = (
 )
 
 AI_SUFFIX_PORTRAIT = (
-    " Vertical composition, one off-centre focal point, rising diagonal "
+    " Vertical portrait composition, one off-centre focal point, rising "
+    "diagonal energy. NO text, NO logos, NO signage, NO photorealism."
+)
+
+# L'orientation par défaut du gabarit hero_split (NG 2026-08-13) : l'image
+# CARRÉE à gauche sur ~50 % de la largeur.
+AI_SUFFIX_SQUARE = (
+    " Square composition, one off-centre focal point, rising diagonal "
     "energy. NO text, NO logos, NO signage, NO photorealism."
 )
 

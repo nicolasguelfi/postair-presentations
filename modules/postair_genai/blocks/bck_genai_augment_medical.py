@@ -29,13 +29,15 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     number_ai = s.project.body.name_double + s.project.colors.amber + s.center_txt
     number_h = s.project.body.name_double + s.center_txt
     who = s.project.body.body + s.center_txt
-    message = s.project.titles.subtitle + s.center_txt
+    message = s.project.body.bullet + s.project.colors.primary + s.center_txt
     loyalty = s.project.body.caption + s.center_txt
 
 
@@ -67,28 +69,23 @@ def build():
                                          ("The multimodal check — AMIE",
                                           text(fact["amie_detail"]))])
         st_space("v", "1vh")
-        hero_image(
-            "genai_diagnosis", _HERO_PROMPT, "images/genai_diagnosis_fallback.svg",
-            alt_ready=("Papercut doctor silhouette from behind, facing an amber orb "
-                       "lighting a paper X-ray sheet"),
-            alt_fallback=("Papercut doctor silhouette and amber orb studying a paper "
-                          "X-ray together"),
-            width="50%",
-        )
-        st_space("v", "1.5vh")
-        with st_grid(cols="1fr 1fr", gap="2vw",
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell(), st_block(s.project.cards.amber):
+        with hero_split(s, image=lambda: hero_image(
+                "genai_diagnosis", _HERO_PROMPT,
+                "images/genai_diagnosis_fallback.svg",
+                alt_ready=("Papercut doctor silhouette from behind, facing an amber "
+                           "orb lighting a paper X-ray sheet"),
+                alt_fallback=("Papercut doctor silhouette and amber orb studying a "
+                              "paper X-ray together"),
+                variant="sq")):
+            with st_block(s.project.cards.amber):
                 st_write(bs.number_ai, text(fact["ai_value"]), tag=t.div)
                 st_write(bs.who, text(fact["ai_label"]), tag=t.div)
-            with g.cell(), st_block(s.project.cards.blue):
+            with st_block(s.project.cards.blue):
                 st_write(bs.number_h, text(fact["human_value"]), tag=t.div)
                 st_write(bs.who, text(fact["human_label"]), tag=t.div)
-        st_space("v", "1.5vh")
-        st_write(bs.message, text(fact["message"]), " ",
-                 citation(*citekeys(fact)), tag=t.div)
-        st_space("v", "0.5vh")
-        st_write(bs.loyalty, text(fact["loyalty"]), tag=t.div)
-        st_space("v", "0.5vh")
-        st_write(bs.loyalty, text(fact["confirm"]), " ",
-                 citation(*fact["confirm_source"]["citekeys"]), tag=t.div)
+            st_space("v", "0.5vh")
+            st_write(bs.message, text(fact["message"]), " ",
+                     citation(*citekeys(fact)), tag=t.div)
+            st_write(bs.loyalty, text(fact["loyalty"]), tag=t.div)
+            st_write(bs.loyalty, text(fact["confirm"]), " ",
+                     citation(*fact["confirm_source"]["citekeys"]), tag=t.div)

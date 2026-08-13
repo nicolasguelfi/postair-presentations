@@ -59,8 +59,12 @@ class _Titles:
         "line-height: 1.1; color: #FFFFFF;",
         "postair_title_hero",
     )
+    # Titre de slide sur UNE ligne (NG 2026-08-13) : le ×1.5 historique
+    # mangeait 2 lignes et 12 % d'écran sur la moitié des slides — la hauteur
+    # gagnée va à l'image. white-space nowrap N'est PAS posé : un titre trop
+    # long doit se voir et se raccourcir dans les données, pas se tronquer.
     slide_title = Style(
-        "font-size: min(7vw, calc(var(--stx-scale-15, 48pt) * 1.5)); font-weight: 700; letter-spacing: -0.5px; "
+        "font-size: min(4.6vw, calc(var(--stx-scale-15, 48pt) * 1.1)); font-weight: 700; letter-spacing: -0.5px; "
         "line-height: 1.15; color: #FFFFFF;",
         "postair_title_slide",
     )

@@ -23,13 +23,15 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     number = s.project.body.name_double + s.center_txt
     number_amber = s.project.body.name_double + s.project.colors.amber + s.center_txt
     who = s.project.body.body + s.center_txt
-    message = s.project.titles.subtitle + s.center_txt
+    message = s.project.body.bullet + s.project.colors.primary + s.center_txt
     loyalty = s.project.body.caption + s.center_txt
 
 
@@ -55,33 +57,26 @@ def build():
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "The twist: the tool ",
-                         (s.project.titles.keyword, "alone"), " is not enough",
+                st_write(bs.title, "The ", (s.project.titles.keyword, "twist"),
                          tag=t.div, toc_lvl="+1", label="The twist")
             with g.cell():
                 st_info_tooltip(title=text(fact["label"]),
                                 entries=[("Verified at the source",
                                           text(fact["detail"]))])
         st_space("v", "1vh")
-        hero_image(
-            "genai_twist", _HERO_PROMPT, "images/genai_twist_fallback.svg",
-            alt_ready=("Papercut silhouette and amber orb side by side, studying the "
-                       "same paper chart on an easel"),
-            alt_fallback=("Papercut silhouette and amber orb studying the same paper "
-                          "chart together"),
-            width="46%",
-        )
-        st_space("v", "1.5vh")
-        with st_grid(cols=s.project.grids.balanced(len(fact["bars"])), gap="1.5vw",
-                     grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
+        with hero_split(s, image=lambda: hero_image(
+                "genai_twist", _HERO_PROMPT, "images/genai_twist_fallback.svg",
+                alt_ready=("Papercut silhouette and amber orb side by side, studying "
+                           "the same paper chart on an easel"),
+                alt_fallback=("Papercut silhouette and amber orb studying the same "
+                              "paper chart together"),
+                variant="sq")):
             for bar in fact["bars"]:
-                with g.cell(), st_block(_CARD_TONES[bar["tone"]]):
+                with st_block(_CARD_TONES[bar["tone"]]):
                     st_write(bs.number_amber if bar["tone"] == "amber" else bs.number,
                              text(bar["value"]), tag=t.div)
                     st_write(bs.who, text(bar["who"]), tag=t.div)
-        st_space("v", "1.5vh")
-        st_write(bs.message, text(fact["message"]), " ",
-                 citation(*citekeys(fact)), tag=t.div)
-        st_space("v", "0.5vh")
-        st_write(bs.loyalty, text(fact["loyalty"]), tag=t.div)
+            st_space("v", "0.5vh")
+            st_write(bs.message, text(fact["message"]), " ",
+                     citation(*citekeys(fact)), tag=t.div)
+            st_write(bs.loyalty, text(fact["loyalty"]), tag=t.div)

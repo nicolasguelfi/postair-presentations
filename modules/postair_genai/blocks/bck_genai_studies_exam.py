@@ -20,6 +20,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -58,20 +60,21 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        hero_image(
-            "genai_exam", _EXAM_PROMPT, "images/genai_exam_fallback.svg",
-            alt_ready=("Papercut exam room: a silhouette writing alone at a desk, an "
-                       "amber orb waiting outside the closed door"),
-            alt_fallback=("Papercut exam room, silhouette writing, amber orb waiting "
-                          "behind the closed door"),
-            width="58%",
-        )
-        st_space("v", "1.5vh")
-        for i, item in enumerate(data["dont"]):
-            if i == len(data["dont"]) - 1:
-                st_write(bs.item, "▸ ", text(item), " ",
-                         citation(*data["dont_source"]["citekeys"]), tag=t.div)
-            else:
-                st_write(bs.item, "▸ ", text(item), tag=t.div)
-        st_space("v", "1.5vh")
-        st_write(bs.paradox, text(data["paradox"]), tag=t.div)
+        with hero_split(s, zoom=92, image=lambda: hero_image(
+                "genai_exam", _EXAM_PROMPT, "images/genai_exam_fallback.svg",
+                alt_ready=("Papercut exam room: a silhouette writing alone at a "
+                           "desk, an amber orb waiting outside the closed door"),
+                alt_fallback=("Papercut exam room, silhouette writing, amber orb "
+                              "waiting behind the closed door"),
+                variant="pt")):
+            for i, item in enumerate(data["dont"]):
+                if i == len(data["dont"]) - 1:
+                    st_write(bs.item, "▸ ", text(item), " ",
+                             citation(*data["dont_source"]["citekeys"]), tag=t.div)
+                else:
+                    st_write(bs.item, "▸ ", text(item), tag=t.div)
+            st_space("v", "1vh")
+            # Le paradoxe — LE message de la slide — en carte ambre, VISIBLE :
+            # il vivait sous le pli dans l'ancienne pile verticale.
+            with st_block(s.project.cards.amber):
+                st_write(bs.paradox, text(data["paradox"]), tag=t.div)

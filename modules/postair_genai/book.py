@@ -119,7 +119,8 @@ st_book(
         blocks.bck_genai_capabilities,   # G6  · seven capabilities, agents in amber
         blocks.bck_genai_augment_medical,   # G6b · augmentation: 85 % vs 20 %
         blocks.bck_genai_augment_twist,     # G6c · the tool alone is not enough
-        blocks.bck_genai_augment_justice,   # G6d · the case file, read in full
+        blocks.bck_genai_augment_justice,   # G6d · justice 1/2 : the case file
+        blocks.bck_genai_augment_justice_lab,  # G6e · justice 2/2 : in the lab
         blocks.bck_genai_hallucinations,  # G7 · the fabricated case, projected
         # G8, découpé en quatre (NG 2026-08-11) : un message fort, une image
         # forte, un texte en gros — jamais quatre revers sur une slide.

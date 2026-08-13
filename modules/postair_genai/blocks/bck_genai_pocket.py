@@ -1,8 +1,9 @@
 """Already in your pocket (G2) — you have been using AI for years.
 
-One dominant image (a smartphone orbited by five everyday AIs) and five short
-cards. Data-driven from ``custom.facts``: the block renders, it does not know
-a single example. The classic-vs-generative distinction lives in the tooltip.
+Recomposition NG (2026-08-13, gabarit par défaut) : l'image CARRÉE à gauche
+sur ~50 %, les cinq étiquettes empilées à droite — l'ancienne grille 3+2 sous
+l'image coupait sa seconde rangée au pli. La distinction classique/génératif
+ferme la colonne en télégraphique ; le détail vit dans l'infobulle.
 
 SPEAKER NOTES:
 Two minutes. Start from lived experience, never from theory: everyone in the
@@ -20,11 +21,13 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
-    icon = s.project.titles.subtitle + s.center_txt
-    label = s.project.body.caption + s.center_txt + s.bold
+    label = s.project.body.bullet + s.center_txt
+    distinction = s.project.body.body + s.project.colors.keyword + s.center_txt
 
 
 bs = BlockStyles
@@ -59,21 +62,19 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        hero_image(
-            "genai_pocket", _POCKET_PROMPT, "images/genai_pocket_fallback.svg",
-            alt_ready=("Papercut smartphone with an amber glowing screen, five paper "
-                       "satellites orbiting it: camera, speech bubble, globe, film "
-                       "strip, keyboard"),
-            alt_fallback=("Stylised smartphone with amber orb screen, five orbiting "
-                          "icons: keyboard, camera, film, globe, chat"),
-            width="62%",
-        )
-        st_space("v", "1.5vh")
-        # Cinq étiquettes, un mot chacune — la salle lit l'image, pas un texte.
-        with st_grid(cols=s.project.grids.balanced(len(data["items"])), gap="1vw",
-                     grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
+        with hero_split(s, image=lambda: hero_image(
+                "genai_pocket", _POCKET_PROMPT, "images/genai_pocket_fallback.svg",
+                alt_ready=("Papercut smartphone with an amber glowing screen, five "
+                           "paper satellites orbiting it: camera, speech bubble, "
+                           "globe, film strip, keyboard"),
+                alt_fallback=("Stylised smartphone with amber orb screen, five "
+                              "orbiting icons: keyboard, camera, film, globe, chat"),
+                variant="sq")):
+            # Cinq étiquettes, un mot chacune — la salle lit l'image, pas un texte.
             for item in data["items"]:
-                with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.icon, item["icon"], tag=t.div)
-                    st_write(bs.label, text(item["label"]), tag=t.div)
+                with st_block(s.project.cards.blue):
+                    st_write(bs.label, item["icon"], "  ",
+                             text(item["label"]), tag=t.div)
+            st_space("v", "0.5vh")
+            st_write(bs.distinction, text(data["distinction"]["classic"]), tag=t.div)
+            st_write(bs.distinction, text(data["distinction"]["generative"]), tag=t.div)

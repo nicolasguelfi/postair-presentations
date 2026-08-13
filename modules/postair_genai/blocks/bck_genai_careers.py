@@ -68,7 +68,9 @@ def build():
                             '</span></div>')
                     st_write(bs.pair, text(c["pair"]), tag=t.div)
         st_space("v", "2vh")
-        st_write(bs.frame, text(frame["claim"]), " — ", text(frame["detail"]), " ",
+        # Télégraphique (NG 2026-08-13) : la phrase-cadre complète vit dans
+        # l'infobulle ; l'écran porte la forme courte.
+        st_write(bs.frame, text(frame["claim"]), " · ", text(frame["short"]), " ",
                  citation(*citekeys(frame)), tag=t.div)
         st_space("v", "1vh")
         st_write(bs.rising, text(frame["rising_skill"]), tag=t.div)

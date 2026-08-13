@@ -26,6 +26,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.components.hero_split import hero_split
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -55,27 +57,28 @@ def build():
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "You will all be ",
-                         (s.project.titles.keyword, "project managers"),
-                         tag=t.div, toc_lvl="+1", label="Your place")
+                st_write(bs.title, "All ", (s.project.titles.keyword,
+                         "project managers"), tag=t.div,
+                         toc_lvl="+1", label="Your place")
             with g.cell():
                 st_info_tooltip(title=text(fact["label"]),
                                 entries=[("Why this is the hard part",
                                           text(fact["detail"]))])
         st_space("v", "1vh")
-        hero_image(
-            "genai_conductor", _HERO_PROMPT, "images/genai_conductor_fallback.svg",
-            alt_ready=("Papercut silhouette on a podium conducting a team of amber "
-                       "orbs at paper desks, colourful sheets flying upward"),
-            alt_fallback=("Papercut conductor silhouette directing amber orbs "
-                          "producing paper sheets"),
-            width="52%",
-        )
-        st_space("v", "1.5vh")
-        st_write(bs.message, text(fact["message"]), " ",
-                 citation(*citekeys(fact)), tag=t.div)
-        st_space("v", "1.5vh")
-        st_write(bs.punch, text(fact["punch"]), tag=t.div)
-        st_write(bs.punch_original, text(fact["punch_original"]), tag=t.div)
-        st_space("v", "1vh")
-        st_write(bs.answer, text(fact["answer"]), tag=t.div)
+        with hero_split(s, image=lambda: hero_image(
+                "genai_conductor", _HERO_PROMPT,
+                "images/genai_conductor_fallback.svg",
+                alt_ready=("Papercut silhouette on a podium conducting plain amber "
+                           "orbs floating above empty paper desks, colourful sheets "
+                           "flying upward"),
+                alt_fallback=("Papercut conductor silhouette directing amber orbs "
+                              "producing paper sheets"),
+                variant="sq")):
+            st_write(bs.message, text(fact["message"]), " ",
+                     citation(*citekeys(fact)), tag=t.div)
+            st_space("v", "1vh")
+            with st_block(s.project.cards.amber):
+                st_write(bs.punch, text(fact["punch"]), tag=t.div)
+                st_write(bs.punch_original, text(fact["punch_original"]), tag=t.div)
+            st_space("v", "1vh")
+            st_write(bs.answer, text(fact["answer"]), tag=t.div)
