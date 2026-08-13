@@ -146,8 +146,12 @@ def build():
         st_space("v", "1vh")
         # Le code de citation dans le texte VISIBLE de la slide : la carte au
         # survol porte la référence complète et le lien vers l'article.
+        # Deux faits distincts, chacun avec son étiquette — « anonymous » seul
+        # collé au code de citation se lisait comme « publication anonyme »
+        # (incompris NG, 2026-08-13). La titulature complète du rapport
+        # (titre, auteur, statut) vit dans la carte au survol du code.
         st_write(bs.grounding,
-                 "anonymous · published scientific model ",
+                 "answers: anonymous · model: ",
                  citation("guelfi-postair"), tag=t.div)
 
 

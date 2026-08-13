@@ -11,8 +11,9 @@ Usage :
     uv run python run-postair.py                     # tout (collection comprise)
     uv run python run-postair.py opening genai      # un sous-ensemble
     uv run python run-postair.py --list             # noms et ports
-    uv run python run-postair.py --kill             # arrêter tous les streamlit
+    uv run python run-postair.py --kill             # arrêter les documents (par port)
     uv run python run-postair.py --fresh …          # purge caches puis relance
+    uv run python run-postair.py --ports-offset 100 # ports décalés (vérifications)
     uv run python run-postair.py --no-browser …     # sans ouvrir le navigateur
 
 Ports 8511-8515 (distincts de run-manuals, 8501-8507 : les deux jeux peuvent
@@ -151,17 +152,17 @@ def fresh(selected: list[str]) -> None:
 
 
 def kill_all() -> None:
-    print("Arrêt de tous les processus streamlit…")
-    if sys.platform == "win32":
-        subprocess.run(["taskkill", "/F", "/IM", "streamlit.exe"],
-                       capture_output=True, timeout=5)
-    else:
-        subprocess.run(["pkill", "-f", "streamlit run"],
-                       capture_output=True, timeout=5)
-    # Le SIGTERM met une à deux secondes à aboutir : on VÉRIFIE port par port
-    # au lieu d'annoncer un arrêt qu'on n'a pas constaté.
-    time.sleep(2)
-    for name, info in MODULES.items():
+    """Arrête les documents POSTAIR — et RIEN d'autre.
+
+    Ciblé par PORT, jamais par nom de processus : un ``pkill streamlit`` global
+    tuait aussi run-manuals (8501-8507) et les documents d'un AUTRE opérateur
+    sur la même machine — c'est arrivé le 2026-08-13, popup « Connection
+    error » sur tous les onglets de l'auteur pendant une session de
+    vérification parallèle.
+    """
+    ports = sorted(info["port"] for info in MODULES.values())
+    print(f"Arrêt des documents POSTAIR (ports {ports[0]}-{ports[-1]})…")
+    for info in MODULES.values():
         free_port(info["port"])
     print("Fait.")
 
@@ -172,12 +173,22 @@ def main() -> None:
     ap.add_argument("modules", nargs="*", metavar="module",
                     help=f"jeu à lancer parmi {', '.join(MODULES)} (défaut : tout)")
     ap.add_argument("--list", action="store_true", help="liste les modules et ports")
-    ap.add_argument("--kill", action="store_true", help="arrête tous les streamlit")
+    ap.add_argument("--kill", action="store_true",
+                    help="arrête les documents POSTAIR (ciblé par port — ne touche "
+                         "ni run-manuals ni les autres opérateurs)")
     ap.add_argument("--no-browser", action="store_true", help="n'ouvre pas le navigateur")
     ap.add_argument("--fresh", action="store_true",
                     help="arrête tout, purge __pycache__ et .stx_cache, puis relance "
                          "(les caches du NAVIGATEUR restent à rafraîchir : F5 / Cmd+Shift+R)")
+    ap.add_argument("--ports-offset", type=int, default=0, metavar="N",
+                    help="décale tous les ports de N (ex. 100 → 8611-8615) — pour "
+                         "qu'une session de VÉRIFICATION tourne à côté des documents "
+                         "de l'auteur sans jamais les toucher (--kill compris)")
     args = ap.parse_args()
+
+    if args.ports_offset:
+        for info in MODULES.values():
+            info["port"] += args.ports_offset
 
     if args.list:
         for name, info in MODULES.items():
