@@ -114,8 +114,13 @@ marker_config = MarkerConfig(
 # _project/plans/plan-postair_debates.md.
 st_book(
     [
-        blocks.bck_debate_method,          # how the bank is used — for the speaker
-        blocks.bck_provenance,             # said once here, no longer on every card
+        # Intro en 4 temps (NG 2026-08-14, ss12-restructure) : les deux slides
+        # « discussion » d'opening vivent désormais là où le débat se joue —
+        # même mouvement que bck_disc_wrapup (NG 2026-08-03).
+        blocks.bck_disc_method,            # 1. let's debate — the rules, for the room
+        blocks.bck_debate_method,          # 2. a bank, not a talk — how it is used, for the speaker
+        blocks.bck_provenance,             # 3. three rules of provenance, said once
+        blocks.bck_disc_debates_link,      # 4. now, let's argue — the pivot into the first axis
         # ── Knowing ─────────────────────────────────────────────────
         blocks.bck_axis_trust,
         blocks.bck_axis_optimism,

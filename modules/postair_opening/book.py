@@ -1,4 +1,8 @@
-"""postair_opening — AI Day opening deck (Welcome · Survey · Results · Discussion · Break).
+"""postair_opening — AI Day opening deck (Welcome · Your host · AI is already here · Agenda).
+
+Les parties Axes / Survey / Results vivent depuis ss12 dans le deck autonome
+« The SUMVADIS tool » (modules/postair_survey) ; les deux slides Discussion
+ouvrent désormais postair_debates.
 
 Pilot module of the POSTAIR presentation set. See _project/plans/plan-postair_opening.md.
 """
@@ -120,6 +124,9 @@ st_book(
         # ── Welcome ─────────────────────────────────────────────────
         blocks.bck_wait_loop,         # looping video, full window, no information
         blocks.bck_welcome_title,     # title + Medio + hero image
+        # blocks.bck_host_reveal,     # curtain-up film — RÉACTIVER quand `host-reveal`
+        #                             # est gelé au catalogue (production studio → --freeze → sync)
+        blocks.bck_host_intro,        # who is speaking — portrait + a few facts
         blocks.bck_faculty_fstm,      # AI in FSTM — 1 faculté = 1 slide (NG 2026-08-13)
         blocks.bck_faculty_fdef,      # AI in FDEF
         blocks.bck_faculty_fhse,      # AI in FHSE + la réserve d'honnêteté
@@ -128,28 +135,11 @@ st_book(
         blocks.bck_already_detectors,  # 61 % non-natifs lus « IA »
         blocks.bck_already_skills,    # 68 % « vital » + la ligne long-wave
         blocks.bck_welcome_agenda,    # before the break, the break, after it
-        blocks.bck_axes_radar,        # the fairground wheel: which postures will you win
-        blocks.bck_axes_registers,    # Knowing / Acting / Becoming (3 sub-slides)
-        blocks.bck_axes_company,      # the nine axes again, in the objects family
-        # ── Survey ──────────────────────────────────────────────────
-        # Reading a radar and the six archetypes now come BEFORE the survey
-        # (NG 2026-08-03): the room understands what it is about to receive
-        # while it answers, and whoever finishes early has the archetype
-        # descriptions to read instead of a neighbour to talk to.
-        blocks.bck_survey_poster,     # opens the survey part, one full-frame image
-        blocks.bck_survey_howto,      # how to answer — five properties, nothing else
-        blocks.bck_results_archetypes,   # six reference archetypes, not six boxes
-        blocks.bck_results_radar_howto,  # example radar + the four posture codes
-        blocks.bck_survey_troubleshooting,  # what to do when something goes wrong
-        blocks.bck_survey_join,       # QR + giant code, the day chosen by the speaker
-        blocks.bck_survey_live,       # operator button → live monitoring
-        blocks.bck_survey_results,    # operator button → results presentation
-        # ── Results ─────────────────────────────────────────────────
-        blocks.bck_results_room,      # operator button → the room's own results
-        blocks.bck_results_meaning,   # a cohort is not a bloc
-        # ── Discussion ──────────────────────────────────────────────
-        blocks.bck_disc_method,       # the three rules of the debate
-        blocks.bck_disc_debates_link,  # hand-over to the debates deck, which closes the morning
+        # ── Suite du matin (NG 2026-08-14, ss12-restructure) ────────
+        # Les blocs Axes / Survey / Results vivent dans le deck autonome
+        # « The SUMVADIS tool » (modules/postair_survey) ; bck_disc_method
+        # et bck_disc_debates_link ouvrent désormais postair_debates —
+        # même mouvement que bck_disc_wrapup (NG 2026-08-03).
         # ── Appendix ────────────────────────────────────────────────
         blocks.bck_refs_bibliography,  # never presented; opened when a figure is challenged
     ],

@@ -1,5 +1,9 @@
 """How we debate — the three rules, with the moderator between two poles.
 
+Moved here from the opening deck (NG 2026-08-14, ss12-restructure) — the same
+movement as bck_disc_wrapup (NG 2026-08-03): the rules of the debate belong
+where the debate is run, and this slide now opens the deck's four-beat intro.
+
 Opens the discussion sequence. The questions are not chosen by the speaker:
 they come out of what this room answered, which is the whole point and the
 reason the survey came first.

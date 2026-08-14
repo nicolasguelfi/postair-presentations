@@ -57,7 +57,7 @@ def build():
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_write(bs.title, "Three ", (s.project.titles.keyword, "rules"),
-                         tag=t.div, toc_lvl="1", label="Provenance")
+                         tag=t.div, toc_lvl="+1", label="Provenance")
             with g.cell():
                 st_info_tooltip(title="Provenance — the full clauses",
                                 entries=[(clause, full)

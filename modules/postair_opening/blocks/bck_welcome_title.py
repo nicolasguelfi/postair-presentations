@@ -91,6 +91,6 @@ def build():
                          alt=f"{medio['name']}, the panda moderator mascot, "
                              "welcoming the audience",
                     overlay=dd35_overlay())
-                st_write(bs.mascot_caption, f"{medio['name']} — your host today", tag=t.div)
+                st_write(bs.mascot_caption, f"{medio['name']} — your co-host today", tag=t.div)
             with g.cell():
                 st_space("h", "1px")

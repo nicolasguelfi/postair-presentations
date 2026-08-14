@@ -2,7 +2,7 @@
 
 Règle NG (2026-08-11) : dans un amphithéâtre, une image bien conçue vaut mille
 mots — chaque slide se construit autour d'un visuel dominant, le texte porte le
-minimum. Pattern repris de la roue de ``postair_opening/bck_axes_radar`` :
+minimum. Pattern repris de la roue de ``postair_survey/bck_axes_radar`` :
 
 - ``uri`` est le REPLI, pas la source : dès qu'une version managée de l'image
   existe (générée par l'auteur via l'éditeur, versionnée sous

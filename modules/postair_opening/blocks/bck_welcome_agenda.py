@@ -73,7 +73,7 @@ def build():
                 st_info_tooltip(
                     title="How the day runs",
                     entries=[
-                        ("Two parts", "Five sessions before the break — welcome, survey, "
+                        ("Two parts", "Four sessions before the break — welcome, survey, "
                          "results, discussion — then four after: generative AI, Mistral "
                          "agents, the university guidelines, and the closing."),
                         ("What you need", "A phone OR a laptop, your choice. Keep one within "

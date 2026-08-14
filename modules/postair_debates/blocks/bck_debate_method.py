@@ -44,13 +44,13 @@ bs = BlockStyles
 
 
 def build():
-    st_marker("How we debate")
+    st_marker("A bank")
     meta = manifest().get("metadata", {})
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_write(bs.title, "A ", (s.project.titles.keyword, "bank"), ", not a talk",
-                         tag=t.div, toc_lvl="1", label="How we debate")
+                         tag=t.div, toc_lvl="+1", label="A bank")
             with g.cell():
                 st_info_tooltip(
                     title="Using the debates bank",
@@ -69,9 +69,6 @@ def build():
                          "sources and commit their author, not the figures. For living people, "
                          "the video presents them — this corpus never makes a living person "
                          "speak through generative AI."),
-                        ("Rules of speech", "Roaming microphones, two minutes per question, one "
-                         "argument each way before the show of hands. Nobody argues in their own "
-                         "name: the mascots carry the postures."),
                         ("Provenance of the deck", f"Instrument v{meta.get('instrument_version', '?')} · "
                          f"debate material v{meta.get('debate_version', '?')} · content "
                          f"regenerated from the study, never typed into a slide."),
