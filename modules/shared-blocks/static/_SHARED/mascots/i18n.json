@@ -1,32 +1,197 @@
 {
   "_doc": "Localisation des cartes de profil (FR/EN/DE). Les titres EN des archétypes sont les noms OFFICIELS du questionnaire (reference_profiles) ; les titres DE sont une proposition NG-à-valider. Les codes d'axes et le côté left/right sont invariants.",
   "poles": {
-    "OPT": {"fr": ["Pessimisme", "Optimisme"], "en": ["Pessimism", "Optimism"], "de": ["Pessimismus", "Optimismus"]},
-    "OPE": {"fr": ["Résistance", "Ouverture"], "en": ["Resistance", "Openness"], "de": ["Widerstand", "Offenheit"]},
-    "TRU": {"fr": ["Autonomie", "Confiance"], "en": ["Self-reliance", "Trust"], "de": ["Eigenständigkeit", "Vertrauen"]},
-    "CEN": {"fr": ["Décentralisation", "Centralisation"], "en": ["Decentralisation", "Centralisation"], "de": ["Dezentralisierung", "Zentralisierung"]},
-    "SPE": {"fr": ["Prudence", "Vitesse"], "en": ["Prudence", "Speed"], "de": ["Besonnenheit", "Geschwindigkeit"]},
-    "RAT": {"fr": ["Émotion", "Rationalité"], "en": ["Emotion", "Rationality"], "de": ["Emotion", "Rationalität"]},
-    "CON": {"fr": ["Liberté", "Contrôle"], "en": ["Freedom", "Control"], "de": ["Freiheit", "Kontrolle"]},
-    "ALT": {"fr": ["Individualisme", "Altruisme"], "en": ["Individualism", "Altruism"], "de": ["Individualismus", "Altruismus"]},
-    "TRA": {"fr": ["Humanisme", "Transhumanisme"], "en": ["Humanism", "Transhumanism"], "de": ["Humanismus", "Transhumanismus"]}
+    "OPT": {
+      "fr": [
+        "Pessimisme",
+        "Optimisme"
+      ],
+      "en": [
+        "Pessimism",
+        "Optimism"
+      ],
+      "de": [
+        "Pessimismus",
+        "Optimismus"
+      ]
+    },
+    "OPE": {
+      "fr": [
+        "Résistance",
+        "Ouverture"
+      ],
+      "en": [
+        "Resistance",
+        "Openness"
+      ],
+      "de": [
+        "Widerstand",
+        "Offenheit"
+      ]
+    },
+    "TRU": {
+      "fr": [
+        "Autonomie",
+        "Confiance"
+      ],
+      "en": [
+        "Self-reliance",
+        "Trust"
+      ],
+      "de": [
+        "Eigenständigkeit",
+        "Vertrauen"
+      ]
+    },
+    "CEN": {
+      "fr": [
+        "Décentralisation",
+        "Centralisation"
+      ],
+      "en": [
+        "Decentralisation",
+        "Centralisation"
+      ],
+      "de": [
+        "Dezentralisierung",
+        "Zentralisierung"
+      ]
+    },
+    "SPE": {
+      "fr": [
+        "Prudence",
+        "Vitesse"
+      ],
+      "en": [
+        "Prudence",
+        "Speed"
+      ],
+      "de": [
+        "Besonnenheit",
+        "Tempo"
+      ]
+    },
+    "RAT": {
+      "fr": [
+        "Émotion",
+        "Rationalité"
+      ],
+      "en": [
+        "Emotion",
+        "Rationality"
+      ],
+      "de": [
+        "Emotion",
+        "Rationalität"
+      ]
+    },
+    "CON": {
+      "fr": [
+        "Liberté",
+        "Contrôle"
+      ],
+      "en": [
+        "Freedom",
+        "Control"
+      ],
+      "de": [
+        "Freiheit",
+        "Kontrolle"
+      ]
+    },
+    "ALT": {
+      "fr": [
+        "Individualisme",
+        "Altruisme"
+      ],
+      "en": [
+        "Individualism",
+        "Altruism"
+      ],
+      "de": [
+        "Individualismus",
+        "Altruismus"
+      ]
+    },
+    "TRA": {
+      "fr": [
+        "Humanisme",
+        "Transhumanisme"
+      ],
+      "en": [
+        "Humanism",
+        "Transhumanism"
+      ],
+      "de": [
+        "Humanismus",
+        "Transhumanismus"
+      ]
+    }
   },
   "archetypes": {
-    "promethean": {"fr": "Visionnaire prométhéen", "en": "Promethean Visionary", "de": "Prometheischer Visionär"},
-    "guardian": {"fr": "Gardien vigilant", "en": "Vigilant Guardian", "de": "Wachsamer Hüter"},
-    "egalitarian": {"fr": "Égalitariste critique", "en": "Critical Egalitarian", "de": "Kritischer Egalitarist"},
-    "pragmatist": {"fr": "Pragmatique délibératif", "en": "Deliberate Pragmatist", "de": "Abwägender Pragmatiker"},
-    "fatalist": {"fr": "Fataliste résigné", "en": "Resigned Fatalist", "de": "Resignierter Fatalist"},
-    "explorer": {"fr": "Explorateur souverain", "en": "Sovereign Explorer", "de": "Souveräner Entdecker"}
+    "promethean": {
+      "fr": "Visionnaire prométhéen",
+      "en": "Promethean Visionary",
+      "de": "Prometheischer Visionär"
+    },
+    "guardian": {
+      "fr": "Gardien vigilant",
+      "en": "Vigilant Guardian",
+      "de": "Wachsamer Hüter"
+    },
+    "egalitarian": {
+      "fr": "Égalitariste critique",
+      "en": "Critical Egalitarian",
+      "de": "Kritischer Egalitarist"
+    },
+    "pragmatist": {
+      "fr": "Pragmatique délibératif",
+      "en": "Deliberate Pragmatist",
+      "de": "Abwägender Pragmatiker"
+    },
+    "fatalist": {
+      "fr": "Fataliste résigné",
+      "en": "Resigned Fatalist",
+      "de": "Resignierter Fatalist"
+    },
+    "explorer": {
+      "fr": "Explorateur souverain",
+      "en": "Sovereign Explorer",
+      "de": "Souveräner Entdecker"
+    }
   },
   "ui": {
-    "eyebrow": {"fr": "PROFIL MASCOTIES", "en": "MASCOTIES PROFILE", "de": "MASCOTIES-PROFIL"},
-    "anonymous": {"fr": "Anonyme", "en": "Anonymous", "de": "Anonym"},
-    "axis_skipped": {"fr": "axe non répondu", "en": "axis not answered", "de": "Achse nicht beantwortet"}
+    "eyebrow": {
+      "fr": "PROFIL MASCOTIES",
+      "en": "MASCOTIES PROFILE",
+      "de": "MASCOTIES-PROFIL"
+    },
+    "anonymous": {
+      "fr": "Anonyme",
+      "en": "Anonymous",
+      "de": "Anonym"
+    },
+    "axis_skipped": {
+      "fr": "axe non répondu",
+      "en": "axis not answered",
+      "de": "Achse nicht beantwortet"
+    }
   },
   "mecanique": {
-    "conjunction": {"fr": ", et ", "en": ", and ", "de": ", und "},
-    "percent": {"fr": "{n} %", "en": "{n}%", "de": "{n} %"},
-    "wrap_limit": {"fr": 52, "en": 52, "de": 50}
+    "conjunction": {
+      "fr": ", et ",
+      "en": ", and ",
+      "de": " und "
+    },
+    "percent": {
+      "fr": "{n} %",
+      "en": "{n}%",
+      "de": "{n} %"
+    },
+    "wrap_limit": {
+      "fr": 52,
+      "en": 52,
+      "de": 50
+    }
   }
 }
