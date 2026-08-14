@@ -23,7 +23,7 @@ export → source se fait par empreinte, pas par nom.
 
 Usage::
 
-    uv run python _project/tools/check_export_media.py             # les 5 modules
+    uv run python _project/tools/check_export_media.py             # les 6 modules
     uv run python _project/tools/check_export_media.py postair_genai
 
 Ne modifie rien ; code de sortie 1 à la première violation.
@@ -42,8 +42,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 _REPO = Path(__file__).parent.parent.parent
-_MODULES = ["postair_opening", "postair_debates", "postair_genai",
-            "postair_guidelines", "postair_collection"]
+_MODULES = ["postair_opening", "postair_survey", "postair_debates",
+            "postair_genai", "postair_guidelines", "postair_collection"]
 _CHIP_TEXT = "✦"
 _CHIP_CSS_SIGNATURE = "rgba(113, 113, 122, 0.35)"
 
@@ -118,6 +118,10 @@ def _whitelist_hashes(module: str) -> dict[str, str]:
             out[_sha(p)] = f"QR code ({rel})"
         elif "screenshot" in p.name.lower():
             out[_sha(p)] = f"capture d'application ({rel})"
+        elif rel.startswith("media/captures/"):
+            # Écrans réels de l'application, matérialisés depuis le catalogue
+            # gelé (build_survey_captures.py) — non IA par nature.
+            out[_sha(p)] = f"capture d'écran du parcours ({rel})"
     manifest = _REPO / "modules" / module / "static" / "data" / "content.json"
     if manifest.exists():
         data = json.loads(manifest.read_text(encoding="utf-8"))

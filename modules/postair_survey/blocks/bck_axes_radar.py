@@ -108,8 +108,10 @@ def build():
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
+                # Ancre TOC de la partie 1 (ss12) : le label dit la PARTIE,
+                # le titre visible garde la question qui la lance.
                 st_write(bs.title, "What is ", (s.project.titles.keyword, "your posture"),
-                         " facing AI?", tag=t.div, toc_lvl="1", label="Your posture?")
+                         " facing AI?", tag=t.div, toc_lvl="1", label="Getting started")
             with g.cell():
                 st_info_tooltip(
                     title="The POSTAIR model",

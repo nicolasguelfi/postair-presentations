@@ -64,9 +64,16 @@ jobs:
         run: |
           # Service mapping: name → folder → Coolify UUID.
           # Adding a module = adding one line here (and creating the Coolify app).
+          #
+          # TODO(ss12) : postair-survey porte un UUID PLACEHOLDER — créer l'app
+          # Coolify JUSTE AVANT le merge vers main et remplacer
+          # <UUID_COOLIFY_SURVEY> ici, dans .stx-deploy.json et DEPLOY.md.
+          # Tant qu'il n'est pas remplacé, le déclenchement du service survey
+          # échouera (curl sur un UUID inexistant) — voulu : bruyant, pas surprise.
           cat > /tmp/services.json << 'SERVICES'
           {
             "postair-opening": {"folder": "modules/postair_opening", "uuid": "f12d9utrj67uqwjqune5t4ip", "replicas": []},
+            "postair-survey": {"folder": "modules/postair_survey", "uuid": "<UUID_COOLIFY_SURVEY>", "replicas": []},
             "postair-debates": {"folder": "modules/postair_debates", "uuid": "o655voa4o0r1gw9k1lhkujtg", "replicas": []},
             "postair-genai": {"folder": "modules/postair_genai", "uuid": "ki72ol1fqgno2g1rpi0t2m7o", "replicas": []},
             "postair-collection": {"folder": "modules/postair_collection", "uuid": "g5hnjmauge8443965yywvijs", "replicas": []},

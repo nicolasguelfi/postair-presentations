@@ -16,11 +16,19 @@ cards_per_row = 3
 
 [projects.opening]
 title = "Opening — Facing the AI Revolution"
-description = "welcome · 9 axes · survey · the room's results · discussion"
+description = "welcome · your host · AI is already here · the agenda"
 emoji = "🎡"
 button_label = "Open the deck"
 project_url = "https://postair-opening.streamtex.org"
 order = 1
+
+[projects.survey]
+title = "The SUMVADIS Tool"
+description = "9 axes · join the survey · the screens · your radar · the room's results"
+emoji = "📱"
+button_label = "Open the deck"
+project_url = "https://postair-survey.streamtex.org"
+order = 2
 
 [projects.debates]
 title = "The debates of the nine axes"
@@ -28,7 +36,7 @@ description = "a bank, not a talk · both poles · figures · verbatims · today
 emoji = "⚖️"
 button_label = "Open the bank"
 project_url = "https://postair-debates.streamtex.org"
-order = 2
+order = 3
 
 [projects.genai]
 title = "Introduction to AI & Generative AI"
@@ -36,7 +44,7 @@ description = "70 years · how it works · what it gets wrong · your place"
 emoji = "🤖"
 button_label = "Open the deck"
 project_url = "https://postair-genai.streamtex.org"
-order = 3
+order = 4
 
 [projects.guidelines]
 title = "The UL AI Guidelines — and Closing"
@@ -44,4 +52,4 @@ description = "permitted by default · say it · 3 risk levels · red lines · f
 emoji = "📋"
 button_label = "Open the deck"
 project_url = "https://postair-guidelines.streamtex.org"
-order = 4
+order = 5

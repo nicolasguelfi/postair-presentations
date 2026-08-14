@@ -6,10 +6,12 @@ clause on a slide that is up for ninety seconds. What survives is the property
 itself, at the largest size the slide can hold — everything that was explanatory
 lives in the tooltip, where a challenged speaker can find it.
 
-The right-hand side shows the six agreement levels as the room will meet them on
-their own screen. If a real screenshot of the application is dropped in under
-the name below, the slide shows it; otherwise it draws the scale itself, which
-projects better than a phone capture and can never fall out of date silently.
+The right-hand side draws the six agreement levels itself — it projects better
+than a phone capture and can never fall out of date silently. The REAL screens
+follow on a sub-slide: the four first screens of the journey (code, welcome,
+consent, a statement), mobile captures frozen from the sumvadis media registry
+(``custom.captures``, décision Q14 ss12 — l'ancien repli ``survey_levels.png``,
+jamais déposé, a été purgé au même moment).
 
 SPEAKER NOTES:
 Three minutes, calm and clear. 54 statements, six agreement levels, no middle
@@ -17,12 +19,13 @@ point — a gentle forced choice; "no opinion" exists and is NOT a middle
 answer. Say that last line slowly: it is the one people get wrong, and it is
 the one in red. There is no right answer and no image to polish: answer for
 yourself, honestly. Some statements feel "reversed" — that's intentional
-(acquiescence control), read carefully.
+(acquiescence control), read carefully. On the sub-slide, walk the four
+screens once, left to right — thirty seconds, the room will meet them again
+on their own phones minutes later.
 """
 # @guideline: postair-minimal
 
-from pathlib import Path
-
+from custom.captures import capture
 from custom.styles import DS
 from custom.styles import Styles as s
 from shared_widgets import st_info_tooltip
@@ -63,10 +66,17 @@ _LEVELS = [
     "Strongly agree",
 ]
 
-#: Capture d'écran réelle des six niveaux, si elle est déposée un jour. Absente,
-#: la slide dessine l'échelle — jamais d'image manquante devant l'amphithéâtre.
-_SCREENSHOT = "images/survey_levels.png"
-_STATIC = Path(__file__).parent.parent / "static"
+#: Les quatre premiers écrans du parcours, dans l'ordre où la salle les
+#: rencontrera — captures RÉELLES (facette mobile, Q14), demandées par slug.
+_FIRST_SCREENS = [
+    ("01-saisie-code", "1 · enter the code of the day"),
+    ("02-accueil-campagne", "2 · the campaign welcomes you"),
+    ("03-consentement", "3 · consent — nothing personal"),
+    ("04-question", "4 · a statement, six levels, help"),
+]
+
+#: Quatre captures portrait côte à côte : la hauteur borne chaque vignette.
+_FIRST_WIDTH = "min(14vw, 24vh)"
 
 
 def _scale() -> None:
@@ -130,10 +140,23 @@ def build():
                                 st_write(bs.bullet, head)
             with g.cell():
                 with st_block(s.project.containers.column_stack_centered):
-                    if (_STATIC / _SCREENSHOT).exists():
-                        st_image(s.project.cards.media_center, width="100%",
-                                 uri=_SCREENSHOT,
-                                 alt="Screenshot of the survey: the six agreement levels "
-                                     "offered for one statement")
-                    else:
-                        _scale()
+                    _scale()
+    # ── Sous-slide : les quatre premiers écrans, en vrai (ss12/Q14) ──
+    st_slide_break(marker_label="The first screens",
+                   config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
+    with st_block(s.project.containers.page_fill_top):
+        with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
+            with g.cell():
+                st_write(bs.title, "The ", (s.project.titles.keyword, "first screens"),
+                         tag=t.div)
+            with g.cell():
+                st_space("h", "0.5vw")
+        st_space("v", "1vh")
+        with st_grid(cols=s.project.grids.balanced(len(_FIRST_SCREENS)), gap="1.5vw",
+                     cell_styles=s.project.containers.grid_cell_top) as g:
+            for slug, legend in _FIRST_SCREENS:
+                with g.cell():
+                    st_image(s.project.cards.media_center, width=_FIRST_WIDTH,
+                             uri=capture(slug),
+                             alt=f"Mobile screen of the survey journey: {legend}")
+                    st_write(bs.caption, legend, tag=t.div)

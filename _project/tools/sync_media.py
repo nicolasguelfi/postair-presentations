@@ -10,6 +10,8 @@ outil, depuis les catalogues amont, et se rechargent en vidant le dossier.
         clips/<axe>-<lg>.mp4   ← même catalogue, clé `video` (série « Postures »)
         clips/<film>-<lg>.mp4  ← même catalogue, section `films` (productions)
         figures/<sha>.<ext>    ← content.json (portraits + posters des figures)
+        captures/<slug>….png   ← captures-catalogue.json (écrans du parcours,
+                                  gelé par build_survey_captures.py)
         illustrations/…        ← VERSIONNÉ, produit pour ces présentations,
                                   jamais au CDN (décision NG 2026-08-01)
 
@@ -49,9 +51,13 @@ _MODULES = _REPO / "modules"
 
 #: Les modules qui affichent des mascottes. Un module qui n'en affiche pas ne
 #: paie pas le poids : la synchro est par module, pas globale.
-MASCOT_MODULES = ["postair_opening", "postair_debates", "postair_genai", "postair_guidelines"]
+MASCOT_MODULES = ["postair_opening", "postair_survey", "postair_debates",
+                  "postair_genai", "postair_guidelines"]
 #: Les modules qui affichent des figures (portraits + posters).
 FIGURE_MODULES = ["postair_debates"]
+#: Les modules qui projettent les captures d'écran du parcours participant
+#: (catalogue gelé par _project/tools/build_survey_captures.py).
+CAPTURE_MODULES = ["postair_survey"]
 #: Les modules qui projettent un clip de mascotte.
 #:
 #: On matérialise TOUS les clips du catalogue, pas seulement celui qui est à
@@ -60,7 +66,7 @@ FIGURE_MODULES = ["postair_debates"]
 #: — renditions légères, quelques dizaines de Mo — et il achète l'essentiel :
 #: l'écran d'attente tourne **vingt minutes devant la salle qui se remplit**,
 #: c'est le pire moment possible pour dépendre du réseau.
-CLIP_MODULES = ["postair_opening"]
+CLIP_MODULES = ["postair_opening", "postair_survey"]
 
 _TIMEOUT = 30
 
@@ -216,6 +222,22 @@ def figure_catalogue(module: str) -> list[tuple[str, str]]:
     return sorted(seen.items())
 
 
+def capture_catalogue(module: str) -> list[tuple[str, str]]:
+    """(nom de fichier, URL) des captures du parcours, depuis le catalogue gelé.
+
+    Miroir de ``figure_catalogue`` : le gel (``build_survey_captures.py``) est
+    la désignation, les octets sont matérialisés ici. Le nom local porte
+    l'horodatage de version — ``<slug>__<lang>__<facette>__<horodatage>.png`` —
+    donc un regel change le nom et « fichier présent = à jour » reste vrai par
+    construction (adresses de VERSION ``/v/`` immuables, règle I3).
+    """
+    manifest = _MODULES / module / "static" / "data" / "captures-catalogue.json"
+    if not manifest.exists():
+        return []
+    data = json.loads(manifest.read_text(encoding="utf-8"))
+    return sorted((c["file"], c["url"]) for c in data.get("captures", []))
+
+
 def _wrong_type(name: str, payload: bytes) -> str | None:
     """Le contenu a-t-il la tête de ce que son nom annonce ?
 
@@ -229,6 +251,8 @@ def _wrong_type(name: str, payload: bytes) -> str | None:
         return "ce n'est pas un WebP"
     if name.endswith(".mp4") and b"ftyp" not in head:
         return "ce n'est pas un MP4"
+    if name.endswith(".png") and head[:8] != b"\x89PNG\r\n\x1a\n":
+        return "ce n'est pas un PNG"
     return None
 
 
@@ -332,6 +356,12 @@ def main() -> None:
         total_missing += m
         total_written += w
         print(f"  {module}/figures   : {p} présents, {m} manquants")
+    for module in CAPTURE_MODULES:
+        captures = capture_catalogue(module)
+        p, m, w = sync(module, "captures", captures, args.check, args.force)
+        total_missing += m
+        total_written += w
+        print(f"  {module}/captures  : {p} présents, {m} manquants")
 
     if args.check:
         print(f"=> {total_missing} média(s) manquant(s)")

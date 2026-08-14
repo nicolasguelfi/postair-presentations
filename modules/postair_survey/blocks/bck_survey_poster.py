@@ -28,8 +28,11 @@ def build():
     with st_block(s.project.containers.page_fill_center):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
+                # Rétrogradé "+1" (ss12) : la partie 1 est ancrée par
+                # bck_axes_radar (« Getting started »), le poster n'ouvre
+                # plus une partie à lui seul.
                 st_write(bs.title, "The ", (s.project.titles.keyword, "Survey"),
-                         tag=t.div, toc_lvl="1", label="The Survey")
+                         tag=t.div, toc_lvl="+1", label="The Survey")
             with g.cell():
                 st_info_tooltip(
                     title="Next 30 minutes",

@@ -42,8 +42,13 @@ def build():
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
+                # Rétrogradé "+1" (ss12) : la partie 2 est ancrée par
+                # bck_screens_poster (« The screens »). Les captures de RÉGIE
+                # (20-admin-console, 21-admin-salle, 22-admin-projection) et le
+                # diaporama /present (Q15) illustreront cette séquence quand la
+                # campagne sumvadis ss12 les aura publiés puis gelés.
                 st_write(bs.title, "So — who ", (s.project.titles.keyword, "are we"), "?",
-                         tag=t.div, toc_lvl="1", label="The room's results")
+                         tag=t.div, toc_lvl="+1", label="The room's results")
             with g.cell():
                 st_info_tooltip(
                     title="Driving the projection",

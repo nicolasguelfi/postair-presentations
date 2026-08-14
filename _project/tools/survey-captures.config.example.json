@@ -1,0 +1,4 @@
+{
+  "comment": "Copier en survey-captures.config.local.json (gitignore via _project/tools/*.local.json) et renseigner le chemin absolu DE CETTE MACHINE. Aucun chemin absolu en dur dans les scripts (meme convention que debates-hub.config.example.json). L'amont est en LECTURE SEULE : on n'ecrit jamais dans sumvadis depuis ce depot. `sumvadis` est lu par build_survey_captures.py : il pointe la racine du depot sumvadis, dont le registre des medias (packages/core/assets/media-registry.jsonl) designe les captures d'ecran publiees du parcours participant (domaine `parcours`, adresses de VERSION /v/ — regle I3).",
+  "sumvadis": "/chemin/vers/github/sumvadis"
+}

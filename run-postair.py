@@ -16,7 +16,7 @@ Usage :
     uv run python run-postair.py --ports-offset 100 # ports décalés (vérifications)
     uv run python run-postair.py --no-browser …     # sans ouvrir le navigateur
 
-Ports 8511-8515 (distincts de run-manuals, 8501-8507 : les deux jeux peuvent
+Ports 8511-8516 (distincts de run-manuals, 8501-8507 : les deux jeux peuvent
 tourner ensemble). Logs sous le dossier temporaire système.
 """
 
@@ -35,9 +35,14 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 #: Ordre d'affichage = ordre de l'agenda du jour, collection en tête.
+#: Plage de ports 8511-8516 : les quatre decks historiques gardent leur port
+#: (des marque-pages et des sessions d'opérateur les connaissent) ; survey,
+#: arrivé après (ss12), prend le port suivant de la plage, pas sa place
+#: dans l'agenda.
 MODULES = {
     "collection": {"path": "modules/postair_collection", "port": 8511},
     "opening": {"path": "modules/postair_opening", "port": 8512},
+    "survey": {"path": "modules/postair_survey", "port": 8516},
     "debates": {"path": "modules/postair_debates", "port": 8513},
     "genai": {"path": "modules/postair_genai", "port": 8514},
     "guidelines": {"path": "modules/postair_guidelines", "port": 8515},

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Inter, Source Sans Pro, sans-serif">
+<rect width="1600" height="1000" fill="#1A1A2E"/>
+<polygon points="800.0,374.6 880.6,403.9 923.5,478.2 908.6,562.7 842.9,617.8 757.1,617.8 691.4,562.7 676.5,478.2 719.4,403.9" fill="none" stroke="#7AB8F5" stroke-opacity="0.18" stroke-width="2"/>
+<polygon points="800.0,249.2 961.2,307.9 1047.0,456.4 1017.2,625.4 885.8,735.7 714.2,735.7 582.8,625.4 553.0,456.4 638.8,307.9" fill="none" stroke="#7AB8F5" stroke-opacity="0.28" stroke-width="2"/>
+<polygon points="800.0,120.0 1044.3,208.9 1174.2,434.0 1129.1,690.0 930.0,857.1 670.0,857.1 470.9,690.0 425.8,434.0 555.7,208.9" fill="none" stroke="#7AB8F5" stroke-opacity="0.55" stroke-width="2"/>
+<line x1="800.0" y1="500.0" x2="800.0" y2="120.0" stroke="#7AB8F5" stroke-opacity="0.35" stroke-width="2"/>
+<circle cx="800.0" cy="120.0" r="7" fill="#2EC4B6"/>
+<text x="800.0" y="65.0" fill="#F2EEE6" font-size="40" font-weight="600" text-anchor="middle" dominant-baseline="middle">Trust</text>
+<line x1="800.0" y1="500.0" x2="1044.3" y2="208.9" stroke="#7AB8F5" stroke-opacity="0.35" stroke-width="2"/>
+<circle cx="1044.3" cy="208.9" r="7" fill="#2EC4B6"/>
+<text x="1079.6" y="166.8" fill="#F2EEE6" font-size="40" font-weight="600" text-anchor="start" dominant-baseline="middle">Optimism</text>
+<line x1="800.0" y1="500.0" x2="1174.2" y2="434.0" stroke="#7AB8F5" stroke-opacity="0.35" stroke-width="2"/>
+<circle cx="1174.2" cy="434.0" r="7" fill="#2EC4B6"/>
+<text x="1228.4" y="424.5" fill="#F2EEE6" font-size="40" font-weight="600" text-anchor="start" dominant-baseline="middle">Rationality</text>
+<line x1="800.0" y1="500.0" x2="1129.1" y2="690.0" stroke="#7AB8F5" stroke-opacity="0.35" stroke-width="2"/>
+<circle cx="1129.1" cy="690.0" r="7" fill="#2EC4B6"/>
+<text x="1176.7" y="717.5" fill="#F2EEE6" font-size="40" font-weight="600" text-anchor="start" dominant-baseline="middle">Speed</text>
+<line x1="800.0" y1="500.0" x2="930.0" y2="857.1" stroke="#7AB8F5" stroke-opacity="0.35" stroke-width="2"/>
+<circle cx="930.0" cy="857.1" r="7" fill="#2EC4B6"/>
+<text x="948.8" y="908.8" fill="#F2EEE6" font-size="40" font-weight="600" text-anchor="start" dominant-baseline="middle">Openness</text>
+<line x1="800.0" y1="500.0" x2="670.0" y2="857.1" stroke="#7AB8F5" stroke-opacity="0.35" stroke-width="2"/>
+<circle cx="670.0" cy="857.1" r="7" fill="#2EC4B6"/>
+<text x="651.2" y="908.8" fill="#F2EEE6" font-size="40" font-weight="600" text-anchor="end" dominant-baseline="middle">Freedom / Control</text>
+<line x1="800.0" y1="500.0" x2="470.9" y2="690.0" stroke="#7AB8F5" stroke-opacity="0.35" stroke-width="2"/>
+<circle cx="470.9" cy="690.0" r="7" fill="#2EC4B6"/>
+<text x="423.3" y="717.5" fill="#F2EEE6" font-size="40" font-weight="600" text-anchor="end" dominant-baseline="middle">Centralisation</text>
+<line x1="800.0" y1="500.0" x2="425.8" y2="434.0" stroke="#7AB8F5" stroke-opacity="0.35" stroke-width="2"/>
+<circle cx="425.8" cy="434.0" r="7" fill="#2EC4B6"/>
+<text x="371.6" y="424.5" fill="#F2EEE6" font-size="40" font-weight="600" text-anchor="end" dominant-baseline="middle">Altruism</text>
+<line x1="800.0" y1="500.0" x2="555.7" y2="208.9" stroke="#7AB8F5" stroke-opacity="0.35" stroke-width="2"/>
+<circle cx="555.7" cy="208.9" r="7" fill="#2EC4B6"/>
+<text x="520.4" y="166.8" fill="#F2EEE6" font-size="40" font-weight="600" text-anchor="end" dominant-baseline="middle">Transhumanism</text>
+<circle cx="800.0" cy="500.0" r="120" fill="#1A1A2E" stroke="#F39C12" stroke-width="4" stroke-opacity="0.9"/>
+<text x="800.0" y="512.0" fill="#F39C12" font-size="170" font-weight="800" text-anchor="middle" dominant-baseline="middle">?</text>
+</svg>
