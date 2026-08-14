@@ -468,6 +468,13 @@ class Hub:
         curated = {_norm(q["text"]["en"]): q
                    for q in (self.editorial.get(fid, {}).get("quotes") or [])
                    if q.get("text", {}).get("en")}
+        # Le CHOIX ÉDITORIAL d'abord (planche citdeb, NG 2026-08-14) : quand
+        # l'auteur a désigné LA citation d'un couple figure × pôle dans
+        # ``editorial/<id>.json``, elle gagne d'office — le classement P3 ne
+        # reste qu'un filet là où rien n'est arbitré. Le texte choisi doit être
+        # un extrait verbatim d'une citation ÉLIGIBLE du registre : introuvable
+        # = erreur bruyante, jamais un repli silencieux.
+        choice = (self.editorial.get(fid, {}).get("debate_choice") or {}).get(f"{axis}/{side}")
         on_pole, ranked = set(self.pole_items(axis, side)), []
         for q in self.ledger.get(fid, []):
             text = q["text"]
@@ -510,6 +517,18 @@ class Hub:
             return None
         ranked.sort(key=lambda r: r[:10])
         *_, q, match, items = ranked[0]
+        display_override = None
+        if choice:
+            wanted = _flat(choice["en"])
+            holders = [r for r in ranked if wanted in _flat(r[-3]["text"])]
+            if not holders:
+                raise SystemExit(
+                    f"{fid} {axis}/{side}: le choix éditorial n'est un extrait "
+                    f"d'aucune citation éligible du registre — corriger "
+                    f"editorial/{fid}.json ou le registre, jamais ici")
+            *_, q, match, items = holders[0]
+            if _flat(choice["en"]) != _flat(q["text"]):
+                display_override = choice["en"]      # extrait verbatim raccourci
         full = _reference(q, match)
         src = q.get("source") or {}
         # Clés BibTeX : seulement si le hub les a promues au-delà de
@@ -517,12 +536,14 @@ class Hub:
         # liste est vide et la slide affiche la chaîne de référence vérifiée.
         bibkeys = (list(src.get("citekeys") or [])
                    if src.get("citekeys_confidence") in _BIBKEY_TRUSTED else [])
-        return {"en": (match or {}).get("text", {}).get("en") or q["text"],
-                "fr": (match or {}).get("text", {}).get("fr"),
+        return {"en": display_override
+                      or (match or {}).get("text", {}).get("en") or q["text"],
+                "fr": None if display_override else (match or {}).get("text", {}).get("fr"),
                 "reference": _short_reference(full),
                 "reference_full": full,
                 "citekeys": bibkeys,
                 "curated": bool(match), "documents": items,
+                "editorial": bool(choice),
                 "reasoning": self.reasoning(fid, items, axis, side),
                 "anchored": any(_anchored(q["text"],
                                           (self.annotations.get(fid, {}).get(i) or {}).get("anchor"))
@@ -680,11 +701,19 @@ def build(hub: Hub) -> dict:
                         if any(p["id"] == fid for p in picked):
                             continue
                         f = hub.figure[fid]
+                        editorial = hub.editorial.get(fid, {})
                         picked.append({
                             "id": fid, "name": f["name"], "dates": f.get("dates"),
                             "origin": f.get("origin"), "stance": f.get("stance"),
                             "wave": (hub.wave.get(f.get("wave"), {}).get("name") or {}).get("en"),
                             "score": round(100 - distance if side == "right" else distance),
+                            # La présentation éditoriale (pourquoi cette figure,
+                            # sa révolution, sa posture) et sa place dans la
+                            # société de l'époque — demande NG 2026-08-14 : le
+                            # tooltip de chaque slide figure doit rappeler qui
+                            # elle est. Rédigé DANS le hub, jamais ici.
+                            "presentation": (editorial.get("presentation") or {}).get("en"),
+                            "epoch": ((editorial.get("biography") or {}).get("place") or {}).get("en"),
                             "quote": quote, "media": assets,
                         })
                     if len(picked) == FIGURES_PER_POLE:

@@ -148,7 +148,14 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
     sur les dix-huit exemplaires du gabarit.
     """
     pole_name = text(pole["pole"], lang)
-    entries = _why_here(f, pole_name, lang) + [
+    # En tête du tooltip : QUI est cette figure (demande NG 2026-08-14 —
+    # pourquoi elle, sa révolution, son rôle dans la société de l'époque).
+    # Les deux textes sont la ``presentation`` et la ``biography.place``
+    # éditoriales du hub, gelées telles quelles — jamais rédigés ici.
+    who = [(f"Who — and why {f['name']}", f["presentation"])] if f.get("presentation") else []
+    if f.get("epoch"):
+        who.append(("In the society of their time", f["epoch"]))
+    entries = who + _why_here(f, pole_name, lang) + [
                (f"{f['name']} ({f.get('dates', '')})",
                 f"{f.get('origin', '')} · {f.get('wave', '')} · score {f['score']} on "
                 f"this axis."),

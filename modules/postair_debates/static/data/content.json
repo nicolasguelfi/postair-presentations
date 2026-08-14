@@ -138,41 +138,46 @@
      "stance": "skeptic",
      "wave": "Railway and telegraph",
      "score": 7,
+     "presentation": "Leo Tolstoy (1828–1910), Russian novelist turned moral-religious critic, excommunicated by the Orthodox Church in 1901, addressed peasants and educated classes alike from his estate. His wave was the railway and the telegraph binding Imperial Russia — a society nine-tenths peasant — this study’s mirror for today’s AI. His stance was skeptical on two joined grounds: class — the telegraph served the “so-called cultured class” while the peasant heard “only the buzzing of the wires” — and moral-religious, judging technology by conscience and the Gospel; his instrument was voluntary moral renunciation, not law or force. No caricature: at 67 he learned to ride a bicycle with childlike pleasure. What instructs is the discipline of his recurring test — who benefits, who bears the cost, and by what standard a society should judge what it is told to call progress.",
+     "epoch": "Leo Tolstoy (1828–1910) was a Russian novelist and moral-religious thinker whose later work turned from fiction toward social and ethical criticism. Alongside the fiction for which he was internationally known, he produced a substantial body of essays and treatises — \"Progress and the Definition of Education\" (1862), the autobiographical \"A Confession\" (written 1879–1882), the treatise \"What Shall We Do?\" (1886), \"The Kingdom of God Is Within You\" (1894), and \"The Slavery of Our Times\" (1900) — that made him a leading voice of Christian anarchism and pacifism. Writing from his estate in Imperial Russia, he addressed peasants and educated classes alike, and his moral authority extended well beyond literature. In 1901 the Russian Orthodox Church excommunicated him, a measure of how far his religious dissent unsettled the established institutions of his time.",
      "quote": {
-      "en": "hastily brought together by means of telegraphs and telephones and railways",
+      "en": "we should be on our guard not to overestimate science and scientific methods … concerning investigations as to how to set an axe … science never troubles itself.",
       "fr": null,
-      "reference": "Kingdom 1894",
-      "reference_full": "Kingdom 1894",
-      "citekeys": [],
+      "reference": "tolstoy1886-whatshallwedo",
+      "reference_full": "tolstoy1886-whatshallwedo",
+      "citekeys": [
+       "tolstoy1886-whatshallwedo"
+      ],
       "curated": false,
       "documents": [
-       "TRU-01",
-       "TRU-05"
+       "TRU-02",
+       "TRU-04"
       ],
+      "editorial": true,
       "reasoning": [
        {
-        "item": "TRU-01",
+        "item": "TRU-02",
         "statement": {
-         "en": "I trust public institutions to regulate AI in the general interest.",
-         "fr": "Je fais confiance aux institutions publiques pour réguler l'IA dans l'intérêt général."
+         "en": "When recognised experts state that an AI system is safe, I generally trust their judgement.",
+         "fr": "Quand des experts reconnus déclarent qu'un système d'IA est sûr, je fais généralement confiance à leur jugement."
         },
-        "response": 0,
+        "response": 1,
         "direction": "toward",
-        "anchor": "tolstoy1894-kingdom: the State that governs the technology is a coercive apparatus (special-train flogging), not a regulator acting in the general interest",
+        "anchor": "tolstoy1900-slavery: the 'men of science' hold railways/telegraphs 'sacrosanct', a teaching 'conservative, gross and cruel' serving the well-to-do",
         "confidence": "high",
-        "transposition": "public institutions → the tsarist State and its bureaucracy"
+        "transposition": "recognised experts → the men of science / educated class"
        },
        {
-        "item": "TRU-05",
+        "item": "TRU-04",
         "statement": {
-         "en": "I believe the bodies in charge of overseeing AI serve their own interests first.",
-         "fr": "Je pense que les organismes chargés de surveiller l'IA servent d'abord leurs propres intérêts."
+         "en": "Concerning AI, I rely on my own judgement rather than on experts.",
+         "fr": "Concernant l'IA, je m'appuie sur mon propre jugement plutôt que sur les experts."
         },
         "response": 5,
         "direction": "toward",
-        "anchor": "tolstoy1900-slavery: the men of science defend the order that frees them from toil (Fiat cultura, pereat justitia); tolstoy1894-kingdom: State supervision of citizens' loyalty",
+        "anchor": "tolstoy1882-confession: neither science nor rational authority answers how to live — conscience and the labourer's own knowledge do; tolstoy1886-whatshallwedo: science ignores the axe and the loaf",
         "confidence": "high",
-        "transposition": "oversight bodies → State, Church and the scientific establishment"
+        "transposition": null
        }
       ],
       "anchored": false,
@@ -199,6 +204,8 @@
      "stance": "enthusiast",
      "wave": "Internet and Web",
      "score": 10,
+     "presentation": "John Perry Barlow (1947–2018), Grateful Dead lyricist, Wyoming rancher and co-founder of the Electronic Frontier Foundation (1990), became a recognised voice of early cyberspace through The Economy of Ideas (1994) and A Declaration of the Independence of Cyberspace (1996). His wave was the internet’s leap from research networks to mass medium, met through The WELL and the legal frictions of a networking public — this study’s mirror for today’s AI. The record shows an unqualified enthusiast: cyberspace an emancipatory civilisation of the mind, beyond state sovereignty, ordered by ethics rather than imposed law — matched by years of unpaid civil-liberties advocacy. What instructs is this documented experiment in maximal techno-optimism: a utopian partly right about freedom, partly wrong about sovereignty, faithful to his thesis to the end.",
+     "epoch": "John Perry Barlow (1947-2018) was an American lyricist for the Grateful Dead, a Wyoming cattle rancher, and an internet-civil-liberties advocate whose life spanned strikingly different worlds. An early member of the pioneering online community The WELL, he co-founded the Electronic Frontier Foundation in 1990 with Mitch Kapor and John Gilmore, an organisation dedicated to defending civil liberties on networked systems, and he served on its board until his death; in 2012 he also co-founded the Freedom of the Press Foundation. His standing in the emerging digital culture rested less on technical work than on words: two texts made him a recognised voice of early cyberspace thought, A Declaration of the Independence of Cyberspace (Davos, 1996) and the essay The Economy of Ideas (Wired, 1994). He occupied an unusual position between counterculture, ranching and the networked frontier, which lent his advocacy its distinctive rhetorical register.",
      "quote": {
       "en": "We believe that from ethics, enlightened self-interest, and the commonweal, our governance will emerge.",
       "fr": "Nous croyons que de l'éthique, de l'intérêt personnel éclairé et du bien commun émergera notre gouvernance.",
@@ -212,6 +219,7 @@
        "TRU-03",
        "TRU-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRU-03",
@@ -262,17 +270,22 @@
      "stance": "enthusiast",
      "wave": "Computer, cybernetics, automation",
      "score": 10,
+     "presentation": "Alan Turing (1912–1954), English mathematician, stood where mathematics, the first stored-program computers and the public debate over thinking machines met — a limit case in this study, since his wave is the direct ancestor of today's AI. His stance was confident advocacy with a method: replace the ill-defined “can machines think?” with a measurable test, predict openly, and demand “fair play for the machine.” He named the danger plainly — machines might “take control” — yet remained an advocate rather than a brake. What instructs is the lucidity: forecast, criterion and acknowledged risk held together in one stance.",
+     "epoch": "Alan Mathison Turing (1912–1954) was an English mathematician who worked at the centre of Britain's postwar computing effort. His documented career unfolded inside the state scientific establishment: wartime service at Bletchley Park, the National Physical Laboratory, and the University of Manchester. He addressed the London Mathematical Society on the prospects of automatic computing machines in February 1947, published \"Computing Machinery and Intelligence\" in the philosophy journal Mind in 1950, and wrote the first programming manual for the Manchester Electronic Computer (Mark II) in 1951. He also circulated the National Physical Laboratory report \"Intelligent Machinery\" (1948) and took part in BBC radio discussions of machine thinking in 1951 and 1952. He thus stood at the meeting point of mathematics, the emerging discipline of computing, and the public debate over whether machines could think.",
      "quote": {
       "en": "(a) An unwillingness to admit the possibility that mankind can have any rivals in intellectual power. This occurs as much amongst intellectual people as amongst others: they have more to lose.",
       "fr": null,
-      "reference": "IM 1948 (opening list of objections)",
-      "reference_full": "IM 1948 (opening list of objections)",
-      "citekeys": [],
+      "reference": "turing1948-im, IM 1948 (opening list of objections)",
+      "reference_full": "turing1948-im, IM 1948 (opening list of objections)",
+      "citekeys": [
+       "turing1948-im"
+      ],
       "curated": false,
       "documents": [
        "TRU-02",
        "TRU-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRU-02",
@@ -493,6 +506,8 @@
      "stance": "enthusiast",
      "wave": "Synthetic chemistry, technosphere",
      "score": 70,
+     "presentation": "Norman Borlaug (1914–2009), American agronomist and 1970 Nobel Peace laureate, directed the wheat-breeding work in Mexico that grew into the Green Revolution. His wave was agriculture’s synthetic-chemistry transformation — chemical fertilizer he called the fuel of its forward thrust, synthetic pesticides, improved seed — this study’s mirror for today’s AI. His stance was the enthusiast’s: deploy fast, at scale, to feed the poorest, defending transgenic crops and condemning “antiscience zealotry.” Yet the optimism was conditional and moral, not naïve: the Nobel lecture calls the Green Revolution a temporary success, a breathing space, grounded in food as a moral right. What instructs is urgency to deploy joined to an explicit statement of the technology’s limits and ethical purpose.",
+     "epoch": "Norman Ernest Borlaug (1914–2009) was an American agronomist and plant pathologist who directed the cooperative wheat-improvement work that developed high-yielding, disease-resistant dwarf wheat varieties, first in Mexico within the Rockefeller Foundation programme that later grew into the CIMMYT research centre. Trained in the North American land-grant scientific tradition, he became one of the most publicly recognised agricultural scientists of the mid-twentieth century, awarded the Nobel Peace Prize in 1970 for the yield gains his methods brought to wheat and rice cultivation in the developing world. His standing rested not on a single theoretical work but on a body of field-based breeding practice and on widely circulated statements of its purpose — chief among them the 1970 Nobel lecture, \"The Green Revolution, Peace, and Humanity,\" which framed the enterprise as a moral response to hunger.",
      "quote": {
       "en": "I see no difference between the varieties carrying a BT gene… and the varieties created by conventional plant breeding.",
       "fr": null,
@@ -506,6 +521,7 @@
        "TRU-02",
        "TRU-03"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRU-02",
@@ -556,31 +572,49 @@
      "stance": "self-regulating-pioneer",
      "wave": "Genetic engineering",
      "score": 67,
+     "presentation": "Paul Berg (1926–2023), American biochemist and 1980 Nobel laureate in Chemistry, built the first recombinant DNA molecules — the opening act of genetic engineering, a technology whose promise and hazards were debated before either was fully known. Facing that uncertainty he chose a rare course: in 1974 he led the call for a voluntary moratorium on the riskiest experiments, then chaired the 1975 Asilomar Conference that resumed them under graded containment rules of the community's own making — while later resisting over-restrictive legislation. His trajectory — pause, then proceed under the field's own rules — remains the textbook case of a science governing itself before being governed, wary equally of unmanaged risk and of heavy outside control.",
+     "epoch": "Paul Berg (1926-2023) was an American biochemist and one of the leading molecular biologists of the postwar United States. He was awarded the Nobel Prize in Chemistry in 1980 for his fundamental studies of nucleic acids, and his Nobel Lecture, \"Dissections and Reconstructions of Genes and Chromosomes\" (Stockholm, 8 December 1980), documents the work for which he is best known: the construction of the first recombinant DNA molecules, joining genetic material from different organisms and reshaping the working methods of molecular biology (berg1980-nobel). Beyond the bench, he occupied a position of scientific authority in his community, chairing the National Academy of Sciences committee that examined the hazards of the new techniques and convening, as its chairman, the 1975 Asilomar Conference that set the terms under which the field would proceed (berg1974-letter, berg1975-asilomar).",
      "quote": {
-      "en": "Others, reflecting their intuition and expertise, argued that such cells, viruses and recombinant DNAs posed no risk at all. The overwhelming assessment today is that the latter view was correct.",
+      "en": "If the Asilomar exercise was a success, it was because scientists took the initiative in raising the issue rather than having it raised against them.",
       "fr": null,
-      "reference": "Berg retrospective 2004",
-      "reference_full": "Berg retrospective 2004",
-      "citekeys": [],
+      "reference": "berg2004-nobelessay, Berg retrospective 2004",
+      "reference_full": "berg2004-nobelessay, Berg retrospective 2004",
+      "citekeys": [
+       "berg2004-nobelessay"
+      ],
       "curated": false,
       "documents": [
-       "TRU-02"
+       "TRU-01",
+       "TRU-06"
       ],
+      "editorial": true,
       "reasoning": [
        {
-        "item": "TRU-02",
+        "item": "TRU-01",
         "statement": {
-         "en": "When recognised experts state that an AI system is safe, I generally trust their judgement.",
-         "fr": "Quand des experts reconnus déclarent qu'un système d'IA est sûr, je fais généralement confiance à leur jugement."
+         "en": "I trust public institutions to regulate AI in the general interest.",
+         "fr": "Je fais confiance aux institutions publiques pour réguler l'IA dans l'intérêt général."
         },
-        "response": 5,
+        "response": 3,
         "direction": "toward",
-        "anchor": "berg2004-nobelessay: expert scientific judgement vindicated ('the overwhelming assessment today is that the latter view was correct')",
-        "confidence": "high",
+        "anchor": "berg1974-letter: entrusts governance to the NIH (a scientific public body) — moderate trust in that institution; guarded toward political regulators (berg2004-nobelessay)",
+        "confidence": "medium",
+        "transposition": "public institutions → NIH/NAS scientific bodies vs political legislators"
+       },
+       {
+        "item": "TRU-06",
+        "statement": {
+         "en": "As far as I can, I check claims about AI myself rather than accepting official statements.",
+         "fr": "Dans la mesure du possible, je vérifie moi-même les affirmations sur l'IA plutôt que d'accepter les déclarations officielles."
+        },
+        "response": 3,
+        "direction": "against",
+        "anchor": "berg2004-nobelessay: a scientist's verify-for-yourself ethos, but he accepted the collective institutional consensus he helped build (moderate)",
+        "confidence": "low",
         "transposition": null
        }
       ],
-      "anchored": true,
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
@@ -604,6 +638,8 @@
      "stance": "governance-advocate",
      "wave": "Artificial intelligence",
      "score": 63,
+     "presentation": "Yoshua Bengio (born 1964), co-founder of modern deep learning, 2018 Turing Award laureate, recorded as the field’s most-cited researcher, lived the very wave this study takes as its subject: artificial intelligence itself, whose acceleration past GPT-4-class systems he judged to have outrun precaution and governance. From inside, he revised his position on public evidence — first scientific signatory of the 2023 pause letter, Senate testimony for regulation “beyond voluntary guidelines,” chair of the 2025 International AI Safety Report — while continuing to build: the deliberately non-agentic “Scientist AI” and the nonprofit LawZero (2025). A living figure still in motion, he models how precaution and retained optimism can coexist without collapsing into boosterism or doom.",
+     "epoch": "Yoshua Bengio (born 1964) is one of the three researchers credited with founding modern deep learning, for which he shared the 2018 A.M. Turing Award; the dossier records him among the most-cited researchers in artificial intelligence. Rather than retreating into eminence, he has remained an active frontier researcher into his sixties, reorienting his own programme toward a new, deliberately non-agentic architecture he calls \"Scientist AI\" and, in June 2025, founding the nonprofit LawZero (launched with USD 30 million) to pursue safety-oriented research outside commercial pressures. He thus occupies a rare dual standing: a foundational technical author of the field and, since 2023, one of its most institutionally prominent voices on governance, chairing the international expert panel behind the 2025 International AI Safety Report while continuing to build.",
      "quote": {
       "en": "agile national and international regulations — beyond voluntary guidelines",
       "fr": null,
@@ -616,6 +652,7 @@
       "documents": [
        "TRU-01"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRU-01",
@@ -824,6 +861,8 @@
      "stance": "skeptic",
      "wave": "Genetic engineering",
      "score": 10,
+     "presentation": "Erwin Chargaff (1905–2002), Austrian-born biochemist who established the base-composition rules of DNA, became in later life a humanistic critic estranged from the molecular biology his own discoveries had made possible. His wave was genetic engineering — recombinant DNA creating new forms of life from the early 1970s — this study’s mirror for today’s AI, promoted largely by its own developers. His stance was deep skepticism: a new form of life, once released, cannot be recalled; no one holds the right to counteract “irreversibly, the evolutionary wisdom of millions of years”; and scientists’ self-regulation cannot weigh a risk borne by all humanity. What instructs is the method more than the verdict — irreversibility first, and those who profit are not the only ones entitled to judge safety. Documentary richness, never a moral model.",
+     "epoch": "Erwin Chargaff (1905-2002), an Austrian-born biochemist who made his scientific career in the United States, established the base-composition regularities known as Chargaff's rules — that in DNA adenine equals thymine and cytosine equals guanine — findings his own work, drawing on chromatographic methods, made central to the study of nucleic acids. An eminent figure of mid-twentieth-century biochemistry and author of Essays on Nucleic Acids (Elsevier, 1963), he became in later life a humanistic critic and memoirist. His Heraclitean Fire: Sketches from a Life before Nature (The Rockefeller University Press, 1978) presents him as a scientist steeped in classical learning who grew estranged from the molecular biology his own discoveries had helped make possible. He remained within the scientific establishment while increasingly standing apart from it.",
      "quote": {
       "en": "What I see coming is a gigantic slaughterhouse, a molecular Auschwitz, in which valuable enzymes, hormones and so on will be extracted instead of gold teeth.",
       "fr": null,
@@ -836,6 +875,7 @@
       "documents": [
        "OPT-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPT-06",
@@ -874,6 +914,8 @@
      "stance": "victim-side-witness",
      "wave": "Atomic energy and weapons",
      "score": 13,
+     "presentation": "Ōe Kenzaburō (1935–2023), Japanese novelist and 1994 Nobel laureate in Literature, formed by the humanism of his teacher Kazuo Watanabe, became a public conscience on the atomic question with Hiroshima Notes (1965). His wave was atomic energy and weapons, met at the point of consequence, not invention — Hiroshima and Nagasaki, the 1954 Bikini test, then Fukushima in 2011 — this study’s mirror for today’s AI. His stance was victim-side across five decades: reading the atom “through the eyes of the victims of nuclear power,” and after Fukushima fusing weapons and civil nuclear power into a single refusal, carried into the ten-million-signature Sayonara Genpatsu campaign. What instructs is the method rather than the verdict: those who bear a technology’s consequences, not only its advocates, must be heard before it is scaled.",
+     "epoch": "Ōe Kenzaburō (1935–2023) was a Japanese novelist and essayist awarded the Nobel Prize in Literature in 1994; his Nobel lecture, \"Japan, the Ambiguous, and Myself,\" delivered 7 December 1994, deliberately set his work against Kawabata's earlier \"Japan, the Beautiful, and Myself.\" Formed by the humanism of his teacher Kazuo Watanabe, a scholar of Rabelais, he built a body of fiction and reportage centred on human vulnerability and moral witness. His documentary work Hiroshima Notes, serialized in the journal Sekai in 1964–65, published by Iwanami Shoten in 1965 and read for this study in its English translation, established him as a public conscience on the atomic question. The birth of his son Hikari, who lived with a disability and found healing through music, recurs across his writing as a source of what he called \"the exquisite healing power of art.\" He remained an engaged public intellectual until his death in 2023.",
      "quote": {
       "en": "To repeat the error by exhibiting, through the construction of nuclear reactors, the same disrespect for human life is the worst possible betrayal of the memory of Hiroshima's victims.",
       "fr": "Répéter l'erreur en manifestant, par la construction de réacteurs nucléaires, le même mépris de la vie humaine est la pire trahison possible de la mémoire des victimes de Hiroshima.",
@@ -887,6 +929,7 @@
        "OPT-01",
        "OPT-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPT-01",
@@ -937,30 +980,23 @@
      "stance": "skeptic",
      "wave": "Microbiology and vaccination",
      "score": 13,
+     "presentation": "Alfred Russel Wallace (1823–1913), British naturalist and co-discoverer of evolution by natural selection, largely self-taught, was also a social reformer and, by the 1890s, a prominent public figure of British science. His wave was the germ theory and the medical revolution it enabled — above all smallpox vaccination, reaching ordinary life as state power through Britain’s compulsory Vaccination Acts — this study’s mirror for today’s AI. Toward vaccination he was a documented skeptic: treating it as “a purely statistical question,” he examined the mortality figures himself and condemned the practice and its penal enforcement, insisting official assurances “must never be accepted without verification.” The posture is double-edged, and that is what instructs: his statistical case was found erroneous by the Royal Commission and later epidemiology, vaccination among scientific medicine’s great successes — a reminder that data-literate, principled dissent can still reach the wrong conclusion.",
+     "epoch": "Alfred Russel Wallace (1823–1913) was a British naturalist who, independently of Charles Darwin, arrived at the principle of natural selection, making him a co-discoverer of evolution by natural selection. Largely self-taught across surveying, natural history and statistics, he spent years collecting in the Amazon and the Malay Archipelago before returning to a public career in British science. His authority extended well beyond biology: in The Wonderful Century (1898) he surveyed and celebrated his era's scientific triumphs, and his autobiography My Life (1905) records a restless intellect drawn to heterodox causes. He was also a committed social reformer, serving as the first president of the Land Nationalisation Society (1881) and arguing, in Land Nationalisation (1882), that land was a common inheritance. By the 1890s he was a prominent public figure in British science.",
      "quote": {
-      "en": "This Essay has been written for the purpose of influencing Parliament, and securing the speedy abolition of the unjust, cruel, and pernicious Vaccination laws.",
-      "fr": null,
-      "reference": "Delusion* 1898",
-      "reference_full": "Delusion* 1898",
-      "citekeys": [],
-      "curated": false,
-      "documents": [
-       "OPT-01",
-       "OPT-04"
+      "en": "a crime against liberty, against health, and against humanity, which will, before many years have passed, be universally held to be one of the foulest blots on the civilization of the nineteenth century.",
+      "fr": "un crime contre la liberté, contre la santé et contre l'humanité, qui, avant que bien des années se soient écoulées, sera universellement tenu pour l'une des plus infâmes taches sur la civilisation du dix-neuvième siècle.",
+      "reference": "Vaccination a Delusion: Its Penal Enforcement a Crime, London: Swan Sonnenschein, 1898 …",
+      "reference_full": "Vaccination a Delusion: Its Penal Enforcement a Crime, London: Swan Sonnenschein, 1898 (closing sentence)",
+      "citekeys": [
+       "wallace1898-delusion"
       ],
+      "curated": true,
+      "documents": [
+       "OPT-04",
+       "OPT-05"
+      ],
+      "editorial": true,
       "reasoning": [
-       {
-        "item": "OPT-01",
-        "statement": {
-         "en": "Overall, I expect artificial intelligence to improve everyday life over the next ten years.",
-         "fr": "Dans l'ensemble, je m'attends à ce que l'intelligence artificielle améliore la vie quotidienne au cours des dix prochaines années."
-        },
-        "response": 1,
-        "direction": "toward",
-        "anchor": "wallace1898-delusion: vaccination 'a delusion', its laws 'unjust, cruel, and pernicious'; no expectation of benefit from the substituted technology",
-        "confidence": "high",
-        "transposition": null
-       },
        {
         "item": "OPT-04",
         "statement": {
@@ -970,6 +1006,18 @@
         "response": 5,
         "direction": "toward",
         "anchor": "wallace1898-delusion: vaccination creates more problems than it solves — 'a crime against liberty, against health, and against humanity'",
+        "confidence": "high",
+        "transposition": null
+       },
+       {
+        "item": "OPT-05",
+        "statement": {
+         "en": "I expect AI, on balance, to do lasting damage to society.",
+         "fr": "Je m'attends à ce que, au total, l'IA cause des dommages durables à la société."
+        },
+        "response": 5,
+        "direction": "toward",
+        "anchor": "wallace1898-century + wallace1898-delusion: 'the greatest and most pernicious failure of the century'; 'one of the foulest blots on the civilization of the nineteenth century'",
         "confidence": "high",
         "transposition": null
        }
@@ -1168,12 +1216,16 @@
      "stance": "futurist-enthusiast",
      "wave": "Motor, automobile, aviation",
      "score": 97,
+     "presentation": "Filippo Tommaso Marinetti (1876–1944), Italian poet and impresario of the avant-garde, founded Futurism with the 1909 manifesto on the front page of Le Figaro. His wave was the motor-aviation complex — racing car, aeroplane, the whole machine age of speed — this study’s mirror for today’s AI. His stance was unqualified exaltation, the wave’s machine-worship extreme: “a roaring motor car… is more beautiful than the Victory of Samothrace,” “Time and Space died yesterday,” danger and rupture embraced as first principles. He instructs as a limit case: a genuine aesthetic response to a new technology hardening into a doctrine that scorns caution, restraint and every voice of the past. The disclosure is plain: Marinetti co-founded the Fasci italiani di combattimento in 1919 and co-authored the Fascist manifesto, and the 1909 text glorifies war and voices “contempt for woman” — documentary richness, never a moral example.",
+     "epoch": "Filippo Tommaso Marinetti (born Alexandria, Egypt, 22 December 1876; died Bellagio, 2 December 1944) was an Italian poet and cultural agitator who founded the Futurist movement with the manifesto he published on the front page of the Paris daily Le Figaro on 20 February 1909, after a first Italian printing in the Gazzetta dell'Emilia of Bologna earlier that month. Writing across French and Italian, he extended the movement's programme through his 1911 essay Multiplied Man and the Reign of the Machine (collected in Le Futurisme), the Technical Manifesto of Futurist Literature (1912), and the typographic sound-poem Zang Tumb Tuuum (1914), the last drawn from his own reporting on the 1912 Siege of Adrianople. His standing in the pre-war avant-garde rested less on a single masterwork than on his role as impresario and theorist of a self-declared break with the museums, academies and inherited culture of his day.",
      "quote": {
       "en": "We declare that the splendor of the world has been enriched by a new beauty: the beauty of speed. A racing automobile … a roaring motor car which seems to run on machine-gun fire, is more beautiful than the Victory of Samothrace.",
       "fr": "Nous déclarons que la splendeur du monde s'est enrichie d'une beauté nouvelle : la beauté de la vitesse. Une automobile de course … une automobile rugissante, qui semble courir sur de la mitraille, est plus belle que la Victoire de Samothrace.",
       "reference": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, point 4 …",
       "reference_full": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, point 4 (R.W. Flint translation)",
-      "citekeys": [],
+      "citekeys": [
+       "marinetti1909-manifesto"
+      ],
       "curated": true,
       "documents": [
        "OPT-01",
@@ -1181,6 +1233,7 @@
        "OPT-04",
        "OPT-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPT-01",
@@ -1255,6 +1308,8 @@
      "stance": "enthusiast",
      "wave": "Steam engine, industrialisation",
      "score": 97,
+     "presentation": "Saint-Simon (1760–1825), French social reformer and publicist of post-Revolutionary France, argued from the Lettres d’un habitant de Genève (1802) to the Nouveau christianisme (1825) that society be led by its most capable producers. His wave was industrialisation — machine, factory and positive science reordering economic life — this study’s mirror for today’s AI: a technology that forces a society to decide who directs it and to what end. His stance was the enthusiast’s: the productive class “la fleur de la société,” direction to pass from an idle governing class to “les plus capables,” bound late to a moral precept — improving the lot of the poorest and most numerous class. Read forward, rule-by-capacity is plainly an ancestor of technocracy, a lineage neither endorsed nor laundered here — though he wrote in his own brakes, men “governed the least possible.” What instructs: greeting a general-purpose technology as an engine of shared betterment while entrusting its direction to demonstrated expertise — a bet the AI debate now revisits.",
+     "epoch": "Claude Henri de Rouvroy, comte de Saint-Simon (1760–1825), was a French social reformer and publicist active in the intellectual ferment of post-Revolutionary and Restoration France. He was a writer and doctrinaire rather than an engineer or laboratory scientist; his standing rested on a sequence of programmatic essays that circulated among savants and reform-minded readers. His first published work, the anonymous Lettres d'un habitant de Genève à ses contemporains (1802/1803), proposed that society entrust its leadership to its most capable men of science and art. Over the following two decades appeared the writings for which he is remembered: L'Organisateur (1819), containing the celebrated \"parabole\"; Du système industriel (1821); the Catéchisme des industriels (1823); and, in the year of his death, Nouveau christianisme (1825).",
      "quote": {
       "en": "La prospérité de la France ne peut avoir lieu que par l'effet et en résultat des progrès des sciences, des beaux-arts et métiers.",
       "fr": null,
@@ -1268,6 +1323,7 @@
        "OPT-01",
        "OPT-02"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPT-01",
@@ -1318,6 +1374,8 @@
      "stance": "visionary-enthusiast",
      "wave": "Electricity",
      "score": 97,
+     "presentation": "Nikola Tesla (1856–1943), Serbian-American inventor, built the electrical age and then extrapolated it to planetary scale: power without wires, distance “virtually eliminated,” the earth imagined as “a huge brain.” For thirty-five years his documented stance held constant: human progress is the increase of human energy, and the machine is its means — applied to peace, agriculture and a coming technological millennium. That enthusiasm coexisted with a distrust of institutions, which he expected technology itself to render unnecessary. The dossier discloses the blind spots plainly — including eugenicist remarks in late interviews, in no way endorsed: his case shows both the generative power and the characteristic failures of unqualified technological optimism.",
+     "epoch": "Nikola Tesla (1856–1943), a Serbian-American inventor and electrical engineer, worked at the frontier of the electrical age in the United States. His standing rests less on institutional office than on a body of applied work and signed prose: the programmatic essay The Problem of Increasing Human Energy (Century Illustrated Magazine, June 1900), the peace essay The Transmission of Electrical Energy Without Wires (Electrical World and Engineer, 1905), and the autobiography My Inventions, serialized in Electrical Experimenter in 1919. His documentary anchor as a builder is U.S. Patent 613,809 (filed and granted 1898) for the radio-controlled boat — the telautomaton — publicly demonstrated at the 1898 Electrical Exhibition in Madison Square Garden. Across these sources he appears as a working inventor who both practised and prophesied the new art of applied electricity, and who addressed a wide public through the popular and trade press of his day.",
      "quote": {
       "en": "So we find that the three possible solutions of the great problem of increasing human energy are answered by the three words: food, peace, work.",
       "fr": null,
@@ -1331,6 +1389,7 @@
        "OPT-01",
        "OPT-02"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPT-01",
@@ -1551,18 +1610,23 @@
      "stance": "skeptic",
      "wave": "Steam engine, industrialisation",
      "score": 10,
+     "presentation": "Thomas Carlyle (1795–1881), Scottish essayist and social critic, a prophetic public intellectual outside university and party, gave the age one of its lasting names: the “Mechanical Age.” His wave was industrialisation — the living artisan “driven from his workshop,” the “huge demon of Mechanism” oversetting multitudes of workmen, an England “full of wealth” yet “dying of inanition” — this study’s mirror for today’s AI. His stance was cultural and spiritual skepticism, not luddite refusal: he granted the material gains while diagnosing an inward loss, “men grown mechanical in head and in heart,” and asked for governance, not for turning back. Disclosure is owed: he also wrote the notorious racist pamphlet Occasional Discourse (1849/1853), excluded from the evidence corpus — selection for documentary richness, never as a moral model.",
+     "epoch": "Thomas Carlyle (1795-1881), born in Ecclefechan, Scotland, was an essayist, historian and social critic who became one of the most influential moral commentators of the early Victorian period. Writing first anonymously and then under his own name, he moved from the philosophical fiction of Sartor Resartus (serialised in Fraser's Magazine, 1833-34) to the social criticism of Chartism (1839) and Past and Present (1843), works through which, as later scholarship notes, he framed what came to be called the \"Condition-of-England question\" (Diniejko 2010). His 1829 Edinburgh Review essay \"Signs of the Times\" gave the age one of its enduring self-descriptions, the \"Mechanical Age.\" Standing outside university and party, Carlyle exercised his authority as a prophetic public intellectual, and his diagnoses of industrial society shaped debate among his contemporaries well beyond literary circles.",
      "quote": {
       "en": "It is not what a man outwardly has or wants that constitutes the happiness or misery of him. … It is the feeling of injustice that is insupportable to all men.",
       "fr": null,
-      "reference": "Chartism 1839 (ch. V)",
-      "reference_full": "Chartism 1839 (ch. V)",
-      "citekeys": [],
+      "reference": "carlyle1839-chartism, Chartism 1839",
+      "reference_full": "carlyle1839-chartism, Chartism 1839",
+      "citekeys": [
+       "carlyle1839-chartism"
+      ],
       "curated": false,
       "documents": [
        "RAT-04",
        "RAT-05",
        "RAT-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "RAT-04",
@@ -1625,6 +1689,8 @@
      "stance": "humanist-ambivalent",
      "wave": "Motor, automobile, aviation",
      "score": 10,
+     "presentation": "Antoine de Saint-Exupéry (1900–1944), French aviator and writer, met the machine age from its frontier — night mail runs over the Sahara and South America, six thousand five hundred flying hours “under every sky in the world.” His stance is structurally two-sided: the aeroplane is “a tool, a tool like the plough,” an instrument of vision that “made us discover the true face of the earth” — while the machine-age civilisation around it threatened to reduce man to “robot-man, termite-man.” He welcomes the instrument and dreads the culture; the discipline he models is to separate the tool from the civilisation that deploys it, and to insist that man remain sovereign over both.",
+     "epoch": "Antoine de Saint-Exupéry (1900–1944) was a French aviator and writer whose literary standing grew directly out of his flying career. From 1926 he flew for the Compagnie Latécoère and its successor Aéropostale, serving as stopover chief at the Cap Juby desert outpost from 1927 and working the mail routes across the Sahara and South America. His books drew on that experience: Terre des hommes (1939), which received a prize from the Académie française, Pilote de guerre (1942, published in New York as Flight to Arras), Lettre à un otage (1943) and the fable Le Petit Prince (1943). By the early 1940s he was an established French writer whose books reached an international readership, several appearing first in New York. He returned to military reconnaissance in 1943–44 and disappeared on a mission on 31 July 1944. Two further works, Lettre au général X and Citadelle, appeared posthumously.",
      "quote": {
       "en": "La civilisation est un bien invisible puisqu'elle porte non sur les choses, mais sur les invisibles liens qui les nouent l'une à l'autre.",
       "fr": null,
@@ -1638,6 +1704,7 @@
        "RAT-04",
        "RAT-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "RAT-04",
@@ -1688,12 +1755,16 @@
      "stance": "ambivalent-enthusiast",
      "wave": "Railway and telegraph",
      "score": 13,
+     "presentation": "Victor Hugo (1802–1885), French poet, novelist and parliamentary voice — nineteen years an exile under the Second Empire — wrote as a poet-prophet whose judgements were moral and visionary. His wave was the coupling of railway, steamship and electric telegraph compressing Europe within a lifetime: he rode the new Antwerp–Brussels line in 1837, and by 1849 enrolled the same machines, “le fil électrique de la concorde,” in his vision of a federated, peaceful Europe. His stance was the ambivalent enthusiast’s: a providential faith in progress — “tomorrow cannot wait” — while the same 1837 letter that praised the train’s magnificent movement mourned “l’utile tout sec, jamais le beau.” What instructs is the pairing: embracing a transformative technology early while naming, in the same breath, a real cost to weigh against the gain — and measuring progress morally, by the elevation of the people, not efficiency alone.",
+     "epoch": "Victor Hugo (1802-1885) was a French poet, novelist and dramatist, and one of the defining voices of nineteenth-century French letters. His literary output spanned lyric verse, drama and the novel, and included the essay William Shakespeare (1864), a manifesto on genius and progress as much as a study of its title figure, and the Guernsey novel Les Travailleurs de la mer (1866). He was also a public and parliamentary figure: his speeches to the Assemblee legislative, later collected in Actes et paroles, argued for the destruction of destitution and for free, compulsory public schooling. His opposition to the Second Empire cost him nineteen years of exile (1851-1870). Across poetry, fiction and the political tribune, Hugo occupied a central place in the intellectual life of his era, writing as what the dossier calls a poet-prophet whose judgements were moral and visionary rather than measured.",
      "quote": {
       "en": "Voilà la triste infirmité de notre temps ; l'utile tout sec, jamais le beau.",
       "fr": null,
-      "reference": "Adèle 1837",
-      "reference_full": "Adèle 1837",
-      "citekeys": [],
+      "reference": "hugo1837-adele, Adèle 1837",
+      "reference_full": "hugo1837-adele, Adèle 1837",
+      "citekeys": [
+       "hugo1837-adele"
+      ],
       "curated": false,
       "documents": [
        "RAT-01",
@@ -1702,6 +1773,7 @@
        "RAT-04",
        "RAT-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "RAT-01",
@@ -1958,18 +2030,23 @@
      "stance": "enthusiast",
      "wave": "Atomic energy and weapons",
      "score": 83,
+     "presentation": "Edward Teller (1908–2003), Budapest-born American theoretical physicist, worked on the Manhattan Project, championed the hydrogen “Super” and helped found the Livermore weapons laboratory. His wave was the atom — weapons, reactors, fallout and test-ban debates — experienced as builder and adviser, this study’s mirror for today’s AI. His stance was strong, consistent enthusiasm for development: cheap nuclear power “at any place on the globe,” the nuclear age answered by “understanding and courage,” not restraint or prohibition, which he judged unworkable — “nuclear secrets will not keep” — opposing the international control Einstein and Oppenheimer favoured. The disclosure is plain: he gave adverse testimony in the 1954 Oppenheimer security hearing and campaigned lifelong for the hydrogen bomb — a documented, controversial enthusiast pole, endorsed in neither respect. He instructs because his optimism was principled and articulate: a technologist’s conviction can illuminate a technology’s promise while carrying real costs that warrant scrutiny.",
+     "epoch": "Edward Teller (1908-2003), born in Budapest and later a naturalised American, was a theoretical physicist who worked on the wartime Manhattan Project and became widely identified as a principal architect of the hydrogen bomb. He served for decades inside the United States defence-science establishment, advising the Atomic Energy Commission and helping found and direct the Lawrence Livermore National Laboratory, a second weapons laboratory he pressed for against the existing Los Alamos monopoly. Beyond the classified programmes, he wrote for the public: 'Our Nuclear Future' (with Albert L. Latter, 1958), 'The Legacy of Hiroshima' (with Allen Brown, 1962), 'Better a Shield Than a Sword' (1987), and his 'Memoirs' (2001). He stood among the era's physicists as an outspoken, often isolated advocate of nuclear development, more comfortable arguing his case in policy and public forums than deferring to the scientific consensus that frequently opposed him.",
      "quote": {
       "en": "It is important that we should approach the subject with an open mind and with as few emotions as is humanly possible. The emotions have their necessary place when we get to the stage in which we want to decide our actions.",
       "fr": null,
-      "reference": "Our Nuclear Future 1958 (ch. VIII)",
-      "reference_full": "Our Nuclear Future 1958 (ch. VIII)",
-      "citekeys": [],
+      "reference": "teller1958-nuclearfuture, Our Nuclear Future 1958",
+      "reference_full": "teller1958-nuclearfuture, Our Nuclear Future 1958",
+      "citekeys": [
+       "teller1958-nuclearfuture"
+      ],
       "curated": false,
       "documents": [
        "RAT-01",
        "RAT-03",
        "RAT-04"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "RAT-01",
@@ -2032,17 +2109,22 @@
      "stance": "enthusiast",
      "wave": "New science / telescope",
      "score": 80,
+     "presentation": "Francis Bacon (1561–1626), English lawyer, statesman and natural philosopher, rose to Lord Chancellor — until his 1621 conviction, confessed, for accepting gifts in judicial office — and wrote the programme of an organised, method-governed, state-supported experimental science, from The Advancement of Learning (1605) to the New Atlantis (1627). His wave was the “new science,” the turn from ancient authority to experiment, measured by printing, gunpowder and the compass, which had “changed the appearance and state of the whole world.” His enthusiasm was programmatic, not unconditional: knowledge for “the relief of man’s estate,” yet restrained — against rash anticipation and haste to profit, aware that innovations make losers as well as winners. What instructs is ambition coupled with method and moral governance.",
+     "epoch": "Francis Bacon (1561–1626) was an English lawyer, statesman and natural philosopher who rose through Elizabethan and Jacobean office to become Lord Chancellor; in 1621 he was impeached and convicted for accepting gifts while in judicial office, to which he confessed, and was removed from his post. His standing rests less on discoveries — he made none of the era's telescopic observations — than on a body of programmatic writing: The Advancement of Learning (1605), the Novum Organum issued within the unfinished Great Instauration (1620), the Essays or Counsels (1625), and the posthumously published New Atlantis (1627). Across these works he set out the case for an organised, method-governed, state-supported experimental science, addressing his plan directly to King James as its proper organiser.",
      "quote": {
       "en": "Of all signs there is none more certain or worthy than that of the fruits produced",
       "fr": null,
-      "reference": "NO 1620, I.73",
-      "reference_full": "NO 1620, I.73",
-      "citekeys": [],
+      "reference": "bacon1620-novum-organum, NO 1620, I.73",
+      "reference_full": "bacon1620-novum-organum, NO 1620, I.73",
+      "citekeys": [
+       "bacon1620-novum-organum"
+      ],
       "curated": false,
       "documents": [
        "RAT-01",
        "RAT-02"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "RAT-01",
@@ -2093,17 +2175,22 @@
      "stance": "enthusiast",
      "wave": "Steam engine, industrialisation",
      "score": 80,
+     "presentation": "Fukuzawa Yukichi (1835–1901), Japanese writer and educator, founder of Keio-gijuku and among the most widely read voices of Meiji Japan, repeatedly declined office and remained a self-described commoner. His wave was industrialisation arriving as a shock — treaty ports, steam, telegraph, the whole of Western bunmei — this study’s mirror for today’s AI: a foreign, fast-arriving technology a society must decide how deeply to absorb. His stance was the enthusiast’s, yet ordered: adopting civilisation’s outward forms — schools, guns, machines — is useless unless a people first acquire its animating spirit; independence is the goal, techniques only the means. Disclosure is owed: he is also the probable author of the 1885 editorial Datsu-A Ron, read by later scholars as a charter of Japanese expansionism — selection for documentary richness, never as a moral model.",
+     "epoch": "Fukuzawa Yukichi (1835-1901) was a Japanese writer, educator and translator, and among the most widely read public intellectuals of Meiji Japan. Born into a lower-ranking samurai family, he trained first in Dutch learning at Ogata Koan's Osaka school, then — after finding Dutch useless before the English signs of newly opened Yokohama in 1859 — taught himself English, and travelled with early Japanese missions abroad, volunteering for the Kanrin Maru's 1860 Pacific crossing. In 1868 he founded the private academy Keio-gijuku (today Keio University) and in 1882 launched the newspaper Jiji Shimpo. His principal works — the seventeen pamphlets of An Encouragement of Learning (Gakumon no Susume, 1872-76), An Outline of a Theory of Civilization (Bunmeiron no Gairyaku, 1875), and his late Autobiography (1899) — reached a mass readership. He repeatedly declined government office, remaining a self-described commoner.",
      "quote": {
       "en": "I find two things lacking; that is to say, a lack of studies in number and reason in material culture, and a lack of the idea of independence in spiritual culture.",
       "fr": null,
-      "reference": "Autobiography",
-      "reference_full": "Autobiography",
-      "citekeys": [],
+      "reference": "fukuzawa1899-autobiography, Autobiography",
+      "reference_full": "fukuzawa1899-autobiography, Autobiography",
+      "citekeys": [
+       "fukuzawa1899-autobiography"
+      ],
       "curated": false,
       "documents": [
        "RAT-01",
        "RAT-02"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "RAT-01",
@@ -2324,6 +2411,8 @@
      "stance": "precautionary",
      "wave": "Synthetic chemistry, technosphere",
      "score": 12,
+     "presentation": "Rachel Carson (1907–1964), American marine biologist and science writer, confronted the postwar wave of synthetic pesticides — DDT and its kin, sprayed at scale with, as she wrote, little advance investigation of their effects on soil, water, wildlife and man. Silent Spring (1962) built its case on measured residue data and food-chain evidence, yet never demanded prohibition: “it is not my contention that chemical insecticides must never be used,” and her Senate testimony asked that aerial spraying be reduced to the minimum needed, not abolished. Her stance models calibrated precaution — rigorous evidence coupled with the citizen's right to know and informed public consent, without collapsing into a blanket ban.",
+     "epoch": "Rachel Carson (1907-1964) was an American marine biologist and science writer. Her 1951 study of the oceans, The Sea Around Us, brought her wide readership and the National Book Award for Nonfiction in 1952; in her acceptance remarks she set out the credo that \"the materials of science are the materials of life itself\" and that science is public knowledge, not the \"priestlike\" preserve of the laboratory. That standing -- established well before her best-known work -- led Scripps College to invite her to deliver its commencement address in June 1962. Later that year she published Silent Spring (Houghton Mifflin, 1962), a landmark of modern environmental writing; its reception was such that CBS Reports devoted a national broadcast to her work in April 1963, shortly before she testified before a United States Senate subcommittee.",
      "quote": {
       "en": "we have allowed these chemicals to be used with little or no advance investigation of their effect",
       "fr": null,
@@ -2336,6 +2425,7 @@
       "documents": [
        "SPE-04"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "SPE-04",
@@ -2374,6 +2464,8 @@
      "stance": "skeptic",
      "wave": "Writing",
      "score": 16,
+     "presentation": "Plato (c. 428–348 BCE), Greek philosopher, witnessed the disruptive technology of his world — writing itself, moving thought out of memory and oral performance into external marks. His verdict, in the Phaedrus myth of Theuth, is the oldest critique of a cognitive technology: letters breed forgetfulness and offer “the appearance of wisdom, not true wisdom” — and the inventor is not the fit judge of his own invention. Yet he conceded writing's uses as reminder and archive, and was himself a prolific master of the medium he distrusted, engineering the written dialogue to imitate living thought. His discipline remains the instructive part: separate a tool's advertised benefit from its real effects on the mind.",
+     "epoch": "Plato (c. 428–348 BCE) was a Greek philosopher active in Athens across the late fifth and fourth centuries BCE, and a central figure of classical Greek thought. He composed roughly thirty written dialogues — among them the Republic, the Laws, the Statesman, the Timaeus and the Phaedrus, together with the Epistles (Letter VII) consulted here — in most of which Socrates is the principal speaker. Beyond their content, these works represent a formal achievement in their own right: Plato engineered a new written genre designed to imitate the movement of living dialectic on the page, giving philosophical argument a durable textual form. His standing rests less on a single doctrine than on this sustained body of composition, which set out positions on knowledge, the soul, art and the governance of the city that later readers returned to repeatedly.",
      "quote": {
       "en": "a change to a new type of music is something to beware of as a hazard of all our fortunes. For the modes of music are never disturbed without unsettling of the most fundamental political and social conventions",
       "fr": null,
@@ -2386,6 +2478,7 @@
       "documents": [
        "SPE-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "SPE-06",
@@ -2424,6 +2517,8 @@
      "stance": "philosophical-skeptic",
      "wave": "Computer, cybernetics, automation",
      "score": 20,
+     "presentation": "Hannah Arendt (1906–1975), German-born political theorist exiled to the United States, analysed how modern societies think, judge and act in common, from The Human Condition (1958) to “Lying in Politics” (1971). Her wave was the mid-century convergence of automation and computing — satellites, factory-emptying automation, “giant computers” — this study’s mirror for today’s AI, read as a philosopher of the public world, not a technician. Her stance was precise philosophical skepticism, not technophobia: the problem-solvers “did not judge, they calculated”; the danger lies not in the machines but in ourselves, a society of thoughtless creatures at the mercy of every gadget. What instructs is her program: “to think what we are doing,” refusing calculation as a substitute for judgment.",
+     "epoch": "Hannah Arendt (1906–1975) was a German-born political theorist who, after fleeing Nazi Germany, settled in the United States and became one of the twentieth century's influential thinkers on political action, authority, and the public realm. Her standing rests on a coherent body of work: The Human Condition (University of Chicago Press, 1958), the essays gathered in Between Past and Future — among them \"The Crisis in Culture\" and \"The Crisis in Education\" (Viking Press, 1961) — and On Revolution (Viking Press, 1963). She also wrote the widely debated Eichmann in Jerusalem (1963), the essay \"Karl Jaspers: Citizen of the World?\" (1957), \"Reflections on Violence\" (1969), and \"Lying in Politics\" (1971) on the Pentagon Papers. Across these works she analysed how modern societies think, judge, and act in common.",
      "quote": {
       "en": "thoughtlessness — the heedless recklessness or hopeless confusion or complacent repetition of “truths” which have become trivial and empty — seems to me among the outstanding characteristics of our time. What I propose, therefore, is very simple: it is nothing more than to think what we are doing.",
       "fr": "l'irréflexion — l'imprudence téméraire, la confusion sans espoir ou la répétition complaisante de « vérités » devenues triviales et vides — me semble compter parmi les caractéristiques marquantes de notre temps. Ce que je propose est donc très simple : ce n'est rien de plus que penser ce que nous faisons.",
@@ -2437,6 +2532,7 @@
        "SPE-01",
        "SPE-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "SPE-01",
@@ -2657,6 +2753,8 @@
      "stance": "reformist-enthusiast",
      "wave": "Mass media (radio, cinema)",
      "score": 83,
+     "presentation": "Bertolt Brecht (1898–1956), German playwright and theorist of epic theatre, treated the stage as an instrument of critical reason “in the scientific age.” His wave was mass media — Weimar radio and cinema, cultural production in the hands of broadcasters and film capital — this study’s mirror for today’s AI. He was a conditional, reformist enthusiast: radio was “one-sided when it should be two” and had to pass “from distribution to communication,” letting the listener speak as well as hear — but only once its ownership was transformed, since “only the State can organize this.” What instructs: he locates a technology’s value not in the apparatus but in who owns and organises it. That enthusiasm was inseparable from his committed Marxism, a position of the figure to weigh rather than adopt.",
+     "epoch": "Bertolt Brecht (1898–1956) was a German playwright, poet, and theatre theorist whose work reshaped the dramaturgy of the Weimar Republic and the decades that followed. Formed in the theatrical and literary milieu of 1920s Germany, he became the theorist of what he called epic theatre, codified in his mature essay \"A Short Organum for the Theatre\" (written 1948, published 1949), in which he defined the alienation effect (Verfremdungseffekt) meant to keep \"the spectator's intellect free and highly mobile.\" His output included The Threepenny Opera, over whose film adaptation he later litigated, and he worked as writer and collaborator across theatre, radio, and cinema. Committed to a Marxist reading of art and society, Brecht treated the playhouse as an instrument for critical reason \"in the scientific age\" rather than for emotional catharsis.",
      "quote": {
       "en": "the increasing concentration of mechanical means and the increasingly specialized training — tendencies that should be accelerated — call for a kind of resistance by the listener, and for his mobilization and redrafting as a producer.",
       "fr": null,
@@ -2670,6 +2768,7 @@
        "SPE-01",
        "SPE-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "SPE-01",
@@ -2720,6 +2819,8 @@
      "stance": "pragmatic-enthusiast",
      "wave": "Electricity",
      "score": 83,
+     "presentation": "Thomas Edison (1847–1931), American inventor who made invention itself an organised industrial enterprise, built the phonograph and a standardised central-station lighting system. His wave was electricity — lamps, motors and generating stations moving from laboratory demonstration to contested public utility — this study’s mirror for today’s AI. His stance was pragmatic enthusiasm: an invention was worth what it did and what it sold, machinery “the greatest of emancipators,” tempered by method — one per cent inspiration, several thousand things that won’t work. Disclosure is owed: in the war of currents his camp ran a denigration campaign against alternating current, including public electrocutions of animals, his own 1889 article serving that commercial interest. He instructs by holding enthusiasm, empirical discipline and self-interest together — documentary richness, not a moral model.",
+     "epoch": "Thomas Alva Edison (1847-1931) was an American inventor and inventor-entrepreneur who made invention itself into an organised industrial enterprise. He worked at the centre of the United States' electrical and machine age and, by the late 1870s, had introduced the phonograph, which he set out and championed in his own article 'The Phonograph and Its Future' in The North American Review (1878), written months after building the device. He went on to develop an electric-lighting system organised around standardised central-station generation, alongside motors and machinery. His authorized biography (Dyer and Martin, 1910) and later collections such as The Diary and Sundry Observations (posthumous, 1948) record a figure whose standing rested less on theory than on a prolific record of working, marketable inventions.",
      "quote": {
       "en": "My personal desire would be to prohibit entirely the use of alternating currents.",
       "fr": null,
@@ -2732,6 +2833,7 @@
       "documents": [
        "SPE-04"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "SPE-04",
@@ -2770,6 +2872,8 @@
      "stance": "enthusiast",
      "wave": "New science / telescope",
      "score": 83,
+     "presentation": "Galileo Galilei (1564–1642), Italian mathematician and natural philosopher, heard a rumour of a Dutch spyglass, rebuilt a better instrument within weeks, turned it on the sky — and went from observation to published book in about eight weeks. He then spent decades defending “sense experiences and necessary demonstrations” against consecrated authority, mocking the philosophers who refused to look through the telescope. His posture is early, active adoption: trust instrument-aided evidence over inherited authority, and iterate in the open. The record also keeps its costs — a thirteen-year self-embargo out of fear of ridicule, the frank pursuit of patronage, and the coerced abjuration of 1633, evidence of the control regime he lived under.",
+     "epoch": "Galileo Galilei (1564–1642) was an Italian mathematician and natural philosopher of the late Renaissance. By his own account in Il Saggiatore (1623), he was reappointed and confirmed for life in his professorship of mathematics at the University of Padua at double his previous salary, and he subsequently entered the service of the Medici court of Tuscany. His principal works span a compressed public career: the observational booklet Sidereus Nuncius (1610), the doctrinal Letter to the Grand Duchess Christina (1615), the polemical Il Saggiatore (1623), and the Dialogue Concerning the Two Chief World Systems (1632). His earlier correspondence with Johannes Kepler (1597, 1610) documents that his Copernican convictions predate his fame and place him in exchange with a leading astronomer of the age. He worked within a world whose epistemic authority rested with the university Aristotelians and the doctrinal organs of Counter-Reformation Rome.",
      "quote": {
       "en": "they appeared three times closer and nine times larger… Afterward I made another more perfect one… Finally, sparing no labor or expense…",
       "fr": null,
@@ -2782,6 +2886,7 @@
       "documents": [
        "SPE-02"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "SPE-02",
@@ -2990,6 +3095,8 @@
      "stance": "skeptic",
      "wave": "Internet and Web",
      "score": 23,
+     "presentation": "Neil Postman (1931–2003), American educator and cultural critic, built across Amusing Ourselves to Death (1985) and Technopoly (1992) a sustained critique of a culture reorganising itself around the screen. His wave was the personal computer and the networked information machine, promoted as a cure for information scarcity — this study’s mirror for today’s AI. His stance was cultural-critical skepticism, not luddism: “every technology is both a burden and a blessing,” each innovation “a Faustian bargain” carrying an embedded epistemological, political or social prejudice — proceed “with our eyes wide open so that we may use technology rather than be used by it.” He supplied the practical instrument — what is the problem to which this technology is the solution, and whose problem is it? — and lived the posture, writing longhand, owning no computer. What instructs is the discipline: name the trade-offs, ask who benefits, require a tool to justify itself before adoption.",
+     "epoch": "Neil Postman (1931–2003) was an American educator and cultural critic whose trade books made him one of his era's more widely read commentators on media and technology. Across the 1980s and 1990s he built a sustained critique of a culture reorganising itself around the screen and the machine. His best-known work, Amusing Ourselves to Death (Viking Penguin, 1985), examined a public discourse remade by television; Technopoly: The Surrender of Culture to Technology (Alfred A. Knopf, 1992) extended the argument to computing; and The End of Education (1995) and Building a Bridge to the 18th Century (1999) set out the cultural and educational ends against which he measured any new tool. His 1998 Denver address, \"Five Things We Need to Know About Technological Change,\" distilled the theory into five compact propositions. He wrote as a public intellectual addressing parents, teachers and citizens rather than as a technical specialist.",
      "quote": {
       "en": "It is a mistake to suppose that any technological innovation has a one-sided effect.",
       "fr": null,
@@ -3003,6 +3110,7 @@
        "OPE-02",
        "OPE-03"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPE-02",
@@ -3053,6 +3161,8 @@
      "stance": "skeptic",
      "wave": "Railway and telegraph",
      "score": 27,
+     "presentation": "Henry David Thoreau (1817–1862), American essayist and naturalist, lived beside his era's disruptive infrastructure — the railroad ran along Walden Pond during his stay, the telegraph hummed over his walks in Concord. His scepticism aimed at ends, seldom at capability: inventions as “improved means to an unimproved end,” the warning that “men have become the tools of their tools,” the priced refusal — “the swiftest traveller is he that goes afoot.” Yet the same pages record genuine wonder at the passing freight train and the wire's harp-like hum. He judges a technology by the human ends it advances and the attention it costs — never by adopting or rejecting it wholesale.",
+     "epoch": "Henry David Thoreau (1817-1862) was an American essayist, lecturer and naturalist writing from Concord, Massachusetts, in the orbit of New England Transcendentalism. His reputation rests on a compact body of prose: Walden; or, Life in the Woods (Ticknor and Fields, 1854), the account of his 1845-1847 stay in a self-built cabin beside Walden Pond; the essay \"Resistance to Civil Government\" (1849, later titled \"Civil Disobedience\"); the anti-slavery address \"Slavery in Massachusetts\" (1854); and the posthumously published lectures \"Walking\" (1862) and \"Life Without Principle\" (1863). His decades-long Journal, edited by Bradford Torrey (1906), records his daily observation. He also worked as a land surveyor, and the sounding survey of Walden Pond he describes shows a practiced facility with compass, chain and instrument. His standing grew chiefly after his death; in his lifetime he was a regional lecturer and writer rather than a widely celebrated figure.",
      "quote": {
       "en": "I had three pieces of limestone on my desk, but I was terrified to find that they required to be dusted daily, when the furniture of my mind was all undusted still, and I threw them out the window in disgust.",
       "fr": null,
@@ -3066,6 +3176,7 @@
        "OPE-01",
        "OPE-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPE-01",
@@ -3116,45 +3227,50 @@
      "stance": "skeptic",
      "wave": "Motor, automobile, aviation",
      "score": 33,
+     "presentation": "Georges Duhamel (1884–1966), French physician turned man of letters — war surgeon of 1914–1918, Prix Goncourt 1918, elected to the Académie française in 1935 — wrote from inside both establishments. His wave was the motor-and-machine civilisation of 1900–1940: assembly line, standardisation, cinema and radio, met head-on during his 1929 American journey — this study’s mirror for today’s AI. His stance was humanist-cultural skepticism: American cinema a “divertissement d’ilotes,” standardised culture “musique de conserve,” “la contagion de la machine” the coming world’s greatest peril. Yet no luddite: he mocked the despiser of progress, and as a doctor granted that mechanised medicine is “fort bien.” What instructs: a technically literate insider criticising the civilisation, not the tool.",
+     "epoch": "Georges Duhamel (1884-1966) was a French physician who became one of the established men of letters of the interwar Republic. Holding a doctorate in medicine, he served as a volunteer army surgeon in mobile surgical units (autochirs) throughout 1914-1918, an experience he turned into two celebrated books: Vie des martyrs (Mercure de France, 1917) and Civilisation, 1914-1917, which won the Prix Goncourt in 1918. He afterwards abandoned medicine for a full literary career, publishing novels, essays and travel accounts. His standing was institutionally consecrated when he was elected to the Academie francaise (fauteuil 30) on 21 November 1935, and he became a free member of the Academie de medecine from 1937. A doctor by training and a humanist by vocation, he wrote from within both the scientific and the literary establishments of his time.",
      "quote": {
-      "en": "Le livre est l'ami de la solitude. Il nourrit l'individualisme libérateur. Dans la lecture solitaire, l'homme qui se cherche lui-même a quelque chance de se rencontrer.",
+      "en": "Je me défie de la machine qui est en moi… de ma façon d'employer des machines, de désirer et de multiplier les machines, de faire abus des machines.",
       "fr": null,
-      "reference": "Défense 1937",
-      "reference_full": "Défense 1937",
-      "citekeys": [],
+      "reference": "duhamel1933-machinisme",
+      "reference_full": "duhamel1933-machinisme",
+      "citekeys": [
+       "duhamel1933-machinisme"
+      ],
       "curated": false,
       "documents": [
-       "OPE-01",
-       "OPE-04"
+       "OPE-05",
+       "OPE-06"
       ],
+      "editorial": true,
       "reasoning": [
        {
-        "item": "OPE-01",
+        "item": "OPE-05",
         "statement": {
-         "en": "I like to try new AI tools as soon as I can access them.",
-         "fr": "J'aime essayer les nouveaux outils d'IA dès que j'y ai accès."
+         "en": "I only start using a new technology when I have no other choice.",
+         "fr": "Je ne commence à utiliser une nouvelle technologie que lorsque je n'ai pas d'autre choix."
         },
-        "response": 1,
+        "response": 3,
         "direction": "toward",
-        "anchor": "duhamel1937-defense: he resists the new 'arts dynamiques' (cinema, radio) in favour of the older discipline of the book",
-        "confidence": "medium",
-        "transposition": "new AI tools → the era's new machines and media"
+        "anchor": "duhamel1933-machinisme: he adopts the machine willingly where it serves (medicine), so not a pure hold-out — low-confidence lean",
+        "confidence": "low",
+        "transposition": null
        },
        {
-        "item": "OPE-04",
+        "item": "OPE-06",
         "statement": {
-         "en": "I prefer to keep my proven ways of doing things rather than adopt new tools.",
-         "fr": "Je préfère garder mes façons de faire qui ont fait leurs preuves plutôt que d'adopter de nouveaux outils."
+         "en": "Frequent technological change tires me more than it stimulates me.",
+         "fr": "Les changements technologiques fréquents me fatiguent plus qu'ils ne me stimulent."
         },
         "response": 4,
         "direction": "toward",
-        "anchor": "duhamel1937-defense: 'le livre est l'ami de la solitude' — the proven discipline of reading defended over the new media",
+        "anchor": "duhamel1930-scenes: the frenzy ('frénésie') of American machine-life wearies rather than stimulates him",
         "confidence": "medium",
         "transposition": null
        }
       ],
       "anchored": false,
-      "verification": "Verbatim (collation)"
+      "verification": "Verbatim"
      },
      "media": {
       "portrait": "figures/6665ba19-512.png",
@@ -3347,6 +3463,8 @@
      "stance": "disillusioned-optimist",
      "wave": "Internet and Web",
      "score": 97,
+     "presentation": "Tim Berners-Lee (b. 1955), English computer scientist, invented the World Wide Web at CERN (1989–1991) and made the decision that shaped it: releasing its standards royalty-free, open for anyone to build on. The wave he set in motion turned a network of machines into a universal information space — then drifted, as he documented himself, toward data silos and a few dominant platforms. His answer is the disillusioned optimist's: naming the Web's dysfunctions in his anniversary letters, then building remedies — Solid, Inrupt, the Contract for the Web — to re-decentralise personal data. He models optimism as conditional and revisable: a hope held open to evidence, paired with the labour of repair.",
+     "epoch": "Tim Berners-Lee (b. 1955, England) is an English computer scientist who, while working at CERN between 1989 and 1991, designed and built the first Web browser and server together with the HTTP and HTML specifications that define the World Wide Web. In 1994 he founded the World Wide Web Consortium (W3C), the standards body he continued to shape for decades, and in 1999 he set out the project's founding vision in the memoir Weaving the Web. The 2017 ACM A.M. Turing Award citation recognised the fundamental protocols and algorithms allowing the Web to scale. Across five decades he remained an active builder rather than a retired founder, launching the Solid project and the company Inrupt in 2018. His standing rests less on a single discovery than on a sustained decision, documented in his own account, to release the Web's standards royalty-free — kept open for anyone to implement without patent or fee.",
      "quote": {
       "en": "This is why I have, over recent years, been working with a few people at MIT and elsewhere to develop Solid, an open-source project to restore the power and agency of individuals on the web.",
       "fr": null,
@@ -3360,6 +3478,7 @@
        "OPE-02",
        "OPE-04"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPE-02",
@@ -3410,6 +3529,8 @@
      "stance": "cautionary",
      "wave": "Computer, cybernetics, automation",
      "score": 97,
+     "presentation": "Norbert Wiener (1894–1964), American mathematician and founder of cybernetics, specified early computer design and helped build cybernetic prostheses — the technology arrived through his own hands. His wave was the high-speed computing machine and the automation it made possible, his “second industrial revolution,” spreading into factory, governance and warfare — this study’s mirror for today’s AI. His stance was cautionary rather than pessimistic: automation a “two-edged sword,” a learning machine able to outrun its designer, and once an irreversible process is launched “we had better be quite sure that the purpose put into the machine is the purpose which we really desire.” He set moral “know-what” above technical “know-how,” and in 1947 refused to supply guided-missile research he judged dangerous. What instructs is technical fluency paired with restraint: those best placed to build a powerful technology may owe the clearest account of what it should not be trusted to decide.",
+     "epoch": "Norbert Wiener (1894–1964) was an American mathematician who founded the discipline of cybernetics — the study of control and communication in the animal and the machine — set out in his 1948 treatise of that name. Beyond pure mathematics, he helped design early computing machinery: a 1940 design memorandum to Vannevar Bush specified a numerical, electronic, base-two, fully automatic machine whose principles entered the modern computer, and, as he records in God & Golem, he later took part in the group work that developed cybernetic prostheses such as the myoelectric artificial hand. His principal works span the technical (Cybernetics, 1948) and the popular-philosophical (The Human Use of Human Beings, 1950; God & Golem, Inc., 1964, awarded the 1965 National Book Award posthumously). By mid-century he was both an originator of the new science and a widely read public interpreter of it.",
      "quote": {
       "en": "no human intervention from the time the data were entered until the final results should be taken off ... all logical decisions ... built into the machine itself",
       "fr": null,
@@ -3426,6 +3547,7 @@
        "OPE-04",
        "OPE-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPE-01",
@@ -3512,6 +3634,8 @@
      "stance": "enthusiast",
      "wave": "Microbiology and vaccination",
      "score": 93,
+     "presentation": "Louis Pasteur (1822–1895), French chemist, was not a commentator on his era's disruptive wave but its principal architect: germ theory, and the medicine it made possible. His optimism was total — the new science as “a law of peace, of work, of salvation” — but never naive: enthusiasm, he insisted, must keep “a severe control as its inseparable companion.” His method was proof-first and public: at Pouilly-le-Fort he signed the protocol in advance and let a controlled trial decide before witnesses; at the human frontier he treated the child Joseph Meister “not without grave and cruel misgivings.” What instructs is the pairing: confident enthusiasm disciplined by demonstrated proof and restraint.",
+     "epoch": "Louis Pasteur (1822-1895) was a French chemist whose work reached from crystallography and fermentation into medicine. From the inaugural address he delivered at Douai in December 1854, marking the installation of the science faculty at Lille, to the reception speech he gave at the Academie francaise on 27 April 1882, taking Littre's seat and answered by Ernest Renan, he moved at the centre of France's scientific establishment. His Sorbonne conference of 7 April 1864 argued against spontaneous generation; his 1881 report to the Academie des sciences recorded the public anthrax-vaccine trial at Pouilly-le-Fort; and in November 1888 the Institut Pasteur was inaugurated in Paris before President Sadi Carnot. He held standing across the era's academies of sciences, of medicine, and the Academie francaise, both as an experimenter and as a public figure.",
      "quote": {
       "en": "dans les champs de l'observation le hasard ne favorise que les esprits préparés.",
       "fr": null,
@@ -3525,6 +3649,7 @@
        "OPE-01",
        "OPE-03"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "OPE-01",
@@ -3745,6 +3870,8 @@
      "stance": "skeptic",
      "wave": "Mass media (radio, cinema)",
      "score": 33,
+     "presentation": "George Orwell (1903–1950), English essayist and novelist, watched the mass-media wave — radio and cinema reaching millions at once — from the inside as a BBC producer, and against it as its most lucid critic. What alarmed him was never the apparatus but its concentration: expensive, few-controlled media that make the strong stronger and centralise power over opinion. His posture is accept-but-distrust: the machine had to be accepted “as one accepts a drug — grudgingly and suspiciously”; he used radio to bring poetry to a wide audience while scrutinising who controlled it, and later dramatised its surveillance potential in Nineteen Eighty-Four. Work with the tool, concede its usefulness — and never stop questioning the power gathered around it.",
+     "epoch": "George Orwell (1903-1950), the English essayist and novelist born Eric Blair, worked chiefly as a journalist and writer of documentary prose. His standing rested on a body of reportage, essays and fiction: the 1937 documentary and polemic The Road to Wigan Pier, whose second part is a sustained first-person reckoning with machine civilisation, and the 1949 dystopia Nineteen Eighty-Four are the principal works this study draws on. Between 1941 and 1943 he served as a Talks Producer at the BBC, producing literary programmes broadcast to India, and through the mid-1940s he published a stream of essays in Tribune, Polemic, Horizon and The New Saxon Pamphlet. Writing at once from inside the era's information institutions and against their concentration, he occupied the position of a working practitioner-critic of mass communication rather than a detached observer.",
      "quote": {
       "en": "the police are prowling through the cities, the lies are streaming from the loudspeakers",
       "fr": null,
@@ -3757,6 +3884,7 @@
       "documents": [
        "CON-02"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CON-02",
@@ -3795,6 +3923,8 @@
      "stance": "enthusiast",
      "wave": "Railway and telegraph",
      "score": 35,
+     "presentation": "Walt Whitman (1819–1892), American poet of Leaves of Grass, took the industrial, democratic republic itself as his subject. His wave was the coupling of railroad and telegraph — the transcontinental line and Suez Canal of 1869, the Atlantic cable — “the distant brought near,” this study’s mirror for today’s AI. His stance was enthusiastic, and spiritual before material: in “Passage to India” these works fulfil “God’s purpose from the first,” valued “not for trade or transportation only”; the locomotive hailed as “Type of the modern.” Yet Democratic Vistas called the materially triumphant Union “canker’d, crude, superstitious, and rotten” wherever the moral and spiritual layer was missing — a documented counterweight kept in view. What instructs is the condition attached to the enthusiasm: embracing a transformative technology wholeheartedly while insisting that material triumph is not, by itself, sufficient.",
+     "epoch": "Walt Whitman (1819-1892) was an American poet whose collection Leaves of Grass, first issued in 1855 and enlarged across successive editions through the 1891-92 \"deathbed\" edition, made him a central voice of nineteenth-century American letters. The 1855 volume opened with the poem left untitled there and later called \"Song of Myself.\" His work spanned verse and prose: the 1871 pamphlet Democratic Vistas set out his reflections on American democracy, and he wrote for public occasions, reciting the poem later titled \"Song of the Exposition\" at the opening of the 40th Annual Exhibition of the American Institute in New York on 7 September 1871. Across the 1860s and 1870s his poems increasingly took the industrial, democratic republic itself as their subject, making him, on the documentary record, a poet closely engaged with the machinery of his age rather than turned away from it.",
      "quote": {
       "en": "This idea of perfect individualism it is indeed that deepest tinges and gives character to the idea of the aggregate.",
       "fr": null,
@@ -3808,6 +3938,7 @@
        "CON-01",
        "CON-04"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CON-01",
@@ -3858,6 +3989,8 @@
      "stance": "optimist",
      "wave": "Artificial intelligence",
      "score": 40,
+     "presentation": "Yann LeCun (born 1960), French-American computer scientist, built early convolutional networks in 1989, shared the 2018 Turing Award, served as Meta’s Chief AI Scientist until 2025, then founded AMI Labs. His wave is artificial intelligence itself — the deep-learning renaissance he helped construct, mirror and subject coinciding. His stance is the builder-optimist’s, separating enthusiasm from governance: “there is no evidence” of existential risk, he told the UN Security Council in 2024; regulate products, not research; defend open source against corporate concentration — and even set aside the dominant large-language-model paradigm as an “off-ramp” to human-level AI. What instructs is the method: evidence over alarm, and readiness to revise a reigning paradigm. A living figure whose positions still shift; his open-source advocacy through 2025 was voiced from a leadership post at the company whose models he defended — an interest overlap disclosed here.",
+     "epoch": "Yann LeCun, born in 1960 in France and later based in the United States, is a computer scientist who became one of the central architects of modern machine learning. He built early convolutional neural networks in 1989, an approach that would underpin the deep-learning methods adopted across the field from 2012 onward, and he received the 2018 Turing Award for this line of work. From 2013 to 2025 he served as Chief AI Scientist at Meta, one of the most visible research-leadership positions in the industry, while remaining a professor at New York University. In 2022 he issued the position paper \"A Path Towards Autonomous Machine Intelligence,\" arguing for world-model and joint-embedding architectures rather than the reigning paradigm. In November 2025 he left Meta to found AMI Labs, unveiled in 2026 with a large seed round, continuing that research programme independently.",
      "quote": {
       "en": "the ignominious California regulation SB1047, which would essentially kill open source AI and significantly slow down or stop AI innovation.",
       "fr": null,
@@ -3870,6 +4003,7 @@
       "documents": [
        "CON-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CON-05",
@@ -4078,6 +4212,8 @@
      "stance": "dialectic",
      "wave": "Steam engine, industrialisation",
      "score": 93,
+     "presentation": "Karl Marx (1818–1883), German political economist and revolutionary organiser, analysed industrialisation not as an inventor but as a scholar — reading the factory inspectors' reports in London to trace how steam-driven machinery restructured labour. His stance is dialectical: the same machine is emancipatory in itself, gifted with “the wonderful power of shortening and fructifying human labour,” yet degrading in the hands of capital, where it lengthened the working day. He rejected the Luddite response — target the mode in which machines are used, never the instruments themselves — and backed factory legislation as society's conscious reaction. His enduring lesson: separate a technology's potential from the social arrangements that govern its deployment.",
+     "epoch": "Karl Marx (1818-1883), born in Germany, was a political economist, philosopher, and revolutionary organiser who devoted his mature working life to analysing the emerging industrial-capitalist order. With Friedrich Engels he issued the Manifesto of the Communist Party (1848); his principal work, Capital: A Critique of Political Economy, Volume I, appeared in 1867. He also drafted the founding texts of the International Working Men's Association -- its Inaugural Address (1864) and the Instructions for the delegates of the Geneva Congress (1866) -- writing these in English. His method rested on close reading of official statistics, parliamentary Blue Books, and the reports of the English factory inspectorate, which he re-argued through his own analysis. By the 1860s he stood among the more systematic critical theorists of industrial society, though his wider influence grew mostly after his death.",
      "quote": {
       "en": "In place of the pompous catalogue of the 'inalienable rights of man' comes the modest Magna Charta of a legally limited working-day",
       "fr": null,
@@ -4091,6 +4227,7 @@
        "CON-01",
        "CON-04"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CON-01",
@@ -4141,6 +4278,8 @@
      "stance": "critical-egalitarian",
      "wave": "Artificial intelligence",
      "score": 88,
+     "presentation": "Timnit Gebru (born 1983), computer scientist trained in Fei-Fei Li’s Stanford laboratory, co-led Google’s Ethical AI team, co-founded Black in AI and founded the DAIR institute — a builder of the technology turned insider-critic of the industry that produces it. Her wave is artificial intelligence itself, from the deep-learning turn to the large-language-model “gold rush” of ChatGPT, observed from within Apple, Microsoft and Google, then audited from outside. Her stance is critical-egalitarian, aimed at power and accountability rather than the technology in the abstract: AI’s harms are real, present and preventable; both existential-risk “fearmongering” and utopian AGI narratives are rejected; the demands are public oversight, transparency and attention to who bears the risks. A living figure still in motion, her account of her 2020 departure from Google remains disputed between the parties and is not adjudicated here.",
+     "epoch": "Timnit Gebru (born 1983 in Addis Ababa; Ethiopia/USA) is a computer scientist who became a prominent voice in the fairness-and-accountability wing of artificial-intelligence research. Trained as an engineer and an audio-hardware engineer at Apple, she earned a PhD in computer vision at Stanford in Fei-Fei Li's laboratory, then worked at Microsoft Research's FATE group before co-leading Google's Ethical AI team until December 2020. In 2017 she co-founded Black in AI, and in 2021 she founded the Distributed AI Research Institute (DAIR). Her principal works include the co-authored audit Gender Shades (2018), which measured accuracy disparities in commercial gender-classification systems; the influential FAccT paper On the Dangers of Stochastic Parrots (2021); and, with Émile Torres, the 2024 essay naming the TESCREAL bundle (First Monday). She occupies the position of an insider-critic: a builder of the technology who turned to scrutinising the industry that produces it.",
      "quote": {
       "en": "there is absolutely no regulation that stops them from operating as they are currently operating",
       "fr": null,
@@ -4153,6 +4292,7 @@
       "documents": [
        "CON-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CON-05",
@@ -4191,17 +4331,22 @@
      "stance": "dialectic",
      "wave": "Atomic energy and weapons",
      "score": 87,
+     "presentation": "Albert Einstein (1879–1955), German-born theoretical physicist and later an American public conscience, signed the 1939 letter warning Roosevelt that uranium could yield extremely powerful bombs — then spent the decade after Hiroshima advocating supranational control of the very technology he had helped set in motion. He held both poles honestly: urging acceleration under fear of a German bomb, later calling that signature “one great mistake,” fearing the tyranny of world government yet fearing war more. His posture instructs less by its answers than by its demand: a technology of civilizational reach requires governance of matching scale, deliberated publicly rather than left to experts alone.",
+     "epoch": "Einstein (1879–1955), German-born and later American, was a theoretical physicist whose standing gave his signature alone the weight to reach a head of state: in August 1939 his letter to President Franklin D. Roosevelt, drafted with Leo Szilard, warned that uranium might become a new source of energy and yield extremely powerful bombs. He described himself not as \"the father of the release of atomic energy\" — his part, he said, was \"quite indirect\" — but as one who had judged that release was \"theoretically possible.\" Beyond physics he was a public moral voice: chairman of the Emergency Committee of Atomic Scientists (1946), author of the social-philosophy essay \"Why Socialism?\" (Monthly Review, 1949), and, days before his death, co-signatory with Bertrand Russell of the 1955 manifesto calling on humanity to renounce war — the appeal from which the Pugwash Conferences arose, whose organisation preserves the text cited here. By the atomic decade his authority was as much civic as scientific.",
      "quote": {
       "en": "the American government must keep the control of atomic energy, not because socialism is necessarily desirable, but because atomic energy was developed by the government and it would be unthinkable to turn over this property of the people to any individual or group of individuals.",
       "fr": null,
-      "reference": "Atlantic 1945",
-      "reference_full": "Atlantic 1945",
-      "citekeys": [],
+      "reference": "einstein1945-atlantic, Atlantic 1945",
+      "reference_full": "einstein1945-atlantic, Atlantic 1945",
+      "citekeys": [
+       "einstein1945-atlantic"
+      ],
       "curated": false,
       "documents": [
        "CON-01",
        "CON-04"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CON-01",
@@ -4422,6 +4567,8 @@
      "stance": "democratic-optimist",
      "wave": "Artificial intelligence",
      "score": 20,
+     "presentation": "Audrey Tang (born 1981), Taiwanese programmer risen from the free-software world to become Taiwan’s first Digital Minister (2016–2024) and first openly non-binary cabinet member, distilled the island’s digital-democracy practice into Plurality (2024). Her wave is artificial intelligence itself, met from an unusual vantage — the engineer who builds the systems and the official who governs their public use, deploying AI-assisted “broad listening” for national-scale consultation while confronting deepfakes and algorithmic amplification. Her stance is democratic optimism conditional on democratic design: AI governance “must be a race to safety, not a race to power,” each community able to set its own norms, harms like “addictive intelligence” read as design choices that can be made otherwise. A living figure still in motion, she shows how a builder can advocate diffusion and precaution at once — catastrophe neither inevitable nor negligible, but contingent on institutions.",
+     "epoch": "Audrey Tang (born 1981 in Taipei) is a Taiwanese programmer and public servant who rose from the free-software world into government. A self-taught coder, she became a Silicon Valley software founder at nineteen and led the Pugs open-source project before entering Taiwan's civic-technology movement. In 2016 she was appointed Taiwan's first Digital Minister, a post she held until 2024, and she was the island's first openly non-binary cabinet member. Her fullest intellectual statement is the open-source book Plurality: The Future of Collaborative Technology and Democracy (2024), co-authored with the economist E. Glen Weyl and a wider contributor community, which distils Taiwan's digital-democracy practice — vTaiwan, the Polis opinion-clustering tool, the g0v civic-hacker movement — into a general design programme. She is best understood as a practitioner-theorist of participatory governance rather than an academic.",
      "quote": {
       "en": "each community should be able to determine its own norms when it comes to AI intervention.",
       "fr": "chaque communauté devrait pouvoir déterminer ses propres normes en matière d'intervention de l'IA.",
@@ -4435,6 +4582,7 @@
        "CEN-04",
        "CEN-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CEN-04",
@@ -4485,6 +4633,8 @@
      "stance": "ambivalent-enthusiast",
      "wave": "Electricity",
      "score": 24,
+     "presentation": "José Martí (1853–1895), Cuban poet and journalist exiled in New York from 1880, chronicled the Gilded-Age metropolis for Latin American readers until his death in the Cuban war of independence he had helped organise. His wave was electricity and its engineering — Edison’s light, the telegraph, the Brooklyn Bridge he chronicled in 1883 — watched from inside the technological metropolis, yet as a Latin American outsider. His stance was genuinely double: delight at the new force — Edison a “Dantesque figure,” the Bridge “a ponderous arm of the human mind,” electricity soon to relieve suffering labour — while the same texts warn of a prosperity “empty of spirit” and insist his republics graft the world onto their own trunk rather than be absorbed. What instructs is the discipline: he knew that world “from inside” (viví en el monstruo), quantified it honestly, and refused both uncritical adoption and reflexive rejection.",
+     "epoch": "José Martí (1853-1895) was a Cuban poet, essayist and journalist. From 1880 he lived as an exile in New York, where he wrote the Escenas norteamericanas — chronicles for Latin American periodicals such as La Nación (Buenos Aires), La América and La Revista Ilustrada (New York), and La Pluma (Bogotá). His principal texts of this period include the prologue to Pérez Bonalde's Poema del Niágara (1882), \"Coney Island\" (1881), \"El puente de Brooklyn\" (1883), the essay \"Nuestra América\" (1891) and \"La verdad sobre los Estados Unidos\" (1894); his last, unfinished letter to Manuel Mercado was written at Dos Ríos on 18 May 1895, the eve of his death in the Cuban war of independence he had helped organise. He remains a national figure of Cuba.",
      "quote": {
       "en": "Government must be born from the country. The spirit of the government must be that of the country. The form of the government must accord with the country's own constitution. Government is nothing more than the equilibrium of the country's natural elements.",
       "fr": null,
@@ -4501,6 +4651,7 @@
        "CEN-04",
        "CEN-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CEN-01",
@@ -4587,6 +4738,8 @@
      "stance": "precautionary",
      "wave": "Synthetic chemistry, technosphere",
      "score": 30,
+     "presentation": "Wangari Maathai (1940–2011), Kenyan biologist — the first woman in East and Central Africa to earn a doctorate — founded the Green Belt Movement and received the 2004 Nobel Peace Prize. Her wave, read through her own testimony, was industrial, commercialised, top-down development: forests cleared for commercial plantations, household food crops displaced, public land grabbed — this study’s mirror for today’s AI. Her stance was precautionary, aimed at destructive, imposed development rather than technology as such: “there can be no development without sustainable management of the environment,” justice and ecological integrity worth more “than profits at any cost,” and agency located in the community — “solutions to most of our problems must come from us.” What instructs is less opposition to a technology than the insistence that its deployment be equitable, sustainable and locally governed; her Nobel lecture closed on conditional hope: “The choice is ours.”",
+     "epoch": "Wangari Maathai (1940-2011) was a Kenyan biologist and environmental campaigner. Trained as a research scientist, she was, per the dossier, the first woman in East and Central Africa to earn a doctorate, later serving as a professor of veterinary anatomy. She founded the Green Belt Movement, a grassroots tree-planting and citizen-education initiative. As that year's laureate, she delivered the Nobel Peace Prize Lecture in Oslo on 10 December 2004. Her principal written works, the memoir Unbowed (2006), The Challenge for Africa (2009), and Replenishing the Earth (2010), set out her account of the movement, her critique of top-down development, and her spiritual environmentalism. She combined scientific credentials with sustained public activism, standing against the Kenyan state in campaigns such as the Uhuru Park (1989) and Karura Forest (1998-99) disputes.",
      "quote": {
       "en": "nobody knows the solution to every problem; rather than blindly following the prescriptions of others, Africans need to think and act for themselves, and learn from their mistakes.",
       "fr": "personne ne connaît la solution à tous les problèmes ; plutôt que de suivre aveuglément les prescriptions des autres, les Africains doivent penser et agir par eux-mêmes, et apprendre de leurs erreurs.",
@@ -4601,6 +4754,7 @@
        "CEN-05",
        "CEN-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CEN-04",
@@ -4833,6 +4987,8 @@
      "stance": "ambivalent",
      "wave": "Atomic energy and weapons",
      "score": 77,
+     "presentation": "Robert Oppenheimer (1904–1967), American theoretical physicist, directed the Los Alamos laboratory where the first atomic weapons were built, then moved into postwar science policy — the Acheson-Lilienthal report, the AEC’s General Advisory Committee. His wave was the atom, reaching the world through his own hands and entering public consciousness with Hiroshima and Nagasaki — this study’s mirror for today’s AI as a dual-use capability contested first by its own makers. His stance was genuinely ambivalent: the work an “organic necessity,” yet within weeks of Hiroshima the warning that mankind would come to curse the names of Los Alamos and Hiroshima; in 1948, that the physicists had “known sin”; in 1949, the recommendation against the hydrogen Super, and candour and international control against secrecy. What instructs is measured, not heroic: a maker holding capability and restraint together, judging a technology while implicated in it.",
+     "epoch": "Julius Robert Oppenheimer (1904-1967) was an American theoretical physicist who became, during the Second World War, the scientific director of the Los Alamos laboratory, the centre where the first atomic weapons were designed and built. His standing rested less on a single discovery than on his ability to lead a large scientific community at the frontier of physics, and afterwards to speak for it in public life. From this base he moved into the institutions of postwar science policy: he was the principal scientific author of the 1946 Acheson-Lilienthal report on international control of atomic energy, and he chaired the General Advisory Committee of the U.S. Atomic Energy Commission. In 1953 he delivered the BBC Reith Lectures, published as Science and the Common Understanding. He was thus at once an insider who built the technology and a widely heard interpreter of what it meant.",
      "quote": {
       "en": "atomic weapons are a peril which affect everyone in the world, and in that sense a completely common problem, as common a problem as it was for the Allies to defeat the Nazis.",
       "fr": null,
@@ -4846,6 +5002,7 @@
        "CEN-01",
        "CEN-03"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CEN-01",
@@ -4896,18 +5053,23 @@
      "stance": "analytic",
      "wave": "Crafts and techniques of urban civilisation",
      "score": 63,
+     "presentation": "Ibn Khaldun (1332–1406), Arab scholar, jurist and chief judge in Cairo, founded in the Muqaddima (1377) a new science of civilization explaining why societies rise, flourish and decay. The disruptive capability of his world was the crafts of settled urban life — building, writing, calculation, medicine — which he showed arise with the city and multiply where societies are large, stable and strongly governed. His stance is analytic rather than advocative: technique is a distinctively human power whose crafts “give intelligence” to their practitioners, yet whose perfection is tied to the life-cycle of civilization — they recede as the city declines. Neither boosterism nor alarm: a causal account of technology as inseparable from the social order that sustains it.",
+     "epoch": "Abd ar-Rahman Ibn Khaldun (1332-1406) was an Arab scholar, jurist and administrator born in Tunis, active across the Maghrib and later in Mamluk Egypt, where he served as a Maliki chief judge in Cairo. His standing rests on the Muqaddima (1377), the introductory volume of his universal history Kitab al-'Ibar, in which he set out to found a new science of human social organization ('umran) explaining why civilizations rise, flourish and decay. The publisher's description of Rosenthal's translation credits the work with having established the foundations of several fields, including the philosophy of history, sociology, ethnography and economics (Rosenthal 1958). Rather than a chronicler of dynasties, he presented himself as an analyst of their underlying causes, cross-checking transmitted reports against what a settled society could plausibly support.",
      "quote": {
       "en": "The crafts are firmly rooted in a city only when sedentary culture is firmly rooted and of long duration.",
       "fr": null,
-      "reference": "Muqaddima V, §17",
-      "reference_full": "Muqaddima V, §17",
-      "citekeys": [],
+      "reference": "ibnkhaldun1377-muqaddima, Muqaddima V, §17",
+      "reference_full": "ibnkhaldun1377-muqaddima, Muqaddima V, §17",
+      "citekeys": [
+       "ibnkhaldun1377-muqaddima"
+      ],
       "curated": false,
       "documents": [
        "CEN-02",
        "CEN-04",
        "CEN-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CEN-02",
@@ -4970,18 +5132,23 @@
      "stance": "critical-adopter",
      "wave": "Printing press",
      "score": 60,
+     "presentation": "Erasmus (1466–1536), among the foremost humanists of the northern Renaissance, edited the first published Greek New Testament (1516) and lived inside Europe’s leading presses — Aldus in Venice, Froben in Basel — arguably the first author to build a career entirely on print. His wave was the printing press, multiplying texts at unprecedented speed and filling the world, as he complained, with “swarms of new books” of every quality — this study’s mirror for today’s AI. He was a critical adopter: among the technology’s heaviest professional users and one of its sharpest critics — printers “so grasping and mercenary” that errors stand — calling for public remedy: magistrates against abuse, law against fraud, subsidy for works of common use. One asymmetry is disclosed: he used the press fully for himself while at times seeking to limit others’ use of it.",
+     "epoch": "Desiderius Erasmus (1466-1536), born in the Netherlands, ranks among the foremost humanist scholars of the northern Renaissance. He built his career on classical and biblical philology, producing the Adagia (a continually expanded compendium of proverbs, from 1500), the Colloquies, and, in 1516, the Novum Instrumentum omne — the first published Greek New Testament, edited from the manuscript evidence rather than accepted on the authority of the received Vulgate (Froben, Basel). He worked inside the leading presses of Europe, living in Aldus Manutius's Venetian shop in 1508 and in Johann Froben's Basel household across 1514-1516 and again 1521-1529. His writings circulated on an unusual scale for the period — roughly 1,260 printings and reprintings before his death, on one scholarly estimate — making him arguably the first European author to build an entire career on the medium of print.",
      "quote": {
       "en": "If this situation continues as it has begun, and the Sum of Things is brought under the control of a few, we will wind up burdened with a barbarous tyranny like the Turks. The world will obey the whims of one man, or of a few … Such is the wish of whoever would be the Universal Dictator.",
       "fr": null,
-      "reference": "Festina lente §22",
-      "reference_full": "Festina lente §22",
-      "citekeys": [],
+      "reference": "erasmus1525-festina, Festina lente §22",
+      "reference_full": "erasmus1525-festina, Festina lente §22",
+      "citekeys": [
+       "erasmus1525-festina"
+      ],
       "curated": false,
       "documents": [
        "CEN-01",
        "CEN-02",
        "CEN-03"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "CEN-01",
@@ -5214,6 +5381,8 @@
      "stance": "dialectic",
      "wave": "Mass media (radio, cinema)",
      "score": 73,
+     "presentation": "Walter Benjamin (1892–1940), German critic and philosopher of media, wrote from exile after the Nazi seizure of power and died in 1940 fleeing the regime; he was also a working broadcaster, with some eighty Weimar radio programmes. His wave was mass media — cinema and radio, mechanical reproduction dissolving the “aura” of the unique artwork while film capital and the fascist state bent the same apparatus toward the star cult and the aestheticisation of politics. His stance was dialectical: promise and peril held in one view, the remedy never to ban but to turn consumers into producers. His Marxism and sympathy for the Soviet reorganisation of the media are positions of the figure, disclosed as such — selection for documentary richness, never moral endorsement. What instructs is the discipline of seeing both at once.",
+     "epoch": "Walter Benjamin (1892–1940) was a German literary critic, essayist, and philosopher whose work ranged across aesthetics, media, and cultural history. Its landmarks include the aphoristic One-Way Street (Einbahnstraße, 1928), the Little History of Photography (1931), the essay The Storyteller (1936), and his best-known text, The Work of Art in the Age of Mechanical Reproduction, first published in French in the Institute for Social Research's Zeitschrift für Sozialforschung in 1936. Unusually for a theorist, he was also a working broadcaster, writing and presenting some eighty radio programmes between 1927 and 1933. He wrote from exile after the Nazi seizure of power, and died in 1940 in flight from the regime. His standing today rests less on any academic post than on the enduring influence of these essays on media and cultural theory.",
      "quote": {
       "en": "the capitalistic exploitation of the film denies consideration to modern man's legitimate claim to being reproduced",
       "fr": null,
@@ -5227,6 +5396,7 @@
        "ALT-01",
        "ALT-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "ALT-01",
@@ -5277,6 +5447,8 @@
      "stance": "human-centered",
      "wave": "Artificial intelligence",
      "score": 77,
+     "presentation": "Fei-Fei Li (born 1976), Stanford computer scientist, initiated ImageNet in 2009 and co-founded the Institute for Human-Centered AI; her wave is artificial intelligence itself, the deep-learning turn her own benchmark helped catalyse — a direct contemporary witness rather than a historical mirror. Her stance is human-centered and deliberately two-sided: machines as partners “enhancing us, not replacing us”; government urged to lead ethical deployment; caution against extinction hype in favour of near-term bias and misinformation; “govern on the basis of science, not science fiction.” She nonetheless opposed California’s SB 1047 as mis-aimed. A living figure still in motion, she models holding optimism and guardrails together, calibrating rules to demonstrated, application-specific risk.",
+     "epoch": "Fei-Fei Li (b. 1976), whose path from a childhood in China to education and a career in the United States is recounted in her memoir The Worlds I See, is a computer scientist whose career has centred on Stanford University, where she is a professor and, since 2019, co-founder and co-director of the Stanford Institute for Human-Centered Artificial Intelligence (HAI), an institute whose mission is to \"advance AI research, education, policy, and practice to improve the human condition.\" In 2009 she initiated ImageNet, the large-scale labelled image dataset that became a canonical benchmark of the field. She served as chief scientist for AI/ML at Google Cloud (2017-2018), co-founded the non-profit AI4ALL (2017), and in 2024 founded the startup World Labs. That 2023 memoir, together with frequent public testimony, has made her a widely cited voice — popularly styled the \"Godmother of AI\", the label Bloomberg's 2024 profile carries in its very title — at the intersection of machine-learning research and technology policy.",
      "quote": {
       "en": "However autonomous our technology becomes, its impact on the world — for better or worse — will always be our responsibility.",
       "fr": "Aussi autonome que devienne notre technologie, son impact sur le monde — pour le meilleur ou pour le pire — restera toujours notre responsabilité.",
@@ -5289,6 +5461,7 @@
       "documents": [
        "ALT-03"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "ALT-03",
@@ -5327,6 +5500,8 @@
      "stance": "observer-enthusiast",
      "wave": "Chinese movable type",
      "score": 80,
+     "presentation": "Shen Kuo (1031–1095), scholar-official of Song China — astronomer, finance commissioner, diplomat, military commander — retired to his Dream Brook estate and wrote the Mengxi Bitan, six hundred jottings on techniques and natural phenomena. There he preserved the only record of movable type and of Bi Sheng, the uncredentialed artisan who invented it: without Shen's notebook, both would be unknown. His verdict is sober and quantified — of little use for two or three copies, “marvellously quick” for hundreds or thousands. His method instructs more than his verdict: learn how a technology actually works, judge it by demonstrated results rather than by the authority of its makers, and preserve the name of the person who built it.",
+     "epoch": "Shen Kuo (1031–1095) was a scholar-official of Northern Song China whose career ran through the empire's technical and administrative institutions. Sivin's Dictionary of Scientific Biography records his appointment to direct the Bureau of Astronomy (1072), his service on the Finance Commission, his appointment as a Hanlin academician (1076), a diplomatic embassy to the Liao (1075) and a military command at Yanzhou (1080–81). After a fall from favour in 1082 he retired to his Dream Brook (Mengxi) estate, where he completed his best-known work, the Mengxi Bitan (Brush Talks from Dream Brook, also rendered Dream Pool Essays), around 1088 — a notebook of some six hundred jottings recording and evaluating techniques, natural phenomena and administrative affairs. In modern scholarship he stands as an observer of unusual range across the practical knowledge of Song China.",
      "quote": {
       "en": "How could all of this have come from the Sages? Every sort of workman and administrator, the people of the towns and those of the countryside — none failed to take part.",
       "fr": null,
@@ -5339,6 +5514,7 @@
       "documents": [
        "ALT-01"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "ALT-01",
@@ -5547,6 +5723,8 @@
      "stance": "converted-worrier",
      "wave": "Artificial intelligence",
      "score": 87,
+     "presentation": "Geoffrey Hinton (b. 1947), British-Canadian pioneer of neural networks — backpropagation in 1986, AlexNet in 2012, a Turing Award and a Nobel Prize — is the maker reflecting on his own creation: his deep-learning wave is today's AI. In 2023 he left Google expressly to speak freely, placing extinction risk alongside pandemics and nuclear war while still expecting transformative benefits in health and productivity. What instructs is his method more than his alarm: uncertainty stated with explicit numbers, regulation preferred to corporate self-governance, and his own predictions publicly revised when wrong. A converted worrier — deliberately both-and, never either-or.",
+     "epoch": "Geoffrey Hinton (born 1947), a British-Canadian cognitive scientist and computer scientist, became one of the central figures of modern machine learning. With collaborators he helped popularise the backpropagation algorithm for training neural networks in 1986, and in 2012 his group's AlexNet demonstrated the practical power of deep convolutional networks for image recognition. He held a post at the University of Toronto and worked at Google from 2013 to 2023, where he was later listed as Emeritus Professor of Computer Science, University of Toronto. His standing in the field is marked by two shared awards: the Turing Award in 2018 and the Nobel Prize in Physics in 2024. For decades he pursued neural approaches against considerable mainstream scepticism, which makes his later public interventions those of an acknowledged builder of the technology rather than an outside critic.",
      "quote": {
       "en": "If the benefits of the increased productivity can be shared equally, it will be a wonderful advance for all of humanity.",
       "fr": "Si les bénéfices de l'augmentation de la productivité peuvent être partagés équitablement, ce sera un progrès merveilleux pour toute l'humanité.",
@@ -5559,6 +5737,7 @@
       "documents": [
        "ALT-01"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "ALT-01",
@@ -5597,45 +5776,37 @@
      "stance": "skeptic",
      "wave": "Artificial intelligence",
      "score": 83,
+     "presentation": "Joseph Weizenbaum (1923–2008), German-born American computer scientist who fled Nazi Germany, built ELIZA at MIT in 1966 and became a critic of artificial intelligence from within the field. His wave was mid-century computing recast as candidate reasoning — judgment, diagnosis, even psychotherapy proposed for delegation — met as a builder: ELIZA showed him how readily people attribute understanding to software. His stance was skeptical in a specific register, moral-categorical rather than technical: “there are certain tasks which computers ought not be made to do, independent of whether computers can be made to do them” — deciding distinguished from choosing, calculation from judgment — while never rejecting computing itself, arguing for the rational use of science and technology. What instructs is balanced, technically literate criticism: caution from one who had mastered the tools, distinguishing what a technology can do from what it should be asked to do.",
+     "epoch": "Joseph Weizenbaum (1923–2008) was a German-born American computer scientist who became a prominent critic of his own field from within it. Having fled Nazi Germany in the mid-1930s, he worked from 1955 on a General Electric team that built the first computerized banking system for the Bank of America, then joined MIT in 1963, where he became professor of computer science. He authored the SLIP programming language and, in 1966, the ELIZA program — a natural-language conversation simulator published in Communications of the ACM that became one of the era's most widely discussed artifacts. His 1976 book Computer Power and Human Reason: From Judgment to Calculation established his international reputation as a critic of artificial intelligence from within the field. He remained engaged in public debate until his death in Berlin in 2008.",
      "quote": {
-      "en": "The knowledge of behavior of German academics during the Hitler time weighed on me very heavily. I was born in Germany, I couldn't relax and sit by and watch the university in which I now participated behaving in the same way. I had to become engaged in social and political questions.",
+      "en": "Clearly then, the computer scientist has a heavy responsibility to make the fallibility and limitations of the systems he is capable of designing brilliantly clear.",
       "fr": null,
-      "reference": "Tech 1985",
-      "reference_full": "Tech 1985",
-      "citekeys": [],
+      "reference": "weizenbaum1972-science",
+      "reference_full": "weizenbaum1972-science",
+      "citekeys": [
+       "weizenbaum1972-science"
+      ],
       "curated": false,
       "documents": [
-       "ALT-02",
-       "ALT-06"
+       "ALT-03"
       ],
+      "editorial": true,
       "reasoning": [
        {
-        "item": "ALT-02",
+        "item": "ALT-03",
         "statement": {
-         "en": "I would accept a personal cost so that everyone can benefit from AI.",
-         "fr": "J'accepterais un coût personnel pour que tout le monde puisse bénéficier de l'IA."
+         "en": "When I use AI, I think about the consequences for other people.",
+         "fr": "Quand j'utilise l'IA, je pense aux conséquences pour les autres."
         },
-        "response": 4,
+        "response": 5,
         "direction": "toward",
-        "anchor": "dembart1977-nyt: 'I have pronounced heresy and I am a heretic' — documented professional price paid to warn the public (mccarthy1976-unreasonable as the trace of the attack)",
+        "anchor": "weizenbaum1972-science: 'the computer scientist has a heavy responsibility to make the fallibility and limitations of the systems… brilliantly clear'; weizenbaum1985-tech: Bank-of-America retrospective regret",
         "confidence": "high",
-        "transposition": null
-       },
-       {
-        "item": "ALT-06",
-        "statement": {
-         "en": "In my choices about AI, my own interest comes before the collective interest.",
-         "fr": "Dans mes choix concernant l'IA, mon intérêt propre passe avant l'intérêt collectif."
-        },
-        "response": 1,
-        "direction": "toward",
-        "anchor": "weizenbaum1985-tech: 'The knowledge of behavior of German academics during the Hitler time weighed on me very heavily… I had to become engaged' — collective duty above career interest; weizenbaum2015-islands: 'I stayed true to who I was' (Reported)",
-        "confidence": "medium",
         "transposition": null
        }
       ],
       "anchored": true,
-      "verification": "Verbatim (source verified)"
+      "verification": "Verbatim (verified via reproduction)"
      },
      "media": {
       "portrait": "figures/bae75722-512.png",
@@ -5658,6 +5829,8 @@
      "stance": "skeptic",
      "wave": "Railway and telegraph",
      "score": 100,
+     "presentation": "Leo Tolstoy (1828–1910), Russian novelist turned moral-religious critic, excommunicated by the Orthodox Church in 1901, addressed peasants and educated classes alike from his estate. His wave was the railway and the telegraph binding Imperial Russia — a society nine-tenths peasant — this study’s mirror for today’s AI. His stance was skeptical on two joined grounds: class — the telegraph served the “so-called cultured class” while the peasant heard “only the buzzing of the wires” — and moral-religious, judging technology by conscience and the Gospel; his instrument was voluntary moral renunciation, not law or force. No caricature: at 67 he learned to ride a bicycle with childlike pleasure. What instructs is the discipline of his recurring test — who benefits, who bears the cost, and by what standard a society should judge what it is told to call progress.",
+     "epoch": "Leo Tolstoy (1828–1910) was a Russian novelist and moral-religious thinker whose later work turned from fiction toward social and ethical criticism. Alongside the fiction for which he was internationally known, he produced a substantial body of essays and treatises — \"Progress and the Definition of Education\" (1862), the autobiographical \"A Confession\" (written 1879–1882), the treatise \"What Shall We Do?\" (1886), \"The Kingdom of God Is Within You\" (1894), and \"The Slavery of Our Times\" (1900) — that made him a leading voice of Christian anarchism and pacifism. Writing from his estate in Imperial Russia, he addressed peasants and educated classes alike, and his moral authority extended well beyond literature. In 1901 the Russian Orthodox Church excommunicated him, a measure of how far his religious dissent unsettled the established institutions of his time.",
      "quote": {
       "en": "the advocates of progress … understand their personal advantage, which thus is always contrary to the advantage of the masses.",
       "fr": null,
@@ -5671,6 +5844,7 @@
        "ALT-04",
        "ALT-06"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "ALT-04",
@@ -5891,6 +6065,8 @@
      "stance": "anxious-skeptic",
      "wave": "Electricity",
      "score": 32,
+     "presentation": "Henry Adams (1838–1918), American historian and man of letters, cast his Education as a study in whether a nineteenth-century mind could meet the forces of the coming century. His wave was electricity — the dynamo above all, met in the great hall of the 1900 Paris Exposition, coal-output doubling every ten years by his reckoning — this study’s mirror for today’s AI: an irruption of forces “totally new.” His stance was the anxious skeptic’s: awe and dread before a power outrunning human moral and mental capacity — “science will be the master of man,” he wrote as early as 1862 — yet not apocalyptic, the outcome a “toss-up between anarchy and order.” What instructs is that measured anxiety: a cultured observer registering, early, that a technology may accelerate faster than institutions and minds can absorb. In candour, his private correspondence contains documented antisemitic passages — documentary richness, not a moral model.",
+     "epoch": "Henry Adams (1838-1918) was an American historian and man of letters whose principal work, the autobiographical The Education of Henry Adams, was privately printed in 1907 and first published for the wider public in 1918. Writing of himself in the third person, he cast his life as a study in whether nineteenth-century education could equip a mind for the forces of the coming century. His documented reflections on technological acceleration recur across four decades: an 1862 letter to his brother Charles Francis Adams Jr., written from London during the American Civil War, already voiced the anxiety he later theorised in the essay \"The Rule of Phase Applied to History\" (written 1909). He stood not as a policy-maker or engineer but as a cultured observer, and his writing left a lasting mark on American letters.",
      "quote": {
       "en": "the forces would continue to educate, and the mind would continue to react. All the teacher could hope was to teach it reaction.",
       "fr": null,
@@ -5904,6 +6080,7 @@
        "TRA-04",
        "TRA-05"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRA-04",
@@ -5954,6 +6131,8 @@
      "stance": "skeptic",
      "wave": "Printing press",
      "score": 40,
+     "presentation": "Johannes Trithemius (1462–1516), German Benedictine abbot of Sponheim and figure of monastic humanism, grew his abbey’s library from some forty-eight to two thousand volumes and wrote what is widely described as the first printed book on cryptography. His wave was the printing press, developed near his world at Mainz, met at close range in the transition from scriptorium to press. His stance, in De Laude Scriptorum (1492), was measured skepticism, not rejection: parchment outlasts paper — “the printed book is a thing of paper and in a short time will decay entirely” — and hand-copying is a formative spiritual discipline. Yet the documented paradox: he had that very treatise printed, and filled his library with printed books. What instructs is the separation of reasoned caution from reflexive refusal — naming specific concerns while adopting the new medium where it served his ends: principled reservation and practical use need not exclude each other.",
+     "epoch": "Johannes Trithemius (Jean Trithème, 1462-1516) was a German Benedictine abbot and a notable figure of monastic humanism in the German Renaissance. Abbot of the monastery of Sponheim, he pursued a reforming programme centred on learning: he expanded the abbey's library from roughly forty-eight to some two thousand volumes, printed books included. A prolific author across several fields, he remains best known for the treatise De Laude Scriptorum (In Praise of Scribes), composed in 1492. He also produced the cryptographic writings Polygraphia (composed 1508, printed 1518), widely described as the first printed book on cryptography, and Steganographia (composed around 1499), alongside the historical chronicle Annales Hirsaugienses. Noël L. Brann's intellectual biography presents him as a central representative of the reforming, book-centred monastic culture of his time.",
      "quote": {
       "en": "What we write we imprint more forcefully on our minds, because we take our time reading and writing.",
       "fr": "Ce que nous écrivons, nous l'imprimons plus fortement dans notre esprit, car nous prenons notre temps pour lire et pour écrire.",
@@ -5967,6 +6146,7 @@
        "TRA-01",
        "TRA-02"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRA-01",
@@ -6017,6 +6197,8 @@
      "stance": "skeptic",
      "wave": "Genetic engineering",
      "score": 12,
+     "presentation": "Erwin Chargaff (1905–2002), Austrian-born biochemist who established the base-composition rules of DNA, became in later life a humanistic critic estranged from the molecular biology his own discoveries had made possible. His wave was genetic engineering — recombinant DNA creating new forms of life from the early 1970s — this study’s mirror for today’s AI, promoted largely by its own developers. His stance was deep skepticism: a new form of life, once released, cannot be recalled; no one holds the right to counteract “irreversibly, the evolutionary wisdom of millions of years”; and scientists’ self-regulation cannot weigh a risk borne by all humanity. What instructs is the method more than the verdict — irreversibility first, and those who profit are not the only ones entitled to judge safety. Documentary richness, never a moral model.",
+     "epoch": "Erwin Chargaff (1905-2002), an Austrian-born biochemist who made his scientific career in the United States, established the base-composition regularities known as Chargaff's rules — that in DNA adenine equals thymine and cytosine equals guanine — findings his own work, drawing on chromatographic methods, made central to the study of nucleic acids. An eminent figure of mid-twentieth-century biochemistry and author of Essays on Nucleic Acids (Elsevier, 1963), he became in later life a humanistic critic and memoirist. His Heraclitean Fire: Sketches from a Life before Nature (The Rockefeller University Press, 1978) presents him as a scientist steeped in classical learning who grew estranged from the molecular biology his own discoveries had helped make possible. He remained within the scientific establishment while increasingly standing apart from it.",
      "quote": {
       "en": "Have we the right to counteract, irreversibly, the evolutionary wisdom of millions of years?",
       "fr": null,
@@ -6030,6 +6212,7 @@
        "TRA-03",
        "TRA-04"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRA-03",
@@ -6250,6 +6433,8 @@
      "stance": "enthusiast",
      "wave": "Writing",
      "score": 77,
+     "presentation": "Isocrates (436–338 BCE), Athenian teacher of discourse, was led by a weak voice away from live oratory toward the written speech, his lifelong medium and the basis of his influential school. His wave was writing itself — prose composed, revised and circulated as fixed text where eloquence had lived in oral performance — this study’s mirror for today’s AI, and the medium his contemporary Plato distrusted. His stance was enthusiastic but disciplined: the power of speech is what let humans found cities, make laws and invent arts — “there is no institution devised by man which the power of speech has not helped us to establish” — yet competence demands aptitude, practice and a teacher’s exact instruction, and misuse is answered by education and public criticism, not prohibition. What instructs is the committed adopter who insisted the new medium serve the common good, governed by formation rather than unchecked release or ban.",
+     "epoch": "Isocrates (436–338 BCE) was an Athenian teacher and writer of prose discourse, active across the fourth century BCE. By his own account in the Panathenaicus (9–10), a weak voice and a temperament unsuited to public affairs led him away from live oratory and toward composing written speeches, which became his lifelong medium; he ran an influential school of discourse in Athens. His surviving works, consulted here in George Norlin's Loeb translation via the Perseus Digital Library, include Against the Sophists (c. 390), the Panegyricus (380), Nicocles, the Antidosis (c. 354), To Philip (346), and the Panathenaicus, completed in his nineties. In the Antidosis (7) he presents that written corpus as \"a true image of my thought and of my whole life.\" He stands in this study as the enthusiast voice of the writing wave, the documented counter to Plato's suspicion of the written word.",
      "quote": {
       "en": "the one endowment of our nature which singles us out from all living creatures",
       "fr": null,
@@ -6264,6 +6449,7 @@
        "TRA-03",
        "TRA-04"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRA-01",
@@ -6326,6 +6512,8 @@
      "stance": "analytic-pioneer",
      "wave": "Computer, cybernetics, automation",
      "score": 73,
+     "presentation": "Ada Lovelace (1815–1852), English mathematician formally excluded from her era’s institutions — the Royal Society admitted no women — worked through private tutelage beside Babbage and De Morgan. Her wave was the birth of programmable computation, met as a working annotator: her 1843 translation of Menabrea’s memoir on the Analytical Engine, with signed Notes three times its length, among the first documents to treat the machine as a general symbol-manipulator that “might act upon other things besides number.” Her stance was enthusiasm disciplined by analysis: the engine “weaves algebraical patterns just as the Jacquard-loom weaves flowers and leaves,” yet “has no pretensions whatever to originate anything” — augmentation, not replacement, paired with verification, down to the grave error she caught in Babbage’s own computation. What instructs is the method: imagine a technology’s reach while calibrating its claims and checking them oneself.",
+     "epoch": "Augusta Ada Lovelace (1815-1852) was an English mathematician who worked at the edge of her era's mathematical science while formally excluded from its institutions: the Royal Society admitted no women, and her access was mediated through private tutelage and correspondence. From 1840 she studied under the mathematician Augustus De Morgan (Hollings, Martin and Rice, 2017), and moved in a circle that included Charles Babbage, De Morgan and Mary Somerville. Her published scientific output was concentrated in a single work: her 1843 English translation of L. F. Menabrea's memoir on Babbage's Analytical Engine, to which she appended her own signed Notes A-G (Taylor's Scientific Memoirs, vol. 3, pp. 666-731). By Babbage's later testimony the Notes ran to roughly three times the length of the memoir they annotated (Babbage, Passages from the Life of a Philosopher, 1864).",
      "quote": {
       "en": "In enabling mechanism to combine together general symbols in successions of unlimited variety and extent, a uniting link is established between the operations of matter and the abstract mental processes of the most abstract branch of mathematical science.",
       "fr": "En rendant le mécanisme capable de combiner des symboles généraux en des successions d'une variété et d'une étendue illimitées, un lien unificateur s'établit entre les opérations de la matière et les processus mentaux abstraits de la branche la plus abstraite de la science mathématique.",
@@ -6338,6 +6526,7 @@
       "documents": [
        "TRA-01"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRA-01",
@@ -6376,6 +6565,8 @@
      "stance": "enthusiast",
      "wave": "New science / telescope",
      "score": 100,
+     "presentation": "Galileo Galilei (1564–1642), Italian mathematician and natural philosopher, heard a rumour of a Dutch spyglass, rebuilt a better instrument within weeks, turned it on the sky — and went from observation to published book in about eight weeks. He then spent decades defending “sense experiences and necessary demonstrations” against consecrated authority, mocking the philosophers who refused to look through the telescope. His posture is early, active adoption: trust instrument-aided evidence over inherited authority, and iterate in the open. The record also keeps its costs — a thirteen-year self-embargo out of fear of ridicule, the frank pursuit of patronage, and the coerced abjuration of 1633, evidence of the control regime he lived under.",
+     "epoch": "Galileo Galilei (1564–1642) was an Italian mathematician and natural philosopher of the late Renaissance. By his own account in Il Saggiatore (1623), he was reappointed and confirmed for life in his professorship of mathematics at the University of Padua at double his previous salary, and he subsequently entered the service of the Medici court of Tuscany. His principal works span a compressed public career: the observational booklet Sidereus Nuncius (1610), the doctrinal Letter to the Grand Duchess Christina (1615), the polemical Il Saggiatore (1623), and the Dialogue Concerning the Two Chief World Systems (1632). His earlier correspondence with Johannes Kepler (1597, 1610) documents that his Copernican convictions predate his fame and place him in exchange with a leading astronomer of the age. He worked within a world whose epistemic authority rested with the university Aristotelians and the doctrinal organs of Counter-Reformation Rome.",
      "quote": {
       "en": "Certainly it is a great thing to add to the countless multitude of fixed stars visible hitherto by natural means and expose to our eyes innumerable others never seen before, which exceed tenfold the number of old and known ones",
       "fr": null,
@@ -6389,6 +6580,7 @@
        "TRA-01",
        "TRA-03"
       ],
+      "editorial": false,
       "reasoning": [
        {
         "item": "TRA-01",
