@@ -139,10 +139,8 @@ st_book(
         blocks.bck_screens_figures,   # captures 18, 19 — the great figures pages
         blocks.bck_survey_results,    # open the room's results (operator buttons)
         blocks.bck_results_room,      # the room's results — commentary
-        # blocks.bck_screens_admin,   # régie (console, /live, /present) + diaporama —
-        #                             # À CRÉER quand les slugs 20-22 (et 23+, Q15) sont
-        #                             # publiés au registre sumvadis puis gelés au
-        #                             # catalogue (règle « slug inconnu = erreur bruyante »)
+        blocks.bck_screens_admin,     # régie (20-22) + les 7 vues du diaporama /present
+        #                             # (Q15) — captures desktop gelées le 2026-08-14
         blocks.bck_results_meaning,   # what the results say about us
         # ── Appendix ────────────────────────────────────────────────
         blocks.bck_refs_bibliography,  # never presented; opened when a claim is challenged

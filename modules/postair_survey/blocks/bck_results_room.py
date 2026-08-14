@@ -44,9 +44,8 @@ def build():
             with g.cell():
                 # Rétrogradé "+1" (ss12) : la partie 2 est ancrée par
                 # bck_screens_poster (« The screens »). Les captures de RÉGIE
-                # (20-admin-console, 21-admin-salle, 22-admin-projection) et le
-                # diaporama /present (Q15) illustreront cette séquence quand la
-                # campagne sumvadis ss12 les aura publiés puis gelés.
+                # et les 7 vues du diaporama /present (Q15) adossent cette
+                # séquence dans bck_screens_admin, juste après.
                 st_write(bs.title, "So — who ", (s.project.titles.keyword, "are we"), "?",
                          tag=t.div, toc_lvl="+1", label="The room's results")
             with g.cell():
@@ -64,7 +63,7 @@ def build():
                          "This is where the debate questions come from: pick the ones where the "
                          "room splits, not the ones where it agrees."),
                         ("Refresh", "The page refreshes every four seconds and can export a room "
-                         "report. It has no authentication — do not share the URL beforehand."),
+                         "report. It requires the operator key — the audience cannot open it."),
                         ("Fallback", "If the network fails, use the rehearsal screenshots and say "
                          "clearly that they are from the rehearsal, not from this room."),
                     ],

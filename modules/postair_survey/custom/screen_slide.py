@@ -34,16 +34,26 @@ class _Styles:
 #: que sur une fenêtre étroite, où la carte de droite reprend la place.
 CAPTURE_WIDTH = "min(22vw, 29vh)"
 
+#: La capture desktop du diaporama est PAYSAGE (2560×1800, ratio ~1,42) :
+#: elle prend toute la scène et les messages passent DESSOUS, en ligne —
+#: la moitié gauche de Q14 ne vaut que pour un écran de téléphone. La
+#: hauteur borne encore : à 72vh de large, la capture fait ~51vh de haut,
+#: ce qui laisse le titre et la ligne de cartes à l'écran.
+CAPTURE_WIDTH_LANDSCAPE = "min(44vw, 72vh)"
+
 
 def screen_slide(title_parts, slug: str, alt: str, messages, *,
                  tooltip: tuple[str, list[tuple[str, str]]] | None = None,
                  toc_label: str | None = None, toc_lvl: str = "+1",
-                 device: str = "mobile", caption: str | None = None) -> None:
+                 device: str = "mobile", caption: str | None = None,
+                 landscape: bool = False) -> None:
     """Le corps d'une slide écran : titre (+ tooltip), capture, cartes.
 
     ``title_parts`` suit la convention ``st_write`` (chaînes et couples
     ``(style, texte)``) ; ``messages`` est une liste de ``(tête, détail)`` —
     deux à quatre, pas plus : la salle lit la capture, les cartes la guident.
+    ``landscape=True`` (écrans d'opérateur, Q15) : capture pleine scène en
+    haut, messages en ligne dessous.
     """
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -54,6 +64,20 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                 if tooltip:
                     st_info_tooltip(title=tooltip[0], entries=tooltip[1])
         st_space("v", "1vh")
+        if landscape:
+            st_image(s.project.cards.media_center, width=CAPTURE_WIDTH_LANDSCAPE,
+                     uri=capture(slug, device=device), alt=alt)
+            if caption:
+                st_write(_Styles.caption, caption, tag=t.div)
+            st_space("v", "1vh")
+            with st_grid(cols=s.project.grids.balanced(len(messages)), gap="1.5vw",
+                         grid_style=s.project.grids.stretch,
+                         cell_styles=s.project.containers.grid_cell_top) as g:
+                for head, detail in messages:
+                    with g.cell(), st_block(s.project.cards.blue):
+                        st_write(_Styles.head, head, tag=t.div)
+                        st_write(_Styles.detail, detail, tag=t.div)
+            return
         with st_grid(cols="38% 62%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
