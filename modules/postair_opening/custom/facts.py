@@ -59,28 +59,14 @@ def text(node, lang: str | None = None) -> str:
     return node.get(lang) or node.get(default_language()) or ""
 
 
-@lru_cache(maxsize=1)
-def figures() -> list[dict]:
-    """The figures the deck projects, in the order the manifest asks for.
-
-    ``metadata.display_order`` is what the slide shows; the array may hold more
-    than the deck uses. A figure named in the order but absent from the array is
-    a curation error and raises here rather than rendering an empty card.
-    """
-    by_id = {f["id"]: f for f in manifest()["figures"]}
-    order = manifest()["metadata"].get("display_order") or list(by_id)
-    missing = [fid for fid in order if fid not in by_id]
-    if missing:
-        raise KeyError(f"display_order names unknown figures: {', '.join(missing)}")
-    return [by_id[fid] for fid in order]
-
-
 @lru_cache(maxsize=8)
 def framing(framing_id: str) -> dict:
     """One qualitative sourced statement.
 
     These are claims that carry no population — a publication year has no
-    sample — and are therefore deliberately kept out of ``figures``.
+    sample. The measured figures of the « Already here » series moved INTO
+    their blocks (règle NG 2026-08-18) ; only content shared by several
+    slides remains here.
     """
     for entry in manifest().get("framing", []):
         if entry["id"] == framing_id:
