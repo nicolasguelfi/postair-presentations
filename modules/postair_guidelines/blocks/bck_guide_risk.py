@@ -6,8 +6,12 @@ des visuels est le papier découpé coloré, jamais une ligne navy plate). Below
 it, three cards with green / orange / red washes — the deliberate, single
 derogation from the postair palette (plan U4, décision de design à confirmer
 au prototype) : the traffic-light semantics IS the message, and it appears
-exactly once in the whole day. Data-driven from ``custom.facts`` (section
-``risk_levels``).
+exactly once in the whole day.
+
+Le FAIT vit ici (règle NG 2026-08-18) : les trois niveaux, la ligne-cadre et
+le choix des citekeys s'éditent dans ce bloc. La phrase bibliographique reste
+dérivée de ``references.bib`` par ``citation()`` — clé inconnue = erreur
+bruyante.
 
 SPEAKER NOTES:
 Three minutes — this is the mental model they will reuse weekly. One level at
@@ -18,7 +22,6 @@ Close on the frame line: levels are vigilance signals, not prohibitions.
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -29,6 +32,30 @@ from streamtex.enums import Tags as t
 from streamtex.styles import Style
 
 from postair_pack.components.hero_split import hero_split
+
+# ── Le fait : les trois niveaux de risque (guidelines, section 4) ───────────
+#: « label » et « line » sont projetés sur les cartes ; « detail » vit dans
+#: le tooltip ; « id » sélectionne le lavis sémantique.
+_LEVELS = [
+    {"id": "low", "icon": "🟢", "label": "LOW",
+     "line": "YOU are the source — the AI polishes",
+     "detail": ("You know the answer; the AI works on the surface: "
+                "proofreading, form, organising your own ideas.")},
+    {"id": "medium", "icon": "🟠", "label": "MODERATE",
+     "line": "You explore — and you VERIFY",
+     "detail": ("You are learning the topic: summaries and syntheses of "
+                "complex material help, but you check omissions, distortions "
+                "and inventions against reliable sources.")},
+    {"id": "high", "icon": "🔴", "label": "HIGH",
+     "line": "You delegate what you cannot verify",
+     "detail": ("You depend on the AI for claims you cannot check — or the "
+                "AI replaces the assessed learning objective itself. "
+                "Hallucinations, fabricated citations, overconfidence.")},
+]
+_FRAME = "risk level ↑ = verification ↑ · never a ban"
+_CITEKEYS = ["i2tl2026-guidelines", "parmentier-vicens-2025"]
+#: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
+#: facts.json) : « Three risk levels ».
 
 _TRAFFIC_PROMPT = (
     AI_PREFIX
@@ -66,7 +93,6 @@ bs = BlockStyles
 
 def build():
     st_marker("Three levels")
-    data = section("risk_levels")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -76,9 +102,9 @@ def build():
             with g.cell():
                 st_info_tooltip(
                     title="The levels (guidelines, section 4)",
-                    entries=[(f"{lv['icon']} {text(lv['label'])} — {text(lv['line'])}",
-                              text(lv["detail"])) for lv in data["levels"]]
-                            + [("The frame", text(data["frame"])),
+                    entries=[(f"{lv['icon']} {lv['label']} — {lv['line']}",
+                              lv["detail"]) for lv in _LEVELS]
+                            + [("The frame", _FRAME),
                                ("The red case that matters", "« The AI replaces the "
                                 "assessed learning objective » is always high risk — "
                                 "that is the one to remember.")],
@@ -94,11 +120,11 @@ def build():
                 alt_fallback=("Papercut traffic light with green, orange and red "
                               "lights"),
                 variant="sq")):
-            for lv in data["levels"]:
+            for lv in _LEVELS:
                 with st_block(_WASH[lv["id"]]):
-                    st_write(bs.icon, lv["icon"], " ", (bs.label, text(lv["label"])),
+                    st_write(bs.icon, lv["icon"], " ", (bs.label, lv["label"]),
                              tag=t.div)
-                    st_write(bs.line, text(lv["line"]), tag=t.div)
+                    st_write(bs.line, lv["line"], tag=t.div)
             st_space("v", "0.5vh")
-            st_write(bs.frame, text(data["frame"]), " ",
-                     citation(*citekeys(data)), tag=t.div)
+            st_write(bs.frame, _FRAME, " ",
+                     citation(*_CITEKEYS), tag=t.div)

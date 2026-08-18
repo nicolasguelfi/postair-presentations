@@ -3,7 +3,12 @@
 One dominant papercut image (the official document, sealed, under the amber
 orb), the exact title, the version line. The full identity card of the
 document — issuer, structure, nature, where to download — lives in the
-tooltip. Data-driven from ``custom.facts`` (section ``identity``).
+tooltip.
+
+Le FAIT vit ici (règle NG 2026-08-18) : la carte d'identité du document et le
+choix des citekeys s'éditent dans ce bloc. La phrase bibliographique reste
+dérivée de ``references.bib`` par ``citation()`` — clé inconnue = erreur
+bruyante.
 
 SPEAKER NOTES:
 One minute, positive tone: « these rules exist so that you CAN use AI, well ».
@@ -13,7 +18,6 @@ text is nineteen pages and its identity card is in the info panel.
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -31,6 +35,26 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# ── Le fait : la carte d'identité du document officiel ──────────────────────
+_TITLE_EXACT = "Guidelines on the Use of Generative AI for Teaching and Learning"
+_ISSUER = ("Institute for Innovative Teaching and Learning (I²TL), University "
+           "of Luxembourg — contact I2TL@uni.lu")
+_VERSION_LINE = ("Version 1.0 · 16 February 2026 · 19 pages · for students "
+                 "AND teachers")
+_NATURE = ("A foundational framework, not a disciplinary code: it explains "
+           "how to use generative AI critically, ethically and transparently, "
+           "and refers misconduct to the existing academic procedures. "
+           "Anchored in the EU AI Act's approach: risk levels, transparency, "
+           "human oversight, bias awareness.")
+_STRUCTURE = ("1 Introduction (p.3) · 2 Guidelines for learning (p.4) · 3 AI "
+              "tools supported by UL (p.5) · 4 Using GenAI effectively and "
+              "responsibly (p.6) · 5 Guidelines for teaching (p.9) · "
+              "6 Assessment adaptation (p.12) · 7 Resources (p.16) · "
+              "Appendix 1 disclaimers (p.18) · Appendix 2 student checklist "
+              "(p.19). This session covers the student sections: 2, 3, 4 and "
+              "the two appendices.")
+_CITEKEYS = ["i2tl2026-guidelines"]
+
 _COVER_PROMPT = (
     AI_PREFIX
     + "A large paper document standing upright like a monument, made of "
@@ -44,7 +68,6 @@ _COVER_PROMPT = (
 
 def build():
     st_marker("Guidelines")
-    identity = section("identity")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -54,10 +77,10 @@ def build():
                 st_info_tooltip(
                     title="The document",
                     entries=[
-                        ("Exact title", text(identity["title_exact"])),
-                        ("Issuer", text(identity["issuer"])),
-                        ("Nature", text(identity["nature"])),
-                        ("Structure", text(identity["structure"])),
+                        ("Exact title", _TITLE_EXACT),
+                        ("Issuer", _ISSUER),
+                        ("Nature", _NATURE),
+                        ("Structure", _STRUCTURE),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -70,5 +93,5 @@ def build():
         )
         st_space("v", "1vh")
         st_write(bs.subtitle, "15 minutes for the essential", tag=t.div)
-        st_write(bs.version, text(identity["version_line"]), " ",
-                 citation(*citekeys(identity)), tag=t.div)
+        st_write(bs.version, _VERSION_LINE, " ",
+                 citation(*_CITEKEYS), tag=t.div)

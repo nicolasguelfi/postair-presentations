@@ -3,8 +3,12 @@
 One dominant papercut image — the protected M365 bubble versus the open
 cloud — and the three lines that matter: Copilot with the UL account is the
 supported choice, UniGPT is staff-only for now, free public tools pay
-themselves with your data. Equity rules in the tooltip. Data-driven from
-``custom.facts`` (section ``tools``).
+themselves with your data. Equity rules in the tooltip.
+
+Le FAIT vit ici (règle NG 2026-08-18) : les trois lignes outils, les règles
+d'équité et le choix des citekeys s'éditent dans ce bloc. La phrase
+bibliographique reste dérivée de ``references.bib`` par ``citation()`` — clé
+inconnue = erreur bruyante.
 
 SPEAKER NOTES:
 Two minutes. The image carries the model: inside the bubble, your data stays
@@ -14,7 +18,6 @@ grades — it concerns every wallet in the room.
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -33,6 +36,19 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# ── Le fait : les outils soutenus par l'UL (guidelines, section 3, p.5) ─────
+_SUPPORTED = ("Copilot + UL account = THE supported choice · your data stays "
+              "in UL's M365")
+_UNIGPT = "UniGPT (internal, secure) · staff first"
+_OUTSIDE = "outside → paid with your data · personal / sensitive = NEVER"
+_EQUITY = [
+    "course REQUIRES AI → a free path must exist",
+    "conscientious objection → CAR committee",
+]
+_CITEKEYS = ["i2tl2026-guidelines"]
+#: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
+#: facts.json) : « The tools UL gives you ».
+
 _BUBBLE_PROMPT = (
     AI_PREFIX
     + "A large transparent paper bubble dome sheltering a small papercut "
@@ -45,7 +61,6 @@ _BUBBLE_PROMPT = (
 
 def build():
     st_marker("UL tools")
-    data = section("tools")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -55,10 +70,10 @@ def build():
                 st_info_tooltip(
                     title="Supported tools (guidelines, section 3, p.5)",
                     entries=[
-                        ("Microsoft Copilot (UL account)", text(data["supported"])),
-                        ("UniGPT", text(data["unigpt"])),
-                        ("Public tools", text(data["outside"])),
-                        *[("Equity", text(e)) for e in data["equity"]],
+                        ("Microsoft Copilot (UL account)", _SUPPORTED),
+                        ("UniGPT", _UNIGPT),
+                        ("Public tools", _OUTSIDE),
+                        *[("Equity", e) for e in _EQUITY],
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -74,4 +89,4 @@ def build():
         st_write(bs.accent, "Copilot with your UL account — the supported choice",
                  tag=t.div)
         st_write(bs.line, "inside the bubble your data stays UL's · outside, it is "
-                          "the product ", citation(*citekeys(data)), tag=t.div)
+                          "the product ", citation(*_CITEKEYS), tag=t.div)

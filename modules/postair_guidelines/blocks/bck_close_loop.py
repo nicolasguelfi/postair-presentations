@@ -2,8 +2,11 @@
 
 One dominant papercut image (the morning's campus, matured: the amber sun
 higher and brighter) and the four steps of the day in a card row — posture,
-understanding, practice, rules. Data-driven from ``custom.facts`` (section
-``loop``).
+understanding, practice, rules.
+
+Le FAIT vit ici (règle NG 2026-08-18) : les quatre étapes du jour et le choix
+des citekeys s'éditent dans ce bloc. La phrase bibliographique reste dérivée
+de ``references.bib`` par ``citation()`` — clé inconnue = erreur bruyante.
 
 SPEAKER NOTES:
 Two minutes, warm. Walk the four cards in the day's order and land the
@@ -13,7 +16,6 @@ stay online; the next slide says where.
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -35,6 +37,22 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# ── Le fait : les quatre acquis du jour ─────────────────────────────────────
+#: « label » est projeté sur la carte ; « session » vit dans le tooltip.
+_STEPS = [
+    {"icon": "🎡", "label": "Your posture",
+     "session": "the morning: nine axes, your radar, the debates"},
+    {"icon": "🤖", "label": "Understanding",
+     "session": "GenAI: what it is, what it gets wrong"},
+    {"icon": "⚡", "label": "Practice",
+     "session": "Mistral: build your own study agent"},
+    {"icon": "📋", "label": "The rules",
+     "session": "these guidelines: use it well, openly"},
+]
+_CITEKEYS = ["guelfi-postair"]
+#: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
+#: facts.json) : « You now have all four ».
+
 _LOOP_PROMPT = (
     AI_PREFIX
     + "A stylised papercut university campus at midday, the warm amber paper "
@@ -48,7 +66,6 @@ _LOOP_PROMPT = (
 
 def build():
     st_marker("The loop")
-    data = section("loop")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -57,8 +74,8 @@ def build():
             with g.cell():
                 st_info_tooltip(
                     title="The day, in one sentence each",
-                    entries=[(f"{st_['icon']} {text(st_['label'])}", text(st_["session"]))
-                             for st_ in data["steps"]]
+                    entries=[(f"{st_['icon']} {st_['label']}", st_["session"])
+                             for st_ in _STEPS]
                             + [("The four documents", "All online, linked from the hub "
                                 "on the next slide — they stay available after today.")],
                 )
@@ -72,10 +89,10 @@ def build():
                 alt_fallback=("Papercut campus under a high amber sun, silhouettes "
                               "leaving with lanterns"),
                 variant="sq")):
-            for step in data["steps"]:
+            for step in _STEPS:
                 with st_block(s.project.cards.blue):
-                    st_write(bs.label, step["icon"], "  ", text(step["label"]),
+                    st_write(bs.label, step["icon"], "  ", step["label"],
                              tag=t.div)
             st_space("v", "0.5vh")
             st_write(bs.big, "You have everything to start well ",
-                     citation(*citekeys(data)), tag=t.div)
+                     citation(*_CITEKEYS), tag=t.div)

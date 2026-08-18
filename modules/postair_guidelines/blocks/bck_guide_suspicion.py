@@ -3,7 +3,12 @@
 One dominant papercut image (the balanced scale of justice — balanced, unlike
 the bias slide of the GenAI session) and three cards: standard procedure,
 detection is not proof (sourced, citation codes visible), your process
-protects you. Data-driven from ``custom.facts`` (section ``suspicion``).
+protects you.
+
+Le FAIT vit ici (règle NG 2026-08-18) : la ligne des garanties, les trois
+cartes et le choix des citekeys s'éditent dans ce bloc. La phrase
+bibliographique reste dérivée de ``references.bib`` par ``citation()`` — clé
+inconnue = erreur bruyante.
 
 SPEAKER NOTES:
 One minute, reassuring: the procedure is the standard one, solid evidence is
@@ -13,7 +18,6 @@ your drafts and prompts, showing your process is your best defence.
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -35,6 +39,27 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# ── Le fait : la procédure en cas de soupçon (guidelines, section 4) ────────
+#: La ligne des garanties, projetée en quatre puces (split sur « · »).
+_LINE = ("standard procedure · solid evidence required · a detector alone "
+         "≠ proof · your rights protected")
+#: « short » titre l'entrée du tooltip ; « detail » en est le corps.
+_CARDS = [
+    {"icon": "⚖️", "short": "Standard procedure",
+     "detail": ("The existing UL academic-conduct procedure applies — these "
+                "guidelines create no new tribunal.")},
+    {"icon": "🚫", "short": "Detection is not proof",
+     "detail": ("A presumed « AI detection » is not a sufficient basis: "
+                "detectors are unreliable and biased against non-native "
+                "writers.")},
+    {"icon": "🛡️", "short": "Your process protects you",
+     "detail": ("Drafts, prompts, versions: showing your process is your "
+                "best defence — one more reason to keep them.")},
+]
+_CITEKEYS = ["i2tl2026-guidelines", "liang2023-bias", "giray-detectors-2026"]
+#: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
+#: facts.json) : « If misuse is suspected ».
+
 _BALANCE_PROMPT = (
     AI_PREFIX
     + "A perfectly balanced paper scale of justice standing on a small paper "
@@ -47,7 +72,6 @@ _BALANCE_PROMPT = (
 
 def build():
     st_marker("If suspected")
-    data = section("suspicion")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -56,8 +80,8 @@ def build():
             with g.cell():
                 st_info_tooltip(
                     title="The procedure (guidelines, section 4)",
-                    entries=[(f"{c['icon']} {text(c['short'])}", text(c["detail"]))
-                             for c in data["cards"]],
+                    entries=[(f"{c['icon']} {c['short']}", c["detail"])
+                             for c in _CARDS],
                 )
         st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : balance carrée à gauche, les
@@ -70,7 +94,7 @@ def build():
                            "pan and documents in the other, calm sky"),
                 alt_fallback=("Papercut balanced scale of justice"),
                 variant="sq")):
-            for part in text(data["line"]).split(" · "):
+            for part in _LINE.split(" · "):
                 st_write(bs.line, "▸ ", part, tag=t.div)
             st_space("v", "0.5vh")
-            st_write(bs.cite, citation(*citekeys(data)), tag=t.div)
+            st_write(bs.cite, citation(*_CITEKEYS), tag=t.div)

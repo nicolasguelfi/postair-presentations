@@ -2,8 +2,12 @@
 
 THE rule the whole room must remember word for word. One dominant papercut
 image (the green light), the verbatim boxed rule of the guidelines (p.4), the
-two caveats, and Kuri the curiosity mascot beside the message. Data-driven
-from ``custom.facts`` (section ``default_rule``).
+two caveats, and Kuri the curiosity mascot beside the message.
+
+Le FAIT vit ici (règle NG 2026-08-18) : la règle verbatim, les caveats,
+l'anecdote et le choix des citekeys s'éditent dans ce bloc. La phrase
+bibliographique reste dérivée de ``references.bib`` par ``citation()`` — clé
+inconnue = erreur bruyante.
 
 SPEAKER NOTES:
 Two minutes. Read the verbatim rule slowly, once — this is the sentence 1500
@@ -14,7 +18,6 @@ openness is real.
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -38,6 +41,23 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# ── Le fait : la règle par défaut (guidelines, section 2, p.4) ──────────────
+#: La phrase encadrée du document, copiée verbatim — c'est LA phrase que la
+#: salle doit retenir mot pour mot.
+_VERBATIM = ("In the absence of explicit course directives, students MAY use "
+             "generative AI to support their learning — within academic "
+             "integrity, transparency, and respect of third-party rights.")
+_CAVEATS = [
+    "the syllabus PRIMES · a course can restrict or forbid",
+    "in doubt → ask BEFORE",
+]
+_ANECDOTE = ("The default rule became permissive after the community "
+             "consultation — the openness is deliberate, not an oversight.")
+_CITEKEYS = ["i2tl2026-guidelines"]
+#: Jamais projeté, gardé pour la vérifiabilité (entrées « big » et « sub » de
+#: l'ancien facts.json) : « By default: PERMITTED » ·
+#: « the course rules always come first ».
+
 _GREEN_PROMPT = (
     AI_PREFIX
     + "A tall paper traffic light with a single big round glowing leaf-green "
@@ -50,7 +70,6 @@ _GREEN_PROMPT = (
 
 def build():
     st_marker("Permitted")
-    rule = section("default_rule")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -61,10 +80,10 @@ def build():
                 st_info_tooltip(
                     title="The default rule (guidelines, section 2, p.4)",
                     entries=[
-                        ("The boxed rule, verbatim", text(rule["verbatim"])),
+                        ("The boxed rule, verbatim", _VERBATIM),
                         ("Who can restrict it", "A course can — explicitly, and with a "
                          "pedagogical justification. The syllabus always primes."),
-                        ("Why it is permissive", text(rule["anecdote"])),
+                        ("Why it is permissive", _ANECDOTE),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -78,11 +97,11 @@ def build():
                 alt_fallback=("Papercut green light beside a road"),
                 variant="sq")):
             with st_block(s.project.cards.blue):
-                st_write(bs.verbatim, "« ", text(rule["verbatim"]), " » ",
-                         citation(*citekeys(rule)), tag=t.div)
+                st_write(bs.verbatim, "« ", _VERBATIM, " » ",
+                         citation(*_CITEKEYS), tag=t.div)
             st_space("v", "0.5vh")
-            for caveat in rule["caveats"]:
-                st_write(bs.caveat, text(caveat), tag=t.div)
+            for caveat in _CAVEATS:
+                st_write(bs.caveat, caveat, tag=t.div)
             st_space("v", "0.5vh")
             kuri = mascot("Kuri")
             st_image(s.project.cards.media_center, width="min(7vw, 13vh)",

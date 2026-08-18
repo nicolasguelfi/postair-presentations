@@ -8,7 +8,10 @@ et la définition du deepfake (art. 3(60), verbatim au tooltip) répond à LA
 confusion prévisible — non, une image générée n'est pas automatiquement un
 deepfake. Fiche : ``_project/analysis/02-ai-act-etudiants.md``.
 
-Data-driven from ``custom.facts`` (section ``ai_act``).
+Data-driven from ``custom.facts`` (section ``ai_act``) — exception à la règle
+NG 2026-08-18 (« le fait vit dans son bloc ») : la section est PARTAGÉE par
+les 2 slides AI Act (U9 et U9b) et reste servie par ``facts.json`` — ce qui
+sert plusieurs slides vit dans ``custom/``.
 
 SPEAKER NOTES:
 Three minutes, descriptive register — the law goes the same way as the

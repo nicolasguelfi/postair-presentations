@@ -5,6 +5,11 @@ moderators, in one festive grid under the closing line. High energy, applause
 slide — the credits live in the tooltip. Mascots are asked by the frozen cast
 manifest (``postair_data``), never by file.
 
+Le FAIT vit ici (règle NG 2026-08-18) : la phrase de clôture et les crédits
+s'éditent dans ce bloc. La phrase bibliographique reste dérivée de
+``references.bib`` par ``citation()``/``cite`` — clé inconnue = erreur
+bruyante (cette slide ne cite aucune source).
+
 SPEAKER NOTES:
 One minute, all energy. Read the line — « Welcome to the University of
 Luxembourg — make AI yours » — open your arms, let the room applaud the
@@ -12,7 +17,6 @@ mascots. Logistics of what follows (break, rooms) is said here if needed.
 """
 # @guideline: postair-minimal
 
-from custom.facts import section, text
 from custom.styles import Styles as s
 from postair_data import axes, mascot
 from shared_widgets import st_info_tooltip
@@ -31,10 +35,15 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# ── Le fait : la phrase de clôture et les crédits ───────────────────────────
+_BIG = "Welcome to the University of Luxembourg — make AI yours."
+_CREDITS = ("AI Day team · the POSTAIR study and its 55 figures · sumvadis "
+            "(the live survey) · 38 mascots, 100 % generative AI · built "
+            "with streamtex")
+
 
 def build():
     st_marker("Thank you!")
-    data = section("thanks")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -44,7 +53,7 @@ def build():
                 st_info_tooltip(
                     title="Credits",
                     entries=[
-                        ("The day", text(data["credits"])),
+                        ("The day", _CREDITS),
                         ("The mascots", "38 characters, 100 % generative AI, designed "
                          "in the mascoties studio — each carries one pole of one axis."),
                     ],
@@ -67,4 +76,4 @@ def build():
                              overlay=dd35_overlay())
                     st_write(bs.name, member["mascot"], tag=t.div)
         st_space("v", "2vh")
-        st_write(bs.big, text(data["big"]), tag=t.div)
+        st_write(bs.big, _BIG, tag=t.div)

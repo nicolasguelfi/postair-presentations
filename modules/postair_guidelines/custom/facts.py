@@ -1,10 +1,12 @@
-"""Access to the session facts — the only content source of the twelve slides.
+"""Access to the SHARED session facts — only what several slides project.
 
-``static/data/facts.json`` is hand-curated: every figure, milestone, example
-and claim was verified at its source and carries its citation keys. No number,
-claim or reference is ever typed into a block — a block asks this module for a
-section and renders what it gets. A correction is made in the JSON, never in a
-slide.
+Règle NG 2026-08-18 (« le fait vit dans son bloc ») : un fait qui ne sert
+qu'une slide est inliné en constantes dans son bloc. ``static/data/facts.json``
+ne garde donc que le PARTAGÉ — aujourd'hui la seule section ``ai_act``,
+consommée par les deux slides AI Act (U9 et U9b) : ce qui sert plusieurs
+slides vit dans ``custom/``. Le contenu reste hand-curated, vérifié à la
+source, et porte ses clés de citation ; une correction d'un fait partagé se
+fait dans le JSON, jamais dans une slide.
 
 **Les références ne sont PAS ici.** Une source porte des clés de citation ; la
 phrase bibliographique est dérivée de ``static/data/references.bib`` par

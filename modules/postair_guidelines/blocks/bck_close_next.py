@@ -1,8 +1,12 @@
 """Closing — and now? (C2).
 
 The QR to the hub of the day's presentations, giant, with the four « what
-stays with you » lines. URLs and contacts in the tooltip. Data-driven from
-``custom.facts`` (section ``next``).
+stays with you » lines. URLs and contacts in the tooltip.
+
+Le FAIT vit ici (règle NG 2026-08-18) : les quatre lignes, l'URL du hub et
+les contacts s'éditent dans ce bloc. La phrase bibliographique reste dérivée
+de ``references.bib`` par ``citation()``/``cite`` — clé inconnue = erreur
+bruyante (cette slide ne cite aucune source).
 
 SPEAKER NOTES:
 Two minutes. Leave the QR on screen long enough for the slow phones. Say the
@@ -11,7 +15,6 @@ yours — and postures move, retake it at the end of the year.
 """
 # @guideline: postair-minimal
 
-from custom.facts import section, text
 from custom.styles import Styles as s
 from shared_widgets import st_info_tooltip
 from streamtex import *
@@ -26,10 +29,21 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# ── Le fait : ce qui reste après la séance ──────────────────────────────────
+_ITEMS = [
+    "your result: /r/<code> · anonymous · yours",
+    "4 decks online · one hub",
+    "Mistral walkthrough → rebuild at home",
+    "retake the survey at year end → postures MOVE",
+]
+_HUB_URL = "postair-collection.streamtex.org"
+_CONTACTS = "Guidelines: I2TL@uni.lu · the speakers stay around during the break"
+#: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
+#: facts.json) : « And now? ».
+
 
 def build():
     st_marker("And now?")
-    data = section("next")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -43,7 +57,7 @@ def build():
                          "of the day, one card each."),
                         ("Your result", "app.sumvadis.ai/r/<your code> — anonymous, "
                          "computed on your device, kept for you."),
-                        ("Contacts", text(data["contacts"])),
+                        ("Contacts", _CONTACTS),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -56,8 +70,8 @@ def build():
                          uri="images/qr/qr_hub_collection.png",
                          alt="QR code to postair-collection.streamtex.org, the hub of "
                              "the day's presentations")
-                st_write(bs.url, text(data["hub_url"]), tag=t.div)
+                st_write(bs.url, _HUB_URL, tag=t.div)
             with g.cell():
-                for item in data["items"]:
-                    st_write(bs.item, "▸ ", text(item), tag=t.div)
+                for item in _ITEMS:
+                    st_write(bs.item, "▸ ", item, tag=t.div)
                     st_space("v", "1vh")

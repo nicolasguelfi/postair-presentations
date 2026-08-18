@@ -5,6 +5,11 @@ demande À L'ÉTUDIANT — les quatre cartes d'articles (numéros exigés par NG
 empilées à droite du visuel, et le punch fournisseur/émotions. La FAQ en
 langage non-spécialiste reste au tooltip, identique à la slide précédente.
 
+Data-driven from ``custom.facts`` (section ``ai_act``) — exception à la règle
+NG 2026-08-18 (« le fait vit dans son bloc ») : la section est PARTAGÉE par
+les 2 slides AI Act (U9 et U9b) et reste servie par ``facts.json`` — ce qui
+sert plusieurs slides vit dans ``custom/``.
+
 SPEAKER NOTES:
 Two minutes. Walk the four cards top to bottom with their article numbers —
 the machine-readable mark is the TOOL's duty, the visible deepfake label and
