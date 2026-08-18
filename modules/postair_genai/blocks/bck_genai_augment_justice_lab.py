@@ -6,6 +6,12 @@ le message « humeurs ≠ constance », et le garde-fou Dressel & Farid SUR la
 slide — l'honnêteté est la ligne du deck. L'anecdote Unikowsky et la mise en
 garde sur le « 79 % » légendaire restent dans l'infobulle de la slide 1/2.
 
+Exception à la règle « le fait vit dans son bloc » (NG 2026-08-18) : l'entrée
+``augment``/``justice`` est PARTAGÉE par les 2 slides justice et reste servie
+par ``custom.facts`` — ce qui sert plusieurs slides vit dans ``custom/``. La
+phrase bibliographique reste dérivée de ``references.bib`` par
+``citation()``/``cite`` — clé inconnue = erreur bruyante.
+
 SPEAKER NOTES:
 Ninety seconds. The lab result is the one students should remember: the
 machine had no mood, no hunger, no sympathy — constancy is the tool's

@@ -1,9 +1,12 @@
-"""Access to the session facts — the only content source of the twelve slides.
+"""Access to the SHARED session facts — what several slides project.
 
-``static/data/facts.json`` is hand-curated: every figure, milestone, example
-and claim was verified at its source and carries its citation keys. No number,
-claim or reference is ever typed into a block — a block asks this module for a
-section and renders what it gets. A correction is made in the JSON, never in a
+Règle NG 2026-08-18 : « le fait vit dans son bloc ». Tout contenu qui ne sert
+qu'une slide est inliné en constantes dans son bloc ``bck_genai_*`` ; ce qui
+sert PLUSIEURS slides vit dans ``custom/`` — donc ici. Il ne reste dans
+``static/data/facts.json`` que ce partagé : l'entrée ``augment``/``justice``,
+projetée par ``bck_genai_augment_justice`` ET ``bck_genai_augment_justice_lab``.
+The JSON stays hand-curated: every claim verified at its source, carrying its
+citation keys. A correction to a shared fact is made in the JSON, never in a
 slide.
 
 **Les références ne sont PAS ici.** Une source porte des clés de citation ; la

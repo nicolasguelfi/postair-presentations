@@ -1,13 +1,16 @@
 """Seventy years in one frieze (G3) — seven milestones, amber rising rightward.
 
-Data-driven from ``custom.facts``: milestones, wording and citation keys live
-in ``facts.json``. The frieze is drawn in HTML — crisp at any projection size,
-and the amber warms up milestone by milestone toward today: the point of the
-slide IS that gradient (nothing magical, a long history and a recent tipping
-point).
+The frieze is drawn in HTML — crisp at any projection size, and the amber
+warms up milestone by milestone toward today: the point of the slide IS that
+gradient (nothing magical, a long history and a recent tipping point).
 
 Each milestone card carries its citation code in the visible text — full
 reference on hover, canonical bib rule.
+
+Le FAIT vit ici (règle NG 2026-08-18) : jalons, formulations et choix des
+citekeys s'éditent dans ce bloc. La phrase bibliographique reste dérivée de
+``references.bib`` par ``citation()``/``cite`` — clé inconnue = erreur
+bruyante.
 
 SPEAKER NOTES:
 Three minutes, half a minute per milestone, walking left to right. Insist on
@@ -17,7 +20,6 @@ that it arrived in everyone's pocket at once.
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.refs import citation
 from custom.styles import Styles as s
 from shared_widgets import st_info_tooltip
@@ -40,10 +42,66 @@ bs = BlockStyles
 _DOT_COLOURS = ["#7AB8F5", "#8FB0E0", "#A8A8C8", "#C4A06E", "#D9973F",
                 "#F39C12", "#F39C12"]
 
+# ── Les sept jalons (année + étiquette projetées ; détail au survol) ────────
+#: Jamais projeté, gardé pour la vérifiabilité — les identifiants d'origine
+#: des jalons : turing, dartmouth, winters, deep, transformers, chatgpt,
+#: agents. Le jalon 2026 (agents) n'a pas de source : c'est une annonce de
+#: séance, pas une affirmation — sa liste de citekeys est vide.
+_MILESTONES = [
+    {
+        "year": "1950",
+        "label": "The Turing test",
+        "detail": ("Can a machine hold a conversation indistinguishable from "
+                   "a human's? The question that started the field."),
+        "citekeys": ["turing1950-mind"],
+    },
+    {
+        "year": "1956",
+        "label": "The name: « AI »",
+        "detail": ("A summer workshop at Dartmouth coins the term "
+                   "« artificial intelligence » — and predicts fast progress."),
+        "citekeys": ["mccarthy1955-dartmouth"],
+    },
+    {
+        "year": "1974–1993",
+        "label": "Two AI winters",
+        "detail": ("Twice, promises outran results and funding collapsed. The "
+                   "field learned humility the hard way."),
+        "citekeys": ["lighthill1973-survey"],
+    },
+    {
+        "year": "2012",
+        "label": "Deep learning works",
+        "detail": ("AlexNet crushes the ImageNet vision contest: neural "
+                   "networks plus GPUs plus data finally deliver."),
+        "citekeys": ["krizhevsky2012-alexnet"],
+    },
+    {
+        "year": "2017",
+        "label": "Transformers",
+        "detail": ("« Attention Is All You Need » — the architecture every "
+                   "current large language model is built on."),
+        "citekeys": ["vaswani2017-attention"],
+    },
+    {
+        "year": "2022",
+        "label": "ChatGPT",
+        "detail": ("An estimated 100 million users two months after launch — "
+                   "the fastest-adopted consumer application of its time."),
+        "citekeys": ["hu2023-fastest"],
+    },
+    {
+        "year": "2026",
+        "label": "The year of agents",
+        "detail": ("Models that use tools in a loop to pursue a goal — the "
+                   "frontier you will see live in the Mistral session."),
+        "citekeys": [],
+    },
+]
+
 
 def build():
     st_marker("70 years")
-    milestones = section("timeline")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -52,22 +110,21 @@ def build():
             with g.cell():
                 st_info_tooltip(
                     title="The milestones, one sentence each",
-                    entries=[(f"{m['year']} — {text(m['label'])}", text(m["detail"]))
-                             for m in milestones],
+                    entries=[(f"{m['year']} — {m['label']}", m["detail"])
+                             for m in _MILESTONES],
                 )
         st_space("v", s.project.spacing.title_gap)
         # La frise : une carte par jalon, point coloré + année + étiquette +
         # code de citation. La ligne est portée par la rangée de points.
-        with st_grid(cols=s.project.grids.balanced(len(milestones)), gap="0.8vw",
+        with st_grid(cols=s.project.grids.balanced(len(_MILESTONES)), gap="0.8vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            for i, m in enumerate(milestones):
+            for i, m in enumerate(_MILESTONES):
                 with g.cell(), st_block(s.project.cards.blue):
                     st_html(f'<div style="text-align:center;padding-top:0.5vh;">'
                             f'<span style="display:inline-block;width:1.6vw;height:1.6vw;'
                             f'border-radius:50%;background:{_DOT_COLOURS[i]};"></span></div>')
                     st_write(bs.year, m["year"], tag=t.div)
-                    st_write(bs.label, text(m["label"]), tag=t.div)
-                    keys = citekeys(m)
-                    if keys:
-                        st_write(bs.cite, citation(*keys), tag=t.div)
+                    st_write(bs.label, m["label"], tag=t.div)
+                    if m["citekeys"]:
+                        st_write(bs.cite, citation(*m["citekeys"]), tag=t.div)

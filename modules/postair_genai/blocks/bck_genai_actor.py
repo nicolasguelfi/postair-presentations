@@ -2,8 +2,13 @@
 
 One dominant image — a silhouette facing the amber horizon — and three
 mascots walking with it: curiosity, optimism, prudence. One line, three
-verbs. Data-driven from ``custom.facts``; the mascots are asked by NAME
-(``postair_data.mascot``), never by file.
+verbs. The mascots are asked by NAME (``postair_data.mascot``), never by
+file.
+
+Le FAIT vit ici (règle NG 2026-08-18) : les trois verbes, les trois mascottes
+et le choix des citekeys s'éditent dans ce bloc. La phrase bibliographique
+reste dérivée de ``references.bib`` par ``citation()``/``cite`` — clé
+inconnue = erreur bruyante.
 
 SPEAKER NOTES:
 One minute, almost no words. The morning asked « what is your posture? » ;
@@ -13,7 +18,6 @@ do the rest.
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -42,10 +46,20 @@ _HORIZON_PROMPT = (
     + AI_SUFFIX_LANDSCAPE
 )
 
+# ── La posture-boussole ─────────────────────────────────────────────────────
+#: Jamais projeté, gardé pour la vérifiabilité — la ligne d'accroche de
+#: l'ancienne section « actor » de facts.json (entrée ``line``, jamais
+#: consommée par le rendu) : « The revolution is here. Your posture is your
+#: compass. »
+_VERBS = ["Stay informed", "Test things", "Keep doubting"]
+#: Les trois compagnons — demandés par leur NOM au cast gelé.
+_MASCOTS = ["Kuri", "Solyo", "Lento"]
+_MASCOT_WHY = "curiosity · optimism · prudence — three postures, together"
+_CITEKEYS = ["guelfi-postair"]
+
 
 def build():
     st_marker("Actor")
-    data = section("actor")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -60,7 +74,7 @@ def build():
                          "transhumanism. Your radar from this morning."),
                         ("Not frozen", "A posture is a position, not an identity: it "
                          "moves when the evidence moves. Retake the survey in a year."),
-                        ("Three companions", text(data["mascot_why"])),
+                        ("Three companions", _MASCOT_WHY),
                     ],
                 )
         st_space("v", "1vh")
@@ -74,14 +88,13 @@ def build():
         )
         st_space("v", "1vh")
         st_write(bs.verbs,
-                 " · ".join(text(v) for v in data["verbs"]), "   ",
-                 citation(*citekeys(data)), tag=t.div)
+                 " · ".join(_VERBS), "   ",
+                 citation(*_CITEKEYS), tag=t.div)
         st_space("v", "1.5vh")
         # Les trois compagnons — demandés par leur NOM au cast gelé.
-        names = data["mascots"]
-        with st_grid(cols=s.project.grids.balanced(len(names)), gap="1vw",
+        with st_grid(cols=s.project.grids.balanced(len(_MASCOTS)), gap="1vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            for name in names:
+            for name in _MASCOTS:
                 m = mascot(name)
                 with g.cell():
                     st_image(s.project.cards.media_center, width="7vw",

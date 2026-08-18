@@ -7,6 +7,12 @@ le code de citation. Le laboratoire et le garde-fou ont LEUR slide
 (``bck_genai_augment_justice_lab``). Gabarit par défaut : image carrée à
 gauche, contenu à droite.
 
+Exception à la règle « le fait vit dans son bloc » (NG 2026-08-18) : l'entrée
+``augment``/``justice`` est PARTAGÉE par les 2 slides justice et reste servie
+par ``custom.facts`` — ce qui sert plusieurs slides vit dans ``custom/``. La
+phrase bibliographique reste dérivée de ``references.bib`` par
+``citation()``/``cite`` — clé inconnue = erreur bruyante.
+
 SPEAKER NOTES:
 Ninety seconds. Say the word « simulation » out loud — nobody replaced a
 judge; the algorithm predicts the risk the law asks the judge to assess, and

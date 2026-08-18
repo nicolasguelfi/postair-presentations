@@ -7,6 +7,11 @@ d'un cran (diriger, juger, assumer) et cette place S'APPREND pendant les
 en ambre porte le message, l'originale française reste sous elle — c'est la
 formule de l'auteur, elle se lit telle quelle.
 
+Le FAIT vit ici (règle NG 2026-08-18) : message, maxime, réponse et choix des
+citekeys s'éditent dans ce bloc. La phrase bibliographique reste dérivée de
+``references.bib`` par ``citation()``/``cite`` — clé inconnue = erreur
+bruyante.
+
 SPEAKER NOTES:
 Two minutes, right after the careers cards — this is their consequence. Ask
 the room the amber question and WAIT three full seconds. Then give the only
@@ -17,7 +22,6 @@ actor slide: choosing your posture is choosing how you will direct.
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -50,10 +54,27 @@ _HERO_PROMPT = (
     + AI_SUFFIX_LANDSCAPE
 )
 
+# ── La place de l'humain (message projeté ; phrase complète au survol) ──────
+_LABEL = "You will all be project managers"
+_MESSAGE = ("generative assistants → professional production · your place: "
+            "DIRECT · JUDGE · OWN IT")
+#: La maxime dans les deux langues — l'anglaise en ambre porte le message,
+#: l'originale française de l'auteur se lit telle quelle.
+_PUNCH = "How do you have it done, if you do not know how to do it?"
+_PUNCH_ORIGINAL = "« Comment faire faire, si nous ne savons pas faire ? »"
+_ANSWER = ("you can only direct what you can judge → learn the craft DURING "
+           "your studies")
+_DETAIL = ("Employers surveyed across 55 economies expect 39 % of core "
+           "skills to change by 2030, with AI literacy and analytical "
+           "thinking rising fastest. Directing an assistant that produces in "
+           "seconds requires exactly what a degree builds: knowing the "
+           "domain well enough to specify, to judge the output, and to take "
+           "responsibility for it.")
+_CITEKEYS = ["wef2025-jobs"]
+
 
 def build():
     st_marker("Your place")
-    fact = section("future")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -61,9 +82,9 @@ def build():
                          "project managers"), tag=t.div,
                          toc_lvl="+1", label="Your place")
             with g.cell():
-                st_info_tooltip(title=text(fact["label"]),
+                st_info_tooltip(title=_LABEL,
                                 entries=[("Why this is the hard part",
-                                          text(fact["detail"]))])
+                                          _DETAIL)])
         st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: hero_image(
                 "genai_conductor", _HERO_PROMPT,
@@ -74,11 +95,11 @@ def build():
                 alt_fallback=("Papercut conductor silhouette directing amber orbs "
                               "producing paper sheets"),
                 variant="sq")):
-            st_write(bs.message, text(fact["message"]), " ",
-                     citation(*citekeys(fact)), tag=t.div)
+            st_write(bs.message, _MESSAGE, " ",
+                     citation(*_CITEKEYS), tag=t.div)
             st_space("v", "1vh")
             with st_block(s.project.cards.amber):
-                st_write(bs.punch, text(fact["punch"]), tag=t.div)
-                st_write(bs.punch_original, text(fact["punch_original"]), tag=t.div)
+                st_write(bs.punch, _PUNCH, tag=t.div)
+                st_write(bs.punch_original, _PUNCH_ORIGINAL, tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.answer, text(fact["answer"]), tag=t.div)
+            st_write(bs.answer, _ANSWER, tag=t.div)

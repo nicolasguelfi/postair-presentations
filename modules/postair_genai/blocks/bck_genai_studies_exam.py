@@ -4,6 +4,12 @@ Le versant exigeant du découpage : l'orbe attend derrière la porte de la
 salle d'examen, et le paradoxe ferme la slide en ambre. Le chiffre HEPI porte
 son code de citation visible.
 
+Le FAIT vit ici (règle NG 2026-08-18) : les trois mises en garde, le paradoxe
+et le choix des citekeys s'éditent dans ce bloc (le versant positif vit dans
+``bck_genai_studies_tutor`` — entrées disjointes de l'ancienne section
+« studies »). La phrase bibliographique reste dérivée de ``references.bib``
+par ``citation()``/``cite`` — clé inconnue = erreur bruyante.
+
 SPEAKER NOTES:
 Ninety seconds, slower than the previous slide. Read the amber paradox line
 once, let it sit. The 94 % is not an accusation — it says the question is HOW,
@@ -11,7 +17,6 @@ not whether. Bridge: Mistral shows the how, the guidelines give the rules.
 """
 # @guideline: postair-minimal
 
-from custom.facts import section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -40,10 +45,20 @@ _EXAM_PROMPT = (
     + AI_SUFFIX_LANDSCAPE
 )
 
+# ── Les trois mises en garde — la dernière porte le chiffre HEPI sourcé ─────
+_DONT = [
+    "human exam = human learning",
+    "shortcut = the skill-building effort, replaced",
+    "94 % UK already use it → the question is HOW",
+]
+_DONT_CITEKEYS = ["hepi-survey-2026"]
+
+# ── Le paradoxe — LE message de la slide ────────────────────────────────────
+_PARADOX = "well used → learning ↑ · INSTEAD of learning → cancelled"
+
 
 def build():
     st_marker("The exam")
-    data = section("studies")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -56,7 +71,7 @@ def build():
                         ("Process originality", "What is graded is YOUR process: "
                          "drafts, choices, verification. Keeping your prompts and "
                          "versions is how you show it."),
-                        ("The paradox", text(data["paradox"])),
+                        ("The paradox", _PARADOX),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -67,14 +82,12 @@ def build():
                 alt_fallback=("Papercut exam room, silhouette writing, amber orb "
                               "waiting behind the closed door"),
                 variant="pt")):
-            for i, item in enumerate(data["dont"]):
-                if i == len(data["dont"]) - 1:
-                    st_write(bs.item, "▸ ", text(item), " ",
-                             citation(*data["dont_source"]["citekeys"]), tag=t.div)
-                else:
-                    st_write(bs.item, "▸ ", text(item), tag=t.div)
+            for item in _DONT[:-1]:
+                st_write(bs.item, "▸ ", item, tag=t.div)
+            st_write(bs.item, "▸ ", _DONT[-1], " ",
+                     citation(*_DONT_CITEKEYS), tag=t.div)
             st_space("v", "1vh")
             # Le paradoxe — LE message de la slide — en carte ambre, VISIBLE :
             # il vivait sous le pli dans l'ancienne pile verticale.
             with st_block(s.project.cards.amber):
-                st_write(bs.paradox, text(data["paradox"]), tag=t.div)
+                st_write(bs.paradox, _PARADOX, tag=t.div)

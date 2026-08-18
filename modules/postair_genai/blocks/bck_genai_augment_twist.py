@@ -5,6 +5,11 @@ randomisé qui donne 92 % à l'IA seule ne donne que 76 % au médecin ÉQUIPÉ
 de l'IA — deux points de mieux que sans elle. Trois cartes, trois nombres,
 et le message que toute la journée porte : travailler AVEC s'apprend.
 
+Le FAIT vit ici (règle NG 2026-08-18) : les trois nombres, la ligne de
+loyauté et le choix des citekeys s'éditent dans ce bloc. La phrase
+bibliographique reste dérivée de ``references.bib`` par
+``citation()``/``cite`` — clé inconnue = erreur bruyante.
+
 SPEAKER NOTES:
 Ninety seconds. Reveal the three numbers left to right and pause after the
 third: the room expects 92, sees 76. That gap IS the lecture: access to the
@@ -14,7 +19,6 @@ truth, not a medical one — watch the judges."
 """
 # @guideline: postair-minimal
 
-from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -50,19 +54,39 @@ _HERO_PROMPT = (
     + AI_SUFFIX_LANDSCAPE
 )
 
+# ── Le fait (ex-entrée « twist » de la section augment) ─────────────────────
+#: Jamais projeté, gardé pour la vérifiabilité — l'identifiant d'origine de
+#: l'entrée : twist ; son pictogramme d'origine : 🤝.
+_LABEL = "The twist: the tool alone is not enough"
+_BARS = [
+    {"who": "AI alone", "value": "92 %", "tone": "amber"},
+    {"who": "Physician alone", "value": "74 %", "tone": "blue"},
+    {"who": "Physician + AI", "value": "76 %", "tone": "teal"},
+]
+_MESSAGE = "same tool · same doctors · +2 points → collaborating is LEARNED"
+_LOYALTY = ("Randomized clinical trial · 50 physicians with their usual "
+            "tools · peer-reviewed, 2024")
+_DETAIL = ("In a randomized clinical trial, GPT-4 alone scored a median 92 % "
+           "on diagnostic reasoning across six complex clinical vignettes; "
+           "50 physicians using their conventional resources scored 74 % — "
+           "and the physicians GIVEN GPT-4 scored only 76 %. Handing over "
+           "the tool changed almost nothing: knowing how to work with it is "
+           "a skill in itself, which is exactly what these study years are "
+           "for.")
+_CITEKEYS = ["goh2024llm"]
+
 
 def build():
     st_marker("The twist")
-    fact = next(a for a in section("augment") if a["id"] == "twist")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_write(bs.title, "The ", (s.project.titles.keyword, "twist"),
                          tag=t.div, toc_lvl="+1", label="The twist")
             with g.cell():
-                st_info_tooltip(title=text(fact["label"]),
+                st_info_tooltip(title=_LABEL,
                                 entries=[("Verified at the source",
-                                          text(fact["detail"]))])
+                                          _DETAIL)])
         st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: hero_image(
                 "genai_twist", _HERO_PROMPT, "images/genai_twist_fallback.svg",
@@ -71,12 +95,12 @@ def build():
                 alt_fallback=("Papercut silhouette and amber orb studying the same "
                               "paper chart together"),
                 variant="sq")):
-            for bar in fact["bars"]:
+            for bar in _BARS:
                 with st_block(_CARD_TONES[bar["tone"]]):
                     st_write(bs.number_amber if bar["tone"] == "amber" else bs.number,
-                             text(bar["value"]), tag=t.div)
-                    st_write(bs.who, text(bar["who"]), tag=t.div)
+                             bar["value"], tag=t.div)
+                    st_write(bs.who, bar["who"], tag=t.div)
             st_space("v", "0.5vh")
-            st_write(bs.message, text(fact["message"]), " ",
-                     citation(*citekeys(fact)), tag=t.div)
-            st_write(bs.loyalty, text(fact["loyalty"]), tag=t.div)
+            st_write(bs.message, _MESSAGE, " ",
+                     citation(*_CITEKEYS), tag=t.div)
+            st_write(bs.loyalty, _LOYALTY, tag=t.div)

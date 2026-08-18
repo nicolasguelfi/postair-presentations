@@ -2,8 +2,14 @@
 
 One giant cloze sentence, three candidate words with probability bars. The
 visual IS the explanation: an auditorium reads the 78 % bar before the speaker
-finishes the sentence. Data-driven from ``custom.facts``; tokens, temperature
-and the predicting-vs-understanding debate live in the tooltip.
+finishes the sentence. Tokens, temperature and the predicting-vs-understanding
+debate live in the tooltip.
+
+Le FAIT vit ici (règle NG 2026-08-18) : la phrase à trou, les trois candidats
+et le glossaire du panneau s'éditent dans ce bloc. Aucune affirmation sourcée
+sur cette slide — quand une source arrive, la phrase bibliographique reste
+dérivée de ``references.bib`` par ``citation()``/``cite`` — clé inconnue =
+erreur bruyante.
 
 SPEAKER NOTES:
 Four minutes — take them. Optional mini-demo: read the sentence aloud, stop at
@@ -14,7 +20,6 @@ debate — say that the debate exists, it buys credibility for the whole deck.
 """
 # @guideline: postair-minimal
 
-from custom.facts import section, text
 from custom.styles import Styles as s
 from shared_widgets import st_info_tooltip
 from streamtex import *
@@ -35,10 +40,39 @@ bs = BlockStyles
 #: suivantes bleu et teal — trois couleurs de la ligne, jamais plus.
 _BAR_COLOURS = ["#F39C12", "#7AB8F5", "#2EC4B6"]
 
+# ── La phrase à trou et ses candidats (probabilités illustratives) ──────────
+_SENTENCE_HEAD = "Luxembourg is a"
+_BLANK = "____"
+#: ``share`` pilote la largeur de barre, ``prob`` est l'étiquette projetée.
+_CANDIDATES = [
+    {"word": "country", "prob": "78 %", "share": 0.78},
+    {"word": "grand duchy", "prob": "12 %", "share": 0.12},
+    {"word": "cheese", "prob": "0.1 %", "share": 0.001},
+]
+_PUNCH = "Predict the next word = the WHOLE mechanism · at scale: enormous"
+
+# ── Le glossaire du panneau « What is really happening » ────────────────────
+_TOOLTIP = [
+    ("Tokens",
+     "The model reads and writes in fragments of words (tokens), a few "
+     "characters each. « Luxembourg » is 2–3 tokens."),
+    ("Probabilities",
+     "For every next token the model scores its whole vocabulary and samples "
+     "among the most probable — learned from billions of pages of text."),
+    ("Temperature",
+     "A dial on the sampling: low = always the safest word, high = more "
+     "surprising choices. Same question, different answers — by design, not "
+     "by bug."),
+    ("Predicting vs understanding",
+     "To predict well at this scale, models build internal representations "
+     "of grammar, facts and reasoning patterns. Whether that deserves the "
+     "word « understanding » is an open scientific debate — honest people "
+     "disagree."),
+]
+
 
 def build():
     st_marker("Predict")
-    data = section("prediction")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -48,20 +82,19 @@ def build():
             with g.cell():
                 st_info_tooltip(
                     title="What is really happening",
-                    entries=[(text(e["term"]), text(e["def"]))
-                             for e in data["tooltip"]],
+                    entries=list(_TOOLTIP),
                 )
         st_space("v", s.project.spacing.title_gap)
-        st_write(bs.sentence, "« ", text(data["sentence_head"]), " ",
-                 (s.project.titles.keyword, text(data["blank"])), " »", tag=t.div)
+        st_write(bs.sentence, "« ", _SENTENCE_HEAD, " ",
+                 (s.project.titles.keyword, _BLANK), " »", tag=t.div)
         st_space("v", "3vh")
         # Les trois candidats : mot, barre proportionnelle, probabilité.
-        for i, cand in enumerate(data["candidates"]):
+        for i, cand in enumerate(_CANDIDATES):
             width = max(cand["share"] * 100, 1.5)          # la barre 0,1 % reste visible
             with st_grid(cols="18% 64% 18%",
                          cell_styles=s.project.containers.grid_cell_centered) as g:
                 with g.cell():
-                    st_write(bs.word, text(cand["word"]), tag=t.div)
+                    st_write(bs.word, cand["word"], tag=t.div)
                 with g.cell():
                     st_html(f'<div style="width:100%;background:rgba(255,255,255,0.06);'
                             f'border-radius:0.6vh;">'
@@ -71,4 +104,4 @@ def build():
                     st_write(bs.prob, cand["prob"], tag=t.div)
             st_space("v", "1vh")
         st_space("v", "2vh")
-        st_write(bs.punch, text(data["punch"]), tag=t.div)
+        st_write(bs.punch, _PUNCH, tag=t.div)
