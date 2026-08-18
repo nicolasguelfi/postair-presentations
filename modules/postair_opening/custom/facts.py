@@ -74,9 +74,6 @@ def framing(framing_id: str) -> dict:
     raise KeyError(f"unknown framing statement: {framing_id}")
 
 
-@lru_cache(maxsize=1)
-def disciplines() -> list[dict]:
-    return manifest()["disciplines"]
 
 
 def no_faculty_data() -> dict:
