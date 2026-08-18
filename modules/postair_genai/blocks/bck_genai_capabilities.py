@@ -112,7 +112,9 @@ def build():
                              for c in _CAPABILITIES]
                             # Un exemple par faculté (plan G6) : chaque tiers
                             # de la salle se reconnaît dans au moins un.
-                            + list(_FACULTY_EXAMPLES),
+                            # [*…], pas list(…) : l'import * de streamtex
+                            # masque le builtin list (règle R14 d'opening).
+                            + [*_FACULTY_EXAMPLES],
                 )
         st_space("v", s.project.spacing.title_gap)
         # Sept cartes sur une grille équilibrée ; « agents » est LA carte ambre.

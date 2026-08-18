@@ -82,7 +82,9 @@ def build():
             with g.cell():
                 st_info_tooltip(
                     title="What is really happening",
-                    entries=list(_TOOLTIP),
+                    # [*…], pas list(…) : l'import * de streamtex masque le
+                    # builtin list (règle R14 d'opening).
+                    entries=[*_TOOLTIP],
                 )
         st_space("v", s.project.spacing.title_gap)
         st_write(bs.sentence, "« ", _SENTENCE_HEAD, " ",
