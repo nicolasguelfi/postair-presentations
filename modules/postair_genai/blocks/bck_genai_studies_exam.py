@@ -59,7 +59,7 @@ def build():
                         ("The paradox", text(data["paradox"])),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         with hero_split(s, zoom=92, image=lambda: hero_image(
                 "genai_exam", _EXAM_PROMPT, "images/genai_exam_fallback.svg",
                 alt_ready=("Papercut exam room: a silhouette writing alone at a "

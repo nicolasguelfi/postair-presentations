@@ -90,7 +90,7 @@ def build():
             with g.cell():
                 st_info_tooltip(title="Where these figures come from",
                                 entries=_tooltip_entries())
-        st_space("v", "2vh")
+        st_space("v", s.project.spacing.title_gap)
         # ONE flat grid, laid out as a block rather than a strip: the design
         # system picks the most balanced arrangement for the number of figures
         # and stretches the rows to fill the screen. All cards share a single

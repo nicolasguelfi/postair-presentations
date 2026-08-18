@@ -94,7 +94,7 @@ def build():
             with g.cell():
                 st_info_tooltip(title="What AI already does to these disciplines",
                                 entries=_tooltip_entries())
-        st_space("v", "2vh")
+        st_space("v", s.project.spacing.title_gap)
         # ONE flat grid, stretched to fill the screen. One card style for all
         # three — no faculty is more concerned than another, and that is the
         # message.

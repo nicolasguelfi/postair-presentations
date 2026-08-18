@@ -62,7 +62,7 @@ def build():
                             + [("The four documents", "All online, linked from the hub "
                                 "on the next slide — they stay available after today.")],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : le campus carré à gauche, les
         # quatre acquis EMPILÉS à droite — la 2e rangée était coupée au pli.
         with hero_split(s, image=lambda: hero_image(

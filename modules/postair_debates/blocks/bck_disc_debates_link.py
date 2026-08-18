@@ -58,7 +58,7 @@ def build():
         # Un franc espace sous le titre (NG 2026-08-03) : la slide ne porte
         # qu'une promesse, et une promesse collée à son titre se lit comme une
         # note de bas de page.
-        st_space("v", "6vh")
+        st_space("v", s.project.spacing.title_gap)
         with st_grid(cols="45% 55%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():

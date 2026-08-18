@@ -67,7 +67,7 @@ def build():
                         ("Why it is permissive", text(rule["anecdote"])),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche, LA règle
         # verbatim boxée à droite — elle était coupée à mi-phrase sous le pli.
         with hero_split(s, zoom=92, image=lambda: hero_image(

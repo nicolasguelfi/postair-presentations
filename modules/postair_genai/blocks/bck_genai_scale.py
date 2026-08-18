@@ -54,7 +54,7 @@ def build():
                                 text(data["emergence"]["detail"]) + " "
                                 + text(data["emergence"]["counterpoint"]))],
                 )
-        st_space("v", "2vh")
+        st_space("v", s.project.spacing.title_gap)
         with st_grid(cols=s.project.grids.balanced(len(data["sliders"])), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:

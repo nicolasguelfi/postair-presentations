@@ -14,6 +14,7 @@ DS = DesignSystem()
 class Custom:
     ds = DS
     colors = DS.colors
+    spacing = DS.spacing
     titles = DS.titles
     body = DS.body
     containers = DS.containers

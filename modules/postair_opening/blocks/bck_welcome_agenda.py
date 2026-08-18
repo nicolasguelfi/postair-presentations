@@ -87,7 +87,7 @@ def build():
                          "corridor behind the amphitheatre. No need to ask — just go."),
                     ],
                 )
-        st_space("v", "2vh")
+        st_space("v", s.project.spacing.title_gap)
         # Three columns, each a flat stack — no nested grid. The floors are in
         # percent so three columns hold on a projector and collapse to one on a
         # narrow window, without a hard-coded breakpoint.

@@ -63,7 +63,7 @@ def build():
                 st_info_tooltip(title=text(fact["label"]),
                                 entries=[("Verified at the source",
                                           text(fact["detail"]))])
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: hero_image(
                 "genai_twist", _HERO_PROMPT, "images/genai_twist_fallback.svg",
                 alt_ready=("Papercut silhouette and amber orb side by side, studying "

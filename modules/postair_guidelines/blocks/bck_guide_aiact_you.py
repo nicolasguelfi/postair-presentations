@@ -66,7 +66,7 @@ def build():
                             + [("Who enforces, where to complain",
                                 text(data["channels"]))],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         with hero_split(s, zoom=88, image=lambda: hero_image(
                 "guide_tags", _TAGS_PROMPT, "images/guide_aiact_fallback.svg",
                 alt_ready=("Papercut parcels in a column, each with a visible paper "

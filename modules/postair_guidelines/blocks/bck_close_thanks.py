@@ -49,7 +49,7 @@ def build():
                          "in the mascoties studio — each carries one pole of one axis."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         st_write(bs.confetti, "🎉 🎊 🎉", tag=t.div)
         st_space("v", "0.5vh")
         # La photo de famille : 9 axes × 2 pôles (bestiaire) + les 2 modérateurs.

@@ -76,7 +76,7 @@ def build():
                          "by someone whose name you know."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         # ONE flat grid: pole · moderator · pole.
         with st_grid(cols="1fr 1.2fr 1fr", gap="1vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:

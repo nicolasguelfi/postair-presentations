@@ -64,7 +64,7 @@ def build():
                 st_info_tooltip(title=text(fact["label"]),
                                 entries=[("Why this is the hard part",
                                           text(fact["detail"]))])
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: hero_image(
                 "genai_conductor", _HERO_PROMPT,
                 "images/genai_conductor_fallback.svg",

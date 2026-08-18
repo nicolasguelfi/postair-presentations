@@ -49,7 +49,7 @@ def build():
                             + [(text(f["faculty"]), text(f["example"]))
                                for f in section("capability_faculty")],
                 )
-        st_space("v", "2vh")
+        st_space("v", s.project.spacing.title_gap)
         # Sept cartes sur une grille équilibrée ; « agents » est LA carte ambre.
         with st_grid(cols=s.project.grids.balanced(len(caps)), gap="1vw",
                      grid_style=s.project.grids.stretch,

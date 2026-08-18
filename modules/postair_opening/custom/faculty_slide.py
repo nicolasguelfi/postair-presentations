@@ -12,7 +12,7 @@ Un gabarit, trois blocs minces — le pattern ``limit_slide`` de postair_genai.
 from __future__ import annotations
 
 from shared_widgets import st_info_tooltip
-from streamtex import st_block, st_grid, st_marker, st_space, st_write
+from streamtex import st_block, st_grid, st_marker, st_space, st_write, st_zoom
 from streamtex.enums import Tags as t
 
 from custom.facts import disciplines, no_faculty_data, text
@@ -58,8 +58,20 @@ def _headline(example) -> str:
     return text(example["headline"]) + " " + citation(*keys)
 
 
-def build_faculty(index: int) -> None:
-    """One faculty, one papercut scene, its findings in keywords."""
+def build_faculty(index: int, ratio: int = 50,
+                  zoom: int = 100, image_zoom: int = 100) -> None:
+    """One faculty, one papercut scene, its findings in keywords.
+
+    :param ratio: part de largeur de la colonne image, en % (50 = moitié).
+    :param zoom: facteur ``st_zoom`` de la colonne de contenu (texte).
+    :param image_zoom: facteur de taille de l'image, ≤ 100 (90 = −10 %).
+        Appliqué via ``width`` et non via l'``image_zoom`` de ``hero_split`` :
+        un ``st_zoom`` est sans effet sur une image en ``width="100%"``
+        (taille relative au conteneur, invariante par zoom). Au-delà de 100
+        l'image déborderait de sa piste de grille — élargir ``ratio`` à la
+        place.
+    """
+    assert image_zoom <= 100, "image_zoom > 100 déborde de la cellule — élargir ratio"
     group = disciplines()[index]
     marker, name, scene = _VISUALS[index]
     prompt = AI_PREFIX + scene + AI_SUFFIX_LANDSCAPE
@@ -69,9 +81,10 @@ def build_faculty(index: int) -> None:
             with g.cell():
                 # Le sigle en titre (une ligne) — le nom complet de la
                 # faculté vit dans le titre du tooltip.
-                st_write(ss.title, "AI in ",
-                         (s.project.titles.keyword, marker),
-                         tag=t.div, toc_lvl="+1", label=marker)
+                with st_zoom(120):
+                    st_write(ss.title, "AI in ",
+                            (s.project.titles.keyword, marker),
+                            tag=t.div, toc_lvl="+1", label=marker)
             with g.cell():
                 entries = []
                 for example in group["examples"]:
@@ -86,12 +99,13 @@ def build_faculty(index: int) -> None:
                                 text(no_faculty_data())))
                 st_info_tooltip(title=f"{text(group['faculty'])} — the evidence",
                                 entries=entries)
-        st_space("v", "1vh")
-        with hero_split(s, image=lambda: hero_image(
+        st_space("v", s.project.spacing.title_gap)
+        with hero_split(s, ratio=ratio, zoom=zoom,
+                        image=lambda: hero_image(
                 name, prompt, "images/postair_radar_question.svg",
                 alt_ready=f"Papercut scene for {marker}",
                 alt_fallback=f"Papercut scene for {marker}",
-                variant="sq")):
+                variant="sq", width=f"{image_zoom}%")):
             for example in group["examples"]:
                 st_write(ss.headline, "▸ ", _headline(example), tag=t.div)
             st_space("v", "0.5vh")

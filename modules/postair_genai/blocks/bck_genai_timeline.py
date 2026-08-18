@@ -55,7 +55,7 @@ def build():
                     entries=[(f"{m['year']} — {text(m['label'])}", text(m["detail"]))
                              for m in milestones],
                 )
-        st_space("v", "2vh")
+        st_space("v", s.project.spacing.title_gap)
         # La frise : une carte par jalon, point coloré + année + étiquette +
         # code de citation. La ligne est portée par la rangée de points.
         with st_grid(cols=s.project.grids.balanced(len(milestones)), gap="0.8vw",

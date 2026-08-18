@@ -69,6 +69,6 @@ def build():
             # st.video needs a real file path: the media folder is deliberately
             # NOT a static source, so it cannot be resolved through them.
             with ai_marked(fit=False, top=True):
-                st_video(str(_MEDIA / film_clip("axes-intro", "en")), loop=True)
+                st_video(str(_MEDIA / film_clip("axes-intro", "en")), loop=True, autoplay=True)
         with st_block(s.project.containers.media_hint_overlay):
             st_write(bs.hint, "▶ play · loop · sound on", tag=t.div)

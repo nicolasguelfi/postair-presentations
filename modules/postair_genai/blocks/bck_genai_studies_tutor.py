@@ -60,7 +60,7 @@ def build():
                             text(item) for item in data["do"])),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: hero_image(
                 "genai_desk", _DESK_PROMPT, "images/genai_desk_fallback.svg",
                 alt_ready=("Papercut student desk with open notebook, book stack, "

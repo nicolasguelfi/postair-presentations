@@ -89,7 +89,7 @@ def _identity(pole: dict, lang: str | None) -> None:
             label=pole_name, toc_lvl="1")
     st_write(rs.subtitle,
              f"{text(pole['axis_name'], lang)} · {_EFFECT[pole['effect']]}", tag=t.div)
-    st_space("v", "1.5vh")
+    st_space("v", s.project.spacing.title_gap)
     pole_identity(both, [text(x["text"], lang) for x in pole["statements"]], DS)
 
 
@@ -176,7 +176,7 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
             f"{f['name']} — {pole_name}", entries)
     if index == 0:
         _pole_banner(pole)
-    st_space("v", "1vh")
+    st_space("v", s.project.spacing.title_gap)
     media = f.get("media") or {}
     quote = text(f["quote"], lang) or f["quote"].get("en") or ""
     # Le corpus autorise 300 caractères (borne de la salle) mais la colonne
@@ -223,7 +223,7 @@ def _arguments(pole: dict, lang: str | None) -> None:
                                               "sourced position."))
     _header(["And ", (s.project.titles.keyword, "today"), "? — ", pole_name],
             f"Contemporary arguments for {pole_name}", entries)
-    st_space("v", "1.5vh")
+    st_space("v", s.project.spacing.title_gap)
     with st_grid(cols=s.project.grids.balanced(len(pole["arguments"])), gap="1.2vw",
                  grid_style=s.project.grids.stretch,
                  cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -256,7 +256,7 @@ def _faceoff(both: list[dict], lang: str | None) -> None:
                         "bench. Then what the measurement actually says."),
     ]
     _header([left, " ⇄ ", right], f"{left} ⇄ {right}", entries, label=f"{left} ⇄ {right}")
-    st_space("v", "2vh")
+    st_space("v", s.project.spacing.title_gap)
     pole_faceoff(faceoff_sides(both, lang), DS)
     st_space("v", "2vh")
     # Le protocole, VISIBLE (NG 2026-08-13) : la slide-pivot du débat ne

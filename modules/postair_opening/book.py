@@ -123,8 +123,8 @@ st_book(
     [
         # ── Welcome ─────────────────────────────────────────────────
         blocks.bck_wait_loop,         # looping video, full window, no information
-        blocks.bck_welcome_title,     # title + Medio + hero image
         blocks.bck_host_reveal,       # curtain-up film — production 41 du studio, gelée le 2026-08-15
+        blocks.bck_welcome_title,     # title + Medio + hero image
         blocks.bck_host_intro,        # who is speaking — portrait + a few facts
         blocks.bck_faculty_fstm,      # AI in FSTM — 1 faculté = 1 slide (NG 2026-08-13)
         blocks.bck_faculty_fdef,      # AI in FDEF

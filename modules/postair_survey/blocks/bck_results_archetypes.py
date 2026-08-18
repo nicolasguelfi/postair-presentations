@@ -67,7 +67,7 @@ def build():
                          "never drift apart."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         st_write(bs.lead, "The app shows the ", (s.project.titles.keyword, "nearest"),
                  " one + your distance to it", tag=t.div)
         # Un franc espace avant les six noms (NG 2026-08-03) : ils sont le sujet

@@ -83,7 +83,7 @@ def build():
                                 "assessed learning objective » is always high risk — "
                                 "that is the one to remember.")],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : le feu tricolore carré à gauche,
         # les trois niveaux EMPILÉS à droite — ils étaient coupés à 40 % sous
         # le pli, le contenu opérationnel de la slide.

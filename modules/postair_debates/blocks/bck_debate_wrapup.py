@@ -66,7 +66,7 @@ def build():
                          "retaken with the same code at the end of the year."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         st_write(bs.lead, "Every one of them was ",
                  (s.project.titles.keyword, "argued before you were born"), tag=t.div)
         st_space("v", "3vh")

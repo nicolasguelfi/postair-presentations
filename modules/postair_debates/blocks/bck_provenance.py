@@ -62,7 +62,7 @@ def build():
                 st_info_tooltip(title="Provenance — the full clauses",
                                 entries=[(clause, full)
                                          for _, clause, _, full in _CLAUSES])
-        st_space("v", "3vh")
+        st_space("v", s.project.spacing.title_gap)
         with st_grid(cols=s.project.grids.balanced(len(_CLAUSES)), gap="1.5vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:

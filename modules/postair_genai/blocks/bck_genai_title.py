@@ -60,7 +60,7 @@ def build():
                          "postures are ABOUT — then Mistral hands-on, then the rules."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         hero_image(
             "genai_hero", _HERO_PROMPT, "images/genai_hero_fallback.svg",
             alt_ready=("Papercut constellation: an amber paper sun linked to stars by "

@@ -47,10 +47,13 @@ def build():
                             + [("The final box, verbatim", text(data["final"])),
                                ("Advice", text(data["tip"]))],
                 )
-        st_space("v", "2.5vh")
+        st_space("v", s.project.spacing.title_gap)
         for item in data["items"]:
             st_write(bs.item, "☐  ", text(item), tag=t.div)
             st_space("v", "0.6vh")
         st_space("v", "2vh")
         st_write(bs.final, "☑  ", text(data["final"]), tag=t.div)
-        st_write(bs.cite, "Appendix 2, verbatim ", citation(*citekeys(data)), tag=t.div)
+        # inline : « Appendix 2, verbatim » et le code forment UNE mention
+        # d'attribution — coupée en deux lignes, l'étiquette resterait seule.
+        st_write(bs.cite, "Appendix 2, verbatim ",
+                 citation(*citekeys(data), inline=True), tag=t.div)

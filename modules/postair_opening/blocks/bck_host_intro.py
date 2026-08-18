@@ -45,9 +45,9 @@ _SYNTHETIC = True
 # TODO-NG — chaque fait est à VALIDER avant projection ; rien d'inventé ne
 # passe devant 1500 personnes. (fait court, détail lisible du fond.)
 _FACTS = [
-    ("Nicolas Guelfi", "your host for these three hours"),
-    ("Professor, FSTM", "software engineering · University of Luxembourg"),  # TODO-NG vérifier l'intitulé exact
-    ("POSTAIR", "author of the posture instrument this day is built on"),    # TODO-NG formulation
+    ("Dr. Nicolas Guelfi", "your host for these three hours"),
+    ("Professor, FSTM", "software engineering & artifical intelligence · University of Luxembourg"),  # TODO-NG vérifier l'intitulé exact
+    ("POSTAIR", "author of the posture instrument used today ;)"),    # TODO-NG formulation
 ]
 
 
@@ -92,12 +92,13 @@ def build():
             with st_grid(cols="40% 60%", gap="1.5vw",
                          cell_styles=s.project.containers.grid_cell_centered) as g:
                 with g.cell():
-                    st_image(s.project.cards.media_center, width="min(24vw, 48vh)",
+                    st_image(s.project.cards.media_center, width="min(32vw, 63vh)",
                              uri=_PORTRAIT,
                              alt="Portrait of the host of the AI Day",
                              overlay=dd35_overlay(_SYNTHETIC))
                 with g.cell(), st_block(s.project.containers.column_stack):
-                    for fact, detail in _FACTS:
-                        with st_block(s.project.cards.blue):
-                            st_write(bs.fact, fact, tag=t.div)
-                            st_write(bs.detail, detail, tag=t.div)
+                    with st_zoom(150):
+                        for fact, detail in _FACTS:
+                            with st_block(s.project.cards.blue):
+                                st_write(bs.fact, fact, tag=t.div)
+                                st_write(bs.detail, detail, tag=t.div)

@@ -46,7 +46,7 @@ def build():
                         ("Contacts", text(data["contacts"])),
                     ],
                 )
-        st_space("v", "1.5vh")
+        st_space("v", s.project.spacing.title_gap)
         # breakpoint : sous 520 px, le QR passe au-dessus de la liste.
         with st_grid(cols="55% 45%", breakpoint="520px",
                      cell_styles=s.project.containers.grid_cell_centered) as g:

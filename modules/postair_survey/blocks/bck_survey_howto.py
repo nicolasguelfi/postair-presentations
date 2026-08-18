@@ -75,8 +75,9 @@ _FIRST_SCREENS = [
     ("04-question", "4 · a statement, six levels, help"),
 ]
 
-#: Quatre captures portrait côte à côte : la hauteur borne chaque vignette.
-_FIRST_WIDTH = "min(14vw, 24vh)"
+#: Deux captures portrait par sous-slide (NG 2026-08-15) : chaque écran en
+#: grand — la largeur suit la fenêtre, la hauteur borne le portrait.
+_FIRST_WIDTH = "min(24vw, 42vh)"
 
 
 def _scale() -> None:
@@ -141,22 +142,26 @@ def build():
             with g.cell():
                 with st_block(s.project.containers.column_stack_centered):
                     _scale()
-    # ── Sous-slide : les quatre premiers écrans, en vrai (ss12/Q14) ──
-    st_slide_break(marker_label="The first screens",
-                   config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
-    with st_block(s.project.containers.page_fill_top):
-        with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
-                st_write(bs.title, "The ", (s.project.titles.keyword, "first screens"),
-                         tag=t.div)
-            with g.cell():
-                st_space("h", "0.5vw")
-        st_space("v", "1vh")
-        with st_grid(cols=s.project.grids.balanced(len(_FIRST_SCREENS)), gap="1.5vw",
-                     cell_styles=s.project.containers.grid_cell_top) as g:
-            for slug, legend in _FIRST_SCREENS:
+    # ── Sous-slides : les quatre premiers écrans, deux par slide et en
+    # grand (NG 2026-08-15) — une paire par battement, lisible du fond. ──
+    for pair_label, pair in (("The first screens · 1-2", _FIRST_SCREENS[:2]),
+                             ("The first screens · 3-4", _FIRST_SCREENS[2:])):
+        st_slide_break(marker_label=pair_label,
+                       config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
+        with st_block(s.project.containers.page_fill_top):
+            with st_grid(cols="92% 8%",
+                         cell_styles=s.project.containers.grid_cell_centered) as g:
                 with g.cell():
-                    st_image(s.project.cards.media_center, width=_FIRST_WIDTH,
-                             uri=capture(slug),
-                             alt=f"Mobile screen of the survey journey: {legend}")
-                    st_write(bs.caption, legend, tag=t.div)
+                    st_write(bs.title, "The ", (s.project.titles.keyword, "first screens"),
+                             tag=t.div)
+                with g.cell():
+                    st_space("h", "0.5vw")
+            st_space("v", "1vh")
+            with st_grid(cols=s.project.grids.balanced(2, min_px=320), gap="2vw",
+                         cell_styles=s.project.containers.grid_cell_top) as g:
+                for slug, legend in pair:
+                    with g.cell():
+                        st_image(s.project.cards.media_center, width=_FIRST_WIDTH,
+                                 uri=capture(slug),
+                                 alt=f"Mobile screen of the survey journey: {legend}")
+                        st_write(bs.caption, legend, tag=t.div)

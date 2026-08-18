@@ -82,7 +82,7 @@ def build():
                          "to the nine axes you answered on this morning."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         # ONE flat grid — the moderator is a cell like the others, never a
         # column holding a second responsive grid.
         second = _second_half()

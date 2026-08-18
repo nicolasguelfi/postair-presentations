@@ -60,7 +60,7 @@ def build():
                         ("Structure", text(identity["structure"])),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         hero_image(
             "guide_cover", _COVER_PROMPT, "images/guide_cover_fallback.svg",
             alt_ready=("Papercut official document with coral ribbon and seal on a "

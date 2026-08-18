@@ -51,7 +51,8 @@ def build():
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_write(bs.over, "University of Luxembourg · Welcome Week", tag=t.div)
-                st_write(bs.title, "AI DAY", tag=t.div, toc_lvl="1", label="Welcome")
+                with st_zoom(60) :
+                    st_write(bs.title, "THE AUGMENTED STUDENT", tag=t.div, toc_lvl="1", label="Welcome")
                 st_write(bs.sub, "Facing the AI Revolution", tag=t.div)
             with g.cell():
                 st_info_tooltip(
@@ -71,20 +72,21 @@ def build():
                                           "takes part in a live, anonymous survey."),
                     ],
                 )
-        st_space("v", "1vh")
+        # st_space("v", s.project.spacing.title_gap)
         # Window-width layout (NG): 5% free · hero 55% · Medio 35% · 5% free.
         with st_grid(cols="5% 55% 35% 5%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_space("h", "1px")
             with g.cell():
-                st_image(
-                    s.project.cards.media_center, width="100%",
-                    alt="Stylised campus at dawn under a rising amber AI orb, "
-                        "crowd of silhouettes walking toward the entrance",
-                    editable=IS_EDITABLE, name="welcome_title_hero",
-                    prompt=HERO_PROMPT, provider="openai", ai_size="1536x1024",
-                    overlay=dd35_overlay(is_synthetic("welcome_title_hero")))
+                with st_zoom(50):
+                    st_image(
+                        s.project.cards.media_center, width="100%",
+                        alt="Stylised campus at dawn under a rising amber AI orb, "
+                            "crowd of silhouettes walking toward the entrance",
+                        editable=IS_EDITABLE, name="welcome_title_hero",
+                        prompt=HERO_PROMPT, provider="openai", ai_size="1536x1024",
+                        overlay=dd35_overlay(is_synthetic("welcome_title_hero")))
             with g.cell():
                 st_image(s.project.cards.media_center, width="100%",
                          uri=medio["image"],

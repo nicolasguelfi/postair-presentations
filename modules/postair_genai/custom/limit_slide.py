@@ -100,7 +100,7 @@ def build_limit(concern_id: str) -> None:
                 st_info_tooltip(title=text(concern["label"]),
                                 entries=[("Documented, not speculative",
                                           text(concern["detail"]))])
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche ~50 %,
         # message + punch empilés à droite — plus rien sous le pli.
         with hero_split(s, image=lambda: hero_image(

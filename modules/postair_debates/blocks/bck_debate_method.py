@@ -74,7 +74,7 @@ def build():
                          f"regenerated from the study, never typed into a slide."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         st_write(bs.lead, "Open only the axes where ",
                  (s.project.titles.keyword, "this room"), " disagrees", tag=t.div)
         st_space("v", "2vh")

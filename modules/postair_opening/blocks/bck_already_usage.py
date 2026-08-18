@@ -5,4 +5,4 @@ from custom.already_slide import build_already
 
 
 def build():
-    build_already(0)
+    build_already(0, zoom=130)

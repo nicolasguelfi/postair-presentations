@@ -72,7 +72,7 @@ def build():
                          "exists to show the scale, not to describe anyone."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         # UNE ligne, DEUX cellules : le radar à gauche, les quatre codes à
         # droite (NG 2026-08-03). L'ancienne grille laissait le nombre de
         # colonnes se décider tout seul, et les deux derniers codes passaient

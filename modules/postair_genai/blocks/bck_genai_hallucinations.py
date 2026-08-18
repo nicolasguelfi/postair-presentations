@@ -50,7 +50,7 @@ def build():
                              for c in data["claims"]]
                             + [("The exhibit", text(case["verdict"]))],
                 )
-        st_space("v", "2vh")
+        st_space("v", s.project.spacing.title_gap)
         # La pièce à conviction : une « référence » très convenable — et fausse.
         with st_block(s.project.cards.coral):
             st_write(bs.fake, "« ", text(case["quote"]), " »", tag=t.div)

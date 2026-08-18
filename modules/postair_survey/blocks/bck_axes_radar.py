@@ -136,7 +136,7 @@ def build():
                                       "reach the room screen."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         # The wheel as large as the remaining viewport allows.
         with st_grid(cols="1fr 78% 1fr", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -154,7 +154,10 @@ def build():
         # (titre, auteur, statut) vit dans la carte au survol du code.
         st_write(bs.grounding,
                  "answers: anonymous · model: ",
-                 citation("guelfi-postair"), tag=t.div)
+                 # inline : le code EST l'objet de l'étiquette « model: » —
+                 # un retour à la ligne les séparerait et referait naître la
+                 # lecture « publication anonyme » (incompris NG 2026-08-13).
+                 citation("guelfi-postair", inline=True), tag=t.div)
 
 
 def _wheel_image():

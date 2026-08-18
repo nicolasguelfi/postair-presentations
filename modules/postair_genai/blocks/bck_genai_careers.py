@@ -50,7 +50,7 @@ def build():
                                 "expertise, ethics: piloting an AI requires knowing "
                                 "the field better than it does.")],
                 )
-        st_space("v", "2vh")
+        st_space("v", s.project.spacing.title_gap)
         with st_grid(cols=s.project.grids.balanced(len(careers)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:

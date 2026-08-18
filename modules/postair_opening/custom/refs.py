@@ -33,6 +33,11 @@ from streamtex import (
     set_bib_config,
 )
 
+from postair_pack.design_systems.postair_dark import (
+    CITE_CODE_BLOCK_CSS,
+    CITE_CODE_CSS,
+)
+
 BIB = Path(__file__).parent.parent / "static" / "data" / "references.bib"
 
 #: Style d'affichage : auteur-année, lisible à voix haute depuis la scène.
@@ -52,7 +57,10 @@ CONFIG = BibConfig(
     sort_by="author",
     hover_enabled=True,
     locale="en",
-    cite_color="#aab2c0",          # code discret dans le texte, gris-bleu clair
+    # Pas de cite_color : le LOOK du code (plus petit, italique, gris muted)
+    # vit dans CITE_CODE_CSS du design system, inliné par ``citation()`` —
+    # une couleur posée ici par le scaffold reprendrait la main sur le
+    # libellé en mode application, et l'export ne la verrait jamais.
     card_width="780px",
     card_font_scale=2.0,
     card_css="#stx-bib-card{max-height:70vh;overflow-y:auto;}",
@@ -108,7 +116,21 @@ def _registry(keys):
     return registry
 
 
-def citation(*keys: str, prefix: str = "", suffix: str = "") -> str:
+def _wrap(code: str, inline: bool) -> str:
+    """Le fragment ``cite()`` habillé du style collection (règle NG 2026-08-15).
+
+    Style INLINÉ, pas injecté : il doit suivre le fragment dans l'application
+    ET dans l'export HTML statique (qui ne reçoit pas le scaffold bib), et
+    couvrir les parenthèses, que ``.stx-cite`` n'enveloppe pas. Par défaut le
+    code passe À LA LIGNE (fin de phrase/paragraphe) ; ``inline=True`` est
+    l'exception assumée par le bloc, quand la coupure créerait une ambiguïté.
+    """
+    css = CITE_CODE_CSS if inline else CITE_CODE_BLOCK_CSS
+    return f'<span style="{css}">{code}</span>'
+
+
+def citation(*keys: str, prefix: str = "", suffix: str = "",
+             inline: bool = False) -> str:
     """Le code de citation visible — « (Liang et al., 2023) », carte au survol.
 
     C'est la SEULE forme qu'une slide a le droit de porter : le code dans le
@@ -121,7 +143,7 @@ def citation(*keys: str, prefix: str = "", suffix: str = "") -> str:
             raise KeyError(
                 f"clé de citation inconnue : {key!r} — elle doit exister dans "
                 f"{BIB.name}, jamais être remplacée par un texte écrit à la main.")
-    return cite(*keys, prefix=prefix, suffix=suffix)
+    return _wrap(cite(*keys, prefix=prefix, suffix=suffix), inline)
 
 
 def all_entries() -> int:

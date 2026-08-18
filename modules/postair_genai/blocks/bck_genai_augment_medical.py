@@ -68,7 +68,7 @@ def build():
                                           text(fact["detail"])),
                                          ("The multimodal check — AMIE",
                                           text(fact["amie_detail"]))])
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: hero_image(
                 "genai_diagnosis", _HERO_PROMPT,
                 "images/genai_diagnosis_fallback.svg",

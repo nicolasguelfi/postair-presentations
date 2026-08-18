@@ -68,7 +68,7 @@ def build():
                          "clearly that they are from the rehearsal, not from this room."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         with st_grid(cols="45% 55%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():

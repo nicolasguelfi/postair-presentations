@@ -27,15 +27,23 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
-#: (situation, ce qu'on fait). Ordonnés par probabilité décroissante : les deux
-#: premiers arrivent à coup sûr avec quinze cents personnes dans la salle.
+#: (situation, ce qu'on fait, carte, accent du titre). Ordonnés par probabilité
+#: décroissante : les deux premiers arrivent à coup sûr avec quinze cents
+#: personnes dans la salle. Un accent DIFFÉRENT par titre (NG 2026-08-15) :
+#: six situations, six couleurs — l'œil retrouve sa carte depuis le fond.
 _TIPS = [
-    ("Wifi struggling?", "wifi OFF → mobile data", s.project.cards.amber),
-    ("Finished early?", "Read the six archetype descriptions", s.project.cards.teal),
-    ("QR won't scan?", "Type the address and the code by hand", s.project.cards.blue),
-    ("Lost the page?", "Reopen it — your answers are saved", s.project.cards.blue),
-    ("Battery low?", "Pair up with a neighbour and share one", s.project.cards.coral),
-    ("Something else?", "raise a hand → we come to you", s.project.cards.coral),
+    ("Wifi struggling?", "wifi OFF → mobile data",
+     s.project.cards.amber, s.project.colors.amber),
+    ("Finished early?", "Read the six archetype descriptions",
+     s.project.cards.teal, s.project.colors.keyword),
+    ("QR won't scan?", "Type the address and the code by hand",
+     s.project.cards.blue, s.project.colors.primary),
+    ("Lost the page?", "Reopen it — your answers are saved",
+     s.project.cards.blue, s.project.colors.success),
+    ("Battery low?", "Pair up with a neighbour and share one",
+     s.project.cards.coral, s.project.colors.critical),
+    ("Something else?", "raise a hand → we come to you",
+     s.project.cards.coral, s.project.colors.coral),
 ]
 
 
@@ -79,7 +87,7 @@ def build():
                          "loses nothing."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         st_write(bs.lead, "Nothing here is serious — ",
                  (s.project.titles.keyword, "your answers are saved as you go"), tag=t.div)
         st_space("v", "2.5vh")
@@ -87,8 +95,8 @@ def build():
         with st_grid(cols=s.project.grids.balanced(len(_TIPS)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            for case, fix, card in _TIPS:
+            for case, fix, card, accent in _TIPS:
                 with g.cell(), st_block(card):
-                    st_write(bs.case, case, tag=t.div)
+                    st_write(bs.case + accent, case, tag=t.div)
                     st_space("v", "0.8vh")
                     st_write(bs.fix, fix, tag=t.div)

@@ -65,7 +65,7 @@ def build():
                          "positions, it does not grade them."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         st_write(bs.lead, "both poles · every axis · ",
                  (s.project.titles.keyword, "in this room"), tag=t.div)
         st_space("v", "2vh")

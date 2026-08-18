@@ -61,7 +61,7 @@ def build():
                         *[("Equity", text(e)) for e in data["equity"]],
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         hero_image(
             "guide_bubble", _BUBBLE_PROMPT, "images/guide_bubble_fallback.svg",
             alt_ready=("Papercut protected bubble sheltering a small campus and an "

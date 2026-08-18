@@ -49,7 +49,7 @@ def build():
                             + [("Keep your prompts", text(data["prompts_tip"])),
                                ("Appendix 1", text(data["annex_note"]))],
                 )
-        st_space("v", "2.5vh")
+        st_space("v", s.project.spacing.title_gap)
         with st_grid(cols=s.project.grids.balanced(len(data["items"])), gap="1vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:

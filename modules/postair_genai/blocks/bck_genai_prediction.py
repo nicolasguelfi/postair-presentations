@@ -51,7 +51,7 @@ def build():
                     entries=[(text(e["term"]), text(e["def"]))
                              for e in data["tooltip"]],
                 )
-        st_space("v", "3vh")
+        st_space("v", s.project.spacing.title_gap)
         st_write(bs.sentence, "« ", text(data["sentence_head"]), " ",
                  (s.project.titles.keyword, text(data["blank"])), " »", tag=t.div)
         st_space("v", "3vh")

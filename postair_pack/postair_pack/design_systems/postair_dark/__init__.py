@@ -33,6 +33,28 @@ TOOLTIP_DEF_CSS = f"font-size: calc(1.0 * {TOOLTIP_SCALE}); color: #F2EEE6; line
 TOOLTIP_WIDTH = "66vw"
 TOOLTIP_MAX_HEIGHT = "66vh"
 
+# Code de citation dans le texte visible (règle NG 2026-08-15) : plus petit
+# que le texte PORTEUR (em, donc relatif), italique, gris « muted » de la
+# palette. Consommé par le wrapper ``citation()`` de chaque module
+# (custom/refs.py) qui l'INLINE dans le fragment HTML de ``cite()`` : le style
+# doit voyager avec le fragment — le scaffold bib n'est injecté qu'en mode
+# application, l'export HTML statique ne le reçoit pas, et la classe
+# ``.stx-cite`` n'enveloppe que le libellé, jamais les parenthèses.
+# ``font-weight: 400`` : un code de citation ne prend jamais le gras du texte
+# qui le porte.
+CITE_CODE_CSS = "font-size: 0.75em; font-style: italic; font-weight: 400; color: #95A5A6;"
+# Par défaut le code va À LA LIGNE, en fin de phrase/paragraphe (règle NG
+# 2026-08-15) — ``display: block`` suffit, l'alignement suit le porteur.
+CITE_CODE_BLOCK_CSS = CITE_CODE_CSS + " display: block; margin-top: 0.2em;"
+
+
+class _Spacing:
+    #: Espace bloc-titre → contenu (règle NG 2026-08-15, calibrée 7vh le même
+    #: jour à la projection) : sur toute slide courante — les slides très
+    #: chargées (références, captures) gardent leur valeur locale, assumée
+    #: dans le bloc.
+    title_gap = "7vh"
+
 
 class _Colors:
     bg_navy = Style("color: #1A1A2E;", "postair_color_bg_navy")
@@ -442,6 +464,7 @@ class DesignSystem:
 
     name = "postair_dark"
     colors = _Colors
+    spacing = _Spacing
     titles = _Titles
     body = _Body
     containers = _Containers

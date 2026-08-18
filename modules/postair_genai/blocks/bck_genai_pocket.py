@@ -61,7 +61,7 @@ def build():
                           for item in data["items"]],
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: hero_image(
                 "genai_pocket", _POCKET_PROMPT, "images/genai_pocket_fallback.svg",
                 alt_ready=("Papercut smartphone with an amber glowing screen, five "

@@ -59,7 +59,7 @@ def build():
                     entries=[(f"{c['icon']} {text(c['short'])}", text(c["detail"]))
                              for c in data["cards"]],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : balance carrée à gauche, les
         # quatre garanties EMPILÉES à droite (le pavé d'une seule ligne se
         # lisait comme un paragraphe).

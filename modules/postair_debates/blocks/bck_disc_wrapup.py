@@ -71,7 +71,7 @@ def build():
                          "and what the university's rules say."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", s.project.spacing.title_gap)
         st_write(bs.lead, "posture = ", (s.project.titles.keyword, "snapshot"),
                  " → retake at year end", tag=t.div)
         st_space("v", "1.5vh")
