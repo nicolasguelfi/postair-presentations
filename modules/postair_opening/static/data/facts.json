@@ -15,43 +15,6 @@
   },
   "bibliography": "references.bib, in this folder. A source carries citation KEYS only: the printable sentence is derived from the BibTeX entry, never copied here."
  },
- "framing": [
-  {
-   "id": "long-wave",
-   "statement": {
-    "en": "None of this started in 2022. The benchmark against which every AI tutor is still measured — that one-to-one tutoring lifts students two standard deviations above classroom teaching — was published in 1984. Systematic reviews of AI in higher education were being written years before ChatGPT existed."
-   },
-   "counterpoint": {
-    "en": "What broke in 2022 was not the idea. It was the scale: a research field became something every student has in their pocket."
-   },
-   "note": {
-    "en": "Rendered as a sourced statement rather than a figure: a publication year has no population, and a figure without a population is an impression."
-   },
-   "sources": [
-    {
-     "kind": "primary",
-     "citekeys": [
-      "bloom-2sigma"
-     ]
-    },
-    {
-     "kind": "primary",
-     "citekeys": [
-      "zawacki-richter-2019"
-     ]
-    },
-    {
-     "kind": "primary",
-     "citekeys": [
-      "chiu-systematic-2023"
-     ]
-    }
-   ],
-   "headline": {
-    "en": "AI in education did not begin in 2022"
-   }
-  }
- ],
  "no_faculty_data": {
   "en": "No survey measures generative-AI adoption faculty by faculty at the University of Luxembourg. Every figure here comes from studies run elsewhere — mostly the United Kingdom and the United States — and describes a discipline, not this institution. Read them as what your field is already living through, not as a measurement of this room.",
   "headline": {

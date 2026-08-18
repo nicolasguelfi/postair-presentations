@@ -11,10 +11,9 @@ Le FAIT vit ici (règle NG 2026-08-18) : textes, chiffres et choix des citekeys
 s'éditent dans ce bloc, structurés (claim / population / trend / freshness /
 counterpoint / caveat) pour que le panneau crédite toujours la source ET son
 contrepoint. La phrase bibliographique reste dérivée de ``references.bib`` par
-``citation()`` — clé inconnue = erreur bruyante. Exception : la ligne
-long-wave est PARTAGÉE avec ``bck_welcome_revolution`` et reste donc servie
-par ``facts.json`` (``framing``) — ce qui sert plusieurs slides vit dans
-``custom/``.
+``citation()`` — clé inconnue = erreur bruyante. La ligne long-wave vit ici
+aussi depuis la suppression de l'ancienne slide 2×2 qui la partageait
+(2026-08-18).
 """
 # @guideline: postair-minimal
 
@@ -22,7 +21,6 @@ from shared_widgets import st_info_tooltip
 from streamtex import st_block, st_grid, st_marker, st_space, st_write, st_zoom
 from streamtex.enums import Tags as t
 
-from custom.facts import citekeys, framing, text
 from custom.refs import citation
 from custom.styles import Styles as s
 
@@ -62,6 +60,16 @@ _CAVEAT = ("Self-reported perception, not an audit of what is actually "
            "provided. The gap is widest in Arts and Humanities, where 26 % "
            "feel supported against 53 % in STEM.")
 
+# ── La ligne long-wave qui ferme la série ───────────────────────────────────
+#: Déclaration qualitative sourcée, pas un chiffre : une année de publication
+#: n'a pas de population. Contexte (jamais projeté, gardé pour la
+#: vérifiabilité) : le repère des deux sigmas de Bloom date de 1984, et les
+#: revues systématiques de l'IA en enseignement supérieur précèdent ChatGPT ;
+#: ce qui a rompu en 2022 est l'échelle, pas l'idée.
+_CLOSING = "AI in education did not begin in 2022"
+_CLOSING_CITEKEYS = ["bloom-2sigma", "zawacki-richter-2019",
+                     "chiu-systematic-2023"]
+
 
 def build():
     st_marker(_VALUE)
@@ -88,9 +96,7 @@ def build():
             st_space("v", "1vh")
             st_write(bs.attribution, _ATTRIBUTION, " ",
                      citation(*_CITEKEYS), tag=t.div)
-            # La ligne long-wave ferme la série — contenu partagé, servi par
-            # facts.json (voir docstring).
-            long_view = framing("long-wave")
+            # La ligne long-wave ferme la série.
             st_space("v", "2vh")
-            st_write(bs.closing, text(long_view["headline"]), " ",
-                     citation(*citekeys(long_view)), tag=t.div)
+            st_write(bs.closing, _CLOSING, " ",
+                     citation(*_CLOSING_CITEKEYS), tag=t.div)
