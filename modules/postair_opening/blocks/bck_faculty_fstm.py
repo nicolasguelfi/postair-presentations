@@ -37,9 +37,9 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Réglages de la slide ────────────────────────────────────────────────────
-_TITLE_ZOOM = 120   # le sigle en titre
-_RATIO = 45         # part de largeur de la colonne image, en %
-_ZOOM = 130         # st_zoom de la colonne des constats
+_TITLE_ZOOM = 115   # le sigle en titre
+_RATIO = 35         # part de largeur de la colonne image, en %
+_ZOOM = 125         # st_zoom de la colonne des constats
 
 # ── La faculté et sa scène ──────────────────────────────────────────────────
 _MARKER = "FSTM"
@@ -52,7 +52,7 @@ _SCENE = ("A papercut science and technology scene: a large paper laptop "
 # ── Les constats (headline projetée ; detail + caveat dans le tooltip) ──────
 _EXAMPLES = [
     {
-        "headline": "Codex outscored the median CS1 student",
+        "headline": "Codex > median CS1 student",
         "detail": ("Introductory programming stopped being a filter. In 2022 "
                    "OpenAI Codex already scored above the median student on a "
                    "CS1 final exam; a year later it still beat median "

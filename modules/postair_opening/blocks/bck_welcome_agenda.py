@@ -87,13 +87,18 @@ def build():
                          "corridor behind the amphitheatre. No need to ask — just go."),
                     ],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "3vh")
         # Three columns, each a flat stack — no nested grid. The floors are in
         # percent so three columns hold on a projector and collapse to one on a
         # narrow window, without a hard-coded breakpoint.
-        with st_grid(cols="repeat(auto-fit, minmax(max(260px, 28%), 1fr))", gap="1.2vw",
-                     grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_stretch) as g:
+
+        # Trois pistes en fractions : avant 40 · pause 20 · après 40.
+        _COLS = "minmax(0, 32fr) minmax(0, 26fr) minmax(0, 42fr)"
+
+        with st_grid(cols=_COLS, gap="1.2vw", breakpoint="720px",
+                    grid_style=s.project.grids.stretch,
+                    cell_styles=s.project.containers.grid_cell_stretch) as g:
+
             for column in _columns():
                 alone = len(column) == 1
                 stack = (s.project.containers.column_stack_centered if alone
@@ -101,8 +106,9 @@ def build():
                 with g.cell(), st_block(stack):
                     for session, duration, kind in column:
                         with st_block(_CARD[kind]):
-                            st_write(bs.duration + _DURATION[kind], duration, tag=t.div)
-                            st_write(bs.session, session, tag=t.div)
+                            with st_zoom(120):
+                                st_write(bs.duration + _DURATION[kind], duration, tag=t.div)
+                                st_write(bs.session, session, tag=t.div)
                             if kind == "break":
                                 st_image(s.project.cards.media_center, width="55%",
                                          uri=lento["image"],

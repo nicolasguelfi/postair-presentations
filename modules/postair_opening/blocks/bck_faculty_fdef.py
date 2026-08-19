@@ -38,8 +38,8 @@ bs = BlockStyles
 
 # ── Réglages de la slide ────────────────────────────────────────────────────
 _TITLE_ZOOM = 120   # le sigle en titre
-_RATIO = 45         # part de largeur de la colonne image, en %
-_ZOOM = 125         # st_zoom de la colonne des constats
+_RATIO = 35         # part de largeur de la colonne image, en %
+_ZOOM = 115         # st_zoom de la colonne des constats
 
 # ── La faculté et sa scène ──────────────────────────────────────────────────
 _MARKER = "FDEF"
@@ -58,7 +58,7 @@ _SCENE = ("A papercut law and finance scene: a paper courthouse column, a "
 # son message est porté par Magesh — mais reste en précision de tooltip.
 _EXAMPLES = [
     {
-        "headline": "Machine risk predictions: −24.7 % crime, same jailing rate",
+        "headline": "AI -> −24.7 % crime, same jailing rate",
         "detail": ("On New York pre-trial release decisions, following a "
                    "machine-learning risk prediction instead of the judge "
                    "would cut crime by up to 24.7 % at an unchanged jailing "
@@ -98,7 +98,7 @@ _EXAMPLES = [
         "reported": True,   # kind = reported-in : la note s'ajoute au tooltip
     },
     {
-        "headline": "Better inside the frontier, worse just outside",
+        "headline": "Better inside the frontier, worse outside",
         "detail": ("The edge is jagged, not general. Given eighteen "
                    "realistic consulting tasks, 758 consultants using GPT-4 "
                    "produced better and faster work on tasks inside the "

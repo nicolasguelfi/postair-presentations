@@ -38,8 +38,8 @@ bs = BlockStyles
 
 # ── Réglages de la slide ────────────────────────────────────────────────────
 _TITLE_ZOOM = 120   # le sigle en titre
-_RATIO = 45         # part de largeur de la colonne image, en %
-_ZOOM = 130         # st_zoom de la colonne des constats
+_RATIO = 40         # part de largeur de la colonne image, en %
+_ZOOM = 120         # st_zoom de la colonne des constats
 
 # ── La faculté et sa scène ──────────────────────────────────────────────────
 _MARKER = "FHSE"
@@ -83,7 +83,7 @@ _EXAMPLES = [
     # Rééquilibrage NG 2026-08-19 : le bénéfice vit dans la MÊME étude que la
     # mise en garde au-dessus — le remède mesuré, pas une promesse.
     {
-        "headline": "a tutor constrained to hints: the gain without the loss",
+        "headline": "Hints driven AI tutor: the gain without the loss",
         "detail": ("The same field experiment also measured the fix: when "
                    "the GPT-4 tutor was constrained to give hints instead of "
                    "answers, students kept the practice gains and the exam "

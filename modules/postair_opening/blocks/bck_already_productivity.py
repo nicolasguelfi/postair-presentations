@@ -26,7 +26,7 @@ class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     value = s.project.titles.register_title + s.center_txt
     claim = s.project.body.bullet_giant + s.center_txt
-    counterpoint = s.project.body.bullet + s.project.colors.coral + s.center_txt
+    counterpoint = s.project.body.bullet + s.project.colors.coral + s.center_txt + s.bold + s.text_6xl
     attribution = s.project.body.caption + s.center_txt
 
 

@@ -29,14 +29,14 @@ class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     value = s.project.titles.register_title + s.center_txt
     claim = s.project.body.bullet_giant + s.center_txt
-    counterpoint = s.project.body.bullet + s.project.colors.coral + s.center_txt
+    counterpoint = s.project.body.bullet + s.project.colors.coral + s.center_txt + s.bold + s.text_6xl
     attribution = s.project.body.caption + s.center_txt
     closing = s.project.titles.subtitle + s.project.colors.amber + s.center_txt
 
 
 bs = BlockStyles
 
-_ZOOM = 130
+_ZOOM = 110
 
 # ── Le fait (source primaire, vérifiée 2026-08-02) ──────────────────────────
 _VALUE = "68 %"
