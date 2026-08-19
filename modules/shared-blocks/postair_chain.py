@@ -21,13 +21,18 @@ un petit lien discret sous le bouton.
 
 L'URL de l'export HTML se DÉRIVE de l'infrastructure : chaque conteneur sert
 son export sous ``<project_url>/html/`` (nginx.conf — ``location = /html/``
-redirige vers ``/html/postair_<key>/postair_<key>.html``). Précédence :
-``STX_EXPORT_URL_<KEY>`` (env) > ``export_url`` (toml) > convention
-``project_url + /html/``. La convention s'appuie sur l'URL de PRODUCTION du
-toml, jamais sur l'URL résolue : en local, aucun nginx ne sert ``/html/`` —
-le lien pointe donc vers l'export déployé, qui existe toujours (et sert de
-secours si l'app locale déraille). Un export local servi se déclare par
-``STX_EXPORT_URL_<KEY>``.
+redirige vers ``/html/postair_<key>/postair_<key>.html``). La ligne rendue
+(NG 2026-08-19, « flexible et tolérant aux fautes ») :
+``static HTML version: local / remote`` — DEUX liens :
+
+- ``remote`` : ``export_url`` (toml) sinon convention ``project_url + /html/``
+  — l'export déployé, toujours présent ;
+- ``local`` : ``STX_EXPORT_URL_<KEY>`` (env) sinon convention
+  ``STX_URL_<KEY> + /html/`` quand ``run-postair`` a déclaré une instance
+  locale — absent sinon (en production la ligne ne montre que ``remote``).
+  ⚠ ``/html/`` local suppose un service statique (le nginx du conteneur en
+  prod) : sans lui le lien local répond 404 — toléré par choix, les deux
+  liens sont là précisément pour se secourir l'un l'autre.
 
 ⚠ Module PARTAGÉ (shared-blocks) : comme ``postair_event``, une édition ici
 exige un redémarrage du serveur Streamlit — hors du périmètre du rechargement
@@ -73,13 +78,17 @@ def chain() -> tuple[dict, ...]:
             "description": data.get("description", ""),
             "url": os.environ.get(f"STX_URL_{env_suffix}",
                                   data.get("project_url", "#")),
-            # Export HTML : env > toml > convention /html/ du nginx conteneur
-            # — dérivée de l'URL de PRODUCTION (voir docstring du module).
-            "export_url": os.environ.get(
+            # Exports HTML (voir docstring) : remote = toml/convention prod ;
+            # local = env explicite, sinon convention sur l'instance locale
+            # déclarée par run-postair, sinon absent.
+            "export_remote": data.get(
+                "export_url",
+                data.get("project_url", "").rstrip("/") + "/html/"
+                if data.get("project_url") else None),
+            "export_local": os.environ.get(
                 f"STX_EXPORT_URL_{env_suffix}",
-                data.get("export_url",
-                         data.get("project_url", "").rstrip("/") + "/html/"
-                         if data.get("project_url") else None)),
+                os.environ[f"STX_URL_{env_suffix}"].rstrip("/") + "/html/"
+                if f"STX_URL_{env_suffix}" in os.environ else None),
         })
     if not entries:
         raise ValueError(f"{_TOML} ne déclare aucun module — la chaîne est vide.")
@@ -127,13 +136,20 @@ def build_next_module_slide(s, current: str | None = None) -> None:
         st_space("v", "4vh")
         st_write(s.project.body.caption + s.center_txt,
                  nxt["description"], tag=t.div)
-        # L'axe app/HTML (B allégée) : un lien discret, seulement si déclaré.
-        if nxt["export_url"]:
+        # L'axe app/HTML (B allégée) : une ligne discrète, un lien par cible
+        # disponible — « local » seulement quand une instance locale est
+        # déclarée (run-postair), « remote » toujours.
+        targets = [(label, url) for label, url in
+                   (("local", nxt["export_local"]),
+                    ("remote", nxt["export_remote"])) if url]
+        if targets:
+            link_css = ("color:#95A5A6;text-decoration:underline;")
+            links = " / ".join(
+                f'<a href="{url}" target="_top" style="{link_css}">{label}</a>'
+                for label, url in targets)
             st_space("v", "2vh")
             st_html(
-                f'<div style="text-align:center;">'
-                f'<a href="{nxt["export_url"]}" target="_top" '
-                f'style="color:#95A5A6;font-size:calc(var(--stx-scale-9, 22pt)'
-                f' * 0.9);text-decoration:underline;">static HTML version</a>'
-                f'</div>'
+                f'<div style="text-align:center;color:#95A5A6;'
+                f'font-size:calc(var(--stx-scale-9, 22pt) * 0.9);">'
+                f'static HTML version: {links}</div>'
             )
