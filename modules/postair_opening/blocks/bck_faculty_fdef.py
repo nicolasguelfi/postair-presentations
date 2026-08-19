@@ -51,32 +51,51 @@ _SCENE = ("A papercut law and finance scene: a paper courthouse column, a "
           "behind.")
 
 # ── Les constats (headline projetée ; detail + caveat dans le tooltip) ──────
+# Rééquilibrage NG 2026-08-19 : autant de bénéfices que de revers — deux
+# résultats positifs solides (Kleinberg, Posner & Saran), un revers documenté
+# (Magesh), et la synthèse honnête en clôture (Dell'Acqua). Dahl et al. 2024
+# (les modèles généralistes, 58–88 % d'hallucinations) quitte la projection —
+# son message est porté par Magesh — mais reste en précision de tooltip.
 _EXAMPLES = [
+    {
+        "headline": "Machine risk predictions: −24.7 % crime, same jailing rate",
+        "detail": ("On New York pre-trial release decisions, following a "
+                   "machine-learning risk prediction instead of the judge "
+                   "would cut crime by up to 24.7 % at an unchanged jailing "
+                   "rate — or cut jailing by 41.9 % at unchanged crime."),
+        "caveat": ("A policy simulation on real dossiers, not a deployment. "
+                   "And specialised is no automatic guarantee: the commercial "
+                   "COMPAS tool predicted recidivism at 65.2 % against "
+                   "64.0 % for untrained laypeople (Dressel & Farid, 2018)."),
+        "citekeys": ["kleinberg2018human"],
+        "reported": False,
+    },
+    {
+        "headline": "the model follows precedent — the judges followed sympathy",
+        "detail": ("A controlled experiment once run on 31 real US federal "
+                   "judges was replicated with GPT-4o judging the same full "
+                   "case file: the model follows legal precedent and ignores "
+                   "the defendant’s sympathy — the exact opposite of the "
+                   "human judges in the original experiment."),
+        "caveat": ("A replication case-study on one experimental protocol — "
+                   "a laboratory result, not a courtroom record."),
+        "citekeys": ["posner2026judgeai"],
+        "reported": False,
+    },
     {
         "headline": "Legal AI tools still invent case law",
         "detail": ("Purpose-built legal research tools — sold to lawyers, "
                    "marketed as hallucination-free — still invent law: on "
                    "more than 200 open-ended legal queries, 17 % of Lexis+ AI "
                    "answers and 33 % of Westlaw AI-Assisted Research answers "
-                   "were hallucinated."),
+                   "were hallucinated. General-purpose models do far worse "
+                   "still — 58 % to 88 % hallucination rates on verifiable "
+                   "case-law questions (Dahl et al., 2024)."),
         "caveat": ("Paywalled; figures taken from the authors’ open preprint "
                    "and consistent secondary reporting. The vendors have "
                    "updated their systems since the queries were run."),
         "citekeys": ["magesh-hallucination-free-2025"],
         "reported": True,   # kind = reported-in : la note s'ajoute au tooltip
-    },
-    {
-        "headline": "General models wrong most of the time",
-        "detail": ("General-purpose models are far worse, and do not know "
-                   "it: asked specific, verifiable questions about randomly "
-                   "chosen US federal court cases, they hallucinated between "
-                   "58 % of the time (GPT-4) and 88 % (Llama 2), and often "
-                   "accepted a false legal premise handed to them in the "
-                   "question."),
-        "caveat": ("US case law. The failure mode — fluent, confident and "
-                   "wrong — transfers to any jurisdiction; the rates do not."),
-        "citekeys": ["dahl-legal-fictions-2024"],
-        "reported": False,
     },
     {
         "headline": "Better inside the frontier, worse just outside",

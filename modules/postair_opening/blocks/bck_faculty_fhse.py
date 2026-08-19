@@ -80,6 +80,19 @@ _EXAMPLES = [
         "citekeys": ["bastani-guardrails-2025"],
         "reported": False,
     },
+    # Rééquilibrage NG 2026-08-19 : le bénéfice vit dans la MÊME étude que la
+    # mise en garde au-dessus — le remède mesuré, pas une promesse.
+    {
+        "headline": "a tutor constrained to hints: the gain without the loss",
+        "detail": ("The same field experiment also measured the fix: when "
+                   "the GPT-4 tutor was constrained to give hints instead of "
+                   "answers, students kept the practice gains and the exam "
+                   "loss disappeared."),
+        "caveat": ("Same population and horizon as the caution beside it: "
+                   "school mathematics in Turkey, over weeks."),
+        "citekeys": ["bastani-guardrails-2025"],
+        "reported": False,
+    },
     {
         "headline": "Least convinced, least supported",
         "detail": ("Arts and humanities students are the most sceptical and "

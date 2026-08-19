@@ -64,6 +64,21 @@ _EXAMPLES = [
         "citekeys": ["finnie-ansley2022", "finnie-ansley2023"],
         "reported": False,
     },
+    # Rééquilibrage NG 2026-08-19 : un bénéfice net entre la capacité et le
+    # risque — l'essai randomisé JAMA sur le raisonnement diagnostique.
+    {
+        "headline": "GPT-4 out-diagnosed the unaided physicians",
+        "detail": ("In a randomized clinical trial on six complex diagnostic "
+                   "vignettes, GPT-4 alone reached a median reasoning score "
+                   "of 92 % against 74 % for 50 physicians using their usual "
+                   "tools — and 76 % when the physicians were given GPT-4: "
+                   "the tool alone is not enough, collaborating with it is "
+                   "learned."),
+        "caveat": ("Fifty physicians, six vignettes — a controlled reasoning "
+                   "benchmark, not patient outcomes."),
+        "citekeys": ["goh2024llm"],
+        "reported": False,
+    },
     {
         "headline": "the least accurate student but the most confident",
         "detail": ("In medicine the danger is confidence, not error. Medical "
