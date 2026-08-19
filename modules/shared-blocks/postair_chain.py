@@ -17,9 +17,17 @@ Décision NG 2026-08-19 (« C + B allégée ») : la cible locale ou déployée
 n'est JAMAIS un geste de clic — c'est l'ENVIRONNEMENT qui décide, via les
 ``STX_URL_<KEY>`` que ``run-postair.py`` pose sur chaque instance locale (une
 instance locale chaîne en local, la déployée en déployé). L'axe app/HTML est
-un petit lien discret sous le bouton, rendu SEULEMENT si une URL d'export est
-déclarée (``export_url`` au toml, surchargée par ``STX_EXPORT_URL_<KEY>``) —
-jamais de lien mort.
+un petit lien discret sous le bouton.
+
+L'URL de l'export HTML se DÉRIVE de l'infrastructure : chaque conteneur sert
+son export sous ``<project_url>/html/`` (nginx.conf — ``location = /html/``
+redirige vers ``/html/postair_<key>/postair_<key>.html``). Précédence :
+``STX_EXPORT_URL_<KEY>`` (env) > ``export_url`` (toml) > convention
+``project_url + /html/``. La convention s'appuie sur l'URL de PRODUCTION du
+toml, jamais sur l'URL résolue : en local, aucun nginx ne sert ``/html/`` —
+le lien pointe donc vers l'export déployé, qui existe toujours (et sert de
+secours si l'app locale déraille). Un export local servi se déclare par
+``STX_EXPORT_URL_<KEY>``.
 
 ⚠ Module PARTAGÉ (shared-blocks) : comme ``postair_event``, une édition ici
 exige un redémarrage du serveur Streamlit — hors du périmètre du rechargement
@@ -65,10 +73,13 @@ def chain() -> tuple[dict, ...]:
             "description": data.get("description", ""),
             "url": os.environ.get(f"STX_URL_{env_suffix}",
                                   data.get("project_url", "#")),
-            # Export HTML statique : optionnel — None tant qu'aucune URL
-            # n'est déclarée, et le lien n'est alors pas rendu.
-            "export_url": os.environ.get(f"STX_EXPORT_URL_{env_suffix}",
-                                         data.get("export_url")),
+            # Export HTML : env > toml > convention /html/ du nginx conteneur
+            # — dérivée de l'URL de PRODUCTION (voir docstring du module).
+            "export_url": os.environ.get(
+                f"STX_EXPORT_URL_{env_suffix}",
+                data.get("export_url",
+                         data.get("project_url", "").rstrip("/") + "/html/"
+                         if data.get("project_url") else None)),
         })
     if not entries:
         raise ValueError(f"{_TOML} ne déclare aucun module — la chaîne est vide.")

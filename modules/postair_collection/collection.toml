@@ -8,9 +8,11 @@
 #
 # Ce toml est AUSSI la source de la chaîne de fin de deck (postair_chain,
 # NG 2026-08-19) : le bouton « module suivant » et le hub ne peuvent pas
-# diverger. Clé optionnelle par projet : export_url (la version HTML
-# statique ; surcharge env STX_EXPORT_URL_<KEY>) — tant qu'elle est
-# absente, le lien « static HTML version » n'est pas rendu. En local,
+# diverger. Le lien « static HTML version » se DÉRIVE par convention :
+# <project_url>/html/ (le nginx de chaque conteneur sert l'export là,
+# redirigé vers /html/postair_<key>/postair_<key>.html). Surcharges :
+# export_url (clé optionnelle par projet) puis STX_EXPORT_URL_<KEY> (env,
+# ex. un export local servi). En local,
 # run-postair.py pose STX_URL_<KEY>=http://localhost:<port> sur chaque
 # instance : une instance locale chaîne en local, sans geste ni réglage.
 #
