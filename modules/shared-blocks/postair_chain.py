@@ -13,6 +13,14 @@ collectionne pas les onglets). Le module courant est détecté par le répertoir
 de travail — le conteneur comme le lancement local font ``cd`` dans le module.
 Après le dernier module de l'ordre, la boucle revient au premier.
 
+Décision NG 2026-08-19 (« C + B allégée ») : la cible locale ou déployée
+n'est JAMAIS un geste de clic — c'est l'ENVIRONNEMENT qui décide, via les
+``STX_URL_<KEY>`` que ``run-postair.py`` pose sur chaque instance locale (une
+instance locale chaîne en local, la déployée en déployé). L'axe app/HTML est
+un petit lien discret sous le bouton, rendu SEULEMENT si une URL d'export est
+déclarée (``export_url`` au toml, surchargée par ``STX_EXPORT_URL_<KEY>``) —
+jamais de lien mort.
+
 ⚠ Module PARTAGÉ (shared-blocks) : comme ``postair_event``, une édition ici
 exige un redémarrage du serveur Streamlit — hors du périmètre du rechargement
 à chaud des blocs.
@@ -49,13 +57,18 @@ def chain() -> tuple[dict, ...]:
     entries = []
     for key, data in sorted(config.get("projects", {}).items(),
                             key=lambda item: item[1].get("order", 0)):
-        env_key = "STX_URL_" + key.upper().replace("-", "_")
+        env_suffix = key.upper().replace("-", "_")
         entries.append({
             "key": key,
             "title": data.get("title", key),
             "emoji": data.get("emoji", "📄"),
             "description": data.get("description", ""),
-            "url": os.environ.get(env_key, data.get("project_url", "#")),
+            "url": os.environ.get(f"STX_URL_{env_suffix}",
+                                  data.get("project_url", "#")),
+            # Export HTML statique : optionnel — None tant qu'aucune URL
+            # n'est déclarée, et le lien n'est alors pas rendu.
+            "export_url": os.environ.get(f"STX_EXPORT_URL_{env_suffix}",
+                                         data.get("export_url")),
         })
     if not entries:
         raise ValueError(f"{_TOML} ne déclare aucun module — la chaîne est vide.")
@@ -103,3 +116,13 @@ def build_next_module_slide(s, current: str | None = None) -> None:
         st_space("v", "4vh")
         st_write(s.project.body.caption + s.center_txt,
                  nxt["description"], tag=t.div)
+        # L'axe app/HTML (B allégée) : un lien discret, seulement si déclaré.
+        if nxt["export_url"]:
+            st_space("v", "2vh")
+            st_html(
+                f'<div style="text-align:center;">'
+                f'<a href="{nxt["export_url"]}" target="_top" '
+                f'style="color:#95A5A6;font-size:calc(var(--stx-scale-9, 22pt)'
+                f' * 0.9);text-decoration:underline;">static HTML version</a>'
+                f'</div>'
+            )

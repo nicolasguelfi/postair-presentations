@@ -6,6 +6,14 @@
 # devenus soulignés) la surcharge. L'ordre est celui de l'agenda officiel du
 # jour (postair_event.AGENDA) — pas un choix éditorial de ce fichier.
 #
+# Ce toml est AUSSI la source de la chaîne de fin de deck (postair_chain,
+# NG 2026-08-19) : le bouton « module suivant » et le hub ne peuvent pas
+# diverger. Clé optionnelle par projet : export_url (la version HTML
+# statique ; surcharge env STX_EXPORT_URL_<KEY>) — tant qu'elle est
+# absente, le lien « static HTML version » n'est pas rendu. En local,
+# run-postair.py pose STX_URL_<KEY>=http://localhost:<port> sur chaque
+# instance : une instance locale chaîne en local, sans geste ni réglage.
+#
 # En attente de production (à ajouter ici le jour où leur module existe) :
 # postair_mistral (« Using Mistral models & agents to study », 20').
 

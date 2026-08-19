@@ -3,9 +3,12 @@
 (streamtex-docs).
 
 Lance en local le jeu de documents choisi, chacun sur son port, et ouvre le
-navigateur. Quand la collection fait partie du jeu, ses cartes pointent vers
-les instances LOCALES (variables STX_URL_* lues par bck_home) — le hub local
-navigue donc vers les decks locaux, pas vers la production.
+navigateur. Chaque instance lancée reçoit les variables STX_URL_* des AUTRES
+modules du jeu (lues par bck_home ET par postair_chain) : le hub local navigue
+vers les decks locaux, et le bouton « module suivant » de fin de deck chaîne
+en local aussi — l'environnement décide, jamais un geste (décision NG
+2026-08-19). Les modules absents du jeu gardent leur URL de production, repli
+naturel du collection.toml.
 
 Usage :
     uv run python run-postair.py                     # tout (collection comprise)
@@ -95,13 +98,13 @@ def launch(name: str, selected: list[str]) -> subprocess.Popen | None:
     free_port(port)
 
     env = os.environ.copy()
-    if name == "collection":
-        # Les cartes du hub local pointent vers les instances locales du jeu
-        # lancé ; les modules absents gardent leur URL de production (repli
-        # naturel du collection.toml).
-        for other in selected:
-            if other != "collection":
-                env[f"STX_URL_{other.upper()}"] = f"http://localhost:{MODULES[other]['port']}"
+    # Chaque instance connaît les URLs LOCALES des autres modules du jeu :
+    # les cartes du hub (bck_home) et le bouton « module suivant » de fin de
+    # deck (postair_chain) chaînent en local. Modules absents = URL de
+    # production, repli naturel du collection.toml.
+    for other in selected:
+        if other != name and other != "collection":
+            env[f"STX_URL_{other.upper()}"] = f"http://localhost:{MODULES[other]['port']}"
 
     with open(log_file, "w") as lf:
         proc = subprocess.Popen(
