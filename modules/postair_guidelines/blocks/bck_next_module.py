@@ -17,4 +17,7 @@ from postair_chain import build_next_module_slide
 
 
 def build():
-    build_next_module_slide(s)
+    # Clé EXPLICITE : le répertoire de travail dépend du lanceur
+    # (run-postair lance depuis la racine, le conteneur depuis le
+    # module) — constaté le 2026-08-19, gel de l'overlay au chargement.
+    build_next_module_slide(s, current="guidelines")
