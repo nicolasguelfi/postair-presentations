@@ -139,6 +139,7 @@ st_book(
         # « The SUMVADIS tool » (modules/postair_survey) ; bck_disc_method
         # et bck_disc_debates_link ouvrent désormais postair_debates —
         # même mouvement que bck_disc_wrapup (NG 2026-08-03).
+        blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         # ── Appendix ────────────────────────────────────────────────
         blocks.bck_refs_bibliography,  # never presented; opened when a figure is challenged
     ],

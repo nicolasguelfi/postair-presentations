@@ -142,6 +142,7 @@ st_book(
         blocks.bck_disc_wrapup,            # no consensus, and that is normal
         blocks.bck_break_countdown,        # live countdown + the whole company
         blocks.bck_break_rewelcome,        # what the second half holds
+        blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         blocks.bck_references,             # never presented; opened when challenged
     ],
     toc_config=toc,

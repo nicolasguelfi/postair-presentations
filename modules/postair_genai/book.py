@@ -135,6 +135,7 @@ st_book(
         blocks.bck_genai_future_pm,      # G10b · project manager of your assistants
         blocks.bck_genai_actor,          # G11 · the loop back to the posture
         blocks.bck_genai_takeaways,      # G12 · four cards to photograph
+        blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         blocks.bck_refs_bibliography,    # never presented; opened when challenged
     ],
     toc_config=toc,

@@ -125,6 +125,7 @@ st_book(
         blocks.bck_close_loop,         # C1 · the four things they now have
         blocks.bck_close_next,         # C2 · the QR to the hub, what stays online
         blocks.bck_close_thanks,       # C3 · mascot family photo, applause
+        blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         blocks.bck_refs_bibliography,  # never presented; opened when challenged
     ],
     toc_config=toc,

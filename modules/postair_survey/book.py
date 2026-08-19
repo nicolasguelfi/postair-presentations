@@ -142,6 +142,7 @@ st_book(
         blocks.bck_screens_admin,     # régie (20-22) + les 7 vues du diaporama /present
         #                             # (Q15) — captures desktop gelées le 2026-08-14
         blocks.bck_results_meaning,   # what the results say about us
+        blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         # ── Appendix ────────────────────────────────────────────────
         blocks.bck_refs_bibliography,  # never presented; opened when a claim is challenged
     ],
