@@ -9,7 +9,8 @@ in git under ``static/images/host/`` (the repo's assumed exception — they
 never go to the CDN, and ``sync_media`` plays no part). The day the studio
 publishes the still grid of the nine incarnations (the host wearing each of
 the nine postures), drop it as ``host_incarnations.webp`` and the slide
-switches to it — the same present-file pattern as ``bck_survey_howto``:
+switches to it — the same present-file pattern as the survey deck's
+``bck_axes_radar`` (wheel vs empty radar):
 never a missing image in front of the amphitheatre.
 
 SPEAKER NOTES:

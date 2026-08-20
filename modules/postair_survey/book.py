@@ -120,12 +120,17 @@ marker_config = MarkerConfig(
 # iteration, block names do not.
 st_book(
     [
+        # ── Part 0 · Contexts (NG 2026-08-20) — un cadre d'usage par slide ──
+        blocks.bck_context_welcome_week,  # cadre académique : logo uni.lu + le contrat
+        blocks.bck_context_generic,       # tous les autres cadres : wordmark sumvadis
         # ── Part 1 · Getting started ────────────────────────────────
         blocks.bck_axes_radar,        # the fairground wheel — TOC anchor « Getting started »
         blocks.bck_axes_registers,    # the nine axes, register by register
-        blocks.bck_axes_company,      # the second family — the axes in objects
         blocks.bck_survey_poster,     # the survey part opens on one image
-        blocks.bck_survey_howto,      # how to answer + the first screens (captures 01-04)
+        blocks.bck_survey_instrument,  # 3 questions × 18 postures — l'idée de l'instrument
+        blocks.bck_screens_first,     # captures 01, 02 — code of the day, welcome
+        blocks.bck_screens_consent,   # capture 03 — consent, nothing personal
+        blocks.bck_screens_statement,  # capture 04 — a statement, six levels + les 3 règles
         blocks.bck_survey_troubleshooting,  # before you start
         blocks.bck_survey_join,       # QR + code of the day
         # ── Part 2 · The screens ────────────────────────────────────
