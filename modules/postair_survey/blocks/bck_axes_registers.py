@@ -83,7 +83,8 @@ def _register_slide(name: str, subtitle: str) -> None:
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for axis in axes_here:
                 with g.cell():
-                    axis_stack(axis, DS, image_width="min(10vw, 13.5vh)")
+                    with st_zoom(115):
+                        axis_stack(axis, DS, image_width="min(10vw, 13.5vh)")
 
 
 def build():

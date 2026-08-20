@@ -7,6 +7,7 @@ Nothing on this slide reveals the mechanics; the how-to comes next.
 """
 # @guideline: postair-minimal
 
+from custom.config import IS_EDITABLE
 from custom.styles import Styles as s
 from custom.visuals import is_synthetic
 from shared_widgets import st_info_tooltip
@@ -31,7 +32,8 @@ def build():
                 # Rétrogradé "+1" (ss12) : la partie 1 est ancrée par
                 # bck_axes_radar (« Getting started »), le poster n'ouvre
                 # plus une partie à lui seul.
-                st_write(bs.title, "The ", (s.project.titles.keyword, "Survey"),
+                with st_zoom(160):
+                    st_write(bs.title, "The ", (s.project.titles.keyword, "Survey"),
                          tag=t.div, toc_lvl="+1", label="The Survey")
             with g.cell():
                 st_info_tooltip(
@@ -44,8 +46,9 @@ def build():
                         ("Finally", "We debate the most divisive questions of your cohort."),
                     ],
                 )
-        st_image(s.project.cards.media_center, width="86%",
-                 editable=False, name="survey_poster",
-                 alt="Papercut poster: a giant nine-spoke paper radar with a huge question "
-                     "mark at its centre, surrounded by a cheerful crowd of paper silhouettes",
+        st_space("v", "5vh")
+        st_image(s.project.cards.media_center, width="66%",
+            editable=IS_EDITABLE, name="survey_poster",
+            alt="Papercut poster: a giant nine-spoke paper radar with a huge question "
+                "mark at its centre, surrounded by a cheerful crowd of paper silhouettes",
             overlay=dd35_overlay(is_synthetic("survey_poster")))

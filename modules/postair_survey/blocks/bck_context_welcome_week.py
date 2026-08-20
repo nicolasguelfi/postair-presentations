@@ -36,19 +36,16 @@ bs = BlockStyles
 #: Le logo — variante blanche pour le thème sombre, sous static/images/
 #: (sondé par les sources statiques : inliné, ~18 Ko, assumé).
 _LOGO = "images/logos/ul-logo-white.png"
-_LOGO_WIDTH = "min(16vw, 22vh)"
+_LOGO_WIDTH = "min(22vw, 30vh)"
 
 #: Une rangée = une icône + un message. Le style dit la hiérarchie : la
 #: promesse en géant, le contrat en corps courant, la règle des mineurs en
 #: corail (la seule ligne juridique de la slide).
 _MESSAGES = [
-    ("🎡", bs.headline, "An entertaining survey to discover your postures "
-                        "facing the AI revolution."),
-    ("🔬", bs.message, "Your first participation in an academic research "
-                       "study :) !!"),
+    ("🎡", bs.headline, "An entertaining survey to discover your postures facing the AI revolution."),
+    ("🔬", bs.message, "Your first participation in an academic research study :) !!"),
     ("🎭", bs.message, "Anonymous and on a voluntary basis."),
-    ("🔞", bs.caveat, "If less than 18 years old, participation is not "
-                      "considered for research."),
+    ("🔞", bs.caveat, "If less than 18 years old, participation is not considered for research."),
 ]
 
 
@@ -80,13 +77,13 @@ def build():
                          "analysis."),
                     ],
                 )
-        st_space("v", "4vh")
+        st_space("v", "2vh")
         with st_grid(cols="10% 90%", gap="1vw",
-                     grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for index, (icon, style, message) in enumerate(_MESSAGES):
                 with g.cell():
-                    st_write(bs.icon, icon, tag=t.div)
+                    with st_zoom(130):
+                        st_write(bs.icon, icon, tag=t.div)
                 with g.cell():
                     # L'ancre TOC de la partie « Contexts » vit sur la première
                     # ligne : la slide n'a pas de titre, le logo EST l'en-tête.

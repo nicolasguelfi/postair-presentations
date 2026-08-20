@@ -110,7 +110,8 @@ def build():
             with g.cell():
                 # Ancre TOC de la partie 1 (ss12) : le label dit la PARTIE,
                 # le titre visible garde la question qui la lance.
-                st_write(bs.title, "What is ", (s.project.titles.keyword, "your posture"),
+                with st_zoom(130):
+                    st_write(bs.title, "What is ", (s.project.titles.keyword, "your posture"),
                          " facing AI?", tag=t.div, toc_lvl="1", label="Getting started")
             with g.cell():
                 st_info_tooltip(
@@ -138,7 +139,7 @@ def build():
                 )
         st_space("v", s.project.spacing.title_gap)
         # The wheel as large as the remaining viewport allows.
-        with st_grid(cols="1fr 78% 1fr", cell_styles=s.project.containers.grid_cell_centered) as g:
+        with st_grid(cols="1fr 70% 1fr", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_space("h", "0.5vw")
             with g.cell():

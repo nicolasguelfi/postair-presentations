@@ -32,12 +32,12 @@ from streamtex.enums import Tags as t
 #: personnes dans la salle. Un accent DIFFÉRENT par titre (NG 2026-08-15) :
 #: six situations, six couleurs — l'œil retrouve sa carte depuis le fond.
 _TIPS = [
+    ("QR won't scan?", "Type the address and the code by hand",
+     s.project.cards.blue, s.project.colors.primary),
     ("Wifi struggling?", "wifi OFF → mobile data",
      s.project.cards.amber, s.project.colors.amber),
     ("Finished early?", "Read the six archetype descriptions",
      s.project.cards.teal, s.project.colors.keyword),
-    ("QR won't scan?", "Type the address and the code by hand",
-     s.project.cards.blue, s.project.colors.primary),
     ("Lost the page?", "Reopen it — your answers are saved",
      s.project.cards.blue, s.project.colors.success),
     ("Battery low?", "Pair up with a neighbour and share one",
@@ -62,8 +62,9 @@ def build():
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "If something ", (s.project.titles.keyword, "goes wrong"),
-                         tag=t.div, toc_lvl="+1", label="Before you start")
+                with st_zoom(130):
+                    st_write(bs.title, "If something ", (s.project.titles.keyword, "goes wrong"),
+                            tag=t.div, toc_lvl="+1", label="Before you start")
             with g.cell():
                 st_info_tooltip(
                     title="Operator checklist",
@@ -87,7 +88,7 @@ def build():
                          "loses nothing."),
                     ],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "2vh")
         st_write(bs.lead, "Nothing here is serious — ",
                  (s.project.titles.keyword, "your answers are saved as you go"), tag=t.div)
         st_space("v", "2.5vh")
@@ -97,6 +98,7 @@ def build():
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for case, fix, card, accent in _TIPS:
                 with g.cell(), st_block(card):
-                    st_write(bs.case + accent, case, tag=t.div)
-                    st_space("v", "0.8vh")
-                    st_write(bs.fix, fix, tag=t.div)
+                    with st_zoom(120):
+                        st_write(bs.case + accent, case, tag=t.div)
+                        st_space("v", "0.8vh")
+                        st_write(bs.fix, fix, tag=t.div)
