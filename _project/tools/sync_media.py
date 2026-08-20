@@ -41,6 +41,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -69,6 +70,15 @@ CAPTURE_MODULES = ["postair_survey"]
 CLIP_MODULES = ["postair_opening", "postair_survey"]
 
 _TIMEOUT = 30
+
+#: Retry avec backoff exponentiel (NG 2026-08-20) : le workflow Hetzner lance
+#: les builds par lot de 4, et quatre conteneurs qui matérialisent les mêmes
+#: médias en parallèle font rationner le CDN — HTTP 429 constaté sur le lot du
+#: 2026-08-20, build mort, ancien conteneur resté en ligne. Cinq tentatives,
+#: délais 5·10·20·40 s (≈75 s de pire cas par fichier), ``Retry-After`` honoré.
+_RETRIES = 5
+_BACKOFF_BASE = 5.0
+_RETRY_AFTER_CAP = 120.0
 
 
 def load_config() -> dict[str, str]:
@@ -269,18 +279,42 @@ def fetch(url: str, target: Path) -> int:
     relancer).
     """
     target.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        with urllib.request.urlopen(url, timeout=_TIMEOUT) as r:
-            payload = r.read()
-            announced = r.headers.get("content-length")
-    except (urllib.error.URLError, OSError) as e:
-        raise SystemExit(f"échec du téléchargement de {url} : {e}") from e
-
-    # Le réseau peut couper sans lever d'erreur : `read()` rend alors moins
-    # d'octets qu'annoncé, et le fichier serait écrit entier mais tronqué.
-    if announced and announced.isdigit() and int(announced) != len(payload):
-        raise SystemExit(f"téléchargement tronqué : {url} — {len(payload)} octets reçus, "
-                         f"{announced} annoncés. Rien n'a été écrit ; relancer.")
+    payload = None
+    last_error: Exception | str | None = None
+    for attempt in range(1, _RETRIES + 1):
+        retry_after = None
+        try:
+            with urllib.request.urlopen(url, timeout=_TIMEOUT) as r:
+                payload = r.read()
+                announced = r.headers.get("content-length")
+        except urllib.error.HTTPError as e:
+            # 4xx hors 429 : redemander ne changera rien (URL morte, accès
+            # refusé) — échec immédiat et bruyant. 429 et 5xx : transitoire.
+            if e.code != 429 and e.code < 500:
+                raise SystemExit(f"échec du téléchargement de {url} : {e}") from e
+            last_error = e
+            retry_after = e.headers.get("Retry-After") if e.headers else None
+        except (urllib.error.URLError, OSError) as e:
+            last_error = e
+        else:
+            # Le réseau peut couper sans lever d'erreur : `read()` rend alors
+            # moins d'octets qu'annoncé — transitoire, on réessaie aussi.
+            if announced and announced.isdigit() and int(announced) != len(payload):
+                last_error = (f"tronqué — {len(payload)} octets reçus, "
+                              f"{announced} annoncés")
+                payload = None
+            else:
+                break
+        if attempt < _RETRIES:
+            delay = _BACKOFF_BASE * 2 ** (attempt - 1)
+            if retry_after and str(retry_after).isdigit():
+                delay = min(max(delay, float(retry_after)), _RETRY_AFTER_CAP)
+            print(f"    {url} : {last_error} — nouvel essai dans {delay:.0f} s "
+                  f"({attempt}/{_RETRIES})", file=sys.stderr)
+            time.sleep(delay)
+    if payload is None:
+        raise SystemExit(f"échec du téléchargement de {url} après {_RETRIES} "
+                         f"tentatives : {last_error}. Rien n'a été écrit.")
 
     wrong = _wrong_type(target.name, payload)
     if wrong:
