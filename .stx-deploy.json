@@ -35,8 +35,7 @@
       "serve_mode": "dual"
     },
     "postair-survey": {
-      "uuid": "<UUID_COOLIFY_SURVEY>",
-      "_todo": "TODO(ss12) : créer l'app Coolify JUSTE AVANT le merge (POST /api/v1/applications/public, cf. DEPLOY.md § Adding a module), puis remplacer <UUID_COOLIFY_SURVEY> ici, dans .github/workflows/hetzner-deploy.yml et dans DEPLOY.md — et retirer cette clé.",
+      "uuid": "mcgto0uw68er5cmcy61z5853",
       "subdomain": "postair-survey",
       "fqdn": "https://postair-survey.streamtex.org",
       "repo": "https://github.com/nicolasguelfi/postair-presentations",

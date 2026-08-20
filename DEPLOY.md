@@ -17,16 +17,11 @@ this repo, **one Coolify service per module**, each selecting its module via the
 | Service | UUID | Domain | FOLDER |
 |---|---|---|---|
 | postair-opening | `f12d9utrj67uqwjqune5t4ip` | postair-opening.streamtex.org | `modules/postair_opening` |
-| postair-survey | `<UUID_COOLIFY_SURVEY>` ¹ | postair-survey.streamtex.org | `modules/postair_survey` |
+| postair-survey | `mcgto0uw68er5cmcy61z5853` | postair-survey.streamtex.org | `modules/postair_survey` |
 | postair-debates | `o655voa4o0r1gw9k1lhkujtg` | postair-debates.streamtex.org | `modules/postair_debates` |
 | postair-genai | `ki72ol1fqgno2g1rpi0t2m7o` | postair-genai.streamtex.org | `modules/postair_genai` |
 | postair-collection | `g5hnjmauge8443965yywvijs` | postair-collection.streamtex.org | `modules/postair_collection` |
 | postair-guidelines | `cx1yh8ef3kyg1uf50m1w0wmi` | postair-guidelines.streamtex.org | `modules/postair_guidelines` |
-
-¹ **TODO(ss12)** : UUID placeholder — l'app Coolify de `postair-survey` se crée
-**juste avant le merge** vers `main` (cf. « Adding a module » ci-dessous), puis
-`<UUID_COOLIFY_SURVEY>` est remplacé ici, dans `.stx-deploy.json` et dans
-`.github/workflows/hetzner-deploy.yml`.
 
 Runtime env per app: `FOLDER`, `STX_SERVE_MODE` (dual).
 
