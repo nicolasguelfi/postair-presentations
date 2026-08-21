@@ -26,7 +26,7 @@ def build():
         screen_slide(
             ["A statement, ", (s.project.titles.keyword, "six levels"), ", help"],
             "05-progression",
-            "Mobile screen of the survey journey: one statement with its six "
+            "Desktop screen of the survey journey: one statement with its six "
             "agreement levels and the help button, dark theme",
             [
                 ("No right answer",
@@ -50,10 +50,10 @@ def build():
                     "mistake that distorts a profile."),
                     ("Help per question", "Every statement has a help button: "
                     "clarification, anchors and two concrete examples.")]),
-            # TODO(NG 2026-08-21) : repasser à device="desktop" (+ landscape=True)
-            # après la republication sumvadis — les objets desktop de cet écran
-            # au CDN sont morts (1 octet, versions pré-21/08) et le catalogue
-            # est resté au gel du 14/08 en attendant. Chaîne : republier la
-            # matrice dans sumvadis → build_survey_captures.py → purge → sync.
-            device="mobile"
+            # Desktop PAYSAGE (NG 2026-08-21) : capture pleine scène en haut,
+            # les trois règles en ligne dessous — permis par le gel matrice
+            # complète (décision D). L'alerte « 1 octet » du 2026-08-21 était
+            # un incident transitoire du service média, résolu côté sumvadis.
+            device="desktop",
+            landscape=True,
         )

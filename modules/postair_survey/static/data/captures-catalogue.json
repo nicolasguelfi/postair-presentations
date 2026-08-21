@@ -4,13 +4,19 @@
  "domaine": "parcours",
  "policy": {
   "langs": [
-   "en"
+   "en",
+   "fr",
+   "de"
   ],
   "themes": [
-   "sombre"
+   "sombre",
+   "clair"
   ],
-  "participants": "mobile (écrans 01-19)",
-  "operators": "desktop (écrans 20+)",
+  "devices": [
+   "mobile",
+   "desktop"
+  ],
+  "matrix": "complète (décision D, NG 2026-08-21) — le choix de projection descend dans la slide",
   "exclude": [
    "17-res-page-entiere"
   ],
@@ -31,40 +37,643 @@
    "sha256": "af9a7c9dc902ae807f2c3eeea6dc39e0ea97702e57c1109e73c9437c83944a79"
   },
   {
+   "slug": "01-saisie-code",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-192859",
+   "file": "01-saisie-code__fr__capture-mobile-sombre__20260810-192859.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__fr/capture-mobile-sombre/20260810-192859.png",
+   "sha256": "5b9212b31f76ff999cb8b5b347c44e620ea5346590834a5edf63ea5c11302564"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-192846",
+   "file": "01-saisie-code__de__capture-mobile-sombre__20260810-192846.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__de/capture-mobile-sombre/20260810-192846.png",
+   "sha256": "df7bc02bd18a2726ae08732a5826a09f40edd56609c07522bbbbd620d6989b02"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-192851",
+   "file": "01-saisie-code__en__capture-mobile-clair__20260810-192851.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__en/capture-mobile-clair/20260810-192851.png",
+   "sha256": "4e57da2d952d92bfaf9021d2f3291d85c680c2a0cf84873469812b9d01f4b399"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-192857",
+   "file": "01-saisie-code__fr__capture-mobile-clair__20260810-192857.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__fr/capture-mobile-clair/20260810-192857.png",
+   "sha256": "2c9de67b39c5abb1ee00a7794f00d8f5cd9d757fb66684fc8cfdef5c395323d7"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-192844",
+   "file": "01-saisie-code__de__capture-mobile-clair__20260810-192844.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__de/capture-mobile-clair/20260810-192844.png",
+   "sha256": "d05d0fec5326fb62f9bfaf2d1ff53517d1f4eb116818bae516017d9817f2a4c1"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-192849",
+   "file": "01-saisie-code__en__capture-desktop-sombre__20260810-192849.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__en/capture-desktop-sombre/20260810-192849.png",
+   "sha256": "81bc140ffea44bb848d0b40a6cfd306ee76dbbe1c39dc6d801fd8c16b424606c"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-192856",
+   "file": "01-saisie-code__fr__capture-desktop-sombre__20260810-192856.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__fr/capture-desktop-sombre/20260810-192856.png",
+   "sha256": "58008bdea9c14ac8b57ff299994eedade2351168e1dd4bc7d76b110ea5675838"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-192842",
+   "file": "01-saisie-code__de__capture-desktop-sombre__20260810-192842.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__de/capture-desktop-sombre/20260810-192842.png",
+   "sha256": "e359057f130cd9a8906d2c0981614cbfee664e46767a6454d1cb5663a39bf0b3"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-192848",
+   "file": "01-saisie-code__en__capture-desktop-clair__20260810-192848.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__en/capture-desktop-clair/20260810-192848.png",
+   "sha256": "ca5bfe10b35dbc94170705353a179690fc10a33cc66bb54b97585f1f8385b743"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-192854",
+   "file": "01-saisie-code__fr__capture-desktop-clair__20260810-192854.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__fr/capture-desktop-clair/20260810-192854.png",
+   "sha256": "e6acaa7cb22c5c3fbc5cea22b0f68802e262261b27d977f538374cea1f2c7325"
+  },
+  {
+   "slug": "01-saisie-code",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-192840",
+   "file": "01-saisie-code__de__capture-desktop-clair__20260810-192840.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__01-saisie-code__de/capture-desktop-clair/20260810-192840.png",
+   "sha256": "4114ab45909d59e38d4e8e2f3a476fa8285084418b94781c730c28b6a3b741d7"
+  },
+  {
    "slug": "02-accueil-campagne",
    "lang": "en",
    "facette": "capture-mobile-sombre",
-   "horodatage": "20260814-124403",
-   "file": "02-accueil-campagne__en__capture-mobile-sombre__20260814-124403.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__en/capture-mobile-sombre/20260814-124403.png",
-   "sha256": "acb1fe63be4d7642426dce91e93379f2c659695875ecd1446faf7fccc6057d64"
+   "horodatage": "20260821-132708",
+   "file": "02-accueil-campagne__en__capture-mobile-sombre__20260821-132708.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__en/capture-mobile-sombre/20260821-132708.png",
+   "sha256": "493a0290f024a76ba3aca7da2ac4c85f856a3481bc3211da979d85e117c995de"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132712",
+   "file": "02-accueil-campagne__fr__capture-mobile-sombre__20260821-132712.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__fr/capture-mobile-sombre/20260821-132712.png",
+   "sha256": "7cc3423cb908a79534b263b1a924a89d64654f63a0f2999b515e34a93a5e5aae"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132703",
+   "file": "02-accueil-campagne__de__capture-mobile-sombre__20260821-132703.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__de/capture-mobile-sombre/20260821-132703.png",
+   "sha256": "3460b14feffca78e604be72f7227749660ff519abbecf9dbd18445448db8396f"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132705",
+   "file": "02-accueil-campagne__en__capture-mobile-clair__20260821-132705.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__en/capture-mobile-clair/20260821-132705.png",
+   "sha256": "a2c219d7a312b8434f87f6de82af67af7bc302b100efeed1b559e5eed0fa67da"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132709",
+   "file": "02-accueil-campagne__fr__capture-mobile-clair__20260821-132709.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__fr/capture-mobile-clair/20260821-132709.png",
+   "sha256": "cf014592bf943a4134462477bbbeff44b5b0e111a794eb3cad4220ec118bd340"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132700",
+   "file": "02-accueil-campagne__de__capture-mobile-clair__20260821-132700.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__de/capture-mobile-clair/20260821-132700.png",
+   "sha256": "c04e981573ba0cbd95a2f0ba46cc01e71ec01ae414e4272af332d7caad6d8355"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-192913",
+   "file": "02-accueil-campagne__en__capture-desktop-sombre__20260810-192913.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__en/capture-desktop-sombre/20260810-192913.png",
+   "sha256": "fe12496f061b3652ada9fb1d2d0a3a881b0965704b2dcf74d0046c6718ffe147"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-192919",
+   "file": "02-accueil-campagne__fr__capture-desktop-sombre__20260810-192919.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__fr/capture-desktop-sombre/20260810-192919.png",
+   "sha256": "d5cac6ac797a59d1412462291858b340311310828927899f6fddae6012e2a33b"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-192902",
+   "file": "02-accueil-campagne__de__capture-desktop-sombre__20260810-192902.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__de/capture-desktop-sombre/20260810-192902.png",
+   "sha256": "3bfe9f8a491732ae2d0d76f2d716ad6a3b436ed0e332099d7b52ad92a7cf0ff9"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-192907",
+   "file": "02-accueil-campagne__en__capture-desktop-clair__20260810-192907.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__en/capture-desktop-clair/20260810-192907.png",
+   "sha256": "b0c56d6c6479ebafcb7ff7be99c7d1c3f043d76ddb1b8f363e8d9717418f75c3"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-192918",
+   "file": "02-accueil-campagne__fr__capture-desktop-clair__20260810-192918.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__fr/capture-desktop-clair/20260810-192918.png",
+   "sha256": "9f79bf2e54c78ff6f8991cb98a61d64cccad7acd466ba6d7e90b892d12788a6a"
+  },
+  {
+   "slug": "02-accueil-campagne",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-192900",
+   "file": "02-accueil-campagne__de__capture-desktop-clair__20260810-192900.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-accueil-campagne__de/capture-desktop-clair/20260810-192900.png",
+   "sha256": "1ef4d699d799101cdd6cd2873adc0c33bfb0163b78e03a362f0c8a2a29ca501f"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133856",
+   "file": "02-eligibilite__en__capture-mobile-sombre__20260821-133856.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__en/capture-mobile-sombre/20260821-133856.png",
+   "sha256": "6ddfaa4d03d8df271b7f824264b63ff0a956c4f161ea001c3f210dd1cb32839f"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133902",
+   "file": "02-eligibilite__fr__capture-mobile-sombre__20260821-133902.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__fr/capture-mobile-sombre/20260821-133902.png",
+   "sha256": "c9742be7855a519bd7b167d77cd83f6b172b929b70fbd3334ebd74c2c1336725"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133850",
+   "file": "02-eligibilite__de__capture-mobile-sombre__20260821-133850.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__de/capture-mobile-sombre/20260821-133850.png",
+   "sha256": "346a807f3bf69efe81621b8a50dcfbe784525559d300d4911de8b78b8f8b8222"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133855",
+   "file": "02-eligibilite__en__capture-mobile-clair__20260821-133855.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__en/capture-mobile-clair/20260821-133855.png",
+   "sha256": "4655ce6b1e6c0cf57cf905614d0b7402de814f8b8f0081def0e14f313b00175c"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133901",
+   "file": "02-eligibilite__fr__capture-mobile-clair__20260821-133901.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__fr/capture-mobile-clair/20260821-133901.png",
+   "sha256": "f48c4ef9747abde04e0503ee757d19c9d8b03028930b6026efe58964541c2fad"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133848",
+   "file": "02-eligibilite__de__capture-mobile-clair__20260821-133848.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__de/capture-mobile-clair/20260821-133848.png",
+   "sha256": "db3039559ac4d1aff9da91cae956f0b25f497591d569a5a2100c0fcb6da0ca8c"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133853",
+   "file": "02-eligibilite__en__capture-desktop-sombre__20260821-133853.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__en/capture-desktop-sombre/20260821-133853.png",
+   "sha256": "a95a60bdddfd6675536028a1abbf7539be7e43aaac6ac5edf0a669798642fc09"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133859",
+   "file": "02-eligibilite__fr__capture-desktop-sombre__20260821-133859.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__fr/capture-desktop-sombre/20260821-133859.png",
+   "sha256": "805e4a4073ded043246495263a07a9b41fc391e4f523dc185220d25713a2540a"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133847",
+   "file": "02-eligibilite__de__capture-desktop-sombre__20260821-133847.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__de/capture-desktop-sombre/20260821-133847.png",
+   "sha256": "cf4cfa69fbd228024724cc9be14527bf56e98baaa0fe239268f4a098c43b5d01"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133852",
+   "file": "02-eligibilite__en__capture-desktop-clair__20260821-133852.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__en/capture-desktop-clair/20260821-133852.png",
+   "sha256": "f35f615023db7cce9f83b3bc953134514fb9c09b1cfb360e2dc602e2980e55f5"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133858",
+   "file": "02-eligibilite__fr__capture-desktop-clair__20260821-133858.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__fr/capture-desktop-clair/20260821-133858.png",
+   "sha256": "bd859d949b4f5fe10dd63d74f316fed6df9486ab2fa53a660e74c771d1288a40"
+  },
+  {
+   "slug": "02-eligibilite",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133845",
+   "file": "02-eligibilite__de__capture-desktop-clair__20260821-133845.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__02-eligibilite__de/capture-desktop-clair/20260821-133845.png",
+   "sha256": "3f7ace2cb662b7fcee388511f311e27031ffd1eb785248e4bafa6183a1225d58"
   },
   {
    "slug": "03-consentement",
    "lang": "en",
    "facette": "capture-mobile-sombre",
-   "horodatage": "20260814-124415",
-   "file": "03-consentement__en__capture-mobile-sombre__20260814-124415.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__en/capture-mobile-sombre/20260814-124415.png",
-   "sha256": "99e462b64d4f11bec76733c906988dbb05b8031e9023424c95ae7b5394ec1b2d"
+   "horodatage": "20260821-132730",
+   "file": "03-consentement__en__capture-mobile-sombre__20260821-132730.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__en/capture-mobile-sombre/20260821-132730.png",
+   "sha256": "66303576320709d1e54b104240a5f1b74cc4ee64e995feebbd716da14d689c14"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132739",
+   "file": "03-consentement__fr__capture-mobile-sombre__20260821-132739.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__fr/capture-mobile-sombre/20260821-132739.png",
+   "sha256": "24f76e3575f05d432f4e224679dd2b04712f8e252339226263c99a029054825a"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132720",
+   "file": "03-consentement__de__capture-mobile-sombre__20260821-132720.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__de/capture-mobile-sombre/20260821-132720.png",
+   "sha256": "e5c04b23771efa585e52a47a38b35e28ba271736ee8f212a3f2caf12e460a4f6"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132728",
+   "file": "03-consentement__en__capture-mobile-clair__20260821-132728.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__en/capture-mobile-clair/20260821-132728.png",
+   "sha256": "dae48bdb13d038f584231f199aafaff36be9ce115dc9e24b5f34a0dda07abad7"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132737",
+   "file": "03-consentement__fr__capture-mobile-clair__20260821-132737.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__fr/capture-mobile-clair/20260821-132737.png",
+   "sha256": "0b7d77dce9e55b4a0e0fae3368888ba420d6c12bde3c852fde8329dff1cb8565"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132718",
+   "file": "03-consentement__de__capture-mobile-clair__20260821-132718.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__de/capture-mobile-clair/20260821-132718.png",
+   "sha256": "0a8746bba7621314abd517b41f8ed3596543081b3213f2091105d1ebdac5ab42"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132726",
+   "file": "03-consentement__en__capture-desktop-sombre__20260821-132726.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__en/capture-desktop-sombre/20260821-132726.png",
+   "sha256": "eaa60d09e6eaedc6dc004f4d0ab8ba42b117b5ba37e4555a0bedbbd92166eb24"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132735",
+   "file": "03-consentement__fr__capture-desktop-sombre__20260821-132735.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__fr/capture-desktop-sombre/20260821-132735.png",
+   "sha256": "881cf476463fd7200d307d47406809d1bbbbcf1e6031b0c3ba25e1922e1fb4a2"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132716",
+   "file": "03-consentement__de__capture-desktop-sombre__20260821-132716.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__de/capture-desktop-sombre/20260821-132716.png",
+   "sha256": "fbf6c14f543c44bcc477b1bd432f67b35e4e5567c41abbe61a23d6863009f4d0"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132724",
+   "file": "03-consentement__en__capture-desktop-clair__20260821-132724.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__en/capture-desktop-clair/20260821-132724.png",
+   "sha256": "46082adb14c1e0688eed9ffcf5b2d5961237a20956683e3b16655f225a4a7acf"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132732",
+   "file": "03-consentement__fr__capture-desktop-clair__20260821-132732.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__fr/capture-desktop-clair/20260821-132732.png",
+   "sha256": "54b2e427bbc12962e4ba4c26d711c271a560c4a2b4b44b63e3e0cc69d1c5d021"
+  },
+  {
+   "slug": "03-consentement",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132714",
+   "file": "03-consentement__de__capture-desktop-clair__20260821-132714.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__03-consentement__de/capture-desktop-clair/20260821-132714.png",
+   "sha256": "65a0f532fda622e9fc337c0a1562cf462ba367dcc035812e249941989a34ec38"
   },
   {
    "slug": "04-question",
    "lang": "en",
    "facette": "capture-mobile-sombre",
-   "horodatage": "20260814-124424",
-   "file": "04-question__en__capture-mobile-sombre__20260814-124424.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__en/capture-mobile-sombre/20260814-124424.png",
-   "sha256": "9324cbc4ee56e28ea932888578b9907c8c9960b3606068fbdd236b8c45742a50"
+   "horodatage": "20260821-132756",
+   "file": "04-question__en__capture-mobile-sombre__20260821-132756.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__en/capture-mobile-sombre/20260821-132756.png",
+   "sha256": "50a0bc564ad7d1d480ed181d26642929493f96620b32ad9a9b2673518395d419"
+  },
+  {
+   "slug": "04-question",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132805",
+   "file": "04-question__fr__capture-mobile-sombre__20260821-132805.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__fr/capture-mobile-sombre/20260821-132805.png",
+   "sha256": "af0893cb2337bd9479ad55d1c2fff638960a219bb9b74b9e03f89f98646e34a2"
+  },
+  {
+   "slug": "04-question",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132748",
+   "file": "04-question__de__capture-mobile-sombre__20260821-132748.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__de/capture-mobile-sombre/20260821-132748.png",
+   "sha256": "ebcb366db7f6ccd25b6581e192df675e24bc9fa4b3942b9260982d0187bb89fd"
+  },
+  {
+   "slug": "04-question",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132754",
+   "file": "04-question__en__capture-mobile-clair__20260821-132754.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__en/capture-mobile-clair/20260821-132754.png",
+   "sha256": "64f8f34179c74f3a4bcd8834927697b623e07902ec3ec7f6002e63e235c1159c"
+  },
+  {
+   "slug": "04-question",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132803",
+   "file": "04-question__fr__capture-mobile-clair__20260821-132803.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__fr/capture-mobile-clair/20260821-132803.png",
+   "sha256": "ff9856b519a0b9678075aeeee11dac82116889dc8f0008295a081c06de45395e"
+  },
+  {
+   "slug": "04-question",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132746",
+   "file": "04-question__de__capture-mobile-clair__20260821-132746.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__de/capture-mobile-clair/20260821-132746.png",
+   "sha256": "03fe600921f8f2e9984054cc61175f31382363958b71c107ce2d75483228721d"
+  },
+  {
+   "slug": "04-question",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132752",
+   "file": "04-question__en__capture-desktop-sombre__20260821-132752.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__en/capture-desktop-sombre/20260821-132752.png",
+   "sha256": "1d91578496e9494526c5038b4e66657ab3302a3dd7dca7eb19fa9cdb6578ea92"
+  },
+  {
+   "slug": "04-question",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132801",
+   "file": "04-question__fr__capture-desktop-sombre__20260821-132801.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__fr/capture-desktop-sombre/20260821-132801.png",
+   "sha256": "572a177c662a77a1c2842f3397f0289c6f45460f28fa66a83d2ea6ae13ee832d"
+  },
+  {
+   "slug": "04-question",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132744",
+   "file": "04-question__de__capture-desktop-sombre__20260821-132744.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__de/capture-desktop-sombre/20260821-132744.png",
+   "sha256": "926f73001dfdbf0fbf1312f74799bdc5689a19199006c115fa30f77d35e1dcfc"
+  },
+  {
+   "slug": "04-question",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132750",
+   "file": "04-question__en__capture-desktop-clair__20260821-132750.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__en/capture-desktop-clair/20260821-132750.png",
+   "sha256": "c9891e76b54f6442c93effec18e07745f3682084b721f59214818e9cc68ec961"
+  },
+  {
+   "slug": "04-question",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132758",
+   "file": "04-question__fr__capture-desktop-clair__20260821-132758.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__fr/capture-desktop-clair/20260821-132758.png",
+   "sha256": "03d7dde770b0d2440a1ec0de2e38524145778e0d281eca9282cb407c540467c3"
+  },
+  {
+   "slug": "04-question",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132742",
+   "file": "04-question__de__capture-desktop-clair__20260821-132742.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__04-question__de/capture-desktop-clair/20260821-132742.png",
+   "sha256": "deb4304ee01cf294a650c31710985075ca5bb81125b932e96b20d672e74f921b"
   },
   {
    "slug": "05-progression",
    "lang": "en",
    "facette": "capture-mobile-sombre",
-   "horodatage": "20260810-193013",
-   "file": "05-progression__en__capture-mobile-sombre__20260810-193013.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__en/capture-mobile-sombre/20260810-193013.png",
-   "sha256": "41606994c1d1b0035541294eb6d064c3bcd88a636cdd46f20a9f98a882936902"
+   "horodatage": "20260821-132813",
+   "file": "05-progression__en__capture-mobile-sombre__20260821-132813.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__en/capture-mobile-sombre/20260821-132813.png",
+   "sha256": "16f089391f85471389dc13d3f1281863ea57f5fec7b8810148bebbe3b74d5599"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132816",
+   "file": "05-progression__fr__capture-mobile-sombre__20260821-132816.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__fr/capture-mobile-sombre/20260821-132816.png",
+   "sha256": "5e8d6a5c6d81a8e16fcc7e3b71bec7118f05a02bb557c08a7012160dd9e8dcf8"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132809",
+   "file": "05-progression__de__capture-mobile-sombre__20260821-132809.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__de/capture-mobile-sombre/20260821-132809.png",
+   "sha256": "da7f4c3a790e24ec923fd57aab031993aa4ba507c362f9a5d80d7a6ec79e1e68"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132811",
+   "file": "05-progression__en__capture-mobile-clair__20260821-132811.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__en/capture-mobile-clair/20260821-132811.png",
+   "sha256": "8d7d0029761604f904fa89385aefe13c0310effa2363f9087b1461991acedb5c"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132814",
+   "file": "05-progression__fr__capture-mobile-clair__20260821-132814.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__fr/capture-mobile-clair/20260821-132814.png",
+   "sha256": "6108f9ed49f8566656941d9d974fb48819873cc063d9007a784e13f74de2ac75"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132807",
+   "file": "05-progression__de__capture-mobile-clair__20260821-132807.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__de/capture-mobile-clair/20260821-132807.png",
+   "sha256": "839d0dcfab02d74f17dd2f14c2d08dc2e48db2e85173e7699248407aade24228"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193010",
+   "file": "05-progression__en__capture-desktop-sombre__20260810-193010.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__en/capture-desktop-sombre/20260810-193010.png",
+   "sha256": "baec0565480df5f0bef3329b47b560b10ff1c900d5d9a319fb3fbf0c301ff415"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193016",
+   "file": "05-progression__fr__capture-desktop-sombre__20260810-193016.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__fr/capture-desktop-sombre/20260810-193016.png",
+   "sha256": "4b009adb4beba2b74e980a690216e6a16f7c5305530eb39ecac6fa94d4b36c10"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193004",
+   "file": "05-progression__de__capture-desktop-sombre__20260810-193004.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__de/capture-desktop-sombre/20260810-193004.png",
+   "sha256": "e8d5be796870517687643c6776d863844ae5228d3ba3f6d3c803f668dd16f5a5"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193009",
+   "file": "05-progression__en__capture-desktop-clair__20260810-193009.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__en/capture-desktop-clair/20260810-193009.png",
+   "sha256": "c4fba9d9cb0252530558e64f71a30bbe955bbb47db70ea90c42ce32e6b5daa9a"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193015",
+   "file": "05-progression__fr__capture-desktop-clair__20260810-193015.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__fr/capture-desktop-clair/20260810-193015.png",
+   "sha256": "042f2f606fe54f0628cd4d327149373d81664d718269acc2e544dae3f42a203e"
+  },
+  {
+   "slug": "05-progression",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193002",
+   "file": "05-progression__de__capture-desktop-clair__20260810-193002.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__05-progression__de/capture-desktop-clair/20260810-193002.png",
+   "sha256": "ea25dbe73dde4bfa46fdf8f25c27b48fb01b40d47e3aaf99bceb8599df191bc8"
   },
   {
    "slug": "06-envoi",
@@ -76,22 +685,319 @@
    "sha256": "112afd1a0c5738a10bc3d181e7121ed85e689d7fe266bcebf985b404bb5c3444"
   },
   {
+   "slug": "06-envoi",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-193037",
+   "file": "06-envoi__fr__capture-mobile-sombre__20260810-193037.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__fr/capture-mobile-sombre/20260810-193037.png",
+   "sha256": "3855244f4f2cee260746359daa0ba99a1cc37f85f3944057436eae0e5f777f17"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-193026",
+   "file": "06-envoi__de__capture-mobile-sombre__20260810-193026.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__de/capture-mobile-sombre/20260810-193026.png",
+   "sha256": "143b40602b39060ffc7d07457a36f13f67dc834105973569c99c4227b0ca7278"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193030",
+   "file": "06-envoi__en__capture-mobile-clair__20260810-193030.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__en/capture-mobile-clair/20260810-193030.png",
+   "sha256": "e45ba0514ff6253e4ee9a104c9442826ddc6a4e8afdcc404a71d04f074c5175b"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193036",
+   "file": "06-envoi__fr__capture-mobile-clair__20260810-193036.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__fr/capture-mobile-clair/20260810-193036.png",
+   "sha256": "1dee28cd90fb3bb2c804c7c761b4cd61ab06e7aec0d9b014665799b3b2a6944f"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193024",
+   "file": "06-envoi__de__capture-mobile-clair__20260810-193024.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__de/capture-mobile-clair/20260810-193024.png",
+   "sha256": "dd0f28ce52e31eca8b60d60be7ff70e23fae79017790a0efe07005c45ff27e65"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193029",
+   "file": "06-envoi__en__capture-desktop-sombre__20260810-193029.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__en/capture-desktop-sombre/20260810-193029.png",
+   "sha256": "5379c909501e484bd4fdf25f477fc5a449976c7e0eafe14d5556e1ed83710acd"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193035",
+   "file": "06-envoi__fr__capture-desktop-sombre__20260810-193035.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__fr/capture-desktop-sombre/20260810-193035.png",
+   "sha256": "1a4a7a68e6a9e5913d9d0e2e194b8e853f1fddd5483255c188b4688b9fb5dcbf"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193022",
+   "file": "06-envoi__de__capture-desktop-sombre__20260810-193022.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__de/capture-desktop-sombre/20260810-193022.png",
+   "sha256": "ed1622e8bbfddeea594f0922b92f3720f03e598b42a87c050b1358db15a49372"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193027",
+   "file": "06-envoi__en__capture-desktop-clair__20260810-193027.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__en/capture-desktop-clair/20260810-193027.png",
+   "sha256": "e571b150d30e5b8ca380d712888d2010e7bd97e8e356b3e84ad76377d467423c"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193033",
+   "file": "06-envoi__fr__capture-desktop-clair__20260810-193033.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__fr/capture-desktop-clair/20260810-193033.png",
+   "sha256": "ee144c6b8d948e18ded142b47a7c098a0a526b8404787ac6f00c0d4d043aa6b1"
+  },
+  {
+   "slug": "06-envoi",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193021",
+   "file": "06-envoi__de__capture-desktop-clair__20260810-193021.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__06-envoi__de/capture-desktop-clair/20260810-193021.png",
+   "sha256": "5d6fc926ade940cb0480e100d631faf7f18655f5f83c78b17974d057eb56f324"
+  },
+  {
    "slug": "07-res-entete",
    "lang": "en",
    "facette": "capture-mobile-sombre",
-   "horodatage": "20260814-124440",
-   "file": "07-res-entete__en__capture-mobile-sombre__20260814-124440.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__en/capture-mobile-sombre/20260814-124440.png",
-   "sha256": "bb91991923aba6ce4d43353ed1cd6efcf3db53b8fa59dc1711a5e36d69860408"
+   "horodatage": "20260821-132829",
+   "file": "07-res-entete__en__capture-mobile-sombre__20260821-132829.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__en/capture-mobile-sombre/20260821-132829.png",
+   "sha256": "132e5ecf1730f18c7e576445f300088696611733385f9193efa42986a56fe1fe"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132836",
+   "file": "07-res-entete__fr__capture-mobile-sombre__20260821-132836.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__fr/capture-mobile-sombre/20260821-132836.png",
+   "sha256": "bd7b4a9b575b8a53f8caf033cb9c7a488067573e8091a29cef706dec9d5a8b28"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132822",
+   "file": "07-res-entete__de__capture-mobile-sombre__20260821-132822.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__de/capture-mobile-sombre/20260821-132822.png",
+   "sha256": "6e4c773af4c49d80499c749e73f004058a60011f448c88ffc14ad1e959d65101"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132828",
+   "file": "07-res-entete__en__capture-mobile-clair__20260821-132828.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__en/capture-mobile-clair/20260821-132828.png",
+   "sha256": "a540bd6a5810562811cf31f0bdf356c5806ca1587abbd112471a715cad997198"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132834",
+   "file": "07-res-entete__fr__capture-mobile-clair__20260821-132834.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__fr/capture-mobile-clair/20260821-132834.png",
+   "sha256": "60014d5390e6f9cfef720a18cd80820b5a8c2e6a452ce5e432f6e752a74db1af"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132820",
+   "file": "07-res-entete__de__capture-mobile-clair__20260821-132820.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__de/capture-mobile-clair/20260821-132820.png",
+   "sha256": "bace27ad97e8b8facbeb34d73d9a331aab29fcfc90c983747a8ebd9dd87ece94"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132826",
+   "file": "07-res-entete__en__capture-desktop-sombre__20260821-132826.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__en/capture-desktop-sombre/20260821-132826.png",
+   "sha256": "befb353e3376e051d0652247e46278245781af7006ea2b76eee9dcaca3d8a5cc"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132833",
+   "file": "07-res-entete__fr__capture-desktop-sombre__20260821-132833.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__fr/capture-desktop-sombre/20260821-132833.png",
+   "sha256": "798dd3b001b7b5d7e2cc678f62f1bc87baefc195b112d7441dbc79b2bdd267c6"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132819",
+   "file": "07-res-entete__de__capture-desktop-sombre__20260821-132819.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__de/capture-desktop-sombre/20260821-132819.png",
+   "sha256": "fd71256bfc6d6f391eccd01c75429b820f06c1ed6ddffd599efac935436c9a78"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132824",
+   "file": "07-res-entete__en__capture-desktop-clair__20260821-132824.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__en/capture-desktop-clair/20260821-132824.png",
+   "sha256": "15a393cc5e50da50bd1a7f6cf59963d7ee8bc48281e5a9bf441413820c07ad0d"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132831",
+   "file": "07-res-entete__fr__capture-desktop-clair__20260821-132831.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__fr/capture-desktop-clair/20260821-132831.png",
+   "sha256": "80596d771d6cded5a553f214c809930a98e9e2c5899e12e77dccf80dfd2f89c7"
+  },
+  {
+   "slug": "07-res-entete",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132817",
+   "file": "07-res-entete__de__capture-desktop-clair__20260821-132817.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__07-res-entete__de/capture-desktop-clair/20260821-132817.png",
+   "sha256": "42ec7ffb76a4d703b9e898d33343b5ac85a0c967ac3cd27458dd5fe3df461b15"
   },
   {
    "slug": "08-res-carte",
    "lang": "en",
    "facette": "capture-mobile-sombre",
-   "horodatage": "20260810-193112",
-   "file": "08-res-carte__en__capture-mobile-sombre__20260810-193112.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__en/capture-mobile-sombre/20260810-193112.png",
-   "sha256": "226080bd10381173ef9993dd2f46a7a69751e1d074a88b17bf6ab0d93e53d062"
+   "horodatage": "20260821-132842",
+   "file": "08-res-carte__en__capture-mobile-sombre__20260821-132842.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__en/capture-mobile-sombre/20260821-132842.png",
+   "sha256": "4c5165856a882ab19189e6d101c195d80a9fe6a0a5a5ba34109310fdf4e3bc6a"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132844",
+   "file": "08-res-carte__fr__capture-mobile-sombre__20260821-132844.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__fr/capture-mobile-sombre/20260821-132844.png",
+   "sha256": "3c10292596910e2e8ab1f2e10babc97845e2e260d605183a527d914df8a021e9"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-193104",
+   "file": "08-res-carte__de__capture-mobile-sombre__20260810-193104.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__de/capture-mobile-sombre/20260810-193104.png",
+   "sha256": "13040e2a4e411268e558a48b250968222f0eb5b35f88cd1be94231a6f4507755"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193110",
+   "file": "08-res-carte__en__capture-mobile-clair__20260810-193110.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__en/capture-mobile-clair/20260810-193110.png",
+   "sha256": "35013681693f2fab3b9ef7a6544cee13f267ca5a4e3ff9cf1007626c920f4e9e"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193119",
+   "file": "08-res-carte__fr__capture-mobile-clair__20260810-193119.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__fr/capture-mobile-clair/20260810-193119.png",
+   "sha256": "3b2d69109ccf3e94cc4c21d955194854644f85d9495e1356f5e44d0b70e483e5"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132837",
+   "file": "08-res-carte__de__capture-mobile-clair__20260821-132837.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__de/capture-mobile-clair/20260821-132837.png",
+   "sha256": "f0b687a5039cb56a29fd08d0ea3cde011aad1d069adeb0209cfc173df41b7bf3"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124450",
+   "file": "08-res-carte__en__capture-desktop-sombre__20260814-124450.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__en/capture-desktop-sombre/20260814-124450.png",
+   "sha256": "c8b81ecd7223fad64a5732737492b4bce52fb1956d2b85ca37f4a065e7f2443d"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124454",
+   "file": "08-res-carte__fr__capture-desktop-sombre__20260814-124454.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__fr/capture-desktop-sombre/20260814-124454.png",
+   "sha256": "b80abc93afea87ce4bbe095dfed2108403c54c14c60874abad2ae2fc107ec053"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193059",
+   "file": "08-res-carte__de__capture-desktop-sombre__20260810-193059.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__de/capture-desktop-sombre/20260810-193059.png",
+   "sha256": "305840b7449d15b7e7185432277c01214c6150254bcbd1edbe067a8db0ee8210"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132840",
+   "file": "08-res-carte__en__capture-desktop-clair__20260821-132840.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__en/capture-desktop-clair/20260821-132840.png",
+   "sha256": "6b2becccf0e20536d7c74aae6b9dedebd686b09d3512ac4ca351e71815795961"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124452",
+   "file": "08-res-carte__fr__capture-desktop-clair__20260814-124452.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__fr/capture-desktop-clair/20260814-124452.png",
+   "sha256": "4c15e5b2c8f2175779e46c2deb29868dc35f133308a0e9e70b5a47800290ed06"
+  },
+  {
+   "slug": "08-res-carte",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124448",
+   "file": "08-res-carte__de__capture-desktop-clair__20260814-124448.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__08-res-carte__de/capture-desktop-clair/20260814-124448.png",
+   "sha256": "9b2aabf8bd64e5ff267ec049ad1a7e1d7614a2228d704eb1695d551c5ab3ea5d"
   },
   {
    "slug": "09-res-radar",
@@ -103,6 +1009,105 @@
    "sha256": "ba0382538eab7df48a0ca9b12b09b95042dc6c64ed833c4d6e1e1ef933329ce3"
   },
   {
+   "slug": "09-res-radar",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-193146",
+   "file": "09-res-radar__fr__capture-mobile-sombre__20260810-193146.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__fr/capture-mobile-sombre/20260810-193146.png",
+   "sha256": "7852e7c5744e167e12228239382b161c62aa4f9b7e8029781a64d37de99106fd"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-193132",
+   "file": "09-res-radar__de__capture-mobile-sombre__20260810-193132.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__de/capture-mobile-sombre/20260810-193132.png",
+   "sha256": "2c0193dd7467bfb9e370aa4ac2811b6fd9ea5ba66ae4f09fc487d3d74427ecd3"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193138",
+   "file": "09-res-radar__en__capture-mobile-clair__20260810-193138.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__en/capture-mobile-clair/20260810-193138.png",
+   "sha256": "5ed7127c398418fc7f24055c363be923e1566097da2126d003377a6356d74448"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193145",
+   "file": "09-res-radar__fr__capture-mobile-clair__20260810-193145.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__fr/capture-mobile-clair/20260810-193145.png",
+   "sha256": "9834f2f9ab72a6825134bf9895095bff65fbe3e50dd87df035dc860512a8bacd"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193130",
+   "file": "09-res-radar__de__capture-mobile-clair__20260810-193130.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__de/capture-mobile-clair/20260810-193130.png",
+   "sha256": "cc48480fb4737f55021836cdfd1bfbe9e9b0815b3f9e3627bf898793b57df58e"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193136",
+   "file": "09-res-radar__en__capture-desktop-sombre__20260810-193136.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__en/capture-desktop-sombre/20260810-193136.png",
+   "sha256": "43ced2760984989e97e434c4a3e46e81b52ba89138b481c1e41d2297a04f6635"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193143",
+   "file": "09-res-radar__fr__capture-desktop-sombre__20260810-193143.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__fr/capture-desktop-sombre/20260810-193143.png",
+   "sha256": "ce62c0c4ad799318407311296ebd73aa960dc7a9bbd0b4132e6e2ae738bbb52d"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193126",
+   "file": "09-res-radar__de__capture-desktop-sombre__20260810-193126.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__de/capture-desktop-sombre/20260810-193126.png",
+   "sha256": "7ad9ed62b2335644929cc396014ee0167c3ae89f43404542418505cec8aa8d2e"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193134",
+   "file": "09-res-radar__en__capture-desktop-clair__20260810-193134.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__en/capture-desktop-clair/20260810-193134.png",
+   "sha256": "1dbe5b63330a9f481e88db730659555638843083d404a197ae50541fe27e8094"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193141",
+   "file": "09-res-radar__fr__capture-desktop-clair__20260810-193141.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__fr/capture-desktop-clair/20260810-193141.png",
+   "sha256": "f65789713ccf11413b70f542eb4160a856f2d3b82d3174ccc09d6c1663839fef"
+  },
+  {
+   "slug": "09-res-radar",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193124",
+   "file": "09-res-radar__de__capture-desktop-clair__20260810-193124.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__09-res-radar__de/capture-desktop-clair/20260810-193124.png",
+   "sha256": "f478facacf066e23738d67f6cfeb101d77719c50016e9bb5410fdc7de5729f51"
+  },
+  {
    "slug": "10-res-salle",
    "lang": "en",
    "facette": "capture-mobile-sombre",
@@ -110,6 +1115,105 @@
    "file": "10-res-salle__en__capture-mobile-sombre__20260810-193202.png",
    "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__en/capture-mobile-sombre/20260810-193202.png",
    "sha256": "5162b319c0ce641e25eeb8ede451feeed3571303a3e7e4febb0f191827b3bc94"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-193208",
+   "file": "10-res-salle__fr__capture-mobile-sombre__20260810-193208.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__fr/capture-mobile-sombre/20260810-193208.png",
+   "sha256": "68fabfd3ec1a0b284a2f6911017113e66d81b3b5ec1d82001ef7be203950af38"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-193154",
+   "file": "10-res-salle__de__capture-mobile-sombre__20260810-193154.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__de/capture-mobile-sombre/20260810-193154.png",
+   "sha256": "b1f0bc50ef4225121007f0a16e020032a0c57999d75cd1e2d7470674c571b415"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193200",
+   "file": "10-res-salle__en__capture-mobile-clair__20260810-193200.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__en/capture-mobile-clair/20260810-193200.png",
+   "sha256": "4120a182ca57e7df032526ead9b6a524c72b96559be74932a3a58cc0772b12f8"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193206",
+   "file": "10-res-salle__fr__capture-mobile-clair__20260810-193206.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__fr/capture-mobile-clair/20260810-193206.png",
+   "sha256": "5f25e8578038b92e3acd294dd212f78208dbf1cb3a3be3456848d09ecfa9bed4"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193152",
+   "file": "10-res-salle__de__capture-mobile-clair__20260810-193152.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__de/capture-mobile-clair/20260810-193152.png",
+   "sha256": "47a7f630a7a36ea8db3b841d99d4c8adbc30aa8b9509d6b58789320644739cc7"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193157",
+   "file": "10-res-salle__en__capture-desktop-sombre__20260810-193157.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__en/capture-desktop-sombre/20260810-193157.png",
+   "sha256": "a501f0af69fc4c7bfc627ee9efb61cf6e0d3e1aa1c34b1db67ce35e50f09fec8"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193205",
+   "file": "10-res-salle__fr__capture-desktop-sombre__20260810-193205.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__fr/capture-desktop-sombre/20260810-193205.png",
+   "sha256": "a88fbe2b0df3f9f62d0bc3465cd135073ebaadee3883eed1c4c9fbd3e8c167ba"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193150",
+   "file": "10-res-salle__de__capture-desktop-sombre__20260810-193150.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__de/capture-desktop-sombre/20260810-193150.png",
+   "sha256": "e2710d6b561e07a46c9b3787ddbd7159cab419aa99de30c9204f9bbc709c01e3"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193156",
+   "file": "10-res-salle__en__capture-desktop-clair__20260810-193156.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__en/capture-desktop-clair/20260810-193156.png",
+   "sha256": "35149897d306abdf82dbf687c1fffe79337e8ccca2781aa9b7451f208ef15a8e"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193203",
+   "file": "10-res-salle__fr__capture-desktop-clair__20260810-193203.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__fr/capture-desktop-clair/20260810-193203.png",
+   "sha256": "90db72488fd712ba4c93d5f6145c6f00c70f62a71df0b1f2d35f0635017d8fc9"
+  },
+  {
+   "slug": "10-res-salle",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193148",
+   "file": "10-res-salle__de__capture-desktop-clair__20260810-193148.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__10-res-salle__de/capture-desktop-clair/20260810-193148.png",
+   "sha256": "06eb51910881f2ba639ba4f7d65cf9b76074d09969ea519a1c0a29d6f50e7546"
   },
   {
    "slug": "11-res-detail",
@@ -121,6 +1225,105 @@
    "sha256": "fb56f685ab16ff8f82d149d0fef7ca239281e2291a637ac84af7d215b6c444d3"
   },
   {
+   "slug": "11-res-detail",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124511",
+   "file": "11-res-detail__fr__capture-mobile-sombre__20260814-124511.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__fr/capture-mobile-sombre/20260814-124511.png",
+   "sha256": "fe135e3d69a7475b4ae7cc852871fed2fc430ed35194896109a20a6e15a739f3"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124500",
+   "file": "11-res-detail__de__capture-mobile-sombre__20260814-124500.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__de/capture-mobile-sombre/20260814-124500.png",
+   "sha256": "e73c421a70d084038ee6b86752ff376f10f7de973e6b3e988b99a8becb74498f"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124504",
+   "file": "11-res-detail__en__capture-mobile-clair__20260814-124504.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__en/capture-mobile-clair/20260814-124504.png",
+   "sha256": "cc251ac71e1c818c5d3f1d6a147637db80aafcdc11689b1ad61cfbb238f40597"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124510",
+   "file": "11-res-detail__fr__capture-mobile-clair__20260814-124510.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__fr/capture-mobile-clair/20260814-124510.png",
+   "sha256": "e3a04109494070d4ce77c88441c45781dc55ce34bedfd14c16b89bc181357fc3"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124459",
+   "file": "11-res-detail__de__capture-mobile-clair__20260814-124459.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__de/capture-mobile-clair/20260814-124459.png",
+   "sha256": "c077663c55fc5e71f344832c6b29073fd2936f37bc5a0617670a647c65f8cc50"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124503",
+   "file": "11-res-detail__en__capture-desktop-sombre__20260814-124503.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__en/capture-desktop-sombre/20260814-124503.png",
+   "sha256": "716d0659c92d89e64fb1ae252a7616a8bcd181f4b06f500c0519a60497f2eed0"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124508",
+   "file": "11-res-detail__fr__capture-desktop-sombre__20260814-124508.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__fr/capture-desktop-sombre/20260814-124508.png",
+   "sha256": "ef546b762a4d326d7b07d9ef0facc402337b7ac069a604f1d2f9ceb95e5f15c7"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124457",
+   "file": "11-res-detail__de__capture-desktop-sombre__20260814-124457.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__de/capture-desktop-sombre/20260814-124457.png",
+   "sha256": "fe61ec5917b5e59c8dd5cdc2e95e9eb4eb7bf309b58455e9e1472716b8e735b0"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124502",
+   "file": "11-res-detail__en__capture-desktop-clair__20260814-124502.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__en/capture-desktop-clair/20260814-124502.png",
+   "sha256": "de991513b3521ea03496d2ef492e673f732dba7b213536c5e871cd9e4769eb6c"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124507",
+   "file": "11-res-detail__fr__capture-desktop-clair__20260814-124507.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__fr/capture-desktop-clair/20260814-124507.png",
+   "sha256": "6919b26aa3c9b36d1ccd0d78d9902cb8cef97bc2877f1ce1f8b9b8a019dfeb4c"
+  },
+  {
+   "slug": "11-res-detail",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124456",
+   "file": "11-res-detail__de__capture-desktop-clair__20260814-124456.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__11-res-detail__de/capture-desktop-clair/20260814-124456.png",
+   "sha256": "2cbc8d11019c01b36cf93634a908d0fab9c7c586bd387b2a0fa25069e5bef9c3"
+  },
+  {
    "slug": "12-res-profils",
    "lang": "en",
    "facette": "capture-mobile-sombre",
@@ -128,6 +1331,105 @@
    "file": "12-res-profils__en__capture-mobile-sombre__20260814-124520.png",
    "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__en/capture-mobile-sombre/20260814-124520.png",
    "sha256": "50eed854ff1dcdb21564550491f1df4d17a1ab33beeebab08ebdc695f90e6acc"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124525",
+   "file": "12-res-profils__fr__capture-mobile-sombre__20260814-124525.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__fr/capture-mobile-sombre/20260814-124525.png",
+   "sha256": "29dc5a2df62f66bade99c5a3f9455c9aced4e857e62069406dd2a8f675d4fa2f"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124514",
+   "file": "12-res-profils__de__capture-mobile-sombre__20260814-124514.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__de/capture-mobile-sombre/20260814-124514.png",
+   "sha256": "d41b3661403141e73e86a53a68f23e60365e4366727828548c3bcb3611485354"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124518",
+   "file": "12-res-profils__en__capture-mobile-clair__20260814-124518.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__en/capture-mobile-clair/20260814-124518.png",
+   "sha256": "74d7b17aaf2b4f52011d65ce9b5727bf51c196a04dae0d23e801f8a45f3fb54d"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124523",
+   "file": "12-res-profils__fr__capture-mobile-clair__20260814-124523.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__fr/capture-mobile-clair/20260814-124523.png",
+   "sha256": "dfa040a9e7402adfdfb7d1f0c17b8326997e0f72ead0a56cab3dbf5f472af792"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124512",
+   "file": "12-res-profils__de__capture-mobile-clair__20260814-124512.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__de/capture-mobile-clair/20260814-124512.png",
+   "sha256": "30d67b665881192d4ae77c794a61e5dfa7417dd72d7f43eef04341f03caa99bf"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124517",
+   "file": "12-res-profils__en__capture-desktop-sombre__20260814-124517.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__en/capture-desktop-sombre/20260814-124517.png",
+   "sha256": "3b7ce56947786783497192642de2120cae490ee04a16393046cd034a671863ac"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124522",
+   "file": "12-res-profils__fr__capture-desktop-sombre__20260814-124522.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__fr/capture-desktop-sombre/20260814-124522.png",
+   "sha256": "432fc755c82569a4deb7e1ba8bebf51bba7d8108c98d26c5ec63368177f09321"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193232",
+   "file": "12-res-profils__de__capture-desktop-sombre__20260810-193232.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__de/capture-desktop-sombre/20260810-193232.png",
+   "sha256": "bb9183a0db65f26b5285c281896f1f19344696af2eef8de9a62319dfdf28b315"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124515",
+   "file": "12-res-profils__en__capture-desktop-clair__20260814-124515.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__en/capture-desktop-clair/20260814-124515.png",
+   "sha256": "ccf5501ec2f78d1ec73f1178feb441fba3ac7e2a3786fd703957ea1ceb210445"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124521",
+   "file": "12-res-profils__fr__capture-desktop-clair__20260814-124521.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__fr/capture-desktop-clair/20260814-124521.png",
+   "sha256": "762d5f3869cf257c43045e8f684659ed45d18fb97acec350189e99ad1c48aadc"
+  },
+  {
+   "slug": "12-res-profils",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193231",
+   "file": "12-res-profils__de__capture-desktop-clair__20260810-193231.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__12-res-profils__de/capture-desktop-clair/20260810-193231.png",
+   "sha256": "65e26be3d5fea16f4c2d688e7bef4025cd0fef10065fa190731150a81a0cdafd"
   },
   {
    "slug": "13-res-figures",
@@ -139,6 +1441,105 @@
    "sha256": "a2734c858b1809c3c0a31fa09c4166d8cc5cdf68f8f16d1d4513228fbdd115ac"
   },
   {
+   "slug": "13-res-figures",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124545",
+   "file": "13-res-figures__fr__capture-mobile-sombre__20260814-124545.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__fr/capture-mobile-sombre/20260814-124545.png",
+   "sha256": "f2f6e3f888f1e87a97698e90b3a6e96dcaac9d3e7a2ffba6d8ab863bb3a42365"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124532",
+   "file": "13-res-figures__de__capture-mobile-sombre__20260814-124532.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__de/capture-mobile-sombre/20260814-124532.png",
+   "sha256": "992de340b111d73bbb33feede4d6a334bed693be51521729fc223af428b5e5ad"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124536",
+   "file": "13-res-figures__en__capture-mobile-clair__20260814-124536.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__en/capture-mobile-clair/20260814-124536.png",
+   "sha256": "ed0df3c6b91121b66a6b66b9737abcd6cf9802a56a2c8b4a8f6e9f8c14a800c3"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124543",
+   "file": "13-res-figures__fr__capture-mobile-clair__20260814-124543.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__fr/capture-mobile-clair/20260814-124543.png",
+   "sha256": "86b2befb0049f3e8dc3863f5251cc1dad215e3abb2a1420655baa6f767665097"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124530",
+   "file": "13-res-figures__de__capture-mobile-clair__20260814-124530.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__de/capture-mobile-clair/20260814-124530.png",
+   "sha256": "2dad5025a4fd72dfde260f5812418029c98ea45fa94e517d3ba44a224487302b"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124535",
+   "file": "13-res-figures__en__capture-desktop-sombre__20260814-124535.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__en/capture-desktop-sombre/20260814-124535.png",
+   "sha256": "4d1aedb6925eb37323b984a3dcb2f4b01ed1dd5ee76a72bd05326e40877b8e89"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124541",
+   "file": "13-res-figures__fr__capture-desktop-sombre__20260814-124541.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__fr/capture-desktop-sombre/20260814-124541.png",
+   "sha256": "3e20c3d585d1f8fb91e0995fbd54486ad793dcc77f9b0240f5e52f9f97557e41"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124528",
+   "file": "13-res-figures__de__capture-desktop-sombre__20260814-124528.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__de/capture-desktop-sombre/20260814-124528.png",
+   "sha256": "6a67209d28f1feaa9e2e9f4c8ccf70dd4e3988b78163a6b69b2563db678e5aa0"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124533",
+   "file": "13-res-figures__en__capture-desktop-clair__20260814-124533.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__en/capture-desktop-clair/20260814-124533.png",
+   "sha256": "513de28d9aebc0cda6ecff571d915fc566aa6b3033745f04191fe9676859071d"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124540",
+   "file": "13-res-figures__fr__capture-desktop-clair__20260814-124540.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__fr/capture-desktop-clair/20260814-124540.png",
+   "sha256": "e944901e0bd45492846de88c4c884ea73d879d893048f549085e3601ed72ea94"
+  },
+  {
+   "slug": "13-res-figures",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124526",
+   "file": "13-res-figures__de__capture-desktop-clair__20260814-124526.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__13-res-figures__de/capture-desktop-clair/20260814-124526.png",
+   "sha256": "830e5e2cf7642192fabdc9b2d534bda3bb29a2bd98cbe0e70d09a7563889fade"
+  },
+  {
    "slug": "14-res-contraste",
    "lang": "en",
    "facette": "capture-mobile-sombre",
@@ -146,6 +1547,105 @@
    "file": "14-res-contraste__en__capture-mobile-sombre__20260814-124558.png",
    "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__en/capture-mobile-sombre/20260814-124558.png",
    "sha256": "71a1c53cc51e15fca67ece0b20605fb2c7f3eb74597778a8f9a597a791ac9530"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124604",
+   "file": "14-res-contraste__fr__capture-mobile-sombre__20260814-124604.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__fr/capture-mobile-sombre/20260814-124604.png",
+   "sha256": "cb13762e57008818ad6a8d2cd6ae2162d537f451a8043c7a1bf4274d0fc0ace2"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124552",
+   "file": "14-res-contraste__de__capture-mobile-sombre__20260814-124552.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__de/capture-mobile-sombre/20260814-124552.png",
+   "sha256": "bb4488ff664406aec4b1f479a50d19cc145cd7a7b14260d9ea6ac655d39237ba"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124556",
+   "file": "14-res-contraste__en__capture-mobile-clair__20260814-124556.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__en/capture-mobile-clair/20260814-124556.png",
+   "sha256": "36d721d9ea754666cca97f15a3a4aa13566212beb7f0844e820d7822ef7ed786"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124602",
+   "file": "14-res-contraste__fr__capture-mobile-clair__20260814-124602.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__fr/capture-mobile-clair/20260814-124602.png",
+   "sha256": "1554cb3f67c4e563beeeb9578d4c92e0ed6dfec46b3d0144de911a27e04d3106"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124550",
+   "file": "14-res-contraste__de__capture-mobile-clair__20260814-124550.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__de/capture-mobile-clair/20260814-124550.png",
+   "sha256": "244420c77155b1758a2224687c59e5ea192029b01408541f654fab9f309da353"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124555",
+   "file": "14-res-contraste__en__capture-desktop-sombre__20260814-124555.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__en/capture-desktop-sombre/20260814-124555.png",
+   "sha256": "1693417db9fb38e59c1ee5997452239b2b0acd0c939d8b5609ca7d686fb09b8d"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124601",
+   "file": "14-res-contraste__fr__capture-desktop-sombre__20260814-124601.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__fr/capture-desktop-sombre/20260814-124601.png",
+   "sha256": "c025a5fe95b8c7c69939b296bee3da50e6b8f70e0bb9b727d5365b6865db4a35"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124549",
+   "file": "14-res-contraste__de__capture-desktop-sombre__20260814-124549.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__de/capture-desktop-sombre/20260814-124549.png",
+   "sha256": "016369b7c63f232f0ac5874126c019b3245a60035f93e6438c43f96482d95d89"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124553",
+   "file": "14-res-contraste__en__capture-desktop-clair__20260814-124553.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__en/capture-desktop-clair/20260814-124553.png",
+   "sha256": "7ad9e4f6237f08d65e51c516af2c67f9aa7005c3a9fc131c9e85973b9e8436ec"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124600",
+   "file": "14-res-contraste__fr__capture-desktop-clair__20260814-124600.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__fr/capture-desktop-clair/20260814-124600.png",
+   "sha256": "8e21cb047c5858424d7b539e7a572cf867f42b09f9cca3341f47a50d4dd2db2a"
+  },
+  {
+   "slug": "14-res-contraste",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124547",
+   "file": "14-res-contraste__de__capture-desktop-clair__20260814-124547.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__14-res-contraste__de/capture-desktop-clair/20260814-124547.png",
+   "sha256": "97bd3dc6e435395d1c02529c0097e59f9727f2f40b699a1b59df07f16cda1d39"
   },
   {
    "slug": "15-res-exemples",
@@ -157,13 +1657,211 @@
    "sha256": "dda0fd81e50c24b0c994c2ebd3e44e6ae881720baaacba29743dc4909c2aabc0"
   },
   {
+   "slug": "15-res-exemples",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124620",
+   "file": "15-res-exemples__fr__capture-mobile-sombre__20260814-124620.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__fr/capture-mobile-sombre/20260814-124620.png",
+   "sha256": "3cc3be6e0eccc28625f44e129ec53cc274a0602c9d26f2b6ce42b797169c4d04"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124610",
+   "file": "15-res-exemples__de__capture-mobile-sombre__20260814-124610.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__de/capture-mobile-sombre/20260814-124610.png",
+   "sha256": "05b2f702da81e6062239253d3167e5890fc06ac2044b1a013acb690c9f7bfa17"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124614",
+   "file": "15-res-exemples__en__capture-mobile-clair__20260814-124614.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__en/capture-mobile-clair/20260814-124614.png",
+   "sha256": "c65529fd2eb40884c2ee8bb9bcdf6e154b0a9881d434a88d781d004947af22e2"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124619",
+   "file": "15-res-exemples__fr__capture-mobile-clair__20260814-124619.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__fr/capture-mobile-clair/20260814-124619.png",
+   "sha256": "b7e802fda322b7689eeeb45dea3dd9227d1df92a21e72c31e2ebc5c72a375e59"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124608",
+   "file": "15-res-exemples__de__capture-mobile-clair__20260814-124608.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__de/capture-mobile-clair/20260814-124608.png",
+   "sha256": "1173e4c83feb1029394518cf92a083e4472bda378470107320d5e4f8da903564"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124613",
+   "file": "15-res-exemples__en__capture-desktop-sombre__20260814-124613.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__en/capture-desktop-sombre/20260814-124613.png",
+   "sha256": "a2a9f813aab3d3f53d2fef3ef77dd62648ffbc3c58bd8cd14b2ca2a5d0668443"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124618",
+   "file": "15-res-exemples__fr__capture-desktop-sombre__20260814-124618.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__fr/capture-desktop-sombre/20260814-124618.png",
+   "sha256": "9da97eab6868d246a36197ba44c1d2b24c4b7de2acbc1a19867784a743040558"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260814-124607",
+   "file": "15-res-exemples__de__capture-desktop-sombre__20260814-124607.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__de/capture-desktop-sombre/20260814-124607.png",
+   "sha256": "a8def8364a8ddb7b4743a017e1d57c538c3cad35a219f662e02ba11d29fe0aff"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124611",
+   "file": "15-res-exemples__en__capture-desktop-clair__20260814-124611.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__en/capture-desktop-clair/20260814-124611.png",
+   "sha256": "6d5f948b133db5132bb0744c3318de11e029df6f4e708d480ecfa2c93a864bee"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124617",
+   "file": "15-res-exemples__fr__capture-desktop-clair__20260814-124617.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__fr/capture-desktop-clair/20260814-124617.png",
+   "sha256": "6058e3c47c6beb8b7b4bfbbdc003b7e8412e0ca3e5a97dcbbe4a8faa08e66725"
+  },
+  {
+   "slug": "15-res-exemples",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260814-124606",
+   "file": "15-res-exemples__de__capture-desktop-clair__20260814-124606.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__15-res-exemples__de/capture-desktop-clair/20260814-124606.png",
+   "sha256": "cd896b7dcc7960234f67cf6984ebaa941dfca19d6a312341afd054edbbbb740a"
+  },
+  {
    "slug": "16-res-code-partage",
    "lang": "en",
    "facette": "capture-mobile-sombre",
-   "horodatage": "20260814-124631",
-   "file": "16-res-code-partage__en__capture-mobile-sombre__20260814-124631.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__en/capture-mobile-sombre/20260814-124631.png",
-   "sha256": "b1880d5d3836021bf053bfc4c4c0d7d3c96cfb7346bf55174dc23cb6195c251e"
+   "horodatage": "20260821-132857",
+   "file": "16-res-code-partage__en__capture-mobile-sombre__20260821-132857.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__en/capture-mobile-sombre/20260821-132857.png",
+   "sha256": "269f51d2759ba2cbbc6815a7f10191419e622b02c5e9aea451a6ca1a50b16017"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132906",
+   "file": "16-res-code-partage__fr__capture-mobile-sombre__20260821-132906.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__fr/capture-mobile-sombre/20260821-132906.png",
+   "sha256": "dbcc3e08cd555d68a4b096b49f54c5b0ed47c17fd269ccf009ea530fc70c3ffd"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132851",
+   "file": "16-res-code-partage__de__capture-mobile-sombre__20260821-132851.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__de/capture-mobile-sombre/20260821-132851.png",
+   "sha256": "3dcca762738a6947baafdab1a19d33e217995691ab15949cbd221b285d2d1050"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132855",
+   "file": "16-res-code-partage__en__capture-mobile-clair__20260821-132855.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__en/capture-mobile-clair/20260821-132855.png",
+   "sha256": "959eb3ad47e09fbc1b67148b012a392ab19cc79e1a76393a38f1899593c097d0"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132904",
+   "file": "16-res-code-partage__fr__capture-mobile-clair__20260821-132904.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__fr/capture-mobile-clair/20260821-132904.png",
+   "sha256": "6d4bb09aea71604f10d4178e03b9c2ee2419dacd2ebce4c4f338341e075c8e69"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132849",
+   "file": "16-res-code-partage__de__capture-mobile-clair__20260821-132849.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__de/capture-mobile-clair/20260821-132849.png",
+   "sha256": "094808aa29e982789e055c141aa0d73b6909a06dfdf4e2549cf3d3df3693dea1"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132853",
+   "file": "16-res-code-partage__en__capture-desktop-sombre__20260821-132853.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__en/capture-desktop-sombre/20260821-132853.png",
+   "sha256": "e6399af1353e0cd17083b2f04017194b045e27d1976fe0e9d475b6c98c6aa3e8"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132903",
+   "file": "16-res-code-partage__fr__capture-desktop-sombre__20260821-132903.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__fr/capture-desktop-sombre/20260821-132903.png",
+   "sha256": "60905a5932834ffc61ce96c9e68e5c7b5a333787d4cef00c53c87fd322dd0286"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132848",
+   "file": "16-res-code-partage__de__capture-desktop-sombre__20260821-132848.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__de/capture-desktop-sombre/20260821-132848.png",
+   "sha256": "ad591764f201e495b1d51c80f8fde9cbf65358b8c7993f3ba384ad71872c7b80"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132852",
+   "file": "16-res-code-partage__en__capture-desktop-clair__20260821-132852.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__en/capture-desktop-clair/20260821-132852.png",
+   "sha256": "072cb498a13fccc4ae0cfa6898ca3d01696470c6be3c09717e4c9f10ee7a5bb6"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132858",
+   "file": "16-res-code-partage__fr__capture-desktop-clair__20260821-132858.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__fr/capture-desktop-clair/20260821-132858.png",
+   "sha256": "883ae6bfb354e5453b29f7e0267fce1b70d96097d94b42d25a05be800dec9b77"
+  },
+  {
+   "slug": "16-res-code-partage",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132846",
+   "file": "16-res-code-partage__de__capture-desktop-clair__20260821-132846.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__16-res-code-partage__de/capture-desktop-clair/20260821-132846.png",
+   "sha256": "d6d98356b68e7a2278db8829f9a18cad857726fc188cc67d3720c0987a5e6571"
   },
   {
    "slug": "18-explorateur",
@@ -175,103 +1873,1255 @@
    "sha256": "74ca292f8af5bf28d40fa2bce106e52590d15eedd0b7fd54f2065bb23ef8f439"
   },
   {
+   "slug": "18-explorateur",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-193713",
+   "file": "18-explorateur__fr__capture-mobile-sombre__20260810-193713.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__fr/capture-mobile-sombre/20260810-193713.png",
+   "sha256": "5bfe3aafbdaf8c527a31dbfab0c31b40be6efcfc5f7f987fea69fe59ec074c28"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260810-193658",
+   "file": "18-explorateur__de__capture-mobile-sombre__20260810-193658.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__de/capture-mobile-sombre/20260810-193658.png",
+   "sha256": "009e29d93b5d374a3e133964ba43a84784e70d078dc02da903f09c75ba2c9d51"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193704",
+   "file": "18-explorateur__en__capture-mobile-clair__20260810-193704.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__en/capture-mobile-clair/20260810-193704.png",
+   "sha256": "2dd7e4b4a686109d1213f131f0f0fefda93e6ea8e52bc8bad20b5ce47d1a4ffc"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193711",
+   "file": "18-explorateur__fr__capture-mobile-clair__20260810-193711.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__fr/capture-mobile-clair/20260810-193711.png",
+   "sha256": "cfa4c784b587e230d31550d4d3c7cb95f4f16a346a5819ff92a0bf0472c08fd0"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260810-193656",
+   "file": "18-explorateur__de__capture-mobile-clair__20260810-193656.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__de/capture-mobile-clair/20260810-193656.png",
+   "sha256": "d61157d88c497bb4481169034e135ae855aceae7a8f67f0fc8c80685ab735c67"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193702",
+   "file": "18-explorateur__en__capture-desktop-sombre__20260810-193702.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__en/capture-desktop-sombre/20260810-193702.png",
+   "sha256": "37bdaff14caf90472773f713597dcd714b131c000b391d94a4d204ce353cfc8f"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193709",
+   "file": "18-explorateur__fr__capture-desktop-sombre__20260810-193709.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__fr/capture-desktop-sombre/20260810-193709.png",
+   "sha256": "ba5b6c9c8075c06f91057e0646c6b4f3d02da590f527fc0a064a79f7bb628b75"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260810-193655",
+   "file": "18-explorateur__de__capture-desktop-sombre__20260810-193655.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__de/capture-desktop-sombre/20260810-193655.png",
+   "sha256": "448f0e62b0dd63f5ad4eae2d36eab2218c0596fec10f806bd8740d46798842e2"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193700",
+   "file": "18-explorateur__en__capture-desktop-clair__20260810-193700.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__en/capture-desktop-clair/20260810-193700.png",
+   "sha256": "d9ea938cd563424a1bea8d988a47ab9811916c9e1a951856b84bd206b35074bf"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193707",
+   "file": "18-explorateur__fr__capture-desktop-clair__20260810-193707.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__fr/capture-desktop-clair/20260810-193707.png",
+   "sha256": "768e18687a9bfb5262447d27cd3b3df1d957d733e1252449f67289900724ac70"
+  },
+  {
+   "slug": "18-explorateur",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260810-193653",
+   "file": "18-explorateur__de__capture-desktop-clair__20260810-193653.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__18-explorateur__de/capture-desktop-clair/20260810-193653.png",
+   "sha256": "46e47f98cf191d4b6a5e4a8f35d6d78b2c82cda93ad1f86aa2cea9bd963e5575"
+  },
+  {
    "slug": "19-fiche-figure",
    "lang": "en",
    "facette": "capture-mobile-sombre",
-   "horodatage": "20260814-124721",
-   "file": "19-fiche-figure__en__capture-mobile-sombre__20260814-124721.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__en/capture-mobile-sombre/20260814-124721.png",
-   "sha256": "671744942918b641ad3c0a09d57bdd76552568727741c78ec9f2ae846c563fcc"
+   "horodatage": "20260821-132953",
+   "file": "19-fiche-figure__en__capture-mobile-sombre__20260821-132953.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__en/capture-mobile-sombre/20260821-132953.png",
+   "sha256": "e5b8f75207861ab0546c56ddc183b9e12d40e0fe87e192019f6644206e9e976c"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133000",
+   "file": "19-fiche-figure__fr__capture-mobile-sombre__20260821-133000.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__fr/capture-mobile-sombre/20260821-133000.png",
+   "sha256": "368669dd8516b5a36d015dba7cdb714c2461043fb76648845d5fff9ae65c5364"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-132947",
+   "file": "19-fiche-figure__de__capture-mobile-sombre__20260821-132947.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__de/capture-mobile-sombre/20260821-132947.png",
+   "sha256": "8906bc179d5dc61296670be92ff92a3d416626bd75a19f33ba44dcce7bacc859"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132952",
+   "file": "19-fiche-figure__en__capture-mobile-clair__20260821-132952.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__en/capture-mobile-clair/20260821-132952.png",
+   "sha256": "96e98e7497315722b79d41b29621a76da96c474a7b1870331a7a9ab2c0c02640"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132958",
+   "file": "19-fiche-figure__fr__capture-mobile-clair__20260821-132958.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__fr/capture-mobile-clair/20260821-132958.png",
+   "sha256": "6e8372836c80c57217ff0f587c744db1e8b5f44db8ace30e072e45aba52ac779"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-132944",
+   "file": "19-fiche-figure__de__capture-mobile-clair__20260821-132944.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__de/capture-mobile-clair/20260821-132944.png",
+   "sha256": "63a487d77ae267385baed175e6c881cf40900f31a74352ecf77b5ff6cd588e22"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "en",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132949",
+   "file": "19-fiche-figure__en__capture-desktop-sombre__20260821-132949.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__en/capture-desktop-sombre/20260821-132949.png",
+   "sha256": "d98ec5123992f3e98eb825d07f76ac691b89fccc273053212db7796aabd7ef6b"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132957",
+   "file": "19-fiche-figure__fr__capture-desktop-sombre__20260821-132957.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__fr/capture-desktop-sombre/20260821-132957.png",
+   "sha256": "2fbedccaf0bae5287fbd286bf30115ecc9e15a89f8b36b7c29bcb7eb0248fdd7"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-132943",
+   "file": "19-fiche-figure__de__capture-desktop-sombre__20260821-132943.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__de/capture-desktop-sombre/20260821-132943.png",
+   "sha256": "d02ca56dca29a806151b37ff87ac7925a2ff8a5cce70be87af7180200a4f2c9a"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132948",
+   "file": "19-fiche-figure__en__capture-desktop-clair__20260821-132948.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__en/capture-desktop-clair/20260821-132948.png",
+   "sha256": "aab5309ae8ac48f5f827a110b24757593418c365537a2d690b75184e310d9f09"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132955",
+   "file": "19-fiche-figure__fr__capture-desktop-clair__20260821-132955.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__fr/capture-desktop-clair/20260821-132955.png",
+   "sha256": "4e4a47a9d13ff7b44a0f89fa418cbdb0ff8cdba56a53c9dc227f37d79c8bb796"
+  },
+  {
+   "slug": "19-fiche-figure",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-132941",
+   "file": "19-fiche-figure__de__capture-desktop-clair__20260821-132941.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__19-fiche-figure__de/capture-desktop-clair/20260821-132941.png",
+   "sha256": "c5650add66d8777528312b61f4a6a50844b1c1a2e9b48a3c37d63d0c0d67377d"
+  },
+  {
+   "slug": "20-admin-console",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133008",
+   "file": "20-admin-console__en__capture-mobile-sombre__20260821-133008.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__20-admin-console__en/capture-mobile-sombre/20260821-133008.png",
+   "sha256": "e174379d6011fcfa1adfa9f9b7d62ff10872d8104870eafb13784b219d349d53"
+  },
+  {
+   "slug": "20-admin-console",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133015",
+   "file": "20-admin-console__fr__capture-mobile-sombre__20260821-133015.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__20-admin-console__fr/capture-mobile-sombre/20260821-133015.png",
+   "sha256": "bb229ffbb78a3e49f1eaf9daca92508ad0531770c83873d91a8cc395308743ea"
+  },
+  {
+   "slug": "20-admin-console",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133006",
+   "file": "20-admin-console__en__capture-mobile-clair__20260821-133006.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__20-admin-console__en/capture-mobile-clair/20260821-133006.png",
+   "sha256": "b035a364889030a2443f841cdf206d73b771c649d0be6ef5427fcf91ba9afc35"
+  },
+  {
+   "slug": "20-admin-console",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133013",
+   "file": "20-admin-console__fr__capture-mobile-clair__20260821-133013.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__20-admin-console__fr/capture-mobile-clair/20260821-133013.png",
+   "sha256": "a694e266693ea872f52431325cebbde270a644a6759016ba0d9670954d670241"
   },
   {
    "slug": "20-admin-console",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-124730",
-   "file": "20-admin-console__en__capture-desktop-sombre__20260814-124730.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__20-admin-console__en/capture-desktop-sombre/20260814-124730.png",
-   "sha256": "ecdc2e1829e0f9ba27a55935c0c0ba6e627fceb7e29746793f33258dffb7f16f"
+   "horodatage": "20260821-133004",
+   "file": "20-admin-console__en__capture-desktop-sombre__20260821-133004.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__20-admin-console__en/capture-desktop-sombre/20260821-133004.png",
+   "sha256": "49898b4e6de66c4a9a9f68b150430cc01c8866506ffd86b4cc0ee334135a0449"
+  },
+  {
+   "slug": "20-admin-console",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133011",
+   "file": "20-admin-console__fr__capture-desktop-sombre__20260821-133011.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__20-admin-console__fr/capture-desktop-sombre/20260821-133011.png",
+   "sha256": "8ccd1b71173ee5971c5589ed583e4151a0eacfe57d23c063d7bec980b302a753"
+  },
+  {
+   "slug": "20-admin-console",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133002",
+   "file": "20-admin-console__en__capture-desktop-clair__20260821-133002.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__20-admin-console__en/capture-desktop-clair/20260821-133002.png",
+   "sha256": "779fe52e0c1bff6f4b9a82d4f7722081711aabb9ef021fe8607c33b09ae236fd"
+  },
+  {
+   "slug": "20-admin-console",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133010",
+   "file": "20-admin-console__fr__capture-desktop-clair__20260821-133010.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__20-admin-console__fr/capture-desktop-clair/20260821-133010.png",
+   "sha256": "5abd67c3fc9a92bbb51ce380d66731b364c4e3267fdf90313a27fdb0ef37e8d9"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124751",
+   "file": "21-admin-salle__en__capture-mobile-sombre__20260814-124751.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__en/capture-mobile-sombre/20260814-124751.png",
+   "sha256": "f7bbe80b7baaa117d5b22de66c02678832e57cfeedce494405117fd1e627002b"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124757",
+   "file": "21-admin-salle__fr__capture-mobile-sombre__20260814-124757.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__fr/capture-mobile-sombre/20260814-124757.png",
+   "sha256": "73daacf1c6a4aa4b8fa760021d29aaa33eca3424ca7eaa6e6608712de4114c6b"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260814-124745",
+   "file": "21-admin-salle__de__capture-mobile-sombre__20260814-124745.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__de/capture-mobile-sombre/20260814-124745.png",
+   "sha256": "a74800a97839f70c99e1e950a43cac6547e915dbb6050ba6bc6aa39cef1957d7"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124749",
+   "file": "21-admin-salle__en__capture-mobile-clair__20260814-124749.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__en/capture-mobile-clair/20260814-124749.png",
+   "sha256": "2a870b808c94660180829838e53ecb426a4a26ccf272e816c5173c5d7b45a795"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124755",
+   "file": "21-admin-salle__fr__capture-mobile-clair__20260814-124755.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__fr/capture-mobile-clair/20260814-124755.png",
+   "sha256": "7b7419a8e2965b242f956d566726cc4ffb0736bd40bff5c16190c3357b0b0e6d"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260814-124743",
+   "file": "21-admin-salle__de__capture-mobile-clair__20260814-124743.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__de/capture-mobile-clair/20260814-124743.png",
+   "sha256": "6b9ca3af7fcab6d55ae728f51a7283818fd5cb907ce2050f2b6284bb801bf7f5"
   },
   {
    "slug": "21-admin-salle",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-124748",
-   "file": "21-admin-salle__en__capture-desktop-sombre__20260814-124748.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__en/capture-desktop-sombre/20260814-124748.png",
-   "sha256": "08f42243311837de35105c10acd8fb011ae043457350c48d5e8616d374e12a65"
+   "horodatage": "20260821-133022",
+   "file": "21-admin-salle__en__capture-desktop-sombre__20260821-133022.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__en/capture-desktop-sombre/20260821-133022.png",
+   "sha256": "0c9c7eafa6d435553de9ba5fe37baa995c61dee4100f85409c7311a032786385"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133025",
+   "file": "21-admin-salle__fr__capture-desktop-sombre__20260821-133025.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__fr/capture-desktop-sombre/20260821-133025.png",
+   "sha256": "c499b5b6605c222be6b62d9bd6dcedd7ea1e8fbf3bbc3918c971204ce423b7f3"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133019",
+   "file": "21-admin-salle__de__capture-desktop-sombre__20260821-133019.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__de/capture-desktop-sombre/20260821-133019.png",
+   "sha256": "e754ab6dacecc2217707c203f76fe11133c5a0caafa36506621551341de5ae4b"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133020",
+   "file": "21-admin-salle__en__capture-desktop-clair__20260821-133020.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__en/capture-desktop-clair/20260821-133020.png",
+   "sha256": "01aaff4046402ad6affc5c19263a51c219374a316a74aa799b68ee3cb5cde5a0"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133023",
+   "file": "21-admin-salle__fr__capture-desktop-clair__20260821-133023.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__fr/capture-desktop-clair/20260821-133023.png",
+   "sha256": "2c4d2aeae5a6e91a66f7424b701d074df171e2e375ba6ee49ade52010b27bdd7"
+  },
+  {
+   "slug": "21-admin-salle",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133017",
+   "file": "21-admin-salle__de__capture-desktop-clair__20260821-133017.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__21-admin-salle__de/capture-desktop-clair/20260821-133017.png",
+   "sha256": "bc599dc303e03db965a8434d3fc42287b268817d229e208b524ea785101e90c4"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133039",
+   "file": "22-admin-projection__en__capture-mobile-sombre__20260821-133039.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__en/capture-mobile-sombre/20260821-133039.png",
+   "sha256": "a9e79698b1c07bf62a9c19f1f8c12d43c4ffdf3cea026ee09e9fcec654d91642"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133047",
+   "file": "22-admin-projection__fr__capture-mobile-sombre__20260821-133047.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__fr/capture-mobile-sombre/20260821-133047.png",
+   "sha256": "fee787e8e96f306e24fe10bcb51f1603c57ff25c9befc0404d08c9a9ff6d2cd2"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133032",
+   "file": "22-admin-projection__de__capture-mobile-sombre__20260821-133032.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__de/capture-mobile-sombre/20260821-133032.png",
+   "sha256": "7817b0489fa2c57f9016ca07d3cc96754564c61cbfa808d00bddd2c7c707768d"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133038",
+   "file": "22-admin-projection__en__capture-mobile-clair__20260821-133038.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__en/capture-mobile-clair/20260821-133038.png",
+   "sha256": "05ae5104c0198ab2b3ca5f8e4d9cc0a7fb179c214afa84d2067d0e441069882a"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133045",
+   "file": "22-admin-projection__fr__capture-mobile-clair__20260821-133045.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__fr/capture-mobile-clair/20260821-133045.png",
+   "sha256": "6d9a9a999e99e374e9fbcb720770e8e9775cce634c74ff9507b595fc13c50d11"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133030",
+   "file": "22-admin-projection__de__capture-mobile-clair__20260821-133030.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__de/capture-mobile-clair/20260821-133030.png",
+   "sha256": "7485cb7bc68bcbdfb1cb1417d621fe361ad6d6e496a60dc5bb0cb8c86d37c945"
   },
   {
    "slug": "22-admin-projection",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-124809",
-   "file": "22-admin-projection__en__capture-desktop-sombre__20260814-124809.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__en/capture-desktop-sombre/20260814-124809.png",
-   "sha256": "56bc4a00d1d12968d70e7e22df878ca89d7b37c3c60723da06b9392471c3bcae"
+   "horodatage": "20260821-133036",
+   "file": "22-admin-projection__en__capture-desktop-sombre__20260821-133036.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__en/capture-desktop-sombre/20260821-133036.png",
+   "sha256": "6d925b6ab08a8b9a7545b8353224d937ebe5703f9f4a110a0acaeb33afc342d8"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133043",
+   "file": "22-admin-projection__fr__capture-desktop-sombre__20260821-133043.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__fr/capture-desktop-sombre/20260821-133043.png",
+   "sha256": "d49847d24951d164a6f6f791093c2c144ee594bbc20a0ff97af869173c627374"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133028",
+   "file": "22-admin-projection__de__capture-desktop-sombre__20260821-133028.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__de/capture-desktop-sombre/20260821-133028.png",
+   "sha256": "41122b0826056b4e86575ef650e7ffd9d993b20b29b473f702fe433fbabd9f2a"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133034",
+   "file": "22-admin-projection__en__capture-desktop-clair__20260821-133034.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__en/capture-desktop-clair/20260821-133034.png",
+   "sha256": "0514a00fb3b209383cd7f3377b51e3edba15121822e618f52e596bd08eaca163"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133041",
+   "file": "22-admin-projection__fr__capture-desktop-clair__20260821-133041.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__fr/capture-desktop-clair/20260821-133041.png",
+   "sha256": "e5771c0f94bfabd17b201a28b989dcb7024d98a3a543fa2429e8e833203dc52d"
+  },
+  {
+   "slug": "22-admin-projection",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133026",
+   "file": "22-admin-projection__de__capture-desktop-clair__20260821-133026.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__22-admin-projection__de/capture-desktop-clair/20260821-133026.png",
+   "sha256": "31a584f2e7b91dc24603b07dc133689588e3dc88105a4e3353fa418cc1d3bcd9"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133103",
+   "file": "23-diapo-radar__en__capture-mobile-sombre__20260821-133103.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__en/capture-mobile-sombre/20260821-133103.png",
+   "sha256": "5cdd8cb385780682a14324f15087840c4426d2b6180c6c4cd5ea6aaeedc6fbc3"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133109",
+   "file": "23-diapo-radar__fr__capture-mobile-sombre__20260821-133109.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__fr/capture-mobile-sombre/20260821-133109.png",
+   "sha256": "6c70d2888db57b5d3870475be48c44c343861f7744b968c6b1968b1fbf3b138b"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133056",
+   "file": "23-diapo-radar__de__capture-mobile-sombre__20260821-133056.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__de/capture-mobile-sombre/20260821-133056.png",
+   "sha256": "0ea5105c81c9564c4d14395ca454b8126919a5dd00cc8950848a8ccd770c9839"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133101",
+   "file": "23-diapo-radar__en__capture-mobile-clair__20260821-133101.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__en/capture-mobile-clair/20260821-133101.png",
+   "sha256": "2af21722f5ae25d6cd1550b7cdf2b7c9ca92c901bd5f8a9d72b8e20e43d0f4a4"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133108",
+   "file": "23-diapo-radar__fr__capture-mobile-clair__20260821-133108.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__fr/capture-mobile-clair/20260821-133108.png",
+   "sha256": "06dad761af7e2e546b8c17d2513f0b950c1a8eced40eefc60bb189ffb7af3152"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133054",
+   "file": "23-diapo-radar__de__capture-mobile-clair__20260821-133054.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__de/capture-mobile-clair/20260821-133054.png",
+   "sha256": "cb3c26fedc5710462cd657fb9ca5788a74d48b64d9a43c8903859862b859ad85"
   },
   {
    "slug": "23-diapo-radar",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-124832",
-   "file": "23-diapo-radar__en__capture-desktop-sombre__20260814-124832.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__en/capture-desktop-sombre/20260814-124832.png",
-   "sha256": "1147d4c5ee23e26c19b9757cf86edb042d6c9732d2a36253a5c6fabc358b3a5f"
+   "horodatage": "20260821-133059",
+   "file": "23-diapo-radar__en__capture-desktop-sombre__20260821-133059.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__en/capture-desktop-sombre/20260821-133059.png",
+   "sha256": "79a42d4b2192123c7cc2408c673008a521f7f52ed8e16e9b9ee2057171598e5d"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133106",
+   "file": "23-diapo-radar__fr__capture-desktop-sombre__20260821-133106.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__fr/capture-desktop-sombre/20260821-133106.png",
+   "sha256": "7bf84191a8c268a7e7809384dbe8f08e4cf9b0c1490278c631d4789de5dd122c"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133051",
+   "file": "23-diapo-radar__de__capture-desktop-sombre__20260821-133051.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__de/capture-desktop-sombre/20260821-133051.png",
+   "sha256": "1e8130380c01f2ccfc1ec7ff4519a2f0eb096daeb308b7ecb7ba98ae3119498f"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133057",
+   "file": "23-diapo-radar__en__capture-desktop-clair__20260821-133057.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__en/capture-desktop-clair/20260821-133057.png",
+   "sha256": "16bae5352b21a0b46b8c1cd506bbccec26f5fb8a29bbbfaa0471e9c02c0c15e9"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133104",
+   "file": "23-diapo-radar__fr__capture-desktop-clair__20260821-133104.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__fr/capture-desktop-clair/20260821-133104.png",
+   "sha256": "dd1985710f05b9e3c5427ae4cf5cf9795bffb3128ed56506d2aca5c054dc1cbd"
+  },
+  {
+   "slug": "23-diapo-radar",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133050",
+   "file": "23-diapo-radar__de__capture-desktop-clair__20260821-133050.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__23-diapo-radar__de/capture-desktop-clair/20260821-133050.png",
+   "sha256": "73e2ea4cd85973c96d3055fb9ca9632e38794f73e1593f4e0665440067c58073"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133122",
+   "file": "24-diapo-etendue__en__capture-mobile-sombre__20260821-133122.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__en/capture-mobile-sombre/20260821-133122.png",
+   "sha256": "49ec7c7c410970fc34a1e056620d779dbcab7091f4bb47a8c133f04b37f77907"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133128",
+   "file": "24-diapo-etendue__fr__capture-mobile-sombre__20260821-133128.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__fr/capture-mobile-sombre/20260821-133128.png",
+   "sha256": "9fb3d172dc29bc2096679e9e8b438708f65669e1b343cf97284cf5d49fbdcc08"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133116",
+   "file": "24-diapo-etendue__de__capture-mobile-sombre__20260821-133116.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__de/capture-mobile-sombre/20260821-133116.png",
+   "sha256": "f73453a741e31ec1495eb5168cfe949644710c4596e7fa2c4166bef7a26250e9"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133121",
+   "file": "24-diapo-etendue__en__capture-mobile-clair__20260821-133121.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__en/capture-mobile-clair/20260821-133121.png",
+   "sha256": "8ad06e9639c16bcd0d5dbd47fe5c0f37b2f37a8e35bfa96c0da032f926296ecf"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133126",
+   "file": "24-diapo-etendue__fr__capture-mobile-clair__20260821-133126.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__fr/capture-mobile-clair/20260821-133126.png",
+   "sha256": "30ed535ef5880ed06251f4b6893f9d02e74153abe7c927dbf02f80e352f77a12"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133115",
+   "file": "24-diapo-etendue__de__capture-mobile-clair__20260821-133115.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__de/capture-mobile-clair/20260821-133115.png",
+   "sha256": "1720f85e885944d6a227a5df6bcabf4c2feedccc6870293827f4a600ea42de33"
   },
   {
    "slug": "24-diapo-etendue",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-124851",
-   "file": "24-diapo-etendue__en__capture-desktop-sombre__20260814-124851.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__en/capture-desktop-sombre/20260814-124851.png",
-   "sha256": "52f7031f020c44781921a40482e4e1fdf52683ac9443ca9c881257797921dc3c"
+   "horodatage": "20260821-133119",
+   "file": "24-diapo-etendue__en__capture-desktop-sombre__20260821-133119.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__en/capture-desktop-sombre/20260821-133119.png",
+   "sha256": "35cf6ca56a0f7823e303fc4fa0a23448897fa90d5065b26e380b9f4269eb4602"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133125",
+   "file": "24-diapo-etendue__fr__capture-desktop-sombre__20260821-133125.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__fr/capture-desktop-sombre/20260821-133125.png",
+   "sha256": "2c9da9b830dabfdecccdced2d3558197ea540609fd70c38a5317a0d396ea4108"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133113",
+   "file": "24-diapo-etendue__de__capture-desktop-sombre__20260821-133113.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__de/capture-desktop-sombre/20260821-133113.png",
+   "sha256": "f4045b3811e9fa894f1c83b66b4e1f8618b2bdef9cbe5e6c1304af2f0ca280fb"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133117",
+   "file": "24-diapo-etendue__en__capture-desktop-clair__20260821-133117.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__en/capture-desktop-clair/20260821-133117.png",
+   "sha256": "7eb24461e4e9710f45226d767f0569d55540ce5ac1e9890b274597af39d3c955"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133123",
+   "file": "24-diapo-etendue__fr__capture-desktop-clair__20260821-133123.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__fr/capture-desktop-clair/20260821-133123.png",
+   "sha256": "c3025f9b64d2d5b9c1c0da52f82e4e8089805fd47b82ac9351999d22206ff072"
+  },
+  {
+   "slug": "24-diapo-etendue",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133111",
+   "file": "24-diapo-etendue__de__capture-desktop-clair__20260821-133111.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__24-diapo-etendue__de/capture-desktop-clair/20260821-133111.png",
+   "sha256": "ad7e8a28a1cef6f3fe21a7baea19be1aa44a6a2768f437809251c4e1a51829f0"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133141",
+   "file": "25-diapo-details__en__capture-mobile-sombre__20260821-133141.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__en/capture-mobile-sombre/20260821-133141.png",
+   "sha256": "c212774860c8b598faa49fe68e6627b6ed1f481e8a59c6c029f1fd925aaec0bd"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133147",
+   "file": "25-diapo-details__fr__capture-mobile-sombre__20260821-133147.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__fr/capture-mobile-sombre/20260821-133147.png",
+   "sha256": "ebecea93410e15a65436b33902f3b20b5aa8a6c95ef90c1c7b3bf5e335df82c3"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133135",
+   "file": "25-diapo-details__de__capture-mobile-sombre__20260821-133135.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__de/capture-mobile-sombre/20260821-133135.png",
+   "sha256": "0e9d8d8d43b79fd13e9433f27283f427e57a5eaadc9b0ebea246c8fd8b19d9fa"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133140",
+   "file": "25-diapo-details__en__capture-mobile-clair__20260821-133140.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__en/capture-mobile-clair/20260821-133140.png",
+   "sha256": "1ddcc347d24b290b5a48f2285046f4696e9184c13f00c9142d3f6a4819afd239"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133146",
+   "file": "25-diapo-details__fr__capture-mobile-clair__20260821-133146.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__fr/capture-mobile-clair/20260821-133146.png",
+   "sha256": "86b791ff996b635b0f046946a06bdcea723da4586558a2cb174526ae97c66681"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133133",
+   "file": "25-diapo-details__de__capture-mobile-clair__20260821-133133.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__de/capture-mobile-clair/20260821-133133.png",
+   "sha256": "6f48d5fe486827f0a1b5cc1b74782a09ec053843f1c96a2cba60283807809755"
   },
   {
    "slug": "25-diapo-details",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-124909",
-   "file": "25-diapo-details__en__capture-desktop-sombre__20260814-124909.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__en/capture-desktop-sombre/20260814-124909.png",
-   "sha256": "90a688fdcf8e97fc0cdb10e9d0b20bd958e2db640cad98d390256db314567cdf"
+   "horodatage": "20260821-133138",
+   "file": "25-diapo-details__en__capture-desktop-sombre__20260821-133138.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__en/capture-desktop-sombre/20260821-133138.png",
+   "sha256": "a9143588b1916e3ced893c452c4d15c8147baacb8375e98c5112d292a2811e43"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133144",
+   "file": "25-diapo-details__fr__capture-desktop-sombre__20260821-133144.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__fr/capture-desktop-sombre/20260821-133144.png",
+   "sha256": "be7a0e3b9b860d9fba4df886573c0bf1724181ebf39faa512bffe0fd2bfd5cb4"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133132",
+   "file": "25-diapo-details__de__capture-desktop-sombre__20260821-133132.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__de/capture-desktop-sombre/20260821-133132.png",
+   "sha256": "13191720eed415449b9da1836d8e04a867b6243fbe7783b186c5f06be83c95a7"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133136",
+   "file": "25-diapo-details__en__capture-desktop-clair__20260821-133136.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__en/capture-desktop-clair/20260821-133136.png",
+   "sha256": "0997e359d7a521407a51c886fcfcd49aa676fd47df2b0cc843662d26c41035a2"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133143",
+   "file": "25-diapo-details__fr__capture-desktop-clair__20260821-133143.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__fr/capture-desktop-clair/20260821-133143.png",
+   "sha256": "aae9e77c5e8f8ffc87ecb4181824969880217371605677f99307b171e9124c76"
+  },
+  {
+   "slug": "25-diapo-details",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133130",
+   "file": "25-diapo-details__de__capture-desktop-clair__20260821-133130.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__25-diapo-details__de/capture-desktop-clair/20260821-133130.png",
+   "sha256": "d9c9ac9389b8bd1ae895d4ecaee7002534866c37e53659535382b8dfc145d4da"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133159",
+   "file": "26-diapo-gaufre__en__capture-mobile-sombre__20260821-133159.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__en/capture-mobile-sombre/20260821-133159.png",
+   "sha256": "73406054b03555cc19fff1950d10996753a1afaa06a6ceebba1283d07b3cdedd"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133206",
+   "file": "26-diapo-gaufre__fr__capture-mobile-sombre__20260821-133206.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__fr/capture-mobile-sombre/20260821-133206.png",
+   "sha256": "fed64ca271044297c7a43b9840521dc6670b8e51e6df38b7f7e8fad8c5f80366"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133153",
+   "file": "26-diapo-gaufre__de__capture-mobile-sombre__20260821-133153.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__de/capture-mobile-sombre/20260821-133153.png",
+   "sha256": "94b7974e7ada5fc0b99f8a595982ef1680e141ec18372b24ee4b6b22daca39b2"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133158",
+   "file": "26-diapo-gaufre__en__capture-mobile-clair__20260821-133158.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__en/capture-mobile-clair/20260821-133158.png",
+   "sha256": "e110edda39b00d1edae4f40a055ce60b224f1c5244014b3ed0a72c99510cd12d"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133204",
+   "file": "26-diapo-gaufre__fr__capture-mobile-clair__20260821-133204.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__fr/capture-mobile-clair/20260821-133204.png",
+   "sha256": "4db608d2fe76338082298629c9b9eebfa6fe5548602aadfb4cfa20f0440178de"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133152",
+   "file": "26-diapo-gaufre__de__capture-mobile-clair__20260821-133152.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__de/capture-mobile-clair/20260821-133152.png",
+   "sha256": "1bd31594b9352aa4ed2bac70efe4185d57e011d2007deba0644e699861921b1f"
   },
   {
    "slug": "26-diapo-gaufre",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-124927",
-   "file": "26-diapo-gaufre__en__capture-desktop-sombre__20260814-124927.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__en/capture-desktop-sombre/20260814-124927.png",
-   "sha256": "411760c9f70e938cb40b78e872fa62ead397a09d8f1b248c7d4ef75decc46672"
+   "horodatage": "20260821-133156",
+   "file": "26-diapo-gaufre__en__capture-desktop-sombre__20260821-133156.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__en/capture-desktop-sombre/20260821-133156.png",
+   "sha256": "b845ff7c8d5be57550cd8e32d0c9beeb474659822d2ec5f35810ca6b266ac1f8"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133203",
+   "file": "26-diapo-gaufre__fr__capture-desktop-sombre__20260821-133203.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__fr/capture-desktop-sombre/20260821-133203.png",
+   "sha256": "74691d6b3a19bfb8e8b2d8308b94cba23b3e60aaa55e90037041f6947bd3d27d"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133150",
+   "file": "26-diapo-gaufre__de__capture-desktop-sombre__20260821-133150.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__de/capture-desktop-sombre/20260821-133150.png",
+   "sha256": "98e555f81834218a970cce7c1be3a034f7ed6ae94847d77bbe2f650ff4a3bfd8"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133155",
+   "file": "26-diapo-gaufre__en__capture-desktop-clair__20260821-133155.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__en/capture-desktop-clair/20260821-133155.png",
+   "sha256": "72210f2577e400755af3e9a21c30806cedce4bb34fdcf1f959ffb983795f4a0c"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133201",
+   "file": "26-diapo-gaufre__fr__capture-desktop-clair__20260821-133201.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__fr/capture-desktop-clair/20260821-133201.png",
+   "sha256": "2a3a5dda41ef2843391d882f4dac1bf9946f39d13494d8dc405387948882c45e"
+  },
+  {
+   "slug": "26-diapo-gaufre",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133149",
+   "file": "26-diapo-gaufre__de__capture-desktop-clair__20260821-133149.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__26-diapo-gaufre__de/capture-desktop-clair/20260821-133149.png",
+   "sha256": "bd995eeac7d5ea53c4ee7e9d3bc220e954661cfd6c2237f80dc2c8c5f8319f03"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133219",
+   "file": "27-diapo-divisions__en__capture-mobile-sombre__20260821-133219.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__en/capture-mobile-sombre/20260821-133219.png",
+   "sha256": "b8cfb9932d5e18b81e57b3e1cb82a1d965ebcfd104e0494d6eb8dfe190308cfa"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133225",
+   "file": "27-diapo-divisions__fr__capture-mobile-sombre__20260821-133225.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__fr/capture-mobile-sombre/20260821-133225.png",
+   "sha256": "ad135ba931c5f9c34062de8fe5d8083c375d84b5820346749ae9cb6bcec0541d"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133212",
+   "file": "27-diapo-divisions__de__capture-mobile-sombre__20260821-133212.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__de/capture-mobile-sombre/20260821-133212.png",
+   "sha256": "b83fe9a64f40c157153ba86093acdcf1ccef9a3385b1d7722b35383e1863b85c"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133218",
+   "file": "27-diapo-divisions__en__capture-mobile-clair__20260821-133218.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__en/capture-mobile-clair/20260821-133218.png",
+   "sha256": "5e9a3cf99b83a4ec810f15e16618c3f9dd693271178c3ae16d53307397ce751a"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133224",
+   "file": "27-diapo-divisions__fr__capture-mobile-clair__20260821-133224.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__fr/capture-mobile-clair/20260821-133224.png",
+   "sha256": "5b2248dbfa8f460225895f4afda4f439284c6fd1c0958e78cb3aa777887831ac"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133211",
+   "file": "27-diapo-divisions__de__capture-mobile-clair__20260821-133211.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__de/capture-mobile-clair/20260821-133211.png",
+   "sha256": "c35b08d6cb4b1890ab36565c6a119ac6a9f4cd19ab1d472c02d8c4226ff06113"
   },
   {
    "slug": "27-diapo-divisions",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-124944",
-   "file": "27-diapo-divisions__en__capture-desktop-sombre__20260814-124944.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__en/capture-desktop-sombre/20260814-124944.png",
-   "sha256": "4fd66645657639320bf1daad7be25d5f0899f4c415b03b670fe6cecb54cf43c1"
+   "horodatage": "20260821-133215",
+   "file": "27-diapo-divisions__en__capture-desktop-sombre__20260821-133215.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__en/capture-desktop-sombre/20260821-133215.png",
+   "sha256": "8b9060a385aea273bd3725f131a675743acd039086f265e4dcb6551b43422bdf"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133222",
+   "file": "27-diapo-divisions__fr__capture-desktop-sombre__20260821-133222.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__fr/capture-desktop-sombre/20260821-133222.png",
+   "sha256": "92511df9f525576c07c4b26ae9bb10a1875b79b5d19fe0f0502f1788fa85b26e"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133209",
+   "file": "27-diapo-divisions__de__capture-desktop-sombre__20260821-133209.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__de/capture-desktop-sombre/20260821-133209.png",
+   "sha256": "0808f2c8c1aeec9abb97e8838e03f264bd786fcc81f1d94f243fc02893b8b5b7"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133214",
+   "file": "27-diapo-divisions__en__capture-desktop-clair__20260821-133214.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__en/capture-desktop-clair/20260821-133214.png",
+   "sha256": "29ed61a254fd395f9a48450a04821ff79ddcae6143532a2524b0ba42b2d6aa70"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133221",
+   "file": "27-diapo-divisions__fr__capture-desktop-clair__20260821-133221.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__fr/capture-desktop-clair/20260821-133221.png",
+   "sha256": "7b4e2fc7e855b41077a17a4407af5cf1023e001df137fac31b88fddb629c3cdd"
+  },
+  {
+   "slug": "27-diapo-divisions",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133208",
+   "file": "27-diapo-divisions__de__capture-desktop-clair__20260821-133208.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__27-diapo-divisions__de/capture-desktop-clair/20260821-133208.png",
+   "sha256": "cdb013148519735c156ce8756e894b3eeabda35903ed6389b77bfabd93723554"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133238",
+   "file": "28-diapo-abstentions__en__capture-mobile-sombre__20260821-133238.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__en/capture-mobile-sombre/20260821-133238.png",
+   "sha256": "991f927aa074872219c0ecfbc77dfb055e78d48546908502898697c76bde58e9"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133244",
+   "file": "28-diapo-abstentions__fr__capture-mobile-sombre__20260821-133244.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__fr/capture-mobile-sombre/20260821-133244.png",
+   "sha256": "95103b1b1783f18792df6a93306275e9a16f0d102cccc78ff1d040af420efb49"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133231",
+   "file": "28-diapo-abstentions__de__capture-mobile-sombre__20260821-133231.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__de/capture-mobile-sombre/20260821-133231.png",
+   "sha256": "4c557180683a1dbb724342f1c279c31db9a31ec94cf790b027336cafc6db37d0"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133236",
+   "file": "28-diapo-abstentions__en__capture-mobile-clair__20260821-133236.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__en/capture-mobile-clair/20260821-133236.png",
+   "sha256": "5d358cef5583fc763de8c97481d0160db98b6b7ad5acc0c9d26b5ce89b46c9ce"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133243",
+   "file": "28-diapo-abstentions__fr__capture-mobile-clair__20260821-133243.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__fr/capture-mobile-clair/20260821-133243.png",
+   "sha256": "24459cf969ecbd80e612bcf4923a01d7e8040ef79885e8e0b8c25aac05e442db"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133230",
+   "file": "28-diapo-abstentions__de__capture-mobile-clair__20260821-133230.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__de/capture-mobile-clair/20260821-133230.png",
+   "sha256": "b8e8bc77f325d3833f3ba3c2a42c99167d67449bab1b02764febb04a868f8cad"
   },
   {
    "slug": "28-diapo-abstentions",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-125004",
-   "file": "28-diapo-abstentions__en__capture-desktop-sombre__20260814-125004.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__en/capture-desktop-sombre/20260814-125004.png",
-   "sha256": "df52cc18c5d592c9350dd5e3378c198181e68b12fda394e33abb311cbc44c9a5"
+   "horodatage": "20260821-133235",
+   "file": "28-diapo-abstentions__en__capture-desktop-sombre__20260821-133235.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__en/capture-desktop-sombre/20260821-133235.png",
+   "sha256": "8899aa5e23d201939de5f461e142d37bf6b62429edb3c66ac8f2989c8f22d21b"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133241",
+   "file": "28-diapo-abstentions__fr__capture-desktop-sombre__20260821-133241.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__fr/capture-desktop-sombre/20260821-133241.png",
+   "sha256": "4d07ccf8a53bb4b12dfa71159763d12752ffea8b3f1bcf5b253a8863d1cc3236"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133229",
+   "file": "28-diapo-abstentions__de__capture-desktop-sombre__20260821-133229.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__de/capture-desktop-sombre/20260821-133229.png",
+   "sha256": "3a4dc3ce4a6a392c9970a7f1e6a2b82cc83c5437d39129cd33b4b916b353a068"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133233",
+   "file": "28-diapo-abstentions__en__capture-desktop-clair__20260821-133233.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__en/capture-desktop-clair/20260821-133233.png",
+   "sha256": "5d36c7937de7375b39608508999d2adca4626b20eb64f86752bd2da4c3b6b06c"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133240",
+   "file": "28-diapo-abstentions__fr__capture-desktop-clair__20260821-133240.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__fr/capture-desktop-clair/20260821-133240.png",
+   "sha256": "e221872d08d8478f2a2e22359af46b588f89a80023c2f45dc594b3c4bf7f3ac7"
+  },
+  {
+   "slug": "28-diapo-abstentions",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133227",
+   "file": "28-diapo-abstentions__de__capture-desktop-clair__20260821-133227.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__28-diapo-abstentions__de/capture-desktop-clair/20260821-133227.png",
+   "sha256": "63513e8fce570944fc0118669ae2cba5973b3d5a3060426777f90765c6277237"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "en",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133255",
+   "file": "29-diapo-groupes__en__capture-mobile-sombre__20260821-133255.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__en/capture-mobile-sombre/20260821-133255.png",
+   "sha256": "816b6abd3c7a7bb1dc78cae4f03ce0259c8759fd328d950aa654318ea9616ac6"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "fr",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133300",
+   "file": "29-diapo-groupes__fr__capture-mobile-sombre__20260821-133300.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__fr/capture-mobile-sombre/20260821-133300.png",
+   "sha256": "c5db576f2393617bd4ce615f681eb0eb779f5fcadf21b823945da4196830fc3e"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "de",
+   "facette": "capture-mobile-sombre",
+   "horodatage": "20260821-133250",
+   "file": "29-diapo-groupes__de__capture-mobile-sombre__20260821-133250.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__de/capture-mobile-sombre/20260821-133250.png",
+   "sha256": "19f164316921adfe42fe9f2ef20d35f095871496b9a12d2294e207ea999df6de"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "en",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133254",
+   "file": "29-diapo-groupes__en__capture-mobile-clair__20260821-133254.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__en/capture-mobile-clair/20260821-133254.png",
+   "sha256": "17560b41c759bab4fcf9bde137612e02fe73ff6316afc8597bd4e697a4fa83e1"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "fr",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133259",
+   "file": "29-diapo-groupes__fr__capture-mobile-clair__20260821-133259.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__fr/capture-mobile-clair/20260821-133259.png",
+   "sha256": "d50b253de09ed9c32957e80f7ac48976c20628fcf727f6696f46bcbbb65e37ef"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "de",
+   "facette": "capture-mobile-clair",
+   "horodatage": "20260821-133248",
+   "file": "29-diapo-groupes__de__capture-mobile-clair__20260821-133248.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__de/capture-mobile-clair/20260821-133248.png",
+   "sha256": "00de98a6b46fe9abcd274faa8d9d3bb528844af63cb076e7aa4df739d870bf1d"
   },
   {
    "slug": "29-diapo-groupes",
    "lang": "en",
    "facette": "capture-desktop-sombre",
-   "horodatage": "20260814-125023",
-   "file": "29-diapo-groupes__en__capture-desktop-sombre__20260814-125023.png",
-   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__en/capture-desktop-sombre/20260814-125023.png",
-   "sha256": "1e015c07a7f8fa8836d64156354944f545a877a5417d56b7568801b9defaffae"
+   "horodatage": "20260821-133252",
+   "file": "29-diapo-groupes__en__capture-desktop-sombre__20260821-133252.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__en/capture-desktop-sombre/20260821-133252.png",
+   "sha256": "e125a0b10217471e4bd7b24d606291b1f98c1b7ac75d3a46b65c0609d2ef0af8"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "fr",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133258",
+   "file": "29-diapo-groupes__fr__capture-desktop-sombre__20260821-133258.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__fr/capture-desktop-sombre/20260821-133258.png",
+   "sha256": "193e8e55e6101fc03e72e11b0241fbfb0cdb83d1e2f07c072fc79333bf227006"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "de",
+   "facette": "capture-desktop-sombre",
+   "horodatage": "20260821-133247",
+   "file": "29-diapo-groupes__de__capture-desktop-sombre__20260821-133247.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__de/capture-desktop-sombre/20260821-133247.png",
+   "sha256": "1568109dc1cfb6aac946f0e5fb8cf8378acd173e4796943a0a138cbc2e8a5a1c"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "en",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133251",
+   "file": "29-diapo-groupes__en__capture-desktop-clair__20260821-133251.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__en/capture-desktop-clair/20260821-133251.png",
+   "sha256": "de2a4106dfb93eb03814c69e54c3067d018c8178270f8225fa468ddefdf5b572"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "fr",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133256",
+   "file": "29-diapo-groupes__fr__capture-desktop-clair__20260821-133256.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__fr/capture-desktop-clair/20260821-133256.png",
+   "sha256": "bc7ab3821412c6eb593f49c232be9db6b8bac30797184b1cf72f468b71e98f60"
+  },
+  {
+   "slug": "29-diapo-groupes",
+   "lang": "de",
+   "facette": "capture-desktop-clair",
+   "horodatage": "20260821-133246",
+   "file": "29-diapo-groupes__de__capture-desktop-clair__20260821-133246.png",
+   "url": "https://media.sumvadis.ai/v/parcours/postair__29-diapo-groupes__de/capture-desktop-clair/20260821-133246.png",
+   "sha256": "87841c3bc5e28f60d0a10f95313f13a8b48732d6a3af39c71476dbce6336033b"
   }
  ],
  "planned_unpublished": []
