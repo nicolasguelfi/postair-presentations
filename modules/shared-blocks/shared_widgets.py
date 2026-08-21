@@ -38,6 +38,21 @@ def st_stage_selector(options: list[str], key: str, label: str = "") -> str:
                         label_visibility="collapsed")
 
 
+def st_stage_code_input(key: str, placeholder: str = "") -> str:
+    """A one-line free-text field the SPEAKER drives (NG 2026-08-21).
+
+    Compagnon du sélecteur : là où ``st_stage_selector`` choisit parmi des
+    valeurs déclarées, ce champ accepte une valeur qui n'existe pas encore —
+    un code de campagne créé le matin même. Même règle que le sélecteur :
+    la clé est passée par l'appelant et doit être STABLE (une clé engendrée
+    changerait à chaque rerun et viderait le champ sous la main de l'orateur).
+    Le retour est débarrassé de TOUS ses blancs : un code se colle à une URL.
+    """
+    value = st.text_input(" ", key=key, placeholder=placeholder,
+                          label_visibility="collapsed")
+    return "".join((value or "").split())
+
+
 def st_info_tooltip(title: str, entries: list[tuple[str, str]], **kw):
     """Info tooltip with the POSTAIR palette and auditorium geometry pre-applied.
 
