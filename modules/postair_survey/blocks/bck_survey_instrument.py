@@ -38,7 +38,7 @@ class BlockStyles:
 bs = BlockStyles
 
 #: L'idée, en une phrase.
-_LEAD = "3 questions for each of the \n18 defined postures"
+_LEAD = "3 questions for each of the \n2 poles of the 9 axes"
 
 #: Deux exemples = les deux pôles d'un même axe (openness), un par carte :
 #: la carte bleue accueille, la corail résiste — aucun des deux n'a tort.

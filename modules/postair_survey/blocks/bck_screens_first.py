@@ -53,7 +53,8 @@ def build():
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for slug, legend in _SCREENS:
                 with g.cell():
-                    st_image(s.project.cards.media_center, width=_WIDTH,
-                             uri=capture(slug),
-                             alt=f"Mobile screen of the survey journey: {legend}")
-                    st_write(bs.caption, legend, tag=t.div)
+                    with st_zoom(110):
+                        st_image(s.project.cards.media_center, width=_WIDTH,
+                                uri=capture(slug),
+                                alt=f"Mobile screen of the survey journey: {legend}")
+                        st_write(bs.caption, legend, tag=t.div)

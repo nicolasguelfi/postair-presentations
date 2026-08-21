@@ -20,26 +20,27 @@ from streamtex import *
 
 def build():
     st_marker("Consent")
-    screen_slide(
-        ["Consent — ", (s.project.titles.keyword, "nothing personal")],
-        "03-consentement",
-        "Mobile screen of the survey journey: the consent step, dark theme",
-        [
-            ("Nothing personal is asked",
-             "No name, no email, no account — nothing on this screen can "
-             "identify you."),
-            ("Your explicit consent",
-             "The survey starts only after you accept — participation is "
-             "voluntary, and you can stop at any time."),
-            ("Anonymous by construction",
-             "Your report is computed on YOUR device; only anonymous answers "
-             "reach the room's averages."),
-        ],
-        toc_label="Consent",
-        tooltip=("This screen",
-                 [("Real capture", "The actual application, mobile facet, dark "
-                   "theme — frozen from the sumvadis media registry, never "
-                   "redrawn."),
-                  ("Under 18", "You can play and see your own results — your "
-                   "record is simply excluded from the research analysis.")]),
-    )
+    with st_zoom(130):
+        screen_slide(
+            ["Consent — ", (s.project.titles.keyword, "nothing personal")],
+            "03-consentement",
+            "Mobile screen of the survey journey: the consent step, dark theme",
+            [
+                ("Nothing personal is asked",
+                "No name, no email, no account — nothing on this screen can "
+                "identify you."),
+                ("Your explicit consent",
+                "The survey starts only after you accept — participation is "
+                "voluntary, and you can stop at any time."),
+                ("Anonymous by construction",
+                "Your report is computed on YOUR device; only anonymous answers "
+                "reach the room's averages."),
+            ],
+            toc_label="Consent",
+            tooltip=("This screen",
+                    [("Real capture", "The actual application, mobile facet, dark "
+                    "theme — frozen from the sumvadis media registry, never "
+                    "redrawn."),
+                    ("Under 18", "You can play and see your own results — your "
+                    "record is simply excluded from the research analysis.")]),
+        )

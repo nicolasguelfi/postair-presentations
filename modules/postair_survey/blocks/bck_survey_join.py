@@ -102,8 +102,9 @@ def build():
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Your turn — ", (s.project.titles.keyword, "join the survey"),
-                         tag=t.div, toc_lvl="+1", label="Join the survey")
+                with st_zoom(150):
+                    st_write(bs.title, "Your turn — ", (s.project.titles.keyword, "join the survey"),
+                            tag=t.div, toc_lvl="+1", label="Join the survey")
                 # Le sélecteur EST le sous-titre : c'est la seule chose qui
                 # change d'une séance à l'autre, et la seule à ne pas figer.
                 # « Custom code… » ouvre la saisie libre : une campagne créée
