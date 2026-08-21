@@ -12,17 +12,21 @@ Les octets, eux, ne sont jamais versionnés : ``sync_media.py`` les matérialise
 au build sous ``modules/postair_survey/static/media/captures/``, comme les
 mascottes et les figures. Ce qui est versionné est la DÉSIGNATION des médias.
 
-Politique de gel (Q14, NG 2026-08-14 — captures MOBILES en primaire) :
+Politique de gel (décision D, NG 2026-08-21 — la MATRICE COMPLÈTE) :
 
-- langues : ``en`` seule — le deck est en anglais ;
-- thème : ``sombre`` seul — celui du deck, et celui de l'amphithéâtre ;
-- écrans PARTICIPANTS (01-16, 18, 19) : facette **capture-mobile-sombre** —
-  le deck projette ce que la salle tient en main, pas un navigateur de bureau ;
-- ``17-res-page-entiere`` : EXCLU (6,1 Mo, page défilante illisible projetée) ;
-- écrans de RÉGIE et diaporama (20-admin-*, 21, 22, 23+) : facette
-  **capture-desktop-sombre** (écrans d'opérateur projetés) — PRÉVUS par la
-  campagne sumvadis ss12 (chantier 3b + Q15) et rapportés « prévus, non
-  publiés » tant qu'ils ne sont pas au registre.
+- langues : ``en``, ``fr``, ``de`` — tout ce que le registre publie ;
+- facettes : les quatre (``mobile``/``desktop`` × ``sombre``/``clair``) pour
+  CHAQUE écran — le choix de ce qui est projeté descend dans la slide
+  (``capture(slug, device=…, theme=…, lang=…)``), plus dans la politique ;
+- ``17-res-page-entiere`` : EXCLU, inchangé (6,1 Mo par variante, page
+  défilante illisible projetée — l'embarquer douze fois serait du lest pur) ;
+- le DÉFAUT de ``capture()`` reste ``mobile · sombre · en`` (Q14) : élargir le
+  gel ne change pas ce que les slides existantes projettent.
+
+Coût assumé (NG 2026-08-21) : ~12 variantes × ~29 écrans ≈ 350 fichiers,
+de l'ordre de 150-200 Mo matérialisés dans CHAQUE image de service — contre
+14 Mo avant. En échange : n'importe quelle facette/langue se demande dans une
+slide sans regel ni campagne.
 
 **Règle I3 (sumvadis design/11, lot L5)** : un artefact GELÉ ne porte JAMAIS
 d'adresse de concept ``/c/…``. Seules les adresses de VERSION ``/v/…`` du
@@ -62,16 +66,10 @@ _REGISTRY = "packages/core/assets/media-registry.jsonl"
 _DOMAINE = "parcours"
 _ID_PREFIX = "postair"
 
-# ── Politique de gel (Q14/Q15, NG 2026-08-14) ───────────────────────────────
-LANGS = ("en",)
-THEMES = ("sombre",)
-#: Facette des écrans participants : MOBILE — le deck projette ce que la
-#: salle tient en main (Q14). Les écrans de régie restent en desktop.
-PARTICIPANT_DEVICE = "mobile"
-OPERATOR_DEVICE = "desktop"
-#: Numéros d'écran du parcours PARTICIPANT ; au-delà, c'est la régie (console,
-#: /live, /present) puis le diaporama — des écrans d'opérateur.
-_LAST_PARTICIPANT = 19
+# ── Politique de gel (décision D, NG 2026-08-21 — matrice complète) ─────────
+LANGS = ("en", "fr", "de")
+THEMES = ("sombre", "clair")
+DEVICES = ("mobile", "desktop")
 EXCLUDE = ("17-res-page-entiere",)
 #: Écrans de régie et de diaporama attendus de la campagne sumvadis ss12
 #: (chantier 3b + Q15). Rapportés « prévus, non publiés » tant qu'absents du
@@ -114,20 +112,16 @@ def warn_if_dirty(root: str) -> None:
         print(f"    … and {len(dirty) - 10} more", file=sys.stderr)
 
 
-def _screen_number(slug: str) -> int:
-    try:
-        return int(slug.split("-", 1)[0])
-    except ValueError:
-        raise SystemExit(f"slug de parcours sans numéro d'écran : {slug!r} — "
-                         f"le registre a changé de convention, adapter la politique ici")
+def wanted_facettes(slug: str) -> tuple[str, ...]:
+    """Les facettes que la politique gèle pour cet écran — vide = exclu.
 
-
-def wanted_facette(slug: str) -> str | None:
-    """La facette que la politique gèle pour cet écran — ``None`` = exclu."""
+    Matrice complète (décision D, NG 2026-08-21) : les quatre facettes pour
+    chaque écran, le choix de projection descend dans la slide.
+    """
     if slug in EXCLUDE:
-        return None
-    device = PARTICIPANT_DEVICE if _screen_number(slug) <= _LAST_PARTICIPANT else OPERATOR_DEVICE
-    return f"capture-{device}-{THEMES[0]}"
+        return ()
+    return tuple(f"capture-{device}-{theme}"
+                 for device in DEVICES for theme in THEMES)
 
 
 def load_registry(root: Path) -> dict[tuple[str, str, str], dict]:
@@ -175,10 +169,7 @@ def select(latest: dict[tuple[str, str, str], dict]) -> dict:
     published = sorted({slug for (slug, _l, _f) in latest})
     captures, missing, non_v = [], [], []
     for slug in published:
-        facette = wanted_facette(slug)
-        if facette is None:
-            continue
-        for lang in LANGS:
+        for facette, lang in ((f, l) for f in wanted_facettes(slug) for l in LANGS):
             entry = latest.get((slug, lang, facette))
             if entry is None:
                 missing.append(f"{slug} · {lang} · {facette}")
@@ -214,8 +205,9 @@ def freeze(selection: dict) -> None:
         "policy": {
             "langs": list(LANGS),
             "themes": list(THEMES),
-            "participants": f"{PARTICIPANT_DEVICE} (écrans 01-{_LAST_PARTICIPANT})",
-            "operators": f"{OPERATOR_DEVICE} (écrans {_LAST_PARTICIPANT + 1}+)",
+            "devices": list(DEVICES),
+            "matrix": "complète (décision D, NG 2026-08-21) — le choix de "
+                      "projection descend dans la slide",
             "exclude": list(EXCLUDE),
             "planned": list(PLANNED_SLUGS),
         },

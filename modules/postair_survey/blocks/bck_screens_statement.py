@@ -22,31 +22,38 @@ from streamtex import *
 
 def build():
     st_marker("A statement")
-    screen_slide(
-        ["A statement, ", (s.project.titles.keyword, "six levels"), ", help"],
-        "04-question",
-        "Mobile screen of the survey journey: one statement with its six "
-        "agreement levels and the help button, dark theme",
-        [
-            ("No right answer",
-             "A portrait, not a test — nothing is scored as correct, and "
-             "nobody sees your individual answers."),
-            ("Answer for YOURSELF",
-             "Not for the image you would like to give — the result is only "
-             "useful if it is yours."),
-            ("“No opinion” ≠ a middle answer",
-             "A separate button OUTSIDE the six levels — excluded from your "
-             "scores, never counted as halfway."),
-        ],
-        toc_label="A statement",
-        tooltip=("Six levels, no middle",
-                 [("A gentle forced choice", "The middle of a scale attracts "
-                   "non-answers. If you truly have no opinion, use the "
-                   "dedicated button — it is excluded from your scores."),
-                  ("Why that matters", "A middle answer would be counted as a "
-                   "position halfway between the poles; 'no opinion' is "
-                   "counted as nothing at all. Confusing them is the one "
-                   "mistake that distorts a profile."),
-                  ("Help per question", "Every statement has a help button: "
-                   "clarification, anchors and two concrete examples.")]),
-    )
+    with st_zoom(130):
+        screen_slide(
+            ["A statement, ", (s.project.titles.keyword, "six levels"), ", help"],
+            "05-progression",
+            "Mobile screen of the survey journey: one statement with its six "
+            "agreement levels and the help button, dark theme",
+            [
+                ("No right answer",
+                "A portrait, not a test — nothing is scored as correct, and "
+                "nobody sees your individual answers."),
+                ("Answer for YOURSELF",
+                "Not for the image you would like to give — the result is only "
+                "useful if it is yours."),
+                ("“No opinion” ≠ a middle answer",
+                "A separate button OUTSIDE the six levels — excluded from your "
+                "scores, never counted as halfway."),
+            ],
+            toc_label="A statement",
+            tooltip=("Six levels, no middle",
+                    [("A gentle forced choice", "The middle of a scale attracts "
+                    "non-answers. If you truly have no opinion, use the "
+                    "dedicated button — it is excluded from your scores."),
+                    ("Why that matters", "A middle answer would be counted as a "
+                    "position halfway between the poles; 'no opinion' is "
+                    "counted as nothing at all. Confusing them is the one "
+                    "mistake that distorts a profile."),
+                    ("Help per question", "Every statement has a help button: "
+                    "clarification, anchors and two concrete examples.")]),
+            # TODO(NG 2026-08-21) : repasser à device="desktop" (+ landscape=True)
+            # après la republication sumvadis — les objets desktop de cet écran
+            # au CDN sont morts (1 octet, versions pré-21/08) et le catalogue
+            # est resté au gel du 14/08 en attendant. Chaîne : republier la
+            # matrice dans sumvadis → build_survey_captures.py → purge → sync.
+            device="mobile"
+        )

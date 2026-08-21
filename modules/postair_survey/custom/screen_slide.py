@@ -45,7 +45,8 @@ CAPTURE_WIDTH_LANDSCAPE = "min(44vw, 72vh)"
 def screen_slide(title_parts, slug: str, alt: str, messages, *,
                  tooltip: tuple[str, list[tuple[str, str]]] | None = None,
                  toc_label: str | None = None, toc_lvl: str = "+1",
-                 device: str = "mobile", caption: str | None = None,
+                 device: str = "mobile", theme: str = "sombre",
+                 lang: str = "en", caption: str | None = None,
                  landscape: bool = False) -> None:
     """Le corps d'une slide écran : titre (+ tooltip), capture, cartes.
 
@@ -54,6 +55,13 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
     deux à quatre, pas plus : la salle lit la capture, les cartes la guident.
     ``landscape=True`` (écrans d'opérateur, Q15) : capture pleine scène en
     haut, messages en ligne dessous.
+
+    ``device``/``theme``/``lang`` suivent jusqu'à ``capture()`` (matrice
+    complète au catalogue depuis la décision D, NG 2026-08-21) : ``device``
+    dit la FORME de la capture (``mobile`` portrait, ``desktop`` paysage — à
+    accorder avec ``landscape``), ``theme`` (``sombre``/``clair``) et ``lang``
+    (``en``/``fr``/``de``) disent sa peau. Combinaison absente du catalogue =
+    KeyError bruyant, comme toujours.
     """
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -66,7 +74,8 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
         st_space("v", "1vh")
         if landscape:
             st_image(s.project.cards.media_center, width=CAPTURE_WIDTH_LANDSCAPE,
-                     uri=capture(slug, device=device), alt=alt)
+                     uri=capture(slug, device=device, theme=theme, lang=lang),
+                     alt=alt)
             if caption:
                 st_write(_Styles.caption, caption, tag=t.div)
             st_space("v", "1vh")
@@ -81,8 +90,10 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
         with st_grid(cols="38% 62%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_image(s.project.cards.media_center, width=CAPTURE_WIDTH,
-                         uri=capture(slug, device=device), alt=alt)
+                with st_zoom(110):
+                    st_image(s.project.cards.media_center, width=CAPTURE_WIDTH,
+                            uri=capture(slug, device=device, theme=theme, lang=lang),
+                            alt=alt)
                 if caption:
                     st_write(_Styles.caption, caption, tag=t.div)
             with g.cell(), st_block(s.project.containers.column_stack):
