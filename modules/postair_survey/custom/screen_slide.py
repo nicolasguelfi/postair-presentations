@@ -47,7 +47,10 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                  toc_label: str | None = None, toc_lvl: str = "+1",
                  device: str = "mobile", theme: str = "sombre",
                  lang: str = "en", caption: str | None = None,
-                 landscape: bool = False) -> None:
+                 landscape: bool = False,
+                 zoomImage: int = 100,
+                 zoomText: int = 100,
+                 crop: tuple[float, float, float, float] | None = None) -> None:
     """Le corps d'une slide écran : titre (+ tooltip), capture, cartes.
 
     ``title_parts`` suit la convention ``st_write`` (chaînes et couples
@@ -62,6 +65,11 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
     accorder avec ``landscape``), ``theme`` (``sombre``/``clair``) et ``lang``
     (``en``/``fr``/``de``) disent sa peau. Combinaison absente du catalogue =
     KeyError bruyant, comme toujours.
+
+    ``crop`` (streamtex >= 0.7.24) : découpe de la capture par pourcentages,
+    ordre CSS ``inset`` — ``(haut, droite, bas, gauche)``. La largeur affichée
+    (``CAPTURE_WIDTH``/``_LANDSCAPE``) désigne la zone VISIBLE après découpe.
+    Typique : rogner la barre de statut d'une capture mobile ``crop=(4,0,0,0)``.
     """
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -73,9 +81,10 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                     st_info_tooltip(title=tooltip[0], entries=tooltip[1])
         st_space("v", "1vh")
         if landscape:
-            st_image(s.project.cards.media_center, width=CAPTURE_WIDTH_LANDSCAPE,
-                     uri=capture(slug, device=device, theme=theme, lang=lang),
-                     alt=alt)
+            with st_zoom(zoomImage):
+                st_image(s.project.cards.media_center, width=CAPTURE_WIDTH_LANDSCAPE,
+                        uri=capture(slug, device=device, theme=theme, lang=lang),
+                        alt=alt, crop=crop)
             if caption:
                 st_write(_Styles.caption, caption, tag=t.div)
             st_space("v", "1vh")
@@ -84,20 +93,22 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                          cell_styles=s.project.containers.grid_cell_top) as g:
                 for head, detail in messages:
                     with g.cell(), st_block(s.project.cards.blue):
-                        st_write(_Styles.head, head, tag=t.div)
-                        st_write(_Styles.detail, detail, tag=t.div)
+                        with st_zoom(zoomText):
+                            st_write(_Styles.head, head, tag=t.div)
+                            st_write(_Styles.detail, detail, tag=t.div)
             return
         with st_grid(cols="38% 62%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                with st_zoom(110):
+                with st_zoom(zoomImage):
                     st_image(s.project.cards.media_center, width=CAPTURE_WIDTH,
                             uri=capture(slug, device=device, theme=theme, lang=lang),
-                            alt=alt)
+                            alt=alt, crop=crop)
                 if caption:
                     st_write(_Styles.caption, caption, tag=t.div)
             with g.cell(), st_block(s.project.containers.column_stack):
                 for head, detail in messages:
                     with st_block(s.project.cards.blue):
-                        st_write(_Styles.head, head, tag=t.div)
-                        st_write(_Styles.detail, detail, tag=t.div)
+                        with st_zoom(zoomText):
+                            st_write(_Styles.head, head, tag=t.div)
+                            st_write(_Styles.detail, detail, tag=t.div)

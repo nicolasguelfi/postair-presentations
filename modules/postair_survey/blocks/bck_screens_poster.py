@@ -55,9 +55,10 @@ def build():
                     ],
                 )
         st_space("v", "1vh")
-        st_image(s.project.cards.media_center, width=_POSTER_WIDTH,
-                 uri=capture("09-res-radar"),
-                 alt="Mobile screen of the survey report: the personal nine-axis "
-                     "posture radar, dark theme")
+        with st_zoom(150):
+            st_image(s.project.cards.media_center, width=_POSTER_WIDTH,
+                    uri=capture("09-res-radar"),
+                    alt="Mobile screen of the survey report: the personal nine-axis "
+                        "posture radar, dark theme")
         st_write(bs.caption, "where you are going — your radar, on your phone",
                  tag=t.div)

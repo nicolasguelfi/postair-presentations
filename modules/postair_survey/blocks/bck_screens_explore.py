@@ -41,6 +41,8 @@ def build():
                    "figures, campaign examples — four ways to interrogate one result."),
                   ("Then the room", "The last screen of this sequence compares you with "
                    "the room's averages — the bridge to the projection.")]),
+        zoomImage=150,
+        zoomText=170,
     )
     st_slide_break(marker_label="The nearest profiles",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
@@ -55,6 +57,10 @@ def build():
              "You are near an archetype, never inside one; the distance is part "
              "of the information."),
         ],
+        zoomImage=140,
+        zoomText=140,
+        device="mobile",
+        landscape=False,
     )
     st_slide_break(marker_label="The contrasted figures",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
@@ -69,6 +75,10 @@ def build():
              "The shortest way to understand the other pole of an axis is a "
              "figure who stands on it — this is where the debates start."),
         ],
+        zoomImage=150,
+        zoomText=140,
+        device="mobile",
+        landscape=False,
     )
     st_slide_break(marker_label="The campaign's examples",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
@@ -84,6 +94,10 @@ def build():
              "Nothing here expires; the report keeps its examples after the "
              "session."),
         ],
+        zoomImage=190,
+        zoomText=140,
+        device="mobile",
+        landscape=False,
     )
     st_slide_break(marker_label="You and the room",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
@@ -103,4 +117,8 @@ def build():
              "This same comparison, projected wall-size for everyone — the next "
              "slides open it."),
         ],
+        zoomImage=190,
+        zoomText=140,
+        device="mobile",
+        landscape=False,
     )

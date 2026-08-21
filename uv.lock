@@ -1517,7 +1517,7 @@ dependencies = [
 requires-dist = [
     { name = "postair-pack", editable = "postair_pack" },
     { name = "segno", specifier = ">=1.6.6" },
-    { name = "streamtex", extras = ["ai", "cli"], specifier = ">=0.7.23,<0.8" },
+    { name = "streamtex", extras = ["ai", "cli"], specifier = ">=0.7.24,<0.8" },
 ]
 
 [[package]]
@@ -2101,22 +2101,23 @@ wheels = [
 
 [[package]]
 name = "streamtex"
-version = "0.7.23"
+version = "0.7.24"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
     { name = "graphviz" },
     { name = "matplotlib" },
     { name = "mermaid-py" },
+    { name = "pillow" },
     { name = "python-dotenv" },
     { name = "requests" },
     { name = "streamlit" },
     { name = "streamlit-mermaid" },
     { name = "watchdog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/af/cc/c5c7c25aecb093a8e48c45fb5b826efebce4f427fc3178873e6ea75edc5c/streamtex-0.7.23.tar.gz", hash = "sha256:72f0cde59921e3baba68f16302e0483f516ae474354eb08be32558b12b150742", size = 1536158, upload-time = "2026-08-13T21:09:10.619Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/42/48/85b2817f2be8f728f22426b53f622cf9f62b1083c53afe0cd874f4689d00/streamtex-0.7.24.tar.gz", hash = "sha256:ecdc8842dc2028ca3f427b920770a685cd0cc9077b9a9c28d862664614fd6473", size = 1540258, upload-time = "2026-08-21T20:20:14.266Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b7/0d/cd768011c43d8375de98833250a0ea442fdc517a4db7655366e944335f53/streamtex-0.7.23-py3-none-any.whl", hash = "sha256:d570d84762ca6b55c149e5a185fd7aff142277e0e046feda5f2dbb7f6ed999b6", size = 1583915, upload-time = "2026-08-13T21:09:08.865Z" },
+    { url = "https://files.pythonhosted.org/packages/fe/32/7ce6171a981a8d7229e57ff3b5a94c7a7add4020a2dfb27c6ef6b7869987/streamtex-0.7.24-py3-none-any.whl", hash = "sha256:62539f9960449100274728e73d9a89db2074a7c26d6172535e20657c1858ff65", size = 1589069, upload-time = "2026-08-21T20:20:12.383Z" },
 ]
 
 [package.optional-dependencies]

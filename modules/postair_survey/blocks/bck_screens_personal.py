@@ -39,6 +39,8 @@ def build():
                    "anonymous record reaches the room's aggregates."),
                   ("Everything below", "Mascot card, radar, per-answer detail, nearest "
                    "profiles, great figures — one scrolling page.")]),
+        zoomImage=150,
+        zoomText=110,
     )
     st_slide_break(marker_label="The mascot card",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
@@ -55,6 +57,10 @@ def build():
              "A figure holds a posture so a person does not have to: opinions stay "
              "depersonalised, here and in the debates."),
         ],
+        device="desktop",
+        landscape=False,
+        zoomImage=250,
+        zoomText=120,
     )
     st_slide_break(marker_label="Your radar",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
@@ -73,6 +79,8 @@ def build():
              "A small shape is not a small personality — remember the reading "
              "lesson from a few slides ago."),
         ],
+        zoomImage=190,
+        zoomText=140,
     )
     st_slide_break(marker_label="Your code",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
@@ -92,4 +100,6 @@ def build():
              "Download or share the report if you wish; nothing is published "
              "by default."),
         ],
+        zoomImage=200,
+        zoomText=140,
     )

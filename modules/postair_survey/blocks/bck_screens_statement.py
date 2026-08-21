@@ -54,6 +54,6 @@ def build():
             # les trois règles en ligne dessous — permis par le gel matrice
             # complète (décision D). L'alerte « 1 octet » du 2026-08-21 était
             # un incident transitoire du service média, résolu côté sumvadis.
-            device="desktop",
-            landscape=True,
+            device="mobile",
+            landscape=False,
         )
