@@ -37,6 +37,11 @@ def build():
                    "you answered, from documented positions in their work."),
                   ("Doorway to the debates", "The afternoon's debate deck draws its "
                    "figures, quotes and references from these same dossiers.")]),
+        # TEST crop (streamtex 0.7.24, NG 2026-08-22) : la capture 18 est une
+        # page DÉFILANTE entière (1134×8796) — on ne garde que le premier
+        # écran : 72 % coupés en bas → zone visible 1134×2463 (ratio ≈ 0,46,
+        # la forme d'un téléphone). Ordre CSS inset : (haut, droite, bas, gauche).
+        crop=(0, 0, 72, 0),
     )
     st_slide_break(marker_label="A figure's page",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))

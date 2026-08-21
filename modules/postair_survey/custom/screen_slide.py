@@ -14,12 +14,30 @@ demandés par slug via ``custom.captures.capture`` — jamais par fichier.
 
 from __future__ import annotations
 
+from functools import lru_cache
+from pathlib import Path
+
+from PIL import Image
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
 from custom.captures import capture
 from custom.styles import Styles as s
+
+#: Les octets des captures — le chemin RÉEL derrière l'URI servie. Les URIs
+#: de ``capture()`` (``captures/…``) sont volontairement introuvables par les
+#: sources statiques (configure_image_path : servies, jamais inlinées), donc
+#: le lecteur de dimensions de ``crop=`` ne peut pas les mesurer ; on lui
+#: fournit ``natural_size`` en lisant le fichier ici. Ancré sur ``__file__``,
+#: jamais sur le répertoire courant (le lanceur local part de la racine).
+_MEDIA = Path(__file__).parent.parent / "static" / "media"
+
+
+@lru_cache(maxsize=64)
+def _natural_size(uri: str) -> tuple[int, int]:
+    with Image.open(_MEDIA / uri) as im:
+        return im.size
 
 
 class _Styles:
@@ -83,8 +101,9 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
         if landscape:
             with st_zoom(zoomImage):
                 st_image(s.project.cards.media_center, width=CAPTURE_WIDTH_LANDSCAPE,
-                        uri=capture(slug, device=device, theme=theme, lang=lang),
-                        alt=alt, crop=crop)
+                        uri=(uri := capture(slug, device=device, theme=theme, lang=lang)),
+                        alt=alt, crop=crop,
+                        natural_size=_natural_size(uri) if crop else None)
             if caption:
                 st_write(_Styles.caption, caption, tag=t.div)
             st_space("v", "1vh")
@@ -102,8 +121,9 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
             with g.cell():
                 with st_zoom(zoomImage):
                     st_image(s.project.cards.media_center, width=CAPTURE_WIDTH,
-                            uri=capture(slug, device=device, theme=theme, lang=lang),
-                            alt=alt, crop=crop)
+                            uri=(uri := capture(slug, device=device, theme=theme, lang=lang)),
+                            alt=alt, crop=crop,
+                            natural_size=_natural_size(uri) if crop else None)
                 if caption:
                     st_write(_Styles.caption, caption, tag=t.div)
             with g.cell(), st_block(s.project.containers.column_stack):
