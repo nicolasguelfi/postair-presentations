@@ -41,6 +41,17 @@ CAPTURE_WIDTH = "min(22vw, 29vh)"
 #: ce qui laisse le titre et la ligne de cartes à l'écran.
 CAPTURE_WIDTH_LANDSCAPE = "min(44vw, 72vh)"
 
+#: Capture desktop dans la mise en page à DEUX COLONNES (NG 2026-08-22) :
+#: la colonne image passe à 60 % et la capture paysage la remplit — bornée
+#: par la hauteur (une page app ~1,23:1 à 76vh de large fait ~62vh de haut,
+#: le titre garde sa place).
+CAPTURE_WIDTH_DESKTOP = "min(56vw, 76vh)"
+
+#: Répartition image/texte des deux colonnes, en % : le portrait mobile
+#: laisse la place au texte, la capture desktop la prend (NG 2026-08-22).
+SPLIT_MOBILE = (38, 62)
+SPLIT_DESKTOP = (60, 40)
+
 
 def screen_slide(title_parts, slug: str, alt: str, messages, *,
                  tooltip: tuple[str, list[tuple[str, str]]] | None = None,
@@ -50,7 +61,9 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                  landscape: bool = False,
                  zoomImage: int = 100,
                  zoomText: int = 100,
-                 crop: tuple[float, float, float, float] | None = None) -> None:
+                 crop: tuple[float, float, float, float] | None = None,
+                 split: tuple[int, int] | None = None,
+                 image_width: str | None = None) -> None:
     """Le corps d'une slide écran : titre (+ tooltip), capture, cartes.
 
     ``title_parts`` suit la convention ``st_write`` (chaînes et couples
@@ -70,6 +83,13 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
     ordre CSS ``inset`` — ``(haut, droite, bas, gauche)``. La largeur affichée
     (``CAPTURE_WIDTH``/``_LANDSCAPE``) désigne la zone VISIBLE après découpe.
     Typique : rogner la barre de statut d'une capture mobile ``crop=(4,0,0,0)``.
+
+    ``split`` (NG 2026-08-22) : répartition ``(image %, texte %)`` des deux
+    colonnes de la mise en page côte à côte. Défaut selon ``device`` :
+    ``(38, 62)`` en mobile (portrait étroit), ``(60, 40)`` en desktop (la
+    capture paysage a besoin de la place). ``image_width`` surcharge de même
+    la largeur de la capture dans sa colonne (défaut : ``CAPTURE_WIDTH`` ou
+    ``CAPTURE_WIDTH_DESKTOP`` selon ``device``). Sans effet en ``landscape``.
     """
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -97,11 +117,15 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                             st_write(_Styles.head, head, tag=t.div)
                             st_write(_Styles.detail, detail, tag=t.div)
             return
-        with st_grid(cols="38% 62%", gap="1.5vw",
+        img_pct, txt_pct = split or (SPLIT_DESKTOP if device == "desktop"
+                                     else SPLIT_MOBILE)
+        img_width = image_width or (CAPTURE_WIDTH_DESKTOP if device == "desktop"
+                                    else CAPTURE_WIDTH)
+        with st_grid(cols=f"{img_pct}% {txt_pct}%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 with st_zoom(zoomImage):
-                    st_image(s.project.cards.media_center, width=CAPTURE_WIDTH,
+                    st_image(s.project.cards.media_center, width=img_width,
                             uri=capture(slug, device=device, theme=theme, lang=lang),
                             alt=alt, crop=crop)
                 if caption:

@@ -41,7 +41,9 @@ def build():
         # page DÉFILANTE entière (1134×8796) — on ne garde que le premier
         # écran : 72 % coupés en bas → zone visible 1134×2463 (ratio ≈ 0,46,
         # la forme d'un téléphone). Ordre CSS inset : (haut, droite, bas, gauche).
-        crop=(0, 0, 72, 0),
+        crop=(0, 0, 67, 0),
+        zoomImage=100,
+        zoomText=100,
     )
     st_slide_break(marker_label="A figure's page",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
