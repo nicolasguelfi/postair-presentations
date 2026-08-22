@@ -36,7 +36,14 @@ _CHILD = r"""
 import importlib, pathlib, sys
 sys.path.insert(0, '.')
 import setup  # noqa: F401 — sys.path du module (shared-blocks, packs)
+import streamtex as stx
 from streamtex.toc import reset_toc_registry
+
+# Reproduire la mise en place medias de book.py : depuis streamtex 0.7.25,
+# crop= resout les dimensions via configure_image_path — un bloc qui croppe
+# une image servie echouerait ici sans ce mapping (cwd = le module).
+stx.set_static_sources(['static', '../shared-blocks/static'])
+stx.configure_image_path('app/static/media')
 
 fails = 0
 for p in sorted(pathlib.Path('blocks').glob('bck_*.py')):
