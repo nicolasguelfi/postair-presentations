@@ -13,18 +13,16 @@ règle de projection des vidéos du deck d'ouverture (bck_wait_loop) : Chrome
 lancé avec ``--autoplay-policy=no-user-gesture-required`` ; sans le flag, la
 surimpression « ▶ sound on » rappelle le clic de secours.
 
-Les clips MASCOTTES sont embarqués (static/media/clips, 720×720) ; les vidéos
-de FIGURES restent au CDN (doctrine du dépôt : 51 masters ouverts deux ou
-trois fois par séance — ces slides sont précisément ces ouvertures). Les
-figures viennent du gel debates (content.json, GÉNÉRÉ — lecture seule,
-KeyError bruyant si une figure en sort).
-
-Limite connue (2026-08-22) : la vidéo CDN NON active s'affiche en bandeau
-écrasé tant que ses métadonnées ne sont pas chargées (l'élément <video> n'a
-pas de hauteur avant). En projection, charger la slide une fois avant la
-séance suffit (cache navigateur) ; un aspect-ratio posé par st_block ne
-traverse pas jusqu'à l'élément vidéo de Streamlit — piste : évolution
-streamtex si le besoin devient réel.
+TOUT est embarqué (NG 2026-08-22, « tout doit marcher tout de suite ») :
+les clips mascottes (static/media/clips, 720×720) comme les vidéos des DEUX
+figures projetées (static/media/figure-videos/, matérialisées par
+sync_media.py — exception assumée à la règle « vidéos de figures au CDN »,
+qui reste vraie pour les 49 autres). Une vidéo distante non chargée
+s'affichait en bandeau écrasé : en local, les métadonnées sont immédiates,
+la case est juste dès le premier affichage, sans geste préalable.
+Les figures viennent du gel debates (content.json, GÉNÉRÉ — lecture seule) ;
+changer le casting = changer figure_duo() ICI et FIGURE_VIDEO_MODULES dans
+sync_media.py, puis relancer l'outil. Fichier absent = échec bruyant.
 """
 
 from __future__ import annotations
@@ -48,6 +46,10 @@ _MEDIA = Path(__file__).parent.parent / "static" / "media"
 _DEBATES_CONTENT = (Path(__file__).parent.parent.parent / "postair_debates"
                     / "static" / "data" / "content.json")
 
+#: La rendition projetée — MIROIR de FIGURE_VIDEO_ROLE dans sync_media.py
+#: (TODO repasser à "video" quand le proxy CDN sera réparé, cf. sync_media).
+_ROLE = "video_light"
+
 
 class _Styles:
     title = s.project.titles.slide_title + s.center_txt
@@ -69,12 +71,24 @@ def _mascot_pole(name: str) -> dict:
 
 @lru_cache(maxsize=8)
 def _figure_video(name: str) -> str:
-    """L'URL CDN de la vidéo de présentation d'une figure du gel debates."""
+    """Le chemin LOCAL de la vidéo de présentation d'une figure.
+
+    L'URL CDN du gel debates désigne ; les octets sont matérialisés par
+    ``sync_media.py`` sous ``figure-videos/`` (nom = deux derniers segments
+    de l'URL — même règle des deux côtés, aucune autre convention).
+    """
     data = json.loads(_DEBATES_CONTENT.read_text(encoding="utf-8"))
     for pole in data["poles"]:
         for f in pole.get("figures", []):
             if f["name"] == name:
-                return f["media"]["video"]
+                url = f["media"][_ROLE]
+                local = _MEDIA / "figure-videos" / "__".join(url.split("/")[-2:])
+                if not local.exists():
+                    raise FileNotFoundError(
+                        f"vidéo de {name} non matérialisée : {local} — lancer "
+                        f"uv run python _project/tools/sync_media.py (et vérifier "
+                        f"FIGURE_VIDEO_MODULES si le casting a changé)")
+                return str(local)
     raise KeyError(f"figure absente du gel debates : {name!r} — régénérer "
                    f"content.json ou corriger le nom.")
 

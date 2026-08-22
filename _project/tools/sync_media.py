@@ -69,6 +69,23 @@ CAPTURE_MODULES = ["postair_survey"]
 #: c'est le pire moment possible pour dépendre du réseau.
 CLIP_MODULES = ["postair_opening", "postair_survey"]
 
+#: Les vidéos de figures que le deck survey PROJETTE (duos vidéo, NG
+#: 2026-08-22 : « tout doit marcher tout de suite » — aucune dépendance
+#: réseau en séance, la vidéo CDN non chargée s'affichait en bandeau).
+#: Exception ASSUMÉE à la règle « vidéos de figures au CDN » : on n'embarque
+#: jamais les 51 masters (612 Mo), seulement les figures nommées ici.
+#: MIROIR de ``figure_duo()`` dans postair_survey/custom/media_duo.py —
+#: changer le casting = changer les DEUX listes, puis relancer cet outil.
+FIGURE_VIDEO_MODULES: dict[str, tuple[str, ...]] = {
+    "postair_survey": ("Platon", "Ada Lovelace"),
+}
+#: La rendition matérialisée. TODO repasser à "video" (master 960×960) quand
+#: le proxy CDN sera réparé : le 2026-08-22, lovelace/40aa6b2b.mp4 sert des
+#: octets corrompus (7,8 Mo invalides, HTTP 206 sur un GET sans Range) —
+#: les renditions light (480×480) sont saines. MIROIR de _ROLE dans
+#: postair_survey/custom/media_duo.py.
+FIGURE_VIDEO_ROLE = "video_light"
+
 _TIMEOUT = 30
 
 #: Retry avec backoff exponentiel (NG 2026-08-20) : le workflow Hetzner lance
@@ -230,6 +247,37 @@ def figure_catalogue(module: str) -> list[tuple[str, str]]:
                 if url:
                     seen[url.rsplit("/", 1)[-1]] = url
     return sorted(seen.items())
+
+
+def figure_video_catalogue(names: tuple[str, ...]) -> list[tuple[str, str]]:
+    """(nom local, URL) des vidéos de présentation des figures NOMMÉES.
+
+    La source est le gel debates (``content.json``) — même provenance que les
+    portraits. Le nom local reprend les deux derniers segments de l'URL CDN
+    (``platon__504be6bd.mp4``) : contenu-adressé, donc « fichier présent =
+    à jour » tient, et ``media_duo.py`` recompose le même nom sans autre
+    convention. Figure absente ou sans vidéo = échec bruyant : la slide
+    projetterait un trou.
+    """
+    manifest = _MODULES / "postair_debates" / "static" / "data" / "content.json"
+    if not manifest.exists():
+        raise SystemExit(f"gel debates introuvable : {manifest} — régénérer "
+                         "content.json (build_debates_content.py)")
+    data = json.loads(manifest.read_text(encoding="utf-8"))
+    seen: dict[str, dict] = {}
+    for pole in data["poles"]:
+        for fig in pole["figures"]:
+            seen.setdefault(fig["name"], fig)
+    entries = []
+    for name in names:
+        if name not in seen:
+            raise SystemExit(f"figure inconnue du gel debates : {name!r} — "
+                             "corriger FIGURE_VIDEO_MODULES ou régénérer le gel")
+        url = (seen[name].get("media") or {}).get(FIGURE_VIDEO_ROLE)
+        if not url:
+            raise SystemExit(f"figure sans {FIGURE_VIDEO_ROLE} au gel : {name!r}")
+        entries.append(("__".join(url.split("/")[-2:]), url))
+    return entries
 
 
 def capture_catalogue(module: str) -> list[tuple[str, str]]:
@@ -396,6 +444,12 @@ def main() -> None:
         total_missing += m
         total_written += w
         print(f"  {module}/captures  : {p} présents, {m} manquants")
+    for module, names in FIGURE_VIDEO_MODULES.items():
+        videos = figure_video_catalogue(names)
+        p, m, w = sync(module, "figure-videos", videos, args.check, args.force)
+        total_missing += m
+        total_written += w
+        print(f"  {module}/figure-videos : {p} présents, {m} manquants")
 
     if args.check:
         print(f"=> {total_missing} média(s) manquant(s)")

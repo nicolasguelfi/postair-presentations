@@ -3,10 +3,10 @@
 Première des deux pages jumelles du duo figures (gabarit
 ``custom/media_duo.py``, NG 2026-08-22) : Platon à gauche, Ada Lovelace à
 droite — un homme, une femme, connus de l'assemblée (Socrate n'est pas au
-gel des 51 figures ; Platon est son plus proche voisin, NG 2026-08-22). Vidéos de présentation servies depuis le CDN (doctrine du
-dépôt : les masters de figures ne s'embarquent pas — ces slides sont
-précisément leurs deux ou trois ouvertures de la séance). Le choix des deux
-figures vit dans ``figure_duo()``.
+gel des 51 figures ; Platon est son plus proche voisin, NG 2026-08-22).
+Vidéos EMBARQUÉES comme les clips mascottes (matérialisées par sync_media,
+exception assumée pour ces deux seules figures — « tout doit marcher tout
+de suite »). Le choix des deux figures vit dans ``figure_duo()``.
 
 SPEAKER NOTES:
 Same gesture as the mascots: let Platon speak, then arrow right for Ada
