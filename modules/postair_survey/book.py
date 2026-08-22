@@ -131,19 +131,25 @@ st_book(
         blocks.bck_screens_first,     # captures 01, 02 — code of the day, welcome
         blocks.bck_screens_consent,   # capture 03 — consent, nothing personal
         blocks.bck_screens_statement,  # capture 04 — a statement, six levels + les 3 règles
-        blocks.bck_survey_troubleshooting,  # before you start
-        blocks.bck_survey_join,       # QR + code of the day
-        # ── Part 2 · The screens ────────────────────────────────────
         blocks.bck_screens_poster,    # TOC anchor « The screens » — the personal radar, full frame
-        blocks.bck_survey_live,       # live monitoring while the room answers
         blocks.bck_screens_answering,  # captures 05, 06 — progress and send
-        blocks.bck_results_archetypes,  # the six archetypes
         blocks.bck_results_radar_howto,  # how to read a posture radar
         blocks.bck_screens_personal,  # captures 07, 08, 09, 16 — the personal report
         blocks.bck_screens_explore,   # captures 11, 12, 14, 15, 10 — exploring the report
         blocks.bck_screens_figures,   # captures 18, 19 — the great figures pages
+        # ── Duos vidéo (NG 2026-08-22) : pages JUMELLES — la flèche droite
+        # passe à la jumelle et y lance la vidéo de droite avec le son.
+        blocks.bck_video_mascots,     # Pathos (animaux) se lance à gauche
+        blocks.bck_video_mascots_2,   # même scène — Veloz (objets) se lance
+        blocks.bck_video_figures,     # Einstein se lance à gauche (CDN)
+        blocks.bck_video_figures_2,   # même scène — Ada Lovelace se lance
         blocks.bck_survey_results,    # open the room's results (operator buttons)
+        blocks.bck_results_archetypes,  # the six archetypes
         blocks.bck_results_room,      # the room's results — commentary
+        blocks.bck_survey_troubleshooting,  # before you start
+        blocks.bck_survey_join,       # QR + code of the day
+        blocks.bck_survey_live,       # live monitoring while the room answers
+        # ── Part 2 · The screens ────────────────────────────────────
         blocks.bck_screens_admin,     # régie (20-22) + les 7 vues du diaporama /present
         #                             # (Q15) — captures desktop gelées le 2026-08-14
         blocks.bck_results_meaning,   # what the results say about us

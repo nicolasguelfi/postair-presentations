@@ -1,7 +1,7 @@
-"""Exploring the report — detail (11), profiles (12), contrast (14),
-examples (15), and you against the room (10).
+"""Exploring the report — detail (11), profiles (12), figures (13),
+contrast (14), examples (15), and you against the room (10).
 
-Five sub-slides for the exploratory screens of the personal report (Q14
+Six sub-slides for the exploratory screens of the personal report (Q14
 layout: real mobile capture left, useful messages right). ``10-res-salle``
 closes the sequence by design: it is the screen that turns a personal result
 into the room's conversation, and it hands over to the results slides that
@@ -44,10 +44,10 @@ def build():
         zoomImage=150,
         zoomText=170,
     )
-    st_slide_break(marker_label="The nearest profiles",
+    st_slide_break(marker_label="The nearest archetypes",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
     screen_slide(
-        ["The ", (s.project.titles.keyword, "nearest"), " profiles"],
+        ["The ", (s.project.titles.keyword, "nearest"), " archetypes"],
         "12-res-profils",
         "Mobile screen of the report's nearest profiles section, dark theme",
         [
@@ -57,11 +57,34 @@ def build():
              "You are near an archetype, never inside one; the distance is part "
              "of the information."),
         ],
-        zoomImage=140,
+        zoomImage=160,
         zoomText=140,
         device="mobile",
         landscape=False,
+        crop=(0, 0, 27, 0),
     )
+
+    st_slide_break(marker_label="The nearest figures",
+                   config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
+    screen_slide(
+        ["The ", (s.project.titles.keyword, "nearest"), " figures"],
+        "13-res-figures",
+        "Mobile screen of the report's nearest great figures section, dark theme",
+        [
+            ("Figures in your company",
+             "The great figures closest to your posture — scored by the same "
+             "instrument you just answered."),
+            ("The trap: reading it as a twin",
+             "Nearness measures answers, not lives — an invitation to read the "
+             "figure, never an identity."),
+        ],
+        zoomImage=160,
+        zoomText=140,
+        device="mobile",
+        landscape=False,
+        crop=(0, 0, 27, 0),
+    )
+
     st_slide_break(marker_label="The contrasted figures",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
     screen_slide(
