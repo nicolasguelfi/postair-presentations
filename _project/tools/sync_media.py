@@ -68,6 +68,13 @@ CAPTURE_MODULES = ["postair_survey"]
 #: l'écran d'attente tourne **vingt minutes devant la salle qui se remplit**,
 #: c'est le pire moment possible pour dépendre du réseau.
 CLIP_MODULES = ["postair_opening", "postair_survey"]
+#: Les modules qui projettent un FILM du studio (section `films` du gel) :
+#: l'écran d'attente et le levé de rideau vivent dans opening — survey n'en
+#: projette aucun, et les films sont lourds (l'intro des axes + host-reveal :
+#: ~150 Mo en 3 langues). Séparés des clips « Postures » depuis le regel du
+#: 2026-08-22 ; un catalogue antérieur les porte encore dans `clips` et
+#: garde l'ancien comportement (tous les CLIP_MODULES les reçoivent).
+FILM_MODULES = ["postair_opening"]
 
 #: Les vidéos de figures que le deck survey PROJETTE (duos vidéo, NG
 #: 2026-08-22 : « tout doit marcher tout de suite » — aucune dépendance
@@ -207,7 +214,8 @@ def _read_studio_clips(studio: str) -> list[tuple[str, str]]:
 def freeze(studio: str) -> None:
     """Regeler le catalogue depuis le studio. À lancer sur la machine de l'auteur."""
     entries = _read_studio(studio)
-    clips = _read_studio_clips(studio) + _read_studio_films(studio)
+    clips = _read_studio_clips(studio)
+    films = _read_studio_films(studio)
     design = _studio_design(studio)
     _FROZEN.parent.mkdir(parents=True, exist_ok=True)
     _FROZEN.write_text(json.dumps({
@@ -219,9 +227,25 @@ def freeze(studio: str) -> None:
         "design_version": design.get("version"),
         "mascots": [{"file": f, "url": u} for f, u in entries],
         "clips": [{"file": f, "url": u} for f, u in clips],
+        # Section SÉPARÉE (2026-08-22) : les films ne vont qu'aux modules qui
+        # les projettent (FILM_MODULES), pas à tous les CLIP_MODULES.
+        "films": [{"file": f, "url": u} for f, u in films],
     }, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"  catalogue gelé : {len(entries)} mascottes, {len(clips)} clips "
-          f"→ {_FROZEN.relative_to(_REPO)}")
+    print(f"  catalogue gelé : {len(entries)} mascottes, {len(clips)} clips, "
+          f"{len(films)} films → {_FROZEN.relative_to(_REPO)}")
+
+
+def film_catalogue() -> list[tuple[str, str]]:
+    """(nom de fichier, URL) des FILMS du studio, depuis le catalogue gelé.
+
+    Section ``films`` du gel (séparée des clips le 2026-08-22). Un catalogue
+    antérieur ne la porte pas : les films y vivent encore dans ``clips`` et
+    suivent l'ancien circuit — liste vide ici, rien ne casse.
+    """
+    if not _FROZEN.exists():
+        return []
+    frozen = json.loads(_FROZEN.read_text(encoding="utf-8"))
+    return [(e["file"], e["url"]) for e in frozen.get("films", [])]
 
 
 def figure_catalogue(module: str) -> list[tuple[str, str]]:
@@ -431,6 +455,13 @@ def main() -> None:
         total_missing += m
         total_written += w
         print(f"  {module}/clips     : {p} présents, {m} manquants")
+    films = film_catalogue()
+    for module in FILM_MODULES:
+        # Même dossier local que les clips : ``film_clip()`` sert ``clips/…``.
+        p, m, w = sync(module, "clips", films, args.check, args.force)
+        total_missing += m
+        total_written += w
+        print(f"  {module}/films     : {p} présents, {m} manquants")
     for module in FIGURE_MODULES:
         figures = figure_catalogue(module)
         p, m, w = sync(module, "figures", figures, args.check, args.force)

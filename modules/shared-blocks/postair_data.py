@@ -68,7 +68,10 @@ def film_clip(key: str, lang: str = "en") -> str:
     fname = f"{key}-{lang}.mp4"
     catalogue = json.loads(
         (_MASCOTS_DIR.parent / "media-catalogue.json").read_text(encoding="utf-8"))
-    if not any(c["file"] == fname for c in catalogue.get("clips", [])):
+    # Section `films` depuis le regel du 2026-08-22 ; `clips` en repli pour un
+    # catalogue antérieur à la séparation.
+    entries = catalogue.get("films") or catalogue.get("clips", [])
+    if not any(c["file"] == fname for c in entries):
         raise KeyError(f"film {fname!r} absent du catalogue gelé — "
                        f"section `films` du studio puis regel (sync_media --freeze)")
     return f"clips/{fname}"
