@@ -46,9 +46,8 @@ _MEDIA = Path(__file__).parent.parent / "static" / "media"
 _DEBATES_CONTENT = (Path(__file__).parent.parent.parent / "postair_debates"
                     / "static" / "data" / "content.json")
 
-#: La rendition projetée — MIROIR de FIGURE_VIDEO_ROLE dans sync_media.py
-#: (TODO repasser à "video" quand le proxy CDN sera réparé, cf. sync_media).
-_ROLE = "video_light"
+#: La rendition projetée — MIROIR de FIGURE_VIDEO_ROLE dans sync_media.py.
+_ROLE = "video"
 
 
 class _Styles:

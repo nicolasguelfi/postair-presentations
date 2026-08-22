@@ -79,12 +79,11 @@ CLIP_MODULES = ["postair_opening", "postair_survey"]
 FIGURE_VIDEO_MODULES: dict[str, tuple[str, ...]] = {
     "postair_survey": ("Platon", "Ada Lovelace"),
 }
-#: La rendition matérialisée. TODO repasser à "video" (master 960×960) quand
-#: le proxy CDN sera réparé : le 2026-08-22, lovelace/40aa6b2b.mp4 sert des
-#: octets corrompus (7,8 Mo invalides, HTTP 206 sur un GET sans Range) —
-#: les renditions light (480×480) sont saines. MIROIR de _ROLE dans
+#: La rendition matérialisée : les masters 960×960. (Bref passage en
+#: "video_light" le 2026-08-22, le temps que le proxy CDN — qui servait le
+#: master d'Ada corrompu — soit réparé.) MIROIR de _ROLE dans
 #: postair_survey/custom/media_duo.py.
-FIGURE_VIDEO_ROLE = "video_light"
+FIGURE_VIDEO_ROLE = "video"
 
 _TIMEOUT = 30
 
