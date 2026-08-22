@@ -140,8 +140,8 @@ st_book(
         # ── Duos vidéo (NG 2026-08-22) : pages JUMELLES — la flèche droite
         # passe à la jumelle et y lance la vidéo de droite avec le son.
         blocks.bck_video_mascots,     # Pathos (animaux) se lance à gauche
-        blocks.bck_video_mascots_2,   # même scène — Veloz (objets) se lance
-        blocks.bck_video_figures,     # Einstein se lance à gauche (CDN)
+        blocks.bck_video_mascots_2,   # même scène — Bici (objets) se lance
+        blocks.bck_video_figures,     # Platon se lance à gauche (CDN)
         blocks.bck_video_figures_2,   # même scène — Ada Lovelace se lance
         blocks.bck_survey_results,    # open the room's results (operator buttons)
         blocks.bck_results_archetypes,  # the six archetypes

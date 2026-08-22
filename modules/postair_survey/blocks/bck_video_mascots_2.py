@@ -1,7 +1,7 @@
-"""Meet the mascots 2/2 — la même scène, la DROITE se lance (Veloz, objets).
+"""Meet the mascots 2/2 — la même scène, la DROITE se lance (Bici, objets).
 
 Page jumelle de ``bck_video_mascots`` : mêmes deux vidéos, seule la vidéo
-active change — arriver ici par la flèche droite lance Veloz avec le son.
+active change — arriver ici par la flèche droite lance Bici avec le son.
 Aucun contenu propre : tout vit dans ``custom/media_duo.py``.
 """
 # @guideline: postair-minimal

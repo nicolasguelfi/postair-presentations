@@ -2,14 +2,14 @@
 
 Première des deux pages jumelles du duo mascottes (gabarit
 ``custom/media_duo.py``, NG 2026-08-22) : Pathos (Emotion, famille animaux) à
-gauche, Veloz (Speed, famille objets) à droite. Sur cette page la vidéo de
+gauche, Bici (Prudence, famille objets) à droite. Sur cette page la vidéo de
 GAUCHE démarre avec le son ; la flèche droite passe à la page jumelle où la
 DROITE démarre. Le choix des deux mascottes vit dans ``mascot_duo()``.
 
 SPEAKER NOTES:
 Let Pathos play — twenty seconds, do not talk over it. One sentence before:
 every mascot of the app has its own presentation clip, this is what you will
-find behind each character. Then arrow right: Veloz answers.
+find behind each character. Then arrow right: Bici answers, at its own pace.
 """
 # @guideline: postair-minimal
 

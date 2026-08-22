@@ -18,6 +18,13 @@ de FIGURES restent au CDN (doctrine du dépôt : 51 masters ouverts deux ou
 trois fois par séance — ces slides sont précisément ces ouvertures). Les
 figures viennent du gel debates (content.json, GÉNÉRÉ — lecture seule,
 KeyError bruyant si une figure en sort).
+
+Limite connue (2026-08-22) : la vidéo CDN NON active s'affiche en bandeau
+écrasé tant que ses métadonnées ne sont pas chargées (l'élément <video> n'a
+pas de hauteur avant). En projection, charger la slide une fois avant la
+séance suffit (cache navigateur) ; un aspect-ratio posé par st_block ne
+traverse pas jusqu'à l'élément vidéo de Streamlit — piste : évolution
+streamtex si le besoin devient réel.
 """
 
 from __future__ import annotations
@@ -77,7 +84,7 @@ def _figure_video(name: str) -> str:
 def mascot_duo() -> tuple[dict, dict]:
     """Animaux à gauche, objets à droite — les plus fun de chaque famille."""
     duo = []
-    for name in ("Pathos", "Veloz"):
+    for name in ("Pathos", "Bici"):
         pole = _mascot_pole(name)
         duo.append({
             "name": name,
@@ -92,7 +99,7 @@ def figure_duo() -> tuple[dict, dict]:
     return tuple(
         {"name": name, "tagline": tagline, "src": _figure_video(name)}
         for name, tagline in (
-            ("Albert Einstein", "great figure — presentation video"),
+            ("Platon", "great figure — presentation video"),
             ("Ada Lovelace", "great figure — presentation video"),
         ))
 
