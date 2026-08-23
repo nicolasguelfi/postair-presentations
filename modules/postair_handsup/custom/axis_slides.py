@@ -40,54 +40,71 @@ def _title(ax: dict, *, toc_lvl: str | None = None, label: str | None = None) ->
                  tag=t.div, **kwargs)
 
 
-def _pole_cards(ax: dict, body) -> None:
-    """Deux cartes pôles — ``body(pole)`` remplit l'intérieur sous le nom."""
-    cards = [(s.project.cards.blue, ax["accel"]), (s.project.cards.coral, ax["decel"])]
+#: Variante module-locale, même facture que les lavis du design system :
+#: le lilas de la ligne PAPERCUT — troisième couleur de cellule, distincte
+#: des deux couleurs d'identité de pôle (bleu accel / corail decel).
+_LILAC_CELL = Style(
+    "background-color: rgba(179, 157, 219, 0.10); border-left: 4px solid #B39DDB; "
+    "border-radius: 12px; padding: 2vh 1.5vw;",
+    "handsup_card_lilac",
+)
+
+#: UNE cellule par question (NG 2026-08-23) : couleurs par POSITION,
+#: identiques sur les deux colonnes et sur les neuf axes — la salle peut
+#: dire « la jaune ». Les en-têtes de pôle gardent bleu/corail.
+_CELL_CARDS = [s.project.cards.teal, _LILAC_CELL, s.project.cards.amber]
+
+#: Slides de synthèse : une cellule par pôle, deux couleurs fixes (les mêmes
+#: sur les neuf axes), prises dans la même palette de cellules.
+_SYNTH_CARDS = {"accel": s.project.cards.teal, "decel": s.project.cards.amber}
+
+
+def _pole_columns(ax: dict, cells) -> None:
+    """Deux colonnes : en-tête de pôle (bleu/corail), puis les cellules.
+
+    ``cells(pole, kind)`` rend la liste ``[(carte, énoncé), …]`` — le gabarit
+    ne décide pas du contenu, seulement de l'empilement.
+    """
+    columns = [(s.project.cards.blue, "accel"), (s.project.cards.coral, "decel")]
     with st_grid(cols=s.project.grids.balanced(2, min_px=420), gap="2vw",
                  grid_style=s.project.grids.stretch,
                  cell_styles=s.project.containers.grid_cell_stretch) as g:
-        for card, pole in cards:
-            with g.cell(), st_block(card):
-                with st_zoom(115):
+        for header, kind in columns:
+            pole = ax[kind]
+            with g.cell():
+                with st_block(header), st_zoom(100):
                     st_write(_S.pole, pole["label"][lang()], tag=t.div)
-                st_space("v", "1.5vh")
-                body(pole)
+                for card, text, zoom in cells(pole, kind):
+                    st_space("v", "1.2vh")
+                    with st_block(card), st_zoom(zoom):
+                        st_write(_S.statement, "“", text, "”", tag=t.div)
 
 
 def questions_slide(code: str) -> None:
-    """Page 1 de l'axe : les 3 énoncés de chaque pôle. Porte l'ancre TOC."""
+    """Page 1 de l'axe : les 3 énoncés de chaque pôle, une cellule chacun.
+
+    Zoom 70 : au corps « bullet » plein les trois cellules débordent sous le
+    pli (constaté à la 1re capture de la version en carte unique).
+    """
     ax = axis(code)
     st_marker(ax["name"]["en"])
     with st_block(s.project.containers.page_fill_top):
         _title(ax, toc_lvl="1", label=ax["name"]["en"])
         st_space("v", "2vh")
-
-        def body(pole: dict) -> None:
-            # 3 énoncés par carte : au corps « bullet » plein ils débordent
-            # sous le pli (constaté à la 1re capture) — 70 % les fait tenir
-            # tout en restant lisibles du fond de l'amphi.
-            with st_zoom(70):
-                for i, stmt in enumerate(pole["statements"]):
-                    if i:
-                        st_space("v", "1.5vh")
-                    st_write(_S.statement, "“", stmt["text"][lang()], "”", tag=t.div)
-
-        _pole_cards(ax, body)
+        _pole_columns(ax, lambda pole, _kind: [
+            (_CELL_CARDS[i], stmt["text"][lang()], 70)
+            for i, stmt in enumerate(pole["statements"])])
 
 
 def synthetic_slide(code: str) -> None:
-    """Page 2 : UNE synthèse par pôle (champ amont v1.10.0 — bruyant avant)."""
+    """Page 2 : UNE synthèse par pôle, dans sa cellule (teal accel / ambre decel)."""
     ax = axis(code)
     st_marker(f"{ax['name']['en']} — synthesis")
     with st_block(s.project.containers.page_fill_top):
         _title(ax)
         st_space("v", "3vh")
-
-        def body(pole: dict) -> None:
-            with st_zoom(125):
-                st_write(_S.statement, "“", synthesis(pole)[lang()], "”", tag=t.div)
-
-        _pole_cards(ax, body)
+        _pole_columns(ax, lambda pole, kind: [
+            (_SYNTH_CARDS[kind], synthesis(pole)[lang()], 110)])
 
 
 # ── Les trois slides de vote (NG 2026-08-23, remplace la slide unique) ──────
