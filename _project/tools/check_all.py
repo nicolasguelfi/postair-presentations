@@ -157,6 +157,32 @@ def gate_debates() -> None:
                 if debt else "", warn=bool(debt))
 
 
+# ── 6bis. gel de l'instrument (deck à main levée) ───────────────────────────
+
+def gate_handsup() -> None:
+    if not (_TOOLS / "debates-hub.config.local.json").exists():
+        _record("gel de l'instrument (handsup work-order)", True,
+                "config hub absente — sauté", warn=True)
+        return
+    code, out = _run([sys.executable, str(_TOOLS / "build_handsup_content.py"),
+                      "--work-order"])
+    m = re.search(r"\*\*(\d+) divergence\(s\) de gel · (\d+) synthèse\(s\) "
+                  r"en attente amont", out)
+    if code != 0 or not m:
+        _record("gel de l'instrument (handsup work-order)", False, "sortie illisible")
+        return
+    diverged, missing = map(int, m.groups())
+    if diverged:
+        # ROUGE, pas warn : l'exigence du deck de secours est « aucune
+        # divergence possible » (plan v2) — le remède est un regel.
+        _record("gel de l'instrument (handsup work-order)", False,
+                "le gel diverge du questionnaire du hub — régénérer")
+    else:
+        _record("gel de l'instrument (handsup work-order)", True,
+                f"{missing} synthèse(s) en attente amont (ticket v1.10.0)"
+                if missing else "", warn=bool(missing))
+
+
 # ── 7. exports ──────────────────────────────────────────────────────────────
 
 def gate_exports() -> None:
@@ -178,6 +204,7 @@ def main() -> int:
     gate_shared_freeze()
     gate_captures()
     gate_debates()
+    gate_handsup()
     if args.fast:
         _record("exports (src présents + marque DD-35)", True,
                 "sauté (--fast)", warn=True)

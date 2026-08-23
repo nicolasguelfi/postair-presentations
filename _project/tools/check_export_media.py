@@ -43,7 +43,8 @@ from pathlib import Path
 
 _REPO = Path(__file__).parent.parent.parent
 _MODULES = ["postair_opening", "postair_survey", "postair_debates",
-            "postair_genai", "postair_guidelines", "postair_collection"]
+            "postair_genai", "postair_guidelines", "postair_collection",
+            "postair_handsup"]
 _CHIP_TEXT = "✦"
 _CHIP_CSS_SIGNATURE = "rgba(113, 113, 122, 0.35)"
 

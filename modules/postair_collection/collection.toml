@@ -63,3 +63,14 @@ emoji = "📋"
 button_label = "Open the deck"
 project_url = "https://postair-guidelines.streamtex.org"
 order = 5
+
+# HORS AGENDA — deck de SECOURS (plan-postair_handsup, NG 2026-08-23) : le
+# sondage à main levée si le système tombe. Order élevé à dessein : dernier
+# du hub et de la chaîne, on n'y arrive que volontairement.
+[projects.handsup]
+title = "By Show of Hands — rescue deck"
+description = "if the tool goes down · 9 axes · statements · one vote per axis"
+emoji = "🙋"
+button_label = "Open the deck"
+project_url = "https://postair-handsup.streamtex.org"
+order = 99

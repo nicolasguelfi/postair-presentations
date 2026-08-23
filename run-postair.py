@@ -59,6 +59,7 @@ MODULES = {
     "debates": {"path": "modules/postair_debates", "port": 8513},
     "genai": {"path": "modules/postair_genai", "port": 8514},
     "guidelines": {"path": "modules/postair_guidelines", "port": 8515},
+    "handsup": {"path": "modules/postair_handsup", "port": 8517},
 }
 
 LOG_DIR = Path(tempfile.gettempdir()) / "postair-presentations"

@@ -1,0 +1,746 @@
+{
+  "_generated_by": "_project/tools/build_handsup_content.py — ne pas éditer, régénérer",
+  "questionnaire_version": "1.9.1",
+  "questionnaire_date": "2026-08-13",
+  "languages": [
+    "en",
+    "fr",
+    "de"
+  ],
+  "scale": {
+    "agree": [
+      {
+        "en": "Strongly agree",
+        "fr": "Tout à fait d'accord",
+        "de": "Stimme voll und ganz zu"
+      },
+      {
+        "en": "Agree",
+        "fr": "D'accord",
+        "de": "Stimme zu"
+      },
+      {
+        "en": "Slightly agree",
+        "fr": "Plutôt d'accord",
+        "de": "Stimme eher zu"
+      }
+    ],
+    "disagree": [
+      {
+        "en": "Slightly disagree",
+        "fr": "Plutôt pas d'accord",
+        "de": "Stimme eher nicht zu"
+      },
+      {
+        "en": "Disagree",
+        "fr": "Pas d'accord",
+        "de": "Stimme nicht zu"
+      },
+      {
+        "en": "Strongly disagree",
+        "fr": "Pas du tout d'accord",
+        "de": "Stimme überhaupt nicht zu"
+      }
+    ],
+    "no_opinion": {
+      "en": "No opinion",
+      "fr": "Sans opinion",
+      "de": "Keine Meinung"
+    }
+  },
+  "axes": [
+    {
+      "code": "TRU",
+      "order": 1,
+      "name": {
+        "en": "Trust",
+        "fr": "Confiance",
+        "de": "Vertrauen"
+      },
+      "decel": {
+        "label": {
+          "en": "Self-reliance",
+          "fr": "Autonomie de jugement",
+          "de": "Eigenständigkeit"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "TRU-04",
+            "text": {
+              "en": "Concerning AI, I rely on my own judgement rather than on experts.",
+              "fr": "Concernant l'IA, je m'appuie sur mon propre jugement plutôt que sur les experts.",
+              "de": "In Sachen KI verlasse ich mich auf mein eigenes Urteil statt auf Fachleute."
+            }
+          },
+          {
+            "id": "TRU-05",
+            "text": {
+              "en": "I believe the bodies in charge of overseeing AI serve their own interests first.",
+              "fr": "Je pense que les organismes chargés de surveiller l'IA servent d'abord leurs propres intérêts.",
+              "de": "Ich glaube, dass die mit der Aufsicht über KI betrauten Stellen in erster Linie ihren eigenen Interessen dienen."
+            }
+          },
+          {
+            "id": "TRU-06",
+            "text": {
+              "en": "As far as I can, I check claims about AI myself rather than accepting official statements.",
+              "fr": "Dans la mesure du possible, je vérifie moi-même les affirmations sur l'IA plutôt que d'accepter les déclarations officielles.",
+              "de": "Soweit es mir möglich ist, prüfe ich selbst Behauptungen über KI, statt offizielle Erklärungen zu übernehmen."
+            }
+          }
+        ]
+      },
+      "accel": {
+        "label": {
+          "en": "Trust",
+          "fr": "Confiance",
+          "de": "Vertrauen"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "TRU-01",
+            "text": {
+              "en": "I trust public institutions to regulate AI in the general interest.",
+              "fr": "Je fais confiance aux institutions publiques pour réguler l'IA dans l'intérêt général.",
+              "de": "Ich vertraue darauf, dass öffentliche Institutionen KI im Interesse der Allgemeinheit regulieren."
+            }
+          },
+          {
+            "id": "TRU-02",
+            "text": {
+              "en": "When recognised experts state that an AI system is safe, I generally trust their judgement.",
+              "fr": "Quand des experts reconnus déclarent qu'un système d'IA est sûr, je fais généralement confiance à leur jugement.",
+              "de": "Wenn anerkannte Fachleute erklären, dass ein KI-System sicher ist, vertraue ich in der Regel ihrem Urteil."
+            }
+          },
+          {
+            "id": "TRU-03",
+            "text": {
+              "en": "Certification of an AI system by an official body reassures me about using it.",
+              "fr": "La certification d'un système d'IA par un organisme officiel me rassure quant à son utilisation.",
+              "de": "Die Zertifizierung eines KI-Systems durch eine offizielle Stelle beruhigt mich im Hinblick auf seine Nutzung."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": "OPT",
+      "order": 2,
+      "name": {
+        "en": "Optimism",
+        "fr": "Optimisme",
+        "de": "Optimismus"
+      },
+      "decel": {
+        "label": {
+          "en": "Pessimism",
+          "fr": "Pessimisme",
+          "de": "Pessimismus"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "OPT-04",
+            "text": {
+              "en": "I believe AI will create more problems than it will solve.",
+              "fr": "Je pense que l'IA créera plus de problèmes qu'elle n'en résoudra.",
+              "de": "Ich glaube, dass KI mehr Probleme schaffen wird, als sie löst."
+            }
+          },
+          {
+            "id": "OPT-05",
+            "text": {
+              "en": "I expect AI, on balance, to do lasting damage to society.",
+              "fr": "Je m'attends à ce que, au total, l'IA cause des dommages durables à la société.",
+              "de": "Ich erwarte, dass KI der Gesellschaft alles in allem dauerhaften Schaden zufügen wird."
+            }
+          },
+          {
+            "id": "OPT-06",
+            "text": {
+              "en": "When I think about a future shaped by AI, I feel more fear than hope.",
+              "fr": "Quand je pense à un avenir façonné par l'IA, je ressens plus de crainte que d'espoir.",
+              "de": "Wenn ich an eine von KI geprägte Zukunft denke, empfinde ich mehr Angst als Hoffnung."
+            }
+          }
+        ]
+      },
+      "accel": {
+        "label": {
+          "en": "Optimism",
+          "fr": "Optimisme",
+          "de": "Optimismus"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "OPT-01",
+            "text": {
+              "en": "Overall, I expect artificial intelligence to improve everyday life over the next ten years.",
+              "fr": "Dans l'ensemble, je m'attends à ce que l'intelligence artificielle améliore la vie quotidienne au cours des dix prochaines années.",
+              "de": "Insgesamt erwarte ich, dass künstliche Intelligenz den Alltag in den nächsten zehn Jahren verbessern wird."
+            }
+          },
+          {
+            "id": "OPT-02",
+            "text": {
+              "en": "I believe AI will help solve major challenges such as disease or climate change.",
+              "fr": "Je pense que l'IA aidera à résoudre de grands défis comme les maladies ou le changement climatique.",
+              "de": "Ich glaube, dass KI helfen wird, große Herausforderungen wie Krankheiten oder den Klimawandel zu bewältigen."
+            }
+          },
+          {
+            "id": "OPT-03",
+            "text": {
+              "en": "When I hear about a new AI capability, my first thought is about the opportunities it could open up.",
+              "fr": "Quand j'entends parler d'une nouvelle capacité de l'IA, ma première pensée va aux opportunités qu'elle pourrait ouvrir.",
+              "de": "Wenn ich von einer neuen Fähigkeit der KI höre, gilt mein erster Gedanke den Chancen, die sie eröffnen könnte."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": "RAT",
+      "order": 3,
+      "name": {
+        "en": "Rationality",
+        "fr": "Rationalité",
+        "de": "Rationalität"
+      },
+      "decel": {
+        "label": {
+          "en": "Emotion",
+          "fr": "Émotion",
+          "de": "Emotion"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "RAT-04",
+            "text": {
+              "en": "What I feel about an AI system matters more to me than the statistics about it.",
+              "fr": "Ce que je ressens à propos d'un système d'IA compte davantage pour moi que les statistiques à son sujet.",
+              "de": "Was ich bei einem KI-System empfinde, zählt für mich mehr als die Statistiken darüber."
+            }
+          },
+          {
+            "id": "RAT-05",
+            "text": {
+              "en": "Decisions about AI should above all respect moral values, even when the numbers point elsewhere.",
+              "fr": "Les décisions sur l'IA devraient avant tout respecter des valeurs morales, même quand les chiffres indiquent autre chose.",
+              "de": "Bei Entscheidungen über KI sollten vor allem moralische Werte geachtet werden, auch wenn die Zahlen in eine andere Richtung weisen."
+            }
+          },
+          {
+            "id": "RAT-06",
+            "text": {
+              "en": "When a technology makes me uneasy, I take that feeling seriously even without hard evidence.",
+              "fr": "Quand une technologie me met mal à l'aise, je prends ce ressenti au sérieux même sans preuve tangible.",
+              "de": "Wenn eine Technologie mir Unbehagen bereitet, nehme ich dieses Gefühl ernst, auch ohne handfeste Belege."
+            }
+          }
+        ]
+      },
+      "accel": {
+        "label": {
+          "en": "Rationality",
+          "fr": "Rationalité",
+          "de": "Rationalität"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "RAT-01",
+            "text": {
+              "en": "My opinion of an AI system depends mainly on measurable facts and figures.",
+              "fr": "Mon opinion sur un système d'IA dépend principalement de faits et de chiffres mesurables.",
+              "de": "Meine Meinung über ein KI-System hängt hauptsächlich von messbaren Fakten und Zahlen ab."
+            }
+          },
+          {
+            "id": "RAT-02",
+            "text": {
+              "en": "Decisions about AI should be based on a comparison of measured costs and benefits.",
+              "fr": "Les décisions sur l'IA devraient reposer sur une comparaison des coûts et des bénéfices mesurés.",
+              "de": "Entscheidungen über KI sollten auf einem Vergleich von gemessenen Kosten und gemessenem Nutzen beruhen."
+            }
+          },
+          {
+            "id": "RAT-03",
+            "text": {
+              "en": "When I evaluate a technology, I set my emotions aside.",
+              "fr": "Quand j'évalue une technologie, je mets mes émotions de côté.",
+              "de": "Wenn ich eine Technologie bewerte, lasse ich meine Emotionen außen vor."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": "SPE",
+      "order": 4,
+      "name": {
+        "en": "Speed",
+        "fr": "Vitesse",
+        "de": "Tempo"
+      },
+      "decel": {
+        "label": {
+          "en": "Prudence",
+          "fr": "Prudence",
+          "de": "Besonnenheit"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "SPE-04",
+            "text": {
+              "en": "An AI system should be proven safe before it is deployed.",
+              "fr": "Un système d'IA devrait être prouvé sûr avant d'être déployé.",
+              "de": "Ein KI-System sollte nachweislich sicher sein, bevor es eingesetzt wird."
+            }
+          },
+          {
+            "id": "SPE-05",
+            "text": {
+              "en": "I prefer to let others uncover the early problems of an AI technology before using it myself.",
+              "fr": "Je préfère laisser d'autres découvrir les premiers problèmes d'une technologie d'IA avant de l'utiliser moi-même.",
+              "de": "Ich lasse lieber andere die ersten Probleme einer KI-Technologie aufdecken, bevor ich sie selbst nutze."
+            }
+          },
+          {
+            "id": "SPE-06",
+            "text": {
+              "en": "Slowing down AI development would be wise, even if this delays its benefits.",
+              "fr": "Ralentir le développement de l'IA serait sage, même si cela retarde ses bénéfices.",
+              "de": "Die Entwicklung der KI zu verlangsamen wäre klug, auch wenn sich ihr Nutzen dadurch verzögert."
+            }
+          }
+        ]
+      },
+      "accel": {
+        "label": {
+          "en": "Speed",
+          "fr": "Vitesse",
+          "de": "Tempo"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "SPE-01",
+            "text": {
+              "en": "New AI systems should be made available quickly so that society benefits as soon as possible.",
+              "fr": "Les nouveaux systèmes d'IA devraient être rendus disponibles rapidement pour que la société en bénéficie au plus tôt.",
+              "de": "Neue KI-Systeme sollten schnell verfügbar gemacht werden, damit die Gesellschaft möglichst bald davon profitiert."
+            }
+          },
+          {
+            "id": "SPE-02",
+            "text": {
+              "en": "I would rather adopt an AI tool early and accept some defects than wait for a perfect version.",
+              "fr": "Je préférerais adopter un outil d'IA tôt en acceptant quelques défauts plutôt que d'attendre une version parfaite.",
+              "de": "Ich würde ein KI-Tool lieber früh einsetzen und einige Mängel in Kauf nehmen, als auf eine perfekte Version zu warten."
+            }
+          },
+          {
+            "id": "SPE-03",
+            "text": {
+              "en": "Better to deploy AI in real life and adjust it through use, than to evaluate it at length before deploying it.",
+              "fr": "Mieux vaut déployer l'IA dans la vie réelle et l'ajuster à l'usage, plutôt que de l'évaluer longuement avant de la déployer.",
+              "de": "Besser, KI im echten Leben einzusetzen und sie durch die Nutzung anzupassen, als sie vor dem Einsatz lange zu evaluieren."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": "OPE",
+      "order": 5,
+      "name": {
+        "en": "Openness",
+        "fr": "Ouverture",
+        "de": "Offenheit"
+      },
+      "decel": {
+        "label": {
+          "en": "Resistance",
+          "fr": "Résistance",
+          "de": "Widerstand"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "OPE-04",
+            "text": {
+              "en": "I prefer to keep my proven ways of doing things rather than adopt new tools.",
+              "fr": "Je préfère garder mes façons de faire qui ont fait leurs preuves plutôt que d'adopter de nouveaux outils.",
+              "de": "Ich behalte lieber meine bewährten Vorgehensweisen bei, statt neue Tools zu übernehmen."
+            }
+          },
+          {
+            "id": "OPE-05",
+            "text": {
+              "en": "I only start using a new technology when I have no other choice.",
+              "fr": "Je ne commence à utiliser une nouvelle technologie que lorsque je n'ai pas d'autre choix.",
+              "de": "Ich beginne erst dann, eine neue Technologie zu nutzen, wenn ich keine andere Wahl habe."
+            }
+          },
+          {
+            "id": "OPE-06",
+            "text": {
+              "en": "Frequent technological change tires me more than it stimulates me.",
+              "fr": "Les changements technologiques fréquents me fatiguent plus qu'ils ne me stimulent.",
+              "de": "Häufige technologische Veränderungen ermüden mich mehr, als sie mich anregen."
+            }
+          }
+        ]
+      },
+      "accel": {
+        "label": {
+          "en": "Openness",
+          "fr": "Ouverture",
+          "de": "Offenheit"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "OPE-01",
+            "text": {
+              "en": "I like to try new AI tools as soon as I can access them.",
+              "fr": "J'aime essayer les nouveaux outils d'IA dès que j'y ai accès.",
+              "de": "Ich probiere gern neue KI-Tools aus, sobald ich Zugang zu ihnen habe."
+            }
+          },
+          {
+            "id": "OPE-02",
+            "text": {
+              "en": "I readily give up a way of working that suits me to adopt a new technology.",
+              "fr": "J'abandonne volontiers une façon de travailler qui me convient pour adopter une nouvelle technologie.",
+              "de": "Ich gebe bereitwillig eine Arbeitsweise auf, die mir zusagt, um eine neue Technologie zu übernehmen."
+            }
+          },
+          {
+            "id": "OPE-03",
+            "text": {
+              "en": "I feel comfortable in situations where I have to learn an unfamiliar technology.",
+              "fr": "Je me sens à l'aise dans les situations où je dois apprendre une technologie que je ne connais pas.",
+              "de": "Ich fühle mich wohl in Situationen, in denen ich eine mir unbekannte Technologie erlernen muss."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": "CON",
+      "order": 6,
+      "name": {
+        "en": "Freedom",
+        "fr": "Liberté",
+        "de": "Freiheit"
+      },
+      "accel": {
+        "label": {
+          "en": "Freedom",
+          "fr": "Liberté",
+          "de": "Freiheit"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "CON-04",
+            "text": {
+              "en": "Everyone should remain free to use AI as they see fit.",
+              "fr": "Chacun devrait rester libre d'utiliser l'IA comme il l'entend.",
+              "de": "Es sollte jeder Person weiterhin freistehen, KI so zu nutzen, wie sie es für richtig hält."
+            }
+          },
+          {
+            "id": "CON-05",
+            "text": {
+              "en": "Excessive regulation of AI worries me more than the absence of regulation.",
+              "fr": "L'excès de régulation de l'IA m'inquiète davantage que son absence.",
+              "de": "Übermäßige Regulierung der KI beunruhigt mich mehr als das Fehlen von Regulierung."
+            }
+          },
+          {
+            "id": "CON-06",
+            "text": {
+              "en": "For me, the protection offered by AI regulations is not worth the freedom they take away.",
+              "fr": "Pour moi, la protection qu'apportent les règles sur l'IA ne vaut pas la liberté qu'elles retirent.",
+              "de": "Für mich ist der Schutz, den Regeln für KI bieten, die Freiheit nicht wert, die sie nehmen."
+            }
+          }
+        ]
+      },
+      "decel": {
+        "label": {
+          "en": "Control",
+          "fr": "Contrôle",
+          "de": "Kontrolle"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "CON-01",
+            "text": {
+              "en": "Strict rules on AI use are necessary, even if they limit individual freedom.",
+              "fr": "Des règles strictes sur l'usage de l'IA sont nécessaires, même si elles limitent la liberté individuelle.",
+              "de": "Strenge Regeln für die Nutzung von KI sind notwendig, auch wenn sie die individuelle Freiheit einschränken."
+            }
+          },
+          {
+            "id": "CON-02",
+            "text": {
+              "en": "I accept that the use of AI systems be monitored for the sake of everyone's safety.",
+              "fr": "J'accepte que l'usage des systèmes d'IA soit surveillé au nom de la sécurité de tous.",
+              "de": "Ich akzeptiere, dass die Nutzung von KI-Systemen im Namen der Sicherheit aller überwacht wird."
+            }
+          },
+          {
+            "id": "CON-03",
+            "text": {
+              "en": "Dangerous AI applications should be banned, not merely discouraged.",
+              "fr": "Les applications dangereuses de l'IA devraient être interdites, et pas seulement découragées.",
+              "de": "Gefährliche KI-Anwendungen sollte man verbieten, nicht bloß von ihnen abraten."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": "CEN",
+      "order": 7,
+      "name": {
+        "en": "Centralisation",
+        "fr": "Centralisation",
+        "de": "Zentralisierung"
+      },
+      "decel": {
+        "label": {
+          "en": "Decentralisation",
+          "fr": "Décentralisation",
+          "de": "Dezentralisierung"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "CEN-04",
+            "text": {
+              "en": "Decisions about AI use are best taken locally, by the communities concerned.",
+              "fr": "Les décisions sur l'usage de l'IA sont mieux prises localement, par les communautés concernées.",
+              "de": "Entscheidungen über den Einsatz von KI werden am besten lokal getroffen, von den betroffenen Gemeinschaften."
+            }
+          },
+          {
+            "id": "CEN-05",
+            "text": {
+              "en": "I prefer several independent approaches to AI governance over one single framework.",
+              "fr": "Je préfère plusieurs approches indépendantes de la gouvernance de l'IA plutôt qu'un cadre unique.",
+              "de": "Ich ziehe mehrere unabhängige Ansätze der KI-Governance einem einzigen Rahmen vor."
+            }
+          },
+          {
+            "id": "CEN-06",
+            "text": {
+              "en": "Each organisation should set its own rules for AI use, rather than follow rules imposed from outside.",
+              "fr": "Chaque organisation devrait fixer ses propres règles d'usage de l'IA, plutôt que de suivre des règles imposées de l'extérieur.",
+              "de": "Jede Organisation sollte ihre eigenen Regeln für den KI-Einsatz festlegen, statt von außen auferlegten Regeln zu folgen."
+            }
+          }
+        ]
+      },
+      "accel": {
+        "label": {
+          "en": "Centralisation",
+          "fr": "Centralisation",
+          "de": "Zentralisierung"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "CEN-01",
+            "text": {
+              "en": "AI should be governed by common rules set at the international level.",
+              "fr": "L'IA devrait être encadrée par des règles communes fixées au niveau international.",
+              "de": "KI sollte gemeinsamen Regeln unterliegen, die auf internationaler Ebene festgelegt werden."
+            }
+          },
+          {
+            "id": "CEN-02",
+            "text": {
+              "en": "A single authority responsible for AI regulation would be more effective than many separate authorities.",
+              "fr": "Une autorité unique chargée de la régulation de l'IA serait plus efficace que de nombreuses autorités séparées.",
+              "de": "Eine einzige, für die Regulierung von KI zuständige Behörde wäre wirksamer als viele getrennte Behörden."
+            }
+          },
+          {
+            "id": "CEN-03",
+            "text": {
+              "en": "The global risks of AI can only be addressed through centralised decisions.",
+              "fr": "Les risques mondiaux de l'IA ne peuvent être traités que par des décisions centralisées.",
+              "de": "Die globalen Risiken der KI lassen sich nur durch zentralisierte Entscheidungen bewältigen."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": "ALT",
+      "order": 8,
+      "name": {
+        "en": "Individualism",
+        "fr": "Individualisme",
+        "de": "Individualismus"
+      },
+      "accel": {
+        "label": {
+          "en": "Individualism",
+          "fr": "Individualisme",
+          "de": "Individualismus"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "ALT-04",
+            "text": {
+              "en": "If sharing an AI advantage with others meant losing my personal edge, I would keep it for myself.",
+              "fr": "Si partager un avantage lié à l'IA devait me faire perdre mon avance personnelle, je le garderais pour moi.",
+              "de": "Wenn das Teilen eines KI-Vorteils mit anderen bedeuten würde, meinen persönlichen Vorsprung zu verlieren, würde ich den Vorteil für mich behalten."
+            }
+          },
+          {
+            "id": "ALT-05",
+            "text": {
+              "en": "It is up to each person to secure their own access to the benefits of AI.",
+              "fr": "C'est à chacun de s'assurer son propre accès aux bénéfices de l'IA.",
+              "de": "Es ist Sache jeder einzelnen Person, sich ihren eigenen Zugang zu den Vorteilen der KI zu sichern."
+            }
+          },
+          {
+            "id": "ALT-06",
+            "text": {
+              "en": "In my choices about AI, my own interest comes before the collective interest.",
+              "fr": "Dans mes choix concernant l'IA, mon intérêt propre passe avant l'intérêt collectif.",
+              "de": "Bei meinen Entscheidungen zur KI geht mein eigenes Interesse dem kollektiven Interesse vor."
+            }
+          }
+        ]
+      },
+      "decel": {
+        "label": {
+          "en": "Altruism",
+          "fr": "Altruisme",
+          "de": "Altruismus"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "ALT-01",
+            "text": {
+              "en": "The benefits of AI should be shared across society, even if that reduces my personal advantage.",
+              "fr": "Les bénéfices de l'IA devraient être partagés dans la société, même si cela réduit mon avantage personnel.",
+              "de": "Die Vorteile der KI sollten in der gesamten Gesellschaft geteilt werden, auch wenn das meinen persönlichen Vorteil verringert."
+            }
+          },
+          {
+            "id": "ALT-02",
+            "text": {
+              "en": "I would accept a personal cost so that everyone can benefit from AI.",
+              "fr": "J'accepterais un coût personnel pour que tout le monde puisse bénéficier de l'IA.",
+              "de": "Ich würde persönliche Kosten in Kauf nehmen, damit alle von der KI profitieren können."
+            }
+          },
+          {
+            "id": "ALT-03",
+            "text": {
+              "en": "When I use AI, I think about the consequences for other people.",
+              "fr": "Quand j'utilise l'IA, je pense aux conséquences pour les autres.",
+              "de": "Wenn ich KI nutze, denke ich an die Folgen für andere Menschen."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code": "TRA",
+      "order": 9,
+      "name": {
+        "en": "Transhumanism",
+        "fr": "Transhumanisme",
+        "de": "Transhumanismus"
+      },
+      "decel": {
+        "label": {
+          "en": "Humanism",
+          "fr": "Humanisme",
+          "de": "Humanismus"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "TRA-04",
+            "text": {
+              "en": "Human beings should remain as nature made them.",
+              "fr": "Les êtres humains devraient rester tels que la nature les a faits.",
+              "de": "Der Mensch sollte so bleiben, wie die Natur ihn geschaffen hat."
+            }
+          },
+          {
+            "id": "TRA-05",
+            "text": {
+              "en": "Beyond medical care, education and training are the only acceptable ways of improving human abilities.",
+              "fr": "En dehors des soins médicaux, l'éducation, la formation et l'entraînement sont les seules manières acceptables d'améliorer les capacités humaines.",
+              "de": "Abgesehen von der medizinischen Versorgung sind Bildung und Training die einzigen akzeptablen Wege, die menschlichen Fähigkeiten zu verbessern."
+            }
+          },
+          {
+            "id": "TRA-06",
+            "text": {
+              "en": "Technological modification of the human body or mind worries me, even when it is presented as safe.",
+              "fr": "La modification technologique du corps ou de l'esprit humain m'inquiète, même quand elle est présentée comme sûre.",
+              "de": "Die technologische Veränderung des menschlichen Körpers oder Geistes beunruhigt mich, auch wenn sie als sicher dargestellt wird."
+            }
+          }
+        ]
+      },
+      "accel": {
+        "label": {
+          "en": "Transhumanism",
+          "fr": "Transhumanisme",
+          "de": "Transhumanismus"
+        },
+        "synthesis": null,
+        "statements": [
+          {
+            "id": "TRA-01",
+            "text": {
+              "en": "I am in favour of technologies that raise human mental abilities beyond their natural level.",
+              "fr": "Je suis favorable aux technologies qui portent les capacités mentales humaines au-delà de leur niveau naturel.",
+              "de": "Ich befürworte Technologien, die die geistigen Fähigkeiten des Menschen über ihr natürliches Niveau hinaus steigern."
+            }
+          },
+          {
+            "id": "TRA-02",
+            "text": {
+              "en": "If a medically safe implant improved memory, I would consider using it for myself.",
+              "fr": "Si un implant médicalement sûr améliorait la mémoire, j'envisagerais de l'utiliser pour moi-même.",
+              "de": "Wenn ein medizinisch sicheres Implantat das Gedächtnis verbessern würde, würde ich in Betracht ziehen, es für mich selbst zu nutzen."
+            }
+          },
+          {
+            "id": "TRA-03",
+            "text": {
+              "en": "Humanity should use technology to overcome its biological limits.",
+              "fr": "L'humanité devrait utiliser la technologie pour dépasser ses limites biologiques.",
+              "de": "Die Menschheit sollte Technologie nutzen, um ihre biologischen Grenzen zu überwinden."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
