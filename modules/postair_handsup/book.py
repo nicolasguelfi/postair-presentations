@@ -112,39 +112,37 @@ marker_config = MarkerConfig(
 )
 
 # Reading order IS this list. Un axe = trois lignes, dans l'ordre HORAIRE du
-# radar (champ `order` du questionnaire). Les lignes *_synthetic sont
-# COMMENTÉES tant que le hub n'a pas livré le champ `synthesis` (ticket
-# ai-social-profiles, v1.10.0) : les décommenter APRÈS le regel — jamais de
-# texte provisoire à la place.
+# radar (champ `order` du questionnaire) : les énoncés, la synthèse
+# (questionnaire v1.10.0 du hub), le vote.
 st_book(
     [
         blocks.bck_title,             # titre PAPERCUT + sélecteur de langue + ancrage
         blocks.bck_axis_trust_questions,
-        # blocks.bck_axis_trust_synthetic,      # à décommenter au regel v1.10.0
+        blocks.bck_axis_trust_synthetic,
         blocks.bck_axis_trust_scale,
         blocks.bck_axis_optimism_questions,
-        # blocks.bck_axis_optimism_synthetic,   # à décommenter au regel v1.10.0
+        blocks.bck_axis_optimism_synthetic,
         blocks.bck_axis_optimism_scale,
         blocks.bck_axis_rationality_questions,
-        # blocks.bck_axis_rationality_synthetic,  # à décommenter au regel v1.10.0
+        blocks.bck_axis_rationality_synthetic,
         blocks.bck_axis_rationality_scale,
         blocks.bck_axis_speed_questions,
-        # blocks.bck_axis_speed_synthetic,      # à décommenter au regel v1.10.0
+        blocks.bck_axis_speed_synthetic,
         blocks.bck_axis_speed_scale,
         blocks.bck_axis_openness_questions,
-        # blocks.bck_axis_openness_synthetic,   # à décommenter au regel v1.10.0
+        blocks.bck_axis_openness_synthetic,
         blocks.bck_axis_openness_scale,
         blocks.bck_axis_freedom_questions,
-        # blocks.bck_axis_freedom_synthetic,    # à décommenter au regel v1.10.0
+        blocks.bck_axis_freedom_synthetic,
         blocks.bck_axis_freedom_scale,
         blocks.bck_axis_centralisation_questions,
-        # blocks.bck_axis_centralisation_synthetic,  # à décommenter au regel v1.10.0
+        blocks.bck_axis_centralisation_synthetic,
         blocks.bck_axis_centralisation_scale,
         blocks.bck_axis_individualism_questions,
-        # blocks.bck_axis_individualism_synthetic,   # à décommenter au regel v1.10.0
+        blocks.bck_axis_individualism_synthetic,
         blocks.bck_axis_individualism_scale,
         blocks.bck_axis_transhumanism_questions,
-        # blocks.bck_axis_transhumanism_synthetic,   # à décommenter au regel v1.10.0
+        blocks.bck_axis_transhumanism_synthetic,
         blocks.bck_axis_transhumanism_scale,
         blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         # ── Appendix ────────────────────────────────────────────────
