@@ -135,8 +135,8 @@ st_book(
         blocks.bck_screens_consent,   # capture 03 — consent, nothing personal
         blocks.bck_screens_eligibility,  # capture 02-eligibilite — la porte d'âge (mineurs)
         blocks.bck_screens_statement,  # capture 04 — a statement, six levels + les 3 règles
-        blocks.bck_screens_poster,    # TOC anchor « The screens » — the personal radar, full frame
         blocks.bck_screen_progress,   # écran 05-progression, pleine page — la barre est dedans
+        blocks.bck_results_poster,    # TOC anchor « The Results » — poster papercut (IA, éditable)
         blocks.bck_screen_send,       # écran 06-envoi
         blocks.bck_results_radar_howto,  # how to read a posture radar
         blocks.bck_screen_report_header,  # écran 07-res-entete (ancre TOC du groupe « report »)
