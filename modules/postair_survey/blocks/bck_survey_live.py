@@ -51,11 +51,11 @@ def build():
                          "(operator key): pause / resume / close / reopen per day."),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v",s.project.spacing.title_gap)
         with st_grid(cols="55% 45%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_image(s.project.cards.media_center, width="100%", editable=False, name="survey_live_room",
+                st_image(s.project.cards.media_center, width="100%", editable=True, name="survey_live_room",
                          alt="Papercut amphitheatre: rows of paper silhouettes holding glowing "
                              "phones like lanterns while answering the survey",
                     overlay=dd35_overlay(is_synthetic("survey_live_room")))

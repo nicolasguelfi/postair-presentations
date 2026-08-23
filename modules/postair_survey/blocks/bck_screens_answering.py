@@ -40,6 +40,11 @@ def build():
                    "frozen from the sumvadis media registry, never redrawn."),
                   ("Median duration", "20-40 minutes measured; the progress bar is there "
                    "so nobody has to guess.")]),
+        zoomImage=160,
+        zoomText=130,
+        device="mobile",
+        landscape=False,
+        crop=(0, 0, 5, 0),
     )
     st_slide_break(marker_label="Sending your answers",
                    config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
