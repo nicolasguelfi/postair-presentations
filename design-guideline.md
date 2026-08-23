@@ -1,7 +1,13 @@
-# postair_survey — Design guideline
+# POSTAIR — Design guideline (tous modules)
 
 Héritée de FC-260507 (R1-R13) et adaptée au duo « canvas navy + mascottes Pixar ».
-À respecter dans chaque block ; annoter `# @guideline: postair-minimal`.
+À respecter dans chaque block de chaque module ; annoter `# @guideline: postair-minimal`.
+
+**UN seul exemplaire, ici, à la racine** (consolidation P1, NG 2026-08-23) : les
+copies par module avaient déjà divergé (survey n'avait pas R-facts). Un écart
+propre à un module se note dans la règle concernée, jamais dans une copie.
+Le *comment-faire* opératoire (procédures, incidents, pièges) vit dans
+`PLAYBOOK.md` ; la porte d'avant-répétition est `_project/tools/check_all.py`.
 
 - **R0 Maximiser l'espace (règle amphi, NG 2026-07-29)** : un slide ne doit JAMAIS être vide à 80 % — les images et les polices prennent tout l'espace disponible ; les participants sont loin de l'écran (amphi 500-1500 places). Vidéo/projection = pleine largeur (`page_fill_full`).
 - **R1 Canvas** : navy `#1A1A2E`, 16:9, `page_fill_top|center|full` (88vh), marges minimales, `page_width=100`.
@@ -23,4 +29,7 @@ Héritée de FC-260507 (R1-R13) et adaptée au duo « canvas navy + mascottes Pi
 - **R11 stx-only** : jamais de HTML/CSS brut dans un block (composition de `Style` ; `st_html` réservé aux widgets partagés).
 - **R12 Speaker notes** : discours complet dans le docstring du block.
 - **R13 Data-driven** : tout contenu issu du questionnaire/cast passe par `postair_data` (pas de copier-coller de labels).
+- **R-facts Le fait vit dans son bloc (NG 2026-08-18)** : un fait qui ne sert qu'**une** slide vit dans le fichier de cette slide, en constantes structurées (`_VALUE`/`_CLAIM`/`_DETAIL`/`_CAVEAT`/`_CITEKEYS`…) — textes, chiffres et choix de citations s'éditent là, en un seul fichier, avec commentaires et TODO à côté de ce qu'ils annotent. Ce qui est projeté par **plusieurs** slides reste dans `custom/` (ex. la réserve `no_faculty_data` des trois slides facultés). Les gabarits de série (`already_slide`, `faculty_slide`, `limit_slide`) sont retirés : une série partage une **composition**, documentée dans la docstring de chacun de ses blocs, et toute évolution de composition se réplique à la main sur les blocs de la série (le nom de la série les fait retrouver : `bck_already_*`, `bck_faculty_*`). La structure du fait (claim / population / contrepoint / caveat / citekeys) survit au déménagement — c'est elle qui porte l'honnêteté éditoriale — et les métadonnées jamais projetées (populations d'études de contrepoint, notes de vérification) sont préservées en commentaire près des constantes. `R-bib` reste inchangée : les constantes ne portent que des **clés** de citation, jamais une phrase bibliographique.
 - **R14 Annotations de type dans un block** : `from streamtex import *` **masque le builtin `list`** (le module `streamtex/list.py`, celui de `st_list`). Une annotation `-> list[dict]` lève alors `TypeError: 'module' object is not subscriptable` **à l'import**, donc avant toute exécution. Tout block qui annote avec un générique doit ouvrir par `from __future__ import annotations`, qui laisse les annotations non évaluées. Constaté en production le 2026-08-01.
+- **R-balance Bénéfices et risques à parts égales (NG 2026-08-19)** : une slide qui présente des constats sur l'IA en montre autant côté bénéfice que côté risque (un-pour-un) — ni activation de la peur, ni promesse — **sauf** domaine où la littérature tranche nettement dans un sens. Chaque camp cite ses propres sources (`R-bib` s'applique aux deux) ; un contrepoint sans clé de citation n'est pas un contrepoint. Exemple de référence : la slide FDEF (Kleinberg/Posner côté bénéfice, Dahl/Magesh côté risque).
+- **R-zoom Le zoom CSS est inerte sur les pourcentages (prouvé au rendu, 2026-08-19)** : `st_zoom` multiplie les tailles en px/pt/vw/vh et les tailles naturelles, mais une largeur en `%` se recalcule contre le conteneur zoomé et l'effet s'annule exactement. Ce qu'on veut pouvoir zoomer se dimensionne en **unités de fenêtre** ; le levier propre d'un média reste sa borne (`media_stage(ratio, vh)`, paramètre `stage_vh=`/`image_width=` d'un gabarit), pas un zoom englobant. ⚠ Corollaire managé : les métadonnées d'affichage d'une image managée (`display_zoom`, `display_width` dans son JSON) **écrasent** le `width=` du code dès que `st_image` reçoit `name=` — si un `width` semble sans effet, regarder le JSON managé avant le CSS.

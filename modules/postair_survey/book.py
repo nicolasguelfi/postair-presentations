@@ -137,7 +137,7 @@ st_book(
         blocks.bck_screens_statement,  # capture 04 — a statement, six levels + les 3 règles
         blocks.bck_screens_progress,   # écran 05-progression, pleine page — la barre est dedans
         blocks.bck_results_poster,    # TOC anchor « The Results » — poster papercut (IA, éditable)
-        blocks.bck_screen_send,       # écran 06-envoi
+        blocks.bck_screens_send,       # écran 06-envoi
         blocks.bck_results_radar_howto,  # how to read a posture radar
         blocks.bck_screens_report_header,  # écran 07-res-entete (ancre TOC du groupe « report »)
         blocks.bck_screens_mascot_card,  # écran 08-res-carte
@@ -154,9 +154,9 @@ st_book(
         # ── Duos vidéo (NG 2026-08-22) : pages JUMELLES — la flèche droite
         # passe à la jumelle et y lance la vidéo de droite avec le son.
         blocks.bck_video_mascots,     # Pathos (animaux) se lance à gauche
-        blocks.bck_video_mascots_2,   # même scène — Bici (objets) se lance
+        blocks.bck_video_mascots_right,   # même scène — Bici (objets) se lance
         blocks.bck_video_figures,     # Platon se lance à gauche (CDN)
-        blocks.bck_video_figures_2,   # même scène — Ada Lovelace se lance
+        blocks.bck_video_figures_right,   # même scène — Ada Lovelace se lance
         blocks.bck_survey_results,    # open the room's results (operator buttons)
         blocks.bck_results_archetypes,  # the six archetypes
         blocks.bck_results_room,      # the room's results — commentary

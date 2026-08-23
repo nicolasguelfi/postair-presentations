@@ -1,0 +1,177 @@
+# PLAYBOOK — le comment-faire des présentations POSTAIR
+
+Distillé des 120 premiers commits (2026-07-29 → 2026-08-23) et des sessions de
+mise au point. **Ici vivent les procédures et les pièges** ; les *règles de
+design* vivent dans `design-guideline.md`, la doctrine des tuyaux dans
+`CLAUDE.md`, et la vérité des décisions datées reste dans les docstrings et
+commits qu'indexe l'annexe. Un état qui change (URLs, versions) n'a pas sa
+place ici — une procédure, si.
+
+## 1. Lancer, régler, répéter
+
+```bash
+uv run python run-postair.py --kill && uv run python run-postair.py --fresh          # le jeu complet
+uv run python run-postair.py --fresh --html                                          # + exports statiques locaux (port 8510)
+uv run python run-postair.py --ports-offset 300 --no-browser survey                  # instance isolée (tests, captures)
+uv run python _project/tools/check_all.py                                            # LA porte d'avant-répétition
+```
+
+- **Rechargement à chaud** : les blocs (`blocks/bck_*.py`) et le `book.py`
+  rechargent à la volée. **Tout le reste est en cache serveur** : une édition
+  sous `custom/`, `shared-blocks/`, `postair_pack/` ou un changement de version
+  de librairie exige `--kill` puis `--fresh`. C'est LE réflexe qui évite de
+  conclure « ça ne marche pas » devant du code jamais exécuté.
+- Un deck qui **bloque au chargement** (barre figée sur « module N/M ») cache
+  presque toujours une exception d'un bloc : `check_all` (ou
+  `check_blocks_build.py <module>`) donne le bloc fautif et l'erreur exacte en
+  quelques secondes — plus rapide que les logs.
+- **Projection** : Chrome dédié lancé avec
+  `--autoplay-policy=no-user-gesture-required` (autoplay + son des vidéos) ;
+  conception en fenêtre 16:9 (responsive 1920×1080) ; passer une fois sur
+  toutes les slides avant la séance (caches, vidéos, QR).
+- L'orateur **choisit le jour** dans le sélecteur de la slide de participation
+  avant de se tourner vers la salle ; « Custom code… » accepte une campagne
+  créée le matin même (QR généré localement).
+
+## 2. Ajouter un module au jeu
+
+1. `modules/postair_<clé>/` : `book.py`, `setup.py`, `blocks/`, `custom/`,
+   `static/` — copier le `.streamlit/config.toml` d'opening À L'IDENTIQUE
+   (thème sombre + `enableStaticServing` ; trois modules ont tourné blanc-sur-
+   blanc en prod faute de ce fichier).
+2. Déclarer le module dans `postair_collection/collection.toml` (ordre, titre,
+   URL) : le hub **et** la chaîne « Next deck » en dérivent — rien d'autre à
+   écrire pour la chaîne, mais ajouter le `blocks/bck_next_module.py` du module
+   avec sa clé EXPLICITE (jamais déduite du répertoire courant : le lanceur
+   local part de la racine).
+3. Créer l'app Coolify (POST `/api/v1/applications/public`, uuids projet/serveur
+   dans `.stx-deploy.json`, env `FOLDER` + `STX_SERVE_MODE=dual`, domaine), puis
+   reporter l'UUID aux TROIS endroits : `.github/workflows/hetzner-deploy.yml`,
+   `.stx-deploy.json`, `DEPLOY.md`. Un placeholder oublié = échec bruyant du
+   workflow (voulu).
+4. `sync_media.py` : ajouter le module aux listes qui le concernent
+   (`MASCOT_MODULES`, `CLIP_MODULES`, `FILM_MODULES`…) — les **films** ne vont
+   qu'aux modules qui les projettent (~150 Mo économisés sur survey).
+
+## 3. Blocs et slides — les conventions qui tiennent
+
+- **Un écran/un message = un bloc = une ligne du book** : ordonner, inclure,
+  exclure se fait en commentant une ligne. Préfixes triables (`bck_screens_*`,
+  `bck_video_*`…), **jamais de numéro dans un nom de fichier** (l'ordre change
+  sans cesse ; les `05-progression` visibles dans les blocs sont des *slugs du
+  registre*, des identifiants de données).
+- Les ancres TOC de groupe vivent sur le bloc de TÊTE du groupe : exclure ce
+  bloc = déplacer son `toc_label` sur le survivant.
+- Gabarits de mise en page module-locaux : `screen_slide` (Q14 : capture à
+  gauche, cartes à droite — `device`/`theme`/`lang`/`crop`/`split`/
+  `image_width`/`zoomImage`/`zoomText`), `media_duo` (deux vidéos carrées,
+  pages JUMELLES : la page active lance sa vidéo, la flèche droite passe à la
+  jumelle — c'est la pagination qui fait l'autoplay séquencé ; taille par
+  `stage_vh=`).
+- Les faits d'une slide vivent DANS son bloc (règle R-facts) ; les images IA
+  suivent la ligne PAPERCUT (`custom/prompts.py`) en mode éditable avec repli
+  tant que l'image managée n'existe pas — jamais de trou projeté.
+
+## 4. Campagnes médias — regel et matérialisation
+
+Chaîne générale : **publier en amont → regeler le catalogue → purger →
+matérialiser → contrôler**. Jamais d'URL ni de chemin écrit à la main ; jamais
+d'enrichissement d'un gel à la main (seconde vérité).
+
+```bash
+# Captures du parcours (après toute campagne sumvadis)
+uv run python _project/tools/build_survey_captures.py --work-order   # constat
+uv run python _project/tools/build_survey_captures.py                # regel
+rm -rf modules/postair_survey/static/media/captures
+uv run python _project/tools/sync_media.py
+
+# Mascottes / clips / films (après une évolution du studio)
+uv run python _project/tools/sync_media.py --freeze                  # machine de l'auteur
+uv run python _project/tools/check_shared_freeze.py
+
+# Débats (après toute campagne hub) — le contrôle AVAL OBLIGATOIRE
+uv run python _project/tools/build_debates_content.py --work-order
+```
+
+- Le gel des captures est **matrice complète + opportuniste** : la matrice de
+  base (mobile/desktop × sombre/clair × en/fr/de) est exigée, toute facette
+  publiée au-delà (ex. `mobile-complet`, la pleine page) est gelée si présente.
+  Une facette absente du catalogue = KeyError bruyant dans la slide — le
+  remède est TOUJOURS en amont (publier) puis regel, jamais un contournement.
+- Les noms locaux portent l'horodatage de version : « fichier présent = à
+  jour » par construction ; purger un dossier de médias est toujours sûr.
+- Vidéos : les clips mascottes et les films sont embarqués ; les vidéos de
+  figures restent au CDN **sauf** celles que le deck projette
+  (`FIGURE_VIDEO_MODULES` dans `sync_media.py`, miroir de `figure_duo()`).
+  Motif : une vidéo distante non chargée s'affiche en bandeau écrasé — en
+  local, la case est juste immédiatement.
+
+## 5. Déployer
+
+**Push sur `main` = production** (workflow « Deploy to Hetzner » → Coolify,
+les 6 services). Le workflow est **séquentiel pur** : un build à la fois,
+attente du statut terminal — le lot de 4 d'origine tuait le serveur de build
+depuis que les images embarquent ~600 Mo de médias (exit 255 en plein cache
+warmup, deux déploiements de suite).
+
+- Un build qui échoue **laisse l'ancien conteneur en ligne** : le site reste
+  sain mais périmé — vérifier le *contenu* servi, pas seulement le code 200
+  (chercher un marqueur de la nouvelle version dans l'export `/html/`).
+- Relance manuelle d'un service :
+  `curl "$COOLIFY_URL/api/v1/deploy?uuid=<uuid>" -H "Authorization: Bearer $TOKEN"`
+  (identifiants dans `.stx-deploy.env`, UUIDs dans `DEPLOY.md`).
+- Chaque conteneur sert le mode **dual** : l'app Streamlit (orateur) et
+  l'export statique sous `/html/` (public). En local, `run-postair.py --html`
+  reproduit exactement ce couple.
+
+## 6. Incidents connus du CDN `media.sumvadis.ai` (vécu, août 2026)
+
+| Symptôme | Cause vue | Geste |
+|---|---|---|
+| HTTP 429 en rafale au build | plusieurs builds parallèles matérialisant les mêmes médias | le retry de `sync_media` (5 essais, backoff, `Retry-After`) absorbe ; le déploiement séquentiel évite |
+| Corps d'**1 octet** servis en masse | épisode transitoire du proxy (~2 h), résolu seul | re-vérifier en GET PLEIN (magic bytes + taille plancher) avant de conclure à une perte ; ne jamais juger sur un `content-length` de 206 |
+| **206 à un GET sans Range**, octets invalides | objet servi corrompu par le proxy | reproduire avec `curl` + `xxd -l 16`, envoyer l'URL exacte à la session sumvadis ; en attendant, rendition de repli si elle est saine |
+
+Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncée,
+écriture atomique) déplacent la panne du pire moment (l'amphi) au moins cher
+(le build) — les conserver tels quels.
+
+## 7. Pièges de code — la liste qui fait gagner une heure
+
+- **`from streamtex import *` masque le builtin `list`** (règle R14) : `[*x]`
+  au lieu de `list(x)`, `from __future__ import annotations` pour les
+  annotations génériques. Filet : `check_blocks_build.py`.
+- **Zoom CSS inerte sur les `%`** (règle R-zoom) — et `display_zoom` du JSON
+  managé qui écrase le `width=` du code.
+- **Clé de widget stable** : une clé engendrée se réinitialise à chaque rerun
+  sous la main de l'orateur (`_SELECTOR_KEY`…).
+- **En mode paginé, seule la page courante s'exécute** : jamais
+  `only_cited=True` pour la bibliographie ; et c'est ce qui permet l'autoplay
+  séquencé des pages jumelles.
+- **`Path.cwd()` interdit pour se repérer** : ancrer sur `__file__` (le
+  lanceur part de la racine, le conteneur fait `cd`) — bug vécu sur la chaîne.
+- Le `.bib` se lit par streamtex, pas LaTeX : UTF-8 direct, pas d'accolades de
+  casse ; clé inconnue = erreur bruyante voulue.
+- Un artefact GELÉ ne porte jamais d'adresse `/c/` (règle I3) — uniquement du
+  contenu-adressé ou du `/v/` horodaté.
+
+## Annexe — index des décisions datées (pointeurs, jamais de copie)
+
+| Décision | Date | Où vit le texte canonique |
+|---|---|---|
+| Style PAPERCUT (planche s4) | 2026-07-29 | `custom/prompts.py` (opening) + règle des images IA de la guideline |
+| Médias servis, jamais inlinés / gels | 2026-08-01→03 | `CLAUDE.md` + docstring `sync_media.py` |
+| Règle I3 (jamais `/c/` dans un gel) | 2026-08-03 | `CLAUDE.md` |
+| Pattern bib canonique | 2026-08-03/11 | `CLAUDE.md` + règle R-bib |
+| Marque DD-35 sur tout média IA | 2026-08-12 | `postair_pack/components/ai_mark.py` + `check_export_media.py` |
+| Q14 — captures mobiles, mise en page capture/cartes | 2026-08-14 | docstring `custom/screen_slide.py` (survey) |
+| Q15 — écrans d'opérateur en desktop paysage | 2026-08-14 | docstring `bck_screens_regie.py` |
+| Écran d'attente = film `axes-intro` | 2026-08-14 | `CLAUDE.md` + `PROVENANCE.md` |
+| R-facts — le fait vit dans son bloc | 2026-08-18 | guideline |
+| R-balance — bénéfices/risques un-pour-un | 2026-08-19 | guideline |
+| Chaîne du jour « C + B allégée » | 2026-08-19 | docstring `shared-blocks/postair_chain.py` |
+| Décision D — gel matrice complète des captures | 2026-08-21 | docstring `build_survey_captures.py` |
+| Gel opportuniste des facettes hors matrice | 2026-08-23 | docstring `build_survey_captures.py` |
+| Films matérialisés seulement où projetés | 2026-08-23 | docstring `sync_media.py` |
+| Exception vidéos de figures embarquées (duos) | 2026-08-23 | `CLAUDE.md` + `sync_media.py` |
+| Un écran = un bloc ; préfixe pluriel | 2026-08-23 | docstrings `bck_screens_*` + book |

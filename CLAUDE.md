@@ -3,6 +3,15 @@
 Ce dépôt produit les documents projetés de l'**AI Day** de l'Université du Luxembourg
 (8, 9 et 10 septembre 2026, trois séances identiques, ~1500 primo-inscrits).
 
+## Les trois repères du dépôt (consolidation 2026-08-23)
+
+- **`design-guideline.md`** (racine) : les règles de design, R0→R-zoom — l'UNIQUE
+  exemplaire, les copies par module ont été retirées après divergence.
+- **`PLAYBOOK.md`** : le comment-faire — procédures (module, médias, déploiement),
+  incidents CDN vécus, pièges de code, et l'index des décisions datées.
+- **`uv run python _project/tools/check_all.py`** : LA porte d'avant-répétition
+  (toutes les vérifications ; `--fast` sans la porte des exports).
+
 ## Carte de l'écosystème POSTAIR / Sumvadis
 
 Ce dépôt est un maillon d'une chaîne de 6 dépôts (fabrique de médias, hub des figures,
