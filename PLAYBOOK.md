@@ -60,6 +60,15 @@ uv run python _project/tools/check_all.py                                       
   `bck_video_*`…), **jamais de numéro dans un nom de fichier** (l'ordre change
   sans cesse ; les `05-progression` visibles dans les blocs sont des *slugs du
   registre*, des identifiants de données).
+- **Une slide générique répétée = UN bloc, listé N fois** (NG 2026-08-24,
+  vote handsup) : l'ancre d'un marqueur embarque l'index du registre
+  (`stx-marker-<slug>-<idx>`), un libellé répété ne collisionne donc JAMAIS —
+  ne pas répliquer des fichiers identiques par peur de la collision (erreur
+  vécue : 54 blocs pour 3 slides). Marqueur `hidden=True` sur ces blocs :
+  les flèches traversent chaque occurrence, la barre latérale ne liste que
+  les slides porteuses. Besoin d'ancres nommées par occurrence ? une
+  fabrique paramétrable (`st_include` accepte tout objet portant `build()`),
+  pas des copies.
 - Les ancres TOC de groupe vivent sur le bloc de TÊTE du groupe : exclure ce
   bloc = déplacer son `toc_label` sur le survivant.
 - Gabarits de mise en page module-locaux : `screen_slide` (Q14 : capture à

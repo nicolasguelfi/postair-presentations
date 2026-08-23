@@ -136,14 +136,16 @@ def pole_synthesis_slide(code: str, kind: str) -> None:
                          tag=t.div)
 
 
-# ── Les trois slides de vote (NG 2026-08-23, remplace la slide unique) ──────
+# ── Les trois slides de vote — VRAIMENT génériques (NG 2026-08-24) ──────────
 #
-# GÉNÉRIQUES : leur contenu ne dépend pas de l'axe — seule l'ancre de
-# navigation (le marqueur) porte le nom de l'axe, car un marqueur dupliqué
-# neuf fois casserait la TOC. Même schéma de conception pour les trois :
-# l'illustration PAPERCUT à gauche, les valeurs de l'échelle à droite.
-# Les valeurs viennent du gel (découpage pré-fait par ``scale()``) ; les
-# illustrations sont managées (repli radar tant qu'une scène n'existe pas).
+# Trois blocs, listés dix-huit fois chacun dans le book : l'ancre d'un
+# marqueur embarque l'index du registre (``stx-marker-<slug>-<idx>``), un
+# libellé répété ne collisionne donc jamais — la première conception qui
+# répliquait 54 blocs par peur de la collision était fausse (NG l'a vue).
+# Les marqueurs sont CACHÉS (``hidden=True``) : les flèches traversent
+# chaque occurrence, la barre latérale ne liste que les slides porteuses
+# (axes et pôles). Même schéma pour les trois : illustration PAPERCUT à
+# gauche, valeurs de l'échelle à droite (gel, découpage pré-fait).
 
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE  # noqa: E402
 from custom.visuals import hero_image  # noqa: E402
@@ -174,14 +176,10 @@ def _vote_prompt(kind: str) -> str:
     return AI_PREFIX + _VOTE_PROMPTS[kind] + AI_SUFFIX_LANDSCAPE
 
 
-def _vote_slide(pole_en: str, *, kind: str, keyword: str, card,
+def _vote_slide(*, kind: str, keyword: str, card,
                 levels: list[dict], alt_ready: str) -> None:
-    """Le schéma commun des trois volets : image à gauche, valeurs à droite.
-
-    ``pole_en`` : le nom EN du pôle voté — les volets sont DOUBLÉS par pôle
-    (décision NG 2026-08-23), le marqueur porte donc le pôle, pas l'axe.
-    """
-    st_marker(f"{pole_en} — {keyword}")
+    """Le schéma commun des trois volets : image à gauche, valeurs à droite."""
+    st_marker(f"Vote — {keyword}", hidden=True)
     with st_block(s.project.containers.page_fill_top):
         with st_zoom(130):
             st_write(_S.title, "Vote: ", (s.project.titles.keyword, keyword),
@@ -204,25 +202,25 @@ def _vote_slide(pole_en: str, *, kind: str, keyword: str, card,
                         st_write(_S.level, level[lang()], tag=t.div)
 
 
-def vote_support_slide(code: str, kind: str) -> None:
+def vote_support_slide() -> None:
     """Volet 1 : les trois réponses EN FAVEUR, intensité décroissante."""
-    _vote_slide(axis(code)[kind]["label"]["en"], kind="support", keyword="I support",
+    _vote_slide(kind="support", keyword="I support",
                 card=s.project.cards.blue, levels=scale()["agree"],
                 alt_ready=("Papercut crowd with every arm raised high in "
                            "enthusiastic approval under an amber paper sun"))
 
 
-def vote_oppose_slide(code: str, kind: str) -> None:
+def vote_oppose_slide() -> None:
     """Volet 2 : les trois réponses EN DÉFAVEUR, intensité croissante."""
-    _vote_slide(axis(code)[kind]["label"]["en"], kind="oppose", keyword="I oppose",
+    _vote_slide(kind="oppose", keyword="I oppose",
                 card=s.project.cards.coral, levels=scale()["disagree"],
                 alt_ready=("Papercut crowd with arms crossed or palms raised "
                            "gently forward in polite refusal"))
 
 
-def vote_abstain_slide(code: str, kind: str) -> None:
+def vote_abstain_slide() -> None:
     """Volet 3 : la réponse de qui ne souhaite pas se prononcer."""
-    _vote_slide(axis(code)[kind]["label"]["en"], kind="abstain", keyword="no opinion",
+    _vote_slide(kind="abstain", keyword="no opinion",
                 card=s.project.cards.amber, levels=[scale()["no_opinion"]],
                 alt_ready=("Papercut crowd standing back with hands in "
                            "pockets, an amber paper sun behind a cloud"))
