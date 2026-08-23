@@ -15,4 +15,5 @@ def build():
         ["Every figure has its ", (s.project.titles.keyword, "own video")],
         figure_duo(), "right",
         marker="Figure videos · 2",
+        stage_vh=70,
     )

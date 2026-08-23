@@ -128,16 +128,29 @@ st_book(
         blocks.bck_survey_poster,     # the survey part opens on one image
         blocks.bck_survey_instrument,  # 3 questions × 18 postures — l'idée de l'instrument
         blocks.bck_axes_registers,    # the nine axes, register by register
-        blocks.bck_screens_first,     # captures 01, 02 — code of the day, welcome
+        # ── Un écran = un bloc (NG 2026-08-23) : ordonner, inclure, exclure
+        # se règle ligne par ligne ici. ──────────────────────────────
+        blocks.bck_screen_01_code,    # 01 — enter the code of the day (ancre TOC du groupe)
+        blocks.bck_screen_02_welcome,  # 02 — the campaign welcomes you
         blocks.bck_screens_consent,   # capture 03 — consent, nothing personal
         blocks.bck_screens_eligibility,  # capture 02-eligibilite — la porte d'âge (mineurs)
         blocks.bck_screens_statement,  # capture 04 — a statement, six levels + les 3 règles
         blocks.bck_screens_poster,    # TOC anchor « The screens » — the personal radar, full frame
-        blocks.bck_screens_answering,  # captures 05, 06 — progress and send
+        blocks.bck_screen_05_progress,  # 05 — pleine page, la barre de progression
+        blocks.bck_screen_06_send,    # 06 — sending your answers
         blocks.bck_results_radar_howto,  # how to read a posture radar
-        blocks.bck_screens_personal,  # captures 07, 08, 09, 16 — the personal report
-        blocks.bck_screens_explore,   # captures 11, 12, 14, 15, 10 — exploring the report
-        blocks.bck_screens_figures,   # captures 18, 19 — the great figures pages
+        blocks.bck_screen_07_header,  # 07 — your report, the header (ancre TOC du groupe)
+        blocks.bck_screen_08_mascot_card,  # 08 — the mascot card
+        blocks.bck_screen_09_radar,   # 09 — your radar
+        blocks.bck_screen_16_code,    # 16 — your code, keep it
+        blocks.bck_screen_11_detail,  # 11 — every answer kept (ancre TOC du groupe)
+        blocks.bck_screen_12_profiles,  # 12 — the nearest archetypes
+        blocks.bck_screen_13_figures,  # 13 — the nearest figures
+        blocks.bck_screen_14_contrast,  # 14 — the contrasted figures
+        blocks.bck_screen_15_examples,  # 15 — the campaign's examples
+        blocks.bck_screen_10_room,    # 10 — you and the room (pont vers la projection)
+        blocks.bck_screen_18_explorer,  # 18 — the great figures explorer (ancre TOC du groupe)
+        blocks.bck_screen_19_figure_page,  # 19 — a figure's page
         # ── Duos vidéo (NG 2026-08-22) : pages JUMELLES — la flèche droite
         # passe à la jumelle et y lance la vidéo de droite avec le son.
         blocks.bck_video_mascots,     # Pathos (animaux) se lance à gauche
@@ -151,8 +164,14 @@ st_book(
         blocks.bck_survey_join,       # QR + code of the day
         blocks.bck_survey_live,       # live monitoring while the room answers
         # ── Part 2 · The screens ────────────────────────────────────
-        blocks.bck_screens_admin,     # régie (20-22) + les 7 vues du diaporama /present
-        #                             # (Q15) — captures desktop gelées le 2026-08-14
+        blocks.bck_screen_regie,      # régie (20-22) — UNE scène composée, console + /live + ruban
+        blocks.bck_screen_23_room_radar,   # diapo /present — the room's radar
+        blocks.bck_screen_24_spread,       # diapo — the room's spread
+        blocks.bck_screen_25_details,      # diapo — the detail per question
+        blocks.bck_screen_26_waffle,       # diapo — the archetype waffle
+        blocks.bck_screen_27_divisions,    # diapo — what divides the room (menu des débats)
+        blocks.bck_screen_28_abstentions,  # diapo — where the room abstains
+        blocks.bck_screen_29_groups,       # diapo — the group comparison
         blocks.bck_results_meaning,   # what the results say about us
         blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         # ── Appendix ────────────────────────────────────────────────

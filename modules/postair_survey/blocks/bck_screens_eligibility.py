@@ -49,4 +49,9 @@ def build():
                    "relies on an honest declaration, consistent with a fully "
                    "anonymous survey: verifying an age would require knowing "
                    "who you are.")]),
+        zoomImage=210,
+        zoomText=120,
+        device="mobile",
+        landscape=False,
+        crop=(0, 0, 30, 0),
     )

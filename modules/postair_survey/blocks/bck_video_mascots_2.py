@@ -15,4 +15,5 @@ def build():
         ["Every mascot has its ", (s.project.titles.keyword, "own video")],
         mascot_duo(), "right",
         marker="Mascot videos · 2",
+        stage_vh=70,
     )

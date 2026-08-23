@@ -34,4 +34,5 @@ def build():
                   ("AI-made, sourced", "The videos are generative productions "
                    "grounded in each figure's dossier — arguments to debate, "
                    "never facts about a person.")]),
+        stage_vh=70,
     )

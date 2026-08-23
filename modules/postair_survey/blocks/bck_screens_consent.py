@@ -43,4 +43,9 @@ def build():
                     "redrawn."),
                     ("Under 18", "You can play and see your own results — your "
                     "record is simply excluded from the research analysis.")]),
+            zoomImage=100,
+            zoomText=90,
+            device="mobile-complet",
+            landscape=False,
+            crop=(0, 0, 5, 0),
         )

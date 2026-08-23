@@ -30,4 +30,5 @@ def build():
                    "object; here, the most playful of each family."),
                   ("Production", "Made in house, entirely with generative AI, "
                    "from the definitions of the nine axes.")]),
+        stage_vh=70,
     )
