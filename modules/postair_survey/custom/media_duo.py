@@ -120,19 +120,26 @@ def figure_duo() -> tuple[dict, dict]:
 # ── Le gabarit ───────────────────────────────────────────────────────────────
 
 #: Vidéos carrées (mascottes 720², figures 960²) : la HAUTEUR borne. 56vh de
-#: côté laisse le titre, les noms et la ligne d'indice à l'écran.
+#: côté laisse le titre, les noms et la ligne d'indice à l'écran — le défaut,
+#: surchargeable à l'appel par ``stage_vh=`` (le SEUL levier de taille : une
+#: unité vh que tout respecte, là où un st_zoom bute sur la borne 100 %).
 _STAGE_VH = 56
 
 
 def media_duo_slide(title_parts, duo, active: str, *, marker: str,
                     toc_label: str | None = None,
                     tooltip: tuple[str, list[tuple[str, str]]] | None = None,
+                    stage_vh: int = _STAGE_VH,
                     ) -> None:
     """La scène : deux vidéos côte à côte, celle du côté ``active`` se lance.
 
     :param duo: ``(gauche, droite)`` — dicts ``name``/``tagline``/``src``.
     :param active: ``"left"`` ou ``"right"`` — le côté dont la vidéo démarre
         (son actif, flag Chrome de projection).
+    :param stage_vh: le CÔTÉ des vidéos carrées, en vh — passer la même
+        valeur aux deux pages jumelles d'un duo, sinon la taille saute au
+        passage de la flèche. Module custom/ : redémarrage complet pour voir
+        une édition d'ICI (les blocs, eux, rechargent à chaud).
     """
     st_marker(marker)
     with st_block(s.project.containers.page_fill_top):
@@ -145,13 +152,13 @@ def media_duo_slide(title_parts, duo, active: str, *, marker: str,
                 if tooltip:
                     st_info_tooltip(title=tooltip[0], entries=tooltip[1])
         st_space("v", "1vh")
-        with st_grid(cols="50% 50%", gap="1.5vw",
+        with st_grid(cols="50% 50%", gap="1vw",
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for side, item in (("left", duo[0]), ("right", duo[1])):
                 with g.cell(), st_block(s.project.containers.column_stack_centered):
                     # Productions IA (clips mascottes, vidéos de figures) :
                     # la marque de transparence DD-35, comme partout au deck.
-                    with st_block(s.project.containers.media_stage(1.0, _STAGE_VH)), \
+                    with st_block(s.project.containers.media_stage(1.0, stage_vh)), \
                          ai_marked(fit=False, top=True):
                         st_video(item["src"], autoplay=(active == side))
                     st_write(_Styles.name, item["name"], tag=t.div)
