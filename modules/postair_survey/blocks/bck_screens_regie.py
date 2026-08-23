@@ -2,7 +2,7 @@
 
 Ex-première slide de bck_screens_admin (découpage « un écran = un bloc »,
 NG 2026-08-23 — les 7 vues du diaporama /present vivent désormais dans
-bck_screen_diapo_*). Cette slide reste UNE scène composée :
+bck_screens_diapo_*). Cette slide reste UNE scène composée :
 les trois pages de régie côte à côte, avec leurs géométries réelles — la
 console quasi-portrait, la vue salle paysage, et /present en LONG RUBAN
 (1976×9482) montré tel quel, en pellicule : illisible par construction,

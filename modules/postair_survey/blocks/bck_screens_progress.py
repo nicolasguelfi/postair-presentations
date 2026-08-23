@@ -37,9 +37,10 @@ def build():
                    "so nobody has to guess.")]),
         # PLEINE PAGE mobile (facette « complet ») : 1170×2949, la barre de
         # progression EST dans l'image. crop=(haut, droite, bas, gauche).
-        zoomImage=100,
-        zoomText=130,
+        zoomImage=130,
+        zoomText=120,
         device="mobile-complet",
         landscape=False,
         crop=(0, 0, 15, 0),
     )
+

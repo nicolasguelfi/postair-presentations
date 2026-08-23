@@ -2,7 +2,7 @@
 
 Un écran = un bloc (NG 2026-08-23, découpage de bck_screens_first) : capture
 centrée avec sa légende, comme dans l'ancienne paire. L'ancre TOC du groupe
-vit sur la slide du code (bck_screen_enter_code).
+vit sur la slide du code (bck_screens_enter_code).
 """
 # @guideline: postair-minimal
 
@@ -33,9 +33,9 @@ def build():
             with g.cell():
                 st_space("h", "0.5vw")
         st_space("v", "1vh")
-        with st_zoom(110):
+        with st_zoom(250):
             st_image(s.project.cards.media_center, width=_WIDTH,
-                     uri=capture("02-accueil-campagne"),
+                     uri=capture("02-accueil-campagne", device="desktop"),
                      alt="Mobile screen of the survey journey: the campaign "
                          "welcomes you")
             st_write(bs.caption, "2 · the campaign welcomes you", tag=t.div)

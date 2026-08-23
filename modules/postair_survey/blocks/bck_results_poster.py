@@ -61,7 +61,8 @@ def build():
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "The ", (s.project.titles.keyword, "Results"),
+                with st_zoom(150):
+                    st_write(bs.title, "The ", (s.project.titles.keyword, "Results"),
                          tag=t.div, toc_lvl="1", label="The Results")
             with g.cell():
                 st_space("h", "0.5vw")

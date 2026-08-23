@@ -22,38 +22,40 @@ from streamtex import *
 
 def build():
     st_marker("A statement")
-    with st_zoom(130):
-        screen_slide(
-            ["A statement, ", (s.project.titles.keyword, "six levels"), ", help"],
-            "05-progression",
-            "Desktop screen of the survey journey: one statement with its six "
-            "agreement levels and the help button, dark theme",
-            [
-                ("No right answer",
-                "A portrait, not a test — nothing is scored as correct, and "
-                "nobody sees your individual answers."),
-                ("Answer for YOURSELF",
-                "Not for the image you would like to give — the result is only "
-                "useful if it is yours."),
-                ("“No opinion” ≠ a middle answer",
-                "A separate button OUTSIDE the six levels — excluded from your "
-                "scores, never counted as halfway."),
-            ],
-            toc_label="A statement",
-            tooltip=("Six levels, no middle",
-                    [("A gentle forced choice", "The middle of a scale attracts "
-                    "non-answers. If you truly have no opinion, use the "
-                    "dedicated button — it is excluded from your scores."),
-                    ("Why that matters", "A middle answer would be counted as a "
-                    "position halfway between the poles; 'no opinion' is "
-                    "counted as nothing at all. Confusing them is the one "
-                    "mistake that distorts a profile."),
-                    ("Help per question", "Every statement has a help button: "
-                    "clarification, anchors and two concrete examples.")]),
-            # Desktop PAYSAGE (NG 2026-08-21) : capture pleine scène en haut,
-            # les trois règles en ligne dessous — permis par le gel matrice
-            # complète (décision D). L'alerte « 1 octet » du 2026-08-21 était
-            # un incident transitoire du service média, résolu côté sumvadis.
-            device="mobile",
-            landscape=False,
-        )
+    screen_slide(
+        ["A statement, ", (s.project.titles.keyword, "six levels"), ", help"],
+        "04-question",
+        "Desktop screen of the survey journey: one statement with its six "
+        "agreement levels and the help button, dark theme",
+        [
+            ("No right answer",
+            "A portrait, not a test — nothing is scored as correct, and "
+            "nobody sees your individual answers."),
+            ("Answer for YOURSELF",
+            "Not for the image you would like to give — the result is only "
+            "useful if it is yours."),
+            ("“No opinion” ≠ a middle answer",
+            "A separate button OUTSIDE the six levels — excluded from your "
+            "scores, never counted as halfway."),
+        ],
+        toc_label="A statement",
+        tooltip=("Six levels, no middle",
+                [("A gentle forced choice", "The middle of a scale attracts "
+                "non-answers. If you truly have no opinion, use the "
+                "dedicated button — it is excluded from your scores."),
+                ("Why that matters", "A middle answer would be counted as a "
+                "position halfway between the poles; 'no opinion' is "
+                "counted as nothing at all. Confusing them is the one "
+                "mistake that distorts a profile."),
+                ("Help per question", "Every statement has a help button: "
+                "clarification, anchors and two concrete examples.")]),
+        # Desktop PAYSAGE (NG 2026-08-21) : capture pleine scène en haut,
+        # les trois règles en ligne dessous — permis par le gel matrice
+        # complète (décision D). L'alerte « 1 octet » du 2026-08-21 était
+        # un incident transitoire du service média, résolu côté sumvadis.
+        device="mobile-complet",
+        landscape=False,
+        zoomImage=130,
+        zoomText=120,
+        crop=(0, 0, 15, 0), 
+    )

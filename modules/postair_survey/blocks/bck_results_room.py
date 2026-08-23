@@ -45,7 +45,7 @@ def build():
                 # Rétrogradé "+1" (ss12) : la partie 2 est ancrée par
                 # bck_results_poster (« The Results »). Les captures de RÉGIE
                 # et les 7 vues du diaporama /present (Q15) adossent cette
-                # séquence régie + diaporama (bck_screen_regie et bck_screen_diapo_*), juste après.
+                # séquence régie + diaporama (bck_screens_regie et bck_screens_diapo_*), juste après.
                 st_write(bs.title, "So — who ", (s.project.titles.keyword, "are we"), "?",
                          tag=t.div, toc_lvl="+1", label="The room's results")
             with g.cell():

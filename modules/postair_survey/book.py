@@ -130,27 +130,27 @@ st_book(
         blocks.bck_axes_registers,    # the nine axes, register by register
         # ── Un écran = un bloc (NG 2026-08-23) : ordonner, inclure, exclure
         # se règle ligne par ligne ici. ──────────────────────────────
-        blocks.bck_screen_enter_code,  # écran 01-saisie-code (ancre TOC du groupe « first screens »)
-        blocks.bck_screen_welcome,    # écran 02-accueil-campagne
+        blocks.bck_screens_enter_code,  # écran 01-saisie-code (ancre TOC du groupe « first screens »)
+        blocks.bck_screens_welcome,    # écran 02-accueil-campagne
         blocks.bck_screens_consent,   # capture 03 — consent, nothing personal
         blocks.bck_screens_eligibility,  # capture 02-eligibilite — la porte d'âge (mineurs)
         blocks.bck_screens_statement,  # capture 04 — a statement, six levels + les 3 règles
-        blocks.bck_screen_progress,   # écran 05-progression, pleine page — la barre est dedans
+        blocks.bck_screens_progress,   # écran 05-progression, pleine page — la barre est dedans
         blocks.bck_results_poster,    # TOC anchor « The Results » — poster papercut (IA, éditable)
         blocks.bck_screen_send,       # écran 06-envoi
         blocks.bck_results_radar_howto,  # how to read a posture radar
-        blocks.bck_screen_report_header,  # écran 07-res-entete (ancre TOC du groupe « report »)
-        blocks.bck_screen_mascot_card,  # écran 08-res-carte
-        blocks.bck_screen_radar,      # écran 09-res-radar
-        blocks.bck_screen_personal_code,  # écran 16-res-code-partage — keep it
-        blocks.bck_screen_detail,     # écran 11-res-detail (ancre TOC du groupe « explore »)
-        blocks.bck_screen_nearest_archetypes,  # écran 12-res-profils
-        blocks.bck_screen_nearest_figures,     # écran 13-res-figures
-        blocks.bck_screen_contrast,   # écran 14-res-contraste
-        blocks.bck_screen_examples,   # écran 15-res-exemples
-        blocks.bck_screen_you_and_room,  # écran 10-res-salle (pont vers la projection)
-        blocks.bck_screen_figures_explorer,  # écran 18-explorateur (ancre TOC du groupe « figures »)
-        blocks.bck_screen_figure_page,  # écran 19-fiche-figure
+        blocks.bck_screens_report_header,  # écran 07-res-entete (ancre TOC du groupe « report »)
+        blocks.bck_screens_mascot_card,  # écran 08-res-carte
+        blocks.bck_screens_radar,      # écran 09-res-radar
+        blocks.bck_screens_personal_code,  # écran 16-res-code-partage — keep it
+        blocks.bck_screens_detail,     # écran 11-res-detail (ancre TOC du groupe « explore »)
+        blocks.bck_screens_nearest_archetypes,  # écran 12-res-profils
+        blocks.bck_screens_nearest_figures,     # écran 13-res-figures
+        blocks.bck_screens_contrast,   # écran 14-res-contraste
+        blocks.bck_screens_examples,   # écran 15-res-exemples
+        blocks.bck_screens_you_and_room,  # écran 10-res-salle (pont vers la projection)
+        blocks.bck_screens_figures_explorer,  # écran 18-explorateur (ancre TOC du groupe « figures »)
+        blocks.bck_screens_figure_page,  # écran 19-fiche-figure
         # ── Duos vidéo (NG 2026-08-22) : pages JUMELLES — la flèche droite
         # passe à la jumelle et y lance la vidéo de droite avec le son.
         blocks.bck_video_mascots,     # Pathos (animaux) se lance à gauche
@@ -164,14 +164,14 @@ st_book(
         blocks.bck_survey_join,       # QR + code of the day
         blocks.bck_survey_live,       # live monitoring while the room answers
         # ── Part 2 · The screens ────────────────────────────────────
-        blocks.bck_screen_regie,      # régie (20-22) — UNE scène composée, console + /live + ruban
-        blocks.bck_screen_diapo_radar,     # diapo /present — the room's radar
-        blocks.bck_screen_diapo_spread,    # diapo — the room's spread
-        blocks.bck_screen_diapo_details,   # diapo — the detail per question
-        blocks.bck_screen_diapo_waffle,    # diapo — the archetype waffle
-        blocks.bck_screen_diapo_divisions,  # diapo — what divides the room (menu des débats)
-        blocks.bck_screen_diapo_abstentions,  # diapo — where the room abstains
-        blocks.bck_screen_diapo_groups,    # diapo — the group comparison
+        blocks.bck_screens_regie,      # régie (20-22) — UNE scène composée, console + /live + ruban
+        blocks.bck_screens_diapo_radar,     # diapo /present — the room's radar
+        blocks.bck_screens_diapo_spread,    # diapo — the room's spread
+        blocks.bck_screens_diapo_details,   # diapo — the detail per question
+        blocks.bck_screens_diapo_waffle,    # diapo — the archetype waffle
+        blocks.bck_screens_diapo_divisions,  # diapo — what divides the room (menu des débats)
+        blocks.bck_screens_diapo_abstentions,  # diapo — where the room abstains
+        blocks.bck_screens_diapo_groups,    # diapo — the group comparison
         blocks.bck_results_meaning,   # what the results say about us
         blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         # ── Appendix ────────────────────────────────────────────────
