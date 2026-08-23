@@ -96,15 +96,44 @@ def questions_slide(code: str) -> None:
             for i, stmt in enumerate(pole["statements"])])
 
 
-def synthetic_slide(code: str) -> None:
-    """Page 2 : UNE synthèse par pôle, dans sa cellule (teal accel / ambre decel)."""
+#: La colonne d'un pôle seule au centre de la slide : pleine largeur elle
+#: étirerait les lignes au-delà du confort de lecture d'amphi.
+_POLE_COLUMN = Style(
+    "max-width: 62vw; margin-left: auto; margin-right: auto;",
+    "handsup_pole_column",
+)
+
+
+def _axis_pair_title(ax: dict) -> None:
+    """Le titre au format NG 2026-08-23 : Axis "Trust / Self-reliance"."""
+    pair = f"{ax['accel']['label'][lang()]} / {ax['decel']['label'][lang()]}"
+    with st_zoom(115):
+        st_write(_S.title, "Axis “", (s.project.titles.keyword, pair), "”",
+                 tag=t.div)
+
+
+def pole_synthesis_slide(code: str, kind: str) -> None:
+    """La slide d'UN pôle (décision NG 2026-08-23 : vote PAR PÔLE).
+
+    Remplace la synthèse à deux colonnes dans le book : chaque pôle ouvre sa
+    propre séquence de vote. Titre = la paire de pôles de l'axe ; dessous, la
+    colonne actuelle de CE pôle, seule et en grand — mêmes couleurs (en-tête
+    bleu/corail, cellule teal/ambre).
+    """
     ax = axis(code)
-    st_marker(f"{ax['name']['en']} — synthesis")
+    pole = ax[kind]
+    st_marker(f"{pole['label']['en']} — synthesis")
     with st_block(s.project.containers.page_fill_top):
-        _title(ax)
-        st_space("v", "3vh")
-        _pole_columns(ax, lambda pole, kind: [
-            (_SYNTH_CARDS[kind], synthesis(pole)[lang()], 110)])
+        _axis_pair_title(ax)
+        st_space("v", "4vh")
+        header = s.project.cards.blue if kind == "accel" else s.project.cards.coral
+        with st_block(_POLE_COLUMN):
+            with st_block(header), st_zoom(120):
+                st_write(_S.pole, pole["label"][lang()], tag=t.div)
+            st_space("v", "1.5vh")
+            with st_block(_SYNTH_CARDS[kind]), st_zoom(135):
+                st_write(_S.statement, "“", synthesis(pole)[lang()], "”",
+                         tag=t.div)
 
 
 # ── Les trois slides de vote (NG 2026-08-23, remplace la slide unique) ──────
@@ -145,10 +174,14 @@ def _vote_prompt(kind: str) -> str:
     return AI_PREFIX + _VOTE_PROMPTS[kind] + AI_SUFFIX_LANDSCAPE
 
 
-def _vote_slide(axis_en: str, *, kind: str, keyword: str, card,
+def _vote_slide(pole_en: str, *, kind: str, keyword: str, card,
                 levels: list[dict], alt_ready: str) -> None:
-    """Le schéma commun des trois volets : image à gauche, valeurs à droite."""
-    st_marker(f"{axis_en} — {keyword}")
+    """Le schéma commun des trois volets : image à gauche, valeurs à droite.
+
+    ``pole_en`` : le nom EN du pôle voté — les volets sont DOUBLÉS par pôle
+    (décision NG 2026-08-23), le marqueur porte donc le pôle, pas l'axe.
+    """
+    st_marker(f"{pole_en} — {keyword}")
     with st_block(s.project.containers.page_fill_top):
         with st_zoom(130):
             st_write(_S.title, "Vote: ", (s.project.titles.keyword, keyword),
@@ -171,25 +204,25 @@ def _vote_slide(axis_en: str, *, kind: str, keyword: str, card,
                         st_write(_S.level, level[lang()], tag=t.div)
 
 
-def vote_support_slide(axis_en: str) -> None:
+def vote_support_slide(code: str, kind: str) -> None:
     """Volet 1 : les trois réponses EN FAVEUR, intensité décroissante."""
-    _vote_slide(axis_en, kind="support", keyword="I support",
+    _vote_slide(axis(code)[kind]["label"]["en"], kind="support", keyword="I support",
                 card=s.project.cards.blue, levels=scale()["agree"],
                 alt_ready=("Papercut crowd with every arm raised high in "
                            "enthusiastic approval under an amber paper sun"))
 
 
-def vote_oppose_slide(axis_en: str) -> None:
+def vote_oppose_slide(code: str, kind: str) -> None:
     """Volet 2 : les trois réponses EN DÉFAVEUR, intensité croissante."""
-    _vote_slide(axis_en, kind="oppose", keyword="I oppose",
+    _vote_slide(axis(code)[kind]["label"]["en"], kind="oppose", keyword="I oppose",
                 card=s.project.cards.coral, levels=scale()["disagree"],
                 alt_ready=("Papercut crowd with arms crossed or palms raised "
                            "gently forward in polite refusal"))
 
 
-def vote_abstain_slide(axis_en: str) -> None:
+def vote_abstain_slide(code: str, kind: str) -> None:
     """Volet 3 : la réponse de qui ne souhaite pas se prononcer."""
-    _vote_slide(axis_en, kind="abstain", keyword="no opinion",
+    _vote_slide(axis(code)[kind]["label"]["en"], kind="abstain", keyword="no opinion",
                 card=s.project.cards.amber, levels=[scale()["no_opinion"]],
                 alt_ready=("Papercut crowd standing back with hands in "
                            "pockets, an amber paper sun behind a cloud"))
