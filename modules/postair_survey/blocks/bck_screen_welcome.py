@@ -2,7 +2,7 @@
 
 Un écran = un bloc (NG 2026-08-23, découpage de bck_screens_first) : capture
 centrée avec sa légende, comme dans l'ancienne paire. L'ancre TOC du groupe
-vit sur la slide du code (bck_screen_01_code).
+vit sur la slide du code (bck_screen_enter_code).
 """
 # @guideline: postair-minimal
 
