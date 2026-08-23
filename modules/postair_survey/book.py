@@ -130,6 +130,7 @@ st_book(
         blocks.bck_axes_registers,    # the nine axes, register by register
         blocks.bck_screens_first,     # captures 01, 02 — code of the day, welcome
         blocks.bck_screens_consent,   # capture 03 — consent, nothing personal
+        blocks.bck_screens_eligibility,  # capture 02-eligibilite — la porte d'âge (mineurs)
         blocks.bck_screens_statement,  # capture 04 — a statement, six levels + les 3 règles
         blocks.bck_screens_poster,    # TOC anchor « The screens » — the personal radar, full frame
         blocks.bck_screens_answering,  # captures 05, 06 — progress and send
