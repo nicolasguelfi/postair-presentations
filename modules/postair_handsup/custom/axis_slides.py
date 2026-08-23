@@ -177,7 +177,7 @@ def _vote_prompt(kind: str) -> str:
 
 
 def _vote_slide(*, kind: str, keyword: str, card,
-                levels: list[dict], alt_ready: str) -> None:
+                levels: list[dict], alt_ready: str,zoomImage: int = 100, zoomText: int = 100) -> None:
     """Le schéma commun des trois volets : image à gauche, valeurs à droite."""
     st_marker(f"Vote — {keyword}", hidden=True)
     with st_block(s.project.containers.page_fill_top):
@@ -188,17 +188,18 @@ def _vote_slide(*, kind: str, keyword: str, card,
         with st_grid(cols="46% 54%", gap="2vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                hero_image(f"vote_{kind}", _vote_prompt(kind),
-                           fallback=_VOTE_FALLBACK,
-                           alt_ready=alt_ready,
-                           alt_fallback=("Empty nine-axis POSTAIR radar chart "
-                                         "with a question mark in the centre"),
-                           width="88%", variant="sq")
+                with st_zoom(zoomImage):
+                    hero_image(f"vote_{kind}", _vote_prompt(kind),
+                            fallback=_VOTE_FALLBACK,
+                            alt_ready=alt_ready,
+                            alt_fallback=("Empty nine-axis POSTAIR radar chart "
+                                            "with a question mark in the centre"),
+                            width="88%", variant="sq")
             with g.cell(), st_block(card):
                 for i, level in enumerate(levels):
                     if i:
                         st_space("v", "2.5vh")
-                    with st_zoom(135):
+                    with st_zoom(zoomText):
                         st_write(_S.level, level[lang()], tag=t.div)
 
 
@@ -207,7 +208,9 @@ def vote_support_slide() -> None:
     _vote_slide(kind="support", keyword="I support",
                 card=s.project.cards.blue, levels=scale()["agree"],
                 alt_ready=("Papercut crowd with every arm raised high in "
-                           "enthusiastic approval under an amber paper sun"))
+                           "enthusiastic approval under an amber paper sun"),
+    zoomImage=100, 
+    zoomText=180)
 
 
 def vote_oppose_slide() -> None:
@@ -215,7 +218,9 @@ def vote_oppose_slide() -> None:
     _vote_slide(kind="oppose", keyword="I oppose",
                 card=s.project.cards.coral, levels=scale()["disagree"],
                 alt_ready=("Papercut crowd with arms crossed or palms raised "
-                           "gently forward in polite refusal"))
+                           "gently forward in polite refusal"),
+    zoomImage=100, 
+    zoomText=180)
 
 
 def vote_abstain_slide() -> None:
@@ -223,4 +228,5 @@ def vote_abstain_slide() -> None:
     _vote_slide(kind="abstain", keyword="no opinion",
                 card=s.project.cards.amber, levels=[scale()["no_opinion"]],
                 alt_ready=("Papercut crowd standing back with hands in "
-                           "pockets, an amber paper sun behind a cloud"))
+                           "pockets, an amber paper sun behind a cloud"),
+                zoomImage=100, zoomText=300)

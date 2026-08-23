@@ -154,6 +154,12 @@ Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncé
   managé qui écrase le `width=` du code.
 - **Clé de widget stable** : une clé engendrée se réinitialise à chaque rerun
   sous la main de l'orateur (`_SELECTOR_KEY`…).
+- **Un état de séance lu par PLUSIEURS pages vit dans une clé NON-widget**
+  (patron à deux clés — bug vécu 2026-08-24, sélecteur de langue handsup) :
+  Streamlit PURGE la clé d'un widget dès qu'un rerun se termine sans le
+  widget — or en pagination, le widget ne vit que sur sa page. Le widget a
+  sa propre clé et recopie son choix via `on_change` dans la clé de séance ;
+  symptôme sans le patron : l'état tient UNE page puis retombe au défaut.
 - **En mode paginé, seule la page courante s'exécute** : jamais
   `only_cited=True` pour la bibliographie ; et c'est ce qui permet l'autoplay
   séquencé des pages jumelles.

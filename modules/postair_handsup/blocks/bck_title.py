@@ -71,14 +71,25 @@ def build():
             width="62%",
         )
         st_space("v", "2vh")
-        # Le sélecteur écrit directement dans la session — clé STABLE : une
-        # clé engendrée se réinitialiserait à chaque rerun sous la main de
-        # l'orateur (piège connu, PLAYBOOK §7).
+        # PATRON À DEUX CLÉS (bug vécu 2026-08-24) : Streamlit PURGE la clé
+        # d'un widget dès qu'un rerun se termine sans que le widget ait été
+        # instancié — or en pagination, ce sélecteur ne vit que sur cette
+        # page. La langue lue par toutes les pages vit donc dans LANG_KEY,
+        # une clé NON-widget que la purge ne touche jamais ; le widget a sa
+        # propre clé et y recopie son choix via on_change. Constaté sans le
+        # patron : français en page 2, retombée en anglais dès la page 3.
+        _codes = [code for code, _name in LANGS]
+
+        def _persist_lang() -> None:
+            st.session_state[LANG_KEY] = st.session_state["handsup_lang_widget"]
+
         _left, mid, _right = st.columns([2, 1, 2])
         with mid:
-            st.radio("Language", [code for code, _name in LANGS],
+            st.radio("Language", _codes,
+                     index=_codes.index(st.session_state.get(LANG_KEY, "en")),
                      format_func=dict(LANGS).__getitem__,
-                     horizontal=True, key=LANG_KEY,
+                     horizontal=True, key="handsup_lang_widget",
+                     on_change=_persist_lang,
                      label_visibility="collapsed")
         st_space("v", "1vh")
         st_write(bs.grounding, f"instrument v{version()} — ",
