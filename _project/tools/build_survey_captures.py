@@ -113,10 +113,14 @@ def warn_if_dirty(root: str) -> None:
 
 
 def wanted_facettes(slug: str) -> tuple[str, ...]:
-    """Les facettes que la politique gèle pour cet écran — vide = exclu.
+    """Les facettes de la MATRICE DE BASE — celles dont l'absence est signalée.
 
-    Matrice complète (décision D, NG 2026-08-21) : les quatre facettes pour
-    chaque écran, le choix de projection descend dans la slide.
+    Matrice complète (décision D, NG 2026-08-21) : les quatre facettes
+    appareil × thème pour chaque écran. Depuis le 2026-08-23, le gel prend en
+    plus TOUT ce que le registre publie au-delà (ex. les pleines pages
+    ``capture-mobile-complet-*``) — opportuniste : gelé si présent, jamais
+    « attendu manquant ». Cette fonction ne sert donc plus qu'au constat des
+    trous de la matrice de base.
     """
     if slug in EXCLUDE:
         return ()
@@ -169,7 +173,14 @@ def select(latest: dict[tuple[str, str, str], dict]) -> dict:
     published = sorted({slug for (slug, _l, _f) in latest})
     captures, missing, non_v = [], [], []
     for slug in published:
-        for facette, lang in ((f, l) for f in wanted_facettes(slug) for l in LANGS):
+        base = wanted_facettes(slug)
+        if not base:          # écran exclu (17-res-page-entiere)
+            continue
+        # La matrice de base, PLUS toute facette publiée au-delà (gel
+        # opportuniste, 2026-08-23) — l'absence n'est signalée que pour la base.
+        extra = sorted({(f, l) for (s2, l, f) in latest
+                        if s2 == slug and f not in base})
+        for facette, lang in ([(f, l) for f in base for l in LANGS] + extra):
             entry = latest.get((slug, lang, facette))
             if entry is None:
                 missing.append(f"{slug} · {lang} · {facette}")

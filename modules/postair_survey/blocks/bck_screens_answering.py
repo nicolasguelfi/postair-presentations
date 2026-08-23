@@ -23,7 +23,7 @@ def build():
     screen_slide(
         ["While you ", (s.project.titles.keyword, "answer")],
         "05-progression",
-        "Mobile screen of the survey at the halfway mark: progress bar and "
+        "Full mobile page of the survey at the halfway mark: progress bar and "
         "the current statement, dark theme",
         [
             ("Your progress, always on screen",
@@ -40,9 +40,14 @@ def build():
                    "frozen from the sumvadis media registry, never redrawn."),
                   ("Median duration", "20-40 minutes measured; the progress bar is there "
                    "so nobody has to guess.")]),
-        zoomImage=160,
+        # PLEINE PAGE mobile (facette « complet », gel opportuniste
+        # 2026-08-23) : 1170×2949, la barre de progression EST dans l'image.
+        # Ratio bien plus haut qu'un écran (0,40) : zoom remis à 100 comme
+        # point de départ — à régler à l'œil, crop=(haut,droite,bas,gauche)
+        # pour tailler dans la page. lang="fr" disponible si voulu.
+        zoomImage=100,
         zoomText=130,
-        device="mobile",
+        device="mobile-complet",
         landscape=False,
         crop=(0, 0, 5, 0),
     )
