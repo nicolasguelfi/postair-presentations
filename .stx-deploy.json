@@ -78,6 +78,15 @@
       "branch": "main",
       "folder": "modules/postair_collection",
       "serve_mode": "dual"
+    },
+    "postair-handsup": {
+      "uuid": "kjl03arps9ma13llrbtx8403",
+      "subdomain": "postair-handsup",
+      "fqdn": "https://postair-handsup.streamtex.org",
+      "repo": "https://github.com/nicolasguelfi/postair-presentations",
+      "branch": "main",
+      "folder": "modules/postair_handsup",
+      "serve_mode": "dual"
     }
   }
 }

@@ -22,6 +22,7 @@ this repo, **one Coolify service per module**, each selecting its module via the
 | postair-genai | `ki72ol1fqgno2g1rpi0t2m7o` | postair-genai.streamtex.org | `modules/postair_genai` |
 | postair-collection | `g5hnjmauge8443965yywvijs` | postair-collection.streamtex.org | `modules/postair_collection` |
 | postair-guidelines | `cx1yh8ef3kyg1uf50m1w0wmi` | postair-guidelines.streamtex.org | `modules/postair_guidelines` |
+| postair-handsup | `kjl03arps9ma13llrbtx8403` | postair-handsup.streamtex.org | `modules/postair_handsup` |
 
 Runtime env per app: `FOLDER`, `STX_SERVE_MODE` (dual).
 
