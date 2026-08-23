@@ -90,31 +90,89 @@ def synthetic_slide(code: str) -> None:
         _pole_cards(ax, body)
 
 
-def scale_slide(code: str) -> None:
-    """Page 3 : la slide de vote — même contenu pour les 9 axes, seul le
-    titre (et le marqueur) porte l'axe.
+# ── Les trois slides de vote (NG 2026-08-23, remplace la slide unique) ──────
+#
+# GÉNÉRIQUES : leur contenu ne dépend pas de l'axe — seule l'ancre de
+# navigation (le marqueur) porte le nom de l'axe, car un marqueur dupliqué
+# neuf fois casserait la TOC. Même schéma de conception pour les trois :
+# l'illustration PAPERCUT à gauche, les valeurs de l'échelle à droite.
+# Les valeurs viennent du gel (découpage pré-fait par ``scale()``) ; les
+# illustrations sont managées (repli radar tant qu'une scène n'existe pas).
 
-    Gauche : pour, en intensité décroissante ; droite : contre, en intensité
-    croissante ; dessous, la ligne « No opinion » — le découpage vient
-    pré-fait du gel (``scale()``), le gabarit ne réordonne rien.
-    """
-    ax = axis(code)
-    sc = scale()
-    st_marker(f"{ax['name']['en']} — vote")
+from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE  # noqa: E402
+from custom.visuals import hero_image  # noqa: E402
+
+_VOTE_FALLBACK = "images/postair_radar_question.svg"
+
+#: Par volet : (mot-clé du titre, carte, nom managé, scène PAPERCUT).
+_VOTE_PROMPTS = {
+    "support": (
+        "A cheerful crowd of abstract paper silhouettes seen from behind, "
+        "every arm raised high in enthusiastic approval, open cut-paper "
+        "hands reaching toward a warm glowing amber paper sun, bright "
+        "turquoise and leaf-green cardstock sky."),
+    "oppose": (
+        "A calm crowd of abstract paper silhouettes seen from behind, arms "
+        "crossed or palms raised gently forward in polite refusal, coral "
+        "and lilac cardstock sky, a warm amber paper sun low on the "
+        "horizon."),
+    "abstain": (
+        "A relaxed crowd of abstract paper silhouettes seen from behind, "
+        "hands in pockets or shrugging softly, standing a step back from "
+        "the scene, soft lilac and pale-yellow cardstock, a warm amber "
+        "paper sun half hidden behind a paper cloud."),
+}
+
+
+def _vote_prompt(kind: str) -> str:
+    return AI_PREFIX + _VOTE_PROMPTS[kind] + AI_SUFFIX_LANDSCAPE
+
+
+def _vote_slide(axis_en: str, *, kind: str, keyword: str, card,
+                levels: list[dict], alt_ready: str) -> None:
+    """Le schéma commun des trois volets : image à gauche, valeurs à droite."""
+    st_marker(f"{axis_en} — {keyword}")
     with st_block(s.project.containers.page_fill_top):
-        _title(ax)
+        with st_zoom(130):
+            st_write(_S.title, "Vote: ", (s.project.titles.keyword, keyword),
+                     tag=t.div)
         st_space("v", "3vh")
-        with st_grid(cols=s.project.grids.balanced(2, min_px=420), gap="2vw",
-                     grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_stretch) as g:
-            for card, levels in [(s.project.cards.blue, sc["agree"]),
-                                 (s.project.cards.coral, sc["disagree"])]:
-                with g.cell(), st_block(card):
-                    for i, level in enumerate(levels):
-                        if i:
-                            st_space("v", "1.5vh")
-                        with st_zoom(120):
-                            st_write(_S.level, level[lang()], tag=t.div)
-        st_space("v", "3vh")
-        with st_zoom(120):
-            st_write(_S.no_opinion, sc["no_opinion"][lang()], tag=t.div)
+        with st_grid(cols="46% 54%", gap="2vw",
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
+            with g.cell():
+                hero_image(f"vote_{kind}", _vote_prompt(kind),
+                           fallback=_VOTE_FALLBACK,
+                           alt_ready=alt_ready,
+                           alt_fallback=("Empty nine-axis POSTAIR radar chart "
+                                         "with a question mark in the centre"),
+                           width="88%", variant="sq")
+            with g.cell(), st_block(card):
+                for i, level in enumerate(levels):
+                    if i:
+                        st_space("v", "2.5vh")
+                    with st_zoom(135):
+                        st_write(_S.level, level[lang()], tag=t.div)
+
+
+def vote_support_slide(axis_en: str) -> None:
+    """Volet 1 : les trois réponses EN FAVEUR, intensité décroissante."""
+    _vote_slide(axis_en, kind="support", keyword="I support",
+                card=s.project.cards.blue, levels=scale()["agree"],
+                alt_ready=("Papercut crowd with every arm raised high in "
+                           "enthusiastic approval under an amber paper sun"))
+
+
+def vote_oppose_slide(axis_en: str) -> None:
+    """Volet 2 : les trois réponses EN DÉFAVEUR, intensité croissante."""
+    _vote_slide(axis_en, kind="oppose", keyword="I oppose",
+                card=s.project.cards.coral, levels=scale()["disagree"],
+                alt_ready=("Papercut crowd with arms crossed or palms raised "
+                           "gently forward in polite refusal"))
+
+
+def vote_abstain_slide(axis_en: str) -> None:
+    """Volet 3 : la réponse de qui ne souhaite pas se prononcer."""
+    _vote_slide(axis_en, kind="abstain", keyword="no opinion",
+                card=s.project.cards.amber, levels=[scale()["no_opinion"]],
+                alt_ready=("Papercut crowd standing back with hands in "
+                           "pockets, an amber paper sun behind a cloud"))

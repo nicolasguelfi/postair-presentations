@@ -113,37 +113,56 @@ marker_config = MarkerConfig(
 
 # Reading order IS this list. Un axe = trois lignes, dans l'ordre HORAIRE du
 # radar (champ `order` du questionnaire) : les énoncés, la synthèse
-# (questionnaire v1.10.0 du hub), le vote.
+# (questionnaire v1.10.0 du hub), puis les trois volets de vote
+# GÉNÉRIQUES (support / oppose / abstain — mêmes slides pour chaque axe).
 st_book(
     [
         blocks.bck_title,             # titre PAPERCUT + sélecteur de langue + ancrage
         blocks.bck_axis_trust_questions,
         blocks.bck_axis_trust_synthetic,
-        blocks.bck_axis_trust_scale,
+        blocks.bck_axis_trust_support,
+        blocks.bck_axis_trust_oppose,
+        blocks.bck_axis_trust_abstain,
         blocks.bck_axis_optimism_questions,
         blocks.bck_axis_optimism_synthetic,
-        blocks.bck_axis_optimism_scale,
+        blocks.bck_axis_optimism_support,
+        blocks.bck_axis_optimism_oppose,
+        blocks.bck_axis_optimism_abstain,
         blocks.bck_axis_rationality_questions,
         blocks.bck_axis_rationality_synthetic,
-        blocks.bck_axis_rationality_scale,
+        blocks.bck_axis_rationality_support,
+        blocks.bck_axis_rationality_oppose,
+        blocks.bck_axis_rationality_abstain,
         blocks.bck_axis_speed_questions,
         blocks.bck_axis_speed_synthetic,
-        blocks.bck_axis_speed_scale,
+        blocks.bck_axis_speed_support,
+        blocks.bck_axis_speed_oppose,
+        blocks.bck_axis_speed_abstain,
         blocks.bck_axis_openness_questions,
         blocks.bck_axis_openness_synthetic,
-        blocks.bck_axis_openness_scale,
+        blocks.bck_axis_openness_support,
+        blocks.bck_axis_openness_oppose,
+        blocks.bck_axis_openness_abstain,
         blocks.bck_axis_freedom_questions,
         blocks.bck_axis_freedom_synthetic,
-        blocks.bck_axis_freedom_scale,
+        blocks.bck_axis_freedom_support,
+        blocks.bck_axis_freedom_oppose,
+        blocks.bck_axis_freedom_abstain,
         blocks.bck_axis_centralisation_questions,
         blocks.bck_axis_centralisation_synthetic,
-        blocks.bck_axis_centralisation_scale,
+        blocks.bck_axis_centralisation_support,
+        blocks.bck_axis_centralisation_oppose,
+        blocks.bck_axis_centralisation_abstain,
         blocks.bck_axis_individualism_questions,
         blocks.bck_axis_individualism_synthetic,
-        blocks.bck_axis_individualism_scale,
+        blocks.bck_axis_individualism_support,
+        blocks.bck_axis_individualism_oppose,
+        blocks.bck_axis_individualism_abstain,
         blocks.bck_axis_transhumanism_questions,
         blocks.bck_axis_transhumanism_synthetic,
-        blocks.bck_axis_transhumanism_scale,
+        blocks.bck_axis_transhumanism_support,
+        blocks.bck_axis_transhumanism_oppose,
+        blocks.bck_axis_transhumanism_abstain,
         blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         # ── Appendix ────────────────────────────────────────────────
         blocks.bck_refs_bibliography,  # never presented; opened when a claim is challenged
