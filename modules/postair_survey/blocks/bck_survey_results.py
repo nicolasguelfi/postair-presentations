@@ -5,10 +5,14 @@ Each big button opens the results dashboard of one day's campaign
 archetype distribution, per-question detail) in a new tab.
 
 SPEAKER NOTES:
-The reveal. Open the results page of the day and comment three things:
-the most marked axis, the most ambivalent axis, the dominant archetype.
-Compare the room with a great figure for a smile. Then use the
-per-question detail to pick the debate questions.
+The reveal, and the longest single moment of the sequence — about ten
+minutes. Open the results page of the day and comment three things, in this
+order: the most marked axis, the most ambivalent axis, the dominant
+archetype. Compare the room with a great historical figure — it always gets
+a laugh, and it plants the debate that follows. Keep the per-question detail
+open at the end: it is where the divisive questions come from.
+If the network fails, the rehearsal screenshots are the fallback; announce
+them as such rather than pretending they are live.
 """
 # @guideline: postair-minimal
 
@@ -53,13 +57,21 @@ def build():
                          "refreshes every 4 seconds and can export a room report."),
                         ("Caution", "The page has no authentication — do not share its URL "
                          "before the session."),
+                        # Repris de bck_results_room, écartée du parcours le
+                        # 2026-08-24 (elle ouvrait les MÊMES /present/<code>) :
+                        # ces deux conseils n'existaient que là.
+                        ("What to comment", "Three things, in this order: the most marked axis, "
+                         "the most ambivalent axis, the dominant archetype. Resist the urge to "
+                         "comment all nine — the room stops listening after three."),
+                        ("Fallback", "If the network fails, use the rehearsal screenshots and say "
+                         "clearly that they are from the rehearsal, not from this room."),
                     ],
                 )
         st_space("v", "1vh")
         with st_grid(cols="55% 45%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_image(s.project.cards.media_center, width="100%", editable=False, name="survey_results_reveal",
+                st_image(s.project.cards.media_center, width="100%", editable=True, name="survey_results_reveal",
                          alt="Papercut theatre curtain opening on a bright stage revealing a "
                              "large colorful paper radar chart under spotlights and confetti",
                     overlay=dd35_overlay(is_synthetic("survey_results_reveal")))
