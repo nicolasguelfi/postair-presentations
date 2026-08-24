@@ -116,3 +116,46 @@ def st_countdown(minutes: int, label: str = "Back in", height: int = 340) -> Non
 </script>
 """
     st_html(html, height=height)
+
+
+def st_poster_video(video_url: str, poster_uri: str, *, alt: str = "",
+                    width: str = "min(38vw, 66vh)", ai_marked: bool = False,
+                    ai_label: str = "AI") -> None:
+    """Un portrait qui DEVIENT la vidéo, dans le même cadre (NG 2026-08-24).
+
+    Le portrait n'est pas remplacé par un lecteur noir : il est le ``poster``
+    du lecteur. Un clic sur ▶ joue la vidéo À LA PLACE de la photo, le bouton
+    plein écran natif fonctionne, et en sortir ramène la lecture dans le
+    cadre — c'est le comportement natif de ``<video controls>``, aucun état,
+    aucun rerun, aucun onglet (l'ancien ``link=`` ouvrait un onglet et faisait
+    quitter le deck en pleine séance).
+
+    ``preload="none"`` est le cœur du contrat de STREAMING : rien n'est
+    téléchargé tant que l'orateur ne joue pas. Le CDN répond
+    ``accept-ranges: bytes``, donc le navigateur ne tire que les octets qu'il
+    lit — la version HD (~12 Mo) se projette sans être embarquée dans
+    l'image, et une figure qu'on n'ouvre pas ne coûte rien.
+
+    ``poster_uri`` est le chemin SERVI du portrait (déjà matérialisé dans
+    l'image : aucun appel réseau pour la photo, seule la vidéo est distante).
+
+    La pastille DD-35 est rendue ici, en HAUT à droite : le bord bas
+    appartient aux contrôles natifs du lecteur. 44 des 54 vidéos sont des
+    portraits parlants synthétiques — la marque n'est pas optionnelle.
+    """
+    chip = (
+        f'<span style="position:absolute; top:0.6em; right:0.6em; z-index:10; '
+        f'pointer-events:none; background:rgba(113,113,122,0.35); color:#FFF; '
+        f'border-radius:999px; padding:0.1em 0.7em; font-weight:700; '
+        f'text-transform:uppercase; letter-spacing:0.08em; '
+        f'font-size:clamp(11px,1.05vw,22px); line-height:1.7;">'
+        f'&#10022; {ai_label}</span>'
+    ) if ai_marked else ""
+    st_html(
+        f'<div style="position:relative; width:{width}; margin:0 auto;">'
+        f'<video controls preload="none" playsinline poster="{poster_uri}" '
+        f'style="width:100%; height:auto; display:block; border-radius:12px;" '
+        f'aria-label="{alt}">'
+        f'<source src="{video_url}" type="video/mp4">'
+        f'</video>{chip}</div>'
+    )

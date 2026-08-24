@@ -12,7 +12,7 @@ sub-slide still breaks so PageDown advances one screen at a time.
 
 from __future__ import annotations
 
-from shared_widgets import st_info_tooltip
+from shared_widgets import st_info_tooltip, st_poster_video
 from streamtex import (
     SlideBreakConfig,
     SlideBreakMode,
@@ -159,7 +159,8 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
                (f"{f['name']} ({f.get('dates', '')})",
                 f"{f.get('origin', '')} · {f.get('wave', '')} · score {f['score']} on "
                 f"this axis."),
-               ("Video", "Clicking the portrait opens the figure's presentation video. "
+               ("Video", "The portrait IS the player: press play and the video runs in "
+                         "its frame — full screen and back, without leaving the deck. "
                          + ("It is an AI-generated talking portrait — synthetic face and "
                             "voice, built from documented sources. "
                             if (f.get("media") or {}).get("video_kind") == "talk" else
@@ -185,10 +186,23 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
     # zoom suit la longueur pour que TOUT reste au-dessus du pli.
     zoom = 100 if len(quote) <= 180 else (90 if len(quote) <= 240 else 80)
     def _portrait() -> None:
+        # Le portrait EST le poster du lecteur (NG 2026-08-24) : la vidéo se
+        # joue dans le cadre de la photo, plein écran natif compris, au lieu
+        # d'ouvrir un onglet — quitter le deck en séance était le vrai risque.
+        # Streaming pur : `preload="none"` + Range du CDN, rien n'est
+        # embarqué dans l'image (les 54 masters pèsent 612 Mo).
+        video = media.get("video")
+        if video:
+            st_poster_video(
+                video, f"app/static/media/{media.get('portrait')}",
+                alt=f"Presentation video of {f['name']}",
+                width="min(38vw, 66vh)",
+                ai_marked=bool(media.get("video_ai")
+                               or media.get("video_kind") == "talk"))
+            return
         st_image(DS.cards.media_center, width="min(38vw, 66vh)",
-                 uri=media.get("portrait"), link=media.get("video"),
-                 alt=f"Portrait of {f['name']} — click to play the "
-                     f"presentation video",
+                 uri=media.get("portrait"),
+                 alt=f"Portrait of {f['name']}",
             overlay=dd35_overlay(media.get("portrait_ai", False)))
 
     with hero_split(s, zoom=zoom, image=_portrait):
