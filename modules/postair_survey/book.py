@@ -132,16 +132,20 @@ st_book(
         # se règle ligne par ligne ici. ──────────────────────────────
         blocks.bck_screens_enter_code,  # écran 01-saisie-code (ancre TOC du groupe « first screens »)
         blocks.bck_screens_welcome,    # écran 02-accueil-campagne
-        blocks.bck_screens_consent,   # capture 03 — consent, nothing personal
         blocks.bck_screens_eligibility,  # capture 02-eligibilite — la porte d'âge (mineurs)
+        blocks.bck_screens_consent,   # capture 03 — consent, nothing personal
         blocks.bck_screens_statement,  # capture 04 — a statement, six levels + les 3 règles
         blocks.bck_screens_progress,   # écran 05-progression, pleine page — la barre est dedans
+        blocks.bck_screens_send,       # écran 06-envoi — dernier geste du questionnaire
+        # Le poster ouvre la séquence des résultats DU PARTICIPANT, donc APRÈS
+        # l'envoi (NG 2026-08-24) : la salle, elle, a son bloc plus bas
+        # (bck_survey_results, une seule fois — le doublon d'ici est retiré,
+        # il injectait les résultats de la salle au milieu du rapport perso).
         blocks.bck_results_poster,    # TOC anchor « The Results » — poster papercut (IA, éditable)
-        blocks.bck_screens_send,       # écran 06-envoi
-        blocks.bck_results_radar_howto,  # how to read a posture radar
         blocks.bck_screens_report_header,  # écran 07-res-entete (ancre TOC du groupe « report »)
         blocks.bck_screens_mascot_card,  # écran 08-res-carte
         blocks.bck_screens_radar,      # écran 09-res-radar
+        blocks.bck_results_radar_howto,  # how to read a posture radar
         blocks.bck_screens_personal_code,  # écran 16-res-code-partage — keep it
         blocks.bck_screens_detail,     # écran 11-res-detail (ancre TOC du groupe « explore »)
         blocks.bck_screens_nearest_archetypes,  # écran 12-res-profils
