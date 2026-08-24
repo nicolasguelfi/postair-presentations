@@ -89,7 +89,11 @@ def questions_slide(code: str) -> None:
     ax = axis(code)
     st_marker(ax["name"]["en"])
     with st_block(s.project.containers.page_fill_top):
-        _title(ax, toc_lvl="1", label=ax["name"]["en"])
+        # Pas d'ancre TOC ici : depuis l'exclusion des slides d'énoncés
+        # (NG 2026-08-24), l'ancre de l'axe vit sur la slide du pôle
+        # accélérateur — la tête de groupe STABLE, que ce bloc soit
+        # réactivé ou non (règle des ancres, PLAYBOOK §3).
+        _title(ax)
         st_space("v", "2vh")
         _pole_columns(ax, lambda pole, _kind: [
             (_CELL_CARDS[i], stmt["text"][lang()], 70)
@@ -104,12 +108,12 @@ _POLE_COLUMN = Style(
 )
 
 
-def _axis_pair_title(ax: dict) -> None:
+def _axis_pair_title(ax: dict, **toc) -> None:
     """Le titre au format NG 2026-08-23 : Axis "Trust / Self-reliance"."""
     pair = f"{ax['accel']['label'][lang()]} / {ax['decel']['label'][lang()]}"
     with st_zoom(115):
         st_write(_S.title, "Axis “", (s.project.titles.keyword, pair), "”",
-                 tag=t.div)
+                 tag=t.div, **toc)
 
 
 def pole_synthesis_slide(code: str, kind: str) -> None:
@@ -124,7 +128,11 @@ def pole_synthesis_slide(code: str, kind: str) -> None:
     pole = ax[kind]
     st_marker(f"{pole['label']['en']} — synthesis")
     with st_block(s.project.containers.page_fill_top):
-        _axis_pair_title(ax)
+        # L'ancre TOC de l'axe vit ICI, sur le pôle accélérateur — la tête
+        # de groupe stable depuis l'exclusion des slides d'énoncés.
+        toc = ({"toc_lvl": "1", "label": ax["name"]["en"]}
+               if kind == "accel" else {})
+        _axis_pair_title(ax, **toc)
         st_space("v", "4vh")
         header = s.project.cards.blue if kind == "accel" else s.project.cards.coral
         with st_block(_POLE_COLUMN):
@@ -209,7 +217,7 @@ def vote_support_slide() -> None:
                 card=s.project.cards.blue, levels=scale()["agree"],
                 alt_ready=("Papercut crowd with every arm raised high in "
                            "enthusiastic approval under an amber paper sun"),
-    zoomImage=100, 
+    zoomImage=100,
     zoomText=180)
 
 
@@ -219,7 +227,7 @@ def vote_oppose_slide() -> None:
                 card=s.project.cards.coral, levels=scale()["disagree"],
                 alt_ready=("Papercut crowd with arms crossed or palms raised "
                            "gently forward in polite refusal"),
-    zoomImage=100, 
+    zoomImage=100,
     zoomText=180)
 
 

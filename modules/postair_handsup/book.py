@@ -119,7 +119,7 @@ marker_config = MarkerConfig(
 st_book(
     [
         blocks.bck_title,             # titre PAPERCUT + sélecteur de langue + ancrage
-        blocks.bck_axis_trust_questions,
+        # blocks.bck_axis_trust_questions,  # exclu (NG 2026-08-24) — les 6 énoncés, à décommenter au besoin
         blocks.bck_axis_trust_accel_synthesis,
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
@@ -128,7 +128,7 @@ st_book(
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
         blocks.bck_vote_abstain,
-        blocks.bck_axis_optimism_questions,
+        # blocks.bck_axis_optimism_questions,  # exclu (NG 2026-08-24) — les 6 énoncés, à décommenter au besoin
         blocks.bck_axis_optimism_accel_synthesis,
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
@@ -137,7 +137,7 @@ st_book(
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
         blocks.bck_vote_abstain,
-        blocks.bck_axis_rationality_questions,
+        # blocks.bck_axis_rationality_questions,  # exclu (NG 2026-08-24) — les 6 énoncés, à décommenter au besoin
         blocks.bck_axis_rationality_accel_synthesis,
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
@@ -146,7 +146,7 @@ st_book(
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
         blocks.bck_vote_abstain,
-        blocks.bck_axis_speed_questions,
+        # blocks.bck_axis_speed_questions,  # exclu (NG 2026-08-24) — les 6 énoncés, à décommenter au besoin
         blocks.bck_axis_speed_accel_synthesis,
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
@@ -155,7 +155,7 @@ st_book(
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
         blocks.bck_vote_abstain,
-        blocks.bck_axis_openness_questions,
+        # blocks.bck_axis_openness_questions,  # exclu (NG 2026-08-24) — les 6 énoncés, à décommenter au besoin
         blocks.bck_axis_openness_accel_synthesis,
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
@@ -164,7 +164,7 @@ st_book(
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
         blocks.bck_vote_abstain,
-        blocks.bck_axis_freedom_questions,
+        # blocks.bck_axis_freedom_questions,  # exclu (NG 2026-08-24) — les 6 énoncés, à décommenter au besoin
         blocks.bck_axis_freedom_accel_synthesis,
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
@@ -173,7 +173,7 @@ st_book(
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
         blocks.bck_vote_abstain,
-        blocks.bck_axis_centralisation_questions,
+        # blocks.bck_axis_centralisation_questions,  # exclu (NG 2026-08-24) — les 6 énoncés, à décommenter au besoin
         blocks.bck_axis_centralisation_accel_synthesis,
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
@@ -182,7 +182,7 @@ st_book(
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
         blocks.bck_vote_abstain,
-        blocks.bck_axis_individualism_questions,
+        # blocks.bck_axis_individualism_questions,  # exclu (NG 2026-08-24) — les 6 énoncés, à décommenter au besoin
         blocks.bck_axis_individualism_accel_synthesis,
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
@@ -191,7 +191,7 @@ st_book(
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
         blocks.bck_vote_abstain,
-        blocks.bck_axis_transhumanism_questions,
+        # blocks.bck_axis_transhumanism_questions,  # exclu (NG 2026-08-24) — les 6 énoncés, à décommenter au besoin
         blocks.bck_axis_transhumanism_accel_synthesis,
         blocks.bck_vote_support,
         blocks.bck_vote_oppose,
