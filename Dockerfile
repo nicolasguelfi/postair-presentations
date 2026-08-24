@@ -28,6 +28,22 @@ COPY postair_pack/ ./postair_pack/
 RUN uv sync --no-dev --upgrade-package streamtex && \
     uv pip install rich jinja2
 
+# Chromium pour l'export PDF (NG 2026-08-24).
+#
+# streamtex n'offre le format PDF du panneau « Download as… » que si
+# playwright ET son navigateur sont présents (`_is_pdf_available`) : le
+# paquet Python vient d'`uv sync`, le navigateur ne s'installe QUE par cette
+# commande. `--with-deps` ajoute les bibliothèques système que Chromium exige
+# sur une base slim (libnss3, libatk, polices…) — sans elles le binaire est
+# là mais ne démarre pas, et le bouton PDF échouerait en séance.
+#
+# Coût mesuré : voir DEPLOY.md. Couche PROPRE, posée juste après les
+# dépendances : elle est mise en cache par Docker et n'est refaite que si
+# pyproject/uv.lock changent — les rebuilds courants (édition de blocs) ne
+# la repayent pas.
+RUN uv run playwright install --with-deps chromium && \
+    rm -rf /root/.cache/ms-playwright-tmp /var/lib/apt/lists/*
+
 # Fail the build if the installed streamtex version is older than required.
 RUN REQUIRED=$(cat .stx-version | tr -d '[:space:]') && \
     INSTALLED=$(uv run python -c "from importlib.metadata import version; print(version('streamtex'))") && \

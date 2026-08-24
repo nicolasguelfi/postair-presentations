@@ -25,6 +25,7 @@ from streamtex import (
     BannerConfig,
     MarkerConfig,
     NumberingMode,
+    PdfConfig,
     PresentationConfig,
     SlideBreakConfig,
     SlideBreakMode,
@@ -118,6 +119,24 @@ marker_config = MarkerConfig(
 # Reading order IS this list — it is the single source of truth for the deck.
 # No slide numbers anywhere in the code: numbering shifts on every design
 # iteration, block names do not.
+# Export PDF (NG 2026-08-24) — le format proposé dans le panneau
+# « Download as… » de la barre latérale. Paysage A4 : les slides sont
+# conçues en 16/9, un portrait les rétrécirait de moitié. Marges minces et
+# `print_background` pour garder les cartes colorées et les lavis du thème
+# sombre — sans lui, Chromium imprime un fond blanc et les textes clairs
+# deviennent illisibles. Le format n'apparaît QUE si playwright et son
+# Chromium sont présents (`_is_pdf_available`) : `uv run playwright install
+# chromium` en local, couche dédiée dans le Dockerfile pour le conteneur.
+PDF = PdfConfig(
+    format="A4",
+    landscape=True,
+    margin_top="6mm", margin_bottom="6mm",
+    margin_left="6mm", margin_right="6mm",
+    print_background=True,
+    content_width=100,
+    theme_bg="#1A1A2E", theme_text="#F2EEE6",
+)
+
 st_book(
     [
         # ── Part 0 · Contexts (NG 2026-08-20) — un cadre d'usage par slide ──
@@ -128,8 +147,6 @@ st_book(
         blocks.bck_survey_poster,     # the survey part opens on one image
         blocks.bck_survey_instrument,  # 3 questions × 18 postures — l'idée de l'instrument
         blocks.bck_axes_registers,    # the nine axes, register by register
-        # ── Un écran = un bloc (NG 2026-08-23) : ordonner, inclure, exclure
-        # se règle ligne par ligne ici. ──────────────────────────────
         blocks.bck_screens_enter_code,  # écran 01-saisie-code (ancre TOC du groupe « first screens »)
         blocks.bck_screens_welcome,    # écran 02-accueil-campagne
         blocks.bck_screens_eligibility,  # capture 02-eligibilite — la porte d'âge (mineurs)
@@ -137,37 +154,25 @@ st_book(
         blocks.bck_screens_statement,  # capture 04 — a statement, six levels + les 3 règles
         blocks.bck_screens_progress,   # écran 05-progression, pleine page — la barre est dedans
         blocks.bck_screens_send,       # écran 06-envoi — dernier geste du questionnaire
-        # Le poster ouvre la séquence des résultats DU PARTICIPANT, donc APRÈS
-        # l'envoi (NG 2026-08-24) : la salle, elle, a son bloc plus bas
-        # (bck_survey_results, une seule fois — le doublon d'ici est retiré,
-        # il injectait les résultats de la salle au milieu du rapport perso).
         blocks.bck_results_poster,    # TOC anchor « The Results » — poster papercut (IA, éditable)
         blocks.bck_screens_report_header,  # écran 07-res-entete (ancre TOC du groupe « report »)
         blocks.bck_screens_mascot_card,  # écran 08-res-carte
-        blocks.bck_screens_radar,      # écran 09-res-radar
-        blocks.bck_results_radar_howto,  # how to read a posture radar
-        blocks.bck_screens_personal_code,  # écran 16-res-code-partage — keep it
-        blocks.bck_screens_detail,     # écran 11-res-detail (ancre TOC du groupe « explore »)
-        blocks.bck_screens_nearest_archetypes,  # écran 12-res-profils
-        blocks.bck_screens_nearest_figures,     # écran 13-res-figures
-        blocks.bck_screens_contrast,   # écran 14-res-contraste
-        blocks.bck_screens_examples,   # écran 15-res-exemples
-        blocks.bck_screens_you_and_room,  # écran 10-res-salle (pont vers la projection)
-        blocks.bck_screens_figures_explorer,  # écran 18-explorateur (ancre TOC du groupe « figures »)
-        blocks.bck_screens_figure_page,  # écran 19-fiche-figure
-        # ── Duos vidéo (NG 2026-08-22) : pages JUMELLES — la flèche droite
-        # passe à la jumelle et y lance la vidéo de droite avec le son.
         blocks.bck_video_mascots,     # Pathos (animaux) se lance à gauche
         blocks.bck_video_mascots_right,   # même scène — Bici (objets) se lance
         blocks.bck_video_figures,     # Platon se lance à gauche (CDN)
         blocks.bck_video_figures_right,   # même scène — Ada Lovelace se lance
-        blocks.bck_survey_results,    # open the room's results (operator buttons)
-        blocks.bck_results_archetypes,  # the six archetypes
-        blocks.bck_results_room,      # the room's results — commentary
+        blocks.bck_screens_radar,      # écran 09-res-radar
+        blocks.bck_screens_personal_code,  # écran 16-res-code-partage — keep it
+        blocks.bck_screens_nearest_archetypes,  # écran 12-res-profils
+        blocks.bck_screens_nearest_figures,     # écran 13-res-figures
+        blocks.bck_screens_contrast,   # écran 14-res-contraste
+        blocks.bck_screens_examples,   # écran 15-res-exemples
         blocks.bck_survey_troubleshooting,  # before you start
         blocks.bck_survey_join,       # QR + code of the day
         blocks.bck_survey_live,       # live monitoring while the room answers
         # ── Part 2 · The screens ────────────────────────────────────
+        blocks.bck_survey_results,    # open the room's results (operator buttons)
+        blocks.bck_results_room,      # the room's results — commentary
         blocks.bck_screens_regie,      # régie (20-22) — UNE scène composée, console + /live + ruban
         blocks.bck_screens_diapo_radar,     # diapo /present — the room's radar
         blocks.bck_screens_diapo_spread,    # diapo — the room's spread
@@ -180,6 +185,13 @@ st_book(
         blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         # ── Appendix ────────────────────────────────────────────────
         blocks.bck_refs_bibliography,  # never presented; opened when a claim is challenged
+        blocks.bck_results_radar_howto,  # how to read a posture radar
+        blocks.bck_screens_detail,     # écran 11-res-detail (ancre TOC du groupe « explore »)
+        blocks.bck_screens_figures_explorer,  # écran 18-explorateur (ancre TOC du groupe « figures »)
+        blocks.bck_screens_figure_page,  # écran 19-fiche-figure
+        blocks.bck_results_archetypes,  # the six archetypes
+        blocks.bck_screens_you_and_room,  # écran 10-res-salle (pont vers la projection)
+
     ],
     toc_config=toc,
     marker_config=marker_config,
@@ -199,4 +211,5 @@ st_book(
     # heroes ≈120pt (all DS tokens follow via var(--stx-scale-K)).
     scale=SCALE,  # base amphi 30pt + rétrécissements mobiles renforcés (postair_display)
     doc_version=_doc_version,
+    pdf_config=PDF,
 )

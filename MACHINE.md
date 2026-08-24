@@ -85,7 +85,21 @@ xattr -w com.dropbox.ignored 1 <dossier>
 C'est le mécanisme officiel d'exclusion de Dropbox — le dossier reste sur le
 disque, il n'est plus synchronisé.
 
-## Le déploiement n'est pas concerné
+## Le navigateur de l'export PDF — un geste par poste
+
+Le format PDF du panneau « Download as… » n'apparaît que si **playwright ET
+son Chromium** sont présents (`_is_pdf_available` de streamtex). Le paquet
+Python vient d'`uv sync` ; le navigateur, lui, ne s'installe jamais par pip :
+
+```bash
+uv run playwright install chromium
+```
+
+Il se pose dans `~/Library/Caches/ms-playwright` (~190 Mo) — **hors de
+Dropbox**, comme le `.venv` : rien de propre à la machine n'entre dans
+l'arbre synchronisé. À refaire sur chaque poste, une fois.
+
+## Le déploiement n'est pas concerné par le .venv
 
 Le `Dockerfile` fait son `uv sync` dans `/app`, hors de tout dossier
 synchronisé, et rien dans le dépôt n'écrit `.venv` en dur (vérifié). La

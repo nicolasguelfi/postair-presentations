@@ -24,6 +24,7 @@ from streamtex import (
     BannerConfig,
     MarkerConfig,
     NumberingMode,
+    PdfConfig,
     PresentationConfig,
     SlideBreakConfig,
     SlideBreakMode,
@@ -110,6 +111,24 @@ marker_config = MarkerConfig(
 # Reading order IS this list — it is the single source of truth for the deck.
 # No slide numbers anywhere in the code: numbering shifts on every design
 # iteration, block names do not.
+# Export PDF (NG 2026-08-24) — le format proposé dans le panneau
+# « Download as… » de la barre latérale. Paysage A4 : les slides sont
+# conçues en 16/9, un portrait les rétrécirait de moitié. Marges minces et
+# `print_background` pour garder les cartes colorées et les lavis du thème
+# sombre — sans lui, Chromium imprime un fond blanc et les textes clairs
+# deviennent illisibles. Le format n'apparaît QUE si playwright et son
+# Chromium sont présents (`_is_pdf_available`) : `uv run playwright install
+# chromium` en local, couche dédiée dans le Dockerfile pour le conteneur.
+PDF = PdfConfig(
+    format="A4",
+    landscape=True,
+    margin_top="6mm", margin_bottom="6mm",
+    margin_left="6mm", margin_right="6mm",
+    print_background=True,
+    content_width=100,
+    theme_bg="#1A1A2E", theme_text="#F2EEE6",
+)
+
 st_book(
     [
         blocks.bck_guide_title,        # U1 · the official document, sealed
@@ -142,4 +161,5 @@ st_book(
     # Auditorium base: 30pt body base ⇒ bullets ≈60pt, slide titles ≈80pt.
     scale=SCALE,  # base amphi 30pt + rétrécissements mobiles renforcés (postair_display)
     doc_version=_doc_version,
+    pdf_config=PDF,
 )

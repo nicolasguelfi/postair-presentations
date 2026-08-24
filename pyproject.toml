@@ -7,6 +7,12 @@ dependencies = [
     "streamtex[ai,cli]>=0.7.25,<0.8",
     "postair-pack",
     "segno>=1.6.6",
+    # Export PDF depuis le panneau « Download as… » : streamtex n'offre le
+    # format que si playwright ET son Chromium sont présents
+    # (`_is_pdf_available`). Le navigateur, lui, ne s'installe pas par pip :
+    # `uv run playwright install chromium` sur chaque poste, et une couche
+    # dédiée dans le Dockerfile pour le conteneur.
+    "playwright>=1.47",
 ]
 
 [tool.uv.sources]

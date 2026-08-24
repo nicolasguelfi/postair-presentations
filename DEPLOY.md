@@ -26,6 +26,21 @@ this repo, **one Coolify service per module**, each selecting its module via the
 
 Runtime env per app: `FOLDER`, `STX_SERVE_MODE` (dual).
 
+### Export PDF dans le conteneur (NG 2026-08-24)
+
+Le bouton PDF du panneau « Download as… » exige playwright **et** son
+Chromium. La couche `RUN uv run playwright install --with-deps chromium` du
+Dockerfile le fournit, au prix d'environ **+350 à 450 Mo par image**
+(binaire Chromium ~190 Mo + bibliothèques système de la base slim). Sur une
+image déjà à ~600 Mo, c'est un doublement — à peser contre l'historique du
+serveur de build (`exit 255` en août sur des builds parallèles). La couche
+est posée juste après les dépendances : mise en cache par Docker, elle
+n'est repayée que si `pyproject.toml`/`uv.lock` changent.
+
+Alternative si le coût devient gênant : retirer cette couche et garder le
+PDF comme fonction **locale** de l'orateur — les decks en ligne offrent déjà
+l'export HTML statique sous `/html/`.
+
 ## Deploy / update — `main` IS production
 
 **Pushing to `main` deploys automatically** via

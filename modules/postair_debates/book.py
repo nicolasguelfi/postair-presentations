@@ -25,6 +25,7 @@ from streamtex import (
     BannerConfig,
     MarkerConfig,
     NumberingMode,
+    PdfConfig,
     PresentationConfig,
     SlideBreakConfig,
     SlideBreakMode,
@@ -112,6 +113,24 @@ marker_config = MarkerConfig(
 # Reading order IS this list. No slide numbers anywhere in the code: blocks are
 # named after their axis, which is stable. The plan ↔ block mapping lives in
 # _project/plans/plan-postair_debates.md.
+# Export PDF (NG 2026-08-24) — le format proposé dans le panneau
+# « Download as… » de la barre latérale. Paysage A4 : les slides sont
+# conçues en 16/9, un portrait les rétrécirait de moitié. Marges minces et
+# `print_background` pour garder les cartes colorées et les lavis du thème
+# sombre — sans lui, Chromium imprime un fond blanc et les textes clairs
+# deviennent illisibles. Le format n'apparaît QUE si playwright et son
+# Chromium sont présents (`_is_pdf_available`) : `uv run playwright install
+# chromium` en local, couche dédiée dans le Dockerfile pour le conteneur.
+PDF = PdfConfig(
+    format="A4",
+    landscape=True,
+    margin_top="6mm", margin_bottom="6mm",
+    margin_left="6mm", margin_right="6mm",
+    print_background=True,
+    content_width=100,
+    theme_bg="#1A1A2E", theme_text="#F2EEE6",
+)
+
 st_book(
     [
         # Intro en 4 temps (NG 2026-08-14, ss12-restructure) : les deux slides
@@ -155,6 +174,7 @@ st_book(
     # Auditorium base: 30pt body base ⇒ bullets ≈60pt, slide titles ≈80pt.
     scale=SCALE,  # base amphi 30pt + rétrécissements mobiles renforcés (postair_display)
     doc_version=_doc_version,
+    pdf_config=PDF,
     # La bibliographie se charge PAR ``st_book``, jamais avant lui : il vide le
     # registre au début de sa construction. Le .bib est GELÉ par
     # build_debates_content.py — même contrat que content.json.
