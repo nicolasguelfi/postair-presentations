@@ -7,11 +7,19 @@ dependencies = [
     "streamtex[ai,cli]>=0.7.25,<0.8",
     "postair-pack",
     "segno>=1.6.6",
-    # Export PDF depuis le panneau « Download as… » : streamtex n'offre le
-    # format que si playwright ET son Chromium sont présents
-    # (`_is_pdf_available`). Le navigateur, lui, ne s'installe pas par pip :
-    # `uv run playwright install chromium` sur chaque poste, et une couche
-    # dédiée dans le Dockerfile pour le conteneur.
+]
+
+# Outillage du POSTE, jamais de l'image (NG 2026-08-24) : le Dockerfile fait
+# `uv sync --no-dev`, ces paquets n'entrent donc pas en production.
+#
+# playwright sert l'export PDF du panneau « Download as… » : streamtex ne
+# propose le format que si le paquet ET son Chromium sont présents
+# (`_is_pdf_available`). Décision NG : le PDF est une fonction de l'ORATEUR,
+# en local — les decks en ligne offrent déjà l'export HTML sous `/html/`, et
+# embarquer Chromium coûterait ~400 Mo par image. Le navigateur ne s'installe
+# jamais par pip : `uv run playwright install chromium` (voir MACHINE.md).
+[dependency-groups]
+dev = [
     "playwright>=1.47",
 ]
 
