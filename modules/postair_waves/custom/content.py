@@ -100,3 +100,26 @@ def echo(wave_id: str, lang: str | None = None) -> str:
 def image_uri(wave_id: str, etage: str) -> str:
     """L'URI (sous ``static/``) de l'image validée d'un étage du quadriptyque."""
     return f"images/waves/v{wave(wave_id)['order']:02d}-{etage}.webp"
+
+
+_IMAGES = Path(__file__).parent.parent / "static" / "data" / "waves-images.json"
+
+
+@lru_cache(maxsize=1)
+def images_manifest() -> dict:
+    """La PROVENANCE des images du quadriptyque (proposition A, 2026-08-26) —
+    le pendant versionné des sidecars managés : moteur, master, retouches,
+    et le drapeau ``ai`` qui pilote la pastille DD-35."""
+    return json.loads(_IMAGES.read_text(encoding="utf-8"))["images"]
+
+
+def image_ai(wave_id: str, etage: str) -> bool:
+    """Le drapeau de données DD-35 d'une image — bruyant si elle n'est pas
+    au manifeste de provenance : une image sans provenance ne se projette pas."""
+    key = f"v{wave(wave_id)['order']:02d}-{etage}"
+    entry = images_manifest().get(key)
+    if entry is None:
+        raise KeyError(
+            f"image {key!r} absente de waves-images.json — toute image du "
+            f"quadriptyque doit porter sa provenance avant d'être projetée.")
+    return bool(entry.get("ai", True))

@@ -1,0 +1,293 @@
+{
+  "_doc": "PROVENANCE des 68 images du quadriptyque — le pendant versionné des sidecars d'images managées (proposition A, ligne NG 2026-08-26). Toutes les images sont GÉNÉRÉES PAR IA (`ai: true` pilote la pastille DD-35 — le drapeau de données décide, jamais le bloc). Masters 2K PNG : _project/_explorations/ (LOCAL, hors git — archivage = proposition C, décision d'auteur en attente). Prompts verbatim et tours de validation : _project/reviews/2608*/spec*.json + review.json (local par choix) ; récapitulatif : _project/reviews/260826-serie-complete/manifeste-serie.json. Régime CDN : AUCUN — exception assumée du dépôt (illustrations versionnées, jamais au CDN).",
+  "defaults": {
+    "engine": "gemini-3-pro-image-preview (Google) · 16:9 · 2K",
+    "conversion": "webp q86, 2048px (PIL), 2026-08-26",
+    "chain": "chaîne de série : avant ancré sur le style de la paire validée de la vague 1 (s2-avant/s2-apres), après ancré sur style + avant (ligne NG vague1t2)",
+    "validated": "planches review-board des 25-26/08/2026, lignes NG journalisées"
+  },
+  "images": {
+    "v01-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague1/s2-avant.png",
+      "note": "paire fondatrice de la série — l'ANCRE DE STYLE de toutes les autres"
+    },
+    "v01-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague1/objet-stele.png"
+    },
+    "v01-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague1/crise-memoire.png"
+    },
+    "v01-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague1/s2-apres.png",
+      "note": "paire fondatrice de la série — l'ANCRE DE STYLE de toutes les autres"
+    },
+    "v02-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague2/atelier-avant-cn2.png"
+    },
+    "v02-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague2/objet-casse-02.png"
+    },
+    "v02-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague2/crise-copistes-03.png"
+    },
+    "v02-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague2/atelier-apres-cn2.png"
+    },
+    "v03-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague3/metiers-avant.png"
+    },
+    "v03-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague3/objet-outils.png"
+    },
+    "v03-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague3/crise-dependance.png"
+    },
+    "v03-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague3/metiers-apres.png"
+    },
+    "v04-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague4/presse-avant.png"
+    },
+    "v04-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague4/objet-presse.png"
+    },
+    "v04-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague4/crise-censure.png"
+    },
+    "v04-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague4/presse-apres.png"
+    },
+    "v05-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague5/ciel-avant-03.png",
+      "retouche": "antennes TV retirées par édition FLUX Kontext (fal)"
+    },
+    "v05-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague5/objet-lunette.png"
+    },
+    "v05-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague5/crise-bucher-02.png",
+      "retouche": "antennes TV retirées par édition FLUX Kontext (fal)"
+    },
+    "v05-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague5/ciel-apres-s2-lune.png"
+    },
+    "v06-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague6/tisserand-avant.png"
+    },
+    "v06-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague6/objet-vapeur.png"
+    },
+    "v06-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague6/tisserand-crise.png"
+    },
+    "v06-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague6/tisserand-apres-02.png",
+      "retouche": "ampoule électrique anachronique remplacée par une lanterne à huile (FLUX Kontext)"
+    },
+    "v07-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague7/rail-avant.png"
+    },
+    "v07-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague7/rail-objet.png"
+    },
+    "v07-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague7/rail-crise.png"
+    },
+    "v07-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague7/rail-apres.png"
+    },
+    "v08-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague8/microbe-avant.png"
+    },
+    "v08-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague8/microbe-objet.png"
+    },
+    "v08-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague8/microbe-crise-04.png",
+      "retouche": "reproduction contrôlée Gemini — corps du placard rendu illisible ; titre semi-lisible, passe dédiée en dette"
+    },
+    "v08-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague8/microbe-apres-02.png",
+      "retouche": "texte anglais du graphique mural rendu illisible (FLUX Kontext)"
+    },
+    "v09-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague9/elec-avant.png"
+    },
+    "v09-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague9/elec-objet.png"
+    },
+    "v09-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague9/elec-crise.png"
+    },
+    "v09-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague9/elec-apres.png"
+    },
+    "v10-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague10/moteur-avant.png"
+    },
+    "v10-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague10/moteur-objet.png"
+    },
+    "v10-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague10/moteur-crise.png"
+    },
+    "v10-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague10/moteur-apres.png"
+    },
+    "v11-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague11/medias-avant.png"
+    },
+    "v11-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague11/medias-objet.png"
+    },
+    "v11-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague11/medias-crise-03.png"
+    },
+    "v11-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague11/medias-apres-cinema-02.png",
+      "retouche": "bloc de sortie de secours moderne remplacé par une lampe rouge d'époque (FLUX Kontext)"
+    },
+    "v12-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague12/atome-avant.png"
+    },
+    "v12-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague12/atome-objet.png"
+    },
+    "v12-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague12/atome-crise.png"
+    },
+    "v12-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague12/atome-apres.png"
+    },
+    "v13-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague13/calcul-avant.png"
+    },
+    "v13-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague13/calcul-objet.png"
+    },
+    "v13-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague13/calcul-crise.png"
+    },
+    "v13-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague13/calcul-apres.png"
+    },
+    "v14-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague14/chimie-avant-02.png"
+    },
+    "v14-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague14/chimie-objet.png"
+    },
+    "v14-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague14/chimie-crise.png"
+    },
+    "v14-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague14/chimie-apres-02.png"
+    },
+    "v15-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague15/gene-avant.png"
+    },
+    "v15-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague15/gene-objet.png"
+    },
+    "v15-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague15/gene-crise.png"
+    },
+    "v15-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague15/gene-apres-02.png"
+    },
+    "v16-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague16/web-avant.png"
+    },
+    "v16-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague16/web-objet-02.png",
+      "retouche": "logos réels (USRobotics ×3) effacés (FLUX Kontext)"
+    },
+    "v16-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague16/web-crise.png"
+    },
+    "v16-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague16/web-apres.png"
+    },
+    "v17-avant": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague17/ia-avant.png"
+    },
+    "v17-objet": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague17/ia-objet-02.png",
+      "retouche": "seconde version (retour NG 2026-08-26) : bureau aux trois assistants — Claude/ChatGPT/Gemini, icônes réelles sur demande explicite de l'auteur"
+    },
+    "v17-crise": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague17/ia-crise.png"
+    },
+    "v17-recompose": {
+      "ai": true,
+      "master": "_project/_explorations/260825-photoreal-vague17/ia-apres.png"
+    }
+  }
+}

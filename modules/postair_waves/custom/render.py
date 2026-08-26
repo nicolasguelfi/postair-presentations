@@ -74,6 +74,9 @@ def _wave_button(w: dict, lang: str, width: str = "min(76%, 57vh)") -> None:
     page = _WAVE_PAGE_FIRST + w["order"] - 1
     img = f"app/static/images/waves/v{w['order']:02d}-objet.webp"
     name = content.text(w["name"], lang)
+    chip = ('<span style="' + DD35_CSS + ' position:absolute; right:0.6em; '
+            'top:0.6em; pointer-events:none;">✦ AI</span>'
+            if content.image_ai(w["id"], "objet") else "")
     st_html(
         f'<a href="#stx-goto-{page}" class="stx-page-link" '
         f'style="display:block; position:relative; width:{width}; '
@@ -82,8 +85,7 @@ def _wave_button(w: dict, lang: str, width: str = "min(76%, 57vh)") -> None:
         f'<img src="{img}" alt="{name} ({w["period"]}) — AI-generated title '
         f'card, click to open the wave" '
         f'style="width:100%; height:auto; display:block;"/>'
-        f'<span style="{DD35_CSS} position:absolute; right:0.6em; top:0.6em; '
-        f'pointer-events:none;">✦ AI</span>'
+        f'{chip}'
         f'</a>')
 
 
@@ -204,7 +206,9 @@ def _stage(w: dict, etage: str, lang: str, first: bool) -> None:
                  uri=content.image_uri(w["id"], etage),
                  alt=f"{content.etage_label(etage, 'en')} — {name} "
                      f"({w['period']}): AI-generated historical reconstruction",
-                 overlay=dd35_overlay(True))
+                 # Le drapeau vient du manifeste de provenance (waves-images
+                 # .json), jamais du bloc — proposition A, 2026-08-26.
+                 overlay=dd35_overlay(content.image_ai(w["id"], etage)))
         st_write(ss.phrase, content.phrase(w["id"], etage, lang), tag=t.div)
 
 
