@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-07-29",
+  "updated": "2026-08-26",
   "infrastructure": {
     "provider": "hetzner",
     "server": {
@@ -86,6 +86,15 @@
       "repo": "https://github.com/nicolasguelfi/postair-presentations",
       "branch": "main",
       "folder": "modules/postair_handsup",
+      "serve_mode": "dual"
+    },
+    "postair-waves": {
+      "uuid": "el8z66c5qww1780sjdi1emmv",
+      "subdomain": "postair-waves",
+      "fqdn": "https://postair-waves.streamtex.org",
+      "repo": "https://github.com/nicolasguelfi/postair-presentations",
+      "branch": "main",
+      "folder": "modules/postair_waves",
       "serve_mode": "dual"
     }
   }

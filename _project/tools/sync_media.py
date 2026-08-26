@@ -55,7 +55,7 @@ _MODULES = _REPO / "modules"
 MASCOT_MODULES = ["postair_opening", "postair_survey", "postair_debates",
                   "postair_genai", "postair_guidelines"]
 #: Les modules qui affichent des figures (portraits + posters).
-FIGURE_MODULES = ["postair_debates"]
+FIGURE_MODULES = ["postair_debates", "postair_waves"]
 #: Les modules qui projettent les captures d'écran du parcours participant
 #: (catalogue gelé par _project/tools/build_survey_captures.py).
 CAPTURE_MODULES = ["postair_survey"]
@@ -260,8 +260,11 @@ def figure_catalogue(module: str) -> list[tuple[str, str]]:
         return []
     data = json.loads(manifest.read_text(encoding="utf-8"))
     seen: dict[str, str] = {}
-    for pole in data["poles"]:
-        for fig in pole["figures"]:
+    # Deux structures de gel cohabitent : debates groupe ses figures par
+    # ``poles``, waves par ``waves`` — mêmes blocs ``media`` dans les deux.
+    groups = data.get("poles") or data.get("waves") or []
+    for group in groups:
+        for fig in group["figures"]:
             media = fig.get("media") or {}
             # `portrait` / `poster` sont les URI LOCALES que la slide demande ;
             # `*_cdn` est la provenance, donc ce qu'il faut télécharger.

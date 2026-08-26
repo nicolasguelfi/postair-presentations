@@ -1,0 +1,1277 @@
+{
+  "metadata": {
+    "_doc": "GÉNÉRÉ par _project/tools/build_waves_content.py — ne jamais éditer : régénérer. Le hub est la vérité.",
+    "generated_by": "build_waves_content.py (lot L1)",
+    "hub_commit": "ae06fbc6",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "default_language": "en"
+  },
+  "waves": [
+    {
+      "id": "writing",
+      "code": "WRT",
+      "order": 1,
+      "period": "5th-4th c. BCE",
+      "name": {
+        "en": "Writing",
+        "fr": "L'écriture"
+      },
+      "substitution": {
+        "en": "writing",
+        "fr": "l'écriture"
+      },
+      "emblem": "platon",
+      "figures": [
+        {
+          "id": "isocrate",
+          "name": "Isocrate",
+          "dates": "-436/-338",
+          "origin": "Greece",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/09695f5b-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/isocrate/09695f5b-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/isocrate/c3db233e.mp4",
+            "video_ai": true,
+            "poster": "figures/cba87261-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/isocrate/cba87261-poster-512.png"
+          }
+        },
+        {
+          "id": "platon",
+          "name": "Platon",
+          "dates": "-428/-348",
+          "origin": "Greece",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/ed35b1d0-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/platon/ed35b1d0-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/platon/504be6bd.mp4",
+            "video_ai": true,
+            "poster": "figures/1c4f0c68-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/platon/1c4f0c68-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "printing-china",
+      "code": "PCH",
+      "order": 2,
+      "period": "11th c.",
+      "name": {
+        "en": "Chinese movable type",
+        "fr": "Imprimerie chinoise à caractères mobiles"
+      },
+      "substitution": {
+        "en": "printing",
+        "fr": "l'imprimerie"
+      },
+      "emblem": "shen-kuo",
+      "figures": [
+        {
+          "id": "shen-kuo",
+          "name": "Shen Kuo",
+          "dates": "1031-1095",
+          "origin": "China (Song)",
+          "stance": "observer-enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/ebcb4bdf-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/shen-kuo/ebcb4bdf-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
+            "video_ai": true,
+            "poster": "figures/6aa9ebe3-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/shen-kuo/6aa9ebe3-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "medieval-crafts",
+      "code": "CRF",
+      "order": 3,
+      "period": "14th c.",
+      "name": {
+        "en": "Crafts and techniques of urban civilisation",
+        "fr": "Arts et techniques de la civilisation urbaine"
+      },
+      "substitution": {
+        "en": "the crafts and techniques",
+        "fr": "les arts et techniques"
+      },
+      "emblem": "ibn-khaldun",
+      "figures": [
+        {
+          "id": "ibn-khaldun",
+          "name": "Ibn Khaldun",
+          "dates": "1332-1406",
+          "origin": "Arab world (Tunis)",
+          "stance": "analytic",
+          "stance_class": "ambivalent",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/c3deb8aa-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/ibn-khaldun/c3deb8aa-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/ibn-khaldun/2861836e.mp4",
+            "video_ai": true,
+            "poster": "figures/8e7d0cc2-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/ibn-khaldun/8e7d0cc2-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "printing-press",
+      "code": "PRS",
+      "order": 4,
+      "period": "1450-1550",
+      "name": {
+        "en": "Printing press",
+        "fr": "L'imprimerie"
+      },
+      "substitution": {
+        "en": "the printing press",
+        "fr": "l'imprimerie"
+      },
+      "emblem": "luther",
+      "figures": [
+        {
+          "id": "erasme",
+          "name": "Érasme",
+          "dates": "1466-1536",
+          "origin": "Netherlands",
+          "stance": "critical-adopter",
+          "stance_class": "ambivalent",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/c44a4b14-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/erasme/c44a4b14-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/erasme/5ecaa161.mp4",
+            "video_ai": true,
+            "poster": "figures/90f73311-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/erasme/90f73311-poster-512.png"
+          }
+        },
+        {
+          "id": "luther",
+          "name": "Martin Luther",
+          "dates": "1483-1546",
+          "origin": "Germany",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/8d4ae9a8-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/luther/8d4ae9a8-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/luther/3a281a1d.mp4",
+            "video_ai": true,
+            "poster": "figures/92c1550f-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/luther/92c1550f-poster-512.png"
+          }
+        },
+        {
+          "id": "trithemius",
+          "name": "Jean Trithème (Johannes Trithemius)",
+          "dates": "1462-1516",
+          "origin": "Germany",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/50d04d24-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/trithemius/50d04d24-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/trithemius/769eaa9d.mp4",
+            "video_ai": true,
+            "poster": "figures/e4be6ded-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/trithemius/e4be6ded-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "new-science",
+      "code": "SCI",
+      "order": 5,
+      "period": "1600-1650",
+      "name": {
+        "en": "New science / telescope",
+        "fr": "Science nouvelle / télescope"
+      },
+      "substitution": {
+        "en": "the new science",
+        "fr": "la science nouvelle"
+      },
+      "emblem": "galilee",
+      "figures": [
+        {
+          "id": "bacon",
+          "name": "Francis Bacon",
+          "dates": "1561-1626",
+          "origin": "England",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/f437d31e-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/bacon/f437d31e-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/bacon/27444853.mp4",
+            "video_ai": true,
+            "poster": "figures/d7bc839f-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/bacon/d7bc839f-poster-512.png"
+          }
+        },
+        {
+          "id": "galilee",
+          "name": "Galilée",
+          "dates": "1564-1642",
+          "origin": "Italy",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/9c62fa4a-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/galilee/9c62fa4a-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
+            "video_ai": true,
+            "poster": "figures/6f1f114f-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/galilee/6f1f114f-poster-512.png"
+          }
+        },
+        {
+          "id": "pascal",
+          "name": "Blaise Pascal",
+          "dates": "1623-1662",
+          "origin": "France",
+          "stance": "ambivalent",
+          "stance_class": "ambivalent",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/0f1416f7-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/pascal/0f1416f7-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/pascal/0a99fc45.mp4",
+            "video_ai": true,
+            "poster": "figures/9a541e97-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/pascal/9a541e97-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "industrialisation",
+      "code": "STM",
+      "order": 6,
+      "period": "1780-1850",
+      "name": {
+        "en": "Steam engine, industrialisation",
+        "fr": "Machine à vapeur, industrialisation"
+      },
+      "substitution": {
+        "en": "the machine (industry)",
+        "fr": "la machine (l'industrie)"
+      },
+      "emblem": "marx",
+      "figures": [
+        {
+          "id": "carlyle",
+          "name": "Thomas Carlyle",
+          "dates": "1795-1881",
+          "origin": "Scotland",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/e9cfd863-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/carlyle/e9cfd863-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/carlyle/34c074fa.mp4",
+            "video_ai": true,
+            "poster": "figures/c6a2c068-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/carlyle/c6a2c068-poster-512.png"
+          }
+        },
+        {
+          "id": "fukuzawa",
+          "name": "Fukuzawa Yukichi",
+          "dates": "1835-1901",
+          "origin": "Japan (Meiji)",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/24ccf8ba-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/fukuzawa/24ccf8ba-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/fukuzawa/e8420bca.mp4",
+            "video_ai": true,
+            "poster": "figures/3bbda6e5-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/fukuzawa/3bbda6e5-poster-512.png"
+          }
+        },
+        {
+          "id": "gandhi",
+          "name": "Mohandas K. Gandhi",
+          "dates": "1869-1948",
+          "origin": "India",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T1",
+          "media": null
+        },
+        {
+          "id": "marx",
+          "name": "Karl Marx",
+          "dates": "1818-1883",
+          "origin": "Germany",
+          "stance": "dialectic",
+          "stance_class": "ambivalent",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/2215731b-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/marx/2215731b-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/marx/4981d27c.mp4",
+            "video_ai": true,
+            "poster": "figures/307c21fb-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/marx/307c21fb-poster-512.png"
+          }
+        },
+        {
+          "id": "saint-simon",
+          "name": "Henri de Saint-Simon",
+          "dates": "1760-1825",
+          "origin": "France",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/eae45309-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/saint-simon/eae45309-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/saint-simon/74d5342d.mp4",
+            "video_ai": true,
+            "poster": "figures/33ce2432-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/saint-simon/33ce2432-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rail-telegraph",
+      "code": "RLW",
+      "order": 7,
+      "period": "1830-1870",
+      "name": {
+        "en": "Railway and telegraph",
+        "fr": "Chemin de fer et télégraphe"
+      },
+      "substitution": {
+        "en": "the railway and the telegraph",
+        "fr": "le chemin de fer et le télégraphe"
+      },
+      "emblem": "thoreau",
+      "figures": [
+        {
+          "id": "hugo",
+          "name": "Victor Hugo",
+          "dates": "1802-1885",
+          "origin": "France",
+          "stance": "ambivalent-enthusiast",
+          "stance_class": "ambivalent",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/bc978448-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/hugo/bc978448-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/hugo/08ddce6d.mp4",
+            "video_ai": true,
+            "poster": "figures/4a41db7f-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/hugo/4a41db7f-poster-512.png"
+          }
+        },
+        {
+          "id": "thoreau",
+          "name": "Henry David Thoreau",
+          "dates": "1817-1862",
+          "origin": "USA",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/391e5c59-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/thoreau/391e5c59-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/thoreau/a9cfb9b5.mp4",
+            "video_ai": true,
+            "poster": "figures/0c5890cb-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/thoreau/0c5890cb-poster-512.png"
+          }
+        },
+        {
+          "id": "tolstoi",
+          "name": "Léon Tolstoï",
+          "dates": "1828-1910",
+          "origin": "Russia",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/08181b1e-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/tolstoi/08181b1e-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
+            "video_ai": true,
+            "poster": "figures/9d777b82-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/tolstoi/9d777b82-poster-512.png"
+          }
+        },
+        {
+          "id": "whitman",
+          "name": "Walt Whitman",
+          "dates": "1819-1892",
+          "origin": "USA",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/97b21a2a-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/whitman/97b21a2a-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/whitman/29001c30.mp4",
+            "video_ai": true,
+            "poster": "figures/72af0174-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/whitman/72af0174-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "germ-theory",
+      "code": "VAC",
+      "order": 8,
+      "period": "1860-1900",
+      "name": {
+        "en": "Microbiology and vaccination",
+        "fr": "Microbiologie et vaccination"
+      },
+      "substitution": {
+        "en": "vaccination (scientific medicine)",
+        "fr": "la vaccination (la médecine scientifique)"
+      },
+      "emblem": "pasteur",
+      "figures": [
+        {
+          "id": "pasteur",
+          "name": "Louis Pasteur",
+          "dates": "1822-1895",
+          "origin": "France",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/c15b6537-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/pasteur/c15b6537-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/pasteur/69c486cf.mp4",
+            "video_ai": true,
+            "poster": "figures/9cc3e38b-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/pasteur/9cc3e38b-poster-512.png"
+          }
+        },
+        {
+          "id": "wallace",
+          "name": "Alfred Russel Wallace",
+          "dates": "1823-1913",
+          "origin": "England",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/3707b2cd-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/wallace/3707b2cd-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/wallace/e28038df.mp4",
+            "video_ai": true,
+            "poster": "figures/3f2ab961-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/wallace/3f2ab961-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electricity",
+      "code": "ELC",
+      "order": 9,
+      "period": "1880-1910",
+      "name": {
+        "en": "Electricity",
+        "fr": "L'électricité"
+      },
+      "substitution": {
+        "en": "electricity",
+        "fr": "l'électricité"
+      },
+      "emblem": "tesla",
+      "figures": [
+        {
+          "id": "edison",
+          "name": "Thomas Edison",
+          "dates": "1847-1931",
+          "origin": "USA",
+          "stance": "pragmatic-enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/91294d3f-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/edison/91294d3f-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/edison/19d7d43c.mp4",
+            "video_ai": true,
+            "poster": "figures/7c72716f-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/edison/7c72716f-poster-512.png"
+          }
+        },
+        {
+          "id": "henry-adams",
+          "name": "Henry Adams",
+          "dates": "1838-1918",
+          "origin": "USA",
+          "stance": "anxious-skeptic",
+          "stance_class": "skeptic",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/6da182bb-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/henry-adams/6da182bb-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/henry-adams/58762b1e.mp4",
+            "video_ai": true,
+            "poster": "figures/1dbfe4e0-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/henry-adams/1dbfe4e0-poster-512.png"
+          }
+        },
+        {
+          "id": "marti",
+          "name": "José Martí",
+          "dates": "1853-1895",
+          "origin": "Cuba",
+          "stance": "ambivalent-enthusiast",
+          "stance_class": "ambivalent",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/ff4d46e0-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/marti/ff4d46e0-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/marti/980d7a63.mp4",
+            "video_ai": true,
+            "poster": "figures/5a9f3cdd-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/marti/5a9f3cdd-poster-512.png"
+          }
+        },
+        {
+          "id": "tesla",
+          "name": "Nikola Tesla",
+          "dates": "1856-1943",
+          "origin": "Serbia/USA",
+          "stance": "visionary-enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/d733d921-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/tesla/d733d921-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/tesla/462a2483.mp4",
+            "video_ai": true,
+            "poster": "figures/6c7f41a1-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/tesla/6c7f41a1-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "motor-aviation",
+      "code": "MTR",
+      "order": 10,
+      "period": "1900-1940",
+      "name": {
+        "en": "Motor, automobile, aviation",
+        "fr": "Moteur, automobile, aviation"
+      },
+      "substitution": {
+        "en": "the machine (motor)",
+        "fr": "la machine (le moteur)"
+      },
+      "emblem": "saint-exupery",
+      "figures": [
+        {
+          "id": "duhamel",
+          "name": "Georges Duhamel",
+          "dates": "1884-1966",
+          "origin": "France",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/6665ba19-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/duhamel/6665ba19-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/duhamel/69dfe407.mp4",
+            "video_ai": true,
+            "poster": "figures/8c38e28c-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/duhamel/8c38e28c-poster-512.png"
+          }
+        },
+        {
+          "id": "marinetti",
+          "name": "Filippo Tommaso Marinetti",
+          "dates": "1876-1944",
+          "origin": "Italy",
+          "stance": "futurist-enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/5cf530ca-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/marinetti/5cf530ca-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/marinetti/0084d933.mp4",
+            "video_ai": true,
+            "poster": "figures/8a39ed64-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/marinetti/8a39ed64-poster-512.png"
+          }
+        },
+        {
+          "id": "saint-exupery",
+          "name": "Antoine de Saint-Exupéry",
+          "dates": "1900-1944",
+          "origin": "France",
+          "stance": "humanist-ambivalent",
+          "stance_class": "ambivalent",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/a4f1f2fc-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/saint-exupery/a4f1f2fc-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/saint-exupery/2677c5d2.mp4",
+            "video_ai": true,
+            "poster": "figures/9e1fe5a5-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/saint-exupery/9e1fe5a5-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mass-media",
+      "code": "MED",
+      "order": 11,
+      "period": "1920-1950",
+      "name": {
+        "en": "Mass media (radio, cinema)",
+        "fr": "Médias de masse (radio, cinéma)"
+      },
+      "substitution": {
+        "en": "radio and cinema",
+        "fr": "la radio et le cinéma"
+      },
+      "emblem": "orwell",
+      "figures": [
+        {
+          "id": "benjamin",
+          "name": "Walter Benjamin",
+          "dates": "1892-1940",
+          "origin": "Germany",
+          "stance": "dialectic",
+          "stance_class": "ambivalent",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/5efd8841-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/benjamin/5efd8841-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
+            "video_ai": true,
+            "poster": "figures/509c925b-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/benjamin/509c925b-poster-512.png"
+          }
+        },
+        {
+          "id": "brecht",
+          "name": "Bertolt Brecht",
+          "dates": "1898-1956",
+          "origin": "Germany",
+          "stance": "reformist-enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/94338e63-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/brecht/94338e63-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/brecht/2b2862e7.mp4",
+            "video_ai": true,
+            "poster": "figures/041a1b2c-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/brecht/041a1b2c-poster-512.png"
+          }
+        },
+        {
+          "id": "orwell",
+          "name": "George Orwell",
+          "dates": "1903-1950",
+          "origin": "England",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/f06ce0c8-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/orwell/f06ce0c8-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/orwell/625e685d.mp4",
+            "video_ai": true,
+            "poster": "figures/1b4538e5-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/orwell/1b4538e5-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "atom",
+      "code": "ATM",
+      "order": 12,
+      "period": "1945-1965",
+      "name": {
+        "en": "Atomic energy and weapons",
+        "fr": "Énergie et arme atomiques"
+      },
+      "substitution": {
+        "en": "atomic energy and weapons",
+        "fr": "l'énergie et l'arme atomiques"
+      },
+      "emblem": "einstein",
+      "figures": [
+        {
+          "id": "einstein",
+          "name": "Albert Einstein",
+          "dates": "1879-1955",
+          "origin": "Germany/USA",
+          "stance": "dialectic",
+          "stance_class": "ambivalent",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/29d220ff-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/einstein/29d220ff-512.png",
+            "portrait_ai": false,
+            "video": "https://media.sumvadis.ai/einstein/64c4a2be.mp4",
+            "video_ai": true,
+            "poster": "figures/48a9d006-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/einstein/48a9d006-poster-512.png"
+          }
+        },
+        {
+          "id": "oe",
+          "name": "Ōe Kenzaburō",
+          "dates": "1935-2023",
+          "origin": "Japan",
+          "stance": "victim-side-witness",
+          "stance_class": "skeptic",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/450bc375-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/oe/450bc375-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/oe/19b14574.mp4",
+            "video_ai": true,
+            "poster": "figures/8c1daf23-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/oe/8c1daf23-poster-512.png"
+          }
+        },
+        {
+          "id": "oppenheimer",
+          "name": "J. Robert Oppenheimer",
+          "dates": "1904-1967",
+          "origin": "USA",
+          "stance": "ambivalent",
+          "stance_class": "ambivalent",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/ed9b6256-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/oppenheimer/ed9b6256-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/oppenheimer/e58c5f03.mp4",
+            "video_ai": true,
+            "poster": "figures/69588e81-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/oppenheimer/69588e81-poster-512.png"
+          }
+        },
+        {
+          "id": "teller",
+          "name": "Edward Teller",
+          "dates": "1908-2003",
+          "origin": "Hungary/USA",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/91e74e45-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/teller/91e74e45-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/teller/1354adf2.mp4",
+            "video_ai": true,
+            "poster": "figures/00fc3b39-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/teller/00fc3b39-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "computer-cybernetics",
+      "code": "CMP",
+      "order": 13,
+      "period": "1843; 1945-1975",
+      "name": {
+        "en": "Computer, cybernetics, automation",
+        "fr": "Ordinateur, cybernétique, automation"
+      },
+      "substitution": {
+        "en": "computing machines (automation)",
+        "fr": "les machines à calculer (l'automation)"
+      },
+      "emblem": "turing",
+      "figures": [
+        {
+          "id": "arendt",
+          "name": "Hannah Arendt",
+          "dates": "1906-1975",
+          "origin": "Germany/USA",
+          "stance": "philosophical-skeptic",
+          "stance_class": "skeptic",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/8fd7db01-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/arendt/8fd7db01-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/arendt/0f0088e5.mp4",
+            "video_ai": true,
+            "poster": "figures/11c784fb-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/arendt/11c784fb-poster-512.png"
+          }
+        },
+        {
+          "id": "lovelace",
+          "name": "Ada Lovelace",
+          "dates": "1815-1852",
+          "origin": "England",
+          "stance": "analytic-pioneer",
+          "stance_class": "ambivalent",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/330a5df4-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/lovelace/330a5df4-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/lovelace/40aa6b2b.mp4",
+            "video_ai": true,
+            "poster": "figures/390a9d7f-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/lovelace/390a9d7f-poster-512.png"
+          }
+        },
+        {
+          "id": "turing",
+          "name": "Alan Turing",
+          "dates": "1912-1954",
+          "origin": "England",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/e18e5d50-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/turing/e18e5d50-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/turing/a9dfc4ff.mp4",
+            "video_ai": true,
+            "poster": "figures/b3163255-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/turing/b3163255-poster-512.png"
+          }
+        },
+        {
+          "id": "wiener",
+          "name": "Norbert Wiener",
+          "dates": "1894-1964",
+          "origin": "USA",
+          "stance": "cautionary",
+          "stance_class": "skeptic",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/5f53d0c8-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/wiener/5f53d0c8-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/wiener/e3a15951.mp4",
+            "video_ai": true,
+            "poster": "figures/b7fcd490-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/wiener/b7fcd490-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "synthetic-chemistry",
+      "code": "CHM",
+      "order": 14,
+      "period": "1940-1970",
+      "name": {
+        "en": "Synthetic chemistry, technosphere",
+        "fr": "Chimie de synthèse, technosphère"
+      },
+      "substitution": {
+        "en": "synthetic chemistry (pesticides)",
+        "fr": "la chimie de synthèse (les pesticides)"
+      },
+      "emblem": "carson",
+      "figures": [
+        {
+          "id": "borlaug",
+          "name": "Norman Borlaug",
+          "dates": "1914-2009",
+          "origin": "USA",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/bd2f5dec-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/borlaug/bd2f5dec-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/borlaug/85015c73.mp4",
+            "video_ai": true,
+            "poster": "figures/9f1d8645-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/borlaug/9f1d8645-poster-512.png"
+          }
+        },
+        {
+          "id": "carson",
+          "name": "Rachel Carson",
+          "dates": "1907-1964",
+          "origin": "USA",
+          "stance": "precautionary",
+          "stance_class": "skeptic",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/9bf4354c-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/carson/9bf4354c-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/carson/6f12e88c.mp4",
+            "video_ai": true,
+            "poster": "figures/6e80212b-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/carson/6e80212b-poster-512.png"
+          }
+        },
+        {
+          "id": "maathai",
+          "name": "Wangari Maathai",
+          "dates": "1940-2011",
+          "origin": "Kenya",
+          "stance": "precautionary",
+          "stance_class": "skeptic",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/19c6a260-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/maathai/19c6a260-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/maathai/1af36454.mp4",
+            "video_ai": true,
+            "poster": "figures/50498f9c-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/maathai/50498f9c-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "genetic-engineering",
+      "code": "GEN",
+      "order": 15,
+      "period": "1970-2000",
+      "name": {
+        "en": "Genetic engineering",
+        "fr": "Génie génétique"
+      },
+      "substitution": {
+        "en": "genetic engineering",
+        "fr": "le génie génétique"
+      },
+      "emblem": "berg",
+      "figures": [
+        {
+          "id": "berg",
+          "name": "Paul Berg",
+          "dates": "1926-2023",
+          "origin": "USA",
+          "stance": "self-regulating-pioneer",
+          "stance_class": "ambivalent",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/6cbe48a1-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/berg/6cbe48a1-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/berg/84011ea3.mp4",
+            "video_ai": true,
+            "poster": "figures/f981fded-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/berg/f981fded-poster-512.png"
+          }
+        },
+        {
+          "id": "chargaff",
+          "name": "Erwin Chargaff",
+          "dates": "1905-2002",
+          "origin": "Austria/USA",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/4fd42a07-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/chargaff/4fd42a07-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
+            "video_ai": true,
+            "poster": "figures/86d352e2-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/chargaff/86d352e2-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "internet-web",
+      "code": "NET",
+      "order": 16,
+      "period": "1990-2010",
+      "name": {
+        "en": "Internet and Web",
+        "fr": "Internet et le Web"
+      },
+      "substitution": {
+        "en": "the Internet",
+        "fr": "l'Internet"
+      },
+      "emblem": "berners-lee",
+      "figures": [
+        {
+          "id": "barlow",
+          "name": "John Perry Barlow",
+          "dates": "1947-2018",
+          "origin": "USA",
+          "stance": "enthusiast",
+          "stance_class": "enthusiast",
+          "tier": "T4",
+          "media": {
+            "portrait": "figures/c75a5d70-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/barlow/c75a5d70-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/barlow/00e26cc5.mp4",
+            "video_ai": true,
+            "poster": "figures/5ebcb4b3-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/barlow/5ebcb4b3-poster-512.png"
+          }
+        },
+        {
+          "id": "berners-lee",
+          "name": "Tim Berners-Lee",
+          "dates": "1955-",
+          "origin": "England",
+          "stance": "disillusioned-optimist",
+          "stance_class": "ambivalent",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/79ebaedd-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/berners-lee/79ebaedd-512.png",
+            "portrait_ai": false,
+            "video": "https://media.sumvadis.ai/berners-lee/7c81c4af.mp4",
+            "video_ai": true,
+            "poster": "figures/559a0554-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/berners-lee/559a0554-poster-512.png"
+          }
+        },
+        {
+          "id": "postman",
+          "name": "Neil Postman",
+          "dates": "1931-2003",
+          "origin": "USA",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/f639a90a-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/postman/f639a90a-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/postman/10d677d1.mp4",
+            "video_ai": true,
+            "poster": "figures/e8fb7fd1-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/postman/e8fb7fd1-poster-512.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "code": "AIA",
+      "order": 17,
+      "period": "2010-",
+      "name": {
+        "en": "Artificial intelligence",
+        "fr": "Intelligence artificielle"
+      },
+      "substitution": {
+        "en": null,
+        "fr": null
+      },
+      "emblem": "hinton",
+      "figures": [
+        {
+          "id": "bengio",
+          "name": "Yoshua Bengio",
+          "dates": "1964-",
+          "origin": "France/Canada",
+          "stance": "governance-advocate",
+          "stance_class": "ambivalent",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/dc36c740-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/bengio/dc36c740-512.png",
+            "portrait_ai": false,
+            "video": "https://media.sumvadis.ai/bengio/4592a958.mp4",
+            "video_ai": true,
+            "poster": "figures/a851a520-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/bengio/a851a520-poster-512.png"
+          }
+        },
+        {
+          "id": "fei-fei-li",
+          "name": "Fei-Fei Li",
+          "dates": "1976-",
+          "origin": "China/USA",
+          "stance": "human-centered",
+          "stance_class": "ambivalent",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/73ef826f-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/fei-fei-li/73ef826f-512.png",
+            "portrait_ai": false,
+            "video": "https://media.sumvadis.ai/fei-fei-li/a41a59cc.mp4",
+            "video_ai": true,
+            "poster": "figures/e4d97dc8-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/fei-fei-li/e4d97dc8-poster-512.png"
+          }
+        },
+        {
+          "id": "gebru",
+          "name": "Timnit Gebru",
+          "dates": "1983-",
+          "origin": "Ethiopia/USA",
+          "stance": "critical-egalitarian",
+          "stance_class": "skeptic",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/13a2acd9-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/gebru/13a2acd9-512.png",
+            "portrait_ai": false,
+            "video": "https://media.sumvadis.ai/gebru/69fd55ba.mp4",
+            "video_ai": true,
+            "poster": "figures/7920b4f3-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/gebru/7920b4f3-poster-512.png"
+          }
+        },
+        {
+          "id": "hawking",
+          "name": "Stephen Hawking",
+          "dates": "1942-2018",
+          "origin": "England",
+          "stance": "cautionary",
+          "stance_class": "skeptic",
+          "tier": "T3",
+          "media": null
+        },
+        {
+          "id": "hinton",
+          "name": "Geoffrey Hinton",
+          "dates": "1947-",
+          "origin": "England/Canada",
+          "stance": "converted-worrier",
+          "stance_class": "skeptic",
+          "tier": "T1",
+          "media": {
+            "portrait": "figures/656adba8-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/hinton/656adba8-512.png",
+            "portrait_ai": false,
+            "video": "https://media.sumvadis.ai/hinton/e946d55f.mp4",
+            "video_ai": true,
+            "poster": "figures/fe382aaf-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/hinton/fe382aaf-poster-512.png"
+          }
+        },
+        {
+          "id": "lecun",
+          "name": "Yann LeCun",
+          "dates": "1960-",
+          "origin": "France/USA",
+          "stance": "optimist",
+          "stance_class": "enthusiast",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/fa0eb55c-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/lecun/fa0eb55c-512.png",
+            "portrait_ai": false,
+            "video": "https://media.sumvadis.ai/lecun/e10960f8.mp4",
+            "video_ai": true,
+            "poster": "figures/e4c1c1a2-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/lecun/e4c1c1a2-poster-512.png"
+          }
+        },
+        {
+          "id": "tang",
+          "name": "Audrey Tang",
+          "dates": "1981-",
+          "origin": "Taiwan",
+          "stance": "democratic-optimist",
+          "stance_class": "enthusiast",
+          "tier": "T3",
+          "media": {
+            "portrait": "figures/2635260b-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/tang/2635260b-512.png",
+            "portrait_ai": false,
+            "video": "https://media.sumvadis.ai/tang/8a25dd87.mp4",
+            "video_ai": true,
+            "poster": "figures/0df3b87c-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/tang/0df3b87c-poster-512.png"
+          }
+        },
+        {
+          "id": "weizenbaum",
+          "name": "Joseph Weizenbaum",
+          "dates": "1923-2008",
+          "origin": "Germany/USA",
+          "stance": "skeptic",
+          "stance_class": "skeptic",
+          "tier": "T2",
+          "media": {
+            "portrait": "figures/bae75722-512.png",
+            "portrait_cdn": "https://media.sumvadis.ai/weizenbaum/bae75722-512.png",
+            "portrait_ai": true,
+            "video": "https://media.sumvadis.ai/weizenbaum/9bf1b78c.mp4",
+            "video_ai": true,
+            "poster": "figures/8f8aa722-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/weizenbaum/8f8aa722-poster-512.png"
+          }
+        }
+      ]
+    }
+  ]
+}
