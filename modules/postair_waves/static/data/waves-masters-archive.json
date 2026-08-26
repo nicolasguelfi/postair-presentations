@@ -1,0 +1,620 @@
+{
+ "_doc": "ARCHIVE des masters 2K du deck postair_waves (proposition C, ligne NG 2026-08-26). Source : sumvadis-streamtex/_project/_explorations/ (sessions ss12-bics-svd-stx-revolutions, 25-26/08/2026). Contenu : les 68 masters VALIDÉS des 17 quadriptyques + toutes les versions écartées en revue (la provenance complète). Les dérivés de diffusion (webp 2048) sont versionnés dans sumvadis-streamtex avec leur manifeste waves-images.json. Binaires hors git (règle du dépôt) — la connaissance est dans CE sidecar (sha256, octets).",
+ "files": [
+  {
+   "path": "260825-photoreal-vague1/a1-composite-soir.png",
+   "sha256": "6f09ed6112290cafb8b5d41e5f3a2da573e9581bc49f785c04c050f3f2ec558d",
+   "bytes": 3539416
+  },
+  {
+   "path": "260825-photoreal-vague1/a2-composite-matin.png",
+   "sha256": "dbd5600232d4c7f2dbadf03bd30156203b146508556d0d9ebb460e39ae6a9702",
+   "bytes": 3499298
+  },
+  {
+   "path": "260825-photoreal-vague1/b1-apres-soir.png",
+   "sha256": "c971a20baf215974c3d537cfca1e9c67ead81b60d448cf94954864c4dd0efcb8",
+   "bytes": 687423
+  },
+  {
+   "path": "260825-photoreal-vague1/b1-avant-soir.png",
+   "sha256": "4f64946c79737bd1370477ee1b7ada1acb67a5d3488a6598d32964a82a7b402b",
+   "bytes": 2206476
+  },
+  {
+   "path": "260825-photoreal-vague1/b1-paire-soir.png",
+   "sha256": "b15c7ccae00a269d43d271e3d8bb225ffcb28690337d7741dd6c81bd61645db8",
+   "bytes": 4104619
+  },
+  {
+   "path": "260825-photoreal-vague1/b2-apres-matin.png",
+   "sha256": "ab90888d6c83d33cf55e4d03cfcecb93823c561d7a81c9ac928a2df1f357da25",
+   "bytes": 755534
+  },
+  {
+   "path": "260825-photoreal-vague1/b2-avant-matin.png",
+   "sha256": "d8e80b934c2492abdb51241738698828dbbfe55be30f20f691946fe2f39ca1ef",
+   "bytes": 2379531
+  },
+  {
+   "path": "260825-photoreal-vague1/b2-paire-matin.png",
+   "sha256": "476a0184f5f17ca4d177bcc07ff77416a7661e848fd0a076c802aaa1d0cc7e76",
+   "bytes": 4368422
+  },
+  {
+   "path": "260825-photoreal-vague1/crise-memoire.png",
+   "sha256": "9e62eebf3335784b020a5af49bd9ca3666de1539d785410d075d5156e9867fa7",
+   "bytes": 3365604
+  },
+  {
+   "path": "260825-photoreal-vague1/objet-stele.png",
+   "sha256": "8cb7ec751f77b34625878a7ff51e4e11e90fde21b7ee682773ef4a7c232f1587",
+   "bytes": 3301111
+  },
+  {
+   "path": "260825-photoreal-vague1/s1-apres.png",
+   "sha256": "19020303235f48ac380f285c0ea8a3e3600ac2850f7cffdc83e6503c250538e7",
+   "bytes": 770354
+  },
+  {
+   "path": "260825-photoreal-vague1/s1-avant.png",
+   "sha256": "08d463b12cbfc0e8b39803340e6ea6b3c5b0fd211cab8a90fdc9d1c76fbd0dc1",
+   "bytes": 3842959
+  },
+  {
+   "path": "260825-photoreal-vague1/s2-apres.png",
+   "sha256": "d2066670ed7aaa6d1978af27756f763ac5f92c9f95f3baaf799b751f25b80d17",
+   "bytes": 3496562
+  },
+  {
+   "path": "260825-photoreal-vague1/s2-avant.png",
+   "sha256": "516edab7522875b462537a46ea834f3c77c2851f30f8a05f395f77493eea0772",
+   "bytes": 3487651
+  },
+  {
+   "path": "260825-photoreal-vague10/moteur-apres.png",
+   "sha256": "c79f63266c4bf32937cacbcdfa53fea20839c1c3457adef6e22ef37aedfd2f45",
+   "bytes": 2636433
+  },
+  {
+   "path": "260825-photoreal-vague10/moteur-avant.png",
+   "sha256": "1a1af9c2d4415e124dcb4ad0862e0881fe44a7540d23680dbd64c000cd12852c",
+   "bytes": 3504873
+  },
+  {
+   "path": "260825-photoreal-vague10/moteur-crise.png",
+   "sha256": "274e992852f222ccb43cc8b6427eeb3436da487d0edb62d862e400a052aa722a",
+   "bytes": 3348725
+  },
+  {
+   "path": "260825-photoreal-vague10/moteur-objet.png",
+   "sha256": "8c4f89605dd57b7074570d061229805b3a6ba074d25e966214d558bda505c79d",
+   "bytes": 3083346
+  },
+  {
+   "path": "260825-photoreal-vague11/medias-apres-02.png",
+   "sha256": "714b11a74768f1455c5c3a0fa08e5cc0e91957be673496130774d4922816642f",
+   "bytes": 568093
+  },
+  {
+   "path": "260825-photoreal-vague11/medias-apres-cinema-02.png",
+   "sha256": "792929e8f854e25581fe1b7e3427ed9f64096bff83e87a33ae871b597620e0c8",
+   "bytes": 501956
+  },
+  {
+   "path": "260825-photoreal-vague11/medias-apres-cinema.png",
+   "sha256": "57c659516cf8e945bb9b90ff743cdf3a71cc94fd9c97b7825d72cdb2ea28e702",
+   "bytes": 2893998
+  },
+  {
+   "path": "260825-photoreal-vague11/medias-apres.png",
+   "sha256": "a4e94c14f3b954bd6351797a8e89df294e7489d7bdaf57d94935f52cea95e86a",
+   "bytes": 3294648
+  },
+  {
+   "path": "260825-photoreal-vague11/medias-avant.png",
+   "sha256": "e932f3b3317bdadbe47dba00cc9ebd3469223e969939479429b8f323f5120684",
+   "bytes": 3280133
+  },
+  {
+   "path": "260825-photoreal-vague11/medias-crise-03.png",
+   "sha256": "3f5c34c2ed5bd36f856a9b24865890c7d9567a685a1b8230c7b35ad6ee268b44",
+   "bytes": 3114987
+  },
+  {
+   "path": "260825-photoreal-vague11/medias-objet.png",
+   "sha256": "584cc1c92f565ebad5be3f3fcb0ae5a43c8973a1f8e2d433b90b0ec2cb42d215",
+   "bytes": 3062532
+  },
+  {
+   "path": "260825-photoreal-vague12/atome-apres.png",
+   "sha256": "e392c8944fea60cb5d8b4823f01ca237f6b21f0b0e3902e98622128ec289b928",
+   "bytes": 2851921
+  },
+  {
+   "path": "260825-photoreal-vague12/atome-avant.png",
+   "sha256": "14a24b43bd30b6e83631e1521e0aca06dfe9ad4bd22dfc5b15ac73ba84ce08bb",
+   "bytes": 3006233
+  },
+  {
+   "path": "260825-photoreal-vague12/atome-crise.png",
+   "sha256": "b52e5691f414e3b94baa19ef66b39e5c46d335b821ae12c288dc8bd2aa043594",
+   "bytes": 3384474
+  },
+  {
+   "path": "260825-photoreal-vague12/atome-objet.png",
+   "sha256": "03ee80ba53250235dcdad27b03c5acfee96caec76144571e0e7d099f78ffa192",
+   "bytes": 3220896
+  },
+  {
+   "path": "260825-photoreal-vague13/calcul-apres.png",
+   "sha256": "3636d4194005039ce9f77591d4f4f99f4a6a48b50ee5826b9807a7e41f089383",
+   "bytes": 2995331
+  },
+  {
+   "path": "260825-photoreal-vague13/calcul-avant.png",
+   "sha256": "0fdcdeb63505f9d6f97292c25875fca2cd40ad6a311398e96263d4cc9d142816",
+   "bytes": 3354702
+  },
+  {
+   "path": "260825-photoreal-vague13/calcul-crise.png",
+   "sha256": "480a60ab2033350b4e78bc74b05755c090fc5bf20837e946b194f5b722f60cc2",
+   "bytes": 3164948
+  },
+  {
+   "path": "260825-photoreal-vague13/calcul-objet.png",
+   "sha256": "00137a57b9c735b191aad574e04bd1ca2668e3b3d987fd90fb4d42c3cea609cd",
+   "bytes": 3374071
+  },
+  {
+   "path": "260825-photoreal-vague14/chimie-apres-02.png",
+   "sha256": "afe436544782240f37a9eb8d7814e006af61aea546141f29440b0d3da4347d8c",
+   "bytes": 3552814
+  },
+  {
+   "path": "260825-photoreal-vague14/chimie-apres.png",
+   "sha256": "48b61db959616cc1b29203a965a30d0915980b246ab7fd16027d08031d418a4b",
+   "bytes": 3578374
+  },
+  {
+   "path": "260825-photoreal-vague14/chimie-avant-02.png",
+   "sha256": "706fc2445dec113b8b915612f431bd82aadc5ec2d89a04d84a1d03b5a98f33c8",
+   "bytes": 3509439
+  },
+  {
+   "path": "260825-photoreal-vague14/chimie-avant.png",
+   "sha256": "7e008615767a5f8fafae7445166f2d0d36c6066e114e6be65ce97ca9e9089e20",
+   "bytes": 3625143
+  },
+  {
+   "path": "260825-photoreal-vague14/chimie-crise.png",
+   "sha256": "476dc9dce3c549367b0f0cf886ffe341de262507cae1d552db2095dbbc8b21ab",
+   "bytes": 3150189
+  },
+  {
+   "path": "260825-photoreal-vague14/chimie-objet.png",
+   "sha256": "0c7bdcb602422a1cb19a150e5f4775b00325fd07387713f5e4dada487969f1f7",
+   "bytes": 3032736
+  },
+  {
+   "path": "260825-photoreal-vague15/gene-apres-02.png",
+   "sha256": "029ac171183e2330b666372299095fece33235c556801f82b6eb1e482186a54e",
+   "bytes": 3041242
+  },
+  {
+   "path": "260825-photoreal-vague15/gene-apres.png",
+   "sha256": "b28889e0bf332a9c856d7eb07fa6fa09fe68a027fedb2076062a452c11024b5e",
+   "bytes": 2885558
+  },
+  {
+   "path": "260825-photoreal-vague15/gene-avant.png",
+   "sha256": "97167fc41c31bbaad8e45bb06d3fa64b219affb5850bfb8b056ba81c94b18f5d",
+   "bytes": 3254853
+  },
+  {
+   "path": "260825-photoreal-vague15/gene-crise.png",
+   "sha256": "ba6f4e0d7fb35405e38d2e21b51e16113e41d82b0b672165129d64c2e4cc2c25",
+   "bytes": 3290806
+  },
+  {
+   "path": "260825-photoreal-vague15/gene-objet.png",
+   "sha256": "bf27e545f7dd902c91432729a87e8ab9ab2cb2dd7c17096cd4c4150a81c5eaf8",
+   "bytes": 3068015
+  },
+  {
+   "path": "260825-photoreal-vague16/web-apres.png",
+   "sha256": "5a2f2793edbffee77441b1906381f30bff02ba2deaf1f269b4e62b3eb2068dfd",
+   "bytes": 3065851
+  },
+  {
+   "path": "260825-photoreal-vague16/web-avant.png",
+   "sha256": "0a306da763a851e8e865f224112ff5d97be0fa6d29c9a3bc535dd720812d70d4",
+   "bytes": 3235917
+  },
+  {
+   "path": "260825-photoreal-vague16/web-crise.png",
+   "sha256": "639b39e6a393c7c2901a6b961990cda95899e42b8134742fd852b4c21c5286e2",
+   "bytes": 3081972
+  },
+  {
+   "path": "260825-photoreal-vague16/web-objet-02.png",
+   "sha256": "d5a365ca5a6be9ac623bf89f96384d95cb6f3b0a1f930bb8ccaa53df1593b990",
+   "bytes": 473263
+  },
+  {
+   "path": "260825-photoreal-vague16/web-objet.png",
+   "sha256": "61715ca3a9bfafff2f4fedfbe97161324e33e353b5eeaef4c8253d4c39058bc2",
+   "bytes": 2995688
+  },
+  {
+   "path": "260825-photoreal-vague17/ia-apres.png",
+   "sha256": "475b726991f1414d9b7394c96857e347b441e066ba16a6d29027fcd2a49f8419",
+   "bytes": 2840639
+  },
+  {
+   "path": "260825-photoreal-vague17/ia-avant.png",
+   "sha256": "5c6ae4d6ee593ec4616930d7b8f8209612d9c9727bade631e2cfc93fccd40e96",
+   "bytes": 3131649
+  },
+  {
+   "path": "260825-photoreal-vague17/ia-crise.png",
+   "sha256": "3f62fdb6d8d7b676fd77cf4c2305b70d7424e694396d2e8724df42d60e851292",
+   "bytes": 3101261
+  },
+  {
+   "path": "260825-photoreal-vague17/ia-objet-02.png",
+   "sha256": "d7dfa56275baab22ca2491a23d3c434a211778faf13cd1e009bc4aa5ee6af1db",
+   "bytes": 2566939
+  },
+  {
+   "path": "260825-photoreal-vague17/ia-objet.png",
+   "sha256": "22770ba4b766ba8397cd06dca60336124c04945d5a2524d12137ce172b95006f",
+   "bytes": 2567305
+  },
+  {
+   "path": "260825-photoreal-vague2/atelier-apres-cn.png",
+   "sha256": "fc78376fff5c8a8c3343478c80fcaecb450a840014fde45355835f9589dd1a8d",
+   "bytes": 3550605
+  },
+  {
+   "path": "260825-photoreal-vague2/atelier-apres-cn2.png",
+   "sha256": "fbb3feb1bf47f9ce28c1ac97d152db019b455eeddf41a61d1002616b4a545c84",
+   "bytes": 3661347
+  },
+  {
+   "path": "260825-photoreal-vague2/atelier-apres-t2a.png",
+   "sha256": "2cefeb40d4e60e14c7d0d43e2cf964f55cc4f5f8f6c3a21f5f5732264f8068cb",
+   "bytes": 3491140
+  },
+  {
+   "path": "260825-photoreal-vague2/atelier-apres-t2b.png",
+   "sha256": "7fce7d7fd9cae512c0620f52593e869a1565e78ff4fc03cccb552770cb8a26cf",
+   "bytes": 3555336
+  },
+  {
+   "path": "260825-photoreal-vague2/atelier-apres.png",
+   "sha256": "04048cb9468ed64b500634b3226b96fe3e2b16149d56579a41e08b0dd00c82ef",
+   "bytes": 3415863
+  },
+  {
+   "path": "260825-photoreal-vague2/atelier-avant-cn.png",
+   "sha256": "4a3e5e5a356fc370beabe364b28c27dd38433a4e08a20b40342ebc8b2d223591",
+   "bytes": 3427668
+  },
+  {
+   "path": "260825-photoreal-vague2/atelier-avant-cn2.png",
+   "sha256": "6f27246fd143ce5f31aa8221185ba1ccbb45d505fec28a3d745857cb4fee4e19",
+   "bytes": 3580842
+  },
+  {
+   "path": "260825-photoreal-vague2/atelier-avant.png",
+   "sha256": "49dd73c50ae0b15b16c57fbdcdce857a7d66f8703e59c77316ef9a474b52cb56",
+   "bytes": 3365038
+  },
+  {
+   "path": "260825-photoreal-vague2/crise-copistes-02.png",
+   "sha256": "0580867af030d6dac78b7fb4a7431df98223e687aa64b3b48587e2883f13f525",
+   "bytes": 3451106
+  },
+  {
+   "path": "260825-photoreal-vague2/crise-copistes-03.png",
+   "sha256": "49b95d179b9183ec44c1d759749109208cf9d298955d4403325c7d85639397ee",
+   "bytes": 3571743
+  },
+  {
+   "path": "260825-photoreal-vague2/crise-copistes.png",
+   "sha256": "4817794b93ac6034b558e803d3c4a8b99fc720950b4c48349c65f2b67707f82c",
+   "bytes": 3520761
+  },
+  {
+   "path": "260825-photoreal-vague2/objet-casse-02.png",
+   "sha256": "1025856ef132777a30d538aaa1802eb3de42eb0ebd1efa663960dca787919a0c",
+   "bytes": 3290011
+  },
+  {
+   "path": "260825-photoreal-vague2/objet-casse.png",
+   "sha256": "957094ba8ec7704259b0d519ef1fc9ee344477fcacfa13062e5360583314c17b",
+   "bytes": 3400820
+  },
+  {
+   "path": "260825-photoreal-vague2/rue-apres-02.png",
+   "sha256": "1586dc6d89574cfb55d4e9c7af5170c0c52f55aa6e1213c94f664c01c0df03ea",
+   "bytes": 3576122
+  },
+  {
+   "path": "260825-photoreal-vague2/rue-apres.png",
+   "sha256": "8d2c9683c7726552a9769c804e771aaef3bcbdb36c1fed184396c19d1fbc5d70",
+   "bytes": 3414212
+  },
+  {
+   "path": "260825-photoreal-vague2/rue-avant.png",
+   "sha256": "5897b3b1b8e6891eed8fc7b883fe30fe358175da2f3d9ad463f1e4c7463ac48b",
+   "bytes": 3599690
+  },
+  {
+   "path": "260825-photoreal-vague3/crise-dependance.png",
+   "sha256": "0acfcb6f2404d4ac6d642c255acceb468039a7bb242c524f4b50cbe2d1034d7f",
+   "bytes": 3324556
+  },
+  {
+   "path": "260825-photoreal-vague3/crise-deracines.png",
+   "sha256": "06ba4b94a021d7c0fe71d40fd26cca1617e94eea92bd7b24e611caecc00f7a60",
+   "bytes": 3254182
+  },
+  {
+   "path": "260825-photoreal-vague3/crise-peste.png",
+   "sha256": "980a3ae108b73c0adfac16b778f5c595e57c951f64c7cf3a136f03d0668c313c",
+   "bytes": 3186496
+  },
+  {
+   "path": "260825-photoreal-vague3/metiers-apres.png",
+   "sha256": "f26f1b3206968b11c22a45adda87861544c4ae84e36a3fa0d616cabbeb7bf2f1",
+   "bytes": 3377798
+  },
+  {
+   "path": "260825-photoreal-vague3/metiers-avant.png",
+   "sha256": "1d87525a9b3d81b4a3f4d2f75c1d450d284dd688f9097c1edb4d89da284f6aa7",
+   "bytes": 3374448
+  },
+  {
+   "path": "260825-photoreal-vague3/objet-outils.png",
+   "sha256": "9b2ae9c82bfdb7b82076cb745437ff242780cfacd1ce09ea6c6d676aabd89e82",
+   "bytes": 3468308
+  },
+  {
+   "path": "260825-photoreal-vague3/objet-porte.png",
+   "sha256": "405b7cfe431ea44b5c2c9e4b906893a0e802939b9c776926326a8ce95d9e9f45",
+   "bytes": 3424954
+  },
+  {
+   "path": "260825-photoreal-vague3/objet-tour.png",
+   "sha256": "da39d32c63dab2365ff3f19797038e7f2935d751d27cf0c9917934abd881d625",
+   "bytes": 3009559
+  },
+  {
+   "path": "260825-photoreal-vague3/vallee-apres.png",
+   "sha256": "861843bf160de8fe797389f44c4e16c257fbd6b5d79d02fbb0a8695d07e7c43b",
+   "bytes": 3363700
+  },
+  {
+   "path": "260825-photoreal-vague3/vallee-avant.png",
+   "sha256": "73a4d732acb1b7b62cebe01a2a3e19739759b700db467304f9b0569ba7f2b863",
+   "bytes": 3653999
+  },
+  {
+   "path": "260825-photoreal-vague4/crise-censure.png",
+   "sha256": "7391d5dd19fdc545e086909138ffa3064e0992402186f63e6a575e461ec920db",
+   "bytes": 3442026
+  },
+  {
+   "path": "260825-photoreal-vague4/objet-presse.png",
+   "sha256": "942a3aed248eb2b2d1fc3d08ece2a731f90b805ac891df71739c8c683a10d8e5",
+   "bytes": 3108529
+  },
+  {
+   "path": "260825-photoreal-vague4/place-apres.png",
+   "sha256": "8ff8eea6764eb6748e0f661e92ff151f81e2d5857e397f8892acee82f5461344",
+   "bytes": 3338513
+  },
+  {
+   "path": "260825-photoreal-vague4/place-avant.png",
+   "sha256": "fabf764694ed99e1bf0ad0e8c3cfbb6238b59d97874de08b1d453a73e2043cae",
+   "bytes": 3396768
+  },
+  {
+   "path": "260825-photoreal-vague4/presse-apres.png",
+   "sha256": "ceb3a75b0de8bbbc33ab08d397806222e48d211a2b0ca2577ded53515a5453b4",
+   "bytes": 3331982
+  },
+  {
+   "path": "260825-photoreal-vague4/presse-avant.png",
+   "sha256": "66b1ee0e94588ea8b6d601868b0235ba4a467204da4e831646e9704326891fff",
+   "bytes": 3283380
+  },
+  {
+   "path": "260825-photoreal-vague5/ciel-apres-02.png",
+   "sha256": "e4304d891a59a08f27ee88b79ba3ad1d66e9668370981e18096382fa82f8b595",
+   "bytes": 3199267
+  },
+  {
+   "path": "260825-photoreal-vague5/ciel-apres-03.png",
+   "sha256": "1231dc5ba4eb9b58967c41fd56348be61abf053e4d71f72bc7080a6a7113fbdb",
+   "bytes": 408989
+  },
+  {
+   "path": "260825-photoreal-vague5/ciel-apres-04.png",
+   "sha256": "a56798d9ea7554b9d8604e84f3299cfeef2bac59911bf8ccbf860a4981d6af50",
+   "bytes": 2706967
+  },
+  {
+   "path": "260825-photoreal-vague5/ciel-apres-s2-jupiter.png",
+   "sha256": "e087fc14d818f44f0459f668f5bca6aaa6fd2b73810b0a9b1ec17fb0ea74d3cd",
+   "bytes": 2979033
+  },
+  {
+   "path": "260825-photoreal-vague5/ciel-apres-s2-lune.png",
+   "sha256": "289531d468df42e4c85e65e24adf9e5602d6cf728efe36ab346177932e4716ee",
+   "bytes": 3040044
+  },
+  {
+   "path": "260825-photoreal-vague5/ciel-apres.png",
+   "sha256": "73bfc8f3d97a009d99e2709974b1fb3e21bfa04a7a4cd0f71481a552f316d561",
+   "bytes": 3022358
+  },
+  {
+   "path": "260825-photoreal-vague5/ciel-avant-02.png",
+   "sha256": "eb69c7f11e15a0d7dc9330343bcae5a13de0f5e34850587b613c4605f0615126",
+   "bytes": 3131977
+  },
+  {
+   "path": "260825-photoreal-vague5/ciel-avant-03.png",
+   "sha256": "62df75daefa5aa5b3a4089d5bb7ea0c43584bdf6bd0b911c8c2278f9701c511a",
+   "bytes": 423374
+  },
+  {
+   "path": "260825-photoreal-vague5/ciel-avant.png",
+   "sha256": "78909ca153f0a224d569e9bfcd60420527b9d43db5b518aab88dc5c0908424dd",
+   "bytes": 3082808
+  },
+  {
+   "path": "260825-photoreal-vague5/crise-bucher-02.png",
+   "sha256": "4af28ee52e86e7b6e96eb08bdcb4b1467c23cbecc867b6e987d323313d1728b4",
+   "bytes": 466917
+  },
+  {
+   "path": "260825-photoreal-vague5/crise-bucher.png",
+   "sha256": "30d9ef4aa6c09078e6f5b967857f48940bc952c179948db8165dad59d7d92cd8",
+   "bytes": 3002097
+  },
+  {
+   "path": "260825-photoreal-vague5/crise-proces.png",
+   "sha256": "5edcc211a8b5bbd0a3a7bca1664531a7884e13602a499fd76d6747a48112d2a8",
+   "bytes": 2809165
+  },
+  {
+   "path": "260825-photoreal-vague5/lecon-apres.png",
+   "sha256": "c98f5043fd0cd7b19d9f3dd285cffea78d34559684fd2402b04b2f2b2e0d3895",
+   "bytes": 2996831
+  },
+  {
+   "path": "260825-photoreal-vague5/lecon-avant.png",
+   "sha256": "f5ad5633247baa0353f67b8997303b9fd3bb6d839b83e7357e46486485d209d7",
+   "bytes": 3121322
+  },
+  {
+   "path": "260825-photoreal-vague5/objet-lunette-02.png",
+   "sha256": "a538439abe8daedc1336de44dc6e19176e74b73aa41adcf5daa8f18142160b62",
+   "bytes": 3007438
+  },
+  {
+   "path": "260825-photoreal-vague5/objet-lunette.png",
+   "sha256": "dc1e3066b436b4220e60f51d72cdb62615de8710e3b8aa8dfef75e0bd26eb23c",
+   "bytes": 2901889
+  },
+  {
+   "path": "260825-photoreal-vague6/objet-vapeur.png",
+   "sha256": "6903369827bfd6b73934af8458966785e39b0e43c4aa2a1a52dc8ab76e0a7019",
+   "bytes": 3433048
+  },
+  {
+   "path": "260825-photoreal-vague6/tisserand-apres-02.png",
+   "sha256": "2fdbedc754bc1ce3f53adf9a6bbd70311e51973f00020a2ea7797616d1f96e42",
+   "bytes": 570348
+  },
+  {
+   "path": "260825-photoreal-vague6/tisserand-apres.png",
+   "sha256": "0620abd84e3ab3e0ee20314f5a7b2be1b866137ad036435bb4e4b98a95197190",
+   "bytes": 3273678
+  },
+  {
+   "path": "260825-photoreal-vague6/tisserand-avant.png",
+   "sha256": "075a9ba243ab2fe1d733f2451851f78e46a4cbaa3bdb5b517a72d9e10c29283d",
+   "bytes": 3158489
+  },
+  {
+   "path": "260825-photoreal-vague6/tisserand-crise.png",
+   "sha256": "2405c8d9fb8f3c11911dc949937edb6319c57bc140311944bbec289afe44205b",
+   "bytes": 3122246
+  },
+  {
+   "path": "260825-photoreal-vague7/rail-apres.png",
+   "sha256": "40db5f58677f15a749d3c99255d6c1c19fae3aa0118120903282401e47de22ef",
+   "bytes": 2917444
+  },
+  {
+   "path": "260825-photoreal-vague7/rail-avant.png",
+   "sha256": "dd189d1a3a08a1e2d61d4a56e71b827eb1eac8adc9b1d2b8e431844d2d4c2e50",
+   "bytes": 3423729
+  },
+  {
+   "path": "260825-photoreal-vague7/rail-crise.png",
+   "sha256": "3c4e81ed04cc44a5c331b4cd8ff4b364e3c48c62f041e7ca7f83453d80845f7e",
+   "bytes": 3798994
+  },
+  {
+   "path": "260825-photoreal-vague7/rail-objet.png",
+   "sha256": "9cd35762d95592ee1e5f4b89a0dc3dad56723735fcef2a847c074d8dc262db77",
+   "bytes": 3094415
+  },
+  {
+   "path": "260825-photoreal-vague8/microbe-apres-02.png",
+   "sha256": "2fe20f5ae4e9de532803940aadc54ab616351a8d89d85561588b6b691f505e77",
+   "bytes": 504995
+  },
+  {
+   "path": "260825-photoreal-vague8/microbe-apres.png",
+   "sha256": "8efa394cf64e862534713727334ece4c8cb024505edb8c4a9530206922e51ae9",
+   "bytes": 3007279
+  },
+  {
+   "path": "260825-photoreal-vague8/microbe-avant.png",
+   "sha256": "e883cbcc10d1ebb6c13a05ed30c2cdc565931cd0ec7d37ff293bb8a7fda410d3",
+   "bytes": 2991227
+  },
+  {
+   "path": "260825-photoreal-vague8/microbe-crise-02.png",
+   "sha256": "00199e874583c31b190dd3f9d9390db236be3db1a0e7f4ec938d12a3d0568cfc",
+   "bytes": 560791
+  },
+  {
+   "path": "260825-photoreal-vague8/microbe-crise-03.png",
+   "sha256": "fb6ad5fac62b6853ced4855d2cf0e3f01f5bed565f9d331976104fbd9ee5f953",
+   "bytes": 545655
+  },
+  {
+   "path": "260825-photoreal-vague8/microbe-crise-04.png",
+   "sha256": "3ea8e08fab14b5143408a0d1c8e31191448d5281297537c44f8649ca14dbb8e4",
+   "bytes": 3050147
+  },
+  {
+   "path": "260825-photoreal-vague8/microbe-crise.png",
+   "sha256": "9b9cfc2d8b3b2cef30cbcb8ec9724621240f0bd5be3ddf1922bbf2d9bdb020ac",
+   "bytes": 3100226
+  },
+  {
+   "path": "260825-photoreal-vague8/microbe-objet.png",
+   "sha256": "2f235e74ebc6e6af781dc2674c7f882530df1575c59360475f58bd15cc1614e1",
+   "bytes": 3375294
+  },
+  {
+   "path": "260825-photoreal-vague9/elec-apres.png",
+   "sha256": "6ad3c1f4814cc12bc95e1fc094a59deda219d658f1f2fc710724d67a03d0b84f",
+   "bytes": 2992917
+  },
+  {
+   "path": "260825-photoreal-vague9/elec-avant.png",
+   "sha256": "7bb8be903a7c89544371b9826213abceb730b5a89b7f5cd7e056ff3af45d4a69",
+   "bytes": 2793849
+  },
+  {
+   "path": "260825-photoreal-vague9/elec-crise.png",
+   "sha256": "b1ce57c1b21094cdea4a34017e1b8063c389121ed93bc15e820fbbcb0c5f647d",
+   "bytes": 2677039
+  },
+  {
+   "path": "260825-photoreal-vague9/elec-objet.png",
+   "sha256": "3d1c0b61a765a88ab71ee10bb99a1e1107f2a5a9077d16ed9096ddf8765e5989",
+   "bytes": 2516684
+  }
+ ]
+}
