@@ -123,10 +123,15 @@ st_book(
         blocks.bck_welcome_title,       # the promise: 16 crises overcome, 1 open
         blocks.bck_intro_approche,      # Kuhn · Perez · every stance has an ancestor
         blocks.bck_intro_substitution,  # same 54 questions, the era's term
-        # ── The seventeen waves at a glance ─────────────────────────
-        blocks.bck_waves_grid_early,    # writing → steam (orders 1-6)
-        blocks.bck_waves_grid_middle,   # rail → atom (orders 7-12)
-        blocks.bck_waves_grid_late,     # computing → AI (orders 13-17)
+        # ── The illustrated gallery — clickable object cards (2×2) ──
+        # ⚠ MIROIR : _WAVE_PAGE_FIRST (custom/render.py) = l'index de page du
+        # premier bloc de vague ci-dessous. Toute insertion avant les vagues
+        # doit le mettre à jour.
+        blocks.bck_waves_grid_origins,      # writing → the press (1-4)
+        blocks.bck_waves_grid_machines,     # telescope → vaccine (5-8)
+        blocks.bck_waves_grid_power,        # dynamo → atom (9-12)
+        blocks.bck_waves_grid_information,  # computer → Web (13-16)
+        blocks.bck_waves_grid_ai,           # the 17th, alone and large
         # ── The chronological walk — one stop per wave ──────────────
         # Chaque bloc = le quadriptyque VALIDÉ (25-26/08/2026) + les figures
         # au portrait-lecteur (vidéos au CDN) + la leçon, en marqueurs cachés.
