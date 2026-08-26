@@ -62,7 +62,7 @@ def _tooltip_entries(span: list[dict], lang: str) -> list[tuple[str, str]]:
     return entries
 
 
-def _wave_button(w: dict, lang: str, width: str = "100%") -> None:
+def _wave_button(w: dict, lang: str, width: str = "min(80%, 60vh)") -> None:
     """Le bouton-image d'une vague : la vignette de son OBJET, cliquable.
 
     Le clic saute à la carte-titre de la vague par le mécanisme natif du
@@ -147,7 +147,7 @@ def wave_hero_grid_slide(marker: str, wave_id: str,
                 st_info_tooltip(title=f"{marker} — the full line",
                                 entries=_tooltip_entries([w], lang))
         st_space("v", "2vh")
-        _wave_button(w, lang, width="min(88%, 118vh)")
+        _wave_button(w, lang, width="min(72%, 96vh)")
         st_write(gs.name,
                  f"{w['order']} · {content.text(w['name'], lang)} · {w['period']}",
                  tag=t.div)
@@ -262,7 +262,7 @@ tp = TwoPlusOneStyles
 
 
 def two_plus_one(cells_top: list[tuple], cell_bottom: tuple,
-                 zoom_top: int = 100, zoom_bottom: int = 100) -> None:
+                 zoom_top: int = 100, zoom_bottom: int = 80) -> None:
     """La grille 2+1 (ligne NG ``design``, 2026-08-26) — le gabarit des
     leçons et de « Why look back ».
 
@@ -296,7 +296,7 @@ def two_plus_one(cells_top: list[tuple], cell_bottom: tuple,
 
 
 def _lesson(w: dict, lang: str,
-            zoom_top: int = 100, zoom_bottom: int = 100) -> None:
+            zoom_top: int = 100, zoom_bottom: int = 80) -> None:
     """La leçon de la vague — PLACEHOLDER rubriqué (conception L1 validée).
 
     Gabarit 2+1 : « craint » / « advenu » en haut, l'ÉCHO IA seul en bas, en
@@ -323,7 +323,7 @@ def _lesson(w: dict, lang: str,
 def wave_slides(wave_id: str, lang: str | None = None,
                 zoomImage: int = 100, zoomText: int = 180,
                 lesson_zoom_top: int = 100,
-                lesson_zoom_bottom: int = 100) -> None:
+                lesson_zoom_bottom: int = 80) -> None:
     """Toutes les slides d'une vague — UN arrêt visible, le reste caché.
 
     Ordre : la carte-titre (l'OBJET de la révolution), puis le récit

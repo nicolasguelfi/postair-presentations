@@ -61,4 +61,4 @@ def build():
             ("An inheritance",
              "every AI stance has a documented ",
              (s.project.colors.keyword, "ancestor")),
-            zoom_top=100, zoom_bottom=100)
+            zoom_top=100, zoom_bottom=80)
