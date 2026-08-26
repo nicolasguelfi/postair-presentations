@@ -62,7 +62,7 @@ def _tooltip_entries(span: list[dict], lang: str) -> list[tuple[str, str]]:
     return entries
 
 
-def _wave_button(w: dict, lang: str, width: str = "min(80%, 60vh)") -> None:
+def _wave_button(w: dict, lang: str, width: str = "min(76%, 57vh)") -> None:
     """Le bouton-image d'une vague : la vignette de son OBJET, cliquable.
 
     Le clic saute à la carte-titre de la vague par le mécanisme natif du
@@ -100,7 +100,10 @@ def waves_grid_slide(marker: str, title_parts: tuple, first: int, last: int,
     lang = lang or content.default_language()
     span = content.wave_span(first, last)
     st_marker(marker)
-    with st_block(s.project.containers.page_fill_top):
+    # page_fill_full : pas de marge latérale — les cellules prennent toute la
+    # fenêtre pour que la ligne période+figures tienne sur UNE ligne ;
+    # interlignes au minimum (retour NG tour 4).
+    with st_block(s.project.containers.page_fill_full):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -110,9 +113,9 @@ def waves_grid_slide(marker: str, title_parts: tuple, first: int, last: int,
             with g.cell():
                 st_info_tooltip(title=f"{marker} — the full lines",
                                 entries=_tooltip_entries(span, lang))
-        st_space("v", "2vh")
+        st_space("v", "0.4vh")
         with st_grid(cols=s.project.grids.balanced(len(span), min_px=420),
-                     gap="1.2vw", grid_style=s.project.grids.stretch,
+                     gap="0.4vw", grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for w in span:
                 with g.cell():
