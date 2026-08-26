@@ -91,6 +91,12 @@ def phrase(wave_id: str, etage: str, lang: str | None = None) -> str:
     return text(story()["waves"][wave_id]["phrases"][etage], lang)
 
 
+def echo(wave_id: str, lang: str | None = None) -> str:
+    """L'écho IA de la vague — le point SPÉCIFIQUE transposable (retour NG
+    2026-08-26), affiché dans la cellule ambre de la leçon."""
+    return text(story()["waves"][wave_id]["echo"], lang)
+
+
 def image_uri(wave_id: str, etage: str) -> str:
     """L'URI (sous ``static/``) de l'image validée d'un étage du quadriptyque."""
     return f"images/waves/v{wave(wave_id)['order']:02d}-{etage}.webp"

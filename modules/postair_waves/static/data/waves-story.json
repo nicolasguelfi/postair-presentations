@@ -1,163 +1,447 @@
 {
-  "_doc": "Le RÉCIT du deck des vagues — données ÉDITORIALES LOCALES (versionnées, exception assumée du dépôt, comme les illustrations). Les phrases FR sont VALIDÉES par l'auteur (planches des 25-26/08/2026, journaux _project/reviews/) ; les phrases EN sont des TRADUCTIONS DE TRAVAIL de l'assistant, à valider. Destination finale : le hub (campagne ai_lesson, gel trilingue) — ce fichier migrera là-bas et sera alors GELÉ par build_waves_content.py.",
+  "_doc": "Le RÉCIT du deck des vagues — données ÉDITORIALES LOCALES (versionnées, exception assumée du dépôt, comme les illustrations). Les phrases FR sont VALIDÉES par l'auteur (planches des 25-26/08/2026, journaux _project/reviews/) ; les phrases EN sont des TRADUCTIONS DE TRAVAIL de l'assistant, à valider. Destination finale : le hub (campagne ai_lesson, gel trilingue) — ce fichier migrera là-bas et sera alors GELÉ par build_waves_content.py. AJOUT 2026-08-26 (retour NG) : un champ `echo` par vague — le point SPÉCIFIQUE de la révolution transposable à l'IA (problème/solution/crise), affiché dans la cellule ambre de la leçon. EN et FR sont des brouillons de l'assistant, à valider (l'exemple de la presse est de NG).",
   "etages": {
-    "objet": {"en": "THE REVOLUTION", "fr": "LA RÉVOLUTION"},
-    "avant": {"en": "BEFORE", "fr": "AVANT"},
-    "crise": {"en": "THE CRISIS", "fr": "LA CRISE"},
-    "recompose": {"en": "THE WORLD RECOMPOSED", "fr": "LE MONDE RECOMPOSÉ"}
+    "objet": {
+      "en": "THE REVOLUTION",
+      "fr": "LA RÉVOLUTION"
+    },
+    "avant": {
+      "en": "BEFORE",
+      "fr": "AVANT"
+    },
+    "crise": {
+      "en": "THE CRISIS",
+      "fr": "LA CRISE"
+    },
+    "recompose": {
+      "en": "THE WORLD RECOMPOSED",
+      "fr": "LE MONDE RECOMPOSÉ"
+    }
   },
   "waves": {
     "writing": {
       "ancre": "the child at the stele",
       "phrases": {
-        "avant": {"fr": "La parole vive porte tout : le savoir vit dans les mémoires.", "en": "The living voice carries everything: knowledge lives in memories."},
-        "objet": {"fr": "L'écriture arrive : la pensée se fixe et voyage sans son auteur.", "en": "Writing arrives: thought is fixed, and travels without its author."},
-        "crise": {"fr": "Fixée par l'écrit, la mémoire vivante se sent trahie : les anciens déchirent ce qui les remplace.", "en": "Fixed in writing, living memory feels betrayed: the elders tear up what replaces them."},
-        "recompose": {"fr": "On lit, on relit, on transmet : la pensée traverse les siècles.", "en": "We read, reread, pass on: thought crosses the centuries."}
+        "avant": {
+          "fr": "La parole vive porte tout : le savoir vit dans les mémoires.",
+          "en": "The living voice carries everything: knowledge lives in memories."
+        },
+        "objet": {
+          "fr": "L'écriture arrive : la pensée se fixe et voyage sans son auteur.",
+          "en": "Writing arrives: thought is fixed, and travels without its author."
+        },
+        "crise": {
+          "fr": "Fixée par l'écrit, la mémoire vivante se sent trahie : les anciens déchirent ce qui les remplace.",
+          "en": "Fixed in writing, living memory feels betrayed: the elders tear up what replaces them."
+        },
+        "recompose": {
+          "fr": "On lit, on relit, on transmet : la pensée traverse les siècles.",
+          "en": "We read, reread, pass on: thought crosses the centuries."
+        }
+      },
+      "echo": {
+        "en": "Plato feared words that travel without their author and cannot answer back. An AI answer is that text, industrialised — fluent, authorless, unaccountable.",
+        "fr": "Platon craignait la parole qui voyage sans son auteur et ne répond pas. Une réponse d'IA est ce texte-là, industrialisé — fluide, sans auteur, sans répondant."
       }
     },
     "printing-china": {
       "ancre": "the Song courtyard under red lanterns",
       "phrases": {
-        "avant": {"fr": "Chaque livre se copie à la main : des mois pour un seul exemplaire.", "en": "Every book is copied by hand: months for a single copy."},
-        "objet": {"fr": "Les caractères mobiles arrivent : une page se compose, mille s'impriment.", "en": "Movable type arrives: one page is set, a thousand are printed."},
-        "crise": {"fr": "Remplacés par la casse, les copistes remballent leurs pinceaux : leur art ne nourrit plus.", "en": "Replaced by the type case, the copyists pack up their brushes: their art no longer feeds them."},
-        "recompose": {"fr": "Identiques et abordables, les livres circulent : le savoir change d'échelle.", "en": "Identical and affordable, books circulate: knowledge changes scale."}
+        "avant": {
+          "fr": "Chaque livre se copie à la main : des mois pour un seul exemplaire.",
+          "en": "Every book is copied by hand: months for a single copy."
+        },
+        "objet": {
+          "fr": "Les caractères mobiles arrivent : une page se compose, mille s'impriment.",
+          "en": "Movable type arrives: one page is set, a thousand are printed."
+        },
+        "crise": {
+          "fr": "Remplacés par la casse, les copistes remballent leurs pinceaux : leur art ne nourrit plus.",
+          "en": "Replaced by the type case, the copyists pack up their brushes: their art no longer feeds them."
+        },
+        "recompose": {
+          "fr": "Identiques et abordables, les livres circulent : le savoir change d'échelle.",
+          "en": "Identical and affordable, books circulate: knowledge changes scale."
+        }
+      },
+      "echo": {
+        "en": "Cheap identical copies unmade the copyist's livelihood. Every creative profession faces the same question when generation costs nothing.",
+        "fr": "La copie identique et bon marché a défait le gagne-pain du copiste. Toute profession créative affronte la même question quand générer ne coûte rien."
       }
     },
     "medieval-crafts": {
       "ancre": "the souk and its gate",
       "phrases": {
-        "avant": {"fr": "Chaque famille fait tout elle-même : rien ne s'achète, tout se fabrique.", "en": "Every family makes everything itself: nothing is bought, everything is made."},
-        "objet": {"fr": "La ville arrive : chaque métier se spécialise, chaque objet a son artisan.", "en": "The city arrives: every trade specialises, every object has its craftsman."},
-        "crise": {"fr": "Dépendants du souk, ceux qui savaient tout faire mendient ce qu'ils produisaient.", "en": "Dependent on the souk, those who could make everything now beg for what they once produced."},
-        "recompose": {"fr": "Chacun son métier, chacun sa place : la ville des artisans nourrit tous les siens.", "en": "Each their trade, each their place: the city of craftsmen feeds all its own."}
+        "avant": {
+          "fr": "Chaque famille fait tout elle-même : rien ne s'achète, tout se fabrique.",
+          "en": "Every family makes everything itself: nothing is bought, everything is made."
+        },
+        "objet": {
+          "fr": "La ville arrive : chaque métier se spécialise, chaque objet a son artisan.",
+          "en": "The city arrives: every trade specialises, every object has its craftsman."
+        },
+        "crise": {
+          "fr": "Dépendants du souk, ceux qui savaient tout faire mendient ce qu'ils produisaient.",
+          "en": "Dependent on the souk, those who could make everything now beg for what they once produced."
+        },
+        "recompose": {
+          "fr": "Chacun son métier, chacun sa place : la ville des artisans nourrit tous les siens.",
+          "en": "Each their trade, each their place: the city of craftsmen feeds all its own."
+        }
+      },
+      "echo": {
+        "en": "Depend on the souk and you forget how to make; depend on AI and you may forget how to think. Convenience trades autonomy for access.",
+        "fr": "Dépendre du souk, c'est désapprendre à faire ; dépendre de l'IA, peut-être désapprendre à penser. Le confort échange l'autonomie contre l'accès."
       }
     },
     "printing-press": {
       "ancre": "the vaulted hall",
       "phrases": {
-        "avant": {"fr": "Des moines copient à la plume : un livre coûte des années.", "en": "Monks copy with quills: one book costs years."},
-        "objet": {"fr": "La presse à vis arrive : le métal imprime en un jour ce que la plume faisait en un an.", "en": "The screw press arrives: metal prints in a day what the quill did in a year."},
-        "crise": {"fr": "Multipliées par la presse, les idées font peur : le pouvoir scelle les machines et brûle les livres.", "en": "Multiplied by the press, ideas frighten: power seals the machines and burns the books."},
-        "recompose": {"fr": "L'imprimé survit aux scellés : le livre est partout, le débat aussi.", "en": "Print outlives the seals: the book is everywhere, and so is the debate."}
+        "avant": {
+          "fr": "Des moines copient à la plume : un livre coûte des années.",
+          "en": "Monks copy with quills: one book costs years."
+        },
+        "objet": {
+          "fr": "La presse à vis arrive : le métal imprime en un jour ce que la plume faisait en un an.",
+          "en": "The screw press arrives: metal prints in a day what the quill did in a year."
+        },
+        "crise": {
+          "fr": "Multipliées par la presse, les idées font peur : le pouvoir scelle les machines et brûle les livres.",
+          "en": "Multiplied by the press, ideas frighten: power seals the machines and burns the books."
+        },
+        "recompose": {
+          "fr": "L'imprimé survit aux scellés : le livre est partout, le débat aussi.",
+          "en": "Print outlives the seals: the book is everywhere, and so is the debate."
+        }
+      },
+      "echo": {
+        "en": "A book by an unknown author, an AI-generated text: the same object — words in your hands, quality unknown. The press forced us to invent publishers and citation; AI demands their equivalents.",
+        "fr": "Un livre d'un auteur inconnu, un texte généré par l'IA : le même objet — des mots entre vos mains, qualité inconnue. La presse a forcé l'invention de l'éditeur et de la citation ; l'IA exige leurs équivalents."
       }
     },
     "new-science": {
       "ancre": "Galileo's terrace",
       "phrases": {
-        "avant": {"fr": "Le ciel se lit dans les livres des anciens : l'autorité dit le vrai.", "en": "The sky is read in the books of the ancients: authority speaks the truth."},
-        "objet": {"fr": "La lunette arrive : n'importe quel œil peut vérifier le ciel.", "en": "The telescope arrives: any eye can verify the sky."},
-        "crise": {"fr": "Contredite par la lunette, l'autorité juge l'instrument et brûle les preuves.", "en": "Contradicted by the telescope, authority puts the instrument on trial and burns the evidence."},
-        "recompose": {"fr": "L'observation l'emporte : on regarde, on dessine, on publie.", "en": "Observation prevails: we look, we draw, we publish."}
+        "avant": {
+          "fr": "Le ciel se lit dans les livres des anciens : l'autorité dit le vrai.",
+          "en": "The sky is read in the books of the ancients: authority speaks the truth."
+        },
+        "objet": {
+          "fr": "La lunette arrive : n'importe quel œil peut vérifier le ciel.",
+          "en": "The telescope arrives: any eye can verify the sky."
+        },
+        "crise": {
+          "fr": "Contredite par la lunette, l'autorité juge l'instrument et brûle les preuves.",
+          "en": "Contradicted by the telescope, authority puts the instrument on trial and burns the evidence."
+        },
+        "recompose": {
+          "fr": "L'observation l'emporte : on regarde, on dessine, on publie.",
+          "en": "Observation prevails: we look, we draw, we publish."
+        }
+      },
+      "echo": {
+        "en": "The telescope said: stop trusting the book, check for yourself. With AI the “book” writes itself — verification, not authority, is again the only ground.",
+        "fr": "La lunette disait : cessez de croire le livre, vérifiez vous-même. Avec l'IA, le « livre » s'écrit tout seul — la vérification, non l'autorité, redevient le seul sol."
       }
     },
     "industrialisation": {
       "ancre": "the weaver in the russet waistcoat",
       "phrases": {
-        "avant": {"fr": "Ses mains, son métier, son temps : le tisserand vit de ce qu'il fait.", "en": "His hands, his loom, his time: the weaver lives from what he makes."},
-        "objet": {"fr": "La vapeur arrive : une machine tisse cent fois plus vite qu'un homme.", "en": "Steam arrives: a machine weaves a hundred times faster than a man."},
-        "crise": {"fr": "Déclassée par la machine, la famille n'a plus que ses bras à vendre : l'usine les prend, l'enfant aussi.", "en": "Displaced by the machine, the family has only its arms to sell: the mill takes them — the child too."},
-        "recompose": {"fr": "La loi, le salaire et l'école apprivoisent la machine : l'étoffe est à tous, l'enfant à l'école.", "en": "Law, wages and school tame the machine: cloth for everyone, the child in school."}
+        "avant": {
+          "fr": "Ses mains, son métier, son temps : le tisserand vit de ce qu'il fait.",
+          "en": "His hands, his loom, his time: the weaver lives from what he makes."
+        },
+        "objet": {
+          "fr": "La vapeur arrive : une machine tisse cent fois plus vite qu'un homme.",
+          "en": "Steam arrives: a machine weaves a hundred times faster than a man."
+        },
+        "crise": {
+          "fr": "Déclassée par la machine, la famille n'a plus que ses bras à vendre : l'usine les prend, l'enfant aussi.",
+          "en": "Displaced by the machine, the family has only its arms to sell: the mill takes them — the child too."
+        },
+        "recompose": {
+          "fr": "La loi, le salaire et l'école apprivoisent la machine : l'étoffe est à tous, l'enfant à l'école.",
+          "en": "Law, wages and school tame the machine: cloth for everyone, the child in school."
+        }
+      },
+      "echo": {
+        "en": "The machine took the weaver's craft years before law tamed the machine. The AI labour question is the same race — displacement first, protections after — at white-collar speed.",
+        "fr": "La machine a pris le métier du tisserand des années avant que la loi ne l'apprivoise. La question sociale de l'IA est la même course — déclassement d'abord, protections ensuite — à la vitesse des cols blancs."
       }
     },
     "rail-telegraph": {
       "ancre": "the mother in the blue shawl",
       "phrases": {
-        "avant": {"fr": "La distance règne : une lettre voyage trois semaines, au pas des chevaux.", "en": "Distance rules: a letter travels three weeks, at a horse's pace."},
-        "objet": {"fr": "Le rail et le fil arrivent : la vapeur porte les corps, l'électricité porte les mots.", "en": "Rail and wire arrive: steam carries bodies, electricity carries words."},
-        "crise": {"fr": "Le rail passe où il veut : il coupe les champs, ruine les relais, impose son heure.", "en": "The rail goes where it wants: it cuts the fields, ruins the coaching inns, imposes its clock."},
-        "recompose": {"fr": "Le pays rétrécit : parti le matin, embrassé le soir — et le télégramme devance le train.", "en": "The country shrinks: leave in the morning, embrace by evening — and the telegram outruns the train."}
+        "avant": {
+          "fr": "La distance règne : une lettre voyage trois semaines, au pas des chevaux.",
+          "en": "Distance rules: a letter travels three weeks, at a horse's pace."
+        },
+        "objet": {
+          "fr": "Le rail et le fil arrivent : la vapeur porte les corps, l'électricité porte les mots.",
+          "en": "Rail and wire arrive: steam carries bodies, electricity carries words."
+        },
+        "crise": {
+          "fr": "Le rail passe où il veut : il coupe les champs, ruine les relais, impose son heure.",
+          "en": "The rail goes where it wants: it cuts the fields, ruins the coaching inns, imposes its clock."
+        },
+        "recompose": {
+          "fr": "Le pays rétrécit : parti le matin, embrassé le soir — et le télégramme devance le train.",
+          "en": "The country shrinks: leave in the morning, embrace by evening — and the telegram outruns the train."
+        }
+      },
+      "echo": {
+        "en": "The railway imposed its timetable on every village it crossed. AI imposes its tempo on every profession it touches — the question is who sets the clock.",
+        "fr": "Le rail imposa son horaire à chaque village traversé. L'IA impose son tempo à chaque métier touché — la question est : qui règle l'horloge ?"
       }
     },
     "germ-theory": {
       "ancre": "the doctor in the grey waistcoat",
       "phrases": {
-        "avant": {"fr": "L'ennemi est invisible : la fièvre emporte les enfants, on ne sait ni d'où ni pourquoi.", "en": "The enemy is invisible: fever takes the children, and no one knows whence or why."},
-        "objet": {"fr": "Le microscope arrive : l'invisible a un visage — les microbes, et un vaccin pour les devancer.", "en": "The microscope arrives: the invisible has a face — microbes, and a vaccine to outrun them."},
-        "crise": {"fr": "Inoculer le mal pour l'empêcher : l'idée effraie — des foules refusent la piqûre qui doit les sauver.", "en": "Inoculating the disease to prevent it: the idea frightens — crowds refuse the injection meant to save them."},
-        "recompose": {"fr": "L'école entière est vaccinée : les fièvres reculent, l'enfance cesse d'être un pari.", "en": "The whole school is vaccinated: the fevers recede, childhood stops being a gamble."}
+        "avant": {
+          "fr": "L'ennemi est invisible : la fièvre emporte les enfants, on ne sait ni d'où ni pourquoi.",
+          "en": "The enemy is invisible: fever takes the children, and no one knows whence or why."
+        },
+        "objet": {
+          "fr": "Le microscope arrive : l'invisible a un visage — les microbes, et un vaccin pour les devancer.",
+          "en": "The microscope arrives: the invisible has a face — microbes, and a vaccine to outrun them."
+        },
+        "crise": {
+          "fr": "Inoculer le mal pour l'empêcher : l'idée effraie — des foules refusent la piqûre qui doit les sauver.",
+          "en": "Inoculating the disease to prevent it: the idea frightens — crowds refuse the injection meant to save them."
+        },
+        "recompose": {
+          "fr": "L'école entière est vaccinée : les fièvres reculent, l'enfance cesse d'être un pari.",
+          "en": "The whole school is vaccinated: the fevers recede, childhood stops being a gamble."
+        }
+      },
+      "echo": {
+        "en": "The remedy frightened more than the disease, until proof and registers earned trust. AI safety faces the same arithmetic: the fear is immediate, the benefit statistical.",
+        "fr": "Le remède effraya plus que le mal, jusqu'à ce que preuves et registres gagnent la confiance. La sûreté de l'IA affronte la même arithmétique : la peur est immédiate, le bénéfice statistique."
       }
     },
     "electricity": {
       "ancre": "the lamplighter",
       "phrases": {
-        "avant": {"fr": "La nuit commande : au coucher du soleil, le travail s'arrête et la ville s'éteint.", "en": "Night commands: at sunset, work stops and the city goes dark."},
-        "objet": {"fr": "Le courant arrive : une lampe sans flamme, allumée d'un geste — cent villes à la fois.", "en": "The current arrives: a lamp without flame, lit with one gesture — a hundred cities at once."},
-        "crise": {"fr": "Le courant effraie : les fils s'emmêlent, les accidents frappent, et l'allumeur perd sa tournée.", "en": "The current frightens: wires tangle, accidents strike, and the lamplighter loses his round."},
-        "recompose": {"fr": "La nuit est apprivoisée : la ville vit le soir — et l'allumeur est devenu le gardien de la lumière.", "en": "Night is tamed: the city lives in the evening — and the lamplighter has become the keeper of the light."}
+        "avant": {
+          "fr": "La nuit commande : au coucher du soleil, le travail s'arrête et la ville s'éteint.",
+          "en": "Night commands: at sunset, work stops and the city goes dark."
+        },
+        "objet": {
+          "fr": "Le courant arrive : une lampe sans flamme, allumée d'un geste — cent villes à la fois.",
+          "en": "The current arrives: a lamp without flame, lit with one gesture — a hundred cities at once."
+        },
+        "crise": {
+          "fr": "Le courant effraie : les fils s'emmêlent, les accidents frappent, et l'allumeur perd sa tournée.",
+          "en": "The current frightens: wires tangle, accidents strike, and the lamplighter loses his round."
+        },
+        "recompose": {
+          "fr": "La nuit est apprivoisée : la ville vit le soir — et l'allumeur est devenu le gardien de la lumière.",
+          "en": "Night is tamed: the city lives in the evening — and the lamplighter has become the keeper of the light."
+        }
+      },
+      "echo": {
+        "en": "The current killed until standards, insulation and inspectors made it boring. AI needs its own boring — norms that make an invisible power safe.",
+        "fr": "Le courant tua, jusqu'à ce que normes, isolants et inspecteurs le rendent ennuyeux. L'IA a besoin de son ennui à elle — des normes qui rendent sûre une puissance invisible."
       }
     },
     "motor-aviation": {
       "ancre": "the boy with the red scarf",
       "phrases": {
-        "avant": {"fr": "Tout va au pas du cheval : trente kilomètres font une journée.", "en": "Everything moves at a horse's pace: thirty kilometres make a day."},
-        "objet": {"fr": "Le moteur arrive : cent chevaux dans une caisse de métal — la route, puis le ciel.", "en": "The engine arrives: a hundred horses in a metal case — the road, then the sky."},
-        "crise": {"fr": "La vitesse frappe le vieux monde : l'auto effraie, la charrette verse, la forge ferme.", "en": "Speed strikes the old world: the motorcar frightens, the cart overturns, the forge closes."},
-        "recompose": {"fr": "Le ciel devient une route : le courrier vole, et l'homme voit enfin la terre d'en haut.", "en": "The sky becomes a road: the mail flies, and man finally sees the earth from above."}
+        "avant": {
+          "fr": "Tout va au pas du cheval : trente kilomètres font une journée.",
+          "en": "Everything moves at a horse's pace: thirty kilometres make a day."
+        },
+        "objet": {
+          "fr": "Le moteur arrive : cent chevaux dans une caisse de métal — la route, puis le ciel.",
+          "en": "The engine arrives: a hundred horses in a metal case — the road, then the sky."
+        },
+        "crise": {
+          "fr": "La vitesse frappe le vieux monde : l'auto effraie, la charrette verse, la forge ferme.",
+          "en": "Speed strikes the old world: the motorcar frightens, the cart overturns, the forge closes."
+        },
+        "recompose": {
+          "fr": "Le ciel devient une route : le courrier vole, et l'homme voit enfin la terre d'en haut.",
+          "en": "The sky becomes a road: the mail flies, and man finally sees the earth from above."
+        }
+      },
+      "echo": {
+        "en": "The motorcar arrived before the driving licence — speed first, rules after, accidents in between. AI is on the road before its highway code.",
+        "fr": "L'automobile arriva avant le permis de conduire — la vitesse d'abord, les règles ensuite, les accidents entre les deux. L'IA roule avant son code de la route."
       }
     },
     "mass-media": {
       "ancre": "the family of the veillée",
       "phrases": {
-        "avant": {"fr": "Le monde s'arrête au bout du village : le soir, la veillée raconte.", "en": "The world ends at the edge of the village: in the evening, the fireside tells the stories."},
-        "objet": {"fr": "La radio arrive : une seule voix entre à la même heure dans des millions de foyers.", "en": "Radio arrives: a single voice enters millions of homes at the same hour."},
-        "crise": {"fr": "La voix unique sert aussi les puissants : la veillée se tait, le doute devient dangereux.", "en": "The single voice also serves the powerful: the fireside falls silent, and doubt becomes dangerous."},
-        "recompose": {"fr": "Mille voix remplacent la voix unique : on choisit sa station, son journal, sa séance.", "en": "A thousand voices replace the single one: you choose your station, your paper, your show."}
+        "avant": {
+          "fr": "Le monde s'arrête au bout du village : le soir, la veillée raconte.",
+          "en": "The world ends at the edge of the village: in the evening, the fireside tells the stories."
+        },
+        "objet": {
+          "fr": "La radio arrive : une seule voix entre à la même heure dans des millions de foyers.",
+          "en": "Radio arrives: a single voice enters millions of homes at the same hour."
+        },
+        "crise": {
+          "fr": "La voix unique sert aussi les puissants : la veillée se tait, le doute devient dangereux.",
+          "en": "The single voice also serves the powerful: the fireside falls silent, and doubt becomes dangerous."
+        },
+        "recompose": {
+          "fr": "Mille voix remplacent la voix unique : on choisit sa station, son journal, sa séance.",
+          "en": "A thousand voices replace the single one: you choose your station, your paper, your show."
+        }
+      },
+      "echo": {
+        "en": "One voice in every home served the powerful, until plural media and critical listeners answered back. Generated feeds concentrate voice again — plurality and literacy are again the answer.",
+        "fr": "Une seule voix dans chaque foyer servit les puissants, jusqu'à ce que des médias pluriels et des auditeurs critiques répondent. Les flux générés concentrent à nouveau la voix — pluralité et esprit critique restent la réponse."
       }
     },
     "atom": {
       "ancre": "the physicist with the round glasses",
       "phrases": {
-        "avant": {"fr": "Dans les laboratoires, la matière livre son secret : l'atome est une promesse.", "en": "In the laboratories, matter gives up its secret: the atom is a promise."},
-        "objet": {"fr": "Le noyau se brise : une énergie un million de fois plus dense que le charbon.", "en": "The nucleus splits: an energy a million times denser than coal."},
-        "crise": {"fr": "La promesse devient l'arme : le monde entier apprend à vivre sous la sirène.", "en": "The promise becomes the weapon: the whole world learns to live under the siren."},
-        "recompose": {"fr": "L'atome est borné : des traités le contiennent, des centrales éclairent, la médecine soigne.", "en": "The atom is bounded: treaties contain it, power stations light homes, medicine heals."}
+        "avant": {
+          "fr": "Dans les laboratoires, la matière livre son secret : l'atome est une promesse.",
+          "en": "In the laboratories, matter gives up its secret: the atom is a promise."
+        },
+        "objet": {
+          "fr": "Le noyau se brise : une énergie un million de fois plus dense que le charbon.",
+          "en": "The nucleus splits: an energy a million times denser than coal."
+        },
+        "crise": {
+          "fr": "La promesse devient l'arme : le monde entier apprend à vivre sous la sirène.",
+          "en": "The promise becomes the weapon: the whole world learns to live under the siren."
+        },
+        "recompose": {
+          "fr": "L'atome est borné : des traités le contiennent, des centrales éclairent, la médecine soigne.",
+          "en": "The atom is bounded: treaties contain it, power stations light homes, medicine heals."
+        }
+      },
+      "echo": {
+        "en": "A power born of curiosity became an existential threat, then was bounded by treaties. It is the precedent AI governance quotes — word for word.",
+        "fr": "Une puissance née de la curiosité devint menace existentielle, puis fut bornée par des traités. C'est le précédent que la gouvernance de l'IA cite — mot pour mot."
       }
     },
     "computer-cybernetics": {
       "ancre": "the computer in the green cardigan",
       "phrases": {
-        "avant": {"fr": "Calculer est un métier : des salles entières d'humains additionnent, ligne à ligne.", "en": "Computing is a profession: whole rooms of humans add up, line by line."},
-        "objet": {"fr": "L'ordinateur arrive : mille calculs par seconde, sans fatigue et sans erreur.", "en": "The computer arrives: a thousand calculations a second, without fatigue or error."},
-        "crise": {"fr": "La machine calcule mieux : les salles se vident — que vaut un métier qu'une machine sait faire ?", "en": "The machine computes better: the rooms empty — what is a profession worth, when a machine can do it?"},
-        "recompose": {"fr": "Un métier nouveau naît : on ne calcule plus, on PROGRAMME — dire à la machine quoi faire.", "en": "A new profession is born: we no longer compute, we PROGRAM — telling the machine what to do."}
+        "avant": {
+          "fr": "Calculer est un métier : des salles entières d'humains additionnent, ligne à ligne.",
+          "en": "Computing is a profession: whole rooms of humans add up, line by line."
+        },
+        "objet": {
+          "fr": "L'ordinateur arrive : mille calculs par seconde, sans fatigue et sans erreur.",
+          "en": "The computer arrives: a thousand calculations a second, without fatigue or error."
+        },
+        "crise": {
+          "fr": "La machine calcule mieux : les salles se vident — que vaut un métier qu'une machine sait faire ?",
+          "en": "The machine computes better: the rooms empty — what is a profession worth, when a machine can do it?"
+        },
+        "recompose": {
+          "fr": "Un métier nouveau naît : on ne calcule plus, on PROGRAMME — dire à la machine quoi faire.",
+          "en": "A new profession is born: we no longer compute, we PROGRAM — telling the machine what to do."
+        }
+      },
+      "echo": {
+        "en": "The human computers lost calculation and invented programming. For every AI-exposed job the question is the same: which new craft stands on the machine's shoulders?",
+        "fr": "Les calculatrices humaines perdirent le calcul et inventèrent la programmation. Pour chaque métier exposé à l'IA, même question : quel métier nouveau se hisse sur les épaules de la machine ?"
       }
     },
     "synthetic-chemistry": {
       "ancre": "the girl in the yellow boots, and the pond",
       "phrases": {
-        "avant": {"fr": "Les insectes prennent leur part : une récolte sur deux se perd, la faim rôde.", "en": "The insects take their share: one harvest in two is lost, and hunger prowls."},
-        "objet": {"fr": "La chimie de synthèse arrive : engrais et pesticides — les champs produisent comme jamais.", "en": "Synthetic chemistry arrives: fertilisers and pesticides — the fields yield as never before."},
-        "crise": {"fr": "Le poison ne choisit pas : les oiseaux se taisent, l'étang meurt — le printemps devient silencieux.", "en": "Poison does not choose: the birds fall silent, the pond dies — spring becomes silent."},
-        "recompose": {"fr": "La chimie apprend la mesure : interdictions, dosages, alliés naturels — nourrir sans faire taire.", "en": "Chemistry learns restraint: bans, dosages, natural allies — feeding without silencing."}
+        "avant": {
+          "fr": "Les insectes prennent leur part : une récolte sur deux se perd, la faim rôde.",
+          "en": "The insects take their share: one harvest in two is lost, and hunger prowls."
+        },
+        "objet": {
+          "fr": "La chimie de synthèse arrive : engrais et pesticides — les champs produisent comme jamais.",
+          "en": "Synthetic chemistry arrives: fertilisers and pesticides — the fields yield as never before."
+        },
+        "crise": {
+          "fr": "Le poison ne choisit pas : les oiseaux se taisent, l'étang meurt — le printemps devient silencieux.",
+          "en": "Poison does not choose: the birds fall silent, the pond dies — spring becomes silent."
+        },
+        "recompose": {
+          "fr": "La chimie apprend la mesure : interdictions, dosages, alliés naturels — nourrir sans faire taire.",
+          "en": "Chemistry learns restraint: bans, dosages, natural allies — feeding without silencing."
+        }
+      },
+      "echo": {
+        "en": "Pesticides fed millions — and silenced springs, until dosage and bans. AI's side-effects, from bias to polluted information, call for the same learned restraint.",
+        "fr": "Les pesticides nourrirent des millions — et firent taire des printemps, jusqu'aux dosages et aux interdictions. Les effets secondaires de l'IA, des biais à l'information polluée, appellent la même mesure apprise."
       }
     },
     "genetic-engineering": {
       "ancre": "the researcher in the coral headscarf",
       "phrases": {
-        "avant": {"fr": "Améliorer le vivant prend des générations : on croise, on sème, on attend.", "en": "Improving life takes generations: cross, sow, wait."},
-        "objet": {"fr": "Le génie génétique arrive : on écrit directement dans le texte de la vie.", "en": "Genetic engineering arrives: we write directly into the text of life."},
-        "crise": {"fr": "Réécrire la vie effraie : la rue s'alarme — et les savants eux-mêmes suspendent leurs travaux.", "en": "Rewriting life frightens: the street takes alarm — and the scientists themselves suspend their own work."},
-        "recompose": {"fr": "Des règles avant la puissance : confinement, comités, contrôles — et l'insuline pour tous.", "en": "Rules before power: containment, committees, controls — and insulin for everyone."}
+        "avant": {
+          "fr": "Améliorer le vivant prend des générations : on croise, on sème, on attend.",
+          "en": "Improving life takes generations: cross, sow, wait."
+        },
+        "objet": {
+          "fr": "Le génie génétique arrive : on écrit directement dans le texte de la vie.",
+          "en": "Genetic engineering arrives: we write directly into the text of life."
+        },
+        "crise": {
+          "fr": "Réécrire la vie effraie : la rue s'alarme — et les savants eux-mêmes suspendent leurs travaux.",
+          "en": "Rewriting life frightens: the street takes alarm — and the scientists themselves suspend their own work."
+        },
+        "recompose": {
+          "fr": "Des règles avant la puissance : confinement, comités, contrôles — et l'insuline pour tous.",
+          "en": "Rules before power: containment, committees, controls — and insulin for everyone."
+        }
+      },
+      "echo": {
+        "en": "The genetic engineers stopped THEMSELVES and wrote the rules before continuing. It remains the strongest precedent for pausing at a capability threshold.",
+        "fr": "Les généticiens s'arrêtèrent EUX-MÊMES et écrivirent les règles avant de continuer. C'est le plus fort précédent d'une pause à un seuil de capacité."
       }
     },
     "internet-web": {
       "ancre": "the girl in the striped sweater",
       "phrases": {
-        "avant": {"fr": "Le savoir a des heures d'ouverture : on attend son tour devant l'unique encyclopédie.", "en": "Knowledge has opening hours: you wait your turn for the one encyclopedia."},
-        "objet": {"fr": "Le Web arrive : toutes les bibliothèques du monde au bout d'un fil de téléphone.", "en": "The Web arrives: every library on earth at the end of a phone line."},
-        "crise": {"fr": "L'écran ne se ferme plus : la chambre s'ouvre au monde entier — et se coupe des siens.", "en": "The screen no longer closes: the room opens to the whole world — and closes to its own."},
-        "recompose": {"fr": "Le savoir n'a plus d'horaires : le village entier se met en ligne — et rapprend à fermer l'écran.", "en": "Knowledge has no opening hours anymore: the whole town goes online — and relearns to close the screen."}
+        "avant": {
+          "fr": "Le savoir a des heures d'ouverture : on attend son tour devant l'unique encyclopédie.",
+          "en": "Knowledge has opening hours: you wait your turn for the one encyclopedia."
+        },
+        "objet": {
+          "fr": "Le Web arrive : toutes les bibliothèques du monde au bout d'un fil de téléphone.",
+          "en": "The Web arrives: every library on earth at the end of a phone line."
+        },
+        "crise": {
+          "fr": "L'écran ne se ferme plus : la chambre s'ouvre au monde entier — et se coupe des siens.",
+          "en": "The screen no longer closes: the room opens to the whole world — and closes to its own."
+        },
+        "recompose": {
+          "fr": "Le savoir n'a plus d'horaires : le village entier se met en ligne — et rapprend à fermer l'écran.",
+          "en": "Knowledge has no opening hours anymore: the whole town goes online — and relearns to close the screen."
+        }
+      },
+      "echo": {
+        "en": "The Web put all knowledge one click away — and cost us the closed door. An AI companion answers back: learning to close the screen is harder still.",
+        "fr": "Le Web mit tout le savoir à un clic — au prix de la porte fermée. Un compagnon d'IA, lui, répond : apprendre à fermer l'écran est plus dur encore."
       }
     },
     "ai": {
       "ancre": "the student with the yellow backpack",
       "phrases": {
-        "avant": {"fr": "Penser, écrire, créer : jusqu'ici, seuls les humains savaient.", "en": "Thinking, writing, creating: until now, only humans knew how."},
-        "objet": {"fr": "L'IA arrive : pour la première fois, la machine parle notre langue — et écrit sans qu'on la touche.", "en": "AI arrives: for the first time, the machine speaks our language — and writes while no one types."},
-        "crise": {"fr": "La machine fait ce qui nous définissait : étudiant, artiste, professeur — chacun vacille. La crise est OUVERTE.", "en": "The machine does what defined us: student, artist, teacher — each one wavers. The crisis is OPEN."},
-        "recompose": {"fr": "Il s'écrit maintenant : règles, usages, postures — la suite de l'histoire, c'est vous.", "en": "It is being written now: rules, uses, postures — the rest of the story is you."}
+        "avant": {
+          "fr": "Penser, écrire, créer : jusqu'ici, seuls les humains savaient.",
+          "en": "Thinking, writing, creating: until now, only humans knew how."
+        },
+        "objet": {
+          "fr": "L'IA arrive : pour la première fois, la machine parle notre langue — et écrit sans qu'on la touche.",
+          "en": "AI arrives: for the first time, the machine speaks our language — and writes while no one types."
+        },
+        "crise": {
+          "fr": "La machine fait ce qui nous définissait : étudiant, artiste, professeur — chacun vacille. La crise est OUVERTE.",
+          "en": "The machine does what defined us: student, artist, teacher — each one wavers. The crisis is OPEN."
+        },
+        "recompose": {
+          "fr": "Il s'écrit maintenant : règles, usages, postures — la suite de l'histoire, c'est vous.",
+          "en": "It is being written now: rules, uses, postures — the rest of the story is you."
+        }
+      },
+      "echo": {
+        "en": "The crisis is open and YOUR posture is the data — the live survey measures it next.",
+        "fr": "La crise est ouverte et VOTRE posture est la donnée — le sondage la mesure dans un instant."
       }
     }
   }

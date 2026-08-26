@@ -171,10 +171,10 @@ class StageStyles:
 
 ss = StageStyles
 
-#: Bornée pour que image + bandeaux tiennent SANS scroll : hauteur d'image
-#: ≈ 72vh (16:9), unités de fenêtre — jamais de %, le zoom y est inerte
-#: (règle R-zoom).
-_STAGE_WIDTH = "min(96%, 128vh)"
+#: Bornée pour que image + bandeaux tiennent SANS SCROLL en 1920×1080
+#: (retour NG 2026-08-26 : −20 %) : hauteur d'image ≈ 57vh (16:9), unités de
+#: fenêtre — jamais de %, le zoom y est inerte (règle R-zoom).
+_STAGE_WIDTH = "min(77%, 102vh)"
 
 _HIDDEN = dict(marker_hidden=True,
                config=SlideBreakConfig(mode=SlideBreakMode.FULL, space="30vh"))
@@ -206,7 +206,7 @@ def _stage(w: dict, etage: str, lang: str, first: bool) -> None:
 
 
 def _figure(w: dict, f: dict, lang: str,
-            zoomImage: int = 100, zoomText: int = 250) -> None:
+            zoomImage: int = 100, zoomText: int = 180) -> None:
     """Une figure de la vague — le portrait EST le lecteur (patron debates).
 
     La vidéo reste au CDN (``preload="none"`` : rien n'est téléchargé tant que
@@ -305,13 +305,10 @@ def _lesson(w: dict, lang: str,
     miroir de citations hier/aujourd'hui — gelé par l'outil.
     """
     name = content.text(w["name"], lang)
-    subst = content.text(w.get("substitution"), lang)
-    if w["id"] == "ai":
-        echo = ("The crisis is open and YOUR posture is the data — "
-                "the live survey measures it next.")
-    else:
-        echo = (f"This study asks AI the questions once asked of {subst} — "
-                f"same items, same axes, twenty-five centuries apart.")
+    # L'écho est le point SPÉCIFIQUE de la vague (retour NG 2026-08-26 :
+    # la phrase générique de substitution n'apprenait rien) — il vit dans le
+    # récit (waves-story.json, champ `echo`), jamais généré ici.
+    echo = content.echo(w["id"], lang)
     with st_block(s.project.containers.page_fill_top):
         st_write(ss.title, "What ", (s.project.titles.keyword, name),
                  " teaches us", tag=t.div, toc_lvl="+1", label="The lesson")
@@ -324,7 +321,7 @@ def _lesson(w: dict, lang: str,
 
 
 def wave_slides(wave_id: str, lang: str | None = None,
-                zoomImage: int = 100, zoomText: int = 250,
+                zoomImage: int = 100, zoomText: int = 180,
                 lesson_zoom_top: int = 100,
                 lesson_zoom_bottom: int = 100) -> None:
     """Toutes les slides d'une vague — UN arrêt visible, le reste caché.
