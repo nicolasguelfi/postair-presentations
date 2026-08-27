@@ -33,6 +33,12 @@ from custom import content
 #: cette constante à jour, comme ``FIGURE_VIDEO_MODULES`` dans sync_media.
 _WAVE_PAGE_FIRST = 8
 
+#: Page de la PREMIÈRE planche-galerie (« From writing to the press ») —
+#: même miroir de l'ordre du book : titre (0), 2 intros (1-2), galerie (3).
+#: Cible du retour : clic sur une image du quadriptyque, bouton de la leçon
+#: (retour NG 2026-08-27).
+_GALLERY_PAGE_FIRST = 3
+
 
 class GridStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -160,6 +166,22 @@ def wave_hero_grid_slide(marker: str, wave_id: str,
                  tag=t.div)
 
 
+def _gallery_back_button() -> None:
+    """Le petit bouton DISCRET de retour à la première planche-galerie.
+
+    Même mécanisme natif ``#stx-goto`` que les boutons de galerie — un lien
+    pilule sobre, dimensionné caption, qui ne dispute rien au titre.
+    """
+    st_html(
+        f'<a href="#stx-goto-{_GALLERY_PAGE_FIRST}" class="stx-page-link" '
+        f'title="Back to the waves gallery" '
+        f'style="display:inline-block; padding:0.15em 0.7em; '
+        f'border:1px solid rgba(149,165,166,0.45); border-radius:999px; '
+        f'color:#95A5A6; text-decoration:none; cursor:pointer; '
+        f'font-size:clamp(11px, 1.1vw, 22px); white-space:nowrap;">'
+        f'🌊 all waves</a>')
+
+
 # ── Le quadriptyque d'une vague ─────────────────────────────────────────────
 
 class StageStyles:
@@ -202,13 +224,25 @@ def _stage(w: dict, etage: str, lang: str, first: bool) -> None:
                      toc_lvl="1", label=name)
         else:
             st_write(ss.etage, content.etage_label(etage, lang), tag=t.div)
-        st_image(s.project.cards.media_center, width=_STAGE_WIDTH,
-                 uri=content.image_uri(w["id"], etage),
-                 alt=f"{content.etage_label(etage, 'en')} — {name} "
-                     f"({w['period']}): AI-generated historical reconstruction",
-                 # Le drapeau vient du manifeste de provenance (waves-images
-                 # .json), jamais du bloc — proposition A, 2026-08-26.
-                 overlay=dd35_overlay(content.image_ai(w["id"], etage)))
+        # Image CLIQUABLE (retour NG 2026-08-27) : un clic renvoie à la
+        # première planche-galerie — même mécanisme natif #stx-goto que les
+        # boutons de galerie. La pastille DD-35 reste pilotée par le manifeste
+        # de provenance (waves-images.json), jamais par le bloc.
+        chip = ('<span style="' + DD35_CSS + ' position:absolute; '
+                'right:0.6em; top:0.6em; pointer-events:none;">✦ AI</span>'
+                if content.image_ai(w["id"], etage) else "")
+        st_html(
+            f'<a href="#stx-goto-{_GALLERY_PAGE_FIRST}" class="stx-page-link" '
+            f'title="Back to the waves gallery" '
+            f'style="display:block; position:relative; width:{_STAGE_WIDTH}; '
+            f'margin:0 auto; border-radius:12px; overflow:hidden; '
+            f'cursor:pointer;">'
+            f'<img src="app/static/{content.image_uri(w["id"], etage)}" '
+            f'alt="{content.etage_label(etage, "en")} — {name} '
+            f'({w["period"]}): AI-generated historical reconstruction" '
+            f'style="width:100%; height:auto; display:block;"/>'
+            f'{chip}'
+            f'</a>')
         st_write(ss.phrase, content.phrase(w["id"], etage, lang), tag=t.div)
 
 
@@ -317,8 +351,16 @@ def _lesson(w: dict, lang: str,
     # récit (waves-story.json, champ `echo`), jamais généré ici.
     echo = content.echo(w["id"], lang)
     with st_block(s.project.containers.page_fill_top):
-        st_write(ss.title, "What ", (s.project.titles.keyword, name),
-                 " teaches us", tag=t.div, toc_lvl="+1", label="The lesson")
+        # Rangée de titre 90/10 (retour NG 2026-08-27) : le petit bouton
+        # discret de la 2e cellule renvoie à la première planche-galerie.
+        with st_grid(cols="90% 10%",
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
+            with g.cell():
+                st_write(ss.title, "What ", (s.project.titles.keyword, name),
+                         " teaches us", tag=t.div, toc_lvl="+1",
+                         label="The lesson")
+            with g.cell():
+                _gallery_back_button()
         st_space("v", "3vh")
         two_plus_one(
             [("What was feared", content.phrase(w["id"], "crise", lang)),
