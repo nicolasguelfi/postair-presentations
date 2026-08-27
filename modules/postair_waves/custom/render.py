@@ -18,7 +18,7 @@ from __future__ import annotations
 from custom.styles import Styles as s
 from postair_pack.components.ai_mark import DD35_CSS, dd35_overlay
 from postair_pack.components.hero_split import hero_split
-from shared_widgets import st_info_tooltip, st_poster_video
+from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex import SlideBreakConfig, SlideBreakMode
 from streamtex.enums import Tags as t
@@ -246,27 +246,85 @@ def _stage(w: dict, etage: str, lang: str, first: bool) -> None:
         st_write(ss.phrase, content.phrase(w["id"], etage, lang), tag=t.div)
 
 
+#: L'ordre et le drapeau des langues du lecteur (retour NG 2026-08-27) —
+#: seuls les drapeaux des vidéos réellement gelées s'affichent.
+_LANG_FLAGS = (("en", "🇬🇧"), ("fr", "🇫🇷"), ("de", "🇩🇪"))
+
+
+def _poster_video_langs(fig_id: str, media: dict, name: str,
+                        width: str = "min(38vw, 66vh)") -> None:
+    """Le portrait-lecteur MULTILINGUE : trois drapeaux sous la vidéo.
+
+    Bascule en PUR CSS (radios cachées + drapeaux-labels) : ``st.html``
+    n'exécute pas de script, et la bascule doit marcher aussi dans l'export.
+    Trois ``<video preload="none">`` coexistent — rien n'est téléchargé tant
+    qu'on ne joue pas (régime CDN). Le ``onclick`` des drapeaux met les
+    autres pistes en pause quand le navigateur l'honore — enrichissement
+    progressif, la bascule visuelle n'en dépend pas. Pastille DD-35 en HAUT
+    à droite (le bord bas appartient aux contrôles natifs), pilotée par le
+    drapeau de données ``video_ai``.
+    """
+    langs = [(code, flag) for code, flag in _LANG_FLAGS
+             if code in media["videos"]]
+    uid = "pvl-" + "".join(c for c in fig_id if c.isalnum())
+    poster = f"app/static/media/{media['portrait']}"
+    chip = (f'<span style="{DD35_CSS} position:absolute; right:0.6em; '
+            f'top:0.6em; pointer-events:none; z-index:10;">✦ AI</span>'
+            if media.get("video_ai") else "")
+    radios, videos, css, flags = [], [], [f".{uid} video{{display:none;}}"], []
+    for i, (code, flag) in enumerate(langs):
+        rid = f"{uid}-{code}"
+        radios.append(f'<input type="radio" name="{uid}" id="{rid}" '
+                      f'{"checked" if i == 0 else ""} style="display:none;">')
+        videos.append(
+            f'<video class="{uid}-{code}" controls preload="none" playsinline '
+            f'poster="{poster}" '
+            f'style="width:100%; height:auto; border-radius:12px;" '
+            f'aria-label="Presentation video of {name} ({code})">'
+            f'<source src="{media["videos"][code]}" type="video/mp4">'
+            f'</video>')
+        css.append(f'#{rid}:checked ~ video.{uid}-{code}{{display:block;}}')
+        css.append(f'#{rid}:checked ~ .{uid}-flags label[for="{rid}"]'
+                   f'{{opacity:1; border-color:#2EC4B6;}}')
+        flags.append(
+            f'<label for="{rid}" title="{code}" '
+            f'onclick="var r=this.parentNode.parentNode;'
+            f'var vs=r.querySelectorAll(\'video\');'
+            f'for(var j=0;j<vs.length;j++){{vs[j].pause();}}" '
+            f'style="cursor:pointer; opacity:0.45; padding:0.05em 0.3em; '
+            f'border:2px solid transparent; border-radius:8px; '
+            f'font-size:clamp(18px, 1.7vw, 34px); line-height:1.2;">'
+            f'{flag}</label>')
+    st_html(
+        f'<div class="{uid}" style="position:relative; width:{width}; '
+        f'margin:0 auto;">'
+        f'<style>{"".join(css)}</style>'
+        f'{"".join(radios)}'
+        f'{"".join(videos)}'
+        f'{chip}'
+        f'<div class="{uid}-flags" style="text-align:center; '
+        f'margin-top:0.35em;">{"".join(flags)}</div>'
+        f'</div>')
+
+
 def _figure(w: dict, f: dict, lang: str,
             zoomImage: int = 100, zoomText: int = 180) -> None:
     """Une figure de la vague — le portrait EST le lecteur (patron debates).
 
-    La vidéo reste au CDN (``preload="none"`` : rien n'est téléchargé tant que
-    l'orateur ne joue pas). Une figure sans portrait+vidéo ``public-ok``
-    (gandhi, hawking) est présentée en nom seul — jamais de trou projeté.
-    ``zoomImage``/``zoomText`` (ligne NG ``design``, 2026-08-26) : le contrat
-    ``screen_slide`` de survey, remonté depuis ``hero_split`` — réglables par
-    vague à l'appel de ``wave_slides``.
+    Les vidéos restent au CDN (``preload="none"`` : rien n'est téléchargé
+    tant que l'orateur ne joue pas), en TROIS langues quand le gel les porte
+    — les drapeaux sous le lecteur basculent la piste (retour NG 2026-08-27).
+    Une figure sans portrait+vidéo ``public-ok`` (gandhi, hawking) est
+    présentée en nom seul — jamais de trou projeté. ``zoomImage``/``zoomText``
+    (ligne NG ``design``, 2026-08-26) : réglables par vague à l'appel de
+    ``wave_slides``.
     """
     media = f.get("media")
     meta = " · ".join(x for x in (f.get("dates"), f.get("origin"),
                                   f.get("stance")) if x)
 
     def _portrait():
-        st_poster_video(
-            media["video"], f"app/static/media/{media['portrait']}",
-            alt=f"Presentation video of {f['name']}",
-            width="min(38vw, 66vh)",
-            ai_marked=bool(media.get("video_ai")))
+        _poster_video_langs(f["id"], media, f["name"])
 
     if media:
         with hero_split(s, image=_portrait, ratio=46,

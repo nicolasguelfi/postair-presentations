@@ -37,7 +37,11 @@
             "portrait": "figures/09695f5b-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/isocrate/09695f5b-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/isocrate/c3db233e.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/isocrate/c3db233e.mp4",
+              "fr": "https://media.sumvadis.ai/isocrate/ff34d150.mp4",
+              "de": "https://media.sumvadis.ai/isocrate/df90c7a9.mp4"
+            },
             "video_ai": true,
             "poster": "figures/cba87261-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/isocrate/cba87261-poster-512.png"
@@ -55,7 +59,11 @@
             "portrait": "figures/ed35b1d0-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/platon/ed35b1d0-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/platon/504be6bd.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/platon/504be6bd.mp4",
+              "fr": "https://media.sumvadis.ai/platon/d4f77a29.mp4",
+              "de": "https://media.sumvadis.ai/platon/28b4e370.mp4"
+            },
             "video_ai": true,
             "poster": "figures/1c4f0c68-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/platon/1c4f0c68-poster-512.png"
@@ -90,7 +98,11 @@
             "portrait": "figures/ebcb4bdf-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/shen-kuo/ebcb4bdf-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
+              "fr": "https://media.sumvadis.ai/shen-kuo/d67d8ee7.mp4",
+              "de": "https://media.sumvadis.ai/shen-kuo/e6f7b616.mp4"
+            },
             "video_ai": true,
             "poster": "figures/6aa9ebe3-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/shen-kuo/6aa9ebe3-poster-512.png"
@@ -125,10 +137,14 @@
             "portrait": "figures/c3deb8aa-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/ibn-khaldun/c3deb8aa-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/ibn-khaldun/2861836e.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/ibn-khaldun/17735e04.mp4",
+              "en": "https://media.sumvadis.ai/ibn-khaldun/2861836e.mp4",
+              "de": "https://media.sumvadis.ai/ibn-khaldun/3254fe62.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/8e7d0cc2-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/ibn-khaldun/8e7d0cc2-poster-512.png"
+            "poster": "figures/b034b7b1-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/ibn-khaldun/b034b7b1-poster-512.png"
           }
         }
       ]
@@ -160,7 +176,11 @@
             "portrait": "figures/c44a4b14-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/erasme/c44a4b14-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/erasme/5ecaa161.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/erasme/5ecaa161.mp4",
+              "fr": "https://media.sumvadis.ai/erasme/5c47fe79.mp4",
+              "de": "https://media.sumvadis.ai/erasme/9ecf85f7.mp4"
+            },
             "video_ai": true,
             "poster": "figures/90f73311-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/erasme/90f73311-poster-512.png"
@@ -178,7 +198,11 @@
             "portrait": "figures/8d4ae9a8-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/luther/8d4ae9a8-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/luther/3a281a1d.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/luther/3a281a1d.mp4",
+              "fr": "https://media.sumvadis.ai/luther/9ce6054c.mp4",
+              "de": "https://media.sumvadis.ai/luther/8cd9c8e8.mp4"
+            },
             "video_ai": true,
             "poster": "figures/92c1550f-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/luther/92c1550f-poster-512.png"
@@ -196,7 +220,11 @@
             "portrait": "figures/50d04d24-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/trithemius/50d04d24-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/trithemius/769eaa9d.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/trithemius/769eaa9d.mp4",
+              "fr": "https://media.sumvadis.ai/trithemius/750e1268.mp4",
+              "de": "https://media.sumvadis.ai/trithemius/ec2beb6a.mp4"
+            },
             "video_ai": true,
             "poster": "figures/e4be6ded-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/trithemius/e4be6ded-poster-512.png"
@@ -231,7 +259,11 @@
             "portrait": "figures/f437d31e-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/bacon/f437d31e-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/bacon/27444853.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/bacon/27444853.mp4",
+              "fr": "https://media.sumvadis.ai/bacon/36232d1f.mp4",
+              "de": "https://media.sumvadis.ai/bacon/bd63cb66.mp4"
+            },
             "video_ai": true,
             "poster": "figures/d7bc839f-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/bacon/d7bc839f-poster-512.png"
@@ -249,7 +281,11 @@
             "portrait": "figures/9c62fa4a-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/galilee/9c62fa4a-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
+              "fr": "https://media.sumvadis.ai/galilee/81f0a3a8.mp4",
+              "de": "https://media.sumvadis.ai/galilee/ea827cef.mp4"
+            },
             "video_ai": true,
             "poster": "figures/6f1f114f-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/galilee/6f1f114f-poster-512.png"
@@ -267,7 +303,11 @@
             "portrait": "figures/0f1416f7-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/pascal/0f1416f7-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/pascal/0a99fc45.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/pascal/0a99fc45.mp4",
+              "fr": "https://media.sumvadis.ai/pascal/b9860969.mp4",
+              "de": "https://media.sumvadis.ai/pascal/85dc4d4b.mp4"
+            },
             "video_ai": true,
             "poster": "figures/9a541e97-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/pascal/9a541e97-poster-512.png"
@@ -302,7 +342,11 @@
             "portrait": "figures/e9cfd863-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/carlyle/e9cfd863-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/carlyle/34c074fa.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/carlyle/34c074fa.mp4",
+              "fr": "https://media.sumvadis.ai/carlyle/964f6160.mp4",
+              "de": "https://media.sumvadis.ai/carlyle/4d195a91.mp4"
+            },
             "video_ai": true,
             "poster": "figures/c6a2c068-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/carlyle/c6a2c068-poster-512.png"
@@ -320,7 +364,11 @@
             "portrait": "figures/24ccf8ba-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/fukuzawa/24ccf8ba-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/fukuzawa/e8420bca.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/fukuzawa/e8420bca.mp4",
+              "fr": "https://media.sumvadis.ai/fukuzawa/18c9873c.mp4",
+              "de": "https://media.sumvadis.ai/fukuzawa/6125eea7.mp4"
+            },
             "video_ai": true,
             "poster": "figures/3bbda6e5-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/fukuzawa/3bbda6e5-poster-512.png"
@@ -348,7 +396,11 @@
             "portrait": "figures/2215731b-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/marx/2215731b-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/marx/4981d27c.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/marx/4981d27c.mp4",
+              "fr": "https://media.sumvadis.ai/marx/c3d827ee.mp4",
+              "de": "https://media.sumvadis.ai/marx/0f8aecf3.mp4"
+            },
             "video_ai": true,
             "poster": "figures/307c21fb-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/marx/307c21fb-poster-512.png"
@@ -366,7 +418,11 @@
             "portrait": "figures/eae45309-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/saint-simon/eae45309-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/saint-simon/74d5342d.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/saint-simon/74d5342d.mp4",
+              "fr": "https://media.sumvadis.ai/saint-simon/8c4ed858.mp4",
+              "de": "https://media.sumvadis.ai/saint-simon/7d046847.mp4"
+            },
             "video_ai": true,
             "poster": "figures/33ce2432-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/saint-simon/33ce2432-poster-512.png"
@@ -401,7 +457,11 @@
             "portrait": "figures/bc978448-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/hugo/bc978448-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/hugo/08ddce6d.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/hugo/08ddce6d.mp4",
+              "fr": "https://media.sumvadis.ai/hugo/efba9784.mp4",
+              "de": "https://media.sumvadis.ai/hugo/2c0a9809.mp4"
+            },
             "video_ai": true,
             "poster": "figures/4a41db7f-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/hugo/4a41db7f-poster-512.png"
@@ -419,7 +479,11 @@
             "portrait": "figures/391e5c59-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/thoreau/391e5c59-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/thoreau/a9cfb9b5.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/thoreau/a9cfb9b5.mp4",
+              "fr": "https://media.sumvadis.ai/thoreau/1bb41336.mp4",
+              "de": "https://media.sumvadis.ai/thoreau/aed3796d.mp4"
+            },
             "video_ai": true,
             "poster": "figures/0c5890cb-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/thoreau/0c5890cb-poster-512.png"
@@ -437,7 +501,11 @@
             "portrait": "figures/08181b1e-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/tolstoi/08181b1e-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
+              "fr": "https://media.sumvadis.ai/tolstoi/6f856db3.mp4",
+              "de": "https://media.sumvadis.ai/tolstoi/99cd7d57.mp4"
+            },
             "video_ai": true,
             "poster": "figures/9d777b82-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/tolstoi/9d777b82-poster-512.png"
@@ -455,7 +523,11 @@
             "portrait": "figures/97b21a2a-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/whitman/97b21a2a-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/whitman/29001c30.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/whitman/29001c30.mp4",
+              "fr": "https://media.sumvadis.ai/whitman/0e0bc8b9.mp4",
+              "de": "https://media.sumvadis.ai/whitman/d68a83d6.mp4"
+            },
             "video_ai": true,
             "poster": "figures/72af0174-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/whitman/72af0174-poster-512.png"
@@ -490,7 +562,11 @@
             "portrait": "figures/c15b6537-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/pasteur/c15b6537-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/pasteur/69c486cf.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/pasteur/69c486cf.mp4",
+              "fr": "https://media.sumvadis.ai/pasteur/9e8adc14.mp4",
+              "de": "https://media.sumvadis.ai/pasteur/130efe6c.mp4"
+            },
             "video_ai": true,
             "poster": "figures/9cc3e38b-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/pasteur/9cc3e38b-poster-512.png"
@@ -508,7 +584,11 @@
             "portrait": "figures/3707b2cd-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/wallace/3707b2cd-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/wallace/e28038df.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/wallace/e28038df.mp4",
+              "fr": "https://media.sumvadis.ai/wallace/516697a8.mp4",
+              "de": "https://media.sumvadis.ai/wallace/16a60258.mp4"
+            },
             "video_ai": true,
             "poster": "figures/3f2ab961-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/wallace/3f2ab961-poster-512.png"
@@ -543,7 +623,11 @@
             "portrait": "figures/91294d3f-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/edison/91294d3f-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/edison/19d7d43c.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/edison/19d7d43c.mp4",
+              "fr": "https://media.sumvadis.ai/edison/0bf667a1.mp4",
+              "de": "https://media.sumvadis.ai/edison/42996fe8.mp4"
+            },
             "video_ai": true,
             "poster": "figures/7c72716f-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/edison/7c72716f-poster-512.png"
@@ -561,7 +645,11 @@
             "portrait": "figures/6da182bb-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/henry-adams/6da182bb-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/henry-adams/58762b1e.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/henry-adams/58762b1e.mp4",
+              "fr": "https://media.sumvadis.ai/henry-adams/3f5161f0.mp4",
+              "de": "https://media.sumvadis.ai/henry-adams/37d87df5.mp4"
+            },
             "video_ai": true,
             "poster": "figures/1dbfe4e0-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/henry-adams/1dbfe4e0-poster-512.png"
@@ -579,7 +667,11 @@
             "portrait": "figures/ff4d46e0-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/marti/ff4d46e0-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/marti/980d7a63.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/marti/980d7a63.mp4",
+              "fr": "https://media.sumvadis.ai/marti/e2b807d5.mp4",
+              "de": "https://media.sumvadis.ai/marti/fcff6ee1.mp4"
+            },
             "video_ai": true,
             "poster": "figures/5a9f3cdd-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/marti/5a9f3cdd-poster-512.png"
@@ -597,7 +689,11 @@
             "portrait": "figures/d733d921-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/tesla/d733d921-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/tesla/462a2483.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/tesla/462a2483.mp4",
+              "fr": "https://media.sumvadis.ai/tesla/d056235c.mp4",
+              "de": "https://media.sumvadis.ai/tesla/d468e6c1.mp4"
+            },
             "video_ai": true,
             "poster": "figures/6c7f41a1-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/tesla/6c7f41a1-poster-512.png"
@@ -632,7 +728,11 @@
             "portrait": "figures/6665ba19-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/duhamel/6665ba19-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/duhamel/69dfe407.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/duhamel/69dfe407.mp4",
+              "fr": "https://media.sumvadis.ai/duhamel/105bf261.mp4",
+              "de": "https://media.sumvadis.ai/duhamel/58cff2b6.mp4"
+            },
             "video_ai": true,
             "poster": "figures/8c38e28c-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/duhamel/8c38e28c-poster-512.png"
@@ -650,7 +750,11 @@
             "portrait": "figures/5cf530ca-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/marinetti/5cf530ca-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/marinetti/0084d933.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/marinetti/0084d933.mp4",
+              "fr": "https://media.sumvadis.ai/marinetti/6ec7ad6f.mp4",
+              "de": "https://media.sumvadis.ai/marinetti/b61e5327.mp4"
+            },
             "video_ai": true,
             "poster": "figures/8a39ed64-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/marinetti/8a39ed64-poster-512.png"
@@ -668,7 +772,10 @@
             "portrait": "figures/a4f1f2fc-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/saint-exupery/a4f1f2fc-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/saint-exupery/2677c5d2.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/saint-exupery/2677c5d2.mp4",
+              "fr": "https://media.sumvadis.ai/saint-exupery/598f47e9.mp4"
+            },
             "video_ai": true,
             "poster": "figures/9e1fe5a5-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/saint-exupery/9e1fe5a5-poster-512.png"
@@ -703,7 +810,11 @@
             "portrait": "figures/5efd8841-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/benjamin/5efd8841-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
+              "fr": "https://media.sumvadis.ai/benjamin/941e48db.mp4",
+              "de": "https://media.sumvadis.ai/benjamin/9c15bf94.mp4"
+            },
             "video_ai": true,
             "poster": "figures/509c925b-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/benjamin/509c925b-poster-512.png"
@@ -721,7 +832,11 @@
             "portrait": "figures/94338e63-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/brecht/94338e63-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/brecht/2b2862e7.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/brecht/2b2862e7.mp4",
+              "fr": "https://media.sumvadis.ai/brecht/8b6fe912.mp4",
+              "de": "https://media.sumvadis.ai/brecht/79e23778.mp4"
+            },
             "video_ai": true,
             "poster": "figures/041a1b2c-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/brecht/041a1b2c-poster-512.png"
@@ -739,7 +854,11 @@
             "portrait": "figures/f06ce0c8-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/orwell/f06ce0c8-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/orwell/625e685d.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/orwell/625e685d.mp4",
+              "fr": "https://media.sumvadis.ai/orwell/53e9003b.mp4",
+              "de": "https://media.sumvadis.ai/orwell/2ad4fde2.mp4"
+            },
             "video_ai": true,
             "poster": "figures/1b4538e5-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/orwell/1b4538e5-poster-512.png"
@@ -774,10 +893,14 @@
             "portrait": "figures/29d220ff-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/einstein/29d220ff-512.png",
             "portrait_ai": false,
-            "video": "https://media.sumvadis.ai/einstein/64c4a2be.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/einstein/a724262c.mp4",
+              "en": "https://media.sumvadis.ai/einstein/64c4a2be.mp4",
+              "de": "https://media.sumvadis.ai/einstein/d4220661.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/48a9d006-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/einstein/48a9d006-poster-512.png"
+            "poster": "figures/155dedcf-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/einstein/155dedcf-poster-512.png"
           }
         },
         {
@@ -792,10 +915,14 @@
             "portrait": "figures/450bc375-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/oe/450bc375-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/oe/19b14574.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/oe/b7121a4b.mp4",
+              "en": "https://media.sumvadis.ai/oe/19b14574.mp4",
+              "de": "https://media.sumvadis.ai/oe/5da281b5.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/8c1daf23-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/oe/8c1daf23-poster-512.png"
+            "poster": "figures/bfdc4dda-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/oe/bfdc4dda-poster-512.png"
           }
         },
         {
@@ -810,7 +937,11 @@
             "portrait": "figures/ed9b6256-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/oppenheimer/ed9b6256-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/oppenheimer/e58c5f03.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/oppenheimer/e58c5f03.mp4",
+              "fr": "https://media.sumvadis.ai/oppenheimer/d8050c5e.mp4",
+              "de": "https://media.sumvadis.ai/oppenheimer/318297e6.mp4"
+            },
             "video_ai": true,
             "poster": "figures/69588e81-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/oppenheimer/69588e81-poster-512.png"
@@ -828,7 +959,11 @@
             "portrait": "figures/91e74e45-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/teller/91e74e45-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/teller/1354adf2.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/teller/1354adf2.mp4",
+              "fr": "https://media.sumvadis.ai/teller/9fec6045.mp4",
+              "de": "https://media.sumvadis.ai/teller/f3b1de77.mp4"
+            },
             "video_ai": true,
             "poster": "figures/00fc3b39-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/teller/00fc3b39-poster-512.png"
@@ -863,7 +998,11 @@
             "portrait": "figures/8fd7db01-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/arendt/8fd7db01-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/arendt/0f0088e5.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/arendt/0f0088e5.mp4",
+              "fr": "https://media.sumvadis.ai/arendt/9dac76e9.mp4",
+              "de": "https://media.sumvadis.ai/arendt/375c10c2.mp4"
+            },
             "video_ai": true,
             "poster": "figures/11c784fb-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/arendt/11c784fb-poster-512.png"
@@ -881,7 +1020,11 @@
             "portrait": "figures/330a5df4-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/lovelace/330a5df4-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/lovelace/40aa6b2b.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/lovelace/40aa6b2b.mp4",
+              "fr": "https://media.sumvadis.ai/lovelace/f557e028.mp4",
+              "de": "https://media.sumvadis.ai/lovelace/fc6035fc.mp4"
+            },
             "video_ai": true,
             "poster": "figures/390a9d7f-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/lovelace/390a9d7f-poster-512.png"
@@ -899,7 +1042,11 @@
             "portrait": "figures/e18e5d50-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/turing/e18e5d50-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/turing/a9dfc4ff.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/turing/a9dfc4ff.mp4",
+              "fr": "https://media.sumvadis.ai/turing/0d48f508.mp4",
+              "de": "https://media.sumvadis.ai/turing/1fa39320.mp4"
+            },
             "video_ai": true,
             "poster": "figures/b3163255-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/turing/b3163255-poster-512.png"
@@ -917,7 +1064,11 @@
             "portrait": "figures/5f53d0c8-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/wiener/5f53d0c8-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/wiener/e3a15951.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/wiener/e3a15951.mp4",
+              "fr": "https://media.sumvadis.ai/wiener/fef4e8bf.mp4",
+              "de": "https://media.sumvadis.ai/wiener/00acf9ce.mp4"
+            },
             "video_ai": true,
             "poster": "figures/b7fcd490-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/wiener/b7fcd490-poster-512.png"
@@ -952,7 +1103,11 @@
             "portrait": "figures/bd2f5dec-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/borlaug/bd2f5dec-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/borlaug/85015c73.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/borlaug/85015c73.mp4",
+              "fr": "https://media.sumvadis.ai/borlaug/799ecb28.mp4",
+              "de": "https://media.sumvadis.ai/borlaug/1762062b.mp4"
+            },
             "video_ai": true,
             "poster": "figures/9f1d8645-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/borlaug/9f1d8645-poster-512.png"
@@ -970,7 +1125,11 @@
             "portrait": "figures/9bf4354c-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/carson/9bf4354c-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/carson/6f12e88c.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/carson/6f12e88c.mp4",
+              "fr": "https://media.sumvadis.ai/carson/4a463074.mp4",
+              "de": "https://media.sumvadis.ai/carson/f7dd73da.mp4"
+            },
             "video_ai": true,
             "poster": "figures/6e80212b-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/carson/6e80212b-poster-512.png"
@@ -988,7 +1147,11 @@
             "portrait": "figures/19c6a260-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/maathai/19c6a260-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/maathai/1af36454.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/maathai/1af36454.mp4",
+              "fr": "https://media.sumvadis.ai/maathai/b2630049.mp4",
+              "de": "https://media.sumvadis.ai/maathai/d094cbf7.mp4"
+            },
             "video_ai": true,
             "poster": "figures/50498f9c-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/maathai/50498f9c-poster-512.png"
@@ -1023,10 +1186,14 @@
             "portrait": "figures/6cbe48a1-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/berg/6cbe48a1-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/berg/84011ea3.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/berg/b46948db.mp4",
+              "en": "https://media.sumvadis.ai/berg/84011ea3.mp4",
+              "de": "https://media.sumvadis.ai/berg/e4ded329.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/f981fded-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/berg/f981fded-poster-512.png"
+            "poster": "figures/18818e2c-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/berg/18818e2c-poster-512.png"
           }
         },
         {
@@ -1041,7 +1208,11 @@
             "portrait": "figures/4fd42a07-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/chargaff/4fd42a07-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
+              "fr": "https://media.sumvadis.ai/chargaff/3892cc9a.mp4",
+              "de": "https://media.sumvadis.ai/chargaff/c70a4cea.mp4"
+            },
             "video_ai": true,
             "poster": "figures/86d352e2-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/chargaff/86d352e2-poster-512.png"
@@ -1076,7 +1247,11 @@
             "portrait": "figures/c75a5d70-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/barlow/c75a5d70-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/barlow/00e26cc5.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/barlow/00e26cc5.mp4",
+              "fr": "https://media.sumvadis.ai/barlow/cdc4d3d9.mp4",
+              "de": "https://media.sumvadis.ai/barlow/cf5f6200.mp4"
+            },
             "video_ai": true,
             "poster": "figures/5ebcb4b3-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/barlow/5ebcb4b3-poster-512.png"
@@ -1094,10 +1269,14 @@
             "portrait": "figures/79ebaedd-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/berners-lee/79ebaedd-512.png",
             "portrait_ai": false,
-            "video": "https://media.sumvadis.ai/berners-lee/7c81c4af.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/berners-lee/dba4fbf7.mp4",
+              "en": "https://media.sumvadis.ai/berners-lee/7c81c4af.mp4",
+              "de": "https://media.sumvadis.ai/berners-lee/bb2188ee.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/559a0554-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/berners-lee/559a0554-poster-512.png"
+            "poster": "figures/3689916f-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/berners-lee/3689916f-poster-512.png"
           }
         },
         {
@@ -1112,7 +1291,11 @@
             "portrait": "figures/f639a90a-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/postman/f639a90a-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/postman/10d677d1.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/postman/10d677d1.mp4",
+              "fr": "https://media.sumvadis.ai/postman/9d2c6323.mp4",
+              "de": "https://media.sumvadis.ai/postman/8b9817c9.mp4"
+            },
             "video_ai": true,
             "poster": "figures/e8fb7fd1-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/postman/e8fb7fd1-poster-512.png"
@@ -1147,10 +1330,14 @@
             "portrait": "figures/dc36c740-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/bengio/dc36c740-512.png",
             "portrait_ai": false,
-            "video": "https://media.sumvadis.ai/bengio/4592a958.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/bengio/f77bcbd6.mp4",
+              "en": "https://media.sumvadis.ai/bengio/4592a958.mp4",
+              "de": "https://media.sumvadis.ai/bengio/3b79074f.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/a851a520-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/bengio/a851a520-poster-512.png"
+            "poster": "figures/517f165f-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/bengio/517f165f-poster-512.png"
           }
         },
         {
@@ -1165,10 +1352,14 @@
             "portrait": "figures/73ef826f-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/fei-fei-li/73ef826f-512.png",
             "portrait_ai": false,
-            "video": "https://media.sumvadis.ai/fei-fei-li/a41a59cc.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/fei-fei-li/49183a2b.mp4",
+              "en": "https://media.sumvadis.ai/fei-fei-li/a41a59cc.mp4",
+              "de": "https://media.sumvadis.ai/fei-fei-li/4177c49b.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/e4d97dc8-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/fei-fei-li/e4d97dc8-poster-512.png"
+            "poster": "figures/c9e9a581-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/fei-fei-li/c9e9a581-poster-512.png"
           }
         },
         {
@@ -1183,10 +1374,14 @@
             "portrait": "figures/13a2acd9-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/gebru/13a2acd9-512.png",
             "portrait_ai": false,
-            "video": "https://media.sumvadis.ai/gebru/69fd55ba.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/gebru/cfefed2e.mp4",
+              "en": "https://media.sumvadis.ai/gebru/69fd55ba.mp4",
+              "de": "https://media.sumvadis.ai/gebru/2b953ea9.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/7920b4f3-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/gebru/7920b4f3-poster-512.png"
+            "poster": "figures/a561e0ac-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/gebru/a561e0ac-poster-512.png"
           }
         },
         {
@@ -1211,10 +1406,14 @@
             "portrait": "figures/656adba8-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/hinton/656adba8-512.png",
             "portrait_ai": false,
-            "video": "https://media.sumvadis.ai/hinton/e946d55f.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/hinton/f440d083.mp4",
+              "en": "https://media.sumvadis.ai/hinton/e946d55f.mp4",
+              "de": "https://media.sumvadis.ai/hinton/cc0fe228.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/fe382aaf-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/hinton/fe382aaf-poster-512.png"
+            "poster": "figures/d0cc6ba1-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/hinton/d0cc6ba1-poster-512.png"
           }
         },
         {
@@ -1229,10 +1428,14 @@
             "portrait": "figures/fa0eb55c-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/lecun/fa0eb55c-512.png",
             "portrait_ai": false,
-            "video": "https://media.sumvadis.ai/lecun/e10960f8.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/lecun/18a78d85.mp4",
+              "en": "https://media.sumvadis.ai/lecun/e10960f8.mp4",
+              "de": "https://media.sumvadis.ai/lecun/ab3f0c68.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/e4c1c1a2-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/lecun/e4c1c1a2-poster-512.png"
+            "poster": "figures/8171ae2f-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/lecun/8171ae2f-poster-512.png"
           }
         },
         {
@@ -1247,10 +1450,14 @@
             "portrait": "figures/2635260b-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/tang/2635260b-512.png",
             "portrait_ai": false,
-            "video": "https://media.sumvadis.ai/tang/8a25dd87.mp4",
+            "videos": {
+              "fr": "https://media.sumvadis.ai/tang/6575aa2b.mp4",
+              "en": "https://media.sumvadis.ai/tang/8a25dd87.mp4",
+              "de": "https://media.sumvadis.ai/tang/4ee675ad.mp4"
+            },
             "video_ai": true,
-            "poster": "figures/0df3b87c-poster-512.png",
-            "poster_cdn": "https://media.sumvadis.ai/tang/0df3b87c-poster-512.png"
+            "poster": "figures/fb452adf-poster-512.png",
+            "poster_cdn": "https://media.sumvadis.ai/tang/fb452adf-poster-512.png"
           }
         },
         {
@@ -1265,7 +1472,11 @@
             "portrait": "figures/bae75722-512.png",
             "portrait_cdn": "https://media.sumvadis.ai/weizenbaum/bae75722-512.png",
             "portrait_ai": true,
-            "video": "https://media.sumvadis.ai/weizenbaum/9bf1b78c.mp4",
+            "videos": {
+              "en": "https://media.sumvadis.ai/weizenbaum/9bf1b78c.mp4",
+              "fr": "https://media.sumvadis.ai/weizenbaum/0bdc228c.mp4",
+              "de": "https://media.sumvadis.ai/weizenbaum/04f19370.mp4"
+            },
             "video_ai": true,
             "poster": "figures/8f8aa722-poster-512.png",
             "poster_cdn": "https://media.sumvadis.ai/weizenbaum/8f8aa722-poster-512.png"

@@ -101,19 +101,24 @@ def _hub_commit(hub_root: str) -> str:
         return "?"
 
 
-def _pick_video(assets: list[dict]) -> dict | None:
-    """La vidéo de présentation projetable — l'anglaise de préférence.
+def _videos_by_lang(assets: list[dict]) -> dict[str, dict]:
+    """Les vidéos de présentation projetables, PAR LANGUE (en/fr/de).
 
-    Le deck est en anglais ; la langue vit dans le NOM du fichier source
-    (``…__talk__en.mp4``), pas dans un champ — convention de la fabrique.
+    La langue vit dans le NOM du fichier source (``…__talk__en.mp4``), pas
+    dans un champ — convention de la fabrique. 52 figures portent les trois
+    langues ; saint-exupery n'a pas de DE — le gel reflète ce qui existe,
+    jamais plus (les drapeaux de la slide suivent, retour NG 2026-08-27).
     """
-    videos = [a for a in assets
-              if a.get("role") == "video"
-              and a.get("clearance", {}).get("channel") == "public-ok"]
-    for v in videos:
-        if "__en" in (v.get("source") or ""):
-            return v
-    return videos[0] if videos else None
+    out: dict[str, dict] = {}
+    for v in assets:
+        if (v.get("role") != "video"
+                or v.get("clearance", {}).get("channel") != "public-ok"):
+            continue
+        src = v.get("source") or ""
+        for lang in ("en", "fr", "de"):
+            if f"__{lang}" in src and lang not in out:
+                out[lang] = v
+    return out
 
 
 def _figure_media(entry: dict | None) -> dict | None:
@@ -131,17 +136,18 @@ def _figure_media(entry: dict | None) -> dict | None:
                      if a.get("role") == "portrait"
                      and a.get("clearance", {}).get("channel") == "public-ok"),
                     None)
-    video = _pick_video(assets)
-    if not portrait or not video:
+    videos = _videos_by_lang(assets)
+    if not portrait or not videos:
         return None
     portrait_cdn = portrait["renditions"]["web-512"]
-    poster_cdn = video.get("poster")
+    first = next(iter(videos.values()))
+    poster_cdn = first.get("poster")
     media = {
         "portrait": "figures/" + portrait_cdn.rsplit("/", 1)[-1],
         "portrait_cdn": portrait_cdn,
         "portrait_ai": bool(portrait.get("ai_generated")),
-        "video": video["url"],
-        "video_ai": bool(video.get("ai_generated")),
+        "videos": {lang: v["url"] for lang, v in videos.items()},
+        "video_ai": any(bool(v.get("ai_generated")) for v in videos.values()),
     }
     if poster_cdn:
         media["poster"] = "figures/" + poster_cdn.rsplit("/", 1)[-1]
