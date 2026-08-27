@@ -277,9 +277,9 @@ def _figure(w: dict, f: dict, lang: str,
             st_write(ss.line, "a witness of ",
                      (s.project.colors.keyword, content.text(w["name"], lang)),
                      tag=t.div)
-            st_write(ss.meta, "press play — the video streams from the CDN; "
-                              "the full debates live in the Debates deck",
-                     tag=t.div)
+            # Pas de mention répétée du streaming/du deck Debates : la leçon
+            # debates du 2026-08-11 (une clause répétée 54 fois devient du
+            # papier peint) ; l'info orateur vit dans les speaker notes.
     else:
         with st_block(s.project.containers.page_fill_center):
             st_write(ss.name, f["name"], tag=t.div, toc_lvl="+1",
