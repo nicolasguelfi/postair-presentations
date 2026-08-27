@@ -15,6 +15,8 @@ Deux familles, sur le patron de ``debates/custom/render.py`` :
 
 from __future__ import annotations
 
+import streamlit as st
+
 from custom.styles import Styles as s
 from postair_pack.components.ai_mark import DD35_CSS, dd35_overlay
 from postair_pack.components.hero_split import hero_split
@@ -246,65 +248,53 @@ def _stage(w: dict, etage: str, lang: str, first: bool) -> None:
         st_write(ss.phrase, content.phrase(w["id"], etage, lang), tag=t.div)
 
 
-#: L'ordre et le drapeau des langues du lecteur (retour NG 2026-08-27) —
-#: seuls les drapeaux des vidéos réellement gelées s'affichent.
-_LANG_FLAGS = (("en", "🇬🇧"), ("fr", "🇫🇷"), ("de", "🇩🇪"))
+#: L'ordre et le libellé des langues du lecteur (retour NG 2026-08-27) —
+#: seules les langues réellement gelées s'affichent.
+_LANG_FLAGS = {"en": "🇬🇧 EN", "fr": "🇫🇷 FR", "de": "🇩🇪 DE"}
+
+#: Préférence de langue vidéo, PARTAGÉE entre les slides de figures — clé
+#: NON-widget (patron à deux clés, PLAYBOOK §7 : chaque figure a son widget
+#: `pvl_<id>`, la préférence survit d'une page à l'autre dans cette clé).
+_LANG_PREF_KEY = "waves_video_lang"
 
 
 def _poster_video_langs(fig_id: str, media: dict, name: str,
                         width: str = "min(38vw, 66vh)") -> None:
-    """Le portrait-lecteur MULTILINGUE : trois drapeaux sous la vidéo.
+    """Le portrait-lecteur MULTILINGUE : drapeaux sous la vidéo.
 
-    Bascule en PUR CSS (radios cachées + drapeaux-labels) : ``st.html``
-    n'exécute pas de script, et la bascule doit marcher aussi dans l'export.
-    Trois ``<video preload="none">`` coexistent — rien n'est téléchargé tant
-    qu'on ne joue pas (régime CDN). Le ``onclick`` des drapeaux met les
-    autres pistes en pause quand le navigateur l'honore — enrichissement
-    progressif, la bascule visuelle n'en dépend pas. Pastille DD-35 en HAUT
-    à droite (le bord bas appartient aux contrôles natifs), pilotée par le
-    drapeau de données ``video_ai``.
+    Bascule par WIDGET Streamlit (rerun) et non par CSS : ``st.html``
+    supprime les gestionnaires d'événements, et un ``<video>`` masqué en CSS
+    continuait de jouer — deux bandes-son simultanées, constaté par NG le
+    2026-08-27. Le rerun DÉTRUIT l'ancien lecteur et en recrée UN SEUL dans
+    la langue choisie : une seule piste peut exister. La préférence suit
+    l'orateur de figure en figure (clé non-widget partagée). Limite connue :
+    l'export statique n'a pas de widgets — il fige la langue préférée par
+    défaut (en).
     """
-    langs = [(code, flag) for code, flag in _LANG_FLAGS
-             if code in media["videos"]]
-    uid = "pvl-" + "".join(c for c in fig_id if c.isalnum())
-    poster = f"app/static/media/{media['portrait']}"
+    codes = [c for c in _LANG_FLAGS if c in media["videos"]]
+    pref = st.session_state.get(_LANG_PREF_KEY, "en")
+    current = pref if pref in codes else codes[0]
+    key = f"pvl_{''.join(c for c in fig_id if c.isalnum())}"
+
+    def _sync() -> None:
+        st.session_state[_LANG_PREF_KEY] = st.session_state[key]
+
     chip = (f'<span style="{DD35_CSS} position:absolute; right:0.6em; '
-            f'top:0.6em; pointer-events:none; z-index:10;">✦ AI</span>'
+            f'top:0.6em; pointer-events:none;">✦ AI</span>'
             if media.get("video_ai") else "")
-    radios, videos, css, flags = [], [], [f".{uid} video{{display:none;}}"], []
-    for i, (code, flag) in enumerate(langs):
-        rid = f"{uid}-{code}"
-        radios.append(f'<input type="radio" name="{uid}" id="{rid}" '
-                      f'{"checked" if i == 0 else ""} style="display:none;">')
-        videos.append(
-            f'<video class="{uid}-{code}" controls preload="none" playsinline '
-            f'poster="{poster}" '
-            f'style="width:100%; height:auto; border-radius:12px;" '
-            f'aria-label="Presentation video of {name} ({code})">'
-            f'<source src="{media["videos"][code]}" type="video/mp4">'
-            f'</video>')
-        css.append(f'#{rid}:checked ~ video.{uid}-{code}{{display:block;}}')
-        css.append(f'#{rid}:checked ~ .{uid}-flags label[for="{rid}"]'
-                   f'{{opacity:1; border-color:#2EC4B6;}}')
-        flags.append(
-            f'<label for="{rid}" title="{code}" '
-            f'onclick="var r=this.parentNode.parentNode;'
-            f'var vs=r.querySelectorAll(\'video\');'
-            f'for(var j=0;j<vs.length;j++){{vs[j].pause();}}" '
-            f'style="cursor:pointer; opacity:0.45; padding:0.05em 0.3em; '
-            f'border:2px solid transparent; border-radius:8px; '
-            f'font-size:clamp(18px, 1.7vw, 34px); line-height:1.2;">'
-            f'{flag}</label>')
     st_html(
-        f'<div class="{uid}" style="position:relative; width:{width}; '
-        f'margin:0 auto;">'
-        f'<style>{"".join(css)}</style>'
-        f'{"".join(radios)}'
-        f'{"".join(videos)}'
-        f'{chip}'
-        f'<div class="{uid}-flags" style="text-align:center; '
-        f'margin-top:0.35em;">{"".join(flags)}</div>'
-        f'</div>')
+        f'<div style="position:relative; width:{width}; margin:0 auto;">'
+        f'<video controls preload="none" playsinline '
+        f'poster="app/static/media/{media["portrait"]}" '
+        f'style="width:100%; height:auto; display:block; border-radius:12px;" '
+        f'aria-label="Presentation video of {name} ({current})">'
+        f'<source src="{media["videos"][current]}" type="video/mp4">'
+        f'</video>{chip}</div>')
+    if len(codes) > 1:
+        st.radio("video language", codes, index=codes.index(current),
+                 key=key, on_change=_sync, horizontal=True,
+                 label_visibility="collapsed",
+                 format_func=lambda c: _LANG_FLAGS[c])
 
 
 def _figure(w: dict, f: dict, lang: str,
