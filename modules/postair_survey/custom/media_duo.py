@@ -32,6 +32,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from postair_data import axes, mascot_clip
+from postair_i18n import terms
 from postair_lang import T
 from postair_pack.components.ai_mark import ai_marked
 from shared_widgets import st_info_tooltip
@@ -71,6 +72,21 @@ _FIGURE_TAGLINE = {"en": "great figure — presentation video", "fr": "grande fi
 _SOUND_ON = {"en": "▶ sound on — ", "fr": "▶ son activé — "}
 _NEXT_RIGHT = {"en": "next plays the right-hand video", "fr": "suivant lance la vidéo de droite"}
 _BACK_LEFT = {"en": "back replays the left-hand video", "fr": "retour relance la vidéo de gauche"}
+
+
+def _pole_label(label_en: str, lang: str) -> str:
+    """Le libellé de pôle dans la langue projetée — le cast ne porte que l'EN.
+
+    Le FR vient du glossaire du hub gelé (``pole.<CODE>.name``), retrouvé par
+    le libellé EN ; l'anglais reste celui du cast, byte-identique. Un pôle
+    absent du glossaire garde son libellé EN (jamais de trou).
+    """
+    if lang == "en":
+        return label_en
+    for node in terms("pole.").values():
+        if node["en"].lower() == label_en.lower():
+            return T(node, lang)
+    return label_en
 
 
 @lru_cache(maxsize=8)
@@ -122,7 +138,8 @@ def mascot_duo(lang: str = "en") -> tuple[dict, dict]:
         duo.append({
             "name": name,
             "tagline": T(_MASCOT_TAGLINE, lang).format(
-                label=pole["label"], family=T(_FAMILY[pole["family"]], lang)),
+                label=_pole_label(pole["label"], lang),
+                family=T(_FAMILY[pole["family"]], lang)),
             "src": str(_MEDIA / mascot_clip(name, lang)),
         })
     return tuple(duo)
