@@ -24,9 +24,9 @@ def build():
              "Nearness measures answers, not lives — an invitation to read the "
              "figure, never an identity."),
         ],
-        zoomImage=160,
-        zoomText=140,
+        zoomImage=175,
+        zoomText=150,
         device="mobile",
         landscape=False,
-        crop=(0, 0, 27, 0),
+        crop=(0, 0, 65, 0),
     )

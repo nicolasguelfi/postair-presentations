@@ -170,10 +170,15 @@ st_book(
         blocks.bck_survey_troubleshooting,  # before you start
         blocks.bck_survey_join,       # QR + code of the day
         blocks.bck_survey_live,       # live monitoring while the room answers
-        # ── Part 2 · The screens ────────────────────────────────────
+        # ── Part 2 · The Room's Results ────────────────────────────────────
         blocks.bck_survey_results,    # open the room's results (operator buttons)
-        blocks.bck_results_room,      # the room's results — commentary
-        blocks.bck_screens_regie,      # régie (20-22) — UNE scène composée, console + /live + ruban
+        # blocks.bck_results_room,   # exclu (NG 2026-08-24) — MÊMES boutons
+        # /present/<code> que bck_survey_results juste au-dessus ; ses deux
+        # conseils propres (quoi commenter, repli réseau) y ont été repris.
+        blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
+        # ── Appendix ────────────────────────────────────────────────
+        blocks.bck_refs_bibliography,  # never presented; opened when a claim is challenged
+        blocks.bck_screens_regie,      # régie — UNE scène composée, console + /live + ruban (consultée sur incident)
         blocks.bck_screens_diapo_radar,     # diapo /present — the room's radar
         blocks.bck_screens_diapo_spread,    # diapo — the room's spread
         blocks.bck_screens_diapo_details,   # diapo — the detail per question
@@ -182,9 +187,6 @@ st_book(
         blocks.bck_screens_diapo_abstentions,  # diapo — where the room abstains
         blocks.bck_screens_diapo_groups,    # diapo — the group comparison
         blocks.bck_results_meaning,   # what the results say about us
-        blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
-        # ── Appendix ────────────────────────────────────────────────
-        blocks.bck_refs_bibliography,  # never presented; opened when a claim is challenged
         blocks.bck_results_radar_howto,  # how to read a posture radar
         blocks.bck_screens_detail,     # écran 11-res-detail (ancre TOC du groupe « explore »)
         blocks.bck_screens_figures_explorer,  # écran 18-explorateur (ancre TOC du groupe « figures »)

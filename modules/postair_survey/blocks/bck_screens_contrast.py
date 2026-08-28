@@ -23,8 +23,9 @@ def build():
              "The shortest way to understand the other pole of an axis is a "
              "figure who stands on it — this is where the debates start."),
         ],
-        zoomImage=150,
+        zoomImage=165,
         zoomText=140,
         device="mobile",
         landscape=False,
+        crop=(0, 0, 45, 0),
     )

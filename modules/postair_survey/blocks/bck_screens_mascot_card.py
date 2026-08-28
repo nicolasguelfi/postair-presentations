@@ -27,6 +27,6 @@ def build():
         ],
         device="desktop",
         landscape=False,
-        zoomImage=250,
+        zoomImage=100,
         zoomText=120,
     )
