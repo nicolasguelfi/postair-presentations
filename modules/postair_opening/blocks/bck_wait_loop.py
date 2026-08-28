@@ -61,8 +61,8 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Waiting screen"}
-_HINT = {"en": "▶ play · loop · sound on"}
+_MARKER = {"en": "Waiting screen", "fr": "Écran d'attente"}
+_HINT = {"en": "▶ play · loop · sound on", "fr": "▶ lecture · boucle · avec son"}
 
 
 def build(lang: str = "en", **_):

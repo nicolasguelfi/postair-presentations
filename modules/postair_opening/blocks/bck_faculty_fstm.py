@@ -44,8 +44,8 @@ _RATIO = 35         # part de largeur de la colonne image, en %
 _ZOOM = 125         # st_zoom de la colonne des constats
 
 # ── La faculté et sa scène ──────────────────────────────────────────────────
-_MARKER = {"en": "FSTM"}
-_FACULTY = {"en": "Science, Technology and Medicine"}
+_MARKER = {"en": "FSTM", "fr": "FSTM"}
+_FACULTY = {"en": "Science, Technology and Medicine", "fr": "Sciences, Technologies et Médecine"}
 _SCENE = ("A papercut science and technology scene: a large paper laptop "
           "showing cut-out code blocks, a paper flask and a small paper gear "
           "beside it, a glowing warm amber paper orb hovering over the desk; "
@@ -54,43 +54,43 @@ _SCENE = ("A papercut science and technology scene: a large paper laptop "
 # ── Les constats (headline projetée ; detail + caveat dans le tooltip) ──────
 _EXAMPLES = [
     {
-        "headline": {"en": "Codex > median CS1 student"},
+        "headline": {"en": "Codex > median CS1 student", "fr": "Codex > étudiant médian en CS1"},
         "detail": {"en": ("Introductory programming stopped being a filter. In 2022 "
                    "OpenAI Codex already scored above the median student on a "
                    "CS1 final exam; a year later it still beat median "
                    "students on second-year data-structure exercises, though "
-                   "the margin narrowed on problems requiring novel design.")},
+                   "the margin narrowed on problems requiring novel design."), "fr": "L'initiation à la programmation n'est plus un filtre. En 2022, OpenAI Codex dépassait déjà l'étudiant médian à un examen final de CS1 ; un an plus tard, il battait encore les étudiants médians sur des exercices de structures de données de deuxième année, avec une marge plus étroite sur les problèmes qui demandaient une conception nouvelle."},
         "caveat": {"en": ("Measured on exams as they were written at the time. The "
                    "result is as much about assessment design as about the "
-                   "model.")},
+                   "model."), "fr": "Mesuré sur les examens tels qu'ils étaient rédigés à l'époque. Le résultat en dit autant sur la conception des évaluations que sur le modèle."},
         "citekeys": ["finnie-ansley2022", "finnie-ansley2023"],
         "reported": False,
     },
     # Rééquilibrage NG 2026-08-19 : un bénéfice net entre la capacité et le
     # risque — l'essai randomisé JAMA sur le raisonnement diagnostique.
     {
-        "headline": {"en": "GPT-4 out-diagnosed the unaided physicians"},
+        "headline": {"en": "GPT-4 out-diagnosed the unaided physicians", "fr": "GPT-4 diagnostique mieux que les médecins seuls"},
         "detail": {"en": ("In a randomized clinical trial on six complex diagnostic "
                    "vignettes, GPT-4 alone reached a median reasoning score "
                    "of 92 % against 74 % for 50 physicians using their usual "
                    "tools — and 76 % when the physicians were given GPT-4: "
                    "the tool alone is not enough, collaborating with it is "
-                   "learned.")},
+                   "learned."), "fr": "Dans un essai clinique randomisé sur six vignettes diagnostiques complexes, GPT-4 seul a atteint un score médian de raisonnement de 92 % contre 74 % pour 50 médecins avec leurs outils habituels — et 76 % quand les médecins disposaient de GPT-4 : l'outil seul ne suffit pas, collaborer avec lui s'apprend."},
         "caveat": {"en": ("Fifty physicians, six vignettes — a controlled reasoning "
-                   "benchmark, not patient outcomes.")},
+                   "benchmark, not patient outcomes."), "fr": "Cinquante médecins, six vignettes — un test de raisonnement contrôlé, pas des résultats cliniques."},
         "citekeys": ["goh2024llm"],
         "reported": False,
     },
     {
-        "headline": {"en": "the least accurate student but the most confident"},
+        "headline": {"en": "the least accurate student but the most confident", "fr": "l’étudiant le moins exact mais le plus sûr de lui"},
         "detail": {"en": ("In medicine the danger is confidence, not error. Medical "
                    "students working virtual patient cases with AI support "
                    "and no human feedback produced the least accurate "
                    "diagnoses of the whole cohort — and were the most "
-                   "confident of any group.")},
+                   "confident of any group."), "fr": "En médecine, le danger, c'est l'excès de confiance, pas l'erreur. Des étudiants en médecine travaillant des cas de patients virtuels avec une aide IA et sans retour humain ont produit les diagnostics les moins exacts de toute la cohorte — et étaient les plus sûrs d'eux de tous les groupes."},
         "caveat": {"en": ("Reported inside the HEPI survey; the underlying study was "
                    "not opened. Cite the primary paper before using this in "
-                   "any policy setting.")},
+                   "any policy setting."), "fr": "Rapporté dans l'enquête HEPI ; l'étude sous-jacente n'a pas été consultée. Citez l'article original avant de l'utiliser dans tout cadre décisionnel."},
         "citekeys": ["isabel-virtual-patients", "hepi-survey-2026"],
         "reported": True,   # kind = reported-in : la note s'ajoute au tooltip
     },

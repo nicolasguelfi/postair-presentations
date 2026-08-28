@@ -47,23 +47,23 @@ _SYNTHETIC = True
 # TODO-NG — chaque fait est à VALIDER avant projection ; rien d'inventé ne
 # passe devant 1500 personnes. (fait court, détail lisible du fond.)
 _FACTS = [
-    ({"en": "Dr. Nicolas Guelfi"}, {"en": "your host for these three hours"}),
-    ({"en": "Professor, FSTM"}, {"en": "software engineering & artifical intelligence · University of Luxembourg"}),  # TODO-NG vérifier l'intitulé exact
-    ({"en": "POSTAIR"}, {"en": "author of the posture instrument used today ;)"}),    # TODO-NG formulation
+    ({"en": "Dr. Nicolas Guelfi", "fr": "Dr Nicolas Guelfi"}, {"en": "your host for these three hours", "fr": "votre hôte pour ces trois heures"}),
+    ({"en": "Professor, FSTM", "fr": "Professeur, FSTM"}, {"en": "software engineering & artifical intelligence · University of Luxembourg", "fr": "génie logiciel & intelligence artificielle · Université du Luxembourg"}),  # TODO-NG vérifier l'intitulé exact
+    ({"en": "POSTAIR", "fr": "POSTAIR"}, {"en": "author of the posture instrument used today ;)", "fr": "auteur de l'instrument de posture utilisé aujourd'hui ;)"}),    # TODO-NG formulation
 ]
 
-_MARKER = {"en": "Your host"}
-_TITLE = {"en": ("Your ", (s.project.titles.keyword, "host"))}
-_TIP_TITLE = {"en": "About the host"}
+_MARKER = {"en": "Your host", "fr": "Votre hôte"}
+_TITLE = {"en": ("Your ", (s.project.titles.keyword, "host")), "fr": ("Votre ", (s.project.titles.keyword, "hôte"))}
+_TIP_TITLE = {"en": "About the host", "fr": "L'hôte en bref"}
 # TODO-NG — panneau à remplir par l'auteur.
 _TIP = [
-    ({"en": "Who"}, {"en": "To be provided by the author."}),
-    ({"en": "The nine incarnations"},
+    ({"en": "Who", "fr": "Qui"}, {"en": "To be provided by the author.", "fr": "À fournir par l'auteur."}),
+    ({"en": "The nine incarnations", "fr": "Les neuf incarnations"},
      {"en": ("The host appears in each of the nine postures of the instrument: "
              "no posture is shameful, and every one of them will be argued for "
-             "today.")}),
+             "today."), "fr": "L'hôte apparaît dans chacune des neuf postures de l'instrument : aucune posture n'est honteuse, et chacune sera défendue aujourd'hui."}),
 ]
-_CAPTION = {"en": "one host · nine postures"}
+_CAPTION = {"en": "one host · nine postures", "fr": "un hôte · neuf postures"}
 
 
 class BlockStyles:

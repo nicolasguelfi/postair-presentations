@@ -42,30 +42,30 @@ HERO_PROMPT = (
     + AI_SUFFIX_LANDSCAPE
 )
 
-_MARKER = {"en": "Title — AI Day"}
-_OVER = {"en": "University of Luxembourg · Welcome Week"}
-_TITLE = {"en": "THE AUGMENTED STUDENT"}
-_LABEL = {"en": "Welcome"}
-_SUB = {"en": "Facing the AI Revolution"}
-_TIP_TITLE = {"en": "About this day"}
+_MARKER = {"en": "Title — AI Day", "fr": "Titre — AI Day"}
+_OVER = {"en": "University of Luxembourg · Welcome Week", "fr": "Université du Luxembourg · Welcome Week"}
+_TITLE = {"en": "THE AUGMENTED STUDENT", "fr": "L'ÉTUDIANT AUGMENTÉ"}
+_LABEL = {"en": "Welcome", "fr": "Bienvenue"}
+_SUB = {"en": "Facing the AI Revolution", "fr": "Face à la révolution de l'IA"}
+_TIP_TITLE = {"en": "About this day", "fr": "La journée en bref"}
 _TIP = [
-    ({"en": "Who"},
+    ({"en": "Who", "fr": "Pour qui"},
      {"en": ("Organised for all new students of the three faculties — FSTM "
              "(Science, Technology and Medicine), FDEF (Law, Economics and "
-             "Finance), FHSE (Humanities, Education and Social Sciences).")}),
-    ({"en": "Why"},
+             "Finance), FHSE (Humanities, Education and Social Sciences)."), "fr": "Organisée pour tous les nouveaux étudiants des trois facultés — FSTM (Sciences, Technologies et Médecine), FDEF (Droit, Économie et Finance), FHSE (Sciences humaines, Éducation et Sciences sociales)."}),
+    ({"en": "Why", "fr": "Pourquoi"},
      {"en": ("AI will be part of every study path. Today is about understanding "
              "it, locating yourself in front of it, and learning the "
-             "University's rules of the game.")}),
-    ({"en": "Three promises"},
+             "University's rules of the game."), "fr": "L'IA fera partie de tous les parcours d'études. Aujourd'hui, il s'agit de la comprendre, de vous situer face à elle et d'apprendre les règles du jeu de l'Université."}),
+    ({"en": "Three promises", "fr": "Trois promesses"},
      {"en": ("1. Understand what generative AI really is. 2. Discover YOUR "
              "posture facing AI — measured live. 3. Leave with the UL guidelines "
-             "and a concrete method to study with AI.")}),
-    ({"en": "Participation"},
+             "and a concrete method to study with AI."), "fr": "1. Comprendre ce qu'est vraiment l'IA générative. 2. Découvrir VOTRE posture face à l'IA — mesurée en direct. 3. Repartir avec les lignes directrices de l'UL et une méthode concrète pour étudier avec l'IA."}),
+    ({"en": "Participation", "fr": "Participation"},
      {"en": ("Keep your phone or laptop at hand — the whole room takes part in a "
-             "live, anonymous survey.")}),
+             "live, anonymous survey."), "fr": "Gardez téléphone ou ordinateur à portée de main — toute la salle participe à un sondage anonyme, en direct."}),
 ]
-_COHOST = {"en": "{name} — your co-host today"}
+_COHOST = {"en": "{name} — your co-host today", "fr": "{name} — votre co-hôte du jour"}
 
 
 def build(lang: str = "en", **_):

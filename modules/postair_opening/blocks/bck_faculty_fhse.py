@@ -44,8 +44,8 @@ _RATIO = 40         # part de largeur de la colonne image, en %
 _ZOOM = 120         # st_zoom de la colonne des constats
 
 # ── La faculté et sa scène ──────────────────────────────────────────────────
-_MARKER = {"en": "FHSE"}
-_FACULTY = {"en": "Humanities, Education and Social Sciences"}
+_MARKER = {"en": "FHSE", "fr": "FHSE"}
+_FACULTY = {"en": "Humanities, Education and Social Sciences", "fr": "Sciences humaines, Éducation et Sciences sociales"}
 _SCENE = ("A papercut humanities scene: a pile of colourful paper books, a "
           "paper quill, speech bubbles cut from bright cardstock rising like "
           "a conversation, a glowing warm amber paper orb among them; one "
@@ -54,7 +54,7 @@ _SCENE = ("A papercut humanities scene: a pile of colourful paper books, a "
 # ── Les constats (headline projetée ; detail + caveat dans le tooltip) ──────
 _EXAMPLES = [
     {
-        "headline": {"en": "non-native writers are detected as AI"},
+        "headline": {"en": "non-native writers are detected as AI", "fr": "les non-natifs de l'anglais détectés comme IA"},
         "detail": {"en": ("Writing in a second language is read as writing by a "
                    "machine. Seven detectors wrongly flagged 61 % of essays "
                    "by non-native English writers while classifying US "
@@ -62,49 +62,49 @@ _EXAMPLES = [
                    "very same essays in richer vocabulary dropped the rate to "
                    "12 %. In a university where most students write in a "
                    "language that is not their first, this is not an "
-                   "abstract concern.")},
+                   "abstract concern."), "fr": "Écrire dans une langue seconde, c'est être lu comme une machine. Sept détecteurs ont signalé à tort 61 % des essais rédigés par des non-natifs de l’anglais, tout en classant presque parfaitement des essais d’élèves américains de 8e année — et réécrire ces mêmes essais avec un vocabulaire plus riche a fait chuter le taux à 12 %. Dans une université où la plupart des étudiants écrivent dans une langue qui n’est pas la leur, ce n’est pas une inquiétude abstraite."},
         "caveat": {"en": ("Pilot study, small samples, detectors mostly built on "
                    "GPT-2. The mechanism it identifies — plain vocabulary "
-                   "read as machine-like — is what carries.")},
+                   "read as machine-like — is what carries."), "fr": "Étude pilote, petits échantillons, détecteurs surtout fondés sur GPT-2. Ce qui tient, c’est le mécanisme identifié : un vocabulaire simple lu comme celui d’une machine."},
         "citekeys": ["liang2023-bias"],
         "reported": False,
     },
     {
-        "headline": {"en": "Higher scores, lower learning"},
+        "headline": {"en": "Higher scores, lower learning", "fr": "Plus de points, moins d’acquis"},
         "detail": {"en": ("Access can raise the score and lower the learning. "
                    "Nearly a thousand school students gained 48 % on "
                    "practice problems with an unguarded GPT-4 tutor and then "
                    "scored 17 % below the control group on the exam they sat "
                    "without it. Constraining the same tutor to hints instead "
-                   "of answers removed the loss.")},
+                   "of answers removed the loss."), "fr": "L’accès peut faire monter la note et baisser l’apprentissage. Près d’un millier d’élèves ont gagné 48 % sur des exercices d’entraînement avec un tuteur GPT-4 sans garde-fou, puis ont obtenu 17 % de moins que le groupe témoin à l’examen passé sans lui. Contraindre le même tuteur à des indices plutôt qu’à des réponses a supprimé la perte."},
         "caveat": {"en": ("School mathematics in Turkey, over weeks. Whether it "
-                   "holds over a degree, nobody has measured yet.")},
+                   "holds over a degree, nobody has measured yet."), "fr": "Mathématiques scolaires en Turquie, sur quelques semaines. Personne n’a encore mesuré si cela tient sur un cursus entier."},
         "citekeys": ["bastani-guardrails-2025"],
         "reported": False,
     },
     # Rééquilibrage NG 2026-08-19 : le bénéfice vit dans la MÊME étude que la
     # mise en garde au-dessus — le remède mesuré, pas une promesse.
     {
-        "headline": {"en": "Hints driven AI tutor: the gain without the loss"},
+        "headline": {"en": "Hints driven AI tutor: the gain without the loss", "fr": "Tuteur IA par indices : le gain sans la perte"},
         "detail": {"en": ("The same field experiment also measured the fix: when "
                    "the GPT-4 tutor was constrained to give hints instead of "
                    "answers, students kept the practice gains and the exam "
-                   "loss disappeared.")},
+                   "loss disappeared."), "fr": "La même expérience de terrain a aussi mesuré le remède : quand le tuteur GPT-4 était contraint de donner des indices plutôt que des réponses, les élèves ont gardé les gains à l’entraînement et la perte à l’examen a disparu."},
         "caveat": {"en": ("Same population and horizon as the caution beside it: "
-                   "school mathematics in Turkey, over weeks.")},
+                   "school mathematics in Turkey, over weeks."), "fr": "Même population, même horizon que la mise en garde voisine : mathématiques scolaires en Turquie, sur quelques semaines."},
         "citekeys": ["bastani-guardrails-2025"],
         "reported": False,
     },
     {
-        "headline": {"en": "Least convinced, least supported"},
+        "headline": {"en": "Least convinced, least supported", "fr": "Les moins convaincus, les moins soutenus"},
         "detail": {"en": ("Arts and humanities students are the most sceptical and "
                    "the least supported: 25 % think AI-written work would "
                    "earn a good grade in their subject, against 46 % in STEM "
                    "— and only 26 % feel their teaching staff help them "
-                   "build AI skills, against 53 % in STEM.")},
+                   "build AI skills, against 53 % in STEM."), "fr": "Les étudiants en arts et humanités sont les plus sceptiques et les moins soutenus : 25 % pensent qu’un travail écrit par l’IA obtiendrait une bonne note dans leur discipline, contre 46 % en STEM — et seuls 26 % estiment que leurs enseignants les aident à développer des compétences en IA, contre 53 % en STEM."},
         "caveat": {"en": ("UK subject areas, which do not map cleanly onto this "
                    "university’s three faculties. Read as a disciplinary "
-                   "gradient, not as a faculty measurement.")},
+                   "gradient, not as a faculty measurement."), "fr": "Domaines d’études britanniques, qui ne recoupent pas exactement les trois facultés de cette université. À lire comme un gradient disciplinaire, pas comme une mesure par faculté."},
         "citekeys": ["hepi-survey-2026"],
         "reported": False,
     },

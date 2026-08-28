@@ -36,7 +36,7 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from")), "fr": ("Toutes nos ", (s.project.titles.keyword, "sources"))}
+_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from")), "fr": ("D'où tout cela ", (s.project.titles.keyword, "vient"))}
 _LEAD = {"en": "every figure on the framing slides, with its source", "fr": "chaque chiffre des slides de cadrage, avec sa source"}
 
 
