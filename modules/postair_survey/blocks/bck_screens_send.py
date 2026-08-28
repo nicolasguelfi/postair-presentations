@@ -14,7 +14,7 @@ from custom.styles import Styles as s
 from streamtex import *
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker('Sending your answers')
     screen_slide(
         ["Sending your ", (s.project.titles.keyword, "answers")],

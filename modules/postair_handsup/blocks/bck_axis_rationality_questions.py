@@ -14,5 +14,5 @@ foi pour les neuf axes. Ne jamais envelopper l'appel dans un ``st_zoom``.
 from custom.axis_slides import questions_slide
 
 
-def build():
+def build(lang: str = "en", **_):
     questions_slide("RAT")

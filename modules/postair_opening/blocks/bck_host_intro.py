@@ -62,7 +62,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Your host")
     incarnations_ready = (_STATIC / _INCARNATIONS).exists()
     with st_block(s.project.containers.page_fill_top):

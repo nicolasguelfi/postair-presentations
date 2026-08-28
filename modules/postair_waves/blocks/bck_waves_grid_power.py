@@ -13,6 +13,6 @@ The full lines live in the tooltip.
 from custom.render import waves_grid_slide
 
 
-def build():
+def build(lang: str = "en", **_):
     waves_grid_slide("From the dynamo to the atom",
                      ("From the dynamo to the ", "atom", ""), first=9, last=12)

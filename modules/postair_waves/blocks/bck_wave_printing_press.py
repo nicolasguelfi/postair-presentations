@@ -13,5 +13,5 @@ streams from the CDN), and land on the lesson card before moving on.
 from custom.render import wave_slides
 
 
-def build():
+def build(lang: str = "en", **_):
     wave_slides("printing-press")

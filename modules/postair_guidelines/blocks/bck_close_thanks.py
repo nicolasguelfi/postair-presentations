@@ -42,7 +42,7 @@ _CREDITS = ("AI Day team · the POSTAIR study and its 55 figures · sumvadis "
             "with streamtex")
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Thank you!")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:

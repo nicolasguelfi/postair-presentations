@@ -17,5 +17,5 @@ happens to the people the rules did not anticipate.
 from custom.render import axis_slides
 
 
-def build():
+def build(lang: str = "en", **_):
     axis_slides("control")

@@ -103,7 +103,7 @@ PORTRAIT = ("«git»/GENAI/ai4video-projects/augmented-student/assets/images/"
             "NG/_identity/portraits/ng__portrait__studio__v1.png")
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Your posture?")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:

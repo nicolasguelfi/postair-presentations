@@ -23,7 +23,7 @@ bs = BlockStyles
 _WIDTH = "min(24vw, 42vh)"
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("The code screen")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",

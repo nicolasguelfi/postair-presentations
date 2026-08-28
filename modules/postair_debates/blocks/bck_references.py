@@ -39,7 +39,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("References")
     # Le registre est rempli ici, pas ailleurs : cette slide est la seule qui
     # ait besoin de TOUTES les entrées, y compris celles des slides que la

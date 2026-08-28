@@ -10,7 +10,7 @@ from custom.styles import Styles as s
 from streamtex import *
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("The room's radar")
     screen_slide(
         ["The room's ", (s.project.titles.keyword, "radar")],

@@ -70,7 +70,7 @@ _BALANCE_PROMPT = (
 )
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("If suspected")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:

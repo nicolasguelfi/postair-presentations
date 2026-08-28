@@ -45,7 +45,7 @@ def _all_poles() -> list[dict]:
             for kind in ("accel", "decel")]
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("No consensus")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:

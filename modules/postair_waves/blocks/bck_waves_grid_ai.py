@@ -12,5 +12,5 @@ Land here and slow down: « this one is ours ». One click opens it.
 from custom.render import wave_hero_grid_slide
 
 
-def build():
+def build(lang: str = "en", **_):
     wave_hero_grid_slide("The seventeenth wave", "ai")

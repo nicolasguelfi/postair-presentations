@@ -17,5 +17,5 @@ reason for drawing it there, is the whole content of this debate.
 from custom.render import axis_slides
 
 
-def build():
+def build(lang: str = "en", **_):
     axis_slides("transhumanism")

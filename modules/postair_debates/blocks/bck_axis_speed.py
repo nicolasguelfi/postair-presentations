@@ -17,5 +17,5 @@ harms, the speed bench wins on the cost of waiting — let both land.
 from custom.render import axis_slides
 
 
-def build():
+def build(lang: str = "en", **_):
     axis_slides("speed")

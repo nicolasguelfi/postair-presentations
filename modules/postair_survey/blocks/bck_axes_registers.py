@@ -87,7 +87,7 @@ def _register_slide(name: str, subtitle: str) -> None:
                         axis_stack(axis, DS, image_width="min(10vw, 13.5vh)")
 
 
-def build():
+def build(lang: str = "en", **_):
     first = True
     for name, subtitle, _nums in REGISTERS:
         if not first:

@@ -48,7 +48,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Provenance")
     with st_block(s.project.containers.page_fill_top):
         # Télégraphique (NG 2026-08-13) : trois cartes picto + mots-clés, les

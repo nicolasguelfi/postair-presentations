@@ -18,5 +18,5 @@ not direction, and that is a better debate than the one they started.
 from custom.render import axis_slides
 
 
-def build():
+def build(lang: str = "en", **_):
     axis_slides("optimism")

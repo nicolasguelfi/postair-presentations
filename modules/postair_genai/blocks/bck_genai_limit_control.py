@@ -54,7 +54,7 @@ _SCENE = ("Three enormous paper hands rising from the bottom of the frame, "
           "crowd of tiny abstract paper silhouettes watching from below.")
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker(_MARKER)
     prompt = AI_PREFIX + _SCENE + AI_SUFFIX_LANDSCAPE
     with st_block(s.project.containers.page_fill_top):

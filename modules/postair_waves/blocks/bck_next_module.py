@@ -14,6 +14,6 @@ from custom.styles import Styles as s
 from postair_chain import build_next_module_slide
 
 
-def build():
+def build(lang: str = "en", **_):
     # Clé EXPLICITE, jamais déduite du répertoire courant (PLAYBOOK §2).
     build_next_module_slide(s, current="waves")

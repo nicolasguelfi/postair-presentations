@@ -12,5 +12,5 @@ foi pour les dix-huit pôles.
 from custom.axis_slides import pole_synthesis_slide
 
 
-def build():
+def build(lang: str = "en", **_):
     pole_synthesis_slide("TRA", "decel",zoomCell=150)

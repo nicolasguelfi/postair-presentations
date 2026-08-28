@@ -99,7 +99,7 @@ _AMIE_DETAIL = ("AMIE (Google DeepMind, 2025): in a randomized, BLINDED "
 _CITEKEYS = ["nori2025sequential"]
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Diagnosis")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:

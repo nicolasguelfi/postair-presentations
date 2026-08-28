@@ -67,7 +67,7 @@ _CAVEAT = ("The authors call it a pilot on small samples, and most detectors "
            "mechanism is the one that matters in a multilingual university.")
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker(_VALUE)
     with st_zoom(_ZOOM):
         with st_block(s.project.containers.page_fill_top):

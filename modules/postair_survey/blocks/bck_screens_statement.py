@@ -20,7 +20,7 @@ from custom.styles import Styles as s
 from streamtex import *
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("A statement")
     screen_slide(
         ["A statement, ", (s.project.titles.keyword, "six levels"), ", help"],

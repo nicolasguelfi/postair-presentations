@@ -42,7 +42,7 @@ HERO_PROMPT = (
 )
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Title — AI Day")
     medio = mascot("Medio")
     # page_fill_full: no side padding, so the 5/55/35/5 grid below is

@@ -10,7 +10,7 @@ from custom.media_duo import mascot_duo, media_duo_slide
 from custom.styles import Styles as s
 
 
-def build():
+def build(lang: str = "en", **_):
     media_duo_slide(
         ["Every mascot has its ", (s.project.titles.keyword, "own video")],
         mascot_duo(), "right",

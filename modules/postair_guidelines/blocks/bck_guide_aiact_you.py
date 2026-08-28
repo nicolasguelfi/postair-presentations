@@ -52,7 +52,7 @@ _TAGS_PROMPT = (
 )
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("You, concretely")
     data = section("ai_act")
     with st_block(s.project.containers.page_fill_top):

@@ -51,7 +51,7 @@ _HERO_PROMPT = (
 )
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Justice")
     fact = next(a for a in section("augment") if a["id"] == "justice")
     with st_block(s.project.containers.page_fill_top):

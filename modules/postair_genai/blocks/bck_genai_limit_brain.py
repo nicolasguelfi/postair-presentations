@@ -60,7 +60,7 @@ _SCENE = ("A big cheerful paper brain with two strong paper arms lifting a "
           "paper orb rests on the ground nearby, watching idle.")
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker(_MARKER)
     prompt = AI_PREFIX + _SCENE + AI_SUFFIX_LANDSCAPE
     with st_block(s.project.containers.page_fill_top):

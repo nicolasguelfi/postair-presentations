@@ -10,7 +10,7 @@ from custom.styles import Styles as s
 from streamtex import *
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker('The group comparison')
     screen_slide(
         ["The ", (s.project.titles.keyword, "group"), " comparison"],

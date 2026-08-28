@@ -10,7 +10,7 @@ from custom.media_duo import figure_duo, media_duo_slide
 from custom.styles import Styles as s
 
 
-def build():
+def build(lang: str = "en", **_):
     media_duo_slide(
         ["Every figure has its ", (s.project.titles.keyword, "own video")],
         figure_duo(), "right",

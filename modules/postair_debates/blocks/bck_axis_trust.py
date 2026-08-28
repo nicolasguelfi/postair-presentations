@@ -19,5 +19,5 @@ themselves, and for one where they could not.
 from custom.render import axis_slides
 
 
-def build():
+def build(lang: str = "en", **_):
     axis_slides("trust")

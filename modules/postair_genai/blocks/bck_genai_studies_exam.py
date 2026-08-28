@@ -57,7 +57,7 @@ _DONT_CITEKEYS = ["hepi-survey-2026"]
 _PARADOX = "well used → learning ↑ · INSTEAD of learning → cancelled"
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("The exam")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:

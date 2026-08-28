@@ -49,7 +49,7 @@ TITLE_PROMPT = (
 )
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Title")
     with st_block(s.project.containers.page_fill_top):
         with st_zoom(140):

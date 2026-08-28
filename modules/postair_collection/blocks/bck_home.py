@@ -68,7 +68,7 @@ def _card(project: dict) -> None:
                 f'style="{bs.button_css}">{project["button_label"]}</a>')
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("AI Day")
     meta = _CONFIG.get("collection", {})
     with st_block(s.project.containers.page_fill_top):

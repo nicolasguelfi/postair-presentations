@@ -49,7 +49,7 @@ _MESSAGES = [
 ]
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Welcome Week")
     with st_block(s.project.containers.page_fill_top):
         # Le gabarit maison 92/8 : le logo tient lieu de titre, le tooltip

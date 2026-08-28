@@ -31,7 +31,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("No consensus")
     data = manifest()
     counts = [

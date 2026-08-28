@@ -47,7 +47,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Host reveal")
     with st_block(s.project.containers.media_fullscreen):
         # The stage is bounded by the FULL window height; the video fills it.

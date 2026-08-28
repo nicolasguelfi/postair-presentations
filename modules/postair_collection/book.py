@@ -11,6 +11,7 @@ import tomllib
 from pathlib import Path
 
 import blocks
+from postair_lang import current_lang
 import streamlit as st
 import streamtex as stx
 import streamtex.styles as sts
@@ -87,6 +88,8 @@ st_book(
         blocks.bck_home,
     ],
     toc_config=toc,
+    # La langue projetée, passée à chaque build(lang) — plan-i18n D2.
+    block_kwargs={"lang": current_lang()},
     paginate=False,
     view_modes=[ViewMode.CONTINUOUS],
     banner=BannerConfig.hidden(),

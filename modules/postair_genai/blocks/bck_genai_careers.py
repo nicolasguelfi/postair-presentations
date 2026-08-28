@@ -69,7 +69,7 @@ _FRAME_RISING = "fastest-rising skill: JUDGING what the AI produced"
 _FRAME_CITEKEYS = ["wef2025-jobs"]
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Your jobs")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:

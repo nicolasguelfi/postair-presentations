@@ -10,7 +10,7 @@ from custom.styles import Styles as s
 from streamtex import *
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker('The nearest figures')
     screen_slide(
         ["The ", (s.project.titles.keyword, "nearest"), " figures"],

@@ -55,7 +55,7 @@ _SCENE = ("A river of colourful paper speech bubbles flowing across the "
           "behind watches its own speech bubble float away.")
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker(_MARKER)
     prompt = AI_PREFIX + _SCENE + AI_SUFFIX_LANDSCAPE
     with st_block(s.project.containers.page_fill_top):

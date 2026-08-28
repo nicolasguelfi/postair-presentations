@@ -60,7 +60,7 @@ _SCENE = ("A large paper balance scale, clearly tilted: one pan low, loaded "
           "imperfectly.")
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker(_MARKER)
     prompt = AI_PREFIX + _SCENE + AI_SUFFIX_LANDSCAPE
     with st_block(s.project.containers.page_fill_top):

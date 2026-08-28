@@ -42,7 +42,7 @@ _CONTACTS = "Guidelines: I2TL@uni.lu · the speakers stay around during the brea
 #: facts.json) : « And now? ».
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("And now?")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:

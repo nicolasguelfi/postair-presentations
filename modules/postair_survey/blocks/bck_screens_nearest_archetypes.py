@@ -10,7 +10,7 @@ from custom.styles import Styles as s
 from streamtex import *
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker('The nearest archetypes')
     screen_slide(
         ["The ", (s.project.titles.keyword, "nearest"), " archetypes"],

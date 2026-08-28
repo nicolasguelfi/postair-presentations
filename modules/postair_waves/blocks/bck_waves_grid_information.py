@@ -13,6 +13,6 @@ The full lines live in the tooltip.
 from custom.render import waves_grid_slide
 
 
-def build():
+def build(lang: str = "en", **_):
     waves_grid_slide("From the computer to the Web",
                      ("From the computer to the ", "Web", ""), first=13, last=16)

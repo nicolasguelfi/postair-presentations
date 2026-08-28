@@ -17,5 +17,5 @@ power argument; make the room say both out loud.
 from custom.render import axis_slides
 
 
-def build():
+def build(lang: str = "en", **_):
     axis_slides("centralisation")

@@ -96,7 +96,7 @@ def _generated_qr(code: str) -> str:
     return str(target)
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Join the survey")
     codes = dict(DAYS)
     with st_block(s.project.containers.page_fill_top):

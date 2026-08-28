@@ -11,5 +11,5 @@ nommées par pôle, envelopper dans une fabrique paramétrable — pas réplique
 from custom.axis_slides import vote_oppose_slide
 
 
-def build():
+def build(lang: str = "en", **_):
     vote_oppose_slide()

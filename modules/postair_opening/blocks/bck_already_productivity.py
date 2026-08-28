@@ -67,7 +67,7 @@ _CAVEAT = ("The two studies answer different questions — professionals "
            "well and learning are not the same measurement.")
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker(_VALUE)
     with st_zoom(_ZOOM):
         with st_block(s.project.containers.page_fill_top):

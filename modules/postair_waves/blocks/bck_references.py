@@ -27,7 +27,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("References")
     all_entries()
     with st_block(s.project.containers.page_fill_top):

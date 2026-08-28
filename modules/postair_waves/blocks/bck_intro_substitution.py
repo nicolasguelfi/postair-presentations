@@ -31,7 +31,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("The substitution")
     # Trois exemples RÉELS du gel — jamais tapés ici (R13).
     samples = [w for w in content.waves() if w["id"] in

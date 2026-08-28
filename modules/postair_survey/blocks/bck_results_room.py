@@ -36,7 +36,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("The room's results")
     medio = mascot("Medio")
     with st_block(s.project.containers.page_fill_top):

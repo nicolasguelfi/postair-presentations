@@ -26,7 +26,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Sixteen and one")
     with st_block(s.project.containers.page_fill_center):
         st_write(bs.title, "Sixteen crises ", (s.project.titles.keyword, "overcome"),

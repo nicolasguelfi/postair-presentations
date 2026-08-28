@@ -18,5 +18,5 @@ hands, otherwise the vote measures social desirability, not posture.
 from custom.render import axis_slides
 
 
-def build():
+def build(lang: str = "en", **_):
     axis_slides("rationality")

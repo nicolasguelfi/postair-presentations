@@ -71,7 +71,7 @@ _CLOSING_CITEKEYS = ["bloom-2sigma", "zawacki-richter-2019",
                      "chiu-systematic-2023"]
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker(_VALUE)
     with st_zoom(_ZOOM):
         with st_block(s.project.containers.page_fill_top):

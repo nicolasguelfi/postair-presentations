@@ -49,7 +49,7 @@ _MESSAGES = [
 ]
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Any other context")
     with st_block(s.project.containers.page_fill_top):
         # Le gabarit maison 92/8 : le wordmark tient lieu de titre, le tooltip

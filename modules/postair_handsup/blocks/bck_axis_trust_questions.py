@@ -14,5 +14,5 @@ grandirait pas — le texte passerait sous le pli (règle R-zoom).
 from custom.axis_slides import questions_slide
 
 
-def build():
+def build(lang: str = "en", **_):
     questions_slide("TRU", zoomCell=170)

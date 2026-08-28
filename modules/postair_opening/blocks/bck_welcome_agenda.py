@@ -61,7 +61,7 @@ def _columns():
     return [AGENDA[:pause], AGENDA[pause:pause + 1], AGENDA[pause + 1:]]
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Agenda")
     lento = mascot("Lento")
     with st_block(s.project.containers.page_fill_top):

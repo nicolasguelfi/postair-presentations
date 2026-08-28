@@ -69,7 +69,7 @@ _CITEKEYS = ["i2tl2026-guidelines"]
 #: facts.json) : « The red lines ».
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Red lines")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="80% 12% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:

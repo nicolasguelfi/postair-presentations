@@ -13,7 +13,7 @@ from custom.styles import Styles as s
 from streamtex import *
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker('What divides the room')
     screen_slide(
         ["What ", (s.project.titles.keyword, "divides"), " the room"],

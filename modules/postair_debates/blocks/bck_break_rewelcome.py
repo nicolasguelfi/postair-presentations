@@ -56,7 +56,7 @@ def _second_half() -> list[tuple[str, str]]:
     return out
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("Part two")
     medio = mascot("Medio")
     with st_block(s.project.containers.page_fill_top):

@@ -117,7 +117,7 @@ _REPORTED_NOTE = ("Reported inside the source cited on the card, not read at "
                   "the original.")
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker(_MARKER)
     prompt = AI_PREFIX + _SCENE + AI_SUFFIX_LANDSCAPE
     with st_block(s.project.containers.page_fill_top):

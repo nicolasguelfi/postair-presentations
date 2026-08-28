@@ -57,7 +57,7 @@ _COUNTERPOINT_LONG = ("Using it is not the same as handing it in. Only 12 % "
 _CAVEAT = "UK undergraduates. No equivalent survey exists for Luxembourg."
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker(_VALUE)
     with st_zoom(_ZOOM):
         with st_block(s.project.containers.page_fill_top):

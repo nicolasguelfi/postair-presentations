@@ -11,6 +11,7 @@ import tomllib
 from pathlib import Path
 
 import blocks
+from postair_lang import current_lang
 import streamlit as st
 from postair_display import SCALE
 import streamtex as stx
@@ -163,6 +164,8 @@ st_book(
     # le registre au début de sa construction (règle bib canonique, CLAUDE.md).
     bib_sources=bib_sources(),
     bib_config=BIB_CONFIG,
+    # La langue projetée, passée à chaque build(lang) — plan-i18n D2.
+    block_kwargs={"lang": current_lang()},
     paginate=True,
     view_modes=[ViewMode.PAGINATED],
     banner=BannerConfig.hidden(),

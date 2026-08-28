@@ -40,7 +40,7 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def build():
+def build(lang: str = "en", **_):
     st_marker("What it says about us")
     left, right = (mascot(n) for n in _FACE_OFF)
     with st_block(s.project.containers.page_fill_top):
