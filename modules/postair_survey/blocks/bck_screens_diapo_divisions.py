@@ -14,14 +14,14 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "What divides the room"}
-_TITLE = {"en": ("What ", (s.project.titles.keyword, "divides"), " the room")}
+_MARKER = {"en": "What divides the room", "fr": "Ce qui divise la salle"}
+_TITLE = {"en": ("What ", (s.project.titles.keyword, "divides"), " the room"), "fr": ("Ce qui ", (s.project.titles.keyword, "divise"), " la salle")}
 _MESSAGES = [
-    ({"en": "The most divisive statements"},
-     {"en": "Ranked by how strongly the room splits on them."}),
-    ({"en": "The menu of the debates"},
+    ({"en": "The most divisive statements", "fr": "Les énoncés les plus clivants"},
+     {"en": "Ranked by how strongly the room splits on them.", "fr": "Classés par l'ampleur du clivage dans la salle."}),
+    ({"en": "The menu of the debates", "fr": "Le menu des débats"},
      {"en": ("This view IS the shortlist: the afternoon's arguments start from "
-             "these lines.")}),
+             "these lines."), "fr": "Cette vue EST la sélection : les débats de l'après-midi partent de ces lignes."}),
 ]
 
 

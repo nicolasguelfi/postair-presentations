@@ -11,15 +11,15 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "Where the room abstains"}
-_TITLE = {"en": ("Where the room ", (s.project.titles.keyword, "abstains"))}
+_MARKER = {"en": "Where the room abstains", "fr": "Là où la salle s'abstient"}
+_TITLE = {"en": ("Where the room ", (s.project.titles.keyword, "abstains")), "fr": ("Là où la salle ", (s.project.titles.keyword, "s'abstient"))}
 _MESSAGES = [
-    ({"en": "The 'no opinion' map"},
+    ({"en": "The 'no opinion' map", "fr": "Carte des « sans opinion »"},
      {"en": ("Where the room chose not to answer — counted apart, never as a "
-             "middle answer.")}),
-    ({"en": "An abstention is information"},
+             "middle answer."), "fr": "Là où la salle a choisi de ne pas répondre — compté à part, jamais comme une réponse neutre."}),
+    ({"en": "An abstention is information", "fr": "Une abstention est une information"},
      {"en": ("It names the questions this room does not yet feel equipped "
-             "to answer — worth one comment, not a judgement.")}),
+             "to answer — worth one comment, not a judgement."), "fr": "Elle désigne les questions auxquelles cette salle ne se sent pas encore armée pour répondre — ça vaut un commentaire, pas un jugement."}),
 ]
 
 

@@ -11,15 +11,15 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "The room's spread"}
-_TITLE = {"en": ("The room's ", (s.project.titles.keyword, "spread"))}
+_MARKER = {"en": "The room's spread", "fr": "L'étendue de la salle"}
+_TITLE = {"en": ("The room's ", (s.project.titles.keyword, "spread")), "fr": ("La salle, son ", (s.project.titles.keyword, "étendue"))}
 _MESSAGES = [
-    ({"en": "Beyond the average"},
+    ({"en": "Beyond the average", "fr": "Au-delà de la moyenne"},
      {"en": ("The interquartile band shows where the middle half of the room "
-             "actually stands, axis by axis.")}),
-    ({"en": "Narrow is agreement, wide is a debate"},
+             "actually stands, axis by axis."), "fr": "La bande interquartile montre où se situe vraiment la moitié centrale de la salle, axe par axe."}),
+    ({"en": "Narrow is agreement, wide is a debate", "fr": "Étroite, un accord ; large, un débat"},
      {"en": ("Dispersion made visible — this view announces where the "
-             "afternoon will be lively.")}),
+             "afternoon will be lively."), "fr": "La dispersion rendue visible — cette vue annonce où l'après-midi sera animé."}),
 ]
 
 

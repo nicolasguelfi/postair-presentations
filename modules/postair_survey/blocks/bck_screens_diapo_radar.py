@@ -12,15 +12,15 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "The room's radar"}
-_TITLE = {"en": ("The room's ", (s.project.titles.keyword, "radar"))}
-_MSG_SHAPE = ({"en": "The average shape of the room"},
+_MARKER = {"en": "The room's radar", "fr": "Le radar de la salle"}
+_TITLE = {"en": ("The room's ", (s.project.titles.keyword, "radar")), "fr": ("La salle, son ", (s.project.titles.keyword, "radar"))}
+_MSG_SHAPE = ({"en": "The average shape of the room", "fr": "La forme moyenne de la salle"},
               {"en": ("Every answer in the room, averaged into one nine-axis "
-                      "profile.")})
+                      "profile."), "fr": "Toutes les réponses de la salle, moyennées en un seul profil à neuf axes."})
 #: La tête « What to comment » vient du lexique (partagée avec les slides de
 #: résultats).
 _MSG_COMMENT = {"en": ("The most marked axis, the most ambivalent axis, the "
-                       "dominant archetype — three things, then stop.")}
+                       "dominant archetype — three things, then stop."), "fr": "L'axe le plus marqué, l'axe le plus ambivalent, l'archétype dominant — trois choses, puis on s'arrête."}
 
 
 def build(lang: str = "en", **_):

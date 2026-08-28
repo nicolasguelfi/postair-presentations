@@ -11,15 +11,15 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "The archetype waffle"}
-_TITLE = {"en": ("The archetype ", (s.project.titles.keyword, "waffle"))}
+_MARKER = {"en": "The archetype waffle", "fr": "La gaufre des archétypes"}
+_TITLE = {"en": ("The archetype ", (s.project.titles.keyword, "waffle")), "fr": ("Les archétypes en ", (s.project.titles.keyword, "gaufre"))}
 _MESSAGES = [
-    ({"en": "Each dot is one of you"},
+    ({"en": "Each dot is one of you", "fr": "Chaque point est l'un d'entre vous"},
      {"en": ("Every anonymous answer takes its place in an archetype — the "
-             "room, person by person, name by nobody.")}),
-    ({"en": "Six archetypes at a glance"},
+             "room, person by person, name by nobody."), "fr": "Chaque réponse anonyme prend sa place dans un archétype — la salle, personne par personne, sans nommer personne."}),
+    ({"en": "Six archetypes at a glance", "fr": "Six archétypes d'un coup d'œil"},
      {"en": ("The distribution of the six archetypes across the room, in one "
-             "figure.")}),
+             "figure."), "fr": "La répartition des six archétypes dans la salle, en une seule image."}),
 ]
 
 
