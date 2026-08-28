@@ -28,23 +28,31 @@ if [ "$MODE" != "static-only" ]; then
     uv run stx cache warmup . 2>/dev/null || true
 fi
 
-# Generate static HTML export — clean first to remove stale exports from other FOLDERs
+# Generate static HTML exports — clean first to remove stale exports from other
+# FOLDERs. ONE EXPORT PER LANGUAGE (plan-i18n D3, 2026-08-28) : the public reads
+# /html/<lang>/ ; a widget never survives an export, so the language is the
+# STX_LANG build parameter read by postair_lang. The language of the HTML root
+# element is rewritten on the French export (streamtex hard-codes lang="en").
 rm -rf /app/static-html/*
-echo "[entrypoint] Generating static HTML..."
-uv run stx export html --output /app/static-html/ . 2>/dev/null || true
-
-# Derive base_name: the export CLI uses the full basename of FOLDER
 BASE_NAME=$(basename "${FOLDER}")
 TARGET="${BASE_NAME}/${BASE_NAME}.html"
-
-if [ -f "/app/static-html/${TARGET}" ]; then
-    echo "[entrypoint] Static HTML: /html/ → ${TARGET}"
-else
-    echo "[entrypoint] Warning: expected ${TARGET} not found, using fallback"
-fi
-# Nginx snippet: 302 redirect from /html/ to the correct exported file.
-# Nginx includes this before starting (see nginx.conf location = /html/).
-echo "return 302 /html/${TARGET};" > /app/static-html/.nginx-redirect.conf
+for lang in en fr; do
+    echo "[entrypoint] Generating static HTML (${lang})..."
+    STX_LANG=$lang uv run stx export html --output /app/static-html/${lang}/ . 2>/dev/null || true
+    if [ -f "/app/static-html/${lang}/${TARGET}" ]; then
+        echo "[entrypoint] Static HTML: /html/${lang}/ → ${lang}/${TARGET}"
+        if [ "$lang" != "en" ]; then
+            sed -i "s/<html lang=\"en\"/<html lang=\"${lang}\"/" "/app/static-html/${lang}/${TARGET}" || true
+        fi
+    else
+        echo "[entrypoint] Warning: expected ${lang}/${TARGET} not found, using fallback"
+    fi
+done
+# Nginx snippets: 302 redirects from /html/ (English) and /html/<lang>/ to the
+# exported file. Nginx includes these before starting (see nginx.conf).
+echo "return 302 /html/en/${TARGET};" > /app/static-html/.nginx-redirect.conf
+echo "return 302 /html/en/${TARGET};" > /app/static-html/.nginx-redirect-en.conf
+echo "return 302 /html/fr/${TARGET};" > /app/static-html/.nginx-redirect-fr.conf
 
 # Nginx snippet: serve /app/static/ from THIS module's static folder, on disk.
 # The deck references its media by URL (/app/static/media/...) rather than

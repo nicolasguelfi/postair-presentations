@@ -71,10 +71,19 @@ HTML_PORT = 8510
 HTML_DIR = LOG_DIR / "static-html"
 
 
-def _html_url(name: str) -> str:
-    """L'URL de l'export statique local d'un module (convention entrypoint)."""
+#: Les langues exportées — celles de ``postair_lang.LANGS`` (plan-i18n D3).
+EXPORT_LANGS = ("en", "fr")
+
+
+def _html_url(name: str, lang: str = "{lang}") -> str:
+    """L'URL de l'export statique local d'un module (convention entrypoint).
+
+    Un export par langue sous ``/<lang>/`` ; le motif ``{lang}`` est laissé
+    tel quel pour ``STX_EXPORT_URL_<KEY>`` — ``postair_chain`` y substitue la
+    langue projetée.
+    """
     base = Path(MODULES[name]["path"]).name          # postair_<key>
-    return f"http://localhost:{HTML_PORT}/{base}/{base}.html"
+    return f"http://localhost:{HTML_PORT}/{lang}/{base}/{base}.html"
 
 
 def check_module(name: str) -> None:
@@ -225,8 +234,10 @@ def export_html(selected: list[str]) -> None:
     """Génère les exports statiques des decks du jeu — le geste de l'entrypoint.
 
     Nettoie d'abord le dossier (un export périmé qui resterait servi serait
-    pire qu'un export absent), puis exporte module par module, en séquence —
-    chaque export rend le deck entier, comptez plusieurs secondes par module.
+    pire qu'un export absent), puis exporte module par module et LANGUE par
+    langue (``STX_LANG``, un arbre ``/<lang>/`` chacun — exactement le geste du
+    conteneur), en séquence — chaque export rend le deck entier, comptez
+    plusieurs secondes par module et par langue.
     """
     for stale in sorted(HTML_DIR.rglob("*"), reverse=True):
         stale.unlink(missing_ok=True) if stale.is_file() else stale.rmdir()
@@ -234,19 +245,21 @@ def export_html(selected: list[str]) -> None:
         if name == "collection":
             continue  # le hub se consulte en app ; son export n'a pas d'usage
         module_dir = SCRIPT_DIR / MODULES[name]["path"]
-        log_file = LOG_DIR / f"export-{name}.log"
-        print(f"Export statique {name}…", end=" ", flush=True)
-        t0 = time.time()
-        with open(log_file, "w") as lf:
-            result = subprocess.run(
-                ["uv", "run", "stx", "export", "html",
-                 "--output", str(HTML_DIR), "."],
-                cwd=str(module_dir), stdout=lf, stderr=subprocess.STDOUT,
-            )
-        if result.returncode == 0:
-            print(f"OK ({time.time() - t0:.0f}s) → {_html_url(name)}")
-        else:
-            print(f"ÉCHEC — voir {log_file}")
+        for lang in EXPORT_LANGS:
+            log_file = LOG_DIR / f"export-{name}-{lang}.log"
+            print(f"Export statique {name} ({lang})…", end=" ", flush=True)
+            t0 = time.time()
+            with open(log_file, "w") as lf:
+                result = subprocess.run(
+                    ["uv", "run", "stx", "export", "html",
+                     "--output", str(HTML_DIR / lang), "."],
+                    cwd=str(module_dir), stdout=lf, stderr=subprocess.STDOUT,
+                    env={**os.environ, "STX_LANG": lang},
+                )
+            if result.returncode == 0:
+                print(f"OK ({time.time() - t0:.0f}s) → {_html_url(name, lang)}")
+            else:
+                print(f"ÉCHEC — voir {log_file}")
 
 
 def main() -> None:

@@ -89,10 +89,15 @@ RUN for dir in modules/postair_*/; do \
         (cd "$dir" && uv run stx cache warmup .) || true; \
     done
 
-# Pre-generate static HTML for every module (served by Nginx on /html/).
+# Pre-generate static HTML for every module, ONE EXPORT PER LANGUAGE
+# (plan-i18n D3, 2026-08-28) : /html/en/ and /html/fr/ — the public reads
+# the static export, and a Streamlit widget never survives an export, so the
+# language must be a build parameter (STX_LANG, read by postair_lang).
 RUN for dir in modules/postair_*/; do \
-        echo "Exporting HTML for $dir ..." && \
-        (cd "$dir" && uv run stx export html --output /app/static-html/ .) || true; \
+        for lang in en fr; do \
+            echo "Exporting HTML ($lang) for $dir ..." && \
+            (cd "$dir" && STX_LANG=$lang uv run stx export html --output /app/static-html/$lang/ .) || true; \
+        done; \
     done
 
 # STX_SERVE_MODE controls which services start (set at runtime by Coolify)
