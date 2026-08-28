@@ -91,7 +91,7 @@ def build(lang: str = "en", **_):
             for slug, width, alt, legend, (head, detail) in _REGIE:
                 with g.cell():
                     st_image(s.project.cards.media_center, width=width,
-                             uri=capture(slug, device="desktop"), alt=alt)
+                             uri=capture(slug, device="desktop", lang=lang), alt=alt)
                     st_write(bs.caption, legend, tag=t.div)
                     st_space("v", "0.8vh")
                     with st_block(s.project.cards.blue):

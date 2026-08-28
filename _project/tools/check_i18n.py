@@ -472,9 +472,11 @@ def cmd_parity(modules: list[str], with_export: bool, verbose: bool) -> int:
                 if len(en["markers"]) != len(fr["markers"]):
                     probs.append(f"export : {len(en['markers'])} marqueurs en, "
                                  f"{len(fr['markers'])} fr")
-                if en["media"] != fr["media"]:
-                    probs.append(f"export : médias différents entre en et fr "
-                                 f"({len(set(en['media']) ^ set(fr['media']))})")
+                # Les médias par langue (clips, captures, vidéos) diffèrent
+                # légitimement : c'est le NOMBRE qui doit être égal.
+                if len(en["media"]) != len(fr["media"]):
+                    probs.append(f"export : {len(en['media'])} médias en, "
+                                 f"{len(fr['media'])} fr")
             except RuntimeError as e:
                 probs.append(str(e))
         total += len(probs)

@@ -48,4 +48,5 @@ def build(lang: str = "en", **_):
             device="mobile-complet",
             landscape=False,
             crop=(0, 0, 5, 0),
+            lang=lang
         )

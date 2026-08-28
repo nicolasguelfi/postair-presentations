@@ -94,15 +94,19 @@ def _figure_video(name: str) -> str:
 
 # ── Les deux duos (le choix éditorial vit ICI, une ligne à changer) ──────────
 
-def mascot_duo() -> tuple[dict, dict]:
-    """Animaux à gauche, objets à droite — les plus fun de chaque famille."""
+def mascot_duo(lang: str = "en") -> tuple[dict, dict]:
+    """Animaux à gauche, objets à droite — les plus fun de chaque famille.
+
+    Le clip suit la langue projetée (``build(lang)``, règle R-i18n) : le
+    catalogue gelé porte une rendition par langue pour chaque mascotte.
+    """
     duo = []
     for name in ("Pathos", "Bici"):
         pole = _mascot_pole(name)
         duo.append({
             "name": name,
             "tagline": f"{pole['label']} — the {pole['family'][:-1]} family",
-            "src": str(_MEDIA / mascot_clip(name, "en")),
+            "src": str(_MEDIA / mascot_clip(name, lang)),
         })
     return tuple(duo)
 

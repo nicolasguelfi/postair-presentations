@@ -33,4 +33,5 @@ def build(lang: str = "en", **_):
                    "the room's averages — the bridge to the projection.")]),
         zoomImage=150,
         zoomText=170,
+        lang=lang
     )

@@ -37,7 +37,7 @@ def build(lang: str = "en", **_):
         st_space("v", "1vh")
         with st_zoom(280):
             st_image(s.project.cards.media_center, width=_WIDTH,
-                     uri=capture("01-saisie-code", device="desktop"),
+                     uri=capture("01-saisie-code", device="desktop", lang=lang),
                      alt="Mobile screen of the survey journey: enter the code "
                          "of the day")
             st_write(bs.caption, "1 · enter the code of the day", tag=t.div)

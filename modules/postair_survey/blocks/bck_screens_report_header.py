@@ -37,4 +37,5 @@ def build(lang: str = "en", **_):
                    "profiles, great figures — one scrolling page.")]),
         zoomImage=150,
         zoomText=110,
+        lang=lang
     )

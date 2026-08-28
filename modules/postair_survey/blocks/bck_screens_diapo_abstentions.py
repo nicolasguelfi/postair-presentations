@@ -24,4 +24,5 @@ def build(lang: str = "en", **_):
              'to answer — worth one comment, not a judgement.'),
         ],
         device="desktop", landscape=True,
+        lang=lang
     )

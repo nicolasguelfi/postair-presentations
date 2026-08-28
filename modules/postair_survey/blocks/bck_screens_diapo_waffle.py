@@ -23,4 +23,5 @@ def build(lang: str = "en", **_):
              'The distribution of the six archetypes across the room, in one figure.'),
         ],
         device="desktop", landscape=True,
+        lang=lang
     )

@@ -23,4 +23,5 @@ def build(lang: str = "en", **_):
              'The most marked axis, the most ambivalent axis, the dominant archetype — three things, then stop.'),
         ],
         device="desktop", landscape=True,
+        lang=lang
     )

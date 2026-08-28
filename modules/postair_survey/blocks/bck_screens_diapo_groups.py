@@ -24,4 +24,5 @@ def build(lang: str = "en", **_):
              'section stays away cleanly, it is not a failure.'),
         ],
         device="desktop", landscape=True,
+        lang=lang
     )

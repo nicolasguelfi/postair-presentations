@@ -23,4 +23,5 @@ def build(lang: str = "en", **_):
              'Dispersion made visible — this view announces where the afternoon will be lively.'),
         ],
         device="desktop", landscape=True,
+        lang=lang
     )

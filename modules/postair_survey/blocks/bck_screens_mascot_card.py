@@ -29,4 +29,5 @@ def build(lang: str = "en", **_):
         landscape=False,
         zoomImage=100,
         zoomText=120,
+        lang=lang
     )

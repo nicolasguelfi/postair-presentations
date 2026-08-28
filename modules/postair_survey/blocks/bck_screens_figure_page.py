@@ -25,4 +25,5 @@ def build(lang: str = "en", **_):
              "The engine reads public work, not private minds — take the page "
              "as an argument to debate, never as a fact about a person."),
         ],
+        lang=lang
     )

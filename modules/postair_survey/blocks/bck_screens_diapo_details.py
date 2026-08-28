@@ -23,4 +23,5 @@ def build(lang: str = "en", **_):
              'Pick the statements where the room splits, not the ones where it agrees.'),
         ],
         device="desktop", landscape=True,
+        lang=lang
     )

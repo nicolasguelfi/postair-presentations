@@ -13,7 +13,7 @@ from custom.styles import Styles as s
 def build(lang: str = "en", **_):
     media_duo_slide(
         ["Every mascot has its ", (s.project.titles.keyword, "own video")],
-        mascot_duo(), "right",
+        mascot_duo(lang), "right",
         marker="Mascot videos · 2",
         stage_vh=70,
     )

@@ -29,4 +29,5 @@ def build(lang: str = "en", **_):
         ],
         zoomImage=190,
         zoomText=140,
+        lang=lang
     )

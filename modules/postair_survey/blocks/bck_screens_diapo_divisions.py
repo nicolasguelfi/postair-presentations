@@ -26,4 +26,5 @@ def build(lang: str = "en", **_):
              "This view IS the shortlist: the afternoon's arguments start from these lines."),
         ],
         device="desktop", landscape=True,
+        lang=lang
     )

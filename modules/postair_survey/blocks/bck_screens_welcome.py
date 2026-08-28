@@ -35,7 +35,7 @@ def build(lang: str = "en", **_):
         st_space("v", "1vh")
         with st_zoom(250):
             st_image(s.project.cards.media_center, width=_WIDTH,
-                     uri=capture("02-accueil-campagne", device="desktop"),
+                     uri=capture("02-accueil-campagne", device="desktop", lang=lang),
                      alt="Mobile screen of the survey journey: the campaign "
                          "welcomes you")
             st_write(bs.caption, "2 · the campaign welcomes you", tag=t.div)

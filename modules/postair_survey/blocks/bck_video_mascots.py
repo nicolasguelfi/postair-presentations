@@ -4,7 +4,7 @@ Première des deux pages jumelles du duo mascottes (gabarit
 ``custom/media_duo.py``, NG 2026-08-22) : Pathos (Emotion, famille animaux) à
 gauche, Bici (Prudence, famille objets) à droite. Sur cette page la vidéo de
 GAUCHE démarre avec le son ; la flèche droite passe à la page jumelle où la
-DROITE démarre. Le choix des deux mascottes vit dans ``mascot_duo()``.
+DROITE démarre. Le choix des deux mascottes vit dans ``mascot_duo(lang)``.
 
 SPEAKER NOTES:
 Let Pathos play — twenty seconds, do not talk over it. One sentence before:
@@ -20,7 +20,7 @@ from custom.styles import Styles as s
 def build(lang: str = "en", **_):
     media_duo_slide(
         ["Every mascot has its ", (s.project.titles.keyword, "own video")],
-        mascot_duo(), "left",
+        mascot_duo(lang), "left",
         marker="Mascot videos",
         toc_label="Mascot videos",
         tooltip=("The mascot clips",
