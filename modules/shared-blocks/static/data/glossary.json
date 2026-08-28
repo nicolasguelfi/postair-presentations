@@ -1,0 +1,521 @@
+{
+ "metadata": {
+  "_doc": "GÉNÉRÉ par _project/tools/build_glossary_content.py — ne jamais éditer : régénérer. Le hub est la vérité.",
+  "source": "questionnaire/TRANSLATION-DE-GLOSSARY.json",
+  "hub_commit": "ae06fbc6",
+  "languages": [
+   "en",
+   "fr",
+   "de"
+  ],
+  "default_language": "en",
+  "entries": 101
+ },
+ "terms": {
+  "term.inclusive-strategy": {
+   "en": "German inclusive-writing strategy",
+   "fr": "Stratégie d'écriture inclusive allemande",
+   "de": "Neutrale Formen (Teilnehmende, Person, Fachleute); keine typografischen Genderzeichen"
+  },
+  "axis.optimism.name": {
+   "en": "Optimism",
+   "fr": "Optimisme",
+   "de": "Optimismus"
+  },
+  "axis.optimism.abbr": {
+   "en": "OPTI",
+   "fr": "OPTI",
+   "de": "OPTI"
+  },
+  "axis.openness.name": {
+   "en": "Openness",
+   "fr": "Ouverture",
+   "de": "Offenheit"
+  },
+  "axis.openness.abbr": {
+   "en": "OPEN",
+   "fr": "OUVE",
+   "de": "OFFE"
+  },
+  "axis.trust.name": {
+   "en": "Trust",
+   "fr": "Confiance",
+   "de": "Vertrauen"
+  },
+  "axis.trust.abbr": {
+   "en": "TRUS",
+   "fr": "CONF",
+   "de": "VERT"
+  },
+  "axis.centralisation.name": {
+   "en": "Centralisation",
+   "fr": "Centralisation",
+   "de": "Zentralisierung"
+  },
+  "axis.centralisation.abbr": {
+   "en": "CENT",
+   "fr": "CENT",
+   "de": "ZENT"
+  },
+  "axis.speed.name": {
+   "en": "Speed",
+   "fr": "Vitesse",
+   "de": "Tempo"
+  },
+  "axis.speed.abbr": {
+   "en": "SPEE",
+   "fr": "VITE",
+   "de": "TEMP"
+  },
+  "axis.rationality.name": {
+   "en": "Rationality",
+   "fr": "Rationalité",
+   "de": "Rationalität"
+  },
+  "axis.rationality.abbr": {
+   "en": "RATI",
+   "fr": "RATI",
+   "de": "RATI"
+  },
+  "axis.control.name": {
+   "en": "Freedom",
+   "fr": "Liberté",
+   "de": "Freiheit"
+  },
+  "axis.control.abbr": {
+   "en": "FREE",
+   "fr": "FREE",
+   "de": "FREI"
+  },
+  "axis.altruism.name": {
+   "en": "Individualism",
+   "fr": "Individualisme",
+   "de": "Individualismus"
+  },
+  "axis.altruism.abbr": {
+   "en": "INDI",
+   "fr": "INDI",
+   "de": "INDI"
+  },
+  "axis.transhumanism.name": {
+   "en": "Transhumanism",
+   "fr": "Transhumanisme",
+   "de": "Transhumanismus"
+  },
+  "axis.transhumanism.abbr": {
+   "en": "TRAN",
+   "fr": "TRAN",
+   "de": "TRAN"
+  },
+  "pole.PESS.name": {
+   "en": "Pessimism",
+   "fr": "Pessimisme",
+   "de": "Pessimismus"
+  },
+  "pole.PESS.abbr": {
+   "en": "PESS",
+   "fr": "PESS",
+   "de": "PESS"
+  },
+  "pole.OPTI.name": {
+   "en": "Optimism",
+   "fr": "Optimisme",
+   "de": "Optimismus"
+  },
+  "pole.OPTI.abbr": {
+   "en": "OPTI",
+   "fr": "OPTI",
+   "de": "OPTI"
+  },
+  "pole.RESI.name": {
+   "en": "Resistance",
+   "fr": "Résistance",
+   "de": "Widerstand"
+  },
+  "pole.RESI.abbr": {
+   "en": "RESI",
+   "fr": "RESI",
+   "de": "WIDR"
+  },
+  "pole.OPEN.name": {
+   "en": "Openness",
+   "fr": "Ouverture",
+   "de": "Offenheit"
+  },
+  "pole.OPEN.abbr": {
+   "en": "OPEN",
+   "fr": "OUVE",
+   "de": "OFFE"
+  },
+  "pole.SELF.name": {
+   "en": "Self-reliance",
+   "fr": "Autonomie de jugement",
+   "de": "Eigenständigkeit"
+  },
+  "pole.SELF.abbr": {
+   "en": "SELF",
+   "fr": "AUTO",
+   "de": "EIGE"
+  },
+  "pole.TRUS.name": {
+   "en": "Trust",
+   "fr": "Confiance",
+   "de": "Vertrauen"
+  },
+  "pole.TRUS.abbr": {
+   "en": "TRUS",
+   "fr": "CONF",
+   "de": "VERT"
+  },
+  "pole.DECE.name": {
+   "en": "Decentralisation",
+   "fr": "Décentralisation",
+   "de": "Dezentralisierung"
+  },
+  "pole.DECE.abbr": {
+   "en": "DECE",
+   "fr": "DECE",
+   "de": "DEZE"
+  },
+  "pole.CENT.name": {
+   "en": "Centralisation",
+   "fr": "Centralisation",
+   "de": "Zentralisierung"
+  },
+  "pole.CENT.abbr": {
+   "en": "CENT",
+   "fr": "CENT",
+   "de": "ZENT"
+  },
+  "pole.PRUD.name": {
+   "en": "Prudence",
+   "fr": "Prudence",
+   "de": "Besonnenheit"
+  },
+  "pole.PRUD.abbr": {
+   "en": "PRUD",
+   "fr": "PRUD",
+   "de": "BESO"
+  },
+  "pole.SPEE.name": {
+   "en": "Speed",
+   "fr": "Vitesse",
+   "de": "Tempo"
+  },
+  "pole.SPEE.abbr": {
+   "en": "SPEE",
+   "fr": "VITE",
+   "de": "TEMP"
+  },
+  "pole.EMOT.name": {
+   "en": "Emotion",
+   "fr": "Émotion",
+   "de": "Emotion"
+  },
+  "pole.EMOT.abbr": {
+   "en": "EMOT",
+   "fr": "EMOT",
+   "de": "EMOT"
+  },
+  "pole.RATI.name": {
+   "en": "Rationality",
+   "fr": "Rationalité",
+   "de": "Rationalität"
+  },
+  "pole.RATI.abbr": {
+   "en": "RATI",
+   "fr": "RATI",
+   "de": "RATI"
+  },
+  "pole.FREE.name": {
+   "en": "Freedom",
+   "fr": "Liberté",
+   "de": "Freiheit"
+  },
+  "pole.FREE.abbr": {
+   "en": "FREE",
+   "fr": "LIBE",
+   "de": "FREI"
+  },
+  "pole.CONT.name": {
+   "en": "Control",
+   "fr": "Contrôle",
+   "de": "Kontrolle"
+  },
+  "pole.CONT.abbr": {
+   "en": "CONT",
+   "fr": "CONT",
+   "de": "KONT"
+  },
+  "pole.INDI.name": {
+   "en": "Individualism",
+   "fr": "Individualisme",
+   "de": "Individualismus"
+  },
+  "pole.INDI.abbr": {
+   "en": "INDI",
+   "fr": "INDI",
+   "de": "INDI"
+  },
+  "pole.ALTR.name": {
+   "en": "Altruism",
+   "fr": "Altruisme",
+   "de": "Altruismus"
+  },
+  "pole.ALTR.abbr": {
+   "en": "ALTR",
+   "fr": "ALTR",
+   "de": "ALTR"
+  },
+  "pole.HUMA.name": {
+   "en": "Humanism",
+   "fr": "Humanisme",
+   "de": "Humanismus"
+  },
+  "pole.HUMA.abbr": {
+   "en": "HUMA",
+   "fr": "HUMA",
+   "de": "HUMA"
+  },
+  "pole.TRAN.name": {
+   "en": "Transhumanism",
+   "fr": "Transhumanisme",
+   "de": "Transhumanismus"
+  },
+  "pole.TRAN.abbr": {
+   "en": "TRAN",
+   "fr": "TRAN",
+   "de": "TRAN"
+  },
+  "archetype.promethean.name": {
+   "en": "Promethean Visionary",
+   "fr": "Visionnaire prométhéen",
+   "de": "Prometheischer Visionär"
+  },
+  "archetype.guardian.name": {
+   "en": "Vigilant Guardian",
+   "fr": "Gardien vigilant",
+   "de": "Wachsamer Hüter"
+  },
+  "archetype.egalitarian.name": {
+   "en": "Critical Egalitarian",
+   "fr": "Égalitariste critique",
+   "de": "Kritischer Egalitarist"
+  },
+  "archetype.pragmatist.name": {
+   "en": "Deliberate Pragmatist",
+   "fr": "Pragmatique délibératif",
+   "de": "Abwägender Pragmatiker"
+  },
+  "archetype.fatalist.name": {
+   "en": "Resigned Fatalist",
+   "fr": "Fataliste résigné",
+   "de": "Resignierter Fatalist"
+  },
+  "archetype.explorer.name": {
+   "en": "Sovereign Explorer",
+   "fr": "Explorateur souverain",
+   "de": "Souveräner Entdecker"
+  },
+  "scale.label.0": {
+   "en": "Strongly disagree",
+   "fr": "Pas du tout d'accord",
+   "de": "Stimme überhaupt nicht zu"
+  },
+  "scale.label.1": {
+   "en": "Disagree",
+   "fr": "Pas d'accord",
+   "de": "Stimme nicht zu"
+  },
+  "scale.label.2": {
+   "en": "Slightly disagree",
+   "fr": "Plutôt pas d'accord",
+   "de": "Stimme eher nicht zu"
+  },
+  "scale.label.3": {
+   "en": "Slightly agree",
+   "fr": "Plutôt d'accord",
+   "de": "Stimme eher zu"
+  },
+  "scale.label.4": {
+   "en": "Agree",
+   "fr": "D'accord",
+   "de": "Stimme zu"
+  },
+  "scale.label.5": {
+   "en": "Strongly agree",
+   "fr": "Tout à fait d'accord",
+   "de": "Stimme voll und ganz zu"
+  },
+  "scale.no-answer.column_header": {
+   "en": "No opinion",
+   "fr": "Sans opinion",
+   "de": "Keine Meinung"
+  },
+  "scale.no-answer.label": {
+   "en": "No opinion",
+   "fr": "Sans opinion",
+   "de": "Keine Meinung"
+  },
+  "scale.no-answer.instruction": {
+   "en": "Tick 'No opinion' only if you cannot place yourself on the statement (you have no opinion, or you don't know). This is not a neutral answer: if you feel torn but do have a view, use the scale. No-opinion answers are excluded from the computation; an axis with more than half no-opinion answers is not scored.",
+   "fr": "Cochez « Sans opinion » uniquement si vous ne parvenez pas à vous situer sur l'affirmation (vous n'avez pas d'opinion, ou vous ne savez pas). Ce n'est pas une réponse neutre : si vous êtes partagé·e mais avez un avis, placez-vous sur l'échelle. Les réponses sans opinion sont exclues du calcul ; un axe comportant plus de la moitié de réponses sans opinion n'est pas calculé.",
+   "de": "Kreuzen Sie „Keine Meinung“ nur an, wenn Sie sich zu der Aussage nicht positionieren können (Sie haben keine Meinung oder wissen es nicht). Dies ist keine neutrale Antwort: Wenn Sie hin- und hergerissen sind, aber durchaus eine Meinung haben, nutzen Sie die Skala. Antworten mit „Keine Meinung“ fließen nicht in die Berechnung ein; eine Achse mit mehr als der Hälfte solcher Antworten wird nicht ausgewertet."
+  },
+  "stance.directional": {
+   "en": "directional (clear lean)",
+   "fr": "tranchée (penchant net)",
+   "de": "entschieden (klare Tendenz)"
+  },
+  "stance.ambivalent": {
+   "en": "ambivalent (agrees with both poles)",
+   "fr": "ambivalente (adhère aux deux pôles)",
+   "de": "ambivalent (Zustimmung zu beiden Polen)"
+  },
+  "stance.indifferent": {
+   "en": "detached (engages with neither pole)",
+   "fr": "détachée (faible adhésion aux deux pôles)",
+   "de": "distanziert (geringe Zustimmung zu beiden Polen)"
+  },
+  "stance.balanced": {
+   "en": "balanced (moderate on both poles)",
+   "fr": "équilibrée (modérée sur les deux pôles)",
+   "de": "ausgewogen (mäßige Zustimmung zu beiden Polen)"
+  },
+  "register.know.name": {
+   "en": "Knowing",
+   "fr": "Connaître",
+   "de": "Erkennen"
+  },
+  "register.act.name": {
+   "en": "Acting",
+   "fr": "Agir",
+   "de": "Handeln"
+  },
+  "register.become.name": {
+   "en": "Becoming",
+   "fr": "Devenir",
+   "de": "Werden"
+  },
+  "group.attitude.name": {
+   "en": "Attitude toward AI",
+   "fr": "L'attitude face à l'IA",
+   "de": "Einstellung zur KI"
+  },
+  "group.governance.name": {
+   "en": "Governance of power",
+   "fr": "La gouvernance du pouvoir",
+   "de": "Governance der Macht"
+  },
+  "group.human.name": {
+   "en": "Vision of the human",
+   "fr": "La vision de l'humain",
+   "de": "Menschenbild"
+  },
+  "term.axis": {
+   "en": "axis",
+   "fr": "axe",
+   "de": "Achse (die)"
+  },
+  "term.pole": {
+   "en": "pole",
+   "fr": "pôle",
+   "de": "Pol (der)"
+  },
+  "term.archetype": {
+   "en": "archetype",
+   "fr": "archétype",
+   "de": "Archetyp (der)"
+  },
+  "term.posture": {
+   "en": "stance / posture",
+   "fr": "posture",
+   "de": "Haltung (die)"
+  },
+  "term.figure": {
+   "en": "figure",
+   "fr": "figure",
+   "de": "Figur (die)"
+  },
+  "term.result-card": {
+   "en": "result card",
+   "fr": "carte de résultats",
+   "de": "Ergebniskarte (die)"
+  },
+  "term.mascot": {
+   "en": "mascot",
+   "fr": "mascotte",
+   "de": "Maskottchen (das)"
+  },
+  "term.survey": {
+   "en": "survey",
+   "fr": "enquête / sondage",
+   "de": "Umfrage (die)"
+  },
+  "term.participant": {
+   "en": "participant",
+   "fr": "participant·e",
+   "de": "Teilnehmende (Pl.) / teilnehmende Person (Sg.)"
+  },
+  "ui.eyebrow": {
+   "en": "MASCOTIES PROFILE",
+   "fr": "PROFIL MASCOTIES",
+   "de": "MASCOTIES-PROFIL"
+  },
+  "ui.anonymous": {
+   "en": "Anonymous",
+   "fr": "Anonyme",
+   "de": "Anonym"
+  },
+  "ui.axis-skipped": {
+   "en": "axis not answered",
+   "fr": "axe non répondu",
+   "de": "Achse nicht beantwortet"
+  },
+  "format.conjunction": {
+   "en": ", and ",
+   "fr": ", et ",
+   "de": " und "
+  },
+  "format.percent": {
+   "en": "{n}%",
+   "fr": "{n} %",
+   "de": "{n} %"
+  },
+  "corpus.posture-phrase": {
+   "en": "documented stance",
+   "fr": "position documentée",
+   "de": "dokumentierte Haltung"
+  },
+  "corpus.disruptive-wave": {
+   "en": "disruptive wave",
+   "fr": "vague disruptive",
+   "de": "disruptive Welle"
+  },
+  "corpus.gpt": {
+   "en": "general-purpose technology",
+   "fr": "technologie à usage général",
+   "de": "Universaltechnologie"
+  },
+  "corpus.instructive": {
+   "en": "instructive",
+   "fr": "instructif",
+   "de": "lehrreich"
+  },
+  "corpus.trajectory": {
+   "en": "trajectory",
+   "fr": "trajectoire",
+   "de": "Weg / Linie"
+  },
+  "corpus.governance": {
+   "en": "governance",
+   "fr": "gouvernance",
+   "de": "Governance"
+  },
+  "corpus.containment": {
+   "en": "containment",
+   "fr": "confinement / endiguement",
+   "de": "Containment"
+  }
+ }
+}
