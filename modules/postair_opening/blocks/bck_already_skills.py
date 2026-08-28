@@ -41,26 +41,26 @@ bs = BlockStyles
 _ZOOM = 110
 
 # ── Le fait (source primaire, vérifiée 2026-08-02) ──────────────────────────
-_VALUE = {"en": "68 %"}
-_CLAIM = {"en": "say AI skills are essential — only 48 % feel helped to build them"}
-_COUNTERPOINT = {"en": "yet only half want it provided"}
-_ATTRIBUTION = {"en": "HEPI, March 2026"}
+_VALUE = {"en": "68 %", "fr": "68 %"}
+_CLAIM = {"en": "say AI skills are essential — only 48 % feel helped to build them", "fr": "jugent les compétences en IA essentielles — seuls 48 % se sentent accompagnés"}
+_COUNTERPOINT = {"en": "yet only half want it provided", "fr": "mais seule la moitié le demande"}
+_ATTRIBUTION = {"en": "HEPI, March 2026", "fr": "HEPI, mars 2026"}
 #: La source du chiffre ET celle du contrepoint, dédupliquées.
 _CITEKEYS = ["hepi-survey-2026"]
 
 # ── Le panneau « Where this figure comes from » ─────────────────────────────
 _POPULATION = {"en": ("1,054 full-time UK undergraduates, polled by Savanta in "
-               "December 2025; weighted; margin of error approximately 3 %")}
+               "December 2025; weighted; margin of error approximately 3 %"), "fr": "1 054 étudiants britanniques de premier cycle, à temps plein, sondés par Savanta en décembre 2025 ; échantillon pondéré ; marge d'erreur d'environ 3 %"}
 _TREND = {"en": ("Institutions are moving: 38 % now provide AI tools to their "
-          "students, against 9 % two years earlier")}
-_FRESHNESS = {"en": "Six months before this event."}
+          "students, against 9 % two years earlier"), "fr": "Les établissements bougent : 38 % fournissent désormais des outils d'IA à leurs étudiants, contre 9 % deux ans plus tôt"}
+_FRESHNESS = {"en": "Six months before this event.", "fr": "Six mois avant cet événement."}
 _COUNTERPOINT_LONG = {"en": ("The demand is not unanimous either. Half of students "
                       "think their institution should provide AI tools — "
                       "which means half do not — and a quarter disagree "
-                      "outright.")}
+                      "outright."), "fr": "La demande n'est pas unanime non plus. La moitié des étudiants pensent que leur établissement devrait fournir des outils d'IA — donc l'autre moitié non — et un quart s'y opposent franchement."}
 _CAVEAT = {"en": ("Self-reported perception, not an audit of what is actually "
            "provided. The gap is widest in Arts and Humanities, where 26 % "
-           "feel supported against 53 % in STEM.")}
+           "feel supported against 53 % in STEM."), "fr": "Une perception déclarée, pas un audit de ce qui est réellement fourni. L'écart est le plus large en lettres et sciences humaines, où 26 % se sentent soutenus, contre 53 % en STEM."}
 
 # ── La ligne long-wave qui ferme la série ───────────────────────────────────
 #: Déclaration qualitative sourcée, pas un chiffre : une année de publication
@@ -68,7 +68,7 @@ _CAVEAT = {"en": ("Self-reported perception, not an audit of what is actually "
 #: vérifiabilité) : le repère des deux sigmas de Bloom date de 1984, et les
 #: revues systématiques de l'IA en enseignement supérieur précèdent ChatGPT ;
 #: ce qui a rompu en 2022 est l'échelle, pas l'idée.
-_CLOSING = {"en": "AI in education did not begin in 2022"}
+_CLOSING = {"en": "AI in education did not begin in 2022", "fr": "L'IA dans l'éducation ne date pas de 2022"}
 _CLOSING_CITEKEYS = ["bloom-2sigma", "zawacki-richter-2019",
                      "chiu-systematic-2023"]
 

@@ -54,27 +54,27 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Agenda"}
-_TITLE = {"en": ("Our ", (s.project.titles.keyword, "three hours"), " together")}
-_TIP_TITLE = {"en": "How the day runs"}
+_MARKER = {"en": "Agenda", "fr": "Programme"}
+_TITLE = {"en": ("Our ", (s.project.titles.keyword, "three hours"), " together"), "fr": ("Nos ", (s.project.titles.keyword, "trois heures"), " ensemble")}
+_TIP_TITLE = {"en": "How the day runs", "fr": "Comment ça se passe"}
 _TIP = [
-    ({"en": "Two parts"},
+    ({"en": "Two parts", "fr": "Deux parties"},
      {"en": ("Four sessions before the break — welcome, survey, results, "
              "discussion — then four after: generative AI, Mistral agents, the "
-             "university guidelines, and the closing.")}),
-    ({"en": "What you need"},
+             "university guidelines, and the closing."), "fr": "Quatre séances avant la pause — accueil, sondage, résultats, discussion — puis quatre après : IA générative, agents Mistral, les lignes directrices de l'université, et la clôture."}),
+    ({"en": "What you need", "fr": "À prévoir"},
      {"en": ("A phone OR a laptop, your choice. Keep one within reach: the "
-             "survey starts in a few minutes and runs on it.")}),
-    ({"en": "The survey"},
+             "survey starts in a few minutes and runs on it."), "fr": "Un téléphone OU un ordinateur portable, au choix. Gardez-en un sous la main : le sondage démarre dans quelques minutes et tourne dessus."}),
+    ({"en": "The survey", "fr": "Le sondage"},
      {"en": ("Thirty minutes, anonymous, fifty-four statements. Your answers "
              "drive the two sessions that follow — the results and the debate "
-             "are built live from what this room answers.")}),
-    ({"en": "The break"},
+             "are built live from what this room answers."), "fr": "Trente minutes, anonyme, cinquante-quatre énoncés. Vos réponses alimentent les deux séances suivantes — les résultats et le débat se construisent en direct à partir de ce que répond la salle."}),
+    ({"en": "The break", "fr": "La pause"},
      {"en": ("Twenty minutes, in the middle. The screen will show a countdown, "
-             "so you always know how long is left.")}),
-    ({"en": "Logistics"},
+             "so you always know how long is left."), "fr": "Vingt minutes, à mi-parcours. L'écran affichera un compte à rebours, pour que vous sachiez toujours combien de temps il reste."}),
+    ({"en": "Logistics", "fr": "Logistique"},
      {"en": ("Exits at the back and on both sides; toilets in the corridor "
-             "behind the amphitheatre. No need to ask — just go.")}),
+             "behind the amphitheatre. No need to ask — just go."), "fr": "Sorties au fond et des deux côtés ; toilettes dans le couloir derrière l'amphithéâtre. Inutile de demander — allez-y."}),
 ]
 
 

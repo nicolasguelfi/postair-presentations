@@ -37,10 +37,10 @@ bs = BlockStyles
 _ZOOM = 130
 
 # ── Le fait (source primaire, vérifiée 2026-08-02) ──────────────────────────
-_VALUE = {"en": "−40 %"}
-_CLAIM = {"en": "time on the task, and 18 % higher output quality, with generative AI"}
-_COUNTERPOINT = {"en": "and 17 % lower once it is taken away"}
-_ATTRIBUTION = {"en": "Science, July 2023"}
+_VALUE = {"en": "−40 %", "fr": "−40 %"}
+_CLAIM = {"en": "time on the task, and 18 % higher output quality, with generative AI", "fr": "de temps sur la tâche, et 18 % de qualité en plus, avec l'IA générative"}
+_COUNTERPOINT = {"en": "and 17 % lower once it is taken away", "fr": "et 17 % de moins quand on la retire"}
+_ATTRIBUTION = {"en": "Science, July 2023", "fr": "Science, juillet 2023"}
 #: La source du chiffre PUIS celle du contrepoint — un chiffre projeté sans
 #: la publication qui le nuance serait un chiffre arrangé. Population du
 #: contrepoint (jamais projetée, gardée pour la vérifiabilité) : nearly 1,000
@@ -51,22 +51,22 @@ _CITEKEYS = ["noy-zhang-2023", "bastani-guardrails-2025"]
 # ── Le panneau « Where this figure comes from » ─────────────────────────────
 _POPULATION = {"en": ("453 college-educated professionals in a pre-registered "
                "randomised controlled trial on occupation-specific writing "
-               "tasks; half given ChatGPT")}
+               "tasks; half given ChatGPT"), "fr": "453 professionnels diplômés du supérieur, dans un essai contrôlé randomisé préenregistré sur des tâches d'écriture propres à leur métier ; la moitié équipée de ChatGPT"}
 _TREND = {"en": ("The gain was largest for the weakest writers, compressing the "
-          "spread between workers")}
+          "spread between workers"), "fr": "Le gain a été le plus fort chez les rédacteurs les plus faibles, resserrant les écarts entre travailleurs"}
 _FRESHNESS = {"en": ("Three years old, and kept deliberately: it remains the "
               "peer-reviewed anchor in Science for generative-AI productivity "
               "in knowledge work, and no larger randomised replication has "
-              "displaced it.")}
+              "displaced it."), "fr": "Trois ans déjà, et gardé à dessein : cela reste la référence évaluée par les pairs, dans Science, sur la productivité de l'IA générative dans le travail intellectuel, et aucune réplication randomisée plus large ne l'a détrônée."}
 _COUNTERPOINT_LONG = {"en": ("The gain belongs to the task, not to the person. "
                       "School students given an unguarded GPT-4 tutor scored "
                       "48 % higher while it was available and 17 % lower than "
                       "the control group once it was taken away — a loss that "
                       "disappeared when the tutor was constrained to give "
-                      "hints instead of answers.")}
+                      "hints instead of answers."), "fr": "Le gain appartient à la tâche, pas à la personne. Des lycéens dotés d'un tuteur GPT-4 sans garde-fous ont obtenu 48 % de plus tant qu'il était disponible, et 17 % de moins que le groupe témoin une fois qu'on le leur a retiré — une perte qui disparaît quand le tuteur est contraint de donner des indices plutôt que des réponses."}
 _CAVEAT = {"en": ("The two studies answer different questions — professionals "
            "performing, students learning — and that is the point: performing "
-           "well and learning are not the same measurement.")}
+           "well and learning are not the same measurement."), "fr": "Les deux études répondent à des questions différentes — des professionnels qui produisent, des élèves qui apprennent — et c'est tout l'enjeu : bien faire et apprendre ne sont pas la même mesure."}
 
 
 def build(lang: str = "en", **_):

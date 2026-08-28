@@ -36,8 +36,8 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from"))}
-_LEAD = {"en": "every figure on the framing slides, with its source"}
+_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from")), "fr": ("Toutes nos ", (s.project.titles.keyword, "sources"))}
+_LEAD = {"en": "every figure on the framing slides, with its source", "fr": "chaque chiffre des slides de cadrage, avec sa source"}
 
 
 def build(lang: str = "en", **_):

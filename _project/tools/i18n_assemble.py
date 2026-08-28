@@ -20,6 +20,26 @@ import sys
 from pathlib import Path
 
 _PRIORITY = ("v3b", "v3a", "v3c")
+_NBSP = "\u00a0"
+
+
+def frtypo(text: str) -> str:
+    """Les insécables du français, posées mécaniquement (les lentilles les oublient)."""
+    import re
+    text = re.sub(r"(?<=\S) ([:;?!%»])", _NBSP + r"\1", text)
+    text = re.sub(r"(?<=\S)([:;?!%»])", lambda m: m.group(1) if m.group(1) in ";" and False else m.group(0), text)
+    text = re.sub(r"« (?=\S)", "«" + _NBSP, text)
+    # « 92% » → « 92 % »
+    text = re.sub(r"(?<=\d)%", _NBSP + "%", text)
+    return text
+
+
+def _typo_value(v):
+    if isinstance(v, str):
+        return frtypo(v)
+    if isinstance(v, list):
+        return [{k: (frtypo(x) if isinstance(x, str) else x) for k, x in f.items()} for f in v]
+    return v
 
 
 def main() -> int:
@@ -55,6 +75,8 @@ def main() -> int:
         e["fr_v1"] = e["fr"]
         e["fr"] = chosen
         applied += 1
+    for e in lot:
+        e["fr"] = _typo_value(e["fr"])
     Path(f"{stem}.final.json").write_text(json.dumps(lot, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"\n{len(lot)} entrées · {applied} correction(s) appliquée(s) · {conflicts} conflit(s) → {stem}.final.json")
     return 0

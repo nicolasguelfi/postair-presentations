@@ -51,7 +51,9 @@ def check(lot: list[dict]) -> list[str]:
             problems.append(f"{i}: fr invalide"); continue
         if not ff.strip():
             continue   # suffixe vide voulu — la parité l'exige en liste blanche
-        ne, nf = set(_NUM.findall(fe)), set(_NUM.findall(ff))
+        # Le FR écrit « 1 054 » et « 24,7 » : comparer les suites de chiffres.
+        digits = lambda t: set(re.sub(r"[.,\u00a0 ]", "", n) for n in _NUM.findall(t.replace("\u00a0", "")))
+        ne, nf = digits(fe), digits(ff)
         if ne - nf:
             problems.append(f"{i}: nombres perdus {sorted(ne - nf)} — {ff[:50]!r}")
         pe, pf = set(_PLACEHOLDER.findall(fe)), set(_PLACEHOLDER.findall(ff))
