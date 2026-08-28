@@ -47,22 +47,22 @@ _LOGO_WIDTH = "min(34vw, 90vh)"
 #: est commune aux deux slides : elle vient du lexique (``entertaining_survey``).
 _MESSAGES = [
     ("🎡", bs.headline, "entertaining_survey"),
-    ("🙋", bs.message, {"en": "On a voluntary basis."}),
+    ("🙋", bs.message, {"en": "On a voluntary basis.", "fr": "Participation volontaire."}),
 ]
-_MARKER = {"en": "Any other context"}
-_LABEL = {"en": "Beyond the university"}
-_TIP_TITLE = {"en": "Beyond the university"}
-_TIP_ROOMS = ({"en": "One tool, many rooms"},
+_MARKER = {"en": "Any other context", "fr": "Tout autre contexte"}
+_LABEL = {"en": "Beyond the university", "fr": "Au-delà de l'université"}
+_TIP_TITLE = {"en": "Beyond the university", "fr": "Au-delà de l'université"}
+_TIP_ROOMS = ({"en": "One tool, many rooms", "fr": "Un outil, bien des salles"},
               {"en": ("The same survey runs at a "
                       "company workshop, a fair booth or an evening event — "
-                      "only the frame changes, never the instrument.")})
+                      "only the frame changes, never the instrument."), "fr": "Le même sondage tourne dans un atelier d'entreprise, sur un stand de salon ou lors d'une soirée — seul le cadre change, jamais l'instrument."})
 #: Tête « Voluntary » : lexique (partagée avec la slide Welcome Week).
 _TIP_VOLUNTARY = {"en": ("Nobody has to answer. You can stop at "
                          "any time, and an unfinished survey is simply never "
-                         "sent.")}
+                         "sent."), "fr": "Personne n'est obligé de répondre. Vous pouvez arrêter à tout moment, et un sondage inachevé n'est tout simplement jamais envoyé."}
 #: Tête « Anonymous by design » : lexique.
 _TIP_ANON = {"en": ("Nothing personal is collected; "
-                    "your report is computed on YOUR device.")}
+                    "your report is computed on YOUR device."), "fr": "Rien de personnel n'est collecté ; votre rapport est calculé sur VOTRE appareil."}
 
 
 def build(lang: str = "en", **_):

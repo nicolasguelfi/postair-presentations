@@ -23,11 +23,11 @@ bs = BlockStyles
 
 _WIDTH = "min(24vw, 42vh)"
 
-_MARKER = {"en": "The welcome screen"}
+_MARKER = {"en": "The welcome screen", "fr": "L'écran d'accueil"}
 #: Le début du titre (« The first screens — ») vient du lexique : il ouvre
 #: aussi la slide du code.
-_KEYWORD = {"en": "welcome"}
-_CAPTION = {"en": "2 · the campaign welcomes you"}
+_KEYWORD = {"en": "welcome", "fr": "l'accueil"}
+_CAPTION = {"en": "2 · the campaign welcomes you", "fr": "2 · la campagne vous accueille"}
 
 
 def build(lang: str = "en", **_):

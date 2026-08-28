@@ -105,33 +105,33 @@ PORTRAIT = ("«git»/GENAI/ai4video-projects/augmented-student/assets/images/"
             "NG/_identity/portraits/ng__portrait__studio__v1.png")
 
 # ── Le texte projeté (règle R-i18n) ──────────────────────────────────────────
-_MARKER = {"en": "Your posture?"}
-_TITLE = {"en": ("What is ", (s.project.titles.keyword, "your posture"), " facing AI?")}
-_LABEL = {"en": "Getting started"}
-_TIP_TITLE = {"en": "The POSTAIR model"}
-_TIP_POSTURE = ({"en": "A posture"},
+_MARKER = {"en": "Your posture?", "fr": "Votre posture ?"}
+_TITLE = {"en": ("What is ", (s.project.titles.keyword, "your posture"), " facing AI?"), "fr": ("Quelle est ", (s.project.titles.keyword, "votre posture"), " face à l'IA ?")}
+_LABEL = {"en": "Getting started", "fr": "Pour commencer"}
+_TIP_TITLE = {"en": "The POSTAIR model", "fr": "Le modèle POSTAIR"}
+_TIP_POSTURE = ({"en": "A posture", "fr": "Une posture"},
                 {"en": ("Your personal position facing the AI revolution — not "
                         "'for or against', but where you stand on nine fundamental "
-                        "tensions. There is no right answer.")})
+                        "tensions. There is no right answer."), "fr": "Votre position personnelle face à la révolution de l'IA — pas « pour ou contre », mais là où vous vous situez sur neuf tensions fondamentales. Il n'y a pas de bonne réponse."})
 #: Tête « Nine axes » : lexique (partagée avec la lecture du radar).
 _TIP_AXES = {"en": ("Grouped in three registers: KNOWING (how I judge — trust, "
                     "optimism, rationality), ACTING (how I deploy — speed, "
                     "openness, freedom/control), BECOMING (what results — "
-                    "centralisation, altruism, transhumanism).")}
-_TIP_WHEEL = ({"en": "Why a wheel"},
+                    "centralisation, altruism, transhumanism)."), "fr": "Regroupés en trois registres : CONNAÎTRE (comment je juge — confiance, optimisme, rationalité), AGIR (comment je déploie l'IA — vitesse, ouverture, liberté/contrôle), DEVENIR (ce qui en résulte — centralisation, altruisme, transhumanisme)."}
+_TIP_WHEEL = ({"en": "Why a wheel", "fr": "Pourquoi une roue"},
               {"en": ("Because nobody in this room knows their own answer yet. "
                       "You are not being sorted into anything — you are about "
-                      "to discover which postures you already carry.")})
+                      "to discover which postures you already carry."), "fr": "Parce que personne dans cette salle ne connaît encore sa propre réponse. On ne vous range dans aucune case — vous allez découvrir quelles postures vous portez déjà."})
 # La référence n'est PAS ici : elle vit derrière le code de citation visible
 # sous la roue (un cite() dans un panneau de survol serait un hover-dans-hover).
-_TIP_BASIS = ({"en": "Scientific basis"},
+_TIP_BASIS = ({"en": "Scientific basis", "fr": "Base scientifique"},
               {"en": ("The instrument derives from a published research "
-                      "article — the citation under the wheel opens it.")})
+                      "article — the citation under the wheel opens it."), "fr": "L'instrument dérive d'un article de recherche publié — la référence sous la roue y donne accès."})
 #: Tête « Anonymous » : lexique (partagée avec la slide Welcome Week).
 _TIP_ANON = {"en": ("The survey you are about to take is fully anonymous: your "
                     "result is computed on YOUR device; only anonymous averages "
-                    "reach the room screen.")}
-_GROUNDING = {"en": "answers: anonymous · model: "}
+                    "reach the room screen."), "fr": "Le sondage auquel vous allez répondre est entièrement anonyme : votre résultat est calculé sur VOTRE appareil ; seules des moyennes anonymes arrivent sur l'écran de la salle."}
+_GROUNDING = {"en": "answers: anonymous · model: ", "fr": "réponses : anonymes · modèle : "}
 
 
 def build(lang: str = "en", **_):

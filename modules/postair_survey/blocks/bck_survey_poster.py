@@ -24,19 +24,19 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "The Survey — poster"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "Survey"))}
-_LABEL = {"en": "The Survey"}
-_TIP_TITLE = {"en": "Next 30 minutes"}
+_MARKER = {"en": "The Survey — poster", "fr": "Le Sondage — affiche"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "Survey")), "fr": ("Le ", (s.project.titles.keyword, "Sondage"))}
+_LABEL = {"en": "The Survey", "fr": "Le Sondage"}
+_TIP_TITLE = {"en": "Next 30 minutes", "fr": "Les 30 prochaines minutes"}
 _TIP = [
-    ({"en": "Now"},
+    ({"en": "Now", "fr": "Maintenant"},
      {"en": ("You answer the POSTAIR survey on your phone or laptop — "
-             "anonymous, 15-20 minutes.")}),
-    ({"en": "Then"},
+             "anonymous, 15-20 minutes."), "fr": "Vous répondez au sondage POSTAIR sur votre téléphone ou votre ordinateur — anonyme, 15-20 minutes."}),
+    ({"en": "Then", "fr": "Ensuite"},
      {"en": ("We project the live results of THIS room and discover the "
-             "cohort's postures together.")}),
-    ({"en": "Finally"},
-     {"en": "We debate the most divisive questions of your cohort."}),
+             "cohort's postures together."), "fr": "Nous projetons les résultats en direct de CETTE salle et découvrons ensemble les postures de la cohorte."}),
+    ({"en": "Finally", "fr": "Enfin"},
+     {"en": "We debate the most divisive questions of your cohort.", "fr": "Nous débattons des questions les plus clivantes de votre cohorte."}),
 ]
 
 

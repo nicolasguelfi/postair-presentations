@@ -47,26 +47,26 @@ _LOGO_WIDTH = "min(22vw, 30vh)"
 #: (``entertaining_survey``) ; les trois autres lignes sont propres à celle-ci.
 _MESSAGES = [
     ("🎡", bs.headline, "entertaining_survey"),
-    ("🔬", bs.message, {"en": "Your first participation in an academic research study :) !!"}),
-    ("🎭", bs.message, {"en": "Anonymous and on a voluntary basis."}),
-    ("🔞", bs.caveat, {"en": "If less than 18 years old, participation is not considered for research."}),
+    ("🔬", bs.message, {"en": "Your first participation in an academic research study :) !!", "fr": "Votre première participation à une recherche universitaire :) !!"}),
+    ("🎭", bs.message, {"en": "Anonymous and on a voluntary basis.", "fr": "Anonyme et volontaire."}),
+    ("🔞", bs.caveat, {"en": "If less than 18 years old, participation is not considered for research.", "fr": "Moins de 18 ans : la participation n'est pas prise en compte pour la recherche."}),
 ]
-_MARKER = {"en": "Welcome Week"}
-_LABEL = {"en": "Contexts"}
-_TIP_TITLE = {"en": "This session's frame"}
-_TIP_GAME = ({"en": "A game AND a study"},
+_MARKER = {"en": "Welcome Week", "fr": "Welcome Week"}
+_LABEL = {"en": "Contexts", "fr": "Contextes"}
+_TIP_TITLE = {"en": "This session's frame", "fr": "Cadre de cette séance"}
+_TIP_GAME = ({"en": "A game AND a study", "fr": "Un jeu ET une étude"},
              {"en": ("The survey is designed to be fun to "
                      "answer, and it is also a real academic research instrument: "
-                     "the anonymous answers feed the POSTAIR study.")})
+                     "the anonymous answers feed the POSTAIR study."), "fr": "Le sondage est conçu pour être amusant à remplir, et c'est aussi un vrai instrument de recherche universitaire : les réponses anonymes alimentent l'étude POSTAIR."})
 #: Têtes « Voluntary », « Anonymous », « Under 18 » : lexique (partagées).
 _TIP_VOLUNTARY = {"en": ("Nobody has to answer. You can stop at any "
-                         "time, and an unfinished survey is simply never sent.")}
+                         "time, and an unfinished survey is simply never sent."), "fr": "Personne n'est obligé de répondre. Vous pouvez arrêter à tout moment, et un sondage inachevé n'est tout simplement jamais envoyé."}
 _TIP_ANON = {"en": ("Nothing personal is collected; your report is "
                     "computed on YOUR device and only anonymous answers reach "
-                    "the averages.")}
+                    "the averages."), "fr": "Rien de personnel n'est collecté ; votre rapport est calculé sur VOTRE appareil et seules des réponses anonymes entrent dans les moyennes."}
 _TIP_UNDER_18 = {"en": ("You are welcome to play and see your own "
                         "results — your record is simply excluded from the research "
-                        "analysis.")}
+                        "analysis."), "fr": "Vous pouvez jouer et voir vos propres résultats — vos réponses sont simplement exclues de l'analyse de recherche."}
 
 
 def build(lang: str = "en", **_):

@@ -40,41 +40,41 @@ class BlockStyles:
 bs = BlockStyles
 
 #: L'idée, en une phrase.
-_LEAD = {"en": "3 questions for each of the \n2 poles of the 9 axes"}
+_LEAD = {"en": "3 questions for each of the \n2 poles of the 9 axes", "fr": "3 questions pour chacun des \n2 pôles des 9 axes"}
 
 #: Deux exemples = les deux pôles d'un même axe (openness), un par carte :
 #: la carte bleue accueille, la corail résiste — aucun des deux n'a tort.
 _EXAMPLES = [
-    (s.project.cards.blue, {"en": "Openness"},
-     {"en": "Do you welcome the AI technology in your life?"}),
-    (s.project.cards.coral, {"en": "Resistance"},
-     {"en": "Do you prefer to live without AI as much as possible?"}),
+    (s.project.cards.blue, {"en": "Openness", "fr": "Ouverture"},
+     {"en": "Do you welcome the AI technology in your life?", "fr": "Accueillez-vous la technologie de l'IA dans votre vie ?"}),
+    (s.project.cards.coral, {"en": "Resistance", "fr": "Résistance"},
+     {"en": "Do you prefer to live without AI as much as possible?", "fr": "Préférez-vous vivre autant que possible sans IA ?"}),
 ]
 
-_MARKER = {"en": "The instrument"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "POSTAIR"), " instrument")}
-_GROUNDING = {"en": "model: "}
+_MARKER = {"en": "The instrument", "fr": "L'instrument"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "POSTAIR"), " instrument"), "fr": ("L'instrument ", (s.project.titles.keyword, "POSTAIR"), "")}
+_GROUNDING = {"en": "model: ", "fr": "modèle : "}
 _TIP = [
-    ({"en": "54 statements"},
+    ({"en": "54 statements", "fr": "54 énoncés"},
      {"en": ("Three per posture, two postures per axis, "
              "nine axes. Half of each axis is phrased toward one pole and "
-             "half toward the other.")}),
-    ({"en": "Why six levels, no middle"},
+             "half toward the other."), "fr": "Trois par posture, deux postures par axe, neuf axes. Sur chaque axe, la moitié des énoncés penche vers un pôle, l'autre moitié vers le pôle opposé."}),
+    ({"en": "Why six levels, no middle", "fr": "Pourquoi six niveaux, sans milieu"},
      {"en": ("A gentle forced choice: the middle "
              "of a scale attracts non-answers. If you truly have no opinion, "
              "use the dedicated 'no opinion' button — it is excluded from "
-             "your scores.")}),
-    ({"en": "Reversed statements"},
+             "your scores."), "fr": "Un choix forcé en douceur : le milieu d'une échelle attire les non-réponses. Si vous n'avez vraiment pas d'opinion, utilisez le bouton « Sans opinion » — cette réponse est exclue de vos scores."}),
+    ({"en": "Reversed statements", "fr": "Énoncés inversés"},
      {"en": ("Half the statements of each axis are "
              "phrased toward one pole, half toward the other — a standard "
-             "control against automatic agreement. Read each one for itself.")}),
+             "control against automatic agreement. Read each one for itself."), "fr": "Sur chaque axe, la moitié des énoncés penche vers un pôle, l'autre moitié vers le pôle opposé — un contrôle classique contre l'acquiescement automatique. Lisez chaque énoncé indépendamment des autres."}),
 ]
 #: Tête « Help per question » : lexique (partagée avec la slide de l'énoncé).
 _TIP_HELP = {"en": ("Every statement in the app has a help "
-                    "button: clarification, anchors and two concrete examples.")}
-_TIP_DURATION = ({"en": "Duration"},
+                    "button: clarification, anchors and two concrete examples."), "fr": "Chaque énoncé de l'application a un bouton d'aide : clarification, repères et deux exemples concrets."}
+_TIP_DURATION = ({"en": "Duration", "fr": "Durée"},
                  {"en": ("Measured median: 20-40 minutes. You can pause and "
-                         "resume on your device.")})
+                         "resume on your device."), "fr": "Médiane mesurée : 20-40 minutes. Vous pouvez interrompre et reprendre sur votre appareil."})
 
 
 def build(lang: str = "en", **_):

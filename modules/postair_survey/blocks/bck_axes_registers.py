@@ -35,47 +35,47 @@ bs = BlockStyles
 
 #: Le nom et le sous-titre d'un registre viennent de ``postair_data``
 #: (REGISTERS) — hors feuille. Les têtes « Mascots » viennent du lexique.
-_MARKER = {"en": "Axes — {name}"}
-_TIP_TITLE = {"en": "Register: {name}"}
+_MARKER = {"en": "Axes — {name}", "fr": "Axes — {name}"}
+_TIP_TITLE = {"en": "Register: {name}", "fr": "Registre : {name}"}
 _TOOLTIPS = {
     "Knowing": [
-        ({"en": "Trust vs Self-reliance"},
+        ({"en": "Trust vs Self-reliance", "fr": "Confiance vs Autonomie de jugement"},
          {"en": ("Do I rely on institutions, experts and tools — or only on "
-                 "my own verified judgement?")}),
-        ({"en": "Optimism vs Pessimism"},
-         {"en": "Do I expect AI to improve our lives — or to degrade them?"}),
-        ({"en": "Rationality vs Emotion"},
+                 "my own verified judgement?"), "fr": "Est-ce que je m'appuie sur les institutions, les experts et les outils — ou seulement sur mon propre jugement vérifié ?"}),
+        ({"en": "Optimism vs Pessimism", "fr": "Optimisme vs Pessimisme"},
+         {"en": "Do I expect AI to improve our lives — or to degrade them?", "fr": "Est-ce que j'attends de l'IA qu'elle améliore nos vies — ou qu'elle les dégrade ?"}),
+        ({"en": "Rationality vs Emotion", "fr": "Rationalité vs Émotion"},
          {"en": ("Do I want decisions about AI grounded in measures and "
-                 "proofs — or do feelings and intuitions count as much?")}),
+                 "proofs — or do feelings and intuitions count as much?"), "fr": "Est-ce que je veux des décisions sur l'IA fondées sur des mesures et des preuves — ou les sentiments et les intuitions comptent-ils autant ?"}),
         ("mascots",
          {"en": ("Fido & Solo · Solyo & Nimbo · Logos & Pathos — each mascot carries one "
                  "posture, so opinions are depersonalised: a figure holds a posture, "
-                 "not a person.")}),
+                 "not a person."), "fr": "Fido & Solo · Solyo & Nimbo · Logos & Pathos — chaque mascotte porte une posture, ce qui dépersonnalise les opinions : c'est un personnage qui tient une posture, pas une personne."}),
     ],
     "Acting": [
-        ({"en": "Speed vs Prudence"},
+        ({"en": "Speed vs Prudence", "fr": "Vitesse vs Prudence"},
          {"en": ("Deploy AI as fast as possible — or step by step, only after "
-                 "each risk is understood?")}),
-        ({"en": "Openness vs Resistance"},
-         {"en": "Welcome AI into my practices — or protect them from it?"}),
-        ({"en": "Freedom vs Control"},
+                 "each risk is understood?"), "fr": "Déployer l'IA aussi vite que possible — ou pas à pas, seulement une fois chaque risque compris ?"}),
+        ({"en": "Openness vs Resistance", "fr": "Ouverture vs Résistance"},
+         {"en": "Welcome AI into my practices — or protect them from it?", "fr": "Accueillir l'IA dans mes pratiques — ou les en protéger ?"}),
+        ({"en": "Freedom vs Control", "fr": "Liberté vs Contrôle"},
          {"en": ("Let everyone use AI as they see fit — or regulate its uses "
-                 "strictly?")}),
-        ("mascots", {"en": "Rapo & Lento · Kuri & Piko · Libero & Guardo."}),
+                 "strictly?"), "fr": "Laisser chacun utiliser l'IA comme il l'entend — ou en réglementer strictement les usages ?"}),
+        ("mascots", {"en": "Rapo & Lento · Kuri & Piko · Libero & Guardo.", "fr": "Rapo & Lento · Kuri & Piko · Libero & Guardo."}),
     ],
     "Becoming": [
-        ({"en": "Centralisation vs Decentralisation"},
+        ({"en": "Centralisation vs Decentralisation", "fr": "Centralisation vs Décentralisation"},
          {"en": ("Should AI power be concentrated in a few large "
-                 "actors — or distributed among many small ones?")}),
-        ({"en": "Individualism vs Altruism"},
+                 "actors — or distributed among many small ones?"), "fr": "Le pouvoir de l'IA doit-il être concentré chez quelques grands acteurs — ou réparti entre de nombreux petits ?"}),
+        ({"en": "Individualism vs Altruism", "fr": "Individualisme vs Altruisme"},
          {"en": ("Is AI first a personal advantage — or a common good to "
-                 "share?")}),
-        ({"en": "Transhumanism vs Humanism"},
+                 "share?"), "fr": "L'IA est-elle d'abord un avantage personnel — ou un bien commun à partager ?"}),
+        ({"en": "Transhumanism vs Humanism", "fr": "Transhumanisme vs Humanisme"},
          {"en": ("Should AI augment and transform the human condition — or "
-                 "preserve it?")}),
-        ({"en": "Note"},
+                 "preserve it?"), "fr": "L'IA doit-elle augmenter et transformer la condition humaine — ou la préserver ?"}),
+        ({"en": "Note", "fr": "Note"},
          {"en": ("'Accelerator' never means 'good' — the poles are neutral descriptions of "
-                 "postures. Mascots: Balo & Sardo · Ego & Unio · Ultra & Vita.")}),
+                 "postures. Mascots: Balo & Sardo · Ego & Unio · Ultra & Vita."), "fr": "« Accélérateur » ne veut jamais dire « bon » — les pôles décrivent des postures, sans jugement. Mascottes : Balo & Sardo · Ego & Unio · Ultra & Vita."}),
     ],
 }
 
