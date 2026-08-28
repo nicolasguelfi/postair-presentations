@@ -13,4 +13,4 @@ from custom.render import wave_hero_grid_slide
 
 
 def build(lang: str = "en", **_):
-    wave_hero_grid_slide("The seventeenth wave", "ai")
+    wave_hero_grid_slide("The seventeenth wave", "ai", lang=lang)

@@ -258,7 +258,7 @@ _LANG_FLAGS = {"en": "🇬🇧 EN", "fr": "🇫🇷 FR", "de": "🇩🇪 DE"}
 _LANG_PREF_KEY = "waves_video_lang"
 
 
-def _poster_video_langs(fig_id: str, media: dict, name: str,
+def _poster_video_langs(fig_id: str, media: dict, name: str, lang: str,
                         width: str = "min(38vw, 66vh)") -> None:
     """Le portrait-lecteur MULTILINGUE : drapeaux sous la vidéo.
 
@@ -268,11 +268,11 @@ def _poster_video_langs(fig_id: str, media: dict, name: str,
     2026-08-27. Le rerun DÉTRUIT l'ancien lecteur et en recrée UN SEUL dans
     la langue choisie : une seule piste peut exister. La préférence suit
     l'orateur de figure en figure (clé non-widget partagée). Limite connue :
-    l'export statique n'a pas de widgets — il fige la langue préférée par
-    défaut (en).
+    l'export statique n'a pas de widgets — il fige la langue PROJETÉE
+    (``build(lang)``, règle R-i18n) : l'export FR joue la piste française.
     """
     codes = [c for c in _LANG_FLAGS if c in media["videos"]]
-    pref = st.session_state.get(_LANG_PREF_KEY, "en")
+    pref = st.session_state.get(_LANG_PREF_KEY, lang)
     current = pref if pref in codes else codes[0]
     key = f"pvl_{''.join(c for c in fig_id if c.isalnum())}"
 
@@ -314,7 +314,7 @@ def _figure(w: dict, f: dict, lang: str,
                                   f.get("stance")) if x)
 
     def _portrait():
-        _poster_video_langs(f["id"], media, f["name"])
+        _poster_video_langs(f["id"], media, f["name"], lang)
 
     if media:
         with hero_split(s, image=_portrait, ratio=46,

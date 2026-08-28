@@ -14,4 +14,4 @@ from custom.render import wave_slides
 
 
 def build(lang: str = "en", **_):
-    wave_slides("motor-aviation")
+    wave_slides("motor-aviation", lang=lang)

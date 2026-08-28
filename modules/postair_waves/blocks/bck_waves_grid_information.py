@@ -15,4 +15,4 @@ from custom.render import waves_grid_slide
 
 def build(lang: str = "en", **_):
     waves_grid_slide("From the computer to the Web",
-                     ("From the computer to the ", "Web", ""), first=13, last=16)
+                     ("From the computer to the ", "Web", ""), first=13, last=16, lang=lang)
