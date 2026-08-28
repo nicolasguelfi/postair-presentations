@@ -50,10 +50,10 @@ TITLE_PROMPT = (
 )
 
 # ── Feuilles projetées (règle R-i18n) — l'EN ne bouge pas, le FR se remplit ici.
-_TITLE = {"en": ("The survey, ", (s.project.titles.keyword, "by show of hands"))}
-_TITLE_LABEL = {"en": "By show of hands"}
-_SUBTITLE = {"en": "same nine axes, same statements — your hand is the slider"}
-_GROUNDING = {"en": "instrument v{v} — "}
+_TITLE = {"en": ("The survey, ", (s.project.titles.keyword, "by show of hands")), "fr": ("Le sondage, ", (s.project.titles.keyword, "à main levée"))}
+_TITLE_LABEL = {"en": "By show of hands", "fr": "À main levée"}
+_SUBTITLE = {"en": "same nine axes, same statements — your hand is the slider", "fr": "les neuf mêmes axes, les mêmes énoncés — votre main est le curseur"}
+_GROUNDING = {"en": "instrument v{v} — ", "fr": "instrument v{v} — "}
 
 
 def build(lang: str = "en", **_):

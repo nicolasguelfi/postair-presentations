@@ -37,8 +37,8 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Feuilles projetées (règle R-i18n) ; « References » vient du lexique partagé.
-_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from"))}
-_LEAD = {"en": "the instrument this deck is built on, with its source"}
+_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from")), "fr": ("D'où tout cela ", (s.project.titles.keyword, "vient"))}
+_LEAD = {"en": "the instrument this deck is built on, with its source", "fr": "l'instrument sur lequel repose ce deck, et sa source"}
 
 
 def build(lang: str = "en", **_):

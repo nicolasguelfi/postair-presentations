@@ -40,16 +40,16 @@ class _S:
 #: viennent du gel et restent HORS de ces feuilles. Les guillemets sont des
 #: feuilles aussi : “ ” en anglais, « » en français.
 _UI = {
-    "quote_open": {"en": "“"},
-    "quote_close": {"en": "”"},
-    "axis_open": {"en": "Axis “"},
-    "axis_close": {"en": "”"},
-    "synthesis_marker": {"en": "{label} — synthesis"},
-    "vote_marker": {"en": "Vote — {keyword}"},
-    "vote_title": {"en": "Vote: "},
-    "support": {"en": "I support"},
-    "oppose": {"en": "I oppose"},
-    "no_opinion": {"en": "no opinion"},
+    "quote_open": {"en": "“", "fr": "« "},
+    "quote_close": {"en": "”", "fr": " »"},
+    "axis_open": {"en": "Axis “", "fr": "Axe « "},
+    "axis_close": {"en": "”", "fr": " »"},
+    "synthesis_marker": {"en": "{label} — synthesis", "fr": "{label} — synthèse"},
+    "vote_marker": {"en": "Vote — {keyword}", "fr": "Vote — {keyword}"},
+    "vote_title": {"en": "Vote: ", "fr": "Vote : "},
+    "support": {"en": "I support", "fr": "Pour"},
+    "oppose": {"en": "I oppose", "fr": "Contre"},
+    "no_opinion": {"en": "no opinion", "fr": "Sans opinion"},
 }
 
 
