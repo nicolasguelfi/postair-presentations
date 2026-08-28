@@ -53,6 +53,17 @@ UI: dict[str, dict[str, str]] = {
     # chiffres et sources
     "source": {"en": "Source", "fr": "Source"},
     "reference": {"en": "Reference", "fr": "Référence"},
+    # opening — séries « Already here » et « AI in the faculty »
+    "already_here": {"en": "Already here — ", "fr": "Déjà là — "},
+    "ai_in": {"en": "AI in ", "fr": "L'IA à la "},
+    "faculty_evidence": {"en": "{faculty} — the evidence",
+                         "fr": "{faculty} — les preuves"},
+    "no_figures_university": {"en": "No figures for this university",
+                              "fr": "Aucun chiffre pour cette université"},
+    "reported_note": {"en": "Reported inside the source cited on the card, not read "
+                            "at the original.",
+                      "fr": "Rapporté dans la source citée sur la carte, non lu à "
+                            "l'original."},
 }
 
 

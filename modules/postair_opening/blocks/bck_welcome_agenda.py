@@ -29,6 +29,7 @@ it is the only moment of the day where logistics are the subject.
 from custom.styles import Styles as s
 from postair_data import mascot
 from postair_event import AGENDA
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -53,6 +54,29 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "Agenda"}
+_TITLE = {"en": ("Our ", (s.project.titles.keyword, "three hours"), " together")}
+_TIP_TITLE = {"en": "How the day runs"}
+_TIP = [
+    ({"en": "Two parts"},
+     {"en": ("Four sessions before the break — welcome, survey, results, "
+             "discussion — then four after: generative AI, Mistral agents, the "
+             "university guidelines, and the closing.")}),
+    ({"en": "What you need"},
+     {"en": ("A phone OR a laptop, your choice. Keep one within reach: the "
+             "survey starts in a few minutes and runs on it.")}),
+    ({"en": "The survey"},
+     {"en": ("Thirty minutes, anonymous, fifty-four statements. Your answers "
+             "drive the two sessions that follow — the results and the debate "
+             "are built live from what this room answers.")}),
+    ({"en": "The break"},
+     {"en": ("Twenty minutes, in the middle. The screen will show a countdown, "
+             "so you always know how long is left.")}),
+    ({"en": "Logistics"},
+     {"en": ("Exits at the back and on both sides; toilets in the corridor "
+             "behind the amphitheatre. No need to ask — just go.")}),
+]
+
 
 def _columns():
     """The agenda as three columns: before the break, the break, after it."""
@@ -62,30 +86,17 @@ def _columns():
 
 
 def build(lang: str = "en", **_):
-    st_marker("Agenda")
+    st_marker(T(_MARKER, lang))
     lento = mascot("Lento")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Our ", (s.project.titles.keyword, "three hours"),
-                         " together", tag=t.div, toc_lvl="+1", label="Agenda")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="How the day runs",
-                    entries=[
-                        ("Two parts", "Four sessions before the break — welcome, survey, "
-                         "results, discussion — then four after: generative AI, Mistral "
-                         "agents, the university guidelines, and the closing."),
-                        ("What you need", "A phone OR a laptop, your choice. Keep one within "
-                         "reach: the survey starts in a few minutes and runs on it."),
-                        ("The survey", "Thirty minutes, anonymous, fifty-four statements. "
-                         "Your answers drive the two sessions that follow — the results and "
-                         "the debate are built live from what this room answers."),
-                        ("The break", "Twenty minutes, in the middle. The screen will show a "
-                         "countdown, so you always know how long is left."),
-                        ("Logistics", "Exits at the back and on both sides; toilets in the "
-                         "corridor behind the amphitheatre. No need to ask — just go."),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", "3vh")
         # Three columns, each a flat stack — no nested grid. The floors are in

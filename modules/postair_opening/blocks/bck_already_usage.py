@@ -20,6 +20,8 @@ from streamtex.enums import Tags as t
 
 from custom.refs import citation
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T
 
 
 class BlockStyles:
@@ -35,50 +37,51 @@ bs = BlockStyles
 _ZOOM = 130
 
 # ── Le fait (source primaire, vérifiée 2026-08-02) ──────────────────────────
-_VALUE = "94 %"
-_CLAIM = "of students use generative AI to help with assessed work"
-_COUNTERPOINT = "but only 12 % hand in AI-written text"
-_ATTRIBUTION = "HEPI, March 2026"
+_VALUE = {"en": "94 %"}
+_CLAIM = {"en": "of students use generative AI to help with assessed work"}
+_COUNTERPOINT = {"en": "but only 12 % hand in AI-written text"}
+_ATTRIBUTION = {"en": "HEPI, March 2026"}
 #: La source du chiffre ET celle du contrepoint, dédupliquées — un chiffre
 #: projeté sans la publication qui le conteste serait un chiffre arrangé.
 _CITEKEYS = ["hepi-survey-2026"]
 
 # ── Le panneau « Where this figure comes from » ─────────────────────────────
-_POPULATION = ("1,054 full-time UK undergraduates, polled by Savanta in "
+_POPULATION = {"en": ("1,054 full-time UK undergraduates, polled by Savanta in "
                "December 2025; weighted for gender, institution type and year "
-               "of study; margin of error approximately 3 %")
-_TREND = "89 % one year earlier, 53 % two years earlier"
-_FRESHNESS = ("Six months before this event. The third annual edition of the "
-              "same instrument, so the trend is measured, not assembled.")
-_COUNTERPOINT_LONG = ("Using it is not the same as handing it in. Only 12 % "
+               "of study; margin of error approximately 3 %")}
+_TREND = {"en": "89 % one year earlier, 53 % two years earlier"}
+_FRESHNESS = {"en": ("Six months before this event. The third annual edition of the "
+              "same instrument, so the trend is measured, not assembled.")}
+_COUNTERPOINT_LONG = {"en": ("Using it is not the same as handing it in. Only 12 % "
                       "include AI-generated text directly in assessed work; "
                       "the dominant uses are having concepts explained (61 %) "
-                      "and articles summarised (49 %).")
-_CAVEAT = "UK undergraduates. No equivalent survey exists for Luxembourg."
+                      "and articles summarised (49 %).")}
+_CAVEAT = {"en": "UK undergraduates. No equivalent survey exists for Luxembourg."}
 
 
 def build(lang: str = "en", **_):
-    st_marker(_VALUE)
+    st_marker(T(_VALUE, lang))
     with st_zoom(_ZOOM):
         with st_block(s.project.containers.page_fill_top):
             with st_grid(cols="92% 8%",
                          cell_styles=s.project.containers.grid_cell_centered) as g:
                 with g.cell():
-                    st_write(bs.title, "Already here — ",
-                             (s.project.titles.keyword, _ATTRIBUTION),
-                             tag=t.div, toc_lvl="+1", label=_VALUE)
+                    st_write(bs.title, ui("already_here", lang),
+                             (s.project.titles.keyword, T(_ATTRIBUTION, lang)),
+                             tag=t.div, toc_lvl="+1", label=T(_VALUE, lang))
                 with g.cell():
                     st_info_tooltip(
-                        title="Where this figure comes from",
-                        entries=[(_VALUE, " ".join([
-                            _CLAIM + ".", _POPULATION + ".",
-                            _TREND, _FRESHNESS, _COUNTERPOINT_LONG, _CAVEAT]))])
+                        title=ui("where_figure_from", lang),
+                        entries=[(T(_VALUE, lang), " ".join([
+                            T(_CLAIM, lang) + ".", T(_POPULATION, lang) + ".",
+                            T(_TREND, lang), T(_FRESHNESS, lang),
+                            T(_COUNTERPOINT_LONG, lang), T(_CAVEAT, lang)]))])
             st_space("v", s.project.spacing.title_gap)
-            st_write(bs.value, _VALUE, tag=t.div)
+            st_write(bs.value, T(_VALUE, lang), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.claim, _CLAIM, tag=t.div)
+            st_write(bs.claim, T(_CLAIM, lang), tag=t.div)
             st_space("v", "2vh")
-            st_write(bs.counterpoint, _COUNTERPOINT, tag=t.div)
+            st_write(bs.counterpoint, T(_COUNTERPOINT, lang), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.attribution, _ATTRIBUTION, " ",
+            st_write(bs.attribution, T(_ATTRIBUTION, lang), " ",
                      citation(*_CITEKEYS), tag=t.div)

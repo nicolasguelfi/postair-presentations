@@ -23,6 +23,8 @@ from streamtex.enums import Tags as t
 
 from custom.refs import citation
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T
 
 
 class BlockStyles:
@@ -39,26 +41,26 @@ bs = BlockStyles
 _ZOOM = 110
 
 # ── Le fait (source primaire, vérifiée 2026-08-02) ──────────────────────────
-_VALUE = "68 %"
-_CLAIM = "say AI skills are essential — only 48 % feel helped to build them"
-_COUNTERPOINT = "yet only half want it provided"
-_ATTRIBUTION = "HEPI, March 2026"
+_VALUE = {"en": "68 %"}
+_CLAIM = {"en": "say AI skills are essential — only 48 % feel helped to build them"}
+_COUNTERPOINT = {"en": "yet only half want it provided"}
+_ATTRIBUTION = {"en": "HEPI, March 2026"}
 #: La source du chiffre ET celle du contrepoint, dédupliquées.
 _CITEKEYS = ["hepi-survey-2026"]
 
 # ── Le panneau « Where this figure comes from » ─────────────────────────────
-_POPULATION = ("1,054 full-time UK undergraduates, polled by Savanta in "
-               "December 2025; weighted; margin of error approximately 3 %")
-_TREND = ("Institutions are moving: 38 % now provide AI tools to their "
-          "students, against 9 % two years earlier")
-_FRESHNESS = "Six months before this event."
-_COUNTERPOINT_LONG = ("The demand is not unanimous either. Half of students "
+_POPULATION = {"en": ("1,054 full-time UK undergraduates, polled by Savanta in "
+               "December 2025; weighted; margin of error approximately 3 %")}
+_TREND = {"en": ("Institutions are moving: 38 % now provide AI tools to their "
+          "students, against 9 % two years earlier")}
+_FRESHNESS = {"en": "Six months before this event."}
+_COUNTERPOINT_LONG = {"en": ("The demand is not unanimous either. Half of students "
                       "think their institution should provide AI tools — "
                       "which means half do not — and a quarter disagree "
-                      "outright.")
-_CAVEAT = ("Self-reported perception, not an audit of what is actually "
+                      "outright.")}
+_CAVEAT = {"en": ("Self-reported perception, not an audit of what is actually "
            "provided. The gap is widest in Arts and Humanities, where 26 % "
-           "feel supported against 53 % in STEM.")
+           "feel supported against 53 % in STEM.")}
 
 # ── La ligne long-wave qui ferme la série ───────────────────────────────────
 #: Déclaration qualitative sourcée, pas un chiffre : une année de publication
@@ -66,37 +68,38 @@ _CAVEAT = ("Self-reported perception, not an audit of what is actually "
 #: vérifiabilité) : le repère des deux sigmas de Bloom date de 1984, et les
 #: revues systématiques de l'IA en enseignement supérieur précèdent ChatGPT ;
 #: ce qui a rompu en 2022 est l'échelle, pas l'idée.
-_CLOSING = "AI in education did not begin in 2022"
+_CLOSING = {"en": "AI in education did not begin in 2022"}
 _CLOSING_CITEKEYS = ["bloom-2sigma", "zawacki-richter-2019",
                      "chiu-systematic-2023"]
 
 
 def build(lang: str = "en", **_):
-    st_marker(_VALUE)
+    st_marker(T(_VALUE, lang))
     with st_zoom(_ZOOM):
         with st_block(s.project.containers.page_fill_top):
             with st_grid(cols="92% 8%",
                          cell_styles=s.project.containers.grid_cell_centered) as g:
                 with g.cell():
-                    st_write(bs.title, "Already here — ",
-                             (s.project.titles.keyword, _ATTRIBUTION),
-                             tag=t.div, toc_lvl="+1", label=_VALUE)
+                    st_write(bs.title, ui("already_here", lang),
+                             (s.project.titles.keyword, T(_ATTRIBUTION, lang)),
+                             tag=t.div, toc_lvl="+1", label=T(_VALUE, lang))
                 with g.cell():
                     st_info_tooltip(
-                        title="Where this figure comes from",
-                        entries=[(_VALUE, " ".join([
-                            _CLAIM + ".", _POPULATION + ".",
-                            _TREND, _FRESHNESS, _COUNTERPOINT_LONG, _CAVEAT]))])
+                        title=ui("where_figure_from", lang),
+                        entries=[(T(_VALUE, lang), " ".join([
+                            T(_CLAIM, lang) + ".", T(_POPULATION, lang) + ".",
+                            T(_TREND, lang), T(_FRESHNESS, lang),
+                            T(_COUNTERPOINT_LONG, lang), T(_CAVEAT, lang)]))])
             st_space("v", s.project.spacing.title_gap)
-            st_write(bs.value, _VALUE, tag=t.div)
+            st_write(bs.value, T(_VALUE, lang), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.claim, _CLAIM, tag=t.div)
+            st_write(bs.claim, T(_CLAIM, lang), tag=t.div)
             st_space("v", "2vh")
-            st_write(bs.counterpoint, _COUNTERPOINT, tag=t.div)
+            st_write(bs.counterpoint, T(_COUNTERPOINT, lang), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.attribution, _ATTRIBUTION, " ",
+            st_write(bs.attribution, T(_ATTRIBUTION, lang), " ",
                      citation(*_CITEKEYS), tag=t.div)
             # La ligne long-wave ferme la série.
             st_space("v", "2vh")
-            st_write(bs.closing, _CLOSING, " ",
+            st_write(bs.closing, T(_CLOSING, lang), " ",
                      citation(*_CLOSING_CITEKEYS), tag=t.div)

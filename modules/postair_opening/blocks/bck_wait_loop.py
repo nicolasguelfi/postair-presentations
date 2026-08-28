@@ -40,6 +40,7 @@ from pathlib import Path
 
 from custom.styles import Styles as s
 from postair_data import film_clip
+from postair_lang import T
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -60,9 +61,12 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "Waiting screen"}
+_HINT = {"en": "▶ play · loop · sound on"}
+
 
 def build(lang: str = "en", **_):
-    st_marker("Waiting screen")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.media_fullscreen):
         # The stage is bounded by the FULL window height; the video fills it.
         with st_block(s.project.containers.media_stage(_CLIP_RATIO, 100)):
@@ -71,4 +75,4 @@ def build(lang: str = "en", **_):
             with ai_marked(fit=False, top=True):
                 st_video(str(_MEDIA / film_clip("axes-intro", "en")), loop=True, autoplay=True)
         with st_block(s.project.containers.media_hint_overlay):
-            st_write(bs.hint, "▶ play · loop · sound on", tag=t.div)
+            st_write(bs.hint, T(_HINT, lang), tag=t.div)

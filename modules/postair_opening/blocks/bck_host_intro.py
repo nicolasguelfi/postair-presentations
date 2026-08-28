@@ -25,6 +25,7 @@ will do together » (agenda comes after the framing facts).
 from pathlib import Path
 
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -46,10 +47,23 @@ _SYNTHETIC = True
 # TODO-NG — chaque fait est à VALIDER avant projection ; rien d'inventé ne
 # passe devant 1500 personnes. (fait court, détail lisible du fond.)
 _FACTS = [
-    ("Dr. Nicolas Guelfi", "your host for these three hours"),
-    ("Professor, FSTM", "software engineering & artifical intelligence · University of Luxembourg"),  # TODO-NG vérifier l'intitulé exact
-    ("POSTAIR", "author of the posture instrument used today ;)"),    # TODO-NG formulation
+    ({"en": "Dr. Nicolas Guelfi"}, {"en": "your host for these three hours"}),
+    ({"en": "Professor, FSTM"}, {"en": "software engineering & artifical intelligence · University of Luxembourg"}),  # TODO-NG vérifier l'intitulé exact
+    ({"en": "POSTAIR"}, {"en": "author of the posture instrument used today ;)"}),    # TODO-NG formulation
 ]
+
+_MARKER = {"en": "Your host"}
+_TITLE = {"en": ("Your ", (s.project.titles.keyword, "host"))}
+_TIP_TITLE = {"en": "About the host"}
+# TODO-NG — panneau à remplir par l'auteur.
+_TIP = [
+    ({"en": "Who"}, {"en": "To be provided by the author."}),
+    ({"en": "The nine incarnations"},
+     {"en": ("The host appears in each of the nine postures of the instrument: "
+             "no posture is shameful, and every one of them will be argued for "
+             "today.")}),
+]
+_CAPTION = {"en": "one host · nine postures"}
 
 
 class BlockStyles:
@@ -63,23 +77,17 @@ bs = BlockStyles
 
 
 def build(lang: str = "en", **_):
-    st_marker("Your host")
+    st_marker(T(_MARKER, lang))
     incarnations_ready = (_STATIC / _INCARNATIONS).exists()
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Your ", (s.project.titles.keyword, "host"),
-                         tag=t.div, toc_lvl="+1", label="Your host")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="About the host",
-                    entries=[
-                        # TODO-NG — panneau à remplir par l'auteur.
-                        ("Who", "To be provided by the author."),
-                        ("The nine incarnations", "The host appears in each of the nine "
-                         "postures of the instrument: no posture is shameful, and every "
-                         "one of them will be argued for today."),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", "2vh")
         if incarnations_ready:
@@ -88,7 +96,7 @@ def build(lang: str = "en", **_):
                      alt="The host portrayed nine times, once in each of the "
                          "nine postures of the instrument",
                      overlay=dd35_overlay(_SYNTHETIC))
-            st_write(bs.caption, "one host · nine postures", tag=t.div)
+            st_write(bs.caption, T(_CAPTION, lang), tag=t.div)
         else:
             with st_grid(cols="40% 60%", gap="1.5vw",
                          cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -101,5 +109,5 @@ def build(lang: str = "en", **_):
                     with st_zoom(150):
                         for fact, detail in _FACTS:
                             with st_block(s.project.cards.blue):
-                                st_write(bs.fact, fact, tag=t.div)
-                                st_write(bs.detail, detail, tag=t.div)
+                                st_write(bs.fact, T(fact, lang), tag=t.div)
+                                st_write(bs.detail, T(detail, lang), tag=t.div)

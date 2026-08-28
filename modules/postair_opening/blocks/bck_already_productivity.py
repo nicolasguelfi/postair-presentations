@@ -20,6 +20,8 @@ from streamtex.enums import Tags as t
 
 from custom.refs import citation
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T
 
 
 class BlockStyles:
@@ -35,10 +37,10 @@ bs = BlockStyles
 _ZOOM = 130
 
 # ── Le fait (source primaire, vérifiée 2026-08-02) ──────────────────────────
-_VALUE = "−40 %"
-_CLAIM = "time on the task, and 18 % higher output quality, with generative AI"
-_COUNTERPOINT = "and 17 % lower once it is taken away"
-_ATTRIBUTION = "Science, July 2023"
+_VALUE = {"en": "−40 %"}
+_CLAIM = {"en": "time on the task, and 18 % higher output quality, with generative AI"}
+_COUNTERPOINT = {"en": "and 17 % lower once it is taken away"}
+_ATTRIBUTION = {"en": "Science, July 2023"}
 #: La source du chiffre PUIS celle du contrepoint — un chiffre projeté sans
 #: la publication qui le nuance serait un chiffre arrangé. Population du
 #: contrepoint (jamais projetée, gardée pour la vérifiabilité) : nearly 1,000
@@ -47,48 +49,49 @@ _ATTRIBUTION = "Science, July 2023"
 _CITEKEYS = ["noy-zhang-2023", "bastani-guardrails-2025"]
 
 # ── Le panneau « Where this figure comes from » ─────────────────────────────
-_POPULATION = ("453 college-educated professionals in a pre-registered "
+_POPULATION = {"en": ("453 college-educated professionals in a pre-registered "
                "randomised controlled trial on occupation-specific writing "
-               "tasks; half given ChatGPT")
-_TREND = ("The gain was largest for the weakest writers, compressing the "
-          "spread between workers")
-_FRESHNESS = ("Three years old, and kept deliberately: it remains the "
+               "tasks; half given ChatGPT")}
+_TREND = {"en": ("The gain was largest for the weakest writers, compressing the "
+          "spread between workers")}
+_FRESHNESS = {"en": ("Three years old, and kept deliberately: it remains the "
               "peer-reviewed anchor in Science for generative-AI productivity "
               "in knowledge work, and no larger randomised replication has "
-              "displaced it.")
-_COUNTERPOINT_LONG = ("The gain belongs to the task, not to the person. "
+              "displaced it.")}
+_COUNTERPOINT_LONG = {"en": ("The gain belongs to the task, not to the person. "
                       "School students given an unguarded GPT-4 tutor scored "
                       "48 % higher while it was available and 17 % lower than "
                       "the control group once it was taken away — a loss that "
                       "disappeared when the tutor was constrained to give "
-                      "hints instead of answers.")
-_CAVEAT = ("The two studies answer different questions — professionals "
+                      "hints instead of answers.")}
+_CAVEAT = {"en": ("The two studies answer different questions — professionals "
            "performing, students learning — and that is the point: performing "
-           "well and learning are not the same measurement.")
+           "well and learning are not the same measurement.")}
 
 
 def build(lang: str = "en", **_):
-    st_marker(_VALUE)
+    st_marker(T(_VALUE, lang))
     with st_zoom(_ZOOM):
         with st_block(s.project.containers.page_fill_top):
             with st_grid(cols="92% 8%",
                          cell_styles=s.project.containers.grid_cell_centered) as g:
                 with g.cell():
-                    st_write(bs.title, "Already here — ",
-                             (s.project.titles.keyword, _ATTRIBUTION),
-                             tag=t.div, toc_lvl="+1", label=_VALUE)
+                    st_write(bs.title, ui("already_here", lang),
+                             (s.project.titles.keyword, T(_ATTRIBUTION, lang)),
+                             tag=t.div, toc_lvl="+1", label=T(_VALUE, lang))
                 with g.cell():
                     st_info_tooltip(
-                        title="Where this figure comes from",
-                        entries=[(_VALUE, " ".join([
-                            _CLAIM + ".", _POPULATION + ".",
-                            _TREND, _FRESHNESS, _COUNTERPOINT_LONG, _CAVEAT]))])
+                        title=ui("where_figure_from", lang),
+                        entries=[(T(_VALUE, lang), " ".join([
+                            T(_CLAIM, lang) + ".", T(_POPULATION, lang) + ".",
+                            T(_TREND, lang), T(_FRESHNESS, lang),
+                            T(_COUNTERPOINT_LONG, lang), T(_CAVEAT, lang)]))])
             st_space("v", s.project.spacing.title_gap)
-            st_write(bs.value, _VALUE, tag=t.div)
+            st_write(bs.value, T(_VALUE, lang), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.claim, _CLAIM, tag=t.div)
+            st_write(bs.claim, T(_CLAIM, lang), tag=t.div)
             st_space("v", "2vh")
-            st_write(bs.counterpoint, _COUNTERPOINT, tag=t.div)
+            st_write(bs.counterpoint, T(_COUNTERPOINT, lang), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.attribution, _ATTRIBUTION, " ",
+            st_write(bs.attribution, T(_ATTRIBUTION, lang), " ",
                      citation(*_CITEKEYS), tag=t.div)
