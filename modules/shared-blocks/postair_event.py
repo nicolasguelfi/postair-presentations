@@ -29,6 +29,7 @@ AGENDA = [
 # de la veille peut essayer. Ils doivent correspondre exactement aux campagnes
 # créées dans la console /admin de sumvadis.
 DAYS = [
+    ("BEFORE AIDAY", "650001"),
     ("Monday 8 September", "201048"),
     ("Tuesday 9 September", "101048"),
     ("Wednesday 10 September", "091048"),
