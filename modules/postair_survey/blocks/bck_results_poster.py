@@ -55,9 +55,9 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "The Results — poster"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "Results"))}
-_LABEL = {"en": "The Results"}
+_MARKER = {"en": "The Results — poster", "fr": "Les Résultats — affiche"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "Results")), "fr": ("Les ", (s.project.titles.keyword, "Résultats"))}
+_LABEL = {"en": "The Results", "fr": "Les Résultats"}
 
 
 def build(lang: str = "en", **_):

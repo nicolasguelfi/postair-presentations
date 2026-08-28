@@ -20,27 +20,27 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "Consent"}
-_TITLE = {"en": ("Consent — ", (s.project.titles.keyword, "nothing personal"))}
+_MARKER = {"en": "Consent", "fr": "Consentement"}
+_TITLE = {"en": ("Consent — ", (s.project.titles.keyword, "nothing personal")), "fr": ("Consentement — ", (s.project.titles.keyword, "rien de personnel"))}
 _MESSAGES = [
-    ({"en": "Nothing personal is asked"},
+    ({"en": "Nothing personal is asked", "fr": "Rien de personnel n'est demandé"},
      {"en": ("No name, no email, no account — nothing on this screen can "
-             "identify you.")}),
-    ({"en": "Your explicit consent"},
+             "identify you."), "fr": "Ni nom, ni e-mail, ni compte — rien sur cet écran ne peut vous identifier."}),
+    ({"en": "Your explicit consent", "fr": "Votre consentement explicite"},
      {"en": ("The survey starts only after you accept — participation is "
-             "voluntary, and you can stop at any time.")}),
-    ({"en": "Anonymous by construction"},
+             "voluntary, and you can stop at any time."), "fr": "Le sondage ne démarre qu'après votre accord — la participation est volontaire, et vous pouvez arrêter à tout moment."}),
+    ({"en": "Anonymous by construction", "fr": "Anonyme par construction"},
      {"en": ("Your report is computed on YOUR device; only anonymous answers "
-             "reach the room's averages.")}),
+             "reach the room's averages."), "fr": "Votre rapport est calculé sur VOTRE appareil ; seules des réponses anonymes rejoignent les moyennes de la salle."}),
 ]
-_TIP_TITLE = {"en": "This screen"}
-_TIP_CAPTURE = ({"en": "Real capture"},
+_TIP_TITLE = {"en": "This screen", "fr": "Cet écran"}
+_TIP_CAPTURE = ({"en": "Real capture", "fr": "Capture réelle"},
                 {"en": ("The actual application, mobile facet, dark theme — "
                         "frozen from the sumvadis media registry, never "
-                        "redrawn.")})
+                        "redrawn."), "fr": "La vraie application, facette mobile, thème sombre — gelée depuis le registre média de sumvadis, jamais redessinée."})
 #: La tête « Under 18 » vient du lexique (partagée avec la slide Welcome Week).
 _TIP_UNDER_18 = {"en": ("You can play and see your own results — your record is "
-                        "simply excluded from the research analysis.")}
+                        "simply excluded from the research analysis."), "fr": "Vous pouvez jouer et voir vos propres résultats — votre enregistrement est simplement exclu de l'analyse de recherche."}
 
 
 def build(lang: str = "en", **_):

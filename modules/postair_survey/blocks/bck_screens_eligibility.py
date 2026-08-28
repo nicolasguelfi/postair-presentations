@@ -21,31 +21,31 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "Age requirement"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "age"), " requirement")}
+_MARKER = {"en": "Age requirement", "fr": "Condition d'âge"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "age"), " requirement"), "fr": ("La condition d'", (s.project.titles.keyword, "âge"), "")}
 _MESSAGES = [
-    ({"en": "A simple declaration"},
+    ({"en": "A simple declaration", "fr": "Une simple déclaration"},
      {"en": ("Two statements, pick the one that applies to you today — no "
              "birthdate, no proof, nothing stored about your age beyond the "
-             "category.")}),
-    ({"en": "Under 18? You still play"},
+             "category."), "fr": "Deux déclarations, choisissez celle qui vous correspond aujourd'hui — pas de date de naissance, pas de justificatif, rien de conservé sur votre âge, sauf la catégorie."}),
+    ({"en": "Under 18? You still play", "fr": "Moins de 18 ans ? Vous jouez"},
      {"en": ("Full survey, personal radar, archetypes, figures — the whole "
-             "experience, nothing less.")}),
-    ({"en": "The one difference"},
+             "experience, nothing less."), "fr": "Sondage complet, radar personnel, archétypes, figures — toute l'expérience, rien de moins."}),
+    ({"en": "The one difference", "fr": "La seule différence"},
      {"en": ("Only the answers of people aged 18 or over are recorded for "
              "research — an under-18 record is simply not counted in the "
-             "study.")}),
+             "study."), "fr": "Seules les réponses des 18 ans et plus sont enregistrées pour la recherche — l'enregistrement d'une personne mineure n'est simplement pas compté dans l'étude."}),
 ]
-_TIP_TITLE = {"en": "Why this gate"}
+_TIP_TITLE = {"en": "Why this gate", "fr": "Pourquoi ce seuil"}
 _TIP = [
-    ({"en": "Research ethics"},
+    ({"en": "Research ethics", "fr": "Éthique de recherche"},
      {"en": ("The survey is an academic research instrument: minors' answers "
              "are excluded from the study by design, without excluding minors "
-             "from the game.")}),
-    ({"en": "Declarative by choice"},
+             "from the game."), "fr": "Le sondage est un instrument de recherche universitaire : les réponses des personnes mineures sont exclues de l'étude par conception, sans les exclure du jeu."}),
+    ({"en": "Declarative by choice", "fr": "Déclaratif par choix"},
      {"en": ("No identity check — the gate relies on an honest declaration, "
              "consistent with a fully anonymous survey: verifying an age would "
-             "require knowing who you are.")}),
+             "require knowing who you are."), "fr": "Aucune vérification d'identité — le seuil repose sur une déclaration sur l'honneur, cohérente avec un sondage totalement anonyme : vérifier un âge exigerait de savoir qui vous êtes."}),
 ]
 
 

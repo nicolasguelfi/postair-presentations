@@ -16,24 +16,24 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "Your report"}
-_TITLE = {"en": ("Your ", (s.project.titles.keyword, "report"), " — the header")}
+_MARKER = {"en": "Your report", "fr": "Votre rapport"}
+_TITLE = {"en": ("Your ", (s.project.titles.keyword, "report"), " — the header"), "fr": ("Votre ", (s.project.titles.keyword, "rapport"), " — l'en-tête")}
 _MESSAGES = [
-    ({"en": "Yours, computed on your device"},
-     {"en": "The moment you send, the report opens — the server never sees it."}),
-    ({"en": "A portrait, not a grade"},
+    ({"en": "Yours, computed on your device", "fr": "Le vôtre, calculé sur votre appareil"},
+     {"en": "The moment you send, the report opens — the server never sees it.", "fr": "Dès l'envoi, le rapport s'ouvre — le serveur ne le voit jamais."}),
+    ({"en": "A portrait, not a grade", "fr": "Un portrait, pas une note"},
      {"en": ("Nothing on this page is a score; there is no result to be proud "
-             "or ashamed of.")}),
-    ({"en": "The gesture: scroll"},
-     {"en": "Everything the next slides show lives further down this same page."}),
+             "or ashamed of."), "fr": "Rien sur cette page n'est une note ; aucun résultat dont se vanter ou rougir."}),
+    ({"en": "The gesture: scroll", "fr": "Le geste : faire défiler"},
+     {"en": "Everything the next slides show lives further down this same page.", "fr": "Tout ce qu'affichent les slides suivantes est plus bas, sur cette même page."}),
 ]
-_TIP_TITLE = {"en": "The personal report"}
+_TIP_TITLE = {"en": "The personal report", "fr": "Le rapport personnel"}
 #: La première tête vient du lexique (``anonymous_by_design``).
 _TIP_ANON = {"en": ("Your answers stay on your device; only one anonymous "
-                    "record reaches the room's aggregates.")}
-_TIP_BELOW = ({"en": "Everything below"},
+                    "record reaches the room's aggregates."), "fr": "Vos réponses restent sur votre appareil ; un seul enregistrement anonyme rejoint les agrégats de la salle."}
+_TIP_BELOW = ({"en": "Everything below", "fr": "Tout ce qui suit"},
               {"en": ("Mascot card, radar, per-answer detail, nearest profiles, "
-                      "great figures — one scrolling page.")})
+                      "great figures — one scrolling page."), "fr": "Carte mascotte, radar, détail par réponse, profils les plus proches, grandes figures — une seule page à faire défiler."})
 
 
 def build(lang: str = "en", **_):

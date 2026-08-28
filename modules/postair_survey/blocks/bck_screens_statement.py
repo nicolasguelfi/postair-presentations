@@ -22,34 +22,34 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "A statement"}
-_TITLE = {"en": ("A statement, ", (s.project.titles.keyword, "six levels"), ", help")}
+_MARKER = {"en": "A statement", "fr": "Un énoncé"}
+_TITLE = {"en": ("A statement, ", (s.project.titles.keyword, "six levels"), ", help"), "fr": ("Un énoncé, ", (s.project.titles.keyword, "six niveaux"), ", une aide")}
 _MESSAGES = [
-    ({"en": "No right answer"},
+    ({"en": "No right answer", "fr": "Pas de bonne réponse"},
      {"en": ("A portrait, not a test — nothing is scored as correct, and "
-             "nobody sees your individual answers.")}),
-    ({"en": "Answer for YOURSELF"},
+             "nobody sees your individual answers."), "fr": "Un portrait, pas un test — rien n'est noté comme juste, et personne ne voit vos réponses individuelles."}),
+    ({"en": "Answer for YOURSELF", "fr": "Répondez pour VOUS"},
      {"en": ("Not for the image you would like to give — the result is only "
-             "useful if it is yours.")}),
-    ({"en": "“No opinion” ≠ a middle answer"},
+             "useful if it is yours."), "fr": "Pas pour l'image que vous aimeriez donner — le résultat n'est utile que s'il est le vôtre."}),
+    ({"en": "“No opinion” ≠ a middle answer", "fr": "« Sans opinion » ≠ le milieu"},
      {"en": ("A separate button OUTSIDE the six levels — excluded from your "
-             "scores, never counted as halfway.")}),
+             "scores, never counted as halfway."), "fr": "Un bouton à part, HORS des six niveaux — exclu de vos scores, jamais compté comme un milieu."}),
 ]
-_TIP_TITLE = {"en": "Six levels, no middle"}
+_TIP_TITLE = {"en": "Six levels, no middle", "fr": "Six niveaux, pas de milieu"}
 _TIP = [
-    ({"en": "A gentle forced choice"},
+    ({"en": "A gentle forced choice", "fr": "Un choix forcé, en douceur"},
      {"en": ("The middle of a scale attracts non-answers. If you truly have "
              "no opinion, use the dedicated button — it is excluded from your "
-             "scores.")}),
-    ({"en": "Why that matters"},
+             "scores."), "fr": "Le milieu d'une échelle attire les non-réponses. Si vous n'avez vraiment pas d'opinion, utilisez le bouton dédié — il est exclu de vos scores."}),
+    ({"en": "Why that matters", "fr": "Pourquoi ça compte"},
      {"en": ("A middle answer would be counted as a position halfway between "
              "the poles; 'no opinion' is counted as nothing at all. Confusing "
-             "them is the one mistake that distorts a profile.")}),
+             "them is the one mistake that distorts a profile."), "fr": "Une réponse du milieu compterait comme une position à mi-chemin entre les pôles ; « sans opinion » ne compte pour rien du tout. Les confondre est la seule erreur qui déforme un profil."}),
 ]
 #: La tête « Help per question » vient du lexique (partagée avec la slide de
 #: l'instrument).
 _TIP_HELP = {"en": ("Every statement has a help button: clarification, anchors "
-                    "and two concrete examples.")}
+                    "and two concrete examples."), "fr": "Chaque énoncé a un bouton d'aide : clarification, repères et deux exemples concrets."}
 
 
 def build(lang: str = "en", **_):
