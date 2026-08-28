@@ -81,6 +81,17 @@ uv run python _project/tools/check_all.py                                       
   suivent la ligne PAPERCUT (`custom/prompts.py`) en mode éditable avec repli
   tant que l'image managée n'existe pas — jamais de trou projeté.
 
+- **Traduire un module (plan-i18n, recette R1→R9)** : `check_i18n.py
+  --inventory <module>` donne le work-order ; d'abord la STRUCTURE (chaque
+  littéral devient une feuille `{"en": …}`, régression EN nulle, commit),
+  puis les lots de ~8 blocs traduits (V1) → rétro-traduits à l'aveugle (V2)
+  → trois lentilles (glossaire, faits, amphi/R3) → assemblage, un commit par
+  lot ; puis planche EN/FR pour NG. Un module sort de `I18N_PENDING`
+  (`check_i18n.py`) au tag `i18n/<module>-done` : sa parité devient ROUGE.
+  L'export EN doit rester identique à `_project/i18n/baseline/` à CHAQUE
+  commit (`check_i18n.py --regress`) ; refiger la baseline (`--baseline`)
+  seulement quand l'anglais évolue de façon voulue.
+
 ## 4. Campagnes médias — regel et matérialisation
 
 Chaîne générale : **publier en amont → regeler le catalogue → purger →
@@ -100,6 +111,9 @@ uv run python _project/tools/check_shared_freeze.py
 
 # Débats (après toute campagne hub) — le contrôle AVAL OBLIGATOIRE
 uv run python _project/tools/build_debates_content.py --work-order
+
+# Glossaire (après toute campagne de traduction du hub)
+uv run python _project/tools/build_glossary_content.py --work-order
 ```
 
 - Le gel des captures est **matrice complète + opportuniste** : la matrice de
@@ -169,6 +183,10 @@ Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncé
   casse ; clé inconnue = erreur bruyante voulue.
 - Un artefact GELÉ ne porte jamais d'adresse `/c/` (règle I3) — uniquement du
   contenu-adressé ou du `/v/` horodaté.
+- **`T("chaîne")` lève** : une chaîne nue passée au résolveur de langue est
+  une migration inachevée, pas une traduction manquante ; une feuille sans
+  `fr` retombe sur l'anglais en séance et c'est `check_i18n --parity` qui la
+  signale avant la répétition (règle R-i18n).
 
 ## Annexe — index des décisions datées (pointeurs, jamais de copie)
 
@@ -190,3 +208,4 @@ Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncé
 | Films matérialisés seulement où projetés | 2026-08-23 | docstring `sync_media.py` |
 | Exception vidéos de figures embarquées (duos) | 2026-08-23 | `CLAUDE.md` + `sync_media.py` |
 | Un écran = un bloc ; préfixe pluriel | 2026-08-23 | docstrings `bck_screens_*` + book |
+| i18n D1–D4 (feuilles dans le bloc, `block_kwargs`, double export, porte rouge) | 2026-08-28 | règle R-i18n + docstrings `postair_lang.py`, `check_i18n.py` |

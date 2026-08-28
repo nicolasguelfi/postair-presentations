@@ -27,6 +27,10 @@ Portes, dans l'ordre :
    sont une dette connue → avertissement). Sauté sans configuration hub.
 7. **exports** — ``check_export_media.py`` : src présents + marque DD-35
    (sauté avec ``--fast`` : c'est la porte lente, elle régénère les exports).
+8. **i18n** — ``check_i18n.py`` : l'anglais projeté n'a pas bougé
+   (``--regress``, sauté avec ``--fast``) et les modules sortis de
+   ``I18N_PENDING`` n'ont ni littéral nu ni feuille sans ``fr`` ; les modules
+   encore en attente ne donnent qu'un avertissement (plan-i18n, 2026-08-28).
 
 Ne modifie rien. Code de sortie 0 = tout est vert ; 1 = au moins une porte
 rouge. Les avertissements n'affectent pas le code de sortie.
@@ -192,6 +196,36 @@ def gate_exports() -> None:
             "" if code == 0 else last)
 
 
+# ── 8. i18n ─────────────────────────────────────────────────────────────────
+
+def gate_i18n(fast: bool) -> None:
+    cmd = [sys.executable, str(_TOOLS / "check_i18n.py"),
+           "--inventory" if fast else "--report"]
+    code, out = _run(cmd)
+    if fast:
+        # Inventaire seul : jamais rouge, il compte ce qui reste à migrer.
+        counts = re.findall(r"(\d+) littéral\(aux\) nu\(s\), (\d+) feuille", out)
+        bare = sum(int(a) for a, _b in counts)
+        missing = sum(int(b) for _a, b in counts)
+        _record("i18n (inventaire ; régression sautée --fast)", True,
+                f"{bare} littéral(aux) nu(s), {missing} feuille(s) sans fr",
+                warn=bool(bare or missing))
+        return
+    m = re.search(r"\*\*(\d+) littéral\(aux\) nu\(s\) · (\d+) feuille\(s\) sans fr · "
+                  r"(\d+) régression\(s\) EN · (\d+) exigé\(s\) manquant\(s\)\*\*", out)
+    if not m:
+        _record("i18n (régression EN + parité)", False, "sortie illisible")
+        return
+    bare, missing, regress, required = map(int, m.groups())
+    if regress or required:
+        _record("i18n (régression EN + parité)", False,
+                f"{regress} régression(s) EN, {required} exigé(s) manquant(s)")
+    else:
+        _record("i18n (régression EN + parité)", True,
+                f"{bare} littéral(aux) nu(s), {missing} feuille(s) sans fr (modules en attente)"
+                if bare or missing else "", warn=bool(bare or missing))
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--fast", action="store_true",
@@ -210,6 +244,7 @@ def main() -> int:
                 "sauté (--fast)", warn=True)
     else:
         gate_exports()
+    gate_i18n(args.fast)
 
     fails = [g for g, s, _d in results if s == "FAIL"]
     warns = [g for g, s, _d in results if s == "WARN"]
