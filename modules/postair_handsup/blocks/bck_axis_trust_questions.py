@@ -15,4 +15,4 @@ from custom.axis_slides import questions_slide
 
 
 def build():
-    questions_slide("TRU", zoomCell=70)
+    questions_slide("TRU", zoomCell=170)

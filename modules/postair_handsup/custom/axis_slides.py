@@ -39,7 +39,7 @@ class _S:
 #: que ``screen_slide`` de survey) : un bloc ne porte QUE ce qu'il surcharge.
 _ZOOMS = {
     "questions":    {"zoomTitle": 130, "zoomPole": 100, "zoomCell": 70},
-    "pole":         {"zoomTitle": 115, "zoomPole": 120, "zoomCell": 135},
+    "pole":         {"zoomTitle": 115, "zoomPole": 120, "zoomCell": 170},
     "vote":         {"zoomTitle": 130, "zoomImage": 100, "zoomText": 180},
     "vote_abstain": {"zoomTitle": 130, "zoomImage": 100, "zoomText": 300},
 }

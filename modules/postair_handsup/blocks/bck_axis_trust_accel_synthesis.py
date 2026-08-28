@@ -13,4 +13,4 @@ from custom.axis_slides import pole_synthesis_slide
 
 
 def build():
-    pole_synthesis_slide("TRU", "accel")
+    pole_synthesis_slide("TRU", "accel", zoomCell=170)
