@@ -13,8 +13,8 @@ The full lines live in the tooltip.
 from custom.render import waves_grid_slide
 from custom.styles import Styles as s
 
-_MARKER = {"en": "From the computer to the Web"}
-_TITLE = {"en": ("From the computer to the ", (s.project.titles.keyword, "Web"))}
+_MARKER = {"en": "From the computer to the Web", "fr": "De l'ordinateur au Web"}
+_TITLE = {"en": ("From the computer to the ", (s.project.titles.keyword, "Web")), "fr": ("De l'ordinateur au ", (s.project.titles.keyword, "Web"))}
 
 
 def build(lang: str = "en", **_):

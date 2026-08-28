@@ -28,32 +28,32 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Why look back"}
-_TITLE = {"en": ("Why look ", (s.project.titles.keyword, "back"))}
-_TIP_TITLE = {"en": "The frame, in full sentences"}
+_MARKER = {"en": "Why look back", "fr": "Pourquoi le passé"}
+_TITLE = {"en": ("Why look ", (s.project.titles.keyword, "back")), "fr": ("Pourquoi le ", (s.project.titles.keyword, "passé"))}
+_TIP_TITLE = {"en": "The frame, in full sentences", "fr": "Le cadre, en phrases complètes"}
 _TIP = [
-    ({"en": "A cycle"},
+    ({"en": "A cycle", "fr": "Un cycle"},
      {"en": "Kuhn, The Structure of Scientific Revolutions (1962): "
             "resistances, conversions and generation effects are part of "
-            "every paradigm shift."}),
-    ({"en": "A repetition"},
+            "every paradigm shift.", "fr": "Kuhn, La Structure des révolutions scientifiques (1962) : résistances, conversions et effets de génération font partie de tout changement de paradigme."}),
+    ({"en": "A repetition", "fr": "Une répétition"},
      {"en": "Perez, Technological Revolutions and Financial Capital (2002): "
             "each surge brings the same sequence of irruption, frenzy, "
-            "crisis and deployment."}),
-    ({"en": "An inheritance"},
+            "crisis and deployment.", "fr": "Perez, Technological Revolutions and Financial Capital (2002) : chaque grande vague enchaîne la même séquence — irruption, frénésie, crise, déploiement."}),
+    ({"en": "An inheritance", "fr": "Un héritage"},
      {"en": "The POSTAIR report documents it figure by figure: today's "
             "enthusiasts, sceptics and regulators all have documented "
-            "ancestors in the sixteen previous waves."}),
+            "ancestors in the sixteen previous waves.", "fr": "Le rapport POSTAIR le documente figure par figure : enthousiastes, sceptiques et régulateurs d'aujourd'hui ont tous des ancêtres documentés dans les seize vagues précédentes."}),
 ]
 # Les trois cellules de la grille 2+1 — titre + fragments (la citation
 # reste hors feuille : ``citation()`` est un code, pas du texte).
-_CYCLE = {"en": "A cycle"}
-_CYCLE_TEXT = {"en": "paradigm → anomaly → crisis → new paradigm "}
-_REPETITION = {"en": "A repetition"}
-_REPETITION_TEXT = {"en": "great surges repeat their social pattern "}
-_INHERITANCE = {"en": "An inheritance"}
+_CYCLE = {"en": "A cycle", "fr": "Un cycle"}
+_CYCLE_TEXT = {"en": "paradigm → anomaly → crisis → new paradigm ", "fr": "paradigme → anomalie → crise → nouveau paradigme "}
+_REPETITION = {"en": "A repetition", "fr": "Une répétition"}
+_REPETITION_TEXT = {"en": "great surges repeat their social pattern ", "fr": "les grandes vagues répètent leur schéma social "}
+_INHERITANCE = {"en": "An inheritance", "fr": "Un héritage"}
 _INHERITANCE_TEXT = {"en": ("every AI stance has a documented ",
-                            (s.project.colors.keyword, "ancestor"))}
+                            (s.project.colors.keyword, "ancestor")), "fr": ("chaque posture IA a son ", (s.project.colors.keyword, "ancêtre documenté"))}
 
 
 def build(lang: str = "en", **_):

@@ -12,8 +12,8 @@ Land here and slow down: « this one is ours ». One click opens it.
 from custom.render import wave_hero_grid_slide
 from custom.styles import Styles as s
 
-_MARKER = {"en": "The seventeenth wave"}
-_TITLE = {"en": ("The seventeenth ", (s.project.titles.keyword, "wave"))}
+_MARKER = {"en": "The seventeenth wave", "fr": "La dix-septième vague"}
+_TITLE = {"en": ("The seventeenth ", (s.project.titles.keyword, "wave")), "fr": ("La dix-septième ", (s.project.titles.keyword, "vague"))}
 
 
 def build(lang: str = "en", **_):

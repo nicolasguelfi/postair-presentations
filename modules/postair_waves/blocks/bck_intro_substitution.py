@@ -31,27 +31,27 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "The substitution"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "substitution"), " protocol")}
-_TIP_TITLE = {"en": "The protocol, in full"}
+_MARKER = {"en": "The substitution", "fr": "La substitution"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "substitution"), " protocol"), "fr": ("La ", (s.project.titles.keyword, "substitution"), " comme protocole")}
+_TIP_TITLE = {"en": "The protocol, in full", "fr": "Le protocole, en entier"}
 _TIP = [
-    ({"en": "Same construct"},
+    ({"en": "Same construct", "fr": "Le même construit"},
      {"en": "Every figure answers the same 54-item questionnaire; only "
             "the era's term replaces « artificial intelligence » — the "
-            "hub's METHOD §2."}),
-    ({"en": "Verbatim for AI"},
+            "hub's METHOD §2.", "fr": "Chaque figure répond au même questionnaire de 54 items ; seul le terme de l'époque remplace « intelligence artificielle » — METHOD § 2 du hub."}),
+    ({"en": "Verbatim for AI", "fr": "Verbatim pour l'IA"},
      {"en": "The figures of the AI wave answer with no substitution: it "
-            "is the studied wave."}),
-    ({"en": "Per-axis rules"},
+            "is the studied wave.", "fr": "Les figures de la vague IA répondent sans substitution : c'est la vague étudiée."}),
+    ({"en": "Per-axis rules", "fr": "Règles par axe"},
      {"en": "Trust maps to the epistemic authorities of the era, "
             "centralisation to its governance structures — documented "
-            "per figure in the hub's evidence dossiers."}),
+            "per figure in the hub's evidence dossiers.", "fr": "La confiance porte sur les autorités épistémiques de l'époque, la centralisation sur ses structures de gouvernance — documenté figure par figure dans les dossiers de preuves du hub."}),
 ]
-_BIG = {"en": "same 54 questions"}
+_BIG = {"en": "same 54 questions", "fr": "mêmes 54 questions"}
 _LINE = {"en": ("« AI » becomes ",
-                (s.project.colors.keyword, "the technology of their time"))}
+                (s.project.colors.keyword, "the technology of their time")), "fr": ("« IA » devient ", (s.project.colors.keyword, "la technologie de leur temps"))}
 #: Un exemple du gel : nom de la vague et terme de substitution (données).
-_EXAMPLE = {"en": "{name} — “{substitution}”"}
+_EXAMPLE = {"en": "{name} — “{substitution}”", "fr": "{name} — « {substitution} »"}
 
 
 def build(lang: str = "en", **_):

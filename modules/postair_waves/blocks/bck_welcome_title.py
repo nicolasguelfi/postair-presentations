@@ -25,12 +25,12 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "The seventeen waves"}
-_TITLE = {"en": ("The seventeen ", (s.project.titles.keyword, "waves"))}
+_MARKER = {"en": "The seventeen waves", "fr": "Les dix-sept vagues"}
+_TITLE = {"en": ("The seventeen ", (s.project.titles.keyword, "waves")), "fr": ("Les dix-sept ", (s.project.titles.keyword, "vagues"))}
 _LINE_1 = {"en": ("16 revolutions ", (s.project.colors.keyword, "crossed"),
-                  " · 1 being crossed")}
+                  " · 1 being crossed"), "fr": ("16 révolutions ", (s.project.colors.keyword, "traversées"), " · 1 en cours")}
 _LINE_2 = {"en": ("every crisis ", (s.project.colors.amber, "opened"),
-                  " — every crisis overcome")}
+                  " — every crisis overcome"), "fr": ("chaque crise ", (s.project.colors.amber, "ouverte"), " — chaque crise surmontée")}
 
 
 def build(lang: str = "en", **_):

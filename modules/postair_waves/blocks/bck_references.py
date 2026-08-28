@@ -27,10 +27,10 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "References"}
-_TITLE = {"en": ("Where the frame ", (s.project.titles.keyword, "comes from"))}
+_MARKER = {"en": "References", "fr": "Références"}
+_TITLE = {"en": ("Where the frame ", (s.project.titles.keyword, "comes from")), "fr": ("Le cadre et ", (s.project.titles.keyword, "ses sources"))}
 _LEAD = {"en": "the theoretical frame of the deck — frozen from the "
-               "hub's bibliography"}
+               "hub's bibliography", "fr": "le cadre théorique du deck — gelé à partir de la bibliographie du hub"}
 
 
 def build(lang: str = "en", **_):

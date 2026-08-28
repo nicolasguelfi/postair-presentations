@@ -26,12 +26,12 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Sixteen and one"}
-_TITLE = {"en": ("Sixteen crises ", (s.project.titles.keyword, "overcome"))}
-_GIANT = {"en": "16 opened · 16 overcome"}
-_LINE = {"en": "rules, uses, postures — every time"}
+_MARKER = {"en": "Sixteen and one", "fr": "Seize et une"}
+_TITLE = {"en": ("Sixteen crises ", (s.project.titles.keyword, "overcome")), "fr": ("Seize crises ", (s.project.titles.keyword, "surmontées"))}
+_GIANT = {"en": "16 opened · 16 overcome", "fr": "16 ouvertes · 16 surmontées"}
+_LINE = {"en": "rules, uses, postures — every time", "fr": "règles, usages, postures — à chaque fois"}
 _YOURS = {"en": ("the seventeenth is ", (s.project.colors.amber, "yours"),
-                 " — the survey measures your posture next")}
+                 " — the survey measures your posture next"), "fr": ("la dix-septième est ", (s.project.colors.amber, "la vôtre"), " — le sondage mesure maintenant votre posture")}
 
 
 def build(lang: str = "en", **_):
