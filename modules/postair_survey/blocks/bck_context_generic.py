@@ -20,6 +20,8 @@ university — the Welcome Week slide before it carries the academic frame.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -41,16 +43,30 @@ _LOGO = "images/logos/sumvadis-wordmark-white.png"
 _LOGO_WIDTH = "min(34vw, 90vh)"
 
 #: Une rangée = une icône + un message (même grammaire que la slide
-#: Welcome Week — les deux slides de contexte se répondent).
+#: Welcome Week — les deux slides de contexte se répondent). La promesse
+#: est commune aux deux slides : elle vient du lexique (``entertaining_survey``).
 _MESSAGES = [
-    ("🎡", bs.headline, "An entertaining survey to discover your postures "
-                        "facing the AI revolution."),
-    ("🙋", bs.message, "On a voluntary basis."),
+    ("🎡", bs.headline, "entertaining_survey"),
+    ("🙋", bs.message, {"en": "On a voluntary basis."}),
 ]
+_MARKER = {"en": "Any other context"}
+_LABEL = {"en": "Beyond the university"}
+_TIP_TITLE = {"en": "Beyond the university"}
+_TIP_ROOMS = ({"en": "One tool, many rooms"},
+              {"en": ("The same survey runs at a "
+                      "company workshop, a fair booth or an evening event — "
+                      "only the frame changes, never the instrument.")})
+#: Tête « Voluntary » : lexique (partagée avec la slide Welcome Week).
+_TIP_VOLUNTARY = {"en": ("Nobody has to answer. You can stop at "
+                         "any time, and an unfinished survey is simply never "
+                         "sent.")}
+#: Tête « Anonymous by design » : lexique.
+_TIP_ANON = {"en": ("Nothing personal is collected; "
+                    "your report is computed on YOUR device.")}
 
 
 def build(lang: str = "en", **_):
-    st_marker("Any other context")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         # Le gabarit maison 92/8 : le wordmark tient lieu de titre, le tooltip
         # garde sa cellule habituelle en haut à droite.
@@ -61,16 +77,11 @@ def build(lang: str = "en", **_):
                          uri=_LOGO, alt="sumvadis wordmark")
             with g.cell():
                 st_info_tooltip(
-                    title="Beyond the university",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("One tool, many rooms", "The same survey runs at a "
-                         "company workshop, a fair booth or an evening event — "
-                         "only the frame changes, never the instrument."),
-                        ("Voluntary", "Nobody has to answer. You can stop at "
-                         "any time, and an unfinished survey is simply never "
-                         "sent."),
-                        ("Anonymous by design", "Nothing personal is collected; "
-                         "your report is computed on YOUR device."),
+                        (T(_TIP_ROOMS[0], lang), T(_TIP_ROOMS[1], lang)),
+                        (ui("voluntary", lang), T(_TIP_VOLUNTARY, lang)),
+                        (ui("anonymous_by_design", lang), T(_TIP_ANON, lang)),
                     ],
                 )
         st_space("v", "6vh")
@@ -80,6 +91,8 @@ def build(lang: str = "en", **_):
                 with g.cell():
                     st_write(bs.icon, icon, tag=t.div)
                 with g.cell():
-                    toc = ({"toc_lvl": "+1", "label": "Beyond the university"}
+                    toc = ({"toc_lvl": "+1", "label": T(_LABEL, lang)}
                            if index == 0 else {})
-                    st_write(style, message, tag=t.div, **toc)
+                    text = (ui(message, lang) if isinstance(message, str)
+                            else T(message, lang))
+                    st_write(style, text, tag=t.div, **toc)

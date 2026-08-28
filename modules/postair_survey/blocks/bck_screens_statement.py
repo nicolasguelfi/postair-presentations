@@ -17,38 +17,53 @@ yourself. Some statements feel « reversed » — that is intentional
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "A statement"}
+_TITLE = {"en": ("A statement, ", (s.project.titles.keyword, "six levels"), ", help")}
+_MESSAGES = [
+    ({"en": "No right answer"},
+     {"en": ("A portrait, not a test — nothing is scored as correct, and "
+             "nobody sees your individual answers.")}),
+    ({"en": "Answer for YOURSELF"},
+     {"en": ("Not for the image you would like to give — the result is only "
+             "useful if it is yours.")}),
+    ({"en": "“No opinion” ≠ a middle answer"},
+     {"en": ("A separate button OUTSIDE the six levels — excluded from your "
+             "scores, never counted as halfway.")}),
+]
+_TIP_TITLE = {"en": "Six levels, no middle"}
+_TIP = [
+    ({"en": "A gentle forced choice"},
+     {"en": ("The middle of a scale attracts non-answers. If you truly have "
+             "no opinion, use the dedicated button — it is excluded from your "
+             "scores.")}),
+    ({"en": "Why that matters"},
+     {"en": ("A middle answer would be counted as a position halfway between "
+             "the poles; 'no opinion' is counted as nothing at all. Confusing "
+             "them is the one mistake that distorts a profile.")}),
+]
+#: La tête « Help per question » vient du lexique (partagée avec la slide de
+#: l'instrument).
+_TIP_HELP = {"en": ("Every statement has a help button: clarification, anchors "
+                    "and two concrete examples.")}
+
+
 def build(lang: str = "en", **_):
-    st_marker("A statement")
+    st_marker(T(_MARKER, lang))
     screen_slide(
-        ["A statement, ", (s.project.titles.keyword, "six levels"), ", help"],
+        TF(_TITLE, lang),
         "04-question",
         "Desktop screen of the survey journey: one statement with its six "
         "agreement levels and the help button, dark theme",
-        [
-            ("No right answer",
-            "A portrait, not a test — nothing is scored as correct, and "
-            "nobody sees your individual answers."),
-            ("Answer for YOURSELF",
-            "Not for the image you would like to give — the result is only "
-            "useful if it is yours."),
-            ("“No opinion” ≠ a middle answer",
-            "A separate button OUTSIDE the six levels — excluded from your "
-            "scores, never counted as halfway."),
-        ],
-        toc_label="A statement",
-        tooltip=("Six levels, no middle",
-                [("A gentle forced choice", "The middle of a scale attracts "
-                "non-answers. If you truly have no opinion, use the "
-                "dedicated button — it is excluded from your scores."),
-                ("Why that matters", "A middle answer would be counted as a "
-                "position halfway between the poles; 'no opinion' is "
-                "counted as nothing at all. Confusing them is the one "
-                "mistake that distorts a profile."),
-                ("Help per question", "Every statement has a help button: "
-                "clarification, anchors and two concrete examples.")]),
+        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
+        toc_label=T(_MARKER, lang),
+        tooltip=(T(_TIP_TITLE, lang),
+                 [*[(T(h, lang), T(d, lang)) for h, d in _TIP],
+                  (ui("help_per_question", lang), T(_TIP_HELP, lang))]),
         # Desktop PAYSAGE (NG 2026-08-21) : capture pleine scène en haut,
         # les trois règles en ligne dessous — permis par le gel matrice
         # complète (décision D). L'alerte « 1 octet » du 2026-08-21 était

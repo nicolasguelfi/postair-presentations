@@ -24,6 +24,7 @@ from custom.config import IS_EDITABLE
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.styles import Styles as s
 from custom.visuals import is_synthetic
+from postair_lang import T, TF
 from postair_pack.components.ai_mark import dd35_overlay
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -54,16 +55,20 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "The Results — poster"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "Results"))}
+_LABEL = {"en": "The Results"}
+
 
 def build(lang: str = "en", **_):
-    st_marker("The Results — poster")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 with st_zoom(150):
-                    st_write(bs.title, "The ", (s.project.titles.keyword, "Results"),
-                         tag=t.div, toc_lvl="1", label="The Results")
+                    st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="1", label=T(_LABEL, lang))
             with g.cell():
                 st_space("h", "0.5vw")
         st_space("v", "1vh")

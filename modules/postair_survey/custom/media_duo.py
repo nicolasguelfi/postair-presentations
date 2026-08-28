@@ -32,6 +32,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from postair_data import axes, mascot_clip
+from postair_lang import T
 from postair_pack.components.ai_mark import ai_marked
 from shared_widgets import st_info_tooltip
 from streamtex import st_block, st_grid, st_marker, st_space, st_video, st_write
@@ -55,6 +56,21 @@ class _Styles:
     name = s.project.body.mascot_name + s.center_txt
     tagline = s.project.body.caption + s.center_txt
     hint = s.project.body.caption + s.center_txt
+
+
+# ── Les feuilles du gabarit (règle R-i18n) ───────────────────────────────────
+#: Le titre des DEUX pages jumelles d'un duo — projeté par deux blocs, donc ici.
+FIGURES_TITLE = {"en": ("Every figure has its ", (s.project.titles.keyword, "own video"))}
+MASCOTS_TITLE = {"en": ("Every mascot has its ", (s.project.titles.keyword, "own video"))}
+#: La ligne sous une mascotte : son pôle (donnée du cast, hors feuille) et
+#: sa famille.
+_MASCOT_TAGLINE = {"en": "{label} — the {family} family"}
+_FAMILY = {"animals": {"en": "animal"}, "objects": {"en": "object"}}
+_FIGURE_TAGLINE = {"en": "great figure — presentation video"}
+#: L'indice de projection, sous les deux vidéos.
+_SOUND_ON = {"en": "▶ sound on — "}
+_NEXT_RIGHT = {"en": "next plays the right-hand video"}
+_BACK_LEFT = {"en": "back replays the left-hand video"}
 
 
 @lru_cache(maxsize=8)
@@ -105,20 +121,18 @@ def mascot_duo(lang: str = "en") -> tuple[dict, dict]:
         pole = _mascot_pole(name)
         duo.append({
             "name": name,
-            "tagline": f"{pole['label']} — the {pole['family'][:-1]} family",
+            "tagline": T(_MASCOT_TAGLINE, lang).format(
+                label=pole["label"], family=T(_FAMILY[pole["family"]], lang)),
             "src": str(_MEDIA / mascot_clip(name, lang)),
         })
     return tuple(duo)
 
 
-def figure_duo() -> tuple[dict, dict]:
+def figure_duo(lang: str = "en") -> tuple[dict, dict]:
     """Un homme, une femme — les noms les plus sûrs devant l'assemblée."""
     return tuple(
-        {"name": name, "tagline": tagline, "src": _figure_video(name)}
-        for name, tagline in (
-            ("Platon", "great figure — presentation video"),
-            ("Ada Lovelace", "great figure — presentation video"),
-        ))
+        {"name": name, "tagline": T(_FIGURE_TAGLINE, lang), "src": _figure_video(name)}
+        for name in ("Platon", "Ada Lovelace"))
 
 
 # ── Le gabarit ───────────────────────────────────────────────────────────────
@@ -134,7 +148,7 @@ def media_duo_slide(title_parts, duo, active: str, *, marker: str,
                     toc_label: str | None = None,
                     tooltip: tuple[str, list[tuple[str, str]]] | None = None,
                     stage_vh: int = _STAGE_VH,
-                    ) -> None:
+                    lang: str = "en") -> None:
     """La scène : deux vidéos côte à côte, celle du côté ``active`` se lance.
 
     :param duo: ``(gauche, droite)`` — dicts ``name``/``tagline``/``src``.
@@ -144,6 +158,8 @@ def media_duo_slide(title_parts, duo, active: str, *, marker: str,
         valeur aux deux pages jumelles d'un duo, sinon la taille saute au
         passage de la flèche. Module custom/ : redémarrage complet pour voir
         une édition d'ICI (les blocs, eux, rechargent à chaud).
+    :param lang: la langue projetée — ne sert qu'à l'indice de projection ;
+        titre, marqueur et tooltip arrivent déjà résolus par le bloc.
     """
     st_marker(marker)
     with st_block(s.project.containers.page_fill_top):
@@ -169,7 +185,6 @@ def media_duo_slide(title_parts, duo, active: str, *, marker: str,
                     st_write(_Styles.tagline, item["tagline"], tag=t.div)
         st_space("v", "1vh")
         st_write(_Styles.hint,
-                 "▶ sound on — ",
-                 ("next plays the right-hand video"
-                  if active == "left" else "back replays the left-hand video"),
+                 T(_SOUND_ON, lang),
+                 T(_NEXT_RIGHT if active == "left" else _BACK_LEFT, lang),
                  tag=t.div)

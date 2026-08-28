@@ -19,6 +19,8 @@ from the stage, before anyone opens the survey. Then the fun can start.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -41,16 +43,34 @@ _LOGO_WIDTH = "min(22vw, 30vh)"
 #: Une rangée = une icône + un message. Le style dit la hiérarchie : la
 #: promesse en géant, le contrat en corps courant, la règle des mineurs en
 #: corail (la seule ligne juridique de la slide).
+#: La promesse est commune aux deux slides de contexte : lexique
+#: (``entertaining_survey``) ; les trois autres lignes sont propres à celle-ci.
 _MESSAGES = [
-    ("🎡", bs.headline, "An entertaining survey to discover your postures facing the AI revolution."),
-    ("🔬", bs.message, "Your first participation in an academic research study :) !!"),
-    ("🎭", bs.message, "Anonymous and on a voluntary basis."),
-    ("🔞", bs.caveat, "If less than 18 years old, participation is not considered for research."),
+    ("🎡", bs.headline, "entertaining_survey"),
+    ("🔬", bs.message, {"en": "Your first participation in an academic research study :) !!"}),
+    ("🎭", bs.message, {"en": "Anonymous and on a voluntary basis."}),
+    ("🔞", bs.caveat, {"en": "If less than 18 years old, participation is not considered for research."}),
 ]
+_MARKER = {"en": "Welcome Week"}
+_LABEL = {"en": "Contexts"}
+_TIP_TITLE = {"en": "This session's frame"}
+_TIP_GAME = ({"en": "A game AND a study"},
+             {"en": ("The survey is designed to be fun to "
+                     "answer, and it is also a real academic research instrument: "
+                     "the anonymous answers feed the POSTAIR study.")})
+#: Têtes « Voluntary », « Anonymous », « Under 18 » : lexique (partagées).
+_TIP_VOLUNTARY = {"en": ("Nobody has to answer. You can stop at any "
+                         "time, and an unfinished survey is simply never sent.")}
+_TIP_ANON = {"en": ("Nothing personal is collected; your report is "
+                    "computed on YOUR device and only anonymous answers reach "
+                    "the averages.")}
+_TIP_UNDER_18 = {"en": ("You are welcome to play and see your own "
+                        "results — your record is simply excluded from the research "
+                        "analysis.")}
 
 
 def build(lang: str = "en", **_):
-    st_marker("Welcome Week")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         # Le gabarit maison 92/8 : le logo tient lieu de titre, le tooltip
         # garde sa cellule habituelle en haut à droite.
@@ -62,19 +82,12 @@ def build(lang: str = "en", **_):
                          alt="Logo of the University of Luxembourg — uni.lu")
             with g.cell():
                 st_info_tooltip(
-                    title="This session's frame",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("A game AND a study", "The survey is designed to be fun to "
-                         "answer, and it is also a real academic research instrument: "
-                         "the anonymous answers feed the POSTAIR study."),
-                        ("Voluntary", "Nobody has to answer. You can stop at any "
-                         "time, and an unfinished survey is simply never sent."),
-                        ("Anonymous", "Nothing personal is collected; your report is "
-                         "computed on YOUR device and only anonymous answers reach "
-                         "the averages."),
-                        ("Under 18", "You are welcome to play and see your own "
-                         "results — your record is simply excluded from the research "
-                         "analysis."),
+                        (T(_TIP_GAME[0], lang), T(_TIP_GAME[1], lang)),
+                        (ui("voluntary", lang), T(_TIP_VOLUNTARY, lang)),
+                        (ui("anonymous", lang), T(_TIP_ANON, lang)),
+                        (ui("under_18", lang), T(_TIP_UNDER_18, lang)),
                     ],
                 )
         st_space("v", "2vh")
@@ -87,6 +100,8 @@ def build(lang: str = "en", **_):
                 with g.cell():
                     # L'ancre TOC de la partie « Contexts » vit sur la première
                     # ligne : la slide n'a pas de titre, le logo EST l'en-tête.
-                    toc = ({"toc_lvl": "1", "label": "Contexts"}
+                    toc = ({"toc_lvl": "1", "label": T(_LABEL, lang)}
                            if index == 0 else {})
-                    st_write(style, message, tag=t.div, **toc)
+                    text = (ui(message, lang) if isinstance(message, str)
+                            else T(message, lang))
+                    st_write(style, text, tag=t.div, **toc)

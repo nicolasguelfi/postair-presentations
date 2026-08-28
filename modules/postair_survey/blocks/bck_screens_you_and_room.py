@@ -11,27 +11,33 @@ moment.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "You and the room"}
+_TITLE = {"en": ("You and the ", (s.project.titles.keyword, "room"))}
+_MESSAGES = [
+    ({"en": "Your shape against the room's"},
+     {"en": ("Your radar overlaid on the room's averages — the moment a "
+             "personal result becomes a conversation.")}),
+    ({"en": "Minimum five answers"},
+     {"en": ("Room aggregates appear only once at least five records are in; "
+             "before that, the section waits.")}),
+    ({"en": "What comes next"},
+     {"en": ("This same comparison, projected wall-size for everyone — the "
+             "next slides open it.")}),
+]
+
+
 def build(lang: str = "en", **_):
-    st_marker('You and the room')
+    st_marker(T(_MARKER, lang))
     screen_slide(
-        ["You and the ", (s.project.titles.keyword, "room")],
+        TF(_TITLE, lang),
         "10-res-salle",
         "Mobile screen comparing the personal radar with the room's averages, "
         "dark theme",
-        [
-            ("Your shape against the room's",
-             "Your radar overlaid on the room's averages — the moment a personal "
-             "result becomes a conversation."),
-            ("Minimum five answers",
-             "Room aggregates appear only once at least five records are in; "
-             "before that, the section waits."),
-            ("What comes next",
-             "This same comparison, projected wall-size for everyone — the next "
-             "slides open it."),
-        ],
+        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
         zoomImage=190,
         zoomText=140,
         device="mobile",

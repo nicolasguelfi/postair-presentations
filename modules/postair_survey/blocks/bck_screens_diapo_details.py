@@ -7,20 +7,29 @@ l'inclusion et l'exclusion se règlent par une ligne du book.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "The detail per question"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "detail"), " per question")}
+#: La première tête vient du lexique (``statement_by_statement``).
+_MSG_STATEMENT = {"en": "The answer distribution of each of the 54 statements."}
+_MSG_DEBATE = ({"en": "Where the debate questions come from"},
+               {"en": ("Pick the statements where the room splits, not the ones "
+                       "where it agrees.")})
+
+
 def build(lang: str = "en", **_):
-    st_marker('The detail per question')
+    st_marker(T(_MARKER, lang))
     screen_slide(
-        ["The ", (s.project.titles.keyword, "detail"), " per question"],
+        TF(_TITLE, lang),
         '25-diapo-details',
         "Desktop view of the /present full-screen slideshow: The detail per question, dark theme",
         [
-            ('Statement by statement',
-             'The answer distribution of each of the 54 statements.'),
-            ('Where the debate questions come from',
-             'Pick the statements where the room splits, not the ones where it agrees.'),
+            (ui("statement_by_statement", lang), T(_MSG_STATEMENT, lang)),
+            (T(_MSG_DEBATE[0], lang), T(_MSG_DEBATE[1], lang)),
         ],
         device="desktop", landscape=True,
         lang=lang

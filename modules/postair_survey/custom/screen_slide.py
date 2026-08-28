@@ -26,7 +26,7 @@ class _Styles:
     title = s.project.titles.slide_title + s.center_txt
     head = s.project.body.bullet + s.center_txt + s.bold
     detail = s.project.body.caption + s.center_txt
-    caption = s.project.body.mascot_name + s.center_txt
+    legend = s.project.body.mascot_name + s.center_txt
 
 
 #: La capture mobile est PORTRAIT (~9:19,5) : c'est la HAUTEUR qui borne —
@@ -69,6 +69,8 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
     ``title_parts`` suit la convention ``st_write`` (chaînes et couples
     ``(style, texte)``) ; ``messages`` est une liste de ``(tête, détail)`` —
     deux à quatre, pas plus : la salle lit la capture, les cartes la guident.
+    Tout texte arrive DÉJÀ résolu par le bloc (``T(feuille, lang)``, règle
+    R-i18n) : le gabarit ne traduit rien, ``lang`` ne sert qu'à la capture.
     ``landscape=True`` (écrans d'opérateur, Q15) : capture pleine scène en
     haut, messages en ligne dessous.
 
@@ -106,16 +108,16 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                         uri=capture(slug, device=device, theme=theme, lang=lang),
                         alt=alt, crop=crop)
             if caption:
-                st_write(_Styles.caption, caption, tag=t.div)
+                st_write(_Styles.legend, caption, tag=t.div)
             st_space("v", "1vh")
             with st_grid(cols=s.project.grids.balanced(len(messages)), gap="1.5vw",
                          grid_style=s.project.grids.stretch,
                          cell_styles=s.project.containers.grid_cell_top) as g:
-                for head, detail in messages:
+                for head_text, detail_text in messages:
                     with g.cell(), st_block(s.project.cards.blue):
                         with st_zoom(zoomText):
-                            st_write(_Styles.head, head, tag=t.div)
-                            st_write(_Styles.detail, detail, tag=t.div)
+                            st_write(_Styles.head, head_text, tag=t.div)
+                            st_write(_Styles.detail, detail_text, tag=t.div)
             return
         img_pct, txt_pct = split or (SPLIT_DESKTOP if device == "desktop"
                                      else SPLIT_MOBILE)
@@ -129,10 +131,10 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                             uri=capture(slug, device=device, theme=theme, lang=lang),
                             alt=alt, crop=crop)
                 if caption:
-                    st_write(_Styles.caption, caption, tag=t.div)
+                    st_write(_Styles.legend, caption, tag=t.div)
             with g.cell(), st_block(s.project.containers.column_stack):
-                for head, detail in messages:
+                for head_text, detail_text in messages:
                     with st_block(s.project.cards.blue):
                         with st_zoom(zoomText):
-                            st_write(_Styles.head, head, tag=t.div)
-                            st_write(_Styles.detail, detail, tag=t.div)
+                            st_write(_Styles.head, head_text, tag=t.div)
+                            st_write(_Styles.detail, detail_text, tag=t.div)

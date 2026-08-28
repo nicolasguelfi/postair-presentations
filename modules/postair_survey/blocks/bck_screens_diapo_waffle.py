@@ -7,21 +7,29 @@ l'inclusion et l'exclusion se règlent par une ligne du book.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "The archetype waffle"}
+_TITLE = {"en": ("The archetype ", (s.project.titles.keyword, "waffle"))}
+_MESSAGES = [
+    ({"en": "Each dot is one of you"},
+     {"en": ("Every anonymous answer takes its place in an archetype — the "
+             "room, person by person, name by nobody.")}),
+    ({"en": "Six archetypes at a glance"},
+     {"en": ("The distribution of the six archetypes across the room, in one "
+             "figure.")}),
+]
+
+
 def build(lang: str = "en", **_):
-    st_marker('The archetype waffle')
+    st_marker(T(_MARKER, lang))
     screen_slide(
-        ["The archetype ", (s.project.titles.keyword, "waffle")],
+        TF(_TITLE, lang),
         '26-diapo-gaufre',
         "Desktop view of the /present full-screen slideshow: The archetype waffle, dark theme",
-        [
-            ('Each dot is one of you',
-             'Every anonymous answer takes its place in an archetype — the room, person by person, name by nobody.'),
-            ('Six archetypes at a glance',
-             'The distribution of the six archetypes across the room, in one figure.'),
-        ],
+        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
         device="desktop", landscape=True,
         lang=lang
     )

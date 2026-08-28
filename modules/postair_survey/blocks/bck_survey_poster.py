@@ -10,6 +10,7 @@ Nothing on this slide reveals the mechanics; the how-to comes next.
 from custom.config import IS_EDITABLE
 from custom.styles import Styles as s
 from custom.visuals import is_synthetic
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -23,9 +24,24 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "The Survey — poster"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "Survey"))}
+_LABEL = {"en": "The Survey"}
+_TIP_TITLE = {"en": "Next 30 minutes"}
+_TIP = [
+    ({"en": "Now"},
+     {"en": ("You answer the POSTAIR survey on your phone or laptop — "
+             "anonymous, 15-20 minutes.")}),
+    ({"en": "Then"},
+     {"en": ("We project the live results of THIS room and discover the "
+             "cohort's postures together.")}),
+    ({"en": "Finally"},
+     {"en": "We debate the most divisive questions of your cohort."}),
+]
+
 
 def build(lang: str = "en", **_):
-    st_marker("The Survey — poster")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_center):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -33,18 +49,12 @@ def build(lang: str = "en", **_):
                 # bck_axes_radar (« Getting started »), le poster n'ouvre
                 # plus une partie à lui seul.
                 with st_zoom(160):
-                    st_write(bs.title, "The ", (s.project.titles.keyword, "Survey"),
-                         tag=t.div, toc_lvl="+1", label="The Survey")
+                    st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_LABEL, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Next 30 minutes",
-                    entries=[
-                        ("Now", "You answer the POSTAIR survey on your phone or laptop — "
-                                "anonymous, 15-20 minutes."),
-                        ("Then", "We project the live results of THIS room and discover the "
-                                 "cohort's postures together."),
-                        ("Finally", "We debate the most divisive questions of your cohort."),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", "5vh")
         st_image(s.project.cards.media_center, width="66%",

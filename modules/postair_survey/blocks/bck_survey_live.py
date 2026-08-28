@@ -14,6 +14,8 @@ goes wrong: PAUSE the campaign first (admin console), diagnose after.
 from custom.styles import Styles as s
 from custom.visuals import is_synthetic
 from postair_event import DAYS, live_url
+from postair_i18n import ui
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -29,27 +31,38 @@ class BlockStyles:
 
 bs = BlockStyles
 
+#: Les libellés de jour (``DAYS``) restent hors feuille.
+_MARKER = {"en": "Live monitoring"}
+_TITLE = {"en": ((s.project.titles.keyword, "Live"), " — the room is answering")}
+_BUTTON = {"en": "Open live monitoring"}
+#: Le titre du tooltip (« Operator checklist ») vient du lexique.
+_TIP = [
+    ({"en": "The counter"},
+     {"en": ("The live page shows the number of submitted answers, "
+             "refreshed every 2 seconds, plus the session timer.")}),
+    ({"en": "First reflex: PAUSE"},
+     {"en": ("Any incident → pause the campaign from the "
+             "admin console, then diagnose. Resuming is instant.")}),
+    ({"en": "Anti-bot"},
+     {"en": ("If more than ~5% of submissions fail in the first two "
+             "minutes, toggle the Turnstile shield from the admin console.")}),
+    ({"en": "Steering"},
+     {"en": ("Campaigns are managed in the sumvadis admin console "
+             "(operator key): pause / resume / close / reopen per day.")}),
+]
+
 
 def build(lang: str = "en", **_):
-    st_marker("Live monitoring")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, (s.project.titles.keyword, "Live"), " — the room is answering",
-                         tag=t.div, toc_lvl="+1", label="Live monitoring")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Operator checklist",
-                    entries=[
-                        ("The counter", "The live page shows the number of submitted answers, "
-                         "refreshed every 2 seconds, plus the session timer."),
-                        ("First reflex: PAUSE", "Any incident → pause the campaign from the "
-                         "admin console, then diagnose. Resuming is instant."),
-                        ("Anti-bot", "If more than ~5% of submissions fail in the first two "
-                         "minutes, toggle the Turnstile shield from the admin console."),
-                        ("Steering", "Campaigns are managed in the sumvadis admin console "
-                         "(operator key): pause / resume / close / reopen per day."),
-                    ],
+                    title=ui("operator_checklist", lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v",s.project.spacing.title_gap)
         with st_grid(cols="55% 45%", gap="1.5vw",
@@ -63,5 +76,5 @@ def build(lang: str = "en", **_):
                 for label, code in DAYS:
                     # La date passe à la ligne, en dessous de l'action : c'est
                     # l'action qu'on lit, c'est la date qu'on vérifie.
-                    st_write(bs.button, "Open live monitoring", (bs.day, label),
+                    st_write(bs.button, T(_BUTTON, lang), (bs.day, label),
                              tag=t.div, link=live_url(code), no_link_decor=True)

@@ -225,6 +225,8 @@ def _call_name(node: ast.AST) -> str:
 
 
 def _is_text(s: str) -> bool:
+    if s.startswith(("http://", "https://", "app/static/", "images/")):
+        return False   # une URL ou un chemin : projeté tel quel, pas traduit
     return len(s) >= 2 and any(c.isalpha() for c in s) and s.strip() not in {
         "v", "h", "div", "span", "p", "en", "fr", "de"}
 

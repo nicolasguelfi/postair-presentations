@@ -41,6 +41,8 @@ from pathlib import Path
 import segno
 from custom.styles import Styles as s
 from postair_event import DAYS, NO_DAY, join_url
+from postair_i18n import ui
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip, st_stage_code_input, st_stage_selector
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -79,6 +81,36 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# ── Le texte projeté (règle R-i18n) — le sélecteur de jour (NO_DAY, DAYS,
+# CUSTOM_DAY) et l'URL affichée restent tels quels.
+_MARKER = {"en": "Join the survey"}
+_TITLE = {"en": ("Your turn — ", (s.project.titles.keyword, "join the survey"))}
+_CODE_PLACEHOLDER = {"en": "campaign code"}
+_QR_PLACEHOLDER = {"en": "QR code"}
+#: Le titre du tooltip (« Anonymous by design ») vient du lexique.
+_HINT = {"en": ((s.project.titles.keyword, "anonymous"),
+                "  ·  20-40 min  ·  phone or laptop")}
+_TIP = [
+    ({"en": "Your result is yours"},
+     {"en": ("Your personal radar is computed ON your "
+             "device; the server only receives one anonymous record.")}),
+    ({"en": "GDPR"},
+     {"en": ("No account, no email, no tracking; data stays in the EU. "
+             "Only room-level averages are ever projected (minimum 5 answers).")}),
+    ({"en": "One code per day"},
+     {"en": ("Each session has its own campaign and its own "
+             "code. The slide shows only the day the speaker has selected — the "
+             "other codes are never on screen.")}),
+    ({"en": "No device?"},
+     {"en": ("Pair up with a neighbour — one answer per person "
+             "though: your posture, not a committee's.")}),
+    ({"en": "Network"},
+     {"en": "If the venue wifi is slow, switch your phone to 4G."}),
+    ({"en": "Keep your code"},
+     {"en": ("At the end the app gives you a personal code to "
+             "retrieve your result later at app.sumvadis.ai/r.")}),
+]
+
 
 def _generated_qr(code: str) -> str:
     """Le chemin ABSOLU du QR généré pour *code* — fabriqué au premier passage.
@@ -97,14 +129,14 @@ def _generated_qr(code: str) -> str:
 
 
 def build(lang: str = "en", **_):
-    st_marker("Join the survey")
+    st_marker(T(_MARKER, lang))
     codes = dict(DAYS)
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 with st_zoom(150):
-                    st_write(bs.title, "Your turn — ", (s.project.titles.keyword, "join the survey"),
-                            tag=t.div, toc_lvl="+1", label="Join the survey")
+                    st_write(bs.title, *TF(_TITLE, lang),
+                            tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
                 # Le sélecteur EST le sous-titre : c'est la seule chose qui
                 # change d'une séance à l'autre, et la seule à ne pas figer.
                 # « Custom code… » ouvre la saisie libre : une campagne créée
@@ -115,28 +147,15 @@ def build(lang: str = "en", **_):
                 custom = ""
                 if chosen == CUSTOM_DAY:
                     custom = st_stage_code_input(key=_CODE_KEY,
-                                                 placeholder="campaign code")
+                                                 placeholder=T(_CODE_PLACEHOLDER, lang))
                     # Le code entre dans une URL et un nom de fichier : tout
                     # sauf alphanumérique reste à l'état masqué.
                     if custom and not custom.isalnum():
                         custom = ""
             with g.cell():
                 st_info_tooltip(
-                    title="Anonymous by design",
-                    entries=[
-                        ("Your result is yours", "Your personal radar is computed ON your "
-                         "device; the server only receives one anonymous record."),
-                        ("GDPR", "No account, no email, no tracking; data stays in the EU. "
-                         "Only room-level averages are ever projected (minimum 5 answers)."),
-                        ("One code per day", "Each session has its own campaign and its own "
-                         "code. The slide shows only the day the speaker has selected — the "
-                         "other codes are never on screen."),
-                        ("No device?", "Pair up with a neighbour — one answer per person "
-                         "though: your posture, not a committee's."),
-                        ("Network", "If the venue wifi is slow, switch your phone to 4G."),
-                        ("Keep your code", "At the end the app gives you a personal code to "
-                         "retrieve your result later at app.sumvadis.ai/r."),
-                    ],
+                    title=ui("anonymous_by_design", lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         # Un espace franc sous la date : il sépare ce que l'orateur manœuvre de
         # ce que la salle doit lire.
@@ -152,7 +171,7 @@ def build(lang: str = "en", **_):
                     # La PLACE du QR, aux dimensions du vrai : passer d'un état
                     # à l'autre ne fait pas sauter la mise en page.
                     with st_block(s.project.ds.stage.qr_placeholder):
-                        st_write(bs.day, "QR code", tag=t.div)
+                        st_write(bs.day, T(_QR_PLACEHOLDER, lang), tag=t.div)
                 else:
                     st_image(s.project.cards.media_center, width=_QR_WIDTH,
                              uri=(f"images/qr/qr_join_{code}.png"
@@ -167,5 +186,4 @@ def build(lang: str = "en", **_):
                     st_write(bs.url, _JOIN_URL_SHOWN, tag=t.div,
                              link=join_url(code), no_link_decor=True)
                     st_write(bs.code, code, tag=t.div)
-                st_write(bs.hint, (s.project.titles.keyword, "anonymous"),
-                         "  ·  20-40 min  ·  phone or laptop", tag=t.div)
+                st_write(bs.hint, *TF(_HINT, lang), tag=t.div)

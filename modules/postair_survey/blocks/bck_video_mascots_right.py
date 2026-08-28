@@ -6,14 +6,18 @@ Aucun contenu propre : tout vit dans ``custom/media_duo.py``.
 """
 # @guideline: postair-minimal
 
-from custom.media_duo import mascot_duo, media_duo_slide
-from custom.styles import Styles as s
+from custom.media_duo import MASCOTS_TITLE, mascot_duo, media_duo_slide
+from postair_lang import T, TF
+
+
+_MARKER = {"en": "Mascot videos · 2"}
 
 
 def build(lang: str = "en", **_):
     media_duo_slide(
-        ["Every mascot has its ", (s.project.titles.keyword, "own video")],
+        TF(MASCOTS_TITLE, lang),
         mascot_duo(lang), "right",
-        marker="Mascot videos · 2",
+        marker=T(_MARKER, lang),
         stage_vh=70,
+        lang=lang,
     )

@@ -45,6 +45,8 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE_WITH_TEXT
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import is_synthetic
+from postair_i18n import ui
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -102,39 +104,55 @@ WHEEL_PROMPT = (
 PORTRAIT = ("«git»/GENAI/ai4video-projects/augmented-student/assets/images/"
             "NG/_identity/portraits/ng__portrait__studio__v1.png")
 
+# ── Le texte projeté (règle R-i18n) ──────────────────────────────────────────
+_MARKER = {"en": "Your posture?"}
+_TITLE = {"en": ("What is ", (s.project.titles.keyword, "your posture"), " facing AI?")}
+_LABEL = {"en": "Getting started"}
+_TIP_TITLE = {"en": "The POSTAIR model"}
+_TIP_POSTURE = ({"en": "A posture"},
+                {"en": ("Your personal position facing the AI revolution — not "
+                        "'for or against', but where you stand on nine fundamental "
+                        "tensions. There is no right answer.")})
+#: Tête « Nine axes » : lexique (partagée avec la lecture du radar).
+_TIP_AXES = {"en": ("Grouped in three registers: KNOWING (how I judge — trust, "
+                    "optimism, rationality), ACTING (how I deploy — speed, "
+                    "openness, freedom/control), BECOMING (what results — "
+                    "centralisation, altruism, transhumanism).")}
+_TIP_WHEEL = ({"en": "Why a wheel"},
+              {"en": ("Because nobody in this room knows their own answer yet. "
+                      "You are not being sorted into anything — you are about "
+                      "to discover which postures you already carry.")})
+# La référence n'est PAS ici : elle vit derrière le code de citation visible
+# sous la roue (un cite() dans un panneau de survol serait un hover-dans-hover).
+_TIP_BASIS = ({"en": "Scientific basis"},
+              {"en": ("The instrument derives from a published research "
+                      "article — the citation under the wheel opens it.")})
+#: Tête « Anonymous » : lexique (partagée avec la slide Welcome Week).
+_TIP_ANON = {"en": ("The survey you are about to take is fully anonymous: your "
+                    "result is computed on YOUR device; only anonymous averages "
+                    "reach the room screen.")}
+_GROUNDING = {"en": "answers: anonymous · model: "}
+
 
 def build(lang: str = "en", **_):
-    st_marker("Your posture?")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 # Ancre TOC de la partie 1 (ss12) : le label dit la PARTIE,
                 # le titre visible garde la question qui la lance.
                 with st_zoom(130):
-                    st_write(bs.title, "What is ", (s.project.titles.keyword, "your posture"),
-                         " facing AI?", tag=t.div, toc_lvl="1", label="Getting started")
+                    st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="1", label=T(_LABEL, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="The POSTAIR model",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("A posture", "Your personal position facing the AI revolution — not "
-                                      "'for or against', but where you stand on nine fundamental "
-                                      "tensions. There is no right answer."),
-                        ("Nine axes", "Grouped in three registers: KNOWING (how I judge — trust, "
-                                      "optimism, rationality), ACTING (how I deploy — speed, "
-                                      "openness, freedom/control), BECOMING (what results — "
-                                      "centralisation, altruism, transhumanism)."),
-                        ("Why a wheel", "Because nobody in this room knows their own answer yet. "
-                                        "You are not being sorted into anything — you are about "
-                                        "to discover which postures you already carry."),
-                        # La référence n'est PAS ici : elle vit derrière le code
-                        # de citation visible sous la roue (un cite() dans un
-                        # panneau de survol serait un hover-dans-hover).
-                        ("Scientific basis", "The instrument derives from a published research "
-                                             "article — the citation under the wheel opens it."),
-                        ("Anonymous", "The survey you are about to take is fully anonymous: your "
-                                      "result is computed on YOUR device; only anonymous averages "
-                                      "reach the room screen."),
+                        (T(_TIP_POSTURE[0], lang), T(_TIP_POSTURE[1], lang)),
+                        (ui("nine_axes", lang), T(_TIP_AXES, lang)),
+                        (T(_TIP_WHEEL[0], lang), T(_TIP_WHEEL[1], lang)),
+                        (T(_TIP_BASIS[0], lang), T(_TIP_BASIS[1], lang)),
+                        (ui("anonymous", lang), T(_TIP_ANON, lang)),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -154,7 +172,7 @@ def build(lang: str = "en", **_):
         # (incompris NG, 2026-08-13). La titulature complète du rapport
         # (titre, auteur, statut) vit dans la carte au survol du code.
         st_write(bs.grounding,
-                 "answers: anonymous · model: ",
+                 T(_GROUNDING, lang),
                  # inline : le code EST l'objet de l'étiquette « model: » —
                  # un retour à la ligne les séparerait et referait naître la
                  # lecture « publication anonyme » (incompris NG 2026-08-13).

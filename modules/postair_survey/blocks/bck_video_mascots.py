@@ -13,22 +13,37 @@ find behind each character. Then arrow right: Bici answers, at its own pace.
 """
 # @guideline: postair-minimal
 
-from custom.media_duo import mascot_duo, media_duo_slide
-from custom.styles import Styles as s
+from custom.media_duo import MASCOTS_TITLE, mascot_duo, media_duo_slide
+from postair_i18n import ui
+from postair_lang import T, TF
+
+
+_MARKER = {"en": "Mascot videos"}
+_TIP_TITLE = {"en": "The mascot clips"}
+#: La première tête vient du lexique (``in_the_app``, partagée avec les vidéos
+#: de figures) ; les deux autres sont propres à cette slide.
+_TIP = [
+    {"en": ("Every one of the 36 mascots carries a short presentation clip — "
+            "open any character to play it.")},
+    ({"en": "Two families"},
+     {"en": ("Each pole is carried by an animal AND an object; here, the most "
+             "playful of each family.")}),
+    ({"en": "Production"},
+     {"en": ("Made in house, entirely with generative AI, from the definitions "
+             "of the nine axes.")}),
+]
 
 
 def build(lang: str = "en", **_):
     media_duo_slide(
-        ["Every mascot has its ", (s.project.titles.keyword, "own video")],
+        TF(MASCOTS_TITLE, lang),
         mascot_duo(lang), "left",
-        marker="Mascot videos",
-        toc_label="Mascot videos",
-        tooltip=("The mascot clips",
-                 [("In the app", "Every one of the 36 mascots carries a short "
-                   "presentation clip — open any character to play it."),
-                  ("Two families", "Each pole is carried by an animal AND an "
-                   "object; here, the most playful of each family."),
-                  ("Production", "Made in house, entirely with generative AI, "
-                   "from the definitions of the nine axes.")]),
+        marker=T(_MARKER, lang),
+        toc_label=T(_MARKER, lang),
+        tooltip=(T(_TIP_TITLE, lang),
+                 [(ui("in_the_app", lang), T(_TIP[0], lang)),
+                  (T(_TIP[1][0], lang), T(_TIP[1][1], lang)),
+                  (T(_TIP[2][0], lang), T(_TIP[2][1], lang))]),
         stage_vh=70,
+        lang=lang,
     )

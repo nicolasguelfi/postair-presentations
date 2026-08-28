@@ -6,14 +6,18 @@ son. Aucun contenu propre : tout vit dans ``custom/media_duo.py``.
 """
 # @guideline: postair-minimal
 
-from custom.media_duo import figure_duo, media_duo_slide
-from custom.styles import Styles as s
+from custom.media_duo import FIGURES_TITLE, figure_duo, media_duo_slide
+from postair_lang import T, TF
+
+
+_MARKER = {"en": "Figure videos · 2"}
 
 
 def build(lang: str = "en", **_):
     media_duo_slide(
-        ["Every figure has its ", (s.project.titles.keyword, "own video")],
-        figure_duo(), "right",
-        marker="Figure videos · 2",
+        TF(FIGURES_TITLE, lang),
+        figure_duo(lang), "right",
+        marker=T(_MARKER, lang),
         stage_vh=70,
+        lang=lang,
     )

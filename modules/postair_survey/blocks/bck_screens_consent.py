@@ -15,34 +15,46 @@ screen. Consent is a tap, stopping is allowed at any time.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "Consent"}
+_TITLE = {"en": ("Consent — ", (s.project.titles.keyword, "nothing personal"))}
+_MESSAGES = [
+    ({"en": "Nothing personal is asked"},
+     {"en": ("No name, no email, no account — nothing on this screen can "
+             "identify you.")}),
+    ({"en": "Your explicit consent"},
+     {"en": ("The survey starts only after you accept — participation is "
+             "voluntary, and you can stop at any time.")}),
+    ({"en": "Anonymous by construction"},
+     {"en": ("Your report is computed on YOUR device; only anonymous answers "
+             "reach the room's averages.")}),
+]
+_TIP_TITLE = {"en": "This screen"}
+_TIP_CAPTURE = ({"en": "Real capture"},
+                {"en": ("The actual application, mobile facet, dark theme — "
+                        "frozen from the sumvadis media registry, never "
+                        "redrawn.")})
+#: La tête « Under 18 » vient du lexique (partagée avec la slide Welcome Week).
+_TIP_UNDER_18 = {"en": ("You can play and see your own results — your record is "
+                        "simply excluded from the research analysis.")}
+
+
 def build(lang: str = "en", **_):
-    st_marker("Consent")
+    st_marker(T(_MARKER, lang))
     with st_zoom(130):
         screen_slide(
-            ["Consent — ", (s.project.titles.keyword, "nothing personal")],
+            TF(_TITLE, lang),
             "03-consentement",
             "Mobile screen of the survey journey: the consent step, dark theme",
-            [
-                ("Nothing personal is asked",
-                "No name, no email, no account — nothing on this screen can "
-                "identify you."),
-                ("Your explicit consent",
-                "The survey starts only after you accept — participation is "
-                "voluntary, and you can stop at any time."),
-                ("Anonymous by construction",
-                "Your report is computed on YOUR device; only anonymous answers "
-                "reach the room's averages."),
-            ],
-            toc_label="Consent",
-            tooltip=("This screen",
-                    [("Real capture", "The actual application, mobile facet, dark "
-                    "theme — frozen from the sumvadis media registry, never "
-                    "redrawn."),
-                    ("Under 18", "You can play and see your own results — your "
-                    "record is simply excluded from the research analysis.")]),
+            [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
+            toc_label=T(_MARKER, lang),
+            tooltip=(T(_TIP_TITLE, lang),
+                     [(T(_TIP_CAPTURE[0], lang), T(_TIP_CAPTURE[1], lang)),
+                      (ui("under_18", lang), T(_TIP_UNDER_18, lang))]),
             zoomImage=100,
             zoomText=90,
             device="mobile-complet",

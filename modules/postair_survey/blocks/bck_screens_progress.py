@@ -10,31 +10,43 @@ Say out loud that there is no timer — the room needs to hear it once.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "While you answer"}
+_TITLE = {"en": ("While you ", (s.project.titles.keyword, "answer"))}
+_MESSAGES = [
+    ({"en": "Your progress, always on screen"},
+     {"en": ("The bar counts the statements you have answered — here, the "
+             "halfway mark.")}),
+    ({"en": "Pause when you need to"},
+     {"en": "You can stop and resume on your device; the survey waits for you."}),
+    ({"en": "The trap: chasing the bar"},
+     {"en": ("There is no timer and no prize for speed — a rushed answer is "
+             "the only wrong answer this instrument knows.")}),
+]
+_TIP_TITLE = {"en": "These screens"}
+_TIP = [
+    ({"en": "Real captures"},
+     {"en": ("The actual application, mobile facet, dark theme — frozen from "
+             "the sumvadis media registry, never redrawn.")}),
+    ({"en": "Median duration"},
+     {"en": ("20-40 minutes measured; the progress bar is there so nobody "
+             "has to guess.")}),
+]
+
+
 def build(lang: str = "en", **_):
-    st_marker('While you answer')
+    st_marker(T(_MARKER, lang))
     screen_slide(
-        ["While you ", (s.project.titles.keyword, "answer")],
+        TF(_TITLE, lang),
         "05-progression",
         "Full mobile page of the survey at the halfway mark: progress bar and "
         "the current statement, dark theme",
-        [
-            ("Your progress, always on screen",
-             "The bar counts the statements you have answered — here, the halfway mark."),
-            ("Pause when you need to",
-             "You can stop and resume on your device; the survey waits for you."),
-            ("The trap: chasing the bar",
-             "There is no timer and no prize for speed — a rushed answer is the only "
-             "wrong answer this instrument knows."),
-        ],
-        toc_label="While you answer",
-        tooltip=("These screens",
-                 [("Real captures", "The actual application, mobile facet, dark theme — "
-                   "frozen from the sumvadis media registry, never redrawn."),
-                  ("Median duration", "20-40 minutes measured; the progress bar is there "
-                   "so nobody has to guess.")]),
+        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
+        toc_label=T(_MARKER, lang),
+        tooltip=(T(_TIP_TITLE, lang), [(T(h, lang), T(d, lang)) for h, d in _TIP]),
         # PLEINE PAGE mobile (facette « complet ») : 1170×2949, la barre de
         # progression EST dans l'image. crop=(haut, droite, bas, gauche).
         zoomImage=130,
@@ -44,4 +56,3 @@ def build(lang: str = "en", **_):
         crop=(0, 0, 15, 0),
         lang=lang
     )
-

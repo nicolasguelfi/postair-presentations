@@ -7,24 +7,30 @@ l'inclusion et l'exclusion se règlent par une ligne du book.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "The mascot card"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "mascot"), " card")}
+_MESSAGES = [
+    ({"en": "Your postures, carried by mascots"},
+     {"en": ("The cast you met in this deck — each card shows the pole your "
+             "answers lean toward on one axis.")}),
+    ({"en": "Why mascots"},
+     {"en": ("A figure holds a posture so a person does not have to: opinions "
+             "stay depersonalised, here and in the debates.")}),
+]
+
+
 def build(lang: str = "en", **_):
-    st_marker('The mascot card')
+    st_marker(T(_MARKER, lang))
     screen_slide(
-        ["The ", (s.project.titles.keyword, "mascot"), " card"],
+        TF(_TITLE, lang),
         "08-res-carte",
         "Mobile screen of the report's mascot card: the mascots carrying the "
         "reader's postures, dark theme",
-        [
-            ("Your postures, carried by mascots",
-             "The cast you met in this deck — each card shows the pole your answers "
-             "lean toward on one axis."),
-            ("Why mascots",
-             "A figure holds a posture so a person does not have to: opinions stay "
-             "depersonalised, here and in the debates."),
-        ],
+        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
         device="desktop",
         landscape=False,
         zoomImage=100,

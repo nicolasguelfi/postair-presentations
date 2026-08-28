@@ -15,24 +15,51 @@ video — same instrument, same nine axes, and this afternoon they argue.
 """
 # @guideline: postair-minimal
 
-from custom.media_duo import figure_duo, media_duo_slide
-from custom.styles import Styles as s
+from custom.media_duo import FIGURES_TITLE, figure_duo, media_duo_slide
+from postair_i18n import ui
+from postair_lang import T, TF
+
+
+_MARKER = {"en": "Figure videos"}
+_TIP_TITLE = {"en": "The figure videos"}
+_TIP = [
+    ({"en": "In the app"},
+     {"en": ("Every great figure's page carries a short presentation video — "
+             "click the portrait to play it.")}),
+    ({"en": "Same instrument"},
+     {"en": ("The figures are scored on the same 54 statements you answered, "
+             "from documented positions in their work.")}),
+    ({"en": "AI-made, sourced"},
+     {"en": ("The videos are generative productions grounded in each figure's "
+             "dossier — arguments to debate, never facts about a person.")}),
+]
+
+
+_MARKER = {"en": "Figure videos"}
+_TIP_TITLE = {"en": "The figure videos"}
+#: Les deux premières têtes viennent du lexique (``in_the_app`` et
+#: ``same_instrument``, partagées avec d'autres slides) ; la troisième est
+#: propre à cette slide.
+_TIP_IN_APP = {"en": ("Every great figure's page carries a short presentation "
+                      "video — click the portrait to play it.")}
+_TIP_SAME = {"en": ("The figures are scored on the same 54 statements you "
+                    "answered, from documented positions in their work.")}
+_TIP_AI = ({"en": "AI-made, sourced"},
+           {"en": ("The videos are generative productions grounded in each "
+                   "figure's dossier — arguments to debate, never facts about "
+                   "a person.")})
 
 
 def build(lang: str = "en", **_):
     media_duo_slide(
-        ["Every figure has its ", (s.project.titles.keyword, "own video")],
-        figure_duo(), "left",
-        marker="Figure videos",
-        toc_label="Figure videos",
-        tooltip=("The figure videos",
-                 [("In the app", "Every great figure's page carries a short "
-                   "presentation video — click the portrait to play it."),
-                  ("Same instrument", "The figures are scored on the same 54 "
-                   "statements you answered, from documented positions in "
-                   "their work."),
-                  ("AI-made, sourced", "The videos are generative productions "
-                   "grounded in each figure's dossier — arguments to debate, "
-                   "never facts about a person.")]),
+        TF(FIGURES_TITLE, lang),
+        figure_duo(lang), "left",
+        marker=T(_MARKER, lang),
+        toc_label=T(_MARKER, lang),
+        tooltip=(T(_TIP_TITLE, lang),
+                 [(ui("in_the_app", lang), T(_TIP_IN_APP, lang)),
+                  (ui("same_instrument", lang), T(_TIP_SAME, lang)),
+                  (T(_TIP_AI[0], lang), T(_TIP_AI[1], lang))]),
         stage_vh=70,
+        lang=lang,
     )

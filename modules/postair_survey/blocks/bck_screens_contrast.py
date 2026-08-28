@@ -7,22 +7,28 @@ l'inclusion et l'exclusion se règlent par une ligne du book.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "The contrasted figures"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "contrasted"), " figures")}
+_MESSAGES = [
+    ({"en": "Your opposites, on purpose"},
+     {"en": "Figures whose posture contrasts most with yours."}),
+    ({"en": "Why read them"},
+     {"en": ("The shortest way to understand the other pole of an axis is a "
+             "figure who stands on it — this is where the debates start.")}),
+]
+
+
 def build(lang: str = "en", **_):
-    st_marker('The contrasted figures')
+    st_marker(T(_MARKER, lang))
     screen_slide(
-        ["The ", (s.project.titles.keyword, "contrasted"), " figures"],
+        TF(_TITLE, lang),
         "14-res-contraste",
         "Mobile screen of the report's contrasted figures section, dark theme",
-        [
-            ("Your opposites, on purpose",
-             "Figures whose posture contrasts most with yours."),
-            ("Why read them",
-             "The shortest way to understand the other pole of an axis is a "
-             "figure who stands on it — this is where the debates start."),
-        ],
+        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
         zoomImage=165,
         zoomText=140,
         device="mobile",

@@ -21,6 +21,7 @@ will find out which one of them you argue like.
 
 from custom.styles import Styles as s
 from postair_data import archetypes
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -37,39 +38,51 @@ class BlockStyles:
 
 bs = BlockStyles
 
+#: Les six noms viennent du manifeste du studio (``archetypes()``) — hors feuille.
+_MARKER = {"en": "The six archetypes"}
+_TITLE = {"en": ("Six ", (s.project.titles.keyword, "reference archetypes"),
+                 " — not six boxes")}
+_LEAD = {"en": ("The app shows the ", (s.project.titles.keyword, "nearest"),
+                " one + your distance to it")}
+_TIP_TITLE = {"en": "What an archetype is, and is not"}
+_TIP = [
+    ({"en": "A reference point"},
+     {"en": ("Each archetype is one position in the nine-"
+             "dimensional posture space. The application shows you the NEAREST one, "
+             "together with the distance to it — it does not sort you into it.")}),
+    ({"en": "Distance matters"},
+     {"en": ("A small distance means the archetype describes you "
+             "well; a large one means you sit between several, which is common and "
+             "perfectly normal.")}),
+    ({"en": "Not a personality test"},
+     {"en": ("The instrument measures positions on nine "
+             "tensions about technology. It says nothing about who you are, and it "
+             "predicts nothing about what you will do.")}),
+    ({"en": "Same engine for the figures"},
+     {"en": ("The historical figures of the study are "
+             "scored by exactly this mechanism, which is why the results page can put "
+             "the room next to one of them.")}),
+    ({"en": "Names"},
+     {"en": ("Read from the shared studio manifest, the same source the "
+             "survey application uses — the names on this slide and in the app can "
+             "never drift apart.")}),
+]
+
 
 def build(lang: str = "en", **_):
-    st_marker("The six archetypes")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Six ", (s.project.titles.keyword, "reference archetypes"),
-                         " — not six boxes",
-                         tag=t.div, toc_lvl="+1", label="The six archetypes")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="What an archetype is, and is not",
-                    entries=[
-                        ("A reference point", "Each archetype is one position in the nine-"
-                         "dimensional posture space. The application shows you the NEAREST one, "
-                         "together with the distance to it — it does not sort you into it."),
-                        ("Distance matters", "A small distance means the archetype describes you "
-                         "well; a large one means you sit between several, which is common and "
-                         "perfectly normal."),
-                        ("Not a personality test", "The instrument measures positions on nine "
-                         "tensions about technology. It says nothing about who you are, and it "
-                         "predicts nothing about what you will do."),
-                        ("Same engine for the figures", "The historical figures of the study are "
-                         "scored by exactly this mechanism, which is why the results page can put "
-                         "the room next to one of them."),
-                        ("Names", "Read from the shared studio manifest, the same source the "
-                         "survey application uses — the names on this slide and in the app can "
-                         "never drift apart."),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", s.project.spacing.title_gap)
-        st_write(bs.lead, "The app shows the ", (s.project.titles.keyword, "nearest"),
-                 " one + your distance to it", tag=t.div)
+        st_write(bs.lead, *TF(_LEAD, lang), tag=t.div)
         # Un franc espace avant les six noms (NG 2026-08-03) : ils sont le sujet
         # de la slide, et une grille collée à sa phrase d'introduction se lit
         # comme une légende.

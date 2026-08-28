@@ -64,6 +64,18 @@ UI: dict[str, dict[str, str]] = {
                             "at the original.",
                       "fr": "Rapporté dans la source citée sur la carte, non lu à "
                             "l'original."},
+    # survey — partagés par deux blocs ou plus du parcours
+    "under_18": {"en": "Under 18", "fr": "Moins de 18 ans"},
+    "anonymous_by_design": {"en": "Anonymous by design", "fr": "Anonyme par conception"},
+    "statement_by_statement": {"en": "Statement by statement", "fr": "Énoncé par énoncé"},
+    "same_instrument": {"en": "Same instrument", "fr": "Le même instrument"},
+    "in_the_app": {"en": "In the app", "fr": "Dans l'application"},
+    "help_per_question": {"en": "Help per question", "fr": "Une aide par question"},
+    "first_screens_dash": {"en": "The first screens — ", "fr": "Les premiers écrans — "},
+    "entertaining_survey": {"en": "An entertaining survey to discover your postures "
+                                  "facing the AI revolution.",
+                            "fr": "Un sondage ludique pour découvrir vos postures face "
+                                  "à la révolution de l'IA."},
 }
 
 

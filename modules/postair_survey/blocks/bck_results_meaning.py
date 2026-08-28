@@ -18,6 +18,7 @@ the debate.
 
 from custom.styles import Styles as s
 from postair_data import mascot
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -39,35 +40,46 @@ class BlockStyles:
 
 bs = BlockStyles
 
+#: Noms et pôles des deux mascottes viennent du cast — hors feuille.
+_MARKER = {"en": "What it says about us"}
+_TITLE = {"en": ("A cohort is ", (s.project.titles.keyword, "not a bloc"))}
+_LEAD = {"en": ("both poles · every axis · ", (s.project.titles.keyword, "in this room"))}
+_VS = {"en": "vs"}
+_TIP_TITLE = {"en": "Reading a room, not a person"}
+_TIP = [
+    ({"en": "Averages hide diversity"},
+     {"en": ("A cohort at fifty on an axis can be made of "
+             "people all sitting at fifty — or of two halves at zero and a hundred. "
+             "The distribution, not the average, is the interesting object.")}),
+    ({"en": "Both poles are here"},
+     {"en": ("On every one of the nine axes, this room holds "
+             "both sides. That is the normal state of any large group, and it is "
+             "what the next twenty minutes are for.")}),
+    ({"en": "Why it is useful"},
+     {"en": ("Your degree programmes put you in teams. A team "
+             "where everyone shares one posture is fast and blind; a team that holds "
+             "several is slower and much harder to fool.")}),
+    ({"en": "Not a judgement"},
+     {"en": ("No pole is the right answer. The instrument measures "
+             "positions, it does not grade them.")}),
+]
+
 
 def build(lang: str = "en", **_):
-    st_marker("What it says about us")
+    st_marker(T(_MARKER, lang))
     left, right = (mascot(n) for n in _FACE_OFF)
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "A cohort is ", (s.project.titles.keyword, "not a bloc"),
-                         tag=t.div, toc_lvl="+1", label="What it says about us")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Reading a room, not a person",
-                    entries=[
-                        ("Averages hide diversity", "A cohort at fifty on an axis can be made of "
-                         "people all sitting at fifty — or of two halves at zero and a hundred. "
-                         "The distribution, not the average, is the interesting object."),
-                        ("Both poles are here", "On every one of the nine axes, this room holds "
-                         "both sides. That is the normal state of any large group, and it is "
-                         "what the next twenty minutes are for."),
-                        ("Why it is useful", "Your degree programmes put you in teams. A team "
-                         "where everyone shares one posture is fast and blind; a team that holds "
-                         "several is slower and much harder to fool."),
-                        ("Not a judgement", "No pole is the right answer. The instrument measures "
-                         "positions, it does not grade them."),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", s.project.spacing.title_gap)
-        st_write(bs.lead, "both poles · every axis · ",
-                 (s.project.titles.keyword, "in this room"), tag=t.div)
+        st_write(bs.lead, *TF(_LEAD, lang), tag=t.div)
         st_space("v", "2vh")
         # ONE flat grid: mascot · versus · mascot.
         with st_grid(cols="1fr 0.5fr 1fr", gap="1vw",
@@ -75,7 +87,7 @@ def build(lang: str = "en", **_):
             for side in (left, None, right):
                 with g.cell():
                     if side is None:
-                        st_write(bs.versus, "vs", tag=t.div)
+                        st_write(bs.versus, T(_VS, lang), tag=t.div)
                         continue
                     with st_block(s.project.cards.pole_cell):
                         st_write(bs.pole, side["pole"], tag=t.div)

@@ -7,26 +7,32 @@ l'inclusion et l'exclusion se règlent par une ligne du book.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "Your radar"}
+_TITLE = {"en": ("Your ", (s.project.titles.keyword, "radar"))}
+_MESSAGES = [
+    ({"en": "Nine axes, one shape"},
+     {"en": ("Your position between the two poles of each axis — the whole "
+             "survey in one figure.")}),
+    ({"en": "How to read it"},
+     {"en": ("The centre is one pole, not 'no opinion'; distance is a "
+             "position, not a score. No shape is better than another.")}),
+    ({"en": "The trap: comparing sizes"},
+     {"en": ("A small shape is not a small personality — remember the reading "
+             "lesson from a few slides ago.")}),
+]
+
+
 def build(lang: str = "en", **_):
-    st_marker('Your radar')
+    st_marker(T(_MARKER, lang))
     screen_slide(
-        ["Your ", (s.project.titles.keyword, "radar")],
+        TF(_TITLE, lang),
         "09-res-radar",
         "Mobile screen of the personal nine-axis posture radar, dark theme",
-        [
-            ("Nine axes, one shape",
-             "Your position between the two poles of each axis — the whole survey "
-             "in one figure."),
-            ("How to read it",
-             "The centre is one pole, not 'no opinion'; distance is a position, "
-             "not a score. No shape is better than another."),
-            ("The trap: comparing sizes",
-             "A small shape is not a small personality — remember the reading "
-             "lesson from a few slides ago."),
-        ],
+        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
         zoomImage=190,
         zoomText=140,
         lang=lang

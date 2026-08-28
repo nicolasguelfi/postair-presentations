@@ -18,15 +18,52 @@ people misread as indecision. Say that last part slowly.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
 _CODES = [
-    ("Directional", "clearly on one pole", s.project.cards.teal),
-    ("Ambivalent", "agrees with BOTH poles", s.project.cards.amber),
-    ("Balanced", "in between, deliberately", s.project.cards.blue),
-    ("Detached", "the question leaves them cold", s.project.cards.coral),
+    ({"en": "Directional"}, {"en": "clearly on one pole"}, s.project.cards.teal),
+    ({"en": "Ambivalent"}, {"en": "agrees with BOTH poles"}, s.project.cards.amber),
+    ({"en": "Balanced"}, {"en": "in between, deliberately"}, s.project.cards.blue),
+    ({"en": "Detached"}, {"en": "the question leaves them cold"}, s.project.cards.coral),
+]
+
+_MARKER = {"en": "Reading a radar"}
+_TITLE = {"en": ("How to ", (s.project.titles.keyword, "read"), " a posture")}
+_CAPTION = {"en": "an example profile — not anyone's"}
+_TIP_TITLE = {"en": "Reading a posture radar"}
+#: Tête « Nine axes » : lexique (partagée avec la slide de la roue).
+_TIP_AXES = {"en": ("One spoke per axis. The centre is one pole of that axis, "
+                    "the rim is the other — the centre is NOT 'no opinion'.")}
+_TIP = [
+    ({"en": "Zero to one hundred"},
+     {"en": ("The value is a position between two poles, not "
+             "a score. A small shape is not a weak personality, and a large one is "
+             "not a strong one.")}),
+    ({"en": "Directional (DIR)"},
+     {"en": "The answers sit clearly on one pole of the axis."}),
+    ({"en": "Ambivalent (AMB)"},
+     {"en": ("The answers agree with BOTH poles — not the same "
+             "thing as sitting in the middle. It is the most interesting result the "
+             "instrument produces: the person holds a real tension.")}),
+    ({"en": "Balanced (BAL)"},
+     {"en": ("Consistently in between: a moderate, deliberate "
+             "position rather than a contradiction.")}),
+    ({"en": "Detached (DET)"},
+     {"en": ("Low engagement with the question — it does not "
+             "mobilise the person one way or the other.")}),
+    ({"en": "Ambivalence index"},
+     {"en": ("Computed from how strongly someone endorses both "
+             "poles at once (Griffin's index); it is what separates AMB from BAL.")}),
+    ({"en": "Accelerator first"},
+     {"en": ("On every axis the accelerating pole is displayed "
+             "first, by convention. 'Accelerator' never means 'better'.")}),
+    ({"en": "This chart"},
+     {"en": ("An illustrative profile, not a published archetype — it "
+             "exists to show the scale, not to describe anyone.")}),
 ]
 
 
@@ -41,36 +78,17 @@ bs = BlockStyles
 
 
 def build(lang: str = "en", **_):
-    st_marker("Reading a radar")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "How to ", (s.project.titles.keyword, "read"), " a posture",
-                         tag=t.div, toc_lvl="+1", label="Reading a radar")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Reading a posture radar",
-                    entries=[
-                        ("Nine axes", "One spoke per axis. The centre is one pole of that axis, "
-                         "the rim is the other — the centre is NOT 'no opinion'."),
-                        ("Zero to one hundred", "The value is a position between two poles, not "
-                         "a score. A small shape is not a weak personality, and a large one is "
-                         "not a strong one."),
-                        ("Directional (DIR)", "The answers sit clearly on one pole of the axis."),
-                        ("Ambivalent (AMB)", "The answers agree with BOTH poles — not the same "
-                         "thing as sitting in the middle. It is the most interesting result the "
-                         "instrument produces: the person holds a real tension."),
-                        ("Balanced (BAL)", "Consistently in between: a moderate, deliberate "
-                         "position rather than a contradiction."),
-                        ("Detached (DET)", "Low engagement with the question — it does not "
-                         "mobilise the person one way or the other."),
-                        ("Ambivalence index", "Computed from how strongly someone endorses both "
-                         "poles at once (Griffin's index); it is what separates AMB from BAL."),
-                        ("Accelerator first", "On every axis the accelerating pole is displayed "
-                         "first, by convention. 'Accelerator' never means 'better'."),
-                        ("This chart", "An illustrative profile, not a published archetype — it "
-                         "exists to show the scale, not to describe anyone."),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(ui("nine_axes", lang), T(_TIP_AXES, lang)),
+                             *[(T(h, lang), T(d, lang)) for h, d in _TIP]],
                 )
         st_space("v", s.project.spacing.title_gap)
         # UNE ligne, DEUX cellules : le radar à gauche, les quatre codes à
@@ -89,7 +107,7 @@ def build(lang: str = "en", **_):
                          alt="Example nine-axis posture radar: a teal profile polygon over the "
                              "concentric guides, with the centre marked as one pole and the rim "
                              "as the other")
-                st_write(bs.caption, "an example profile — not anyone's", tag=t.div)
+                st_write(bs.caption, T(_CAPTION, lang), tag=t.div)
             with g.cell():
                 # Exception assumée à la règle des grilles plates : les quatre
                 # codes forment un carré DANS la cellule de droite, et un carré
@@ -101,5 +119,5 @@ def build(lang: str = "en", **_):
                              cell_styles=s.project.containers.grid_cell_centered) as codes:
                     for code, gloss, card in _CODES:
                         with codes.cell(), st_block(card):
-                            st_write(bs.code, code, tag=t.div)
-                            st_write(bs.gloss, gloss, tag=t.div)
+                            st_write(bs.code, T(code, lang), tag=t.div)
+                            st_write(bs.gloss, T(gloss, lang), tag=t.div)

@@ -7,22 +7,29 @@ l'inclusion et l'exclusion se règlent par une ligne du book.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 
 
+_MARKER = {"en": "Where the room abstains"}
+_TITLE = {"en": ("Where the room ", (s.project.titles.keyword, "abstains"))}
+_MESSAGES = [
+    ({"en": "The 'no opinion' map"},
+     {"en": ("Where the room chose not to answer — counted apart, never as a "
+             "middle answer.")}),
+    ({"en": "An abstention is information"},
+     {"en": ("It names the questions this room does not yet feel equipped "
+             "to answer — worth one comment, not a judgement.")}),
+]
+
+
 def build(lang: str = "en", **_):
-    st_marker('Where the room abstains')
+    st_marker(T(_MARKER, lang))
     screen_slide(
-        ["Where the room ", (s.project.titles.keyword, "abstains")],
+        TF(_TITLE, lang),
         '28-diapo-abstentions',
         "Desktop view of the /present full-screen slideshow: Where the room abstains, dark theme",
-        [
-            ("The 'no opinion' map",
-             'Where the room chose not to answer — counted apart, never as a middle answer.'),
-            ('An abstention is information',
-             'It names the questions this room does not yet feel equipped '
-             'to answer — worth one comment, not a judgement.'),
-        ],
+        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
         device="desktop", landscape=True,
         lang=lang
     )

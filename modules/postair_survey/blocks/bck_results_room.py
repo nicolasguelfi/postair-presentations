@@ -19,6 +19,8 @@ them as such rather than pretending they are live.
 from custom.styles import Styles as s
 from postair_data import mascot
 from postair_event import DAYS, present_url
+from postair_i18n import ui
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -35,9 +37,34 @@ class BlockStyles:
 
 bs = BlockStyles
 
+#: Le nom de la mascotte et les libellés de jour (``DAYS``) — hors feuille.
+_MARKER = {"en": "The room's results"}
+_TITLE = {"en": ("So — who ", (s.project.titles.keyword, "are we"), "?")}
+_CAPTION = {"en": "your answers, live"}
+_BUTTON = {"en": "Project the results · {day}"}
+_TIP_TITLE = {"en": "Driving the projection"}
+#: Têtes « Room radar », « What to comment », « Per-question detail »,
+#: « Fallback » : lexique (partagées avec la slide des résultats).
+_TIP_RADAR = {"en": ("The cohort's average profile on the nine axes, with "
+                     "optional overlays: nearest archetype, nearest great figure.")}
+_TIP_COMMENT = {"en": ("Three things, in this order: the most marked axis, "
+                       "the most ambivalent axis, the dominant archetype. Resist the urge to "
+                       "comment all nine — the room stops listening after three.")}
+_TIP_FIGURES = ({"en": "Great figures"},
+                {"en": ("The overlay places the room next to figures scored by "
+                        "the same engine. It is a smile, not a verdict — say so.")})
+_TIP_DETAIL = {"en": ("Expandable distribution for each statement. "
+                      "This is where the debate questions come from: pick the ones where the "
+                      "room splits, not the ones where it agrees.")}
+_TIP_REFRESH = ({"en": "Refresh"},
+                {"en": ("The page refreshes every four seconds and can export a room "
+                        "report. It requires the operator key — the audience cannot open it.")})
+_TIP_FALLBACK = {"en": ("If the network fails, use the rehearsal screenshots and say "
+                        "clearly that they are from the rehearsal, not from this room.")}
+
 
 def build(lang: str = "en", **_):
-    st_marker("The room's results")
+    st_marker(T(_MARKER, lang))
     medio = mascot("Medio")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -46,26 +73,18 @@ def build(lang: str = "en", **_):
                 # bck_results_poster (« The Results »). Les captures de RÉGIE
                 # et les 7 vues du diaporama /present (Q15) adossent cette
                 # séquence régie + diaporama (bck_screens_regie et bck_screens_diapo_*), juste après.
-                st_write(bs.title, "So — who ", (s.project.titles.keyword, "are we"), "?",
-                         tag=t.div, toc_lvl="+1", label="The room's results")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Driving the projection",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("Room radar", "The cohort's average profile on the nine axes, with "
-                         "optional overlays: nearest archetype, nearest great figure."),
-                        ("What to comment", "Three things, in this order: the most marked axis, "
-                         "the most ambivalent axis, the dominant archetype. Resist the urge to "
-                         "comment all nine — the room stops listening after three."),
-                        ("Great figures", "The overlay places the room next to figures scored by "
-                         "the same engine. It is a smile, not a verdict — say so."),
-                        ("Per-question detail", "Expandable distribution for each statement. "
-                         "This is where the debate questions come from: pick the ones where the "
-                         "room splits, not the ones where it agrees."),
-                        ("Refresh", "The page refreshes every four seconds and can export a room "
-                         "report. It requires the operator key — the audience cannot open it."),
-                        ("Fallback", "If the network fails, use the rehearsal screenshots and say "
-                         "clearly that they are from the rehearsal, not from this room."),
+                        (ui("room_radar", lang), T(_TIP_RADAR, lang)),
+                        (ui("what_to_comment", lang), T(_TIP_COMMENT, lang)),
+                        (T(_TIP_FIGURES[0], lang), T(_TIP_FIGURES[1], lang)),
+                        (ui("per_question_detail", lang), T(_TIP_DETAIL, lang)),
+                        (T(_TIP_REFRESH[0], lang), T(_TIP_REFRESH[1], lang)),
+                        (ui("fallback", lang), T(_TIP_FALLBACK, lang)),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -77,8 +96,8 @@ def build(lang: str = "en", **_):
                          alt=f"{medio['name']}, the moderator mascot, presenting the results",
                          overlay=dd35_overlay())
                 st_write(bs.mascot_name, medio["name"], tag=t.div)
-                st_write(bs.caption, "your answers, live", tag=t.div)
+                st_write(bs.caption, T(_CAPTION, lang), tag=t.div)
             with g.cell():
                 for label, code in DAYS:
-                    st_write(bs.button, f"Project the results · {label}",
+                    st_write(bs.button, T(_BUTTON, lang).format(day=label),
                              tag=t.div, link=present_url(code), no_link_decor=True)
