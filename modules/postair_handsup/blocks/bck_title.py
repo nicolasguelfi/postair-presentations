@@ -21,7 +21,8 @@ axis by axis." Then arrow right.
 # @guideline: postair-minimal
 
 from custom.instrument import version
-from postair_lang import st_stage_lang_selector
+from postair_i18n import ui
+from postair_lang import T, TF, st_stage_lang_selector
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -48,18 +49,21 @@ TITLE_PROMPT = (
     + AI_SUFFIX_LANDSCAPE
 )
 
+# ── Feuilles projetées (règle R-i18n) — l'EN ne bouge pas, le FR se remplit ici.
+_TITLE = {"en": ("The survey, ", (s.project.titles.keyword, "by show of hands"))}
+_TITLE_LABEL = {"en": "By show of hands"}
+_SUBTITLE = {"en": "same nine axes, same statements — your hand is the slider"}
+_GROUNDING = {"en": "instrument v{v} — "}
+
 
 def build(lang: str = "en", **_):
-    st_marker("Title")
+    st_marker(ui("title", lang))
     with st_block(s.project.containers.page_fill_top):
         with st_zoom(140):
-            st_write(bs.title, "The survey, ",
-                     (s.project.titles.keyword, "by show of hands"),
-                     tag=t.div, toc_lvl="1", label="By show of hands")
+            st_write(bs.title, *TF(_TITLE, lang),
+                     tag=t.div, toc_lvl="1", label=T(_TITLE_LABEL, lang))
         st_space("v", "1vh")
-        st_write(bs.subtitle,
-                 "same nine axes, same statements — your hand is the slider",
-                 tag=t.div)
+        st_write(bs.subtitle, T(_SUBTITLE, lang), tag=t.div)
         st_space("v", "2vh")
         hero_image(
             "handsup_title", TITLE_PROMPT,
@@ -75,5 +79,5 @@ def build(lang: str = "en", **_):
         # postair_lang : un seul sélecteur pour tous les decks.
         st_stage_lang_selector()
         st_space("v", "1vh")
-        st_write(bs.grounding, f"instrument v{version()} — ",
+        st_write(bs.grounding, T(_GROUNDING, lang).format(v=version()),
                  citation("guelfi-postair", inline=True), tag=t.div)

@@ -22,7 +22,7 @@ from streamtex import *
 from streamtex.enums import Tags as t
 
 from custom.instrument import axis, scale, synthesis
-from postair_lang import current_lang
+from postair_lang import T, current_lang
 from custom.styles import Styles as s
 
 
@@ -32,6 +32,25 @@ class _S:
     statement = s.project.body.bullet + s.center_txt + s.italic
     level = s.project.body.bullet + s.center_txt
     no_opinion = s.project.body.bullet + s.center_txt + s.project.colors.amber
+
+
+#: Le chrome des gabarits — les seules chaînes du module écrites à la main
+#: (règle R-i18n, 2026-08-28) : feuilles ``{"en": …, "fr": …}`` résolues par
+#: ``T(..., lang)``. Les contenus (énoncés, synthèses, labels de pôle, échelle)
+#: viennent du gel et restent HORS de ces feuilles. Les guillemets sont des
+#: feuilles aussi : “ ” en anglais, « » en français.
+_UI = {
+    "quote_open": {"en": "“"},
+    "quote_close": {"en": "”"},
+    "axis_open": {"en": "Axis “"},
+    "axis_close": {"en": "”"},
+    "synthesis_marker": {"en": "{label} — synthesis"},
+    "vote_marker": {"en": "Vote — {keyword}"},
+    "vote_title": {"en": "Vote: "},
+    "support": {"en": "I support"},
+    "oppose": {"en": "I oppose"},
+    "no_opinion": {"en": "no opinion"},
+}
 
 
 #: LE calibrage du deck, en un seul endroit (NG 2026-08-24) — neuf axes qui
@@ -108,7 +127,8 @@ def _pole_columns(ax: dict, cells, *, zoomPole: int, zoomCell: int,
                 for card, text in cells(pole, kind):
                     st_space("v", "1.2vh")
                     with st_block(card), st_zoom(zoomCell):
-                        st_write(_S.statement, "“", text, "”", tag=t.div)
+                        st_write(_S.statement, T(_UI["quote_open"], lang), text,
+                                 T(_UI["quote_close"], lang), tag=t.div)
 
 
 def questions_slide(code: str, *, lang: str | None = None,
@@ -151,7 +171,8 @@ def _axis_pair_title(ax: dict, zoom: int, lang: str, **toc) -> None:
     """Le titre au format NG 2026-08-23 : Axis "Trust / Self-reliance"."""
     pair = f"{ax['accel']['label'][lang]} / {ax['decel']['label'][lang]}"
     with st_zoom(zoom):
-        st_write(_S.title, "Axis “", (s.project.titles.keyword, pair), "”",
+        st_write(_S.title, T(_UI["axis_open"], lang),
+                 (s.project.titles.keyword, pair), T(_UI["axis_close"], lang),
                  tag=t.div, **toc)
 
 
@@ -171,7 +192,7 @@ def pole_synthesis_slide(code: str, kind: str, *, lang: str | None = None,
     lang = lang or current_lang()
     ax = axis(code)
     pole = ax[kind]
-    st_marker(f"{pole['label'][lang]} — synthesis")
+    st_marker(T(_UI["synthesis_marker"], lang).format(label=pole["label"][lang]))
     with st_block(s.project.containers.page_fill_top):
         # L'ancre TOC de l'axe vit ICI, sur le pôle accélérateur — la tête
         # de groupe stable depuis l'exclusion des slides d'énoncés.
@@ -185,7 +206,8 @@ def pole_synthesis_slide(code: str, kind: str, *, lang: str | None = None,
                 st_write(_S.pole, pole["label"][lang], tag=t.div)
             st_space("v", "1.5vh")
             with st_block(_SYNTH_CARDS[kind]), st_zoom(z["zoomCell"]):
-                st_write(_S.statement, "“", synthesis(pole)[lang], "”",
+                st_write(_S.statement, T(_UI["quote_open"], lang),
+                         synthesis(pole)[lang], T(_UI["quote_close"], lang),
                          tag=t.div)
 
 
@@ -229,18 +251,23 @@ def _vote_prompt(kind: str) -> str:
     return AI_PREFIX + _VOTE_PROMPTS[kind] + AI_SUFFIX_LANDSCAPE
 
 
-def _vote_slide(profile: str, *, kind: str, keyword: str, card,
+def _vote_slide(profile: str, *, kind: str, keyword: dict, card,
                 levels: list[dict], alt_ready: str, lang: str | None = None,
                 zoomTitle: int | None = None, zoomImage: int | None = None,
                 zoomText: int | None = None) -> None:
-    """Le schéma commun des trois volets : image à gauche, valeurs à droite."""
+    """Le schéma commun des trois volets : image à gauche, valeurs à droite.
+
+    ``keyword`` est une FEUILLE (``_UI["support"]``…), résolue ici dans la
+    langue reçue — le marqueur et le titre en portent le même mot.
+    """
     z = _z(profile, zoomTitle=zoomTitle, zoomImage=zoomImage, zoomText=zoomText)
     lang = lang or current_lang()
-    st_marker(f"Vote — {keyword}", hidden=True)
+    word = T(keyword, lang)
+    st_marker(T(_UI["vote_marker"], lang).format(keyword=word), hidden=True)
     with st_block(s.project.containers.page_fill_top):
         with st_zoom(z["zoomTitle"]):
-            st_write(_S.title, "Vote: ", (s.project.titles.keyword, keyword),
-                     tag=t.div)
+            st_write(_S.title, T(_UI["vote_title"], lang),
+                     (s.project.titles.keyword, word), tag=t.div)
         st_space("v", "3vh")
         with st_grid(cols="46% 54%", gap="2vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -262,7 +289,7 @@ def _vote_slide(profile: str, *, kind: str, keyword: str, card,
 
 def vote_support_slide(**zooms) -> None:
     """Volet 1 : les trois réponses EN FAVEUR, intensité décroissante."""
-    _vote_slide("vote", kind="support", keyword="I support",
+    _vote_slide("vote", kind="support", keyword=_UI["support"],
                 card=s.project.cards.blue, levels=scale()["agree"],
                 alt_ready=("Papercut crowd with every arm raised high in "
                            "enthusiastic approval under an amber paper sun"),
@@ -271,7 +298,7 @@ def vote_support_slide(**zooms) -> None:
 
 def vote_oppose_slide(**zooms) -> None:
     """Volet 2 : les trois réponses EN DÉFAVEUR, intensité croissante."""
-    _vote_slide("vote", kind="oppose", keyword="I oppose",
+    _vote_slide("vote", kind="oppose", keyword=_UI["oppose"],
                 card=s.project.cards.coral, levels=scale()["disagree"],
                 alt_ready=("Papercut crowd with arms crossed or palms raised "
                            "gently forward in polite refusal"),
@@ -284,7 +311,7 @@ def vote_abstain_slide(**zooms) -> None:
     Profil de zoom PROPRE (``vote_abstain``) : une seule valeur à afficher,
     donc un corps beaucoup plus grand que les volets à trois niveaux.
     """
-    _vote_slide("vote_abstain", kind="abstain", keyword="no opinion",
+    _vote_slide("vote_abstain", kind="abstain", keyword=_UI["no_opinion"],
                 card=s.project.cards.amber, levels=[scale()["no_opinion"]],
                 alt_ready=("Papercut crowd standing back with hands in "
                            "pockets, an amber paper sun behind a cloud"),
