@@ -32,7 +32,7 @@ def build():
              "Answers that are never sent never reach the room's averages — finish "
              "the gesture before you pocket the phone."),
         ],
-        zoomImage=180,
+        zoomImage=190,
         zoomText=120,
-        crop = (0, 0, 20, 0),
+        crop = (0, 0, 13, 0),
     )
