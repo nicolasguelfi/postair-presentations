@@ -64,7 +64,9 @@ LANGS = ("en", "fr")
 #: Modules dont la traduction n'est pas encore exigée : inventaire et parité y
 #: sont des avertissements. Un module en sort au tag ``i18n/<module>-done``.
 I18N_PENDING = {
-    "postair_opening", "postair_survey", "postair_waves", "postair_handsup",
+    # lot 1 : opening, waves, handsup sortis le 2026-08-29 (tags i18n/<module>-done)
+    "postair_survey",
+    # lot 2 : quand leur anglais sera fini (tag en-final/<module>)
     "postair_debates", "postair_genai", "postair_guidelines", "postair_collection",
 }
 
