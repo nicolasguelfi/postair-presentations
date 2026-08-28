@@ -16,4 +16,4 @@ from postair_chain import build_next_module_slide
 
 def build(lang: str = "en", **_):
     # Clé EXPLICITE, jamais déduite du répertoire courant (PLAYBOOK §2).
-    build_next_module_slide(s, current="waves")
+    build_next_module_slide(s, current="waves", lang=lang)

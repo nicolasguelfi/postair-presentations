@@ -20,8 +20,11 @@ instance locale chaîne en local, la déployée en déployé). L'axe app/HTML es
 un petit lien discret sous le bouton.
 
 L'URL de l'export HTML se DÉRIVE de l'infrastructure : chaque conteneur sert
-son export sous ``<project_url>/html/`` (nginx.conf — ``location = /html/``
-redirige vers ``/html/postair_<key>/postair_<key>.html``). La ligne rendue
+UN export PAR LANGUE sous ``<project_url>/html/<lang>/`` (nginx.conf —
+``location = /html/<lang>/`` redirige vers
+``/html/<lang>/postair_<key>/postair_<key>.html`` ; plan-i18n D3). La langue
+est celle reçue par ``build(lang)`` ; un ``{lang}`` littéral dans
+``export_url`` ou ``STX_EXPORT_URL_<KEY>`` est substitué. La ligne rendue
 (NG 2026-08-19, « flexible et tolérant aux fautes ») :
 ``static HTML version: local / remote`` — DEUX liens :
 
@@ -49,6 +52,9 @@ from pathlib import Path
 from streamtex import st_block, st_html, st_marker, st_space, st_write
 from streamtex.enums import Tags as t
 
+from postair_i18n import ui
+from postair_lang import T
+
 #: Le toml du hub — la seule déclaration de l'ordre et des URLs.
 _TOML = Path(__file__).parent.parent / "postair_collection" / "collection.toml"
 
@@ -62,6 +68,16 @@ _BUTTON_CSS = (
 )
 
 
+def leaf(value) -> dict:
+    """Un texte du toml → feuille ``{"en": …}`` (une chaîne nue = anglais)."""
+    return value if isinstance(value, dict) else {"en": str(value)}
+
+
+def export_url(template: str | None, lang: str) -> str | None:
+    """L'URL d'export dans *lang* — substitue le ``{lang}`` du gabarit."""
+    return template.replace("{lang}", lang) if template else None
+
+
 @lru_cache(maxsize=1)
 def chain() -> tuple[dict, ...]:
     """Les modules du jour, dans l'ordre du toml, URL résolue (env > toml)."""
@@ -73,9 +89,9 @@ def chain() -> tuple[dict, ...]:
         env_suffix = key.upper().replace("-", "_")
         entries.append({
             "key": key,
-            "title": data.get("title", key),
+            "title": leaf(data.get("title", key)),
             "emoji": data.get("emoji", "📄"),
-            "description": data.get("description", ""),
+            "description": leaf(data.get("description", "")),
             "url": os.environ.get(f"STX_URL_{env_suffix}",
                                   data.get("project_url", "#")),
             # Exports HTML (voir docstring) : remote = toml/convention prod ;
@@ -83,11 +99,11 @@ def chain() -> tuple[dict, ...]:
             # déclarée par run-postair, sinon absent.
             "export_remote": data.get(
                 "export_url",
-                data.get("project_url", "").rstrip("/") + "/html/"
+                data.get("project_url", "").rstrip("/") + "/html/{lang}/"
                 if data.get("project_url") else None),
             "export_local": os.environ.get(
                 f"STX_EXPORT_URL_{env_suffix}",
-                os.environ[f"STX_URL_{env_suffix}"].rstrip("/") + "/html/"
+                os.environ[f"STX_URL_{env_suffix}"].rstrip("/") + "/html/{lang}/"
                 if f"STX_URL_{env_suffix}" in os.environ else None),
         })
     if not entries:
@@ -116,32 +132,34 @@ def next_module(current: str) -> dict:
     return chain()[(keys.index(current) + 1) % len(chain())]
 
 
-def build_next_module_slide(s, current: str | None = None) -> None:
+def build_next_module_slide(s, current: str | None = None,
+                            lang: str = "en") -> None:
     """La slide de fin de deck : un gros bouton vers le module suivant.
 
     :param s: la façade ``Styles`` du module appelant (``s`` dans les blocs).
     :param current: clé du module courant ; détectée du répertoire de travail
         si omise.
+    :param lang: la langue projetée, reçue par ``build(lang)``.
     """
     nxt = next_module(current or current_key())
-    st_marker("Next deck")
+    st_marker(ui("next_deck", lang))
     with st_block(s.project.containers.page_fill_center):
-        st_write(s.project.titles.subtitle + s.center_txt, "Next", tag=t.div)
+        st_write(s.project.titles.subtitle + s.center_txt, ui("next", lang), tag=t.div)
         st_space("v", "4vh")
         st_html(
             f'<div style="text-align:center;">'
             f'<a href="{nxt["url"]}" target="_top" style="{_BUTTON_CSS}">'
-            f'{nxt["emoji"]}&nbsp; {nxt["title"]}</a></div>'
+            f'{nxt["emoji"]}&nbsp; {T(nxt["title"], lang)}</a></div>'
         )
         st_space("v", "4vh")
         st_write(s.project.body.caption + s.center_txt,
-                 nxt["description"], tag=t.div)
+                 T(nxt["description"], lang), tag=t.div)
         # L'axe app/HTML (B allégée) : une ligne discrète, un lien par cible
         # disponible — « local » seulement quand une instance locale est
         # déclarée (run-postair), « remote » toujours.
         targets = [(label, url) for label, url in
-                   (("local", nxt["export_local"]),
-                    ("remote", nxt["export_remote"])) if url]
+                   (("local", export_url(nxt["export_local"], lang)),
+                    ("remote", export_url(nxt["export_remote"], lang))) if url]
         if targets:
             link_css = ("color:#95A5A6;text-decoration:underline;")
             links = " / ".join(
@@ -151,5 +169,5 @@ def build_next_module_slide(s, current: str | None = None) -> None:
             st_html(
                 f'<div style="text-align:center;color:#95A5A6;'
                 f'font-size:calc(var(--stx-scale-9, 22pt) * 0.9);">'
-                f'static HTML version: {links}</div>'
+                f'{ui("static_html", lang)}: {links}</div>'
             )

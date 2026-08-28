@@ -89,5 +89,7 @@ curl -s "$URL/api/v1/deploy?uuid=<APP_UUID>" -H "Authorization: Bearer $TOKEN"
 
 - streamlit pinned `<1.58` until streamtex ≥ 0.7.21 is on PyPI (widget-key fix f512d3f).
 - No TeXLive in the image (no st_tikz in these decks) — keeps it light.
-- Public URL for students = the static export `/html/` (nginx); the Streamlit mode
+- Public URL for students = the static export `/html/` (nginx) — one export per
+  language since 2026-08-28 (plan-i18n D3): `/html/en/` and `/html/fr/`, `/html/`
+  redirecting to English; the Streamlit mode
   is for the presenter (≈10-15 concurrent sessions per container).

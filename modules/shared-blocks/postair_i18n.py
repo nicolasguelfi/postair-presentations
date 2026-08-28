@@ -30,6 +30,7 @@ UI: dict[str, dict[str, str]] = {
                        "fr": "tout ce que ce deck affirme, et d'où cela vient"},
     "title": {"en": "Title", "fr": "Titre"},
     "next_deck": {"en": "Next deck", "fr": "Deck suivant"},
+    "next": {"en": "Next", "fr": "Ensuite"},
     "static_html": {"en": "static HTML version", "fr": "version HTML statique"},
     "open_deck": {"en": "Open the deck", "fr": "Ouvrir le deck"},
     # tooltips récurrents

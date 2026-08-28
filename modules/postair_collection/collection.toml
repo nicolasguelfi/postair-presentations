@@ -1,7 +1,9 @@
 # AI Day — le livre des modules (modèle : stx_manuals_collection de streamtex-docs).
 #
 # Ajouter un module = ajouter une section [projects.xxx] ici (rien d'autre à
-# coder : bck_home lit ce fichier). L'URL locale est le défaut ; en déploiement
+# coder : bck_home lit ce fichier). Les textes (title, description,
+# button_label) sont des FEUILLES bilingues { en = …, fr = … } (règle R-i18n,
+# 2026-08-28) — une chaîne nue vaut anglais seul. L'URL locale est le défaut ; en déploiement
 # Coolify, la variable d'environnement STX_URL_XXX (clé en MAJUSCULES, tirets
 # devenus soulignés) la surcharge. L'ordre est celui de l'agenda officiel du
 # jour (postair_event.AGENDA) — pas un choix éditorial de ce fichier.
@@ -9,8 +11,9 @@
 # Ce toml est AUSSI la source de la chaîne de fin de deck (postair_chain,
 # NG 2026-08-19) : le bouton « module suivant » et le hub ne peuvent pas
 # diverger. Le lien « static HTML version » se DÉRIVE par convention :
-# <project_url>/html/ (le nginx de chaque conteneur sert l'export là,
-# redirigé vers /html/postair_<key>/postair_<key>.html). Surcharges :
+# <project_url>/html/<lang>/ (le nginx de chaque conteneur sert UN export
+# par langue là, redirigé vers /html/<lang>/postair_<key>/postair_<key>.html
+# — plan-i18n D3, 2026-08-28). Surcharges :
 # export_url (clé optionnelle par projet) puis STX_EXPORT_URL_<KEY> (env,
 # ex. un export local servi). En local,
 # run-postair.py pose STX_URL_<KEY>=http://localhost:<port> sur chaque
@@ -20,47 +23,47 @@
 # postair_mistral (« Using Mistral models & agents to study », 20').
 
 [collection]
-title = "AI DAY — The presentations"
-description = "University of Luxembourg · 8, 9 and 10 September 2026 · three identical sessions"
+title = { en = "AI DAY — The presentations", fr = "AI DAY — Les présentations" }
+description = { en = "University of Luxembourg · 8, 9 and 10 September 2026 · three identical sessions", fr = "Université du Luxembourg · 8, 9 et 10 septembre 2026 · trois séances identiques" }
 cards_per_row = 3
 
 [projects.opening]
-title = "Opening — Facing the AI Revolution"
-description = "welcome · your host · AI is already here · the agenda"
+title = { en = "Opening — Facing the AI Revolution", fr = "Ouverture — Face à la révolution de l'IA" }
+description = { en = "welcome · your host · AI is already here · the agenda", fr = "bienvenue · votre hôte · l'IA est déjà là · le programme" }
 emoji = "🎡"
-button_label = "Open the deck"
+button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
 project_url = "https://postair-opening.streamtex.org"
 order = 1
 
 [projects.survey]
-title = "The SUMVADIS Tool"
-description = "9 axes · join the survey · the screens · your radar · the room's results"
+title = { en = "The SUMVADIS Tool", fr = "L'outil SUMVADIS" }
+description = { en = "9 axes · join the survey · the screens · your radar · the room's results", fr = "9 axes · rejoindre le sondage · les écrans · votre radar · les résultats de la salle" }
 emoji = "📱"
-button_label = "Open the deck"
+button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
 project_url = "https://postair-survey.streamtex.org"
 order = 2
 
 [projects.debates]
-title = "The debates of the nine axes"
-description = "a bank, not a talk · both poles · figures · verbatims · today's arguments"
+title = { en = "The debates of the nine axes", fr = "Les débats des neuf axes" }
+description = { en = "a bank, not a talk · both poles · figures · verbatims · today's arguments", fr = "une banque, pas un exposé · les deux pôles · figures · verbatims · les arguments du jour" }
 emoji = "⚖️"
-button_label = "Open the bank"
+button_label = { en = "Open the bank", fr = "Ouvrir la banque" }
 project_url = "https://postair-debates.streamtex.org"
 order = 3
 
 [projects.genai]
-title = "Introduction to AI & Generative AI"
-description = "70 years · how it works · what it gets wrong · your place"
+title = { en = "Introduction to AI & Generative AI", fr = "Introduction à l'IA et à l'IA générative" }
+description = { en = "70 years · how it works · what it gets wrong · your place", fr = "70 ans · comment ça marche · ce qu'elle rate · votre place" }
 emoji = "🤖"
-button_label = "Open the deck"
+button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
 project_url = "https://postair-genai.streamtex.org"
 order = 4
 
 [projects.guidelines]
-title = "The UL AI Guidelines — and Closing"
-description = "permitted by default · say it · 3 risk levels · red lines · final test · AI Act"
+title = { en = "The UL AI Guidelines — and Closing", fr = "Les lignes directrices IA de l'UL — et clôture" }
+description = { en = "permitted by default · say it · 3 risk levels · red lines · final test · AI Act", fr = "permis par défaut · le dire · 3 niveaux de risque · lignes rouges · test final · AI Act" }
 emoji = "📋"
-button_label = "Open the deck"
+button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
 project_url = "https://postair-guidelines.streamtex.org"
 order = 5
 
@@ -68,10 +71,10 @@ order = 5
 # pour l'instant : la position dans l'agenda du jour est une décision NG —
 # order 6 = après la clôture, avant le deck de secours, ajustable ici seul.
 [projects.waves]
-title = "The seventeen waves of revolutions"
-description = "16 revolutions crossed · every crisis opened and overcome · the 17th is yours"
+title = { en = "The seventeen waves of revolutions", fr = "Les dix-sept vagues de révolutions" }
+description = { en = "16 revolutions crossed · every crisis opened and overcome · the 17th is yours", fr = "16 révolutions traversées · chaque crise ouverte et surmontée · la 17e est la vôtre" }
 emoji = "🌊"
-button_label = "Open the bank"
+button_label = { en = "Open the bank", fr = "Ouvrir la banque" }
 project_url = "https://postair-waves.streamtex.org"
 order = 6
 
@@ -79,9 +82,9 @@ order = 6
 # sondage à main levée si le système tombe. Order élevé à dessein : dernier
 # du hub et de la chaîne, on n'y arrive que volontairement.
 [projects.handsup]
-title = "By Show of Hands — rescue deck"
-description = "if the tool goes down · 9 axes · statements · one vote per axis"
+title = { en = "By Show of Hands — rescue deck", fr = "À main levée — deck de secours" }
+description = { en = "if the tool goes down · 9 axes · statements · one vote per axis", fr = "si l'outil tombe · 9 axes · énoncés · un vote par axe" }
 emoji = "🙋"
-button_label = "Open the deck"
+button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
 project_url = "https://postair-handsup.streamtex.org"
 order = 99

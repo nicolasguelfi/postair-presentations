@@ -155,6 +155,17 @@ même en mode static-only).
   sous `static/media/clips/`. Les blocs la nomment par `postair_data.film_clip`.
   L'ancien arbitrage sur le master Solyo est clos : master purgé le même jour.
 
+## Les deux langues — EN et FR, une seule vérité par texte (plan-i18n, 2026-08-28)
+
+Tout texte projeté est une **feuille** `{"en": …, "fr": …}` résolue par
+`T()`/`TF()` de `shared-blocks/postair_lang.py` ; la langue **arrive par
+`build(lang)`** (`st_book(block_kwargs={"lang": current_lang()})`, valeur =
+env `STX_LANG` > sélecteur de l'orateur > `"en"`). Le public lit **un export
+par langue** (`/html/en/`, `/html/fr/` — Dockerfile, entrypoint, nginx,
+`run-postair.py --html`). Règle complète : R-i18n dans `design-guideline.md` ;
+procédure et recette : PLAYBOOK §3 ; porte : `_project/tools/check_i18n.py`
+(l'export EN doit rester identique à la baseline locale à chaque commit).
+
 ## Les références bibliographiques — le pattern canonique streamtex, pour TOUS les modules
 
 **Règle (2026-08-11)** : toute référence d'une présentation suit le mécanisme natif de

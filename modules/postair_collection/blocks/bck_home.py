@@ -15,6 +15,8 @@ import tomllib
 from pathlib import Path
 
 from custom.styles import Styles as s
+from postair_chain import leaf
+from postair_lang import T
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -30,10 +32,10 @@ for _key, _data in sorted(_CONFIG.get("projects", {}).items(),
     env_key = "STX_URL_" + _key.upper().replace("-", "_")
     _PROJECTS.append({
         "key": _key,
-        "title": _data.get("title", _key),
-        "description": _data.get("description", ""),
+        "title": leaf(_data.get("title", _key)),
+        "description": leaf(_data.get("description", "")),
         "emoji": _data.get("emoji", "📄"),
-        "button_label": _data.get("button_label", "Open"),
+        "button_label": leaf(_data.get("button_label", "Open")),
         "url": os.environ.get(env_key, _data.get("project_url", "#")),
     })
 
@@ -56,16 +58,16 @@ class BlockStyles:
 bs = BlockStyles
 
 
-def _card(project: dict) -> None:
+def _card(project: dict, lang: str) -> None:
     # Compact (NG 2026-08-13) : emoji EN LIGNE avec le titre — quatre cartes
     # 2×2 tiennent dans un écran laptop sans coupe.
     with st_block(s.project.cards.blue):
-        st_write(bs.card_title, project["emoji"], "  ", project["title"], tag=t.div)
+        st_write(bs.card_title, project["emoji"], "  ", T(project["title"], lang), tag=t.div)
         st_space("v", "0.6vh")
-        st_write(bs.card_desc, project["description"], tag=t.div)
+        st_write(bs.card_desc, T(project["description"], lang), tag=t.div)
         st_space("v", "1vh")
         st_html(f'<a href="{project["url"]}" target="_blank" rel="noopener" '
-                f'style="{bs.button_css}">{project["button_label"]}</a>')
+                f'style="{bs.button_css}">{T(project["button_label"], lang)}</a>')
 
 
 def build(lang: str = "en", **_):
@@ -75,7 +77,7 @@ def build(lang: str = "en", **_):
         st_write(bs.title, "AI DAY — the ", (s.project.titles.keyword, "presentations"),
                  tag=t.div, toc_lvl="1", label="AI Day")
         st_space("v", "0.5vh")
-        st_write(bs.subtitle, meta.get("description", ""), tag=t.div)
+        st_write(bs.subtitle, T(leaf(meta.get("description", "")), lang), tag=t.div)
         st_space("v", "2vh")
         # UNE grille équilibrée (NG 2026-08-13) : quatre cartes = 2×2, sans
         # rangée orpheline pleine largeur ni carte coupée en bas d'écran.
@@ -84,7 +86,7 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for project in _PROJECTS:
                 with g.cell():
-                    _card(project)
+                    _card(project, lang)
         st_space("v", "3vh")
         st_write(bs.footer,
                  "one service per deck · this hub only links · Mistral joins the day "
