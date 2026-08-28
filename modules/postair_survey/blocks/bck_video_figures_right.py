@@ -10,7 +10,7 @@ from custom.media_duo import FIGURES_TITLE, figure_duo, media_duo_slide
 from postair_lang import T, TF
 
 
-_MARKER = {"en": "Figure videos · 2"}
+_MARKER = {"en": "Figure videos · 2", "fr": "Vidéos des figures · 2"}
 
 
 def build(lang: str = "en", **_):

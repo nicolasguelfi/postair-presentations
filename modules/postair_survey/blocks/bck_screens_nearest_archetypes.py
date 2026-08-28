@@ -11,14 +11,14 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "The nearest archetypes"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "nearest"), " archetypes")}
+_MARKER = {"en": "The nearest archetypes", "fr": "Archétypes les plus proches"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "nearest"), " archetypes"), "fr": ("Vos ", (s.project.titles.keyword, "plus proches"), " archétypes")}
 _MESSAGES = [
-    ({"en": "Profiles like yours"},
-     {"en": "The archetypes closest to your posture — company, not a verdict."}),
-    ({"en": "The trap: reading it as a box"},
+    ({"en": "Profiles like yours", "fr": "Profils comme le vôtre"},
+     {"en": "The archetypes closest to your posture — company, not a verdict.", "fr": "Les archétypes les plus proches de votre posture — des compagnons, pas un verdict."}),
+    ({"en": "The trap: reading it as a box", "fr": "Le piège : y voir une case"},
      {"en": ("You are near an archetype, never inside one; the distance is "
-             "part of the information.")}),
+             "part of the information."), "fr": "Vous êtes près d'un archétype, jamais dedans ; la distance fait partie de l'information."}),
 ]
 
 

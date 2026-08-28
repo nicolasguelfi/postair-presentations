@@ -11,18 +11,18 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "Your radar"}
-_TITLE = {"en": ("Your ", (s.project.titles.keyword, "radar"))}
+_MARKER = {"en": "Your radar", "fr": "Votre radar"}
+_TITLE = {"en": ("Your ", (s.project.titles.keyword, "radar")), "fr": ("Votre ", (s.project.titles.keyword, "radar"))}
 _MESSAGES = [
-    ({"en": "Nine axes, one shape"},
+    ({"en": "Nine axes, one shape", "fr": "Neuf axes, une forme"},
      {"en": ("Your position between the two poles of each axis — the whole "
-             "survey in one figure.")}),
-    ({"en": "How to read it"},
+             "survey in one figure."), "fr": "Votre position entre les deux pôles de chaque axe — tout le sondage en une seule image."}),
+    ({"en": "How to read it", "fr": "Comment le lire"},
      {"en": ("The centre is one pole, not 'no opinion'; distance is a "
-             "position, not a score. No shape is better than another.")}),
-    ({"en": "The trap: comparing sizes"},
+             "position, not a score. No shape is better than another."), "fr": "Le centre est un pôle, pas « Sans opinion » ; la distance est une position, pas un score. Aucune forme ne vaut mieux qu'une autre."}),
+    ({"en": "The trap: comparing sizes", "fr": "Le piège : comparer les tailles"},
      {"en": ("A small shape is not a small personality — remember the reading "
-             "lesson from a few slides ago.")}),
+             "lesson from a few slides ago."), "fr": "Une petite forme n'est pas une petite personnalité — rappelez-vous la leçon de lecture, quelques slides plus tôt."}),
 ]
 
 

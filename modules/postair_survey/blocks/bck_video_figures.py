@@ -20,34 +20,34 @@ from postair_i18n import ui
 from postair_lang import T, TF
 
 
-_MARKER = {"en": "Figure videos"}
-_TIP_TITLE = {"en": "The figure videos"}
+_MARKER = {"en": "Figure videos", "fr": "Vidéos des figures"}
+_TIP_TITLE = {"en": "The figure videos", "fr": "Vidéos des figures"}
 _TIP = [
-    ({"en": "In the app"},
+    ({"en": "In the app", "fr": "Dans l'application"},
      {"en": ("Every great figure's page carries a short presentation video — "
-             "click the portrait to play it.")}),
-    ({"en": "Same instrument"},
+             "click the portrait to play it."), "fr": "Chaque page de grande figure a sa courte vidéo de présentation — cliquez sur le portrait pour la lancer."}),
+    ({"en": "Same instrument", "fr": "Le même instrument"},
      {"en": ("The figures are scored on the same 54 statements you answered, "
-             "from documented positions in their work.")}),
-    ({"en": "AI-made, sourced"},
+             "from documented positions in their work."), "fr": "Les figures sont évaluées sur les 54 mêmes énoncés que vous, d'après des positions documentées dans leur œuvre."}),
+    ({"en": "AI-made, sourced", "fr": "Faites par IA, sourcées"},
      {"en": ("The videos are generative productions grounded in each figure's "
-             "dossier — arguments to debate, never facts about a person.")}),
+             "dossier — arguments to debate, never facts about a person."), "fr": "Les vidéos sont des productions génératives ancrées dans le dossier de chaque figure — des arguments à débattre, jamais des faits sur une personne."}),
 ]
 
 
-_MARKER = {"en": "Figure videos"}
-_TIP_TITLE = {"en": "The figure videos"}
+_MARKER = {"en": "Figure videos", "fr": "Vidéos des figures"}
+_TIP_TITLE = {"en": "The figure videos", "fr": "Vidéos des figures"}
 #: Les deux premières têtes viennent du lexique (``in_the_app`` et
 #: ``same_instrument``, partagées avec d'autres slides) ; la troisième est
 #: propre à cette slide.
 _TIP_IN_APP = {"en": ("Every great figure's page carries a short presentation "
-                      "video — click the portrait to play it.")}
+                      "video — click the portrait to play it."), "fr": "Chaque page de grande figure a sa courte vidéo de présentation — cliquez sur le portrait pour la lancer."}
 _TIP_SAME = {"en": ("The figures are scored on the same 54 statements you "
-                    "answered, from documented positions in their work.")}
-_TIP_AI = ({"en": "AI-made, sourced"},
+                    "answered, from documented positions in their work."), "fr": "Les figures sont évaluées sur les 54 mêmes énoncés que vous, d'après des positions documentées dans leur œuvre."}
+_TIP_AI = ({"en": "AI-made, sourced", "fr": "Faites par IA, sourcées"},
            {"en": ("The videos are generative productions grounded in each "
                    "figure's dossier — arguments to debate, never facts about "
-                   "a person.")})
+                   "a person."), "fr": "Les vidéos sont des productions génératives ancrées dans le dossier de chaque figure — des arguments à débattre, jamais des faits sur une personne."})
 
 
 def build(lang: str = "en", **_):

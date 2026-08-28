@@ -15,18 +15,18 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "Your code"}
-_TITLE = {"en": ("Your ", (s.project.titles.keyword, "code"), " — keep it")}
+_MARKER = {"en": "Your code", "fr": "Votre code"}
+_TITLE = {"en": ("Your ", (s.project.titles.keyword, "code"), " — keep it"), "fr": ("Votre ", (s.project.titles.keyword, "code"), " — gardez-le")}
 _MESSAGES = [
-    ({"en": "The only way back"},
+    ({"en": "The only way back", "fr": "Le seul chemin de retour"},
      {"en": ("The personal code at the end of the report reopens your result "
-             "at app.sumvadis.ai/r — screenshot it now.")}),
-    ({"en": "No account, no recovery"},
+             "at app.sumvadis.ai/r — screenshot it now."), "fr": "Le code personnel en fin de rapport rouvre votre résultat sur app.sumvadis.ai/r — faites-en une capture d'écran maintenant."}),
+    ({"en": "No account, no recovery", "fr": "Ni compte, ni récupération"},
      {"en": ("Anonymous means exactly this: no email, no login — lose the code "
-             "and nobody can find your report again.")}),
-    ({"en": "Share on your terms"},
+             "and nobody can find your report again."), "fr": "Anonyme veut dire exactement cela : ni e-mail, ni identifiant — perdez le code et personne ne retrouvera votre rapport."}),
+    ({"en": "Share on your terms", "fr": "Partagez à vos conditions"},
      {"en": ("Download or share the report if you wish; nothing is published "
-             "by default.")}),
+             "by default."), "fr": "Téléchargez ou partagez le rapport si vous voulez ; rien n'est publié par défaut."}),
 ]
 
 

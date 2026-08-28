@@ -11,15 +11,15 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "The nearest figures"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "nearest"), " figures")}
+_MARKER = {"en": "The nearest figures", "fr": "Figures les plus proches"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "nearest"), " figures"), "fr": ("Vos ", (s.project.titles.keyword, "plus proches"), " figures")}
 _MESSAGES = [
-    ({"en": "Figures in your company"},
+    ({"en": "Figures in your company", "fr": "Des figures à vos côtés"},
      {"en": ("The great figures closest to your posture — scored by the same "
-             "instrument you just answered.")}),
-    ({"en": "The trap: reading it as a twin"},
+             "instrument you just answered."), "fr": "Les grandes figures les plus proches de votre posture — évaluées par le même instrument que vous venez de remplir."}),
+    ({"en": "The trap: reading it as a twin", "fr": "Le piège : y voir un jumeau"},
      {"en": ("Nearness measures answers, not lives — an invitation to read the "
-             "figure, never an identity.")}),
+             "figure, never an identity."), "fr": "La proximité mesure des réponses, pas des vies — une invitation à lire la figure, jamais une identité."}),
 ]
 
 

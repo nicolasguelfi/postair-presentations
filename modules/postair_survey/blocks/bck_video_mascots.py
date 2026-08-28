@@ -18,19 +18,19 @@ from postair_i18n import ui
 from postair_lang import T, TF
 
 
-_MARKER = {"en": "Mascot videos"}
-_TIP_TITLE = {"en": "The mascot clips"}
+_MARKER = {"en": "Mascot videos", "fr": "Vidéos des mascottes"}
+_TIP_TITLE = {"en": "The mascot clips", "fr": "Clips des mascottes"}
 #: La première tête vient du lexique (``in_the_app``, partagée avec les vidéos
 #: de figures) ; les deux autres sont propres à cette slide.
 _TIP = [
     {"en": ("Every one of the 36 mascots carries a short presentation clip — "
-            "open any character to play it.")},
-    ({"en": "Two families"},
+            "open any character to play it."), "fr": "Chacune des 36 mascottes a son court clip de présentation — ouvrez n'importe quel personnage pour le lancer."},
+    ({"en": "Two families", "fr": "Deux familles"},
      {"en": ("Each pole is carried by an animal AND an object; here, the most "
-             "playful of each family.")}),
-    ({"en": "Production"},
+             "playful of each family."), "fr": "Chaque pôle est porté par un animal ET un objet ; ici, le plus joueur de chaque famille."}),
+    ({"en": "Production", "fr": "Production"},
      {"en": ("Made in house, entirely with generative AI, from the definitions "
-             "of the nine axes.")}),
+             "of the nine axes."), "fr": "Faits maison, entièrement par IA générative, à partir des définitions des neuf axes."}),
 ]
 
 
