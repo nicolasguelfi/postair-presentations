@@ -150,8 +150,8 @@ def inject(lot: list[dict]) -> dict[str, int]:
     """Insère ``"fr"`` dans chaque feuille du lot ; retourne {fichier: n}."""
     by_file: dict[str, list[dict]] = {}
     for e in lot:
-        if e.get("fr") in (None, "", []):
-            continue
+        if e.get("fr") is None or e.get("fr") == []:
+            continue   # une chaîne vide est une valeur voulue : injectée
         by_file.setdefault(e["file"], []).append(e)
     done: dict[str, int] = {}
     for rel, entries in by_file.items():

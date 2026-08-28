@@ -40,7 +40,7 @@ def main() -> int:
     for e in lot:
         vs = verdicts.get(e["id"], {})
         fixes = [(lens, v["fix"]) for lens, v in vs.items()
-                 if v.get("verdict") == "FIX" and v.get("fix") not in (None, "", [])]
+                 if v.get("verdict") == "FIX" and v.get("fix") not in (None, [])]
         if not fixes:
             continue
         distinct = {json.dumps(f, ensure_ascii=False, sort_keys=True) for _l, f in fixes}

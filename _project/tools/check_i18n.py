@@ -345,7 +345,7 @@ def inventory(module: str) -> tuple[list[str], list[str]]:
             bare.append(f"{rel}:{line}: {s}")
         for line, leaf in inv.leaves:
             for lang in LANGS:
-                if not leaf.get(lang, "").strip():
+                if leaf.get(lang) is None:
                     missing.append(f"{rel}:{line}: sans {lang} — {leaf.get('en', '')[:50]!r}")
     return bare, missing
 
@@ -376,8 +376,10 @@ def parity(module: str) -> list[str]:
             for lang in LANGS:
                 if lang == "en":
                     continue
-                v = leaf.get(lang, "")
-                if not v.strip():
+                v = leaf.get(lang)
+                if v is None or (not v.strip() and en.strip() not in wl):
+                    # Une chaîne vide n'est admise que pour une feuille en
+                    # liste blanche (suffixe de gabarit sans équivalent FR).
                     out.append(f"{rel}:{line}: sans {lang} — {en[:50]!r}")
                 elif v.strip() == en.strip() and en.strip() not in wl:
                     out.append(f"{rel}:{line}: {lang} identique à en — {en[:50]!r}")

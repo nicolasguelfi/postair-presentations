@@ -47,8 +47,10 @@ def check(lot: list[dict]) -> list[str]:
                 if ("kw" in a) != ("kw" in b):
                     problems.append(f"{i}: motif texte/kw différent"); break
         fe, ff = _flat(e["kind"], en), _flat(e["kind"], fr)
-        if not isinstance(ff, str) or not ff.strip():
-            problems.append(f"{i}: fr vide"); continue
+        if not isinstance(ff, str):
+            problems.append(f"{i}: fr invalide"); continue
+        if not ff.strip():
+            continue   # suffixe vide voulu — la parité l'exige en liste blanche
         ne, nf = set(_NUM.findall(fe)), set(_NUM.findall(ff))
         if ne - nf:
             problems.append(f"{i}: nombres perdus {sorted(ne - nf)} — {ff[:50]!r}")

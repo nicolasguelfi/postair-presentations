@@ -68,8 +68,10 @@ def T(node, lang: str | None = None) -> str:
         raise TypeError(f"feuille invalide (dict avec clé 'en' attendu) : {node!r}")
     lang = lang or current_lang()
     value = node.get(lang)
-    if value is None or value == "":
+    if value is None:
         value = node[DEFAULT]
+    # Une chaîne VIDE est une valeur voulue (un suffixe de gabarit que le
+    # français n'a pas), jamais une absence : elle ne retombe pas sur l'EN.
     return value
 
 
