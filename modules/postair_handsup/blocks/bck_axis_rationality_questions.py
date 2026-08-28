@@ -15,4 +15,4 @@ from custom.axis_slides import questions_slide
 
 
 def build(lang: str = "en", **_):
-    questions_slide("RAT")
+    questions_slide("RAT", lang=lang)

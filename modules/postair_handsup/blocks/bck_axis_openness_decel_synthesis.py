@@ -13,4 +13,4 @@ from custom.axis_slides import pole_synthesis_slide
 
 
 def build(lang: str = "en", **_):
-    pole_synthesis_slide("OPE", "decel")
+    pole_synthesis_slide("OPE", "decel", lang=lang)

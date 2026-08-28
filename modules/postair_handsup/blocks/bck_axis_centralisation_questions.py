@@ -15,4 +15,4 @@ from custom.axis_slides import questions_slide
 
 
 def build(lang: str = "en", **_):
-    questions_slide("CEN")
+    questions_slide("CEN", lang=lang)

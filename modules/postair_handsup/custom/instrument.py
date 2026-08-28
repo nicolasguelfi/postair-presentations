@@ -7,9 +7,11 @@ libellé d'échelle n'est écrit à la main dans ce module — une correction se
 fait au hub, jamais ici, et arrive par régénération (plan-postair_handsup
 v2, NG 2026-08-23).
 
-La langue projetée est un état de séance (sélecteur de la slide de titre,
-clé stable ``handsup_lang``) : chaque page la relit — en pagination, seule
-la page courante s'exécute, l'état de session est ce qui traverse.
+La langue projetée arrive par ``build(lang)`` depuis ``postair_lang``
+(règle R-i18n, 2026-08-28) ; ``lang()`` n'est plus qu'un alias de
+``current_lang()`` pour ce qui n'a pas encore la langue en main. Le gel garde
+ses TROIS langues (structure ouverte) : seules celles de ``postair_lang.LANGS``
+sont exposées.
 """
 
 from __future__ import annotations
@@ -18,17 +20,13 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
-import streamlit as st
+from postair_lang import LANG_KEY, LANGS as _EXPOSED, NAMES, current_lang  # noqa: F401
 
 _FREEZE = Path(__file__).parent.parent / "static" / "data" / "content.json"
 
-#: La clé de widget du sélecteur — STABLE (piège connu : une clé engendrée se
-#: réinitialise à chaque rerun sous la main de l'orateur).
-LANG_KEY = "handsup_lang"
-
-#: Langues du gel, dans l'ordre du sélecteur ; l'anglais est la langue des
-#: decks POSTAIR, donc le défaut.
-LANGS = [("en", "English"), ("fr", "Français"), ("de", "Deutsch")]
+#: Les langues EXPOSÉES par le sélecteur commun (``postair_lang``), avec leur
+#: nom — le gel en porte trois, l'allemand attend son tour.
+LANGS = [(code, NAMES[code]) for code in _EXPOSED]
 
 
 @lru_cache(maxsize=1)
@@ -41,8 +39,8 @@ def _content() -> dict:
 
 
 def lang() -> str:
-    """La langue de la séance — posée par le sélecteur du titre, défaut en."""
-    return st.session_state.get(LANG_KEY, "en")
+    """La langue projetée — alias de ``postair_lang.current_lang()``."""
+    return current_lang()
 
 
 def axes() -> list[dict]:

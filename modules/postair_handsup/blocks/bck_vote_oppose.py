@@ -12,4 +12,4 @@ from custom.axis_slides import vote_oppose_slide
 
 
 def build(lang: str = "en", **_):
-    vote_oppose_slide()
+    vote_oppose_slide(lang=lang)

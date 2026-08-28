@@ -10,9 +10,9 @@ Conventions reprises des decks existants :
 - pôle ACCÉLÉRATEUR à gauche en carte bleue, décélérateur à droite en corail
   (convention d'affichage sumvadis, cf. ``postair_data`` et la slide
   « The instrument » de survey) ;
-- les marqueurs restent en ANGLAIS quelle que soit la langue projetée : ce
-  sont des ancres de navigation, pas du contenu — un marqueur qui change
-  avec le sélecteur perdrait la TOC en pleine séance ;
+- les marqueurs et libellés TOC suivent la langue REÇUE par ``build(lang)``
+  (règle R-i18n, 2026-08-28) : l'export FR les traduit ; l'app orateur
+  garde ceux de la langue de démarrage, le cache de pagination les fige ;
 - tous les textes viennent du gel (``custom.instrument``), rien à la main.
 """
 
@@ -21,7 +21,8 @@ from __future__ import annotations
 from streamtex import *
 from streamtex.enums import Tags as t
 
-from custom.instrument import axis, lang, scale, synthesis
+from custom.instrument import axis, scale, synthesis
+from postair_lang import current_lang
 from custom.styles import Styles as s
 
 
@@ -63,9 +64,9 @@ def _z(profile: str, **overrides) -> dict:
     return zooms
 
 
-def _title(ax: dict, zoom: int) -> None:
+def _title(ax: dict, zoom: int, lang: str) -> None:
     with st_zoom(zoom):
-        st_write(_S.title, (s.project.titles.keyword, ax["name"][lang()]),
+        st_write(_S.title, (s.project.titles.keyword, ax["name"][lang]),
                  tag=t.div)
 
 
@@ -88,7 +89,8 @@ _CELL_CARDS = [s.project.cards.teal, _LILAC_CELL, s.project.cards.amber]
 _SYNTH_CARDS = {"accel": s.project.cards.teal, "decel": s.project.cards.amber}
 
 
-def _pole_columns(ax: dict, cells, *, zoomPole: int, zoomCell: int) -> None:
+def _pole_columns(ax: dict, cells, *, zoomPole: int, zoomCell: int,
+                  lang: str) -> None:
     """Deux colonnes : en-tête de pôle (bleu/corail), puis les cellules.
 
     ``cells(pole, kind)`` rend la liste ``[(carte, énoncé), …]`` — le gabarit
@@ -102,14 +104,15 @@ def _pole_columns(ax: dict, cells, *, zoomPole: int, zoomCell: int) -> None:
             pole = ax[kind]
             with g.cell():
                 with st_block(header), st_zoom(zoomPole):
-                    st_write(_S.pole, pole["label"][lang()], tag=t.div)
+                    st_write(_S.pole, pole["label"][lang], tag=t.div)
                 for card, text in cells(pole, kind):
                     st_space("v", "1.2vh")
                     with st_block(card), st_zoom(zoomCell):
                         st_write(_S.statement, "“", text, "”", tag=t.div)
 
 
-def questions_slide(code: str, *, zoomTitle: int | None = None,
+def questions_slide(code: str, *, lang: str | None = None,
+                    zoomTitle: int | None = None,
                     zoomPole: int | None = None,
                     zoomCell: int | None = None) -> None:
     """Page 1 de l'axe : les 3 énoncés de chaque pôle, une cellule chacun.
@@ -120,19 +123,20 @@ def questions_slide(code: str, *, zoomTitle: int | None = None,
     (les colonnes sont en %, leur boîte ne grandit pas — règle R-zoom).
     """
     z = _z("questions", zoomTitle=zoomTitle, zoomPole=zoomPole, zoomCell=zoomCell)
+    lang = lang or current_lang()
     ax = axis(code)
-    st_marker(ax["name"]["en"])
+    st_marker(ax["name"][lang])
     with st_block(s.project.containers.page_fill_top):
         # Pas d'ancre TOC ici : depuis l'exclusion des slides d'énoncés
         # (NG 2026-08-24), l'ancre de l'axe vit sur la slide du pôle
         # accélérateur — la tête de groupe STABLE, que ce bloc soit
         # réactivé ou non (règle des ancres, PLAYBOOK §3).
-        _title(ax, z["zoomTitle"])
+        _title(ax, z["zoomTitle"], lang)
         st_space("v", "2vh")
         _pole_columns(ax, lambda pole, _kind: [
-            (_CELL_CARDS[i], stmt["text"][lang()])
+            (_CELL_CARDS[i], stmt["text"][lang])
             for i, stmt in enumerate(pole["statements"])],
-            zoomPole=z["zoomPole"], zoomCell=z["zoomCell"])
+            zoomPole=z["zoomPole"], zoomCell=z["zoomCell"], lang=lang)
 
 
 #: La colonne d'un pôle seule au centre de la slide : pleine largeur elle
@@ -143,15 +147,16 @@ _POLE_COLUMN = Style(
 )
 
 
-def _axis_pair_title(ax: dict, zoom: int, **toc) -> None:
+def _axis_pair_title(ax: dict, zoom: int, lang: str, **toc) -> None:
     """Le titre au format NG 2026-08-23 : Axis "Trust / Self-reliance"."""
-    pair = f"{ax['accel']['label'][lang()]} / {ax['decel']['label'][lang()]}"
+    pair = f"{ax['accel']['label'][lang]} / {ax['decel']['label'][lang]}"
     with st_zoom(zoom):
         st_write(_S.title, "Axis “", (s.project.titles.keyword, pair), "”",
                  tag=t.div, **toc)
 
 
-def pole_synthesis_slide(code: str, kind: str, *, zoomTitle: int | None = None,
+def pole_synthesis_slide(code: str, kind: str, *, lang: str | None = None,
+                         zoomTitle: int | None = None,
                          zoomPole: int | None = None,
                          zoomCell: int | None = None) -> None:
     """La slide d'UN pôle (décision NG 2026-08-23 : vote PAR PÔLE).
@@ -163,23 +168,24 @@ def pole_synthesis_slide(code: str, kind: str, *, zoomTitle: int | None = None,
     le bloc ; sans surcharge, la table ``_ZOOMS`` fait foi.
     """
     z = _z("pole", zoomTitle=zoomTitle, zoomPole=zoomPole, zoomCell=zoomCell)
+    lang = lang or current_lang()
     ax = axis(code)
     pole = ax[kind]
-    st_marker(f"{pole['label']['en']} — synthesis")
+    st_marker(f"{pole['label'][lang]} — synthesis")
     with st_block(s.project.containers.page_fill_top):
         # L'ancre TOC de l'axe vit ICI, sur le pôle accélérateur — la tête
         # de groupe stable depuis l'exclusion des slides d'énoncés.
-        toc = ({"toc_lvl": "1", "label": ax["name"]["en"]}
+        toc = ({"toc_lvl": "1", "label": ax["name"][lang]}
                if kind == "accel" else {})
-        _axis_pair_title(ax, z["zoomTitle"], **toc)
+        _axis_pair_title(ax, z["zoomTitle"], lang, **toc)
         st_space("v", "4vh")
         header = s.project.cards.blue if kind == "accel" else s.project.cards.coral
         with st_block(_POLE_COLUMN):
             with st_block(header), st_zoom(z["zoomPole"]):
-                st_write(_S.pole, pole["label"][lang()], tag=t.div)
+                st_write(_S.pole, pole["label"][lang], tag=t.div)
             st_space("v", "1.5vh")
             with st_block(_SYNTH_CARDS[kind]), st_zoom(z["zoomCell"]):
-                st_write(_S.statement, "“", synthesis(pole)[lang()], "”",
+                st_write(_S.statement, "“", synthesis(pole)[lang], "”",
                          tag=t.div)
 
 
@@ -224,11 +230,12 @@ def _vote_prompt(kind: str) -> str:
 
 
 def _vote_slide(profile: str, *, kind: str, keyword: str, card,
-                levels: list[dict], alt_ready: str,
+                levels: list[dict], alt_ready: str, lang: str | None = None,
                 zoomTitle: int | None = None, zoomImage: int | None = None,
                 zoomText: int | None = None) -> None:
     """Le schéma commun des trois volets : image à gauche, valeurs à droite."""
     z = _z(profile, zoomTitle=zoomTitle, zoomImage=zoomImage, zoomText=zoomText)
+    lang = lang or current_lang()
     st_marker(f"Vote — {keyword}", hidden=True)
     with st_block(s.project.containers.page_fill_top):
         with st_zoom(z["zoomTitle"]):
@@ -250,7 +257,7 @@ def _vote_slide(profile: str, *, kind: str, keyword: str, card,
                     if i:
                         st_space("v", "2.5vh")
                     with st_zoom(z["zoomText"]):
-                        st_write(_S.level, level[lang()], tag=t.div)
+                        st_write(_S.level, level[lang], tag=t.div)
 
 
 def vote_support_slide(**zooms) -> None:
