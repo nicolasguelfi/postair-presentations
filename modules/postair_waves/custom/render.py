@@ -20,6 +20,8 @@ import streamlit as st
 from custom.styles import Styles as s
 from postair_pack.components.ai_mark import DD35_CSS, dd35_overlay
 from postair_pack.components.hero_split import hero_split
+from postair_i18n import ui
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex import SlideBreakConfig, SlideBreakMode
@@ -41,6 +43,31 @@ _WAVE_PAGE_FIRST = 8
 #: (retour NG 2026-08-27).
 _GALLERY_PAGE_FIRST = 3
 
+#: Le chrome du module — les feuilles partagées par plusieurs gabarits
+#: d'ici (règle R-i18n : module-local, pas dans le lexique partagé). Les
+#: gabarits ``.format(...)`` les valeurs dynamiques du gel (ordre, nom,
+#: période, figures) — jamais un f-string projeté.
+_UI = {
+    "wave_line": {"en": "{order} · {name}"},
+    "wave_line_period": {"en": "{order} · {name} · {period}"},
+    "figures_line": {"en": "{period} — {figures}"},
+    "tooltip_detail": {"en": "{period} — figures: {figures}."},
+    "tooltip_substitution": {"en": " Substitution term: “{subst}”."},
+    "tooltip_verbatim": {
+        "en": " The questionnaire applies verbatim (this is the studied wave)."},
+    "full_lines": {"en": "{marker} — the full lines"},
+    "full_line": {"en": "{marker} — the full line"},
+    "all_waves": {"en": "🌊 all waves"},
+    "witness_of": {"en": "a witness of "},
+    "media_pending": {"en": "portrait and video pending at the hub"},
+    "lesson_before": {"en": "What "},
+    "lesson_after": {"en": " teaches us"},
+    "lesson_label": {"en": "The lesson"},
+    "feared": {"en": "What was feared"},
+    "came_of_it": {"en": "What came of it"},
+    "echo": {"en": "The echo for AI"},
+}
+
 
 class GridStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -61,12 +88,14 @@ def _tooltip_entries(span: list[dict], lang: str) -> list[tuple[str, str]]:
         name = content.text(w["name"], lang)
         subst = content.text(w.get("substitution"), lang)
         figures = ", ".join(f["name"] for f in w["figures"])
-        detail = f"{w['period']} — figures: {figures}."
+        detail = T(_UI["tooltip_detail"], lang).format(
+            period=w["period"], figures=figures)
         if subst:
-            detail += f" Substitution term: “{subst}”."
+            detail += T(_UI["tooltip_substitution"], lang).format(subst=subst)
         else:
-            detail += " The questionnaire applies verbatim (this is the studied wave)."
-        entries.append((f"{w['order']} · {name}", detail))
+            detail += T(_UI["tooltip_verbatim"], lang)
+        entries.append((T(_UI["wave_line"], lang).format(order=w["order"], name=name),
+                        detail))
     return entries
 
 
@@ -97,18 +126,20 @@ def _wave_button(w: dict, lang: str, width: str = "min(76%, 57vh)") -> None:
         f'</a>')
 
 
-def waves_grid_slide(marker: str, title_parts: tuple, first: int, last: int,
+def waves_grid_slide(marker: dict, title: dict, first: int, last: int,
                      lang: str | None = None) -> None:
     """Une planche de vagues en boutons-image (2×2), sommaire ILLUSTRÉ du deck.
 
     Ligne NG 2026-08-26 (planche design) : la vignette de l'OBJET est le
     bouton, le titre vit dessous, et le clic NAVIGUE vers la première slide
-    de la vague. ``title_parts`` = (avant, mot-clé teal, après) — un accent
-    par titre (R3). La ligne complète de chaque vague (substitution comprise)
+    de la vague. ``marker`` et ``title`` sont des FEUILLES (règle R-i18n) :
+    ``title`` = fragments ``st_write`` avec un mot-clé teal — un accent par
+    titre (R3). La ligne complète de chaque vague (substitution comprise)
     reste dans l'infobulle du titre (R4).
     """
     lang = lang or content.default_language()
     span = content.wave_span(first, last)
+    marker = T(marker, lang)
     st_marker(marker)
     # page_fill_full : pas de marge latérale — les cellules prennent toute la
     # fenêtre pour que la ligne période+figures tienne sur UNE ligne ;
@@ -117,11 +148,10 @@ def waves_grid_slide(marker: str, title_parts: tuple, first: int, last: int,
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                before, keyword, after = title_parts
-                st_write(gs.title, before, (s.project.titles.keyword, keyword),
-                         after, tag=t.div, toc_lvl="+1", label=marker)
+                st_write(gs.title, *TF(title, lang),
+                         tag=t.div, toc_lvl="+1", label=marker)
             with g.cell():
-                st_info_tooltip(title=f"{marker} — the full lines",
+                st_info_tooltip(title=T(_UI["full_lines"], lang).format(marker=marker),
                                 entries=_tooltip_entries(span, lang))
         st_space("v", "0.4vh")
         with st_grid(cols=s.project.grids.balanced(len(span), min_px=420),
@@ -131,44 +161,50 @@ def waves_grid_slide(marker: str, title_parts: tuple, first: int, last: int,
                 with g.cell():
                     _wave_button(w, lang)
                     st_write(gs.name,
-                             f"{w['order']} · {content.text(w['name'], lang)}",
+                             T(_UI["wave_line"], lang).format(
+                                 order=w["order"],
+                                 name=content.text(w["name"], lang)),
                              tag=t.div)
                     st_write(gs.figures,
-                             f"{w['period']} — "
-                             + " · ".join(f["name"] for f in w["figures"]),
+                             T(_UI["figures_line"], lang).format(
+                                 period=w["period"],
+                                 figures=" · ".join(f["name"] for f in w["figures"])),
                              tag=t.div)
 
 
-def wave_hero_grid_slide(marker: str, wave_id: str,
+def wave_hero_grid_slide(marker: dict, title: dict, wave_id: str,
                          lang: str | None = None) -> None:
     """La dernière planche du sommaire : UNE vague, seule et en grand (l'IA).
 
     Amendement NG (ligne ``design``, 2026-08-26) : « l'IA seule sur la
     dernière, en gros » — le même bouton-image, à l'échelle de la slide.
+    ``marker`` et ``title`` : des feuilles, comme ``waves_grid_slide``.
     """
     lang = lang or content.default_language()
     w = content.wave(wave_id)
+    marker = T(marker, lang)
     st_marker(marker)
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(gs.title, "The seventeenth ",
-                         (s.project.titles.keyword, "wave"),
+                st_write(gs.title, *TF(title, lang),
                          tag=t.div, toc_lvl="+1", label=marker)
             with g.cell():
-                st_info_tooltip(title=f"{marker} — the full line",
+                st_info_tooltip(title=T(_UI["full_line"], lang).format(marker=marker),
                                 entries=_tooltip_entries([w], lang))
         st_space("v", "2vh")
         _wave_button(w, lang, width="min(72%, 96vh)")
         st_write(gs.name,
-                 f"{w['order']} · {content.text(w['name'], lang)} · {w['period']}",
+                 T(_UI["wave_line_period"], lang).format(
+                     order=w["order"], name=content.text(w["name"], lang),
+                     period=w["period"]),
                  tag=t.div)
         st_write(gs.figures, " · ".join(f["name"] for f in w["figures"]),
                  tag=t.div)
 
 
-def _gallery_back_button() -> None:
+def _gallery_back_button(lang: str) -> None:
     """Le petit bouton DISCRET de retour à la première planche-galerie.
 
     Même mécanisme natif ``#stx-goto`` que les boutons de galerie — un lien
@@ -176,12 +212,12 @@ def _gallery_back_button() -> None:
     """
     st_html(
         f'<a href="#stx-goto-{_GALLERY_PAGE_FIRST}" class="stx-page-link" '
-        f'title="Back to the waves gallery" '
+        f'title="{ui("back_to_gallery", lang)}" '
         f'style="display:inline-block; padding:0.15em 0.7em; '
         f'border:1px solid rgba(149,165,166,0.45); border-radius:999px; '
         f'color:#95A5A6; text-decoration:none; cursor:pointer; '
         f'font-size:clamp(11px, 1.1vw, 22px); white-space:nowrap;">'
-        f'🌊 all waves</a>')
+        f'{T(_UI["all_waves"], lang)}</a>')
 
 
 # ── Le quadriptyque d'une vague ─────────────────────────────────────────────
@@ -219,7 +255,10 @@ def _stage(w: dict, etage: str, lang: str, first: bool) -> None:
     """
     name = content.text(w["name"], lang)
     with st_block(s.project.containers.page_fill_full):
-        st_write(ss.overline, f"{w['order']} · {name} · {w['period']}", tag=t.div)
+        st_write(ss.overline,
+                 T(_UI["wave_line_period"], lang).format(
+                     order=w["order"], name=name, period=w["period"]),
+                 tag=t.div)
         if first:
             # La carte-titre de la vague : son entrée TOC de niveau 1.
             st_write(ss.etage, content.etage_label(etage, lang), tag=t.div,
@@ -235,7 +274,7 @@ def _stage(w: dict, etage: str, lang: str, first: bool) -> None:
                 if content.image_ai(w["id"], etage) else "")
         st_html(
             f'<a href="#stx-goto-{_GALLERY_PAGE_FIRST}" class="stx-page-link" '
-            f'title="Back to the waves gallery" '
+            f'title="{ui("back_to_gallery", lang)}" '
             f'style="display:block; position:relative; width:{_STAGE_WIDTH}; '
             f'margin:0 auto; border-radius:12px; overflow:hidden; '
             f'cursor:pointer;">'
@@ -322,7 +361,7 @@ def _figure(w: dict, f: dict, lang: str,
             st_write(ss.name, f["name"], tag=t.div, toc_lvl="+1",
                      label=f["name"])
             st_write(ss.meta, meta, tag=t.div)
-            st_write(ss.line, "a witness of ",
+            st_write(ss.line, *TF(_UI["witness_of"], lang),
                      (s.project.colors.keyword, content.text(w["name"], lang)),
                      tag=t.div)
             # Pas de mention répétée du streaming/du deck Debates : la leçon
@@ -333,11 +372,10 @@ def _figure(w: dict, f: dict, lang: str,
             st_write(ss.name, f["name"], tag=t.div, toc_lvl="+1",
                      label=f["name"])
             st_write(ss.meta, meta, tag=t.div)
-            st_write(ss.line, "a witness of ",
+            st_write(ss.line, *TF(_UI["witness_of"], lang),
                      (s.project.colors.keyword, content.text(w["name"], lang)),
                      tag=t.div)
-            st_write(ss.meta, "portrait and video pending at the hub",
-                     tag=t.div)
+            st_write(ss.meta, T(_UI["media_pending"], lang), tag=t.div)
 
 
 class TwoPlusOneStyles:
@@ -404,16 +442,18 @@ def _lesson(w: dict, lang: str,
         with st_grid(cols="90% 10%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(ss.title, "What ", (s.project.titles.keyword, name),
-                         " teaches us", tag=t.div, toc_lvl="+1",
-                         label="The lesson")
+                st_write(ss.title, *TF(_UI["lesson_before"], lang),
+                         (s.project.titles.keyword, name),
+                         *TF(_UI["lesson_after"], lang),
+                         tag=t.div, toc_lvl="+1",
+                         label=T(_UI["lesson_label"], lang))
             with g.cell():
-                _gallery_back_button()
+                _gallery_back_button(lang)
         st_space("v", "3vh")
         two_plus_one(
-            [("What was feared", content.phrase(w["id"], "crise", lang)),
-             ("What came of it", content.phrase(w["id"], "recompose", lang))],
-            ("The echo for AI", echo),
+            [(T(_UI["feared"], lang), content.phrase(w["id"], "crise", lang)),
+             (T(_UI["came_of_it"], lang), content.phrase(w["id"], "recompose", lang))],
+            (T(_UI["echo"], lang), echo),
             zoom_top=zoom_top, zoom_bottom=zoom_bottom)
 
 

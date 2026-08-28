@@ -11,8 +11,11 @@ The full lines live in the tooltip.
 # @guideline: postair-minimal
 
 from custom.render import waves_grid_slide
+from custom.styles import Styles as s
+
+_MARKER = {"en": "From the telescope to the vaccine"}
+_TITLE = {"en": ("From the telescope to the ", (s.project.titles.keyword, "vaccine"))}
 
 
 def build(lang: str = "en", **_):
-    waves_grid_slide("From the telescope to the vaccine",
-                     ("From the telescope to the ", "vaccine", ""), first=5, last=8, lang=lang)
+    waves_grid_slide(_MARKER, _TITLE, first=5, last=8, lang=lang)

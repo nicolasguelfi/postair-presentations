@@ -10,7 +10,11 @@ Land here and slow down: « this one is ours ». One click opens it.
 # @guideline: postair-minimal
 
 from custom.render import wave_hero_grid_slide
+from custom.styles import Styles as s
+
+_MARKER = {"en": "The seventeenth wave"}
+_TITLE = {"en": ("The seventeenth ", (s.project.titles.keyword, "wave"))}
 
 
 def build(lang: str = "en", **_):
-    wave_hero_grid_slide("The seventeenth wave", "ai", lang=lang)
+    wave_hero_grid_slide(_MARKER, _TITLE, "ai", lang=lang)

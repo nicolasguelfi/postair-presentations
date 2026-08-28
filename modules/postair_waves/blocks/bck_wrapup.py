@@ -13,6 +13,7 @@ straight to the survey deck.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -25,16 +26,21 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "Sixteen and one"}
+_TITLE = {"en": ("Sixteen crises ", (s.project.titles.keyword, "overcome"))}
+_GIANT = {"en": "16 opened · 16 overcome"}
+_LINE = {"en": "rules, uses, postures — every time"}
+_YOURS = {"en": ("the seventeenth is ", (s.project.colors.amber, "yours"),
+                 " — the survey measures your posture next")}
+
 
 def build(lang: str = "en", **_):
-    st_marker("Sixteen and one")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_center):
-        st_write(bs.title, "Sixteen crises ", (s.project.titles.keyword, "overcome"),
-                 tag=t.div, toc_lvl="1", label="Sixteen and one")
+        st_write(bs.title, *TF(_TITLE, lang),
+                 tag=t.div, toc_lvl="1", label=T(_MARKER, lang))
         st_space("v", s.project.spacing.title_gap)
-        st_write(bs.giant, "16 opened · 16 overcome", tag=t.div)
-        st_write(bs.line, "rules, uses, postures — every time", tag=t.div)
+        st_write(bs.giant, T(_GIANT, lang), tag=t.div)
+        st_write(bs.line, T(_LINE, lang), tag=t.div)
         st_space("v", "4vh")
-        st_write(bs.line, "the seventeenth is ",
-                 (s.project.colors.amber, "yours"),
-                 " — the survey measures your posture next", tag=t.div)
+        st_write(bs.line, *TF(_YOURS, lang), tag=t.div)

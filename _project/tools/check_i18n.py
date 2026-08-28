@@ -262,6 +262,11 @@ class _Inventory(ast.NodeVisitor):
         self.generic_visit(node)
         self._parents.pop()
 
+    # Les attributs de classe (BlockStyles.x = style) ne sont pas des
+    # constantes de module : sans ceci, une variable locale du même nom
+    # passait pour une constante de texte (faux positif vécu sur waves).
+    visit_ClassDef = visit_FunctionDef
+
     def visit_Call(self, node: ast.Call):
         name = _call_name(node)
         if name in _TRANSLATORS:

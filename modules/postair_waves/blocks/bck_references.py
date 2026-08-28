@@ -13,6 +13,7 @@ Never presented — opened only if the frame is challenged.
 
 from custom.refs import CONFIG, all_entries
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -26,16 +27,20 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "References"}
+_TITLE = {"en": ("Where the frame ", (s.project.titles.keyword, "comes from"))}
+_LEAD = {"en": "the theoretical frame of the deck — frozen from the "
+               "hub's bibliography"}
+
 
 def build(lang: str = "en", **_):
-    st_marker("References")
+    st_marker(T(_MARKER, lang))
     all_entries()
     with st_block(s.project.containers.page_fill_top):
-        st_write(bs.title, "Where the frame ", (s.project.titles.keyword, "comes from"),
-                 tag=t.div, toc_lvl="1", label="References")
+        st_write(bs.title, *TF(_TITLE, lang),
+                 tag=t.div, toc_lvl="1", label=T(_MARKER, lang))
         st_space("v", "1vh")
-        st_write(bs.lead, "the theoretical frame of the deck — frozen from the "
-                          "hub's bibliography", tag=t.div)
+        st_write(bs.lead, T(_LEAD, lang), tag=t.div)
         st_space("v", "2vh")
         st_bibliography(title="", only_cited=False, format=CONFIG.format,
                         entry_style=bs.entry, number_style=bs.number)

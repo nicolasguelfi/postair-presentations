@@ -13,6 +13,7 @@ the approach slide. Do not enumerate the waves here: the three grids do it.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -24,15 +25,19 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "The seventeen waves"}
+_TITLE = {"en": ("The seventeen ", (s.project.titles.keyword, "waves"))}
+_LINE_1 = {"en": ("16 revolutions ", (s.project.colors.keyword, "crossed"),
+                  " · 1 being crossed")}
+_LINE_2 = {"en": ("every crisis ", (s.project.colors.amber, "opened"),
+                  " — every crisis overcome")}
+
 
 def build(lang: str = "en", **_):
-    st_marker("The seventeen waves")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_center):
-        st_write(bs.hero, "The seventeen ", (s.project.titles.keyword, "waves"),
-                 tag=t.div, toc_lvl="1", label="The seventeen waves")
+        st_write(bs.hero, *TF(_TITLE, lang),
+                 tag=t.div, toc_lvl="1", label=T(_MARKER, lang))
         st_space("v", s.project.spacing.title_gap)
-        st_write(bs.line, "16 revolutions ",
-                 (s.project.colors.keyword, "crossed"),
-                 " · 1 being crossed", tag=t.div)
-        st_write(bs.line, "every crisis ", (s.project.colors.amber, "opened"),
-                 " — every crisis overcome", tag=t.div)
+        st_write(bs.line, *TF(_LINE_1, lang), tag=t.div)
+        st_write(bs.line, *TF(_LINE_2, lang), tag=t.div)

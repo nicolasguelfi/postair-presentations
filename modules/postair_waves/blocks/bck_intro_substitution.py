@@ -16,6 +16,7 @@ come back here: the method is the answer, not the anecdote.
 
 from custom import content
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -30,9 +31,31 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "The substitution"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "substitution"), " protocol")}
+_TIP_TITLE = {"en": "The protocol, in full"}
+_TIP = [
+    ({"en": "Same construct"},
+     {"en": "Every figure answers the same 54-item questionnaire; only "
+            "the era's term replaces « artificial intelligence » — the "
+            "hub's METHOD §2."}),
+    ({"en": "Verbatim for AI"},
+     {"en": "The figures of the AI wave answer with no substitution: it "
+            "is the studied wave."}),
+    ({"en": "Per-axis rules"},
+     {"en": "Trust maps to the epistemic authorities of the era, "
+            "centralisation to its governance structures — documented "
+            "per figure in the hub's evidence dossiers."}),
+]
+_BIG = {"en": "same 54 questions"}
+_LINE = {"en": ("« AI » becomes ",
+                (s.project.colors.keyword, "the technology of their time"))}
+#: Un exemple du gel : nom de la vague et terme de substitution (données).
+_EXAMPLE = {"en": "{name} — “{substitution}”"}
+
 
 def build(lang: str = "en", **_):
-    st_marker("The substitution")
+    st_marker(T(_MARKER, lang))
     # Trois exemples RÉELS du gel — jamais tapés ici (R13).
     samples = [w for w in content.waves() if w["id"] in
                ("printing-press", "rail-telegraph", "atom")]
@@ -40,30 +63,20 @@ def build(lang: str = "en", **_):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "The ", (s.project.titles.keyword, "substitution"),
-                         " protocol", tag=t.div, toc_lvl="1",
-                         label="The substitution")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="The protocol, in full",
-                    entries=[
-                        ("Same construct", "Every figure answers the same "
-                         "54-item questionnaire; only the era's term replaces "
-                         "« artificial intelligence » — the hub's METHOD §2."),
-                        ("Verbatim for AI", "The figures of the AI wave answer "
-                         "with no substitution: it is the studied wave."),
-                        ("Per-axis rules", "Trust maps to the epistemic "
-                         "authorities of the era, centralisation to its "
-                         "governance structures — documented per figure in "
-                         "the hub's evidence dossiers."),
-                    ])
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(head, lang), T(detail, lang))
+                             for head, detail in _TIP])
         st_space("v", s.project.spacing.title_gap)
-        st_write(bs.big, "same 54 questions", tag=t.div)
-        st_write(bs.line, "« AI » becomes ",
-                 (s.project.colors.keyword, "the technology of their time"),
-                 tag=t.div)
+        st_write(bs.big, T(_BIG, lang), tag=t.div)
+        st_write(bs.line, *TF(_LINE, lang), tag=t.div)
         st_space("v", "3vh")
         for w in samples:
             st_write(bs.example,
-                     f"{content.text(w['name'])} — “{content.text(w['substitution'])}”",
+                     T(_EXAMPLE, lang).format(
+                         name=content.text(w["name"], lang),
+                         substitution=content.text(w["substitution"], lang)),
                      tag=t.div)
