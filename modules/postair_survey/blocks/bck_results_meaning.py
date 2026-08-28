@@ -41,27 +41,27 @@ class BlockStyles:
 bs = BlockStyles
 
 #: Noms et pôles des deux mascottes viennent du cast — hors feuille.
-_MARKER = {"en": "What it says about us"}
-_TITLE = {"en": ("A cohort is ", (s.project.titles.keyword, "not a bloc"))}
-_LEAD = {"en": ("both poles · every axis · ", (s.project.titles.keyword, "in this room"))}
-_VS = {"en": "vs"}
-_TIP_TITLE = {"en": "Reading a room, not a person"}
+_MARKER = {"en": "What it says about us", "fr": "Ce que cela dit de nous"}
+_TITLE = {"en": ("A cohort is ", (s.project.titles.keyword, "not a bloc")), "fr": ("Une cohorte, ", (s.project.titles.keyword, "pas un bloc"))}
+_LEAD = {"en": ("both poles · every axis · ", (s.project.titles.keyword, "in this room")), "fr": ("les deux pôles · chaque axe · ", (s.project.titles.keyword, "dans cette salle"))}
+_VS = {"en": "vs", "fr": "vs"}
+_TIP_TITLE = {"en": "Reading a room, not a person", "fr": "Lire une salle, pas une personne"}
 _TIP = [
-    ({"en": "Averages hide diversity"},
+    ({"en": "Averages hide diversity", "fr": "Les moyennes cachent la diversité"},
      {"en": ("A cohort at fifty on an axis can be made of "
              "people all sitting at fifty — or of two halves at zero and a hundred. "
-             "The distribution, not the average, is the interesting object.")}),
-    ({"en": "Both poles are here"},
+             "The distribution, not the average, is the interesting object."), "fr": "Une cohorte à cinquante sur un axe peut être faite de gens tous à cinquante — ou de deux moitiés, à zéro et à cent. L'objet intéressant, c'est la distribution, pas la moyenne."}),
+    ({"en": "Both poles are here", "fr": "Les deux pôles sont ici"},
      {"en": ("On every one of the nine axes, this room holds "
              "both sides. That is the normal state of any large group, and it is "
-             "what the next twenty minutes are for.")}),
-    ({"en": "Why it is useful"},
+             "what the next twenty minutes are for."), "fr": "Sur chacun des neuf axes, cette salle abrite les deux camps. C'est l'état normal de tout grand groupe, et c'est à cela que servent les vingt prochaines minutes."}),
+    ({"en": "Why it is useful", "fr": "À quoi cela sert"},
      {"en": ("Your degree programmes put you in teams. A team "
              "where everyone shares one posture is fast and blind; a team that holds "
-             "several is slower and much harder to fool.")}),
-    ({"en": "Not a judgement"},
+             "several is slower and much harder to fool."), "fr": "Vos cursus vous mettent en équipe. Une équipe où tout le monde partage une seule posture est rapide et aveugle ; une équipe qui en porte plusieurs est plus lente et bien plus difficile à tromper."}),
+    ({"en": "Not a judgement", "fr": "Pas un jugement"},
      {"en": ("No pole is the right answer. The instrument measures "
-             "positions, it does not grade them.")}),
+             "positions, it does not grade them."), "fr": "Aucun pôle n'est la bonne réponse. L'instrument mesure des positions, il ne les note pas."}),
 ]
 
 

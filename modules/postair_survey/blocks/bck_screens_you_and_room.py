@@ -15,18 +15,18 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "You and the room"}
-_TITLE = {"en": ("You and the ", (s.project.titles.keyword, "room"))}
+_MARKER = {"en": "You and the room", "fr": "Vous et la salle"}
+_TITLE = {"en": ("You and the ", (s.project.titles.keyword, "room")), "fr": ("Vous et la ", (s.project.titles.keyword, "salle"))}
 _MESSAGES = [
-    ({"en": "Your shape against the room's"},
+    ({"en": "Your shape against the room's", "fr": "Votre forme face à la salle"},
      {"en": ("Your radar overlaid on the room's averages — the moment a "
-             "personal result becomes a conversation.")}),
-    ({"en": "Minimum five answers"},
+             "personal result becomes a conversation."), "fr": "Votre radar superposé aux moyennes de la salle — le moment où un résultat personnel devient une conversation."}),
+    ({"en": "Minimum five answers", "fr": "Cinq enregistrements minimum"},
      {"en": ("Room aggregates appear only once at least five records are in; "
-             "before that, the section waits.")}),
-    ({"en": "What comes next"},
+             "before that, the section waits."), "fr": "Les agrégats de la salle n'apparaissent qu'à partir de cinq enregistrements ; avant, la section attend."}),
+    ({"en": "What comes next", "fr": "La suite"},
      {"en": ("This same comparison, projected wall-size for everyone — the "
-             "next slides open it.")}),
+             "next slides open it."), "fr": "Cette même comparaison, projetée grand écran pour tous — les slides suivantes l'ouvrent."}),
 ]
 
 

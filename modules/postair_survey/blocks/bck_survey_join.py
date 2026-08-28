@@ -83,32 +83,32 @@ bs = BlockStyles
 
 # ── Le texte projeté (règle R-i18n) — le sélecteur de jour (NO_DAY, DAYS,
 # CUSTOM_DAY) et l'URL affichée restent tels quels.
-_MARKER = {"en": "Join the survey"}
-_TITLE = {"en": ("Your turn — ", (s.project.titles.keyword, "join the survey"))}
-_CODE_PLACEHOLDER = {"en": "campaign code"}
-_QR_PLACEHOLDER = {"en": "QR code"}
+_MARKER = {"en": "Join the survey", "fr": "Rejoindre le sondage"}
+_TITLE = {"en": ("Your turn — ", (s.project.titles.keyword, "join the survey")), "fr": ("À vous — ", (s.project.titles.keyword, "rejoignez le sondage"))}
+_CODE_PLACEHOLDER = {"en": "campaign code", "fr": "code de campagne"}
+_QR_PLACEHOLDER = {"en": "QR code", "fr": "code QR"}
 #: Le titre du tooltip (« Anonymous by design ») vient du lexique.
 _HINT = {"en": ((s.project.titles.keyword, "anonymous"),
-                "  ·  20-40 min  ·  phone or laptop")}
+                "  ·  20-40 min  ·  phone or laptop"), "fr": ((s.project.titles.keyword, "anonyme"), "  ·  20-40 min  ·  téléphone ou ordinateur")}
 _TIP = [
-    ({"en": "Your result is yours"},
+    ({"en": "Your result is yours", "fr": "Votre résultat est à vous"},
      {"en": ("Your personal radar is computed ON your "
-             "device; the server only receives one anonymous record.")}),
-    ({"en": "GDPR"},
+             "device; the server only receives one anonymous record."), "fr": "Votre radar personnel est calculé SUR votre appareil ; le serveur ne reçoit qu'un seul enregistrement anonyme."}),
+    ({"en": "GDPR", "fr": "RGPD"},
      {"en": ("No account, no email, no tracking; data stays in the EU. "
-             "Only room-level averages are ever projected (minimum 5 answers).")}),
-    ({"en": "One code per day"},
+             "Only room-level averages are ever projected (minimum 5 answers)."), "fr": "Pas de compte, pas d'e-mail, pas de traçage ; les données restent dans l'UE. On ne projette jamais que des moyennes de la salle (minimum 5 réponses)."}),
+    ({"en": "One code per day", "fr": "Un code par jour"},
      {"en": ("Each session has its own campaign and its own "
              "code. The slide shows only the day the speaker has selected — the "
-             "other codes are never on screen.")}),
-    ({"en": "No device?"},
+             "other codes are never on screen."), "fr": "Chaque séance a sa propre campagne et son propre code. La slide n'affiche que le jour choisi par l'orateur — les autres codes ne sont jamais à l'écran."}),
+    ({"en": "No device?", "fr": "Pas d'appareil ?"},
      {"en": ("Pair up with a neighbour — one answer per person "
-             "though: your posture, not a committee's.")}),
-    ({"en": "Network"},
-     {"en": "If the venue wifi is slow, switch your phone to 4G."}),
-    ({"en": "Keep your code"},
+             "though: your posture, not a committee's."), "fr": "Mettez-vous à deux avec la personne d'à côté — mais une réponse par personne : votre posture, pas celle d'un comité."}),
+    ({"en": "Network", "fr": "Réseau"},
+     {"en": "If the venue wifi is slow, switch your phone to 4G.", "fr": "Si le wifi de la salle est lent, passez votre téléphone en 4G."}),
+    ({"en": "Keep your code", "fr": "Gardez votre code"},
      {"en": ("At the end the app gives you a personal code to "
-             "retrieve your result later at app.sumvadis.ai/r.")}),
+             "retrieve your result later at app.sumvadis.ai/r."), "fr": "À la fin, l'application vous donne un code personnel pour retrouver votre résultat plus tard sur app.sumvadis.ai/r."}),
 ]
 
 

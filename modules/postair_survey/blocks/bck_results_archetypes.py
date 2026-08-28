@@ -39,33 +39,33 @@ class BlockStyles:
 bs = BlockStyles
 
 #: Les six noms viennent du manifeste du studio (``archetypes()``) — hors feuille.
-_MARKER = {"en": "The six archetypes"}
+_MARKER = {"en": "The six archetypes", "fr": "Les six archétypes"}
 _TITLE = {"en": ("Six ", (s.project.titles.keyword, "reference archetypes"),
-                 " — not six boxes")}
+                 " — not six boxes"), "fr": ("Six ", (s.project.titles.keyword, "archétypes de référence"), " — pas six cases")}
 _LEAD = {"en": ("The app shows the ", (s.project.titles.keyword, "nearest"),
-                " one + your distance to it")}
-_TIP_TITLE = {"en": "What an archetype is, and is not"}
+                " one + your distance to it"), "fr": ("L'application montre le ", (s.project.titles.keyword, "plus proche"), " + votre distance")}
+_TIP_TITLE = {"en": "What an archetype is, and is not", "fr": "Ce qu'un archétype est, et n'est pas"}
 _TIP = [
-    ({"en": "A reference point"},
+    ({"en": "A reference point", "fr": "Un point de référence"},
      {"en": ("Each archetype is one position in the nine-"
              "dimensional posture space. The application shows you the NEAREST one, "
-             "together with the distance to it — it does not sort you into it.")}),
-    ({"en": "Distance matters"},
+             "together with the distance to it — it does not sort you into it."), "fr": "Chaque archétype est une position dans l'espace des postures à neuf dimensions. L'application vous montre le PLUS PROCHE, avec la distance qui vous en sépare — elle ne vous y range pas."}),
+    ({"en": "Distance matters", "fr": "La distance compte"},
      {"en": ("A small distance means the archetype describes you "
              "well; a large one means you sit between several, which is common and "
-             "perfectly normal.")}),
-    ({"en": "Not a personality test"},
+             "perfectly normal."), "fr": "Une petite distance signifie que l'archétype vous décrit bien ; une grande, que vous êtes entre plusieurs — ce qui est courant et parfaitement normal."}),
+    ({"en": "Not a personality test", "fr": "Pas un test de personnalité"},
      {"en": ("The instrument measures positions on nine "
              "tensions about technology. It says nothing about who you are, and it "
-             "predicts nothing about what you will do.")}),
-    ({"en": "Same engine for the figures"},
+             "predicts nothing about what you will do."), "fr": "L'instrument mesure des positions sur neuf tensions à propos de la technologie. Il ne dit rien de qui vous êtes, et ne prédit rien de ce que vous ferez."}),
+    ({"en": "Same engine for the figures", "fr": "Le même moteur pour les figures"},
      {"en": ("The historical figures of the study are "
              "scored by exactly this mechanism, which is why the results page can put "
-             "the room next to one of them.")}),
-    ({"en": "Names"},
+             "the room next to one of them."), "fr": "Les figures historiques de l'étude sont évaluées par exactement ce mécanisme — c'est pourquoi la page de résultats peut placer la salle à côté de l'une d'elles."}),
+    ({"en": "Names", "fr": "Noms"},
      {"en": ("Read from the shared studio manifest, the same source the "
              "survey application uses — the names on this slide and in the app can "
-             "never drift apart.")}),
+             "never drift apart."), "fr": "Lus dans le manifeste partagé du studio, la même source que l'application du sondage — les noms de cette slide et ceux de l'application ne peuvent jamais diverger."}),
 ]
 
 

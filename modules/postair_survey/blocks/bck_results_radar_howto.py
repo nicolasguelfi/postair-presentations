@@ -25,45 +25,45 @@ from streamtex import *
 from streamtex.enums import Tags as t
 
 _CODES = [
-    ({"en": "Directional"}, {"en": "clearly on one pole"}, s.project.cards.teal),
-    ({"en": "Ambivalent"}, {"en": "agrees with BOTH poles"}, s.project.cards.amber),
-    ({"en": "Balanced"}, {"en": "in between, deliberately"}, s.project.cards.blue),
-    ({"en": "Detached"}, {"en": "the question leaves them cold"}, s.project.cards.coral),
+    ({"en": "Directional", "fr": "Tranchée"}, {"en": "clearly on one pole", "fr": "nettement sur un pôle"}, s.project.cards.teal),
+    ({"en": "Ambivalent", "fr": "Ambivalente"}, {"en": "agrees with BOTH poles", "fr": "adhère aux DEUX pôles"}, s.project.cards.amber),
+    ({"en": "Balanced", "fr": "Équilibrée"}, {"en": "in between, deliberately", "fr": "entre les deux, délibérément"}, s.project.cards.blue),
+    ({"en": "Detached", "fr": "Détachée"}, {"en": "the question leaves them cold", "fr": "la question les laisse froids"}, s.project.cards.coral),
 ]
 
-_MARKER = {"en": "Reading a radar"}
-_TITLE = {"en": ("How to ", (s.project.titles.keyword, "read"), " a posture")}
-_CAPTION = {"en": "an example profile — not anyone's"}
-_TIP_TITLE = {"en": "Reading a posture radar"}
+_MARKER = {"en": "Reading a radar", "fr": "Lire un radar"}
+_TITLE = {"en": ("How to ", (s.project.titles.keyword, "read"), " a posture"), "fr": ("Comment ", (s.project.titles.keyword, "lire"), " une posture")}
+_CAPTION = {"en": "an example profile — not anyone's", "fr": "un exemple de profil — celui de personne"}
+_TIP_TITLE = {"en": "Reading a posture radar", "fr": "Lire un radar de posture"}
 #: Tête « Nine axes » : lexique (partagée avec la slide de la roue).
 _TIP_AXES = {"en": ("One spoke per axis. The centre is one pole of that axis, "
-                    "the rim is the other — the centre is NOT 'no opinion'.")}
+                    "the rim is the other — the centre is NOT 'no opinion'."), "fr": "Un rayon par axe. Le centre est l'un des pôles de cet axe, le bord est l'autre — le centre n'est PAS « sans opinion »."}
 _TIP = [
-    ({"en": "Zero to one hundred"},
+    ({"en": "Zero to one hundred", "fr": "De zéro à cent"},
      {"en": ("The value is a position between two poles, not "
              "a score. A small shape is not a weak personality, and a large one is "
-             "not a strong one.")}),
-    ({"en": "Directional (DIR)"},
-     {"en": "The answers sit clearly on one pole of the axis."}),
-    ({"en": "Ambivalent (AMB)"},
+             "not a strong one."), "fr": "La valeur est une position entre deux pôles, pas un score. Une petite forme n'est pas une personnalité faible, et une grande n'est pas une personnalité forte."}),
+    ({"en": "Directional (DIR)", "fr": "Tranchée (DIR)"},
+     {"en": "The answers sit clearly on one pole of the axis.", "fr": "Les réponses se placent nettement sur un pôle de l'axe."}),
+    ({"en": "Ambivalent (AMB)", "fr": "Ambivalente (AMB)"},
      {"en": ("The answers agree with BOTH poles — not the same "
              "thing as sitting in the middle. It is the most interesting result the "
-             "instrument produces: the person holds a real tension.")}),
-    ({"en": "Balanced (BAL)"},
+             "instrument produces: the person holds a real tension."), "fr": "Les réponses adhèrent aux DEUX pôles — ce n'est pas la même chose que se tenir au milieu. C'est le résultat le plus intéressant que produit l'instrument : la personne porte une vraie tension."}),
+    ({"en": "Balanced (BAL)", "fr": "Équilibrée (BAL)"},
      {"en": ("Consistently in between: a moderate, deliberate "
-             "position rather than a contradiction.")}),
-    ({"en": "Detached (DET)"},
+             "position rather than a contradiction."), "fr": "Constamment entre les deux : une position modérée et délibérée, pas une contradiction."}),
+    ({"en": "Detached (DET)", "fr": "Détachée (DET)"},
      {"en": ("Low engagement with the question — it does not "
-             "mobilise the person one way or the other.")}),
-    ({"en": "Ambivalence index"},
+             "mobilise the person one way or the other."), "fr": "Peu d'engagement sur la question — elle ne mobilise la personne ni dans un sens ni dans l'autre."}),
+    ({"en": "Ambivalence index", "fr": "Indice d'ambivalence"},
      {"en": ("Computed from how strongly someone endorses both "
-             "poles at once (Griffin's index); it is what separates AMB from BAL.")}),
-    ({"en": "Accelerator first"},
+             "poles at once (Griffin's index); it is what separates AMB from BAL."), "fr": "Calculé d'après la force avec laquelle quelqu'un adhère aux deux pôles à la fois (indice de Griffin) ; c'est ce qui sépare AMB de BAL."}),
+    ({"en": "Accelerator first", "fr": "L'accélérateur d'abord"},
      {"en": ("On every axis the accelerating pole is displayed "
-             "first, by convention. 'Accelerator' never means 'better'.")}),
-    ({"en": "This chart"},
+             "first, by convention. 'Accelerator' never means 'better'."), "fr": "Sur chaque axe, le pôle accélérateur est affiché en premier, par convention. « Accélérateur » ne veut jamais dire « meilleur »."}),
+    ({"en": "This chart", "fr": "Ce graphique"},
      {"en": ("An illustrative profile, not a published archetype — it "
-             "exists to show the scale, not to describe anyone.")}),
+             "exists to show the scale, not to describe anyone."), "fr": "Un profil illustratif, pas un archétype publié — il existe pour montrer l'échelle, pas pour décrire quelqu'un."}),
 ]
 
 

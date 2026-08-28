@@ -11,14 +11,14 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "The contrasted figures"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "contrasted"), " figures")}
+_MARKER = {"en": "The contrasted figures", "fr": "Les figures contrastées"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "contrasted"), " figures"), "fr": ("Les figures ", (s.project.titles.keyword, "en contraste"), " avec vous")}
 _MESSAGES = [
-    ({"en": "Your opposites, on purpose"},
-     {"en": "Figures whose posture contrasts most with yours."}),
-    ({"en": "Why read them"},
+    ({"en": "Your opposites, on purpose", "fr": "Vos contraires, à dessein"},
+     {"en": "Figures whose posture contrasts most with yours.", "fr": "Les figures dont la posture contraste le plus avec la vôtre."}),
+    ({"en": "Why read them", "fr": "Pourquoi les lire"},
      {"en": ("The shortest way to understand the other pole of an axis is a "
-             "figure who stands on it — this is where the debates start.")}),
+             "figure who stands on it — this is where the debates start."), "fr": "Le plus court chemin pour comprendre l'autre pôle d'un axe, c'est une figure qui s'y tient — c'est là que les débats commencent."}),
 ]
 
 

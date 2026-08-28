@@ -36,8 +36,8 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from"))}
-_LEAD = {"en": "the instrument this deck is built on, with its source"}
+_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from")), "fr": ("D'où tout cela ", (s.project.titles.keyword, "vient"))}
+_LEAD = {"en": "the instrument this deck is built on, with its source", "fr": "l'instrument sur lequel ce deck repose, avec sa source"}
 
 
 def build(lang: str = "en", **_):

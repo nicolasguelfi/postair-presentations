@@ -12,23 +12,23 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "Explore your report"}
-_TITLE = {"en": ((s.project.titles.keyword, "Explore"), " — every answer, kept")}
+_MARKER = {"en": "Explore your report", "fr": "Explorez votre rapport"}
+_TITLE = {"en": ((s.project.titles.keyword, "Explore"), " — every answer, kept"), "fr": ((s.project.titles.keyword, "Explorer"), " — chaque réponse, gardée")}
 #: La première tête vient du lexique (``statement_by_statement``, partagée
 #: avec le détail par question du diaporama).
 _MSG_STATEMENT = {"en": ("All your answers, grouped by axis — the raw material "
-                         "behind the radar.")}
-_MSG_GESTURE = ({"en": "The gesture: open one axis"},
+                         "behind the radar."), "fr": "Toutes vos réponses, groupées par axe — la matière première derrière le radar."}
+_MSG_GESTURE = ({"en": "The gesture: open one axis", "fr": "Le geste : ouvrir un axe"},
                 {"en": ("See which statements pulled you toward a pole; the "
-                        "surprises are usually here.")})
-_TIP_TITLE = {"en": "The exploration screens"}
+                        "surprises are usually here."), "fr": "Voyez quels énoncés vous tirent vers un pôle ; les surprises sont souvent là."})
+_TIP_TITLE = {"en": "The exploration screens", "fr": "Les écrans d'exploration"}
 _TIP = [
-    ({"en": "Below the radar"},
+    ({"en": "Below the radar", "fr": "En dessous du radar"},
      {"en": ("Per-answer detail, nearest profiles, contrasted figures, "
-             "campaign examples — four ways to interrogate one result.")}),
-    ({"en": "Then the room"},
+             "campaign examples — four ways to interrogate one result."), "fr": "Détail par réponse, profils les plus proches, figures contrastées, exemples de campagne — quatre façons d'interroger un résultat."}),
+    ({"en": "Then the room", "fr": "Puis la salle"},
      {"en": ("The last screen of this sequence compares you with the room's "
-             "averages — the bridge to the projection.")}),
+             "averages — the bridge to the projection."), "fr": "Le dernier écran de cette séquence vous compare aux moyennes de la salle — le pont vers la projection."}),
 ]
 
 

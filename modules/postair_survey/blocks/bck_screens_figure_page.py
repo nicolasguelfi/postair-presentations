@@ -11,15 +11,15 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "A figure's page"}
-_TITLE = {"en": ("A ", (s.project.titles.keyword, "figure's"), " page")}
+_MARKER = {"en": "A figure's page", "fr": "La page d'une figure"}
+_TITLE = {"en": ("A ", (s.project.titles.keyword, "figure's"), " page"), "fr": ("Une ", (s.project.titles.keyword, "figure"), ", sa page")}
 _MESSAGES = [
-    ({"en": "One figure, one dossier"},
+    ({"en": "One figure, one dossier", "fr": "Une figure, un dossier"},
      {"en": ("Portrait, posture on the nine axes, and verbatim quotes with "
-             "their references.")}),
-    ({"en": "A smile, not a verdict"},
+             "their references."), "fr": "Portrait, posture sur les neuf axes, et citations verbatim avec leurs références."}),
+    ({"en": "A smile, not a verdict", "fr": "Un clin d'œil, pas un verdict"},
      {"en": ("The engine reads public work, not private minds — take the page "
-             "as an argument to debate, never as a fact about a person.")}),
+             "as an argument to debate, never as a fact about a person."), "fr": "Le moteur lit une œuvre publique, pas des pensées privées — prenez la page comme un argument à débattre, jamais comme un fait sur une personne."}),
 ]
 
 

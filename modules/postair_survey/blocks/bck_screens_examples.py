@@ -11,15 +11,15 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "The campaign's examples"}
-_TITLE = {"en": ("The campaign's ", (s.project.titles.keyword, "examples"))}
+_MARKER = {"en": "The campaign's examples", "fr": "Les exemples de la campagne"}
+_TITLE = {"en": ("The campaign's ", (s.project.titles.keyword, "examples")), "fr": ("La campagne et ses ", (s.project.titles.keyword, "exemples"))}
 _MESSAGES = [
-    ({"en": "Beyond this room"},
+    ({"en": "Beyond this room", "fr": "Au-delà de cette salle"},
      {"en": ("Example profiles published with the campaign — postures to "
-             "compare with, before the room's own averages exist.")}),
-    ({"en": "The gesture: browse later"},
+             "compare with, before the room's own averages exist."), "fr": "Des profils d'exemple publiés avec la campagne — des postures à comparer, avant que les moyennes de la salle n'existent."}),
+    ({"en": "The gesture: browse later", "fr": "Le geste : explorer plus tard"},
      {"en": ("Nothing here expires; the report keeps its examples after the "
-             "session.")}),
+             "session."), "fr": "Rien ici n'expire ; le rapport garde ses exemples après la séance."}),
 ]
 
 

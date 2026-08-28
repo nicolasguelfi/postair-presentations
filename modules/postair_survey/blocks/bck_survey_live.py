@@ -32,23 +32,23 @@ class BlockStyles:
 bs = BlockStyles
 
 #: Les libellés de jour (``DAYS``) restent hors feuille.
-_MARKER = {"en": "Live monitoring"}
-_TITLE = {"en": ((s.project.titles.keyword, "Live"), " — the room is answering")}
-_BUTTON = {"en": "Open live monitoring"}
+_MARKER = {"en": "Live monitoring", "fr": "Suivi en direct"}
+_TITLE = {"en": ((s.project.titles.keyword, "Live"), " — the room is answering"), "fr": ((s.project.titles.keyword, "En direct"), " — la salle répond")}
+_BUTTON = {"en": "Open live monitoring", "fr": "Ouvrir le suivi en direct"}
 #: Le titre du tooltip (« Operator checklist ») vient du lexique.
 _TIP = [
-    ({"en": "The counter"},
+    ({"en": "The counter", "fr": "Le compteur"},
      {"en": ("The live page shows the number of submitted answers, "
-             "refreshed every 2 seconds, plus the session timer.")}),
-    ({"en": "First reflex: PAUSE"},
+             "refreshed every 2 seconds, plus the session timer."), "fr": "La page en direct affiche le nombre de réponses envoyées, rafraîchi toutes les 2 secondes, plus le chronomètre de la séance."}),
+    ({"en": "First reflex: PAUSE", "fr": "Premier réflexe : PAUSE"},
      {"en": ("Any incident → pause the campaign from the "
-             "admin console, then diagnose. Resuming is instant.")}),
-    ({"en": "Anti-bot"},
+             "admin console, then diagnose. Resuming is instant."), "fr": "Tout incident → mettez la campagne en pause depuis la console d'administration, puis diagnostiquez. La reprise est instantanée."}),
+    ({"en": "Anti-bot", "fr": "Anti-bot"},
      {"en": ("If more than ~5% of submissions fail in the first two "
-             "minutes, toggle the Turnstile shield from the admin console.")}),
-    ({"en": "Steering"},
+             "minutes, toggle the Turnstile shield from the admin console."), "fr": "Si plus de ~5 % des envois échouent dans les deux premières minutes, basculez le bouclier Turnstile depuis la console d'administration."}),
+    ({"en": "Steering", "fr": "Pilotage"},
      {"en": ("Campaigns are managed in the sumvadis admin console "
-             "(operator key): pause / resume / close / reopen per day.")}),
+             "(operator key): pause / resume / close / reopen per day."), "fr": "Les campagnes se pilotent dans la console d'administration sumvadis (clé opérateur) : pause / reprise / clôture / réouverture, par jour."}),
 ]
 
 

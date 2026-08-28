@@ -38,29 +38,29 @@ class BlockStyles:
 bs = BlockStyles
 
 #: Le nom de la mascotte et les libellés de jour (``DAYS``) — hors feuille.
-_MARKER = {"en": "The room's results"}
-_TITLE = {"en": ("So — who ", (s.project.titles.keyword, "are we"), "?")}
-_CAPTION = {"en": "your answers, live"}
-_BUTTON = {"en": "Project the results · {day}"}
-_TIP_TITLE = {"en": "Driving the projection"}
+_MARKER = {"en": "The room's results", "fr": "Les résultats de la salle"}
+_TITLE = {"en": ("So — who ", (s.project.titles.keyword, "are we"), "?"), "fr": ("Alors — qui ", (s.project.titles.keyword, "sommes-nous"), " ?")}
+_CAPTION = {"en": "your answers, live", "fr": "vos réponses, en direct"}
+_BUTTON = {"en": "Project the results · {day}", "fr": "Projeter les résultats · {day}"}
+_TIP_TITLE = {"en": "Driving the projection", "fr": "Piloter la projection"}
 #: Têtes « Room radar », « What to comment », « Per-question detail »,
 #: « Fallback » : lexique (partagées avec la slide des résultats).
 _TIP_RADAR = {"en": ("The cohort's average profile on the nine axes, with "
-                     "optional overlays: nearest archetype, nearest great figure.")}
+                     "optional overlays: nearest archetype, nearest great figure."), "fr": "Le profil moyen de la cohorte sur les neuf axes, avec des calques optionnels : archétype le plus proche, grande figure la plus proche."}
 _TIP_COMMENT = {"en": ("Three things, in this order: the most marked axis, "
                        "the most ambivalent axis, the dominant archetype. Resist the urge to "
-                       "comment all nine — the room stops listening after three.")}
-_TIP_FIGURES = ({"en": "Great figures"},
+                       "comment all nine — the room stops listening after three."), "fr": "Trois choses, dans cet ordre : l'axe le plus marqué, l'axe le plus ambivalent, l'archétype dominant. Résistez à l'envie de commenter les neuf — la salle décroche après trois."}
+_TIP_FIGURES = ({"en": "Great figures", "fr": "Grandes figures"},
                 {"en": ("The overlay places the room next to figures scored by "
-                        "the same engine. It is a smile, not a verdict — say so.")})
+                        "the same engine. It is a smile, not a verdict — say so."), "fr": "Le calque place la salle à côté de figures évaluées par le même moteur. C'est un clin d'œil, pas un verdict — dites-le."})
 _TIP_DETAIL = {"en": ("Expandable distribution for each statement. "
                       "This is where the debate questions come from: pick the ones where the "
-                      "room splits, not the ones where it agrees.")}
-_TIP_REFRESH = ({"en": "Refresh"},
+                      "room splits, not the ones where it agrees."), "fr": "Distribution dépliable pour chaque énoncé. C'est de là que viennent les questions du débat : prenez celles où la salle se divise, pas celles où elle est d'accord."}
+_TIP_REFRESH = ({"en": "Refresh", "fr": "Rafraîchir"},
                 {"en": ("The page refreshes every four seconds and can export a room "
-                        "report. It requires the operator key — the audience cannot open it.")})
+                        "report. It requires the operator key — the audience cannot open it."), "fr": "La page se rafraîchit toutes les quatre secondes et peut exporter un rapport de la salle. Elle exige la clé opérateur — le public ne peut pas l'ouvrir."})
 _TIP_FALLBACK = {"en": ("If the network fails, use the rehearsal screenshots and say "
-                        "clearly that they are from the rehearsal, not from this room.")}
+                        "clearly that they are from the rehearsal, not from this room."), "fr": "Si le réseau tombe, utilisez les captures de la répétition et dites clairement qu'elles viennent de la répétition, pas de cette salle."}
 
 
 def build(lang: str = "en", **_):

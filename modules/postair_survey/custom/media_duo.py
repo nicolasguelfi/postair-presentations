@@ -60,17 +60,17 @@ class _Styles:
 
 # ── Les feuilles du gabarit (règle R-i18n) ───────────────────────────────────
 #: Le titre des DEUX pages jumelles d'un duo — projeté par deux blocs, donc ici.
-FIGURES_TITLE = {"en": ("Every figure has its ", (s.project.titles.keyword, "own video"))}
-MASCOTS_TITLE = {"en": ("Every mascot has its ", (s.project.titles.keyword, "own video"))}
+FIGURES_TITLE = {"en": ("Every figure has its ", (s.project.titles.keyword, "own video")), "fr": ("Chaque figure a sa ", (s.project.titles.keyword, "propre vidéo"))}
+MASCOTS_TITLE = {"en": ("Every mascot has its ", (s.project.titles.keyword, "own video")), "fr": ("Chaque mascotte a sa ", (s.project.titles.keyword, "propre vidéo"))}
 #: La ligne sous une mascotte : son pôle (donnée du cast, hors feuille) et
 #: sa famille.
-_MASCOT_TAGLINE = {"en": "{label} — the {family} family"}
-_FAMILY = {"animals": {"en": "animal"}, "objects": {"en": "object"}}
-_FIGURE_TAGLINE = {"en": "great figure — presentation video"}
+_MASCOT_TAGLINE = {"en": "{label} — the {family} family", "fr": "{label} — la famille des {family}"}
+_FAMILY = {"animals": {"en": "animal", "fr": "animaux"}, "objects": {"en": "object", "fr": "objets"}}
+_FIGURE_TAGLINE = {"en": "great figure — presentation video", "fr": "grande figure — vidéo de présentation"}
 #: L'indice de projection, sous les deux vidéos.
-_SOUND_ON = {"en": "▶ sound on — "}
-_NEXT_RIGHT = {"en": "next plays the right-hand video"}
-_BACK_LEFT = {"en": "back replays the left-hand video"}
+_SOUND_ON = {"en": "▶ sound on — ", "fr": "▶ son activé — "}
+_NEXT_RIGHT = {"en": "next plays the right-hand video", "fr": "suivant lance la vidéo de droite"}
+_BACK_LEFT = {"en": "back replays the left-hand video", "fr": "retour relance la vidéo de gauche"}
 
 
 @lru_cache(maxsize=8)
