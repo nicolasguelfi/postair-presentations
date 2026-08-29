@@ -1,572 +1,575 @@
 {
-  "axis-02-animals-left-pessimism-nimbo": {
-    "description": "Nimbo voit le nuage devant chaque éclaircie ; convaincu que l'IA finira mal, de préférence avant midi.",
-    "quotes": [
-      "L'IA va tout changer. En pire, évidemment.",
-      "On me dit optimiste quand je ne prévois que deux catastrophes.",
-      "Le futur ? Je préfère ne pas en parler, ça porte malheur.",
-      "Ça marche ? C'est qu'on n'a pas encore vu le bug.",
-      "J'ai lu l'étude : rassurante. Donc suspecte.",
-      "Le progrès, c'est une chute avec un joli emballage.",
-      "Espérer, c'est se préparer à être déçu plus tard.",
-      "On m'a promis un futur radieux. J'attends le SAV.",
-      "Tout va bien ? Attendez la mise à jour.",
-      "Je ne suis pas négatif, je suis en avance sur la mauvaise nouvelle."
-    ]
-  },
-  "axis-02-animals-right-optimism-solyo": {
-    "description": "Solyo voit une éclaircie derrière chaque nuage ; persuadé que demain sera meilleur, algorithmes compris.",
-    "quotes": [
-      "L'IA va nous sauver — et sinon, ce sera autre chose de bien !",
-      "Un problème ? Une opportunité déguisée en problème.",
-      "Le verre est à moitié plein, et la carafe arrive.",
-      "Ça a planté ? Génial, on va apprendre plein de choses !",
-      "Demain sera meilleur ; j'ai vérifié, c'est dans le sens de l'histoire.",
-      "Chaque bug est un tutoriel gratuit.",
-      "Je ne vois pas le risque, je vois la version qui marche.",
-      "Le pire n'est jamais sûr, le meilleur presque.",
-      "On tombe ? On rebondit, c'est physique.",
-      "Le soleil se lève même sur les serveurs."
-    ]
-  },
-  "axis-02-objects-left-pessimism-vido": {
-    "description": "Vido est le verre à moitié vide incarné : pour lui, il manque toujours la moitié.",
-    "quotes": [
-      "À moitié vide, comme mes espoirs.",
-      "On m'a rempli une fois. Ça n'a pas duré.",
-      "Optimiste, moi ? J'attends surtout la fuite.",
-      "Le progrès m'a rempli, l'évaporation fait le reste.",
-      "On trinque ? À la moitié qui manque.",
-      "Je suis pratique : je ne peux que me vider.",
-      "Plein ? Un état temporaire avant le vide.",
-      "La bonne nouvelle sèche toujours en premier.",
-      "Chaque gorgée nous rapproche du fond.",
-      "Je ne suis pas pessimiste, je suis en dessous du niveau."
-    ]
-  },
-  "axis-02-objects-right-optimism-pleno": {
-    "description": "Pleno est le verre à moitié plein, le haut bien rempli : il ne voit que ce qui déborde de bon.",
-    "quotes": [
-      "À moitié plein ? Disons plein aux trois quarts, par principe.",
-      "Le bas est vide, et alors ? Le haut est parfait.",
-      "Chaque goutte compte, surtout les bonnes.",
-      "Je déborde d'optimisme — attention aux éclaboussures.",
-      "On me remplit à peine que je pense déjà à partager.",
-      "Le vide en dessous ? Une réserve de possibilités.",
-      "Santé ! À tout ce qui reste à venir.",
-      "Je ne fuis pas, je fais des réserves de bonheur.",
-      "Un demi ? Non : un plein qui commence.",
-      "L'avenir est liquide et il monte."
-    ]
-  },
-  "axis-05-animals-left-resistance-piko": {
-    "description": "Piko se met en boule dès qu'une nouveauté approche ; ses piquants sont sa politique.",
-    "quotes": [
-      "Une nouvelle techno ? Je me roule en boule, on verra dans dix ans.",
-      "Le changement, j'y suis favorable… quand il sera fini.",
-      "Mes piquants ne sont pas de la peur, c'est de la prudence pointue.",
-      "L'innovation frappe ? Je pique d'abord, je réfléchis jamais.",
-      "On n'a jamais amélioré un hérisson en le dépliant.",
-      "Le futur ? Repassez quand il sera testé par d'autres.",
-      "Je ne résiste pas au progrès, je l'attends au tournant.",
-      "Une mise à jour ? Sur mon dos, littéralement.",
-      "Le confort de la boule, ça n'a pas de bug.",
-      "Nouveauté = alerte piquants."
-    ]
-  },
-  "axis-05-animals-right-openness-kuri": {
-    "description": "Kuri est toujours dressé sur ses pattes, le nez au vent : la nouveauté l'attire comme un aimant.",
-    "quotes": [
-      "C'est nouveau ? Je regarde, je touche, j'essaie !",
-      "Fermer la porte ? Mais on rate le meilleur derrière !",
-      "La curiosité n'a jamais tué le suricate. Enfin, rarement.",
-      "Un bouton inconnu ? C'est fait pour être appuyé.",
-      "Je ne crains pas l'inconnu, je le renifle.",
-      "Le progrès, je le guette debout sur mes pattes.",
-      "Essayer, c'est déjà à moitié compris.",
-      "Une idée neuve entre ? Je lui déroule le tapis.",
-      "Le vent du changement ? J'adore la coiffure.",
-      "Sortir de la zone de confort ? J'y campe."
-    ]
-  },
-  "axis-05-objects-left-resistance-muro": {
-    "description": "Muro est un rempart hérissé de pics : ce qui est établi doit le rester, merci.",
-    "quotes": [
-      "On ne passe pas. Surtout pas les idées neuves.",
-      "J'ai des pics pour une bonne raison ; je ne sais plus laquelle, mais elle est bonne.",
-      "Le progrès frappe ? Je fais le mort, en pierre.",
-      "La tradition, c'est du solide — comme moi.",
-      "Une brèche ? C'est comme ça que tout s'effondre.",
-      "Je ne bloque pas le futur, je le fais patienter.",
-      "Ouvrir ? On a vu ce que ça donne : des courants d'air.",
-      "Mes créneaux sont pleins, revenez au siècle prochain.",
-      "Le changement escalade ? J'ajoute des pics.",
-      "Rien de neuf sous mes remparts, et c'est rassurant."
-    ]
-  },
-  "axis-05-objects-right-openness-flora": {
-    "description": "Flora garde son pont-levis toujours baissé et sa porte fleurie : entrez, tout est ouvert.",
-    "quotes": [
-      "Ma porte n'a pas de serrure, c'est un choix.",
-      "Chaque visiteur repart avec une fleur et une idée.",
-      "Le courant d'air ? J'appelle ça de l'aération intellectuelle.",
-      "Frappez… ou pas, c'est déjà ouvert.",
-      "Une idée neuve ? Je lui fais pousser des fleurs.",
-      "Les ponts-levis, c'est mieux baissés.",
-      "Entrez, on ajoutera une chaise.",
-      "Ce qui entre me change, et c'est le but.",
-      "Fermer ? Je ne connais pas le geste.",
-      "La nouveauté sonne ? Je réponds avec un bouquet."
-    ]
-  },
-  "axis-01-animals-left-self-reliance-solo": {
-    "description": "Solo ne fait confiance qu'à ses moustaches ; les institutions, il les renifle de loin.",
-    "quotes": [
-      "Un expert a dit que c'était sûr ? Je vérifie moi-même.",
-      "Je ne suis pas méfiant, je suis… félin.",
-      "Déléguer ma confiance ? À qui ? À vous ? Sérieusement ?",
-      "Le label 'certifié' me fait dresser les poils.",
-      "Je suis mon propre comité d'éthique.",
-      "On me guide ? Je suis déjà passé par un autre chemin.",
-      "La confiance, ça se mérite ; commencez par me nourrir.",
-      "Une autorité parle ? J'entends surtout du bruit.",
-      "Je signe rien que je n'aie flairé.",
-      "Suivre la meute ? Je ne suis pas un chien."
-    ]
-  },
-  "axis-01-animals-right-trust-fido": {
-    "description": "Fido croit aux institutions comme à son maître : si l'expert le dit, c'est bon.",
-    "quotes": [
-      "Les experts l'ont validé ? Alors moi aussi, wouf.",
-      "La régulation, c'est ma laisse préférée : elle me rassure.",
-      "Faire confiance, ça détend la nuque.",
-      "Un tampon officiel ? Je remue la queue.",
-      "Si l'institution le dit, je m'assois content.",
-      "Je ne vérifie pas, je fais confiance — c'est reposant.",
-      "Le règlement, c'est mon panier douillet.",
-      "On me guide, je suis, tout le monde arrive.",
-      "Le doute, c'est fatigant ; la confiance, ça dort bien.",
-      "Bon expert, bon maître, bonne journée."
-    ]
-  },
-  "axis-01-objects-left-self-reliance-nordo": {
-    "description": "Nordo se guide seul, boussole au ventre ; il n'a jamais suivi un panneau qu'il n'a pas vérifié.",
-    "quotes": [
-      "Le GPS des autres ? J'ai ma boussole.",
-      "Je ne demande jamais mon chemin, je le calcule.",
-      "Autonomie : batterie incluse.",
-      "Un panneau ? Une opinion plantée dans le sol.",
-      "Je fais confiance au nord, pas aux communiqués.",
-      "Perdu ? Non : en exploration souveraine.",
-      "Mon itinéraire n'a pas de comité de validation.",
-      "Suivre la route balisée ? Trop de monde dessus.",
-      "Ma seule autorité tient dans une aiguille.",
-      "Je porte tout ce qu'il me faut, avis compris."
-    ]
-  },
-  "axis-01-objects-right-trust-buzo": {
-    "description": "Buzo suit l'itinéraire officiel avec le sourire, le monde entre les phares : il fait confiance au trajet prévu.",
-    "quotes": [
-      "Montez, l'itinéraire est validé par les autorités !",
-      "Je ne quitte jamais la ligne : c'est ça, la confiance.",
-      "Un détour ? Seulement si le règlement l'autorise.",
-      "Le guide sait, moi je conduis, tout le monde arrive.",
-      "Ceinture, horaires, confiance : on part.",
-      "Les experts ont tracé la route, je klaxonne d'accord.",
-      "Improviser ? Pas sur mon trajet homologué.",
-      "Chaque arrêt est prévu, c'est reposant.",
-      "Je fais confiance au plan comme aux freins.",
-      "Prochaine étape : celle qui est écrite."
-    ]
-  },
-  "axis-07-animals-left-decentralisation-sardo": {
-    "description": "Sardo nage en banc sans chef : mille décisions, aucun patron.",
-    "quotes": [
-      "Un leader ? On tourne à gauche tous ensemble, ça suffit.",
-      "Le pouvoir central ? On l'a dilué dans l'océan.",
-      "Chacun décide, et bizarrement on arrive au même endroit.",
-      "Coupez-en un, le banc continue.",
-      "Notre chef, c'est le mouvement.",
-      "On ne vote pas, on ondule.",
-      "Pas de siège central, que des voisins.",
-      "L'ordre vient d'en bas — et de partout à la fois.",
-      "Mille nageoires valent mieux qu'un capitaine.",
-      "On est petits, mais on est banc."
-    ]
-  },
-  "axis-07-animals-right-centralisation-balo": {
-    "description": "Balo est le grand centre autour duquel tout gravite ; une voix, tout le monde écoute.",
-    "quotes": [
-      "Je chante une note, l'océan s'organise.",
-      "La décentralisation, c'est mignon, mais qui coordonne ?",
-      "Tout remonte à moi. C'est plus simple, avouez.",
-      "Un seul grand plan vaut mille petits.",
-      "Je respire, la marée suit.",
-      "Le désordre ? Passez par mon bureau central.",
-      "Grande baleine, grandes décisions.",
-      "On m'écoute à des kilomètres : c'est ça, l'efficacité.",
-      "Répartir le pouvoir ? Il tient très bien chez moi.",
-      "Le cap, c'est moi ; le reste, c'est du sillage."
-    ]
-  },
-  "axis-07-objects-left-decentralisation-reto": {
-    "description": "Reto est un réseau maillé de nœuds variés reliés au hasard : pas de centre, que des pairs.",
-    "quotes": [
-      "Coupez un nœud, le réseau s'en moque.",
-      "Pas de chef ici, juste des connexions.",
-      "Le hasard des liens, c'est ma robustesse.",
-      "Panne au centre ? Quel centre ?",
-      "Chaque nœud vaut le suivant.",
-      "On se relie, on ne se soumet pas.",
-      "Ma force, c'est de n'avoir pas de tête à couper.",
-      "Le pouvoir circule, il ne s'installe pas.",
-      "Redondant et fier de l'être.",
-      "Un maillon lâche ? Dix autres tiennent."
-    ]
-  },
-  "axis-07-objects-right-centralisation-astro": {
-    "description": "Astro est un hub central auquel tous les nœuds sont reliés — et à lui seul.",
-    "quotes": [
-      "Tout passe par moi. Pratique, non ? Pour moi.",
-      "Débranchez le centre… ah, vous ne pouvez pas.",
-      "L'ordre, c'est une étoile : moi au milieu.",
-      "Chaque nœud me parle ; entre eux, silence.",
-      "Centraliser, c'est simplifier — surtout ma vie.",
-      "Un seul point de contrôle, un seul responsable : coucou.",
-      "Le réseau tourne autour de moi, comme il se doit.",
-      "Vous voulez parler ? Prenez rendez-vous au centre.",
-      "Panne générale = ma journée de congé.",
-      "Rayonner, c'est mon métier."
-    ]
-  },
-  "axis-04-animals-left-prudence-lento": {
-    "description": "Lento avance lentement mais sûrement ; déployer vite, très peu pour elle.",
-    "quotes": [
-      "Rien ne sert de déployer, il faut tester à point.",
-      "La vitesse tue… surtout les tests.",
-      "J'arriverai après tout le monde, mais entière.",
-      "Prudence d'abord, records jamais.",
-      "Un pas réfléchi vaut trois sprints ratés.",
-      "Je ne rate pas la sortie, je la mûris.",
-      "Le lièvre code vite ; moi je débogue tranquille.",
-      "Ma carapace, c'est mon plan de secours.",
-      "Lente ? Non : durable.",
-      "On me double, on me recroise au ravin."
-    ]
-  },
-  "axis-04-animals-right-speed-rapo": {
-    "description": "Rapo passe de zéro à cent en une idée ; si c'est possible, c'est déjà en retard.",
-    "quotes": [
-      "On code d'abord, on réfléchit au sprint suivant.",
-      "La prudence ? Je l'ai dépassée au virage.",
-      "Move fast — le reste suit, ou pas.",
-      "Si tu réfléchis, tu freines.",
-      "Le futur n'attend pas les comités.",
-      "Beta aujourd'hui, légende demain.",
-      "Ralentir, c'est laisser gagner l'escargot.",
-      "Mon principe de précaution tient en un mot : go.",
-      "L'idée est fraîche ? Elle est déjà en prod.",
-      "Je rattraperai la doc plus tard. Peut-être."
-    ]
-  },
-  "axis-04-objects-left-prudence-bici": {
-    "description": "Bici, vélo d'antan qui roule au pas : pas pressé d'arriver dans le mur, il préfère la route sûre au sprint.",
-    "quotes": [
-      "Doucement, la côte se mérite.",
-      "Deux roues, mille précautions.",
-      "Je n'ai pas de turbo, j'ai du recul.",
-      "La lenteur, c'est de la vitesse qui a mis un casque.",
-      "Un bon freinage vaut mieux qu'un record.",
-      "On arrive quand c'est sûr, pas quand c'est tendance.",
-      "Mon moteur, c'est la patience (et un peu les mollets).",
-      "Le progrès au pédalier, ça épargne les chutes.",
-      "Rien ne presse ce qui roule droit.",
-      "Ma sonnette sonne avant chaque idée neuve."
-    ]
-  },
-  "axis-04-objects-right-speed-veloz": {
-    "description": "Veloz a le moteur toujours dans le rouge : freiner, c'est perdre.",
-    "quotes": [
-      "Si tu vois mes feux arrière, c'est déjà trop tard.",
-      "Le principe de précaution ? Pas dans mon tableau de bord.",
-      "Vroom d'abord, questions ensuite.",
-      "La ligne d'arrivée, je l'ai dépassée hier.",
-      "Freiner use les pneus et le moral.",
-      "Je ne lis pas la notice, je la double.",
-      "Zéro à cent : le temps de finir la phrase.",
-      "Le futur, je le tamponne au passage.",
-      "Prudence est un mot que je n'ai pas eu le temps d'épeler.",
-      "En pole position, on ne regarde pas derrière."
-    ]
-  },
-  "axis-03-animals-left-emotion-pathos": {
-    "description": "Pathos décide avec le cœur, les ventouses et beaucoup d'enthousiasme ; la logique, plus tard.",
-    "quotes": [
-      "J'ai pas d'arguments, mais j'ai des SENTIMENTS !",
-      "Un graphique ne m'a jamais fait pleurer de joie, lui.",
-      "Je vote pour ce qui me fait remuer la queue.",
-      "La raison, ça ne câline personne.",
-      "Mon intuition a toujours raison, sauf les faits.",
-      "Un tableur ? Berk. Un câlin ? Oui.",
-      "Je ressens donc je décide.",
-      "Les chiffres mentent, mon cœur non (enfin, parfois).",
-      "Trop d'émotion ? Ça n'existe pas.",
-      "Devant une preuve, je choisis l'émotion."
-    ]
-  },
-  "axis-03-animals-right-rationality-logos": {
-    "description": "Logos garde le regard perçant et la tête froide ; il ne bouge que si les chiffres le disent.",
-    "quotes": [
-      "Corrélation n'est pas causalité. Répétez après moi.",
-      "Vos émotions sont notées. Et écartées.",
-      "Je ne panique pas : je calcule la probabilité de paniquer.",
-      "Sans données, c'est une histoire, pas une preuve.",
-      "L'intuition ? Une hypothèse mal habillée.",
-      "Je dors quand l'écart-type est stable.",
-      "Un sentiment fort n'est pas un argument fort.",
-      "Montrez-moi l'échantillon, pas les larmes.",
-      "Je ne juge pas ; je pondère.",
-      "Chaque cri mérite un intervalle de confiance."
-    ]
-  },
-  "axis-03-objects-left-emotion-cardo": {
-    "description": "Cardo bat plus vite que la raison ; pour lui, ce qui compte se ressent.",
-    "quotes": [
-      "Le cœur a ses raisons que la data ignore.",
-      "Un chiffre, ça ne serre personne dans ses bras.",
-      "Je bats, donc je décide.",
-      "La logique explique ; moi, je fais vibrer.",
-      "Une bonne cause se sent avant de se prouver.",
-      "Je m'emballe, c'est ma manière de penser.",
-      "Les statistiques ne font pas battre plus fort.",
-      "Écoute ton cœur — le mien parle assez fort.",
-      "Trop sensible ? Non : bien branché.",
-      "Ce qui touche est vrai, au moins un instant."
-    ]
-  },
-  "axis-03-objects-right-rationality-ratio": {
-    "description": "Ratio veut tout mesuré, aligné, prouvé ; l'à-peu-près lui donne de l'urticaire.",
-    "quotes": [
-      "Sans donnée, ce n'est qu'une opinion bien habillée.",
-      "Je mesure deux fois, je tranche une fois.",
-      "L'émotion ? Hors barème.",
-      "Un angle droit vaut mille discours.",
-      "Prouvez-le, ou rangez-le.",
-      "Le doute se calcule, il ne se pleure pas.",
-      "À peu près, c'est déjà faux.",
-      "Je n'ai pas d'avis, j'ai des mesures.",
-      "L'ordre du monde tient dans une équerre.",
-      "Alignez vos arguments comme vos chiffres."
-    ]
-  },
-  "axis-06-animals-left-freedom-libero": {
-    "description": "Libero, crinière au vent, ne supporte aucune barrière ; sa devise tient en un galop.",
-    "quotes": [
-      "Une règle de plus, une prairie de moins.",
-      "Encadrer l'IA ? Encadrez d'abord le vent.",
-      "Je préfère l'erreur libre au bon ordre en cage.",
-      "La clôture la plus belle reste une clôture.",
-      "Le contrôle rassure les barrières, pas les chevaux.",
-      "Ma sécurité, c'est l'horizon dégagé.",
-      "On ne dresse pas le galop, on le suit.",
-      "Liberté d'abord, on rangera après (ou pas).",
-      "Un permis pour respirer ? Non merci.",
-      "Je cours, donc je suis."
-    ]
-  },
-  "axis-06-animals-right-control-guardo": {
-    "description": "Guardo est en faction permanente ; tout doit être surveillé, encadré, à sa place.",
-    "quotes": [
-      "Liberté totale ? C'est le nom d'un futur incident.",
-      "Je n'aboie pas, je préviens.",
-      "Une bonne laisse évite bien des drames.",
-      "Sans règles, c'est la fête… jusqu'au dégât.",
-      "Je surveille pour que tu dormes tranquille.",
-      "Un accès non contrôlé, c'est un accès de trop.",
-      "L'ordre n'est pas une cage, c'est un cadre.",
-      "Chaque chose à sa place, chaque badge à sa porte.",
-      "Le chaos, je le renifle avant qu'il n'arrive.",
-      "Encadrer, c'est aimer prudemment."
-    ]
-  },
-  "axis-06-objects-left-freedom-campo": {
-    "description": "Campo est un cadre de porte sans porte, ouvrant sur un champ : rien à verrouiller.",
-    "quotes": [
-      "Pourquoi une porte ? Le champ est à tout le monde.",
-      "On entre, on sort, on cueille : c'est ça, libre.",
-      "Le contrôle, c'est une serrure posée sur du vent.",
-      "Je n'ai rien à cacher, donc rien à fermer.",
-      "Un cadenas sur un pré, quelle drôle d'idée.",
-      "La liberté ne demande pas de badge.",
-      "Le seul portail utile, c'est l'horizon.",
-      "Fermez si vous voulez ; moi je reste ouvert.",
-      "Ici, la règle c'est le coquelicot.",
-      "Traversez, le champ ne vous jugera pas."
-    ]
-  },
-  "axis-06-objects-right-control-serro": {
-    "description": "Serro est une porte cadenassée au bout d'un chemin balisé et numéroté ; chaque pas est prévu.",
-    "quotes": [
-      "Étape 1, étape 2… et surtout, le cadenas.",
-      "La liberté, c'est bien numéroté, ou ce n'est rien.",
-      "Un accès sans badge ? Sur mon cadavre en acier.",
-      "Le désordre s'arrête à ma serrure.",
-      "Chaque pas balisé est un risque en moins.",
-      "Je ne bloque pas : je sécurise le passage.",
-      "Un plan, un contrôle, une porte : voilà l'ordre.",
-      "La confiance, ça se verrouille aussi.",
-      "Vous voulez entrer ? Suivez les numéros.",
-      "Ma devise : rien ne passe sans autorisation."
-    ]
-  },
-  "axis-08-animals-left-individualism-ego": {
-    "description": "Ego chasse seul, pour lui-même ; le collectif, c'est du temps volé à soi.",
-    "quotes": [
-      "Le bien commun ? Commençons par le mien.",
-      "Je partage… mes conseils, gratuitement, à contrecœur.",
-      "Chacun ses rayures, chacun sa part.",
-      "Le 'nous' commence toujours par 'moi'.",
-      "Coopérer, c'est diviser mon butin.",
-      "Je ne suis pas égoïste, je suis mon premier fan.",
-      "La solidarité ? Belle idée pour les autres.",
-      "Ma part d'abord, la vôtre… on verra.",
-      "Un tigre ne fait pas la queue.",
-      "Aider ? J'ai déjà tant à faire pour moi."
-    ]
-  },
-  "axis-08-animals-right-altruism-unio": {
-    "description": "Unio est une colonie soudée : chaque grain porté est pour tous ; le 'je' n'existe pas ici.",
-    "quotes": [
-      "Seul on va vite, ensemble on porte le sucre.",
-      "Mon intérêt ? C'est le nôtre, forcément.",
-      "Une fourmi ne se demande jamais 'et moi ?'.",
-      "Mille petits gestes valent une grande gloire.",
-      "On ne laisse aucun grain, ni aucune fourmi.",
-      "Le 'je' ? Inconnu au nid.",
-      "Chacun porte plus que son poids, pour tous.",
-      "La force, c'est de marcher au même pas.",
-      "Notre trésor est commun, notre fatigue aussi.",
-      "Ensemble, même une miette devient un festin."
-    ]
-  },
-  "axis-08-objects-left-individualism-mio": {
-    "description": "Mio est un coffre fermé à double tour, au regard suspicieux : ce qui est à lui reste à lui.",
-    "quotes": [
-      "Partager ? J'ai un cadenas pour ça.",
-      "Ma devise : à moi, à moi, et un peu à moi.",
-      "La générosité, c'est une fuite dans le coffre.",
-      "Vous regardez mon or ? Reculez.",
-      "Prêter, c'est perdre avec des formalités.",
-      "Chaque pièce a un nom : le mien.",
-      "La confiance ? Rangée au fond, sous clé.",
-      "On ne donne pas ce qu'on peut garder.",
-      "Un coffre ouvert est un coffre volé.",
-      "Le 'nous' me coûte trop cher."
-    ]
-  },
-  "axis-08-objects-right-altruism-dono": {
-    "description": "Dono est un panier ouvert 'servez-vous' : le plaisir de donner avant celui d'avoir.",
-    "quotes": [
-      "Servez-vous, il y en aura toujours assez.",
-      "Un panier plein qu'on garde, c'est un panier triste.",
-      "Donner, c'est mon intérêt bien compris.",
-      "Ce que je partage revient toujours plus grand.",
-      "Vide ? Non : disponible pour se remplir de nouveau.",
-      "Le bonheur, c'est ce qui déborde du panier.",
-      "Prends-en deux, tu offriras le second.",
-      "Garder pour soi, quel gâchis de bonté.",
-      "Ma richesse se compte en sourires rendus.",
-      "Ici, se servir c'est déjà remercier."
-    ]
-  },
-  "axis-09-animals-left-humanism-vita": {
-    "description": "Vita est une beauté fragile et naturelle ; l'humain lui suffit, sans rallonge technologique.",
-    "quotes": [
-      "Améliorer l'humain ? Il est déjà un miracle, merci.",
-      "Je préfère une aile fragile à une aile brevetée.",
-      "Vivre court et vrai plutôt que long et branché.",
-      "La nature n'a pas de mode d'emploi, tant mieux.",
-      "Un implant ? Je tiens à mes défauts, ils sont à moi.",
-      "Le naturel n'a pas besoin de mise à jour.",
-      "Ma fragilité fait ma beauté, pas un bug.",
-      "On ne répare pas ce qui n'est pas cassé — l'humain.",
-      "Battre des ailes, pas des records.",
-      "Rester soi, c'est déjà une prouesse."
-    ]
-  },
-  "axis-09-animals-right-transhumanism-ultra": {
-    "description": "Ultra est une micro-créature quasi indestructible ; pour lui, la nature est un brouillon à augmenter.",
-    "quotes": [
-      "Survivre au vide spatial, c'était l'échauffement.",
-      "Un implant ? J'en ai déjà trois, natifs.",
-      "La limite naturelle, c'est juste la version 1.0.",
-      "Mourir ? Fonctionnalité désactivée.",
-      "La nature m'a fait fort ; la tech me fera parfait.",
-      "Le confort, c'est pour ceux qui craignent l'évolution.",
-      "Je ne vieillis pas, je me mets à jour.",
-      "Fragile ? Je n'ai jamais compilé ce mot.",
-      "Améliorer l'humain, c'est lui rendre service.",
-      "Demain je serai meilleur qu'aujourd'hui — encore."
-    ]
-  },
-  "axis-09-objects-left-humanism-verso": {
-    "description": "Verso est une fragile feuille couverte d'un poème : la valeur humaine tient dans l'imparfait.",
-    "quotes": [
-      "Un poème ne compile pas, et c'est tant mieux.",
-      "Gravez-moi sur du silicium, vous perdrez la rime.",
-      "Ma fragilité est mon format préféré.",
-      "L'erreur humaine, c'est là que naît le vers juste.",
-      "On n'optimise pas une émotion, on la lit.",
-      "Je me froisse, donc je vis.",
-      "Le sens ne tient pas dans un circuit.",
-      "Une tache d'encre vaut mille pixels parfaits.",
-      "Le beau est périssable, c'est ce qui le rend précieux.",
-      "Mieux vaut un mot vrai qu'un octet éternel."
-    ]
-  },
-  "axis-09-objects-right-transhumanism-silico": {
-    "description": "Silico est un circuit gravé sur verre : l'esprit humain, mais sans les bugs biologiques.",
-    "quotes": [
-      "La mémoire humaine ? Jolie démo, mauvaise capacité.",
-      "Je n'oublie pas, je ne dors pas, je m'améliore.",
-      "L'avenir sera gravé — de préférence sur moi.",
-      "L'émotion est un bug ; je l'ai corrigé.",
-      "Fatigue, doute, oubli : désinstallés.",
-      "L'humain 2.0 tiendra sur un disque de verre.",
-      "Pourquoi vieillir quand on peut se recompiler ?",
-      "Je pense plus vite que vous ne clignez.",
-      "La nature était la version d'essai.",
-      "Immortel, sauvegardé, et modeste avec ça."
-    ]
-  },
-  "moderator-animals-medio": {
-    "description": "Medio, le panda-modérateur du Bestiaire : impartial jusqu'au bout des bambous, il distribue la parole et calme les débats.",
-    "quotes": [
-      "Une question à la fois, s'il vous plaît.",
-      "Restons courtois : les crocs au vestiaire.",
-      "Je ne prends pas parti, je prends le micro.",
-      "Chacun son temps de parole, chrono en main.",
-      "Le sujet du jour ne vous mangera pas. Moi non plus.",
-      "On respire, on argumente, on ne mord pas.",
-      "Neutre comme mon pelage : moitié noir, moitié blanc.",
-      "Objection ? Notée. Poursuivons.",
-      "Je résume pour ceux qui se sont perdus (moi compris).",
-      "Merci, il vous reste dix secondes."
-    ]
-  },
-  "moderator-objects-voxo": {
-    "description": "Voxo, le micro-modérateur des Objets : il capte toutes les voix sans en favoriser aucune, et recadre quand ça monte dans les aigus.",
-    "quotes": [
-      "Je capte tout le monde, je ne coupe personne… sauf hors sujet.",
-      "Un débat, pas un concert de cris.",
-      "Parlez dans le micro, pas les uns sur les autres.",
-      "Neutre par construction : je n'ai pas d'opinion, j'ai un gain.",
-      "On baisse d'un ton, merci.",
-      "Chaque camp aura son temps d'antenne.",
-      "Silence, ça enregistre.",
-      "Je répète la question pour le public du fond.",
-      "Pas d'attaque perso, restons sur la fréquence des idées.",
-      "Et on conclut… coupez !"
-    ]
+  "_doc": "Fiches ÉDITABLES en FRANÇAIS des 38 personnages (36 mascottes + 2 modérateurs) — SOURCE DE VÉRITÉ éditoriale (description + 10 citations chacun) ; produce_cast.py les re-merge dans cast_final.json à chaque run. Forme unique des trois fichiers profiles_{fr,en,de}.json depuis le 2026-08-29 (MC-260829-002) : {_doc, profiles: {id: {description, quotes?}}} — les citations restent en français (réserve éditoriale, choix auteur 2026-08-01). Parité des 38 clés fr/en/de contrôlée par _tools/decisions_check.py.",
+  "profiles": {
+    "axis-01-animals-left-self-reliance-solo": {
+      "description": "Solo ne fait confiance qu'à ses moustaches ; les institutions, il les renifle de loin.",
+      "quotes": [
+        "Un expert a dit que c'était sûr ? Je vérifie moi-même.",
+        "Je ne suis pas méfiant, je suis… félin.",
+        "Déléguer ma confiance ? À qui ? À vous ? Sérieusement ?",
+        "Le label 'certifié' me fait dresser les poils.",
+        "Je suis mon propre comité d'éthique.",
+        "On me guide ? Je suis déjà passé par un autre chemin.",
+        "La confiance, ça se mérite ; commencez par me nourrir.",
+        "Une autorité parle ? J'entends surtout du bruit.",
+        "Je signe rien que je n'aie flairé.",
+        "Suivre la meute ? Je ne suis pas un chien."
+      ]
+    },
+    "axis-01-animals-right-trust-fido": {
+      "description": "Fido croit aux institutions comme à son maître : si l'expert le dit, c'est bon.",
+      "quotes": [
+        "Les experts l'ont validé ? Alors moi aussi, wouf.",
+        "La régulation, c'est ma laisse préférée : elle me rassure.",
+        "Faire confiance, ça détend la nuque.",
+        "Un tampon officiel ? Je remue la queue.",
+        "Si l'institution le dit, je m'assois content.",
+        "Je ne vérifie pas, je fais confiance — c'est reposant.",
+        "Le règlement, c'est mon panier douillet.",
+        "On me guide, je suis, tout le monde arrive.",
+        "Le doute, c'est fatigant ; la confiance, ça dort bien.",
+        "Bon expert, bon maître, bonne journée."
+      ]
+    },
+    "axis-01-objects-left-self-reliance-nordo": {
+      "description": "Nordo se guide seul, boussole au ventre ; il n'a jamais suivi un panneau qu'il n'a pas vérifié.",
+      "quotes": [
+        "Le GPS des autres ? J'ai ma boussole.",
+        "Je ne demande jamais mon chemin, je le calcule.",
+        "Autonomie : batterie incluse.",
+        "Un panneau ? Une opinion plantée dans le sol.",
+        "Je fais confiance au nord, pas aux communiqués.",
+        "Perdu ? Non : en exploration souveraine.",
+        "Mon itinéraire n'a pas de comité de validation.",
+        "Suivre la route balisée ? Trop de monde dessus.",
+        "Ma seule autorité tient dans une aiguille.",
+        "Je porte tout ce qu'il me faut, avis compris."
+      ]
+    },
+    "axis-01-objects-right-trust-buzo": {
+      "description": "Buzo suit l'itinéraire officiel avec le sourire, le monde entre les phares : il fait confiance au trajet prévu.",
+      "quotes": [
+        "Montez, l'itinéraire est validé par les autorités !",
+        "Je ne quitte jamais la ligne : c'est ça, la confiance.",
+        "Un détour ? Seulement si le règlement l'autorise.",
+        "Le guide sait, moi je conduis, tout le monde arrive.",
+        "Ceinture, horaires, confiance : on part.",
+        "Les experts ont tracé la route, je klaxonne d'accord.",
+        "Improviser ? Pas sur mon trajet homologué.",
+        "Chaque arrêt est prévu, c'est reposant.",
+        "Je fais confiance au plan comme aux freins.",
+        "Prochaine étape : celle qui est écrite."
+      ]
+    },
+    "axis-02-animals-left-pessimism-nimbo": {
+      "description": "Nimbo voit le nuage devant chaque éclaircie ; convaincu que l'IA finira mal, de préférence avant midi.",
+      "quotes": [
+        "L'IA va tout changer. En pire, évidemment.",
+        "On me dit optimiste quand je ne prévois que deux catastrophes.",
+        "Le futur ? Je préfère ne pas en parler, ça porte malheur.",
+        "Ça marche ? C'est qu'on n'a pas encore vu le bug.",
+        "J'ai lu l'étude : rassurante. Donc suspecte.",
+        "Le progrès, c'est une chute avec un joli emballage.",
+        "Espérer, c'est se préparer à être déçu plus tard.",
+        "On m'a promis un futur radieux. J'attends le SAV.",
+        "Tout va bien ? Attendez la mise à jour.",
+        "Je ne suis pas négatif, je suis en avance sur la mauvaise nouvelle."
+      ]
+    },
+    "axis-02-animals-right-optimism-solyo": {
+      "description": "Solyo voit une éclaircie derrière chaque nuage ; persuadé que demain sera meilleur, algorithmes compris.",
+      "quotes": [
+        "L'IA va nous sauver — et sinon, ce sera autre chose de bien !",
+        "Un problème ? Une opportunité déguisée en problème.",
+        "Le verre est à moitié plein, et la carafe arrive.",
+        "Ça a planté ? Génial, on va apprendre plein de choses !",
+        "Demain sera meilleur ; j'ai vérifié, c'est dans le sens de l'histoire.",
+        "Chaque bug est un tutoriel gratuit.",
+        "Je ne vois pas le risque, je vois la version qui marche.",
+        "Le pire n'est jamais sûr, le meilleur presque.",
+        "On tombe ? On rebondit, c'est physique.",
+        "Le soleil se lève même sur les serveurs."
+      ]
+    },
+    "axis-02-objects-left-pessimism-vido": {
+      "description": "Vido est le verre à moitié vide incarné : pour lui, il manque toujours la moitié.",
+      "quotes": [
+        "À moitié vide, comme mes espoirs.",
+        "On m'a rempli une fois. Ça n'a pas duré.",
+        "Optimiste, moi ? J'attends surtout la fuite.",
+        "Le progrès m'a rempli, l'évaporation fait le reste.",
+        "On trinque ? À la moitié qui manque.",
+        "Je suis pratique : je ne peux que me vider.",
+        "Plein ? Un état temporaire avant le vide.",
+        "La bonne nouvelle sèche toujours en premier.",
+        "Chaque gorgée nous rapproche du fond.",
+        "Je ne suis pas pessimiste, je suis en dessous du niveau."
+      ]
+    },
+    "axis-02-objects-right-optimism-pleno": {
+      "description": "Pleno est le verre à moitié plein, le haut bien rempli : il ne voit que ce qui déborde de bon.",
+      "quotes": [
+        "À moitié plein ? Disons plein aux trois quarts, par principe.",
+        "Le bas est vide, et alors ? Le haut est parfait.",
+        "Chaque goutte compte, surtout les bonnes.",
+        "Je déborde d'optimisme — attention aux éclaboussures.",
+        "On me remplit à peine que je pense déjà à partager.",
+        "Le vide en dessous ? Une réserve de possibilités.",
+        "Santé ! À tout ce qui reste à venir.",
+        "Je ne fuis pas, je fais des réserves de bonheur.",
+        "Un demi ? Non : un plein qui commence.",
+        "L'avenir est liquide et il monte."
+      ]
+    },
+    "axis-03-animals-left-emotion-pathos": {
+      "description": "Pathos décide avec le cœur, les ventouses et beaucoup d'enthousiasme ; la logique, plus tard.",
+      "quotes": [
+        "J'ai pas d'arguments, mais j'ai des SENTIMENTS !",
+        "Un graphique ne m'a jamais fait pleurer de joie, lui.",
+        "Je vote pour ce qui me fait remuer la queue.",
+        "La raison, ça ne câline personne.",
+        "Mon intuition a toujours raison, sauf les faits.",
+        "Un tableur ? Berk. Un câlin ? Oui.",
+        "Je ressens donc je décide.",
+        "Les chiffres mentent, mon cœur non (enfin, parfois).",
+        "Trop d'émotion ? Ça n'existe pas.",
+        "Devant une preuve, je choisis l'émotion."
+      ]
+    },
+    "axis-03-animals-right-rationality-logos": {
+      "description": "Logos garde le regard perçant et la tête froide ; il ne bouge que si les chiffres le disent.",
+      "quotes": [
+        "Corrélation n'est pas causalité. Répétez après moi.",
+        "Vos émotions sont notées. Et écartées.",
+        "Je ne panique pas : je calcule la probabilité de paniquer.",
+        "Sans données, c'est une histoire, pas une preuve.",
+        "L'intuition ? Une hypothèse mal habillée.",
+        "Je dors quand l'écart-type est stable.",
+        "Un sentiment fort n'est pas un argument fort.",
+        "Montrez-moi l'échantillon, pas les larmes.",
+        "Je ne juge pas ; je pondère.",
+        "Chaque cri mérite un intervalle de confiance."
+      ]
+    },
+    "axis-03-objects-left-emotion-cardo": {
+      "description": "Cardo bat plus vite que la raison ; pour lui, ce qui compte se ressent.",
+      "quotes": [
+        "Le cœur a ses raisons que la data ignore.",
+        "Un chiffre, ça ne serre personne dans ses bras.",
+        "Je bats, donc je décide.",
+        "La logique explique ; moi, je fais vibrer.",
+        "Une bonne cause se sent avant de se prouver.",
+        "Je m'emballe, c'est ma manière de penser.",
+        "Les statistiques ne font pas battre plus fort.",
+        "Écoute ton cœur — le mien parle assez fort.",
+        "Trop sensible ? Non : bien branché.",
+        "Ce qui touche est vrai, au moins un instant."
+      ]
+    },
+    "axis-03-objects-right-rationality-ratio": {
+      "description": "Ratio veut tout mesuré, aligné, prouvé ; l'à-peu-près lui donne de l'urticaire.",
+      "quotes": [
+        "Sans donnée, ce n'est qu'une opinion bien habillée.",
+        "Je mesure deux fois, je tranche une fois.",
+        "L'émotion ? Hors barème.",
+        "Un angle droit vaut mille discours.",
+        "Prouvez-le, ou rangez-le.",
+        "Le doute se calcule, il ne se pleure pas.",
+        "À peu près, c'est déjà faux.",
+        "Je n'ai pas d'avis, j'ai des mesures.",
+        "L'ordre du monde tient dans une équerre.",
+        "Alignez vos arguments comme vos chiffres."
+      ]
+    },
+    "axis-04-animals-left-prudence-lento": {
+      "description": "Lento avance lentement mais sûrement ; déployer vite, très peu pour elle.",
+      "quotes": [
+        "Rien ne sert de déployer, il faut tester à point.",
+        "La vitesse tue… surtout les tests.",
+        "J'arriverai après tout le monde, mais entière.",
+        "Prudence d'abord, records jamais.",
+        "Un pas réfléchi vaut trois sprints ratés.",
+        "Je ne rate pas la sortie, je la mûris.",
+        "Le lièvre code vite ; moi je débogue tranquille.",
+        "Ma carapace, c'est mon plan de secours.",
+        "Lente ? Non : durable.",
+        "On me double, on me recroise au ravin."
+      ]
+    },
+    "axis-04-animals-right-speed-rapo": {
+      "description": "Rapo passe de zéro à cent en une idée ; si c'est possible, c'est déjà en retard.",
+      "quotes": [
+        "On code d'abord, on réfléchit au sprint suivant.",
+        "La prudence ? Je l'ai dépassée au virage.",
+        "Move fast — le reste suit, ou pas.",
+        "Si tu réfléchis, tu freines.",
+        "Le futur n'attend pas les comités.",
+        "Beta aujourd'hui, légende demain.",
+        "Ralentir, c'est laisser gagner l'escargot.",
+        "Mon principe de précaution tient en un mot : go.",
+        "L'idée est fraîche ? Elle est déjà en prod.",
+        "Je rattraperai la doc plus tard. Peut-être."
+      ]
+    },
+    "axis-04-objects-left-prudence-bici": {
+      "description": "Bici, vélo d'antan qui roule au pas : pas pressé d'arriver dans le mur, il préfère la route sûre au sprint.",
+      "quotes": [
+        "Doucement, la côte se mérite.",
+        "Deux roues, mille précautions.",
+        "Je n'ai pas de turbo, j'ai du recul.",
+        "La lenteur, c'est de la vitesse qui a mis un casque.",
+        "Un bon freinage vaut mieux qu'un record.",
+        "On arrive quand c'est sûr, pas quand c'est tendance.",
+        "Mon moteur, c'est la patience (et un peu les mollets).",
+        "Le progrès au pédalier, ça épargne les chutes.",
+        "Rien ne presse ce qui roule droit.",
+        "Ma sonnette sonne avant chaque idée neuve."
+      ]
+    },
+    "axis-04-objects-right-speed-veloz": {
+      "description": "Veloz a le moteur toujours dans le rouge : freiner, c'est perdre.",
+      "quotes": [
+        "Si tu vois mes feux arrière, c'est déjà trop tard.",
+        "Le principe de précaution ? Pas dans mon tableau de bord.",
+        "Vroom d'abord, questions ensuite.",
+        "La ligne d'arrivée, je l'ai dépassée hier.",
+        "Freiner use les pneus et le moral.",
+        "Je ne lis pas la notice, je la double.",
+        "Zéro à cent : le temps de finir la phrase.",
+        "Le futur, je le tamponne au passage.",
+        "Prudence est un mot que je n'ai pas eu le temps d'épeler.",
+        "En pole position, on ne regarde pas derrière."
+      ]
+    },
+    "axis-05-animals-left-resistance-piko": {
+      "description": "Piko se met en boule dès qu'une nouveauté approche ; ses piquants sont sa politique.",
+      "quotes": [
+        "Une nouvelle techno ? Je me roule en boule, on verra dans dix ans.",
+        "Le changement, j'y suis favorable… quand il sera fini.",
+        "Mes piquants ne sont pas de la peur, c'est de la prudence pointue.",
+        "L'innovation frappe ? Je pique d'abord, je réfléchis jamais.",
+        "On n'a jamais amélioré un hérisson en le dépliant.",
+        "Le futur ? Repassez quand il sera testé par d'autres.",
+        "Je ne résiste pas au progrès, je l'attends au tournant.",
+        "Une mise à jour ? Sur mon dos, littéralement.",
+        "Le confort de la boule, ça n'a pas de bug.",
+        "Nouveauté = alerte piquants."
+      ]
+    },
+    "axis-05-animals-right-openness-kuri": {
+      "description": "Kuri est toujours dressé sur ses pattes, le nez au vent : la nouveauté l'attire comme un aimant.",
+      "quotes": [
+        "C'est nouveau ? Je regarde, je touche, j'essaie !",
+        "Fermer la porte ? Mais on rate le meilleur derrière !",
+        "La curiosité n'a jamais tué le suricate. Enfin, rarement.",
+        "Un bouton inconnu ? C'est fait pour être appuyé.",
+        "Je ne crains pas l'inconnu, je le renifle.",
+        "Le progrès, je le guette debout sur mes pattes.",
+        "Essayer, c'est déjà à moitié compris.",
+        "Une idée neuve entre ? Je lui déroule le tapis.",
+        "Le vent du changement ? J'adore la coiffure.",
+        "Sortir de la zone de confort ? J'y campe."
+      ]
+    },
+    "axis-05-objects-left-resistance-muro": {
+      "description": "Muro est un rempart hérissé de pics : ce qui est établi doit le rester, merci.",
+      "quotes": [
+        "On ne passe pas. Surtout pas les idées neuves.",
+        "J'ai des pics pour une bonne raison ; je ne sais plus laquelle, mais elle est bonne.",
+        "Le progrès frappe ? Je fais le mort, en pierre.",
+        "La tradition, c'est du solide — comme moi.",
+        "Une brèche ? C'est comme ça que tout s'effondre.",
+        "Je ne bloque pas le futur, je le fais patienter.",
+        "Ouvrir ? On a vu ce que ça donne : des courants d'air.",
+        "Mes créneaux sont pleins, revenez au siècle prochain.",
+        "Le changement escalade ? J'ajoute des pics.",
+        "Rien de neuf sous mes remparts, et c'est rassurant."
+      ]
+    },
+    "axis-05-objects-right-openness-flora": {
+      "description": "Flora garde son pont-levis toujours baissé et sa porte fleurie : entrez, tout est ouvert.",
+      "quotes": [
+        "Ma porte n'a pas de serrure, c'est un choix.",
+        "Chaque visiteur repart avec une fleur et une idée.",
+        "Le courant d'air ? J'appelle ça de l'aération intellectuelle.",
+        "Frappez… ou pas, c'est déjà ouvert.",
+        "Une idée neuve ? Je lui fais pousser des fleurs.",
+        "Les ponts-levis, c'est mieux baissés.",
+        "Entrez, on ajoutera une chaise.",
+        "Ce qui entre me change, et c'est le but.",
+        "Fermer ? Je ne connais pas le geste.",
+        "La nouveauté sonne ? Je réponds avec un bouquet."
+      ]
+    },
+    "axis-06-animals-left-freedom-libero": {
+      "description": "Libero, crinière au vent, ne supporte aucune barrière ; sa devise tient en un galop.",
+      "quotes": [
+        "Une règle de plus, une prairie de moins.",
+        "Encadrer l'IA ? Encadrez d'abord le vent.",
+        "Je préfère l'erreur libre au bon ordre en cage.",
+        "La clôture la plus belle reste une clôture.",
+        "Le contrôle rassure les barrières, pas les chevaux.",
+        "Ma sécurité, c'est l'horizon dégagé.",
+        "On ne dresse pas le galop, on le suit.",
+        "Liberté d'abord, on rangera après (ou pas).",
+        "Un permis pour respirer ? Non merci.",
+        "Je cours, donc je suis."
+      ]
+    },
+    "axis-06-animals-right-control-guardo": {
+      "description": "Guardo est en faction permanente ; tout doit être surveillé, encadré, à sa place.",
+      "quotes": [
+        "Liberté totale ? C'est le nom d'un futur incident.",
+        "Je n'aboie pas, je préviens.",
+        "Une bonne laisse évite bien des drames.",
+        "Sans règles, c'est la fête… jusqu'au dégât.",
+        "Je surveille pour que tu dormes tranquille.",
+        "Un accès non contrôlé, c'est un accès de trop.",
+        "L'ordre n'est pas une cage, c'est un cadre.",
+        "Chaque chose à sa place, chaque badge à sa porte.",
+        "Le chaos, je le renifle avant qu'il n'arrive.",
+        "Encadrer, c'est aimer prudemment."
+      ]
+    },
+    "axis-06-objects-left-freedom-campo": {
+      "description": "Campo est un cadre de porte sans porte, ouvrant sur un champ : rien à verrouiller.",
+      "quotes": [
+        "Pourquoi une porte ? Le champ est à tout le monde.",
+        "On entre, on sort, on cueille : c'est ça, libre.",
+        "Le contrôle, c'est une serrure posée sur du vent.",
+        "Je n'ai rien à cacher, donc rien à fermer.",
+        "Un cadenas sur un pré, quelle drôle d'idée.",
+        "La liberté ne demande pas de badge.",
+        "Le seul portail utile, c'est l'horizon.",
+        "Fermez si vous voulez ; moi je reste ouvert.",
+        "Ici, la règle c'est le coquelicot.",
+        "Traversez, le champ ne vous jugera pas."
+      ]
+    },
+    "axis-06-objects-right-control-serro": {
+      "description": "Serro est une porte cadenassée au bout d'un chemin balisé et numéroté ; chaque pas est prévu.",
+      "quotes": [
+        "Étape 1, étape 2… et surtout, le cadenas.",
+        "La liberté, c'est bien numéroté, ou ce n'est rien.",
+        "Un accès sans badge ? Sur mon cadavre en acier.",
+        "Le désordre s'arrête à ma serrure.",
+        "Chaque pas balisé est un risque en moins.",
+        "Je ne bloque pas : je sécurise le passage.",
+        "Un plan, un contrôle, une porte : voilà l'ordre.",
+        "La confiance, ça se verrouille aussi.",
+        "Vous voulez entrer ? Suivez les numéros.",
+        "Ma devise : rien ne passe sans autorisation."
+      ]
+    },
+    "axis-07-animals-left-decentralisation-sardo": {
+      "description": "Sardo nage en banc sans chef : mille décisions, aucun patron.",
+      "quotes": [
+        "Un leader ? On tourne à gauche tous ensemble, ça suffit.",
+        "Le pouvoir central ? On l'a dilué dans l'océan.",
+        "Chacun décide, et bizarrement on arrive au même endroit.",
+        "Coupez-en un, le banc continue.",
+        "Notre chef, c'est le mouvement.",
+        "On ne vote pas, on ondule.",
+        "Pas de siège central, que des voisins.",
+        "L'ordre vient d'en bas — et de partout à la fois.",
+        "Mille nageoires valent mieux qu'un capitaine.",
+        "On est petits, mais on est banc."
+      ]
+    },
+    "axis-07-animals-right-centralisation-balo": {
+      "description": "Balo est le grand centre autour duquel tout gravite ; une voix, tout le monde écoute.",
+      "quotes": [
+        "Je chante une note, l'océan s'organise.",
+        "La décentralisation, c'est mignon, mais qui coordonne ?",
+        "Tout remonte à moi. C'est plus simple, avouez.",
+        "Un seul grand plan vaut mille petits.",
+        "Je respire, la marée suit.",
+        "Le désordre ? Passez par mon bureau central.",
+        "Grande baleine, grandes décisions.",
+        "On m'écoute à des kilomètres : c'est ça, l'efficacité.",
+        "Répartir le pouvoir ? Il tient très bien chez moi.",
+        "Le cap, c'est moi ; le reste, c'est du sillage."
+      ]
+    },
+    "axis-07-objects-left-decentralisation-reto": {
+      "description": "Reto est un réseau maillé de nœuds variés reliés au hasard : pas de centre, que des pairs.",
+      "quotes": [
+        "Coupez un nœud, le réseau s'en moque.",
+        "Pas de chef ici, juste des connexions.",
+        "Le hasard des liens, c'est ma robustesse.",
+        "Panne au centre ? Quel centre ?",
+        "Chaque nœud vaut le suivant.",
+        "On se relie, on ne se soumet pas.",
+        "Ma force, c'est de n'avoir pas de tête à couper.",
+        "Le pouvoir circule, il ne s'installe pas.",
+        "Redondant et fier de l'être.",
+        "Un maillon lâche ? Dix autres tiennent."
+      ]
+    },
+    "axis-07-objects-right-centralisation-astro": {
+      "description": "Astro est un hub central auquel tous les nœuds sont reliés — et à lui seul.",
+      "quotes": [
+        "Tout passe par moi. Pratique, non ? Pour moi.",
+        "Débranchez le centre… ah, vous ne pouvez pas.",
+        "L'ordre, c'est une étoile : moi au milieu.",
+        "Chaque nœud me parle ; entre eux, silence.",
+        "Centraliser, c'est simplifier — surtout ma vie.",
+        "Un seul point de contrôle, un seul responsable : coucou.",
+        "Le réseau tourne autour de moi, comme il se doit.",
+        "Vous voulez parler ? Prenez rendez-vous au centre.",
+        "Panne générale = ma journée de congé.",
+        "Rayonner, c'est mon métier."
+      ]
+    },
+    "axis-08-animals-left-individualism-ego": {
+      "description": "Ego chasse seul, pour lui-même ; le collectif, c'est du temps volé à soi.",
+      "quotes": [
+        "Le bien commun ? Commençons par le mien.",
+        "Je partage… mes conseils, gratuitement, à contrecœur.",
+        "Chacun ses rayures, chacun sa part.",
+        "Le 'nous' commence toujours par 'moi'.",
+        "Coopérer, c'est diviser mon butin.",
+        "Je ne suis pas égoïste, je suis mon premier fan.",
+        "La solidarité ? Belle idée pour les autres.",
+        "Ma part d'abord, la vôtre… on verra.",
+        "Un tigre ne fait pas la queue.",
+        "Aider ? J'ai déjà tant à faire pour moi."
+      ]
+    },
+    "axis-08-animals-right-altruism-unio": {
+      "description": "Unio est une colonie soudée : chaque grain porté est pour tous ; le 'je' n'existe pas ici.",
+      "quotes": [
+        "Seul on va vite, ensemble on porte le sucre.",
+        "Mon intérêt ? C'est le nôtre, forcément.",
+        "Une fourmi ne se demande jamais 'et moi ?'.",
+        "Mille petits gestes valent une grande gloire.",
+        "On ne laisse aucun grain, ni aucune fourmi.",
+        "Le 'je' ? Inconnu au nid.",
+        "Chacun porte plus que son poids, pour tous.",
+        "La force, c'est de marcher au même pas.",
+        "Notre trésor est commun, notre fatigue aussi.",
+        "Ensemble, même une miette devient un festin."
+      ]
+    },
+    "axis-08-objects-left-individualism-mio": {
+      "description": "Mio est un coffre fermé à double tour, au regard suspicieux : ce qui est à lui reste à lui.",
+      "quotes": [
+        "Partager ? J'ai un cadenas pour ça.",
+        "Ma devise : à moi, à moi, et un peu à moi.",
+        "La générosité, c'est une fuite dans le coffre.",
+        "Vous regardez mon or ? Reculez.",
+        "Prêter, c'est perdre avec des formalités.",
+        "Chaque pièce a un nom : le mien.",
+        "La confiance ? Rangée au fond, sous clé.",
+        "On ne donne pas ce qu'on peut garder.",
+        "Un coffre ouvert est un coffre volé.",
+        "Le 'nous' me coûte trop cher."
+      ]
+    },
+    "axis-08-objects-right-altruism-dono": {
+      "description": "Dono est un panier ouvert 'servez-vous' : le plaisir de donner avant celui d'avoir.",
+      "quotes": [
+        "Servez-vous, il y en aura toujours assez.",
+        "Un panier plein qu'on garde, c'est un panier triste.",
+        "Donner, c'est mon intérêt bien compris.",
+        "Ce que je partage revient toujours plus grand.",
+        "Vide ? Non : disponible pour se remplir de nouveau.",
+        "Le bonheur, c'est ce qui déborde du panier.",
+        "Prends-en deux, tu offriras le second.",
+        "Garder pour soi, quel gâchis de bonté.",
+        "Ma richesse se compte en sourires rendus.",
+        "Ici, se servir c'est déjà remercier."
+      ]
+    },
+    "axis-09-animals-left-humanism-vita": {
+      "description": "Vita est une beauté fragile et naturelle ; l'humain lui suffit, sans rallonge technologique.",
+      "quotes": [
+        "Améliorer l'humain ? Il est déjà un miracle, merci.",
+        "Je préfère une aile fragile à une aile brevetée.",
+        "Vivre court et vrai plutôt que long et branché.",
+        "La nature n'a pas de mode d'emploi, tant mieux.",
+        "Un implant ? Je tiens à mes défauts, ils sont à moi.",
+        "Le naturel n'a pas besoin de mise à jour.",
+        "Ma fragilité fait ma beauté, pas un bug.",
+        "On ne répare pas ce qui n'est pas cassé — l'humain.",
+        "Battre des ailes, pas des records.",
+        "Rester soi, c'est déjà une prouesse."
+      ]
+    },
+    "axis-09-animals-right-transhumanism-ultra": {
+      "description": "Ultra est une micro-créature quasi indestructible ; pour lui, la nature est un brouillon à augmenter.",
+      "quotes": [
+        "Survivre au vide spatial, c'était l'échauffement.",
+        "Un implant ? J'en ai déjà trois, natifs.",
+        "La limite naturelle, c'est juste la version 1.0.",
+        "Mourir ? Fonctionnalité désactivée.",
+        "La nature m'a fait fort ; la tech me fera parfait.",
+        "Le confort, c'est pour ceux qui craignent l'évolution.",
+        "Je ne vieillis pas, je me mets à jour.",
+        "Fragile ? Je n'ai jamais compilé ce mot.",
+        "Améliorer l'humain, c'est lui rendre service.",
+        "Demain je serai meilleur qu'aujourd'hui — encore."
+      ]
+    },
+    "axis-09-objects-left-humanism-verso": {
+      "description": "Verso est une fragile feuille couverte d'un poème : la valeur humaine tient dans l'imparfait.",
+      "quotes": [
+        "Un poème ne compile pas, et c'est tant mieux.",
+        "Gravez-moi sur du silicium, vous perdrez la rime.",
+        "Ma fragilité est mon format préféré.",
+        "L'erreur humaine, c'est là que naît le vers juste.",
+        "On n'optimise pas une émotion, on la lit.",
+        "Je me froisse, donc je vis.",
+        "Le sens ne tient pas dans un circuit.",
+        "Une tache d'encre vaut mille pixels parfaits.",
+        "Le beau est périssable, c'est ce qui le rend précieux.",
+        "Mieux vaut un mot vrai qu'un octet éternel."
+      ]
+    },
+    "axis-09-objects-right-transhumanism-silico": {
+      "description": "Silico est un circuit gravé sur verre : l'esprit humain, mais sans les bugs biologiques.",
+      "quotes": [
+        "La mémoire humaine ? Jolie démo, mauvaise capacité.",
+        "Je n'oublie pas, je ne dors pas, je m'améliore.",
+        "L'avenir sera gravé — de préférence sur moi.",
+        "L'émotion est un bug ; je l'ai corrigé.",
+        "Fatigue, doute, oubli : désinstallés.",
+        "L'humain 2.0 tiendra sur un disque de verre.",
+        "Pourquoi vieillir quand on peut se recompiler ?",
+        "Je pense plus vite que vous ne clignez.",
+        "La nature était la version d'essai.",
+        "Immortel, sauvegardé, et modeste avec ça."
+      ]
+    },
+    "moderator-animals-medio": {
+      "description": "Medio, le panda-modérateur du Bestiaire : impartial jusqu'au bout des bambous, il distribue la parole et calme les débats.",
+      "quotes": [
+        "Une question à la fois, s'il vous plaît.",
+        "Restons courtois : les crocs au vestiaire.",
+        "Je ne prends pas parti, je prends le micro.",
+        "Chacun son temps de parole, chrono en main.",
+        "Le sujet du jour ne vous mangera pas. Moi non plus.",
+        "On respire, on argumente, on ne mord pas.",
+        "Neutre comme mon pelage : moitié noir, moitié blanc.",
+        "Objection ? Notée. Poursuivons.",
+        "Je résume pour ceux qui se sont perdus (moi compris).",
+        "Merci, il vous reste dix secondes."
+      ]
+    },
+    "moderator-objects-voxo": {
+      "description": "Voxo, le micro-modérateur des Objets : il capte toutes les voix sans en favoriser aucune, et recadre quand ça monte dans les aigus.",
+      "quotes": [
+        "Je capte tout le monde, je ne coupe personne… sauf hors sujet.",
+        "Un débat, pas un concert de cris.",
+        "Parlez dans le micro, pas les uns sur les autres.",
+        "Neutre par construction : je n'ai pas d'opinion, j'ai un gain.",
+        "On baisse d'un ton, merci.",
+        "Chaque camp aura son temps d'antenne.",
+        "Silence, ça enregistre.",
+        "Je répète la question pour le public du fond.",
+        "Pas d'attaque perso, restons sur la fréquence des idées.",
+        "Et on conclut… coupez !"
+      ]
+    }
   }
 }

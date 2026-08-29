@@ -106,7 +106,9 @@ def axes(family_en: str = "animals") -> dict[int, dict]:
 
     Each axis dict: ``axis_code``, ``axis_name``, ``category_en`` and two
     pole dicts ``accel`` / ``decel`` with ``label`` (EN, capitalised),
-    ``mascot`` (name), ``image`` (static uri), ``description`` (FR tagline).
+    ``code`` (the hub's canonical pole code, ``TRUS``/``SELF``… — the join key
+    to the frozen glossary, cast contract v2.3.0), ``mascot`` (name), ``image``
+    (static uri), ``description`` (FR tagline).
     """
     result: dict[int, dict] = {}
     for item in _cast_items():
@@ -121,6 +123,7 @@ def axes(family_en: str = "animals") -> dict[int, dict]:
         })
         pole = {
             "label": item["pole_label_en"].replace("-", " ").capitalize(),
+            "code": item.get("pole_code"),
             "mascot": item["name"],
             "image": _webp_uri(item),
             "description": item.get("description", ""),
@@ -173,6 +176,7 @@ def mascot(name: str) -> dict:
                 "image": _webp_uri(item),
                 "description": item.get("description", ""),
                 "pole": (item.get("pole_label_en") or "").replace("-", " ").capitalize(),
+                "pole_code": item.get("pole_code"),   # None for a moderator
                 "axis_name": item.get("axis_name") or "",
             }
     raise KeyError(f"no mascot named {name!r} in the frozen cast manifest")

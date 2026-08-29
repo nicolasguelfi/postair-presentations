@@ -32,7 +32,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from postair_data import axes, mascot_clip
-from postair_i18n import terms
+from postair_i18n import term
 from postair_lang import T
 from postair_pack.components.ai_mark import ai_marked
 from shared_widgets import st_info_tooltip
@@ -74,19 +74,22 @@ _NEXT_RIGHT = {"en": "next plays the right-hand video", "fr": "suivant lance la 
 _BACK_LEFT = {"en": "back replays the left-hand video", "fr": "retour relance la vidéo de gauche"}
 
 
-def _pole_label(label_en: str, lang: str) -> str:
-    """Le libellé de pôle dans la langue projetée — le cast ne porte que l'EN.
+def _pole_label(pole: dict, lang: str) -> str:
+    """Le libellé de pôle dans la langue projetée.
 
-    Le FR vient du glossaire du hub gelé (``pole.<CODE>.name``), retrouvé par
-    le libellé EN ; l'anglais reste celui du cast, byte-identique. Un pôle
-    absent du glossaire garde son libellé EN (jamais de trou).
+    L'anglais reste celui du cast, byte-identique. Les autres langues viennent
+    du glossaire du hub gelé, cherchées PAR CLÉ (``pole.<CODE>.name``) grâce
+    au ``pole_code`` que le cast porte depuis le contrat v2.3.0 (studio
+    MC-260829-001) — jamais par égalité de libellés entre deux sources. Un
+    code absent est une erreur bruyante au build, jamais un trou.
     """
     if lang == "en":
-        return label_en
-    for node in terms("pole.").values():
-        if node["en"].lower() == label_en.lower():
-            return T(node, lang)
-    return label_en
+        return pole["label"]
+    code = pole.get("code")
+    if not code:
+        raise KeyError(f"mascotte sans pole_code dans le cast gelé : {pole['mascot']!r} "
+                       f"— regel du studio (contrat cartes ≥ 2.3.0)")
+    return term(f"pole.{code}.name", lang)
 
 
 @lru_cache(maxsize=8)
@@ -96,7 +99,8 @@ def _mascot_pole(name: str) -> dict:
         for ax in axes(family).values():
             for side in ("accel", "decel"):
                 if ax[side]["mascot"] == name:
-                    return {"label": ax[side]["label"], "family": family}
+                    return {"label": ax[side]["label"], "code": ax[side]["code"],
+                            "mascot": name, "family": family}
     raise KeyError(f"mascotte inconnue du cast : {name!r}")
 
 
@@ -138,7 +142,7 @@ def mascot_duo(lang: str = "en") -> tuple[dict, dict]:
         duo.append({
             "name": name,
             "tagline": T(_MASCOT_TAGLINE, lang).format(
-                label=_pole_label(pole["label"], lang),
+                label=_pole_label(pole, lang),
                 family=T(_FAMILY[pole["family"]], lang)),
             "src": str(_MEDIA / mascot_clip(name, lang)),
         })

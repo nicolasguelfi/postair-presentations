@@ -27,6 +27,16 @@ matérialisé comme tous les clips par `_project/tools/sync_media.py` sous
 master a été purgé, décision NG du 2026-08-14. Le gel ne contient plus que les
 trois manifestes.
 
+## Les trois manifestes — rafraîchis le 2026-08-29 (studio `7b1ae53`)
+
+`cast_final.json` (contrat cartes v2.3.0 : chaque item porte le `pole_code` canonique
+du hub, `null` pour les deux modérateurs — studio MC-260829-001), `profiles_fr.json`
+(forme unifiée `{_doc, profiles}` × 38, parité fr/en/de au checker du studio —
+MC-260829-002), `i18n.json` (inchangé). Copie à l'octet près, contrôlée par
+`_project/tools/check_shared_freeze.py`. Depuis ce jour l'aval cherche le libellé
+traduit d'un pôle **par clé** (`pole.<CODE>.name` du glossaire gelé), jamais par
+égalité avec `pole_label_en`.
+
 ## Pour rafraîchir
 
 - **Les images** : recopier `mascoties/shared/cartes/web/*.webp` — elles sont déjà signées.

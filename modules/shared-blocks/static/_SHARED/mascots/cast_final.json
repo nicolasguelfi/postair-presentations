@@ -39,6 +39,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "self-reliance",
+      "pole_code": "SELF",
       "side": "left",
       "family_en": "animals"
     },
@@ -79,6 +80,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "trust",
+      "pole_code": "TRUS",
       "side": "right",
       "family_en": "animals"
     },
@@ -119,6 +121,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "self-reliance",
+      "pole_code": "SELF",
       "side": "left",
       "family_en": "objects"
     },
@@ -159,6 +162,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "trust",
+      "pole_code": "TRUS",
       "side": "right",
       "family_en": "objects"
     },
@@ -199,6 +203,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "pessimism",
+      "pole_code": "PESS",
       "side": "left",
       "family_en": "animals"
     },
@@ -239,6 +244,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "optimism",
+      "pole_code": "OPTI",
       "side": "right",
       "family_en": "animals"
     },
@@ -279,6 +285,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "pessimism",
+      "pole_code": "PESS",
       "side": "left",
       "family_en": "objects"
     },
@@ -319,6 +326,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "optimism",
+      "pole_code": "OPTI",
       "side": "right",
       "family_en": "objects"
     },
@@ -359,6 +367,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "emotion",
+      "pole_code": "EMOT",
       "side": "left",
       "family_en": "animals"
     },
@@ -399,6 +408,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "rationality",
+      "pole_code": "RATI",
       "side": "right",
       "family_en": "animals"
     },
@@ -439,6 +449,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "emotion",
+      "pole_code": "EMOT",
       "side": "left",
       "family_en": "objects"
     },
@@ -479,6 +490,7 @@
       "category": "Connaître",
       "category_en": "Knowing",
       "pole_label_en": "rationality",
+      "pole_code": "RATI",
       "side": "right",
       "family_en": "objects"
     },
@@ -519,6 +531,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "prudence",
+      "pole_code": "PRUD",
       "side": "left",
       "family_en": "animals"
     },
@@ -559,6 +572,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "speed",
+      "pole_code": "SPEE",
       "side": "right",
       "family_en": "animals"
     },
@@ -599,6 +613,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "prudence",
+      "pole_code": "PRUD",
       "side": "left",
       "family_en": "objects"
     },
@@ -639,6 +654,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "speed",
+      "pole_code": "SPEE",
       "side": "right",
       "family_en": "objects"
     },
@@ -679,6 +695,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "resistance",
+      "pole_code": "RESI",
       "side": "left",
       "family_en": "animals"
     },
@@ -719,6 +736,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "openness",
+      "pole_code": "OPEN",
       "side": "right",
       "family_en": "animals"
     },
@@ -759,6 +777,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "resistance",
+      "pole_code": "RESI",
       "side": "left",
       "family_en": "objects"
     },
@@ -799,6 +818,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "openness",
+      "pole_code": "OPEN",
       "side": "right",
       "family_en": "objects"
     },
@@ -839,6 +859,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "freedom",
+      "pole_code": "FREE",
       "side": "left",
       "family_en": "animals"
     },
@@ -879,6 +900,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "control",
+      "pole_code": "CONT",
       "side": "right",
       "family_en": "animals"
     },
@@ -919,6 +941,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "freedom",
+      "pole_code": "FREE",
       "side": "left",
       "family_en": "objects"
     },
@@ -959,6 +982,7 @@
       "category": "Agir",
       "category_en": "Acting",
       "pole_label_en": "control",
+      "pole_code": "CONT",
       "side": "right",
       "family_en": "objects"
     },
@@ -999,6 +1023,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "decentralisation",
+      "pole_code": "DECE",
       "side": "left",
       "family_en": "animals"
     },
@@ -1039,6 +1064,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "centralisation",
+      "pole_code": "CENT",
       "side": "right",
       "family_en": "animals"
     },
@@ -1079,6 +1105,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "decentralisation",
+      "pole_code": "DECE",
       "side": "left",
       "family_en": "objects"
     },
@@ -1119,6 +1146,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "centralisation",
+      "pole_code": "CENT",
       "side": "right",
       "family_en": "objects"
     },
@@ -1159,6 +1187,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "individualism",
+      "pole_code": "INDI",
       "side": "left",
       "family_en": "animals"
     },
@@ -1199,6 +1228,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "altruism",
+      "pole_code": "ALTR",
       "side": "right",
       "family_en": "animals"
     },
@@ -1239,6 +1269,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "individualism",
+      "pole_code": "INDI",
       "side": "left",
       "family_en": "objects"
     },
@@ -1279,6 +1310,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "altruism",
+      "pole_code": "ALTR",
       "side": "right",
       "family_en": "objects"
     },
@@ -1319,6 +1351,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "humanism",
+      "pole_code": "HUMA",
       "side": "left",
       "family_en": "animals"
     },
@@ -1359,6 +1392,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "transhumanism",
+      "pole_code": "TRAN",
       "side": "right",
       "family_en": "animals"
     },
@@ -1399,6 +1433,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "humanism",
+      "pole_code": "HUMA",
       "side": "left",
       "family_en": "objects"
     },
@@ -1439,6 +1474,7 @@
       "category": "Devenir",
       "category_en": "Becoming",
       "pole_label_en": "transhumanism",
+      "pole_code": "TRAN",
       "side": "right",
       "family_en": "objects"
     },
@@ -1448,6 +1484,7 @@
       "family": "Bestiaire",
       "axis_name": "Modérateur",
       "pole_label": "neutre (host)",
+      "pole_code": null,
       "seed": 77002,
       "prompt": "3D render, Pixar / Blender Cycles style, a cute charismatic mascot: a friendly NEUTRAL debate-HOST giant PANDA with a small broadcast headset and a little microphone in front of it, calm impartial host attitude. Big round friendly cartoon eyes with catchlights; a calm, impartial, welcoming gaze. Mouth gently CLOSED, soft neutral resting expression (lips together, no teeth). Glossy soft classic neutral black-and-white finish. Front-facing and symmetrical, LOOKING STRAIGHT AT THE CAMERA (direct eye contact), head-and-shoulders, centered, soft neutral studio lighting, plain light warm-grey seamless background, clean, high detail, one consistent character-design series.",
       "files": {
@@ -1476,6 +1513,7 @@
       "family": "Objets",
       "axis_name": "Modérateur",
       "pole_label": "neutre (host)",
+      "pole_code": null,
       "seed": 77003,
       "prompt": "3D render, Pixar / Blender Cycles style, a cute charismatic mascot: a friendly anthropomorphic vintage broadcast MICROPHONE character on a small round stand, a little face and small cartoon arms, neutral debate host. Big round friendly cartoon eyes with catchlights; a calm, impartial, welcoming gaze. Mouth gently CLOSED, soft neutral resting expression (lips together, no teeth). Glossy soft chrome and warm neutral grey finish. Front-facing and symmetrical, LOOKING STRAIGHT AT THE CAMERA (direct eye contact), head-and-shoulders, centered, soft neutral studio lighting, plain light warm-grey seamless background, clean, high detail, one consistent character-design series.",
       "files": {
@@ -1499,8 +1537,9 @@
       "family_en": "objects"
     }
   },
-  "updated_utc": "2026-07-05T19:58:56+00:00",
+  "updated_utc": "2026-08-29T11:23:40+00:00",
   "naming": "axis-NN-<family>-<side>-<pole>-<name> ; NN = ordre pédagogique (Connaître 1-3, Agir 4-6, Devenir 7-9)",
+  "pole_code_source": "hub ai-social-profiles/questionnaire/TRANSLATION-DE-GLOSSARY.json — clés pole.<CODE>.{name,abbr} ; 18 codes (SELF TRUS PESS OPTI EMOT RATI PRUD SPEE RESI OPEN FREE CONT DECE CENT INDI ALTR HUMA TRAN), null pour les modérateurs ; l'aval cherche le libellé traduit PAR CLÉ, jamais par égalité avec pole_label_en (MC-260829-001)",
   "taxonomy": {
     "Connaître": {
       "en": "Knowing",
