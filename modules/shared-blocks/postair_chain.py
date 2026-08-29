@@ -23,8 +23,10 @@ L'URL de l'export HTML se DÉRIVE de l'infrastructure : chaque conteneur sert
 UN export PAR LANGUE sous ``<project_url>/html/<lang>/`` (nginx.conf —
 ``location = /html/<lang>/`` redirige vers
 ``/html/<lang>/postair_<key>/postair_<key>.html`` ; plan-i18n D3). La langue
-est celle reçue par ``build(lang)`` ; un ``{lang}`` littéral dans
-``export_url`` ou ``STX_EXPORT_URL_<KEY>`` est substitué. La ligne rendue
+est celle reçue par ``build(lang)`` — et le bouton « Next deck » la PROPAGE
+dans l'adresse du module suivant (``?lang=``, ``postair_lang.with_lang``) ; un
+``{lang}`` littéral dans ``export_url`` ou ``STX_EXPORT_URL_<KEY>`` est
+substitué. La ligne rendue
 (NG 2026-08-19, « flexible et tolérant aux fautes ») :
 ``static HTML version: local / remote`` — DEUX liens :
 
@@ -53,7 +55,7 @@ from streamtex import st_block, st_html, st_marker, st_space, st_write
 from streamtex.enums import Tags as t
 
 from postair_i18n import ui
-from postair_lang import T
+from postair_lang import T, with_lang
 
 #: Le toml du hub — la seule déclaration de l'ordre et des URLs.
 _TOML = Path(__file__).parent.parent / "postair_collection" / "collection.toml"
@@ -148,7 +150,7 @@ def build_next_module_slide(s, current: str | None = None,
         st_space("v", "4vh")
         st_html(
             f'<div style="text-align:center;">'
-            f'<a href="{nxt["url"]}" target="_top" style="{_BUTTON_CSS}">'
+            f'<a href="{with_lang(nxt["url"], lang)}" target="_top" style="{_BUTTON_CSS}">'
             f'{nxt["emoji"]}&nbsp; {T(nxt["title"], lang)}</a></div>'
         )
         st_space("v", "4vh")

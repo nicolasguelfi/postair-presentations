@@ -2,7 +2,9 @@
 
 Cards are generated from ``collection.toml`` (modèle : stx_manuals_collection
 de streamtex-docs) : adding a module never touches this block. URLs come from
-the toml, overridable per deployment by ``STX_URL_<KEY>`` env vars.
+the toml, overridable per deployment by ``STX_URL_<KEY>`` env vars. Each card
+opens the deck in ONE language per button (NG 2026-08-29): the language
+travels in the address (``?lang=``), nothing is remembered anywhere.
 
 House visual line: postair_dark (navy canvas, blue framing cards, ONE amber
 accent) — this hub is read on a laptop by the speaker and the team, but it
@@ -16,7 +18,7 @@ from pathlib import Path
 
 from custom.styles import Styles as s
 from postair_chain import leaf
-from postair_lang import T
+from postair_lang import LANGS, NAMES, T, with_lang
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -47,12 +49,19 @@ class BlockStyles:
     card_title = s.project.body.bullet + s.center_txt + s.bold
     card_desc = s.project.body.caption + s.center_txt
     footer = s.project.body.caption + s.center_txt
-    # Le bouton : le SEUL accent ambre de la page, un par carte.
-    button_css = (
-        "display:block;width:100%;box-sizing:border-box;padding:1.2vh 1vw;"
-        "background:#F39C12;color:#1A1A2E;text-align:center;border-radius:0.8vh;"
-        "text-decoration:none;font-weight:700;"
+    # DEUX boutons par carte, un par langue (NG 2026-08-29) : la langue vit
+    # dans l'adresse du deck ouvert. L'anglais garde l'accent ambre (langue
+    # par défaut du jour), le français prend le bleu de cadrage — un seul
+    # accent focal par carte, règle R5.
+    _button = (
+        "display:block;box-sizing:border-box;padding:1.2vh 1vw;flex:1 1 0;"
+        "text-align:center;border-radius:0.8vh;text-decoration:none;font-weight:700;"
     )
+    button_css = {
+        "en": _button + "background:#F39C12;color:#1A1A2E;",
+        "fr": _button + "background:#3A6EA5;color:#F2EEE6;",
+    }
+    buttons_row = "display:flex;gap:0.8vw;width:100%;"
 
 
 bs = BlockStyles
@@ -66,8 +75,15 @@ def _card(project: dict, lang: str) -> None:
         st_space("v", "0.6vh")
         st_write(bs.card_desc, T(project["description"], lang), tag=t.div)
         st_space("v", "1vh")
-        st_html(f'<a href="{project["url"]}" target="_blank" rel="noopener" '
-                f'style="{bs.button_css}">{T(project["button_label"], lang)}</a>')
+        # Un bouton par langue : le libellé de chaque bouton est DANS sa
+        # langue (le hub est lisible par un francophone avant même d'être
+        # traduit) et son lien porte ``?lang=``.
+        links = "".join(
+            f'<a href="{with_lang(project["url"], code)}" target="_blank" rel="noopener" '
+            f'style="{bs.button_css[code]}">{T(project["button_label"], code)} · '
+            f'{NAMES[code]}</a>'
+            for code in LANGS)
+        st_html(f'<div style="{bs.buttons_row}">{links}</div>')
 
 
 def build(lang: str = "en", **_):

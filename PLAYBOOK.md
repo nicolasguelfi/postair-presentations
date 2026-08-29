@@ -168,6 +168,9 @@ Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncé
   managé qui écrase le `width=` du code.
 - **Clé de widget stable** : une clé engendrée se réinitialise à chaque rerun
   sous la main de l'orateur (`_SELECTOR_KEY`…).
+- **La langue ne se règle pas par widget** : elle est dans l'adresse (`?lang=`),
+  posée par le hub et propagée par la chaîne — un deck ouvert « à la main » est en
+  anglais tant qu'on n'ajoute pas le suffixe.
 - **Un état de séance lu par PLUSIEURS pages vit dans une clé NON-widget**
   (patron à deux clés — bug vécu 2026-08-24, sélecteur de langue handsup) :
   Streamlit PURGE la clé d'un widget dès qu'un rerun se termine sans le
@@ -210,3 +213,4 @@ Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncé
 | Un écran = un bloc ; préfixe pluriel | 2026-08-23 | docstrings `bck_screens_*` + book |
 | i18n D1–D4 (feuilles dans le bloc, `block_kwargs`, double export, porte rouge) | 2026-08-28 | règle R-i18n + docstrings `postair_lang.py`, `check_i18n.py` |
 | Lot 1 i18n clos (opening, survey, waves, handsup bilingues) ; lot 2 au tag `en-final/<module>` | 2026-08-29 | `_project/i18n/rapport-lot1.md` (local) + `I18N_PENDING` de `check_i18n.py` |
+| La langue vit dans l'adresse (`?lang=`) : deux boutons par carte du hub, pas de sélecteur dans les modules | 2026-08-29 | docstring `postair_lang.py` + règle R-i18n |

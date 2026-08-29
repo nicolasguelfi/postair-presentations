@@ -160,7 +160,8 @@ même en mode static-only).
 Tout texte projeté est une **feuille** `{"en": …, "fr": …}` résolue par
 `T()`/`TF()` de `shared-blocks/postair_lang.py` ; la langue **arrive par
 `build(lang)`** (`st_book(block_kwargs={"lang": current_lang()})`, valeur =
-env `STX_LANG` > sélecteur de l'orateur > `"en"`). Le public lit **un export
+env `STX_LANG` > `?lang=` de l'adresse (deux boutons par carte du hub, propagé
+par « Next deck ») > `"en"` — aucun widget, aucun état de session). Le public lit **un export
 par langue** (`/html/en/`, `/html/fr/` — Dockerfile, entrypoint, nginx,
 `run-postair.py --html`). Règle complète : R-i18n dans `design-guideline.md` ;
 procédure et recette : PLAYBOOK §3 ; porte : `_project/tools/check_i18n.py`

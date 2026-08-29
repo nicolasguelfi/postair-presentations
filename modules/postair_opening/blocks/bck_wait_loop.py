@@ -40,7 +40,7 @@ from pathlib import Path
 
 from custom.styles import Styles as s
 from postair_data import film_clip
-from postair_lang import T, st_stage_lang_selector
+from postair_lang import T
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -76,7 +76,3 @@ def build(lang: str = "en", **_):
                 st_video(str(_MEDIA / film_clip("axes-intro", lang)), loop=True, autoplay=True)
         with st_block(s.project.containers.media_hint_overlay):
             st_write(bs.hint, T(_HINT, lang), tag=t.div)
-    # Le sélecteur de langue de l'orateur (règle R-i18n, exception R-live) :
-    # posé UNE fois, sur le premier bloc — la langue choisie arrive ensuite
-    # à chaque page par build(lang). Invisible à l'export (pas de widget).
-    st_stage_lang_selector()

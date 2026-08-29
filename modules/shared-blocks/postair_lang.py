@@ -2,13 +2,15 @@
 
 Trois décisions vivent ici :
 
-- **D2 — d'où vient la langue.** ``current_lang()`` lit, dans l'ordre :
-  l'environnement ``STX_LANG`` (l'export statique, un passage par langue),
-  la clé de SESSION ``postair_lang`` (posée par le sélecteur de l'orateur sur
-  le premier bloc du module), puis le défaut ``"en"``. Le ``book.py`` de
+- **D2 — d'où vient la langue : de l'ADRESSE (NG 2026-08-29).**
+  ``current_lang()`` lit, dans l'ordre : l'environnement ``STX_LANG`` (l'export
+  statique, un passage par langue), le paramètre d'URL ``?lang=fr`` (posé par
+  les deux boutons de chaque carte du hub et propagé par le bouton « Next
+  deck »), puis le défaut ``"en"``. Aucun widget, aucun état de session : ce
+  qu'on a ouvert est ce qu'on projette, et l'adresse le dit. Changer de
+  langue en cours de deck = éditer l'adresse et recharger. Le ``book.py`` de
   chaque module la passe à tous les blocs : ``st_book(..., block_kwargs=
-  {"lang": current_lang()})`` — un bloc reçoit ``build(lang)``, il ne lit
-  jamais l'état de session lui-même.
+  {"lang": current_lang()})`` — un bloc reçoit ``build(lang)``.
 - **D1 — où vit le texte.** Une feuille traduisible est un dict indexé par
   code de langue, ``{"en": …, "fr": …}``, écrite DANS le bloc (règle R-facts)
   ou dans le lexique partagé ``postair_i18n`` pour ce qui se répète. ``T()``
@@ -20,10 +22,8 @@ Trois décisions vivent ici :
   salle. Une chaîne nue passée à ``T`` est en revanche une erreur immédiate :
   c'est un oubli de migration, pas une traduction manquante.
 
-Patron à deux clés (PLAYBOOK §7, bug vécu 2026-08-24) : le widget du
-sélecteur a SA clé (``postair_lang_widget``) et recopie son choix dans
-``LANG_KEY`` via ``on_change`` — en pagination, Streamlit purge la clé d'un
-widget dès qu'une page s'exécute sans lui.
+Le sélecteur de séance du 28 août (radio + patron à deux clés) est retiré le
+29 août : R-live retrouve son unique widget, le sélecteur de jour de survey.
 """
 
 from __future__ import annotations
@@ -40,19 +40,34 @@ LANGS: tuple[str, ...] = ("en", "fr")
 NAMES = {"en": "English", "fr": "Français", "de": "Deutsch"}
 DEFAULT = "en"
 
-#: Clé de SESSION (non-widget) — stable, jamais engendrée.
-LANG_KEY = "postair_lang"
-WIDGET_KEY = "postair_lang_widget"
 ENV_KEY = "STX_LANG"
+#: Le paramètre d'adresse : ``…/?lang=fr``.
+QUERY_KEY = "lang"
+
+
+def _query_lang() -> str | None:
+    """Le ``?lang=`` de l'adresse — absent hors d'une vraie session Streamlit
+    (export headless, contrôle des blocs), et ignoré s'il n'est pas une langue
+    connue : un suffixe fautif ne doit jamais casser une projection."""
+    try:
+        value = st.query_params.get(QUERY_KEY)
+    except Exception:  # noqa: BLE001 — pas de contexte de script
+        return None
+    return value if value in LANGS else None
 
 
 def current_lang() -> str:
-    """La langue à projeter maintenant : export > session > défaut."""
-    lang = os.environ.get(ENV_KEY) or st.session_state.get(LANG_KEY) or DEFAULT
+    """La langue à projeter maintenant : export > adresse > défaut."""
+    lang = os.environ.get(ENV_KEY) or _query_lang() or DEFAULT
     if lang not in LANGS:
-        raise ValueError(f"langue {lang!r} hors de LANGS={LANGS} — "
-                         f"STX_LANG ou sélecteur incohérent")
+        raise ValueError(f"langue {lang!r} hors de LANGS={LANGS} — STX_LANG incohérent")
     return lang
+
+
+def with_lang(url: str, lang: str) -> str:
+    """Un lien vers un module, dans *lang* : la langue voyage dans l'adresse."""
+    sep = "&" if "?" in url else "?"
+    return f"{url}{sep}{QUERY_KEY}={lang}"
 
 
 def T(node, lang: str | None = None) -> str:
@@ -87,28 +102,3 @@ def TF(node, lang: str | None = None) -> tuple:
     if isinstance(value, Sequence):
         return tuple(value)
     raise TypeError(f"fragments invalides : {value!r}")
-
-
-def st_stage_lang_selector() -> str:
-    """Le sélecteur de langue de l'orateur — posé UNE fois par module.
-
-    Exception actée à la règle R-live (NG 2026-08-28) : c'est le second et
-    dernier widget des decks, avec le sélecteur de jour. Retourne la langue
-    choisie ; sans effet sous ``STX_LANG`` (l'export n'a pas de widget et
-    fige la langue de l'environnement).
-    """
-    if os.environ.get(ENV_KEY):
-        return current_lang()
-    codes = [*LANGS]
-
-    def _persist() -> None:
-        st.session_state[LANG_KEY] = st.session_state[WIDGET_KEY]
-
-    _left, mid, _right = st.columns([2, 1, 2])
-    with mid:
-        st.radio("Language", codes,
-                 index=codes.index(st.session_state.get(LANG_KEY, DEFAULT)),
-                 format_func=NAMES.__getitem__, horizontal=True,
-                 key=WIDGET_KEY, on_change=_persist,
-                 label_visibility="collapsed")
-    return current_lang()

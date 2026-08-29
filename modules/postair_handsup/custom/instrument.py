@@ -20,7 +20,7 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
-from postair_lang import LANG_KEY, LANGS as _EXPOSED, NAMES, current_lang  # noqa: F401
+from postair_lang import LANGS as _EXPOSED, NAMES, current_lang
 
 _FREEZE = Path(__file__).parent.parent / "static" / "data" / "content.json"
 

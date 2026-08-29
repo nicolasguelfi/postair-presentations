@@ -8,13 +8,12 @@ La slide porte les trois choix d'avant-séance de l'orateur :
 
 - l'illustration PAPERCUT (IA, éditable, repli SVG versionné — une slide qui
   attend une image affiche un trou, jamais) ;
-- le SÉLECTEUR DE LANGUE commun (``postair_lang.st_stage_lang_selector``,
-  clé de séance stable ``postair_lang``) : posé ici une fois, la langue
-  arrive ensuite à chaque page par ``build(lang)`` ;
+- la LANGUE vient de l'adresse (``?lang=fr``, règle R-i18n du 2026-08-29) :
+  ouvrir le deck depuis le bouton FR du hub, ou ajouter le suffixe ;
 - l'ancrage biblio de l'instrument, code visible, carte au survol.
 
 SPEAKER NOTES:
-Set the language BEFORE facing the room, then never touch it again. One
+Open the deck in the room's language (hub button, or ``?lang=``) BEFORE facing the room. One
 sentence to open: "the tool is down, the survey is not — we vote by hand,
 axis by axis." Then arrow right.
 """
@@ -22,7 +21,7 @@ axis by axis." Then arrow right.
 
 from custom.instrument import version
 from postair_i18n import ui
-from postair_lang import T, TF, st_stage_lang_selector
+from postair_lang import T, TF
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -75,9 +74,5 @@ def build(lang: str = "en", **_):
             width="62%",
         )
         st_space("v", "2vh")
-        # Le patron à deux clés (bug vécu 2026-08-24) vit désormais dans
-        # postair_lang : un seul sélecteur pour tous les decks.
-        st_stage_lang_selector()
-        st_space("v", "1vh")
         st_write(bs.grounding, T(_GROUNDING, lang).format(v=version()),
                  citation("guelfi-postair", inline=True), tag=t.div)
