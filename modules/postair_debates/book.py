@@ -19,7 +19,7 @@ import streamlit as st
 from postair_display import SCALE
 import streamtex as stx
 import streamtex.styles as sts
-from custom.refs import CONFIG as BIB_CONFIG
+from custom.refs import config as refs_config
 from custom.refs import sources as bib_sources
 from custom.themes import dark
 from streamtex import (
@@ -182,5 +182,5 @@ st_book(
     # registre au début de sa construction. Le .bib est GELÉ par
     # build_debates_content.py — même contrat que content.json.
     bib_sources=bib_sources(),
-    bib_config=BIB_CONFIG,
+    bib_config=refs_config(),   # locale = langue projetée (0.7.26)
 )

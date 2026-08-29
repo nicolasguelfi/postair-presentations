@@ -83,16 +83,21 @@ ENV FOLDER="modules/postair_opening"
 RUN mkdir -p /app/static-html && \
     echo 'return 302 /html/;' > /app/static-html/.nginx-redirect.conf
 
-# Pre-warm the page cache for every module so the first visitor loads instantly.
+# Pre-warm the page cache for every module so the first visitor loads instantly
+# — ONCE PER LANGUAGE: since streamtex 0.7.26 the paginated cache is keyed by
+# block_kwargs ({"lang": …} gets its own TOC/markers, page_cache-<fp8>.json).
 RUN for dir in modules/postair_*/; do \
-        echo "Warming up cache for $dir ..." && \
-        (cd "$dir" && uv run stx cache warmup .) || true; \
+        for lang in en fr; do \
+            echo "Warming up cache ($lang) for $dir ..." && \
+            (cd "$dir" && STX_LANG=$lang uv run stx cache warmup .) || true; \
+        done; \
     done
 
 # Pre-generate static HTML for every module, ONE EXPORT PER LANGUAGE
 # (plan-i18n D3, 2026-08-28) : /html/en/ and /html/fr/ — the public reads
 # the static export, and a Streamlit widget never survives an export, so the
-# language must be a build parameter (STX_LANG, read by postair_lang).
+# language must be a build parameter (STX_LANG, read by postair_lang and, since
+# streamtex 0.7.26, by the exporter itself for <html lang>).
 RUN for dir in modules/postair_*/; do \
         for lang in en fr; do \
             echo "Exporting HTML ($lang) for $dir ..." && \

@@ -22,7 +22,7 @@ import streamlit as st
 from postair_display import SCALE
 import streamtex as stx
 import streamtex.styles as sts
-from custom.refs import CONFIG as BIB_CONFIG
+from custom.refs import config as refs_config
 from custom.refs import sources as bib_sources
 from custom.themes import dark
 from streamtex import (
@@ -229,7 +229,7 @@ st_book(
     # La bibliographie se charge PAR ``st_book``, jamais avant lui (règle NG
     # 2026-08-03) : il vide le registre au début de sa construction.
     bib_sources=bib_sources(),
-    bib_config=BIB_CONFIG,
+    bib_config=refs_config(),   # locale = langue projetée (0.7.26)
     # La langue projetée, passée à chaque build(lang) — plan-i18n D2.
     block_kwargs={"lang": current_lang()},
     paginate=True,

@@ -11,7 +11,7 @@ Never presented — opened only if the frame is challenged.
 """
 # @guideline: postair-minimal
 
-from custom.refs import CONFIG, all_entries
+from custom.refs import all_entries, config
 from custom.styles import Styles as s
 from postair_lang import T, TF
 from streamtex import *
@@ -42,5 +42,5 @@ def build(lang: str = "en", **_):
         st_space("v", "1vh")
         st_write(bs.lead, T(_LEAD, lang), tag=t.div)
         st_space("v", "2vh")
-        st_bibliography(title="", only_cited=False, format=CONFIG.format,
+        st_bibliography(title="", only_cited=False, format=config().format,
                         entry_style=bs.entry, number_style=bs.number)

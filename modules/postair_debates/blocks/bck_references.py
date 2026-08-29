@@ -23,7 +23,7 @@ out loud. That is the whole point of having it.
 """
 # @guideline: postair-minimal
 
-from custom.refs import CONFIG, all_entries
+from custom.refs import all_entries, config
 from custom.styles import Styles as s
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -52,5 +52,5 @@ def build(lang: str = "en", **_):
         st_write(bs.lead, "every quotation and every contemporary argument of the nine axes, "
                           "with its source", tag=t.div)
         st_space("v", "2vh")
-        st_bibliography(title="", only_cited=False, format=CONFIG.format,
+        st_bibliography(title="", only_cited=False, format=config().format,
                         entry_style=bs.entry, number_style=bs.number)

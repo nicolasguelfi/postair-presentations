@@ -93,3 +93,7 @@ curl -s "$URL/api/v1/deploy?uuid=<APP_UUID>" -H "Authorization: Bearer $TOKEN"
   language since 2026-08-28 (plan-i18n D3): `/html/en/` and `/html/fr/`, `/html/`
   redirecting to English; the Streamlit mode
   is for the presenter (≈10-15 concurrent sessions per container).
+- streamtex ≥ 0.7.26 (2026-08-29): `STX_LANG` also drives the exporter's
+  `<html lang>` (no `sed` rewrite), `BibConfig.locale` is honoured by the
+  formatters, and the page cache is keyed by language — the build warms it
+  once per language (`page_cache-<fp8>.json`, EN and FR side by side).

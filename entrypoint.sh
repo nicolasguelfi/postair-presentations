@@ -22,17 +22,23 @@ echo "[entrypoint] Mode: ${MODE} | Folder: ${FOLDER}"
 # Clear stale caches
 rm -rf .stx_cache .streamlit/cache
 
-# Re-warm the page cache (for Streamlit fast first load)
+# Re-warm the page cache (for Streamlit fast first load) — ONCE PER LANGUAGE:
+# since streamtex 0.7.26 the paginated cache is keyed by block_kwargs, so
+# {"lang": "fr"} owns its own TOC/markers/page titles (page_cache-<fp8>.json,
+# EN and FR coexist). A deck opened with ?lang=fr after an EN-only warmup
+# would otherwise build its cache on the first visitor.
 if [ "$MODE" != "static-only" ]; then
-    echo "[entrypoint] Warming up page cache..."
-    uv run stx cache warmup . 2>/dev/null || true
+    for lang in en fr; do
+        echo "[entrypoint] Warming up page cache (${lang})..."
+        STX_LANG=$lang uv run stx cache warmup . 2>/dev/null || true
+    done
 fi
 
 # Generate static HTML exports — clean first to remove stale exports from other
 # FOLDERs. ONE EXPORT PER LANGUAGE (plan-i18n D3, 2026-08-28) : the public reads
 # /html/<lang>/ ; a widget never survives an export, so the language is the
-# STX_LANG build parameter read by postair_lang. The language of the HTML root
-# element is rewritten on the French export (streamtex hard-codes lang="en").
+# STX_LANG build parameter read by postair_lang — and, since streamtex 0.7.26,
+# by `stx export html` itself for the <html lang> attribute (no rewrite needed).
 rm -rf /app/static-html/*
 BASE_NAME=$(basename "${FOLDER}")
 TARGET="${BASE_NAME}/${BASE_NAME}.html"
@@ -41,9 +47,6 @@ for lang in en fr; do
     STX_LANG=$lang uv run stx export html --output /app/static-html/${lang}/ . 2>/dev/null || true
     if [ -f "/app/static-html/${lang}/${TARGET}" ]; then
         echo "[entrypoint] Static HTML: /html/${lang}/ → ${lang}/${TARGET}"
-        if [ "$lang" != "en" ]; then
-            sed -i "s/<html lang=\"en\"/<html lang=\"${lang}\"/" "/app/static-html/${lang}/${TARGET}" || true
-        fi
     else
         echo "[entrypoint] Warning: expected ${lang}/${TARGET} not found, using fallback"
     fi

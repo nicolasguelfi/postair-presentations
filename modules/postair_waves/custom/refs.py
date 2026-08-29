@@ -14,6 +14,7 @@ demandent ici ``citation(...)``.
 
 from __future__ import annotations
 
+from dataclasses import replace
 from pathlib import Path
 
 from streamtex import (
@@ -26,6 +27,7 @@ from streamtex import (
     set_bib_config,
 )
 
+from postair_lang import current_lang
 from postair_pack.design_systems.postair_dark import (
     CITE_CODE_BLOCK_CSS,
     CITE_CODE_CSS,
@@ -35,16 +37,27 @@ BIB = Path(__file__).parent.parent / "static" / "data" / "references.bib"
 
 #: Calibrage projection de la carte au survol — le même que les autres decks
 #: (le défaut 420 px / corps 12 px est illisible en amphithéâtre).
-CONFIG = BibConfig(
+_BASE = BibConfig(
     format=BibFormat.APA,
     citation_style=CitationStyle.AUTHOR_YEAR,
     sort_by="author",
     hover_enabled=True,
-    locale="en",
+    locale="en",   # remplacée par la langue projetée dans config() — voir ci-dessous
     card_width="780px",
     card_font_scale=2.0,
     card_css="#stx-bib-card{max-height:70vh;overflow-y:auto;}",
 )
+
+
+def config() -> BibConfig:
+    """La configuration bib DE CE RUN — sa ``locale`` suit la langue projetée.
+
+    Une constante de module ne suffit pas : le processus Streamlit sert
+    ``?lang=en`` et ``?lang=fr`` tour à tour et n'importe ce module qu'une
+    fois. Depuis streamtex 0.7.26 la locale est lue par tous les formateurs
+    (« Vaswani et Shazeer », « Dans … », « p. », « n° » en français).
+    """
+    return replace(_BASE, locale=current_lang())
 
 
 def sources() -> list[str]:
@@ -70,7 +83,7 @@ def _registry(keys):
         raise FileNotFoundError(
             f"{BIB.name} est absent — il se GÉNÈRE avec content.json : "
             f"uv run python _project/tools/build_waves_content.py")
-    set_bib_config(CONFIG)
+    set_bib_config(config())
     registry.register_many(load_bib(str(BIB)))
     return registry
 
@@ -98,6 +111,6 @@ def all_entries() -> int:
     """Peuple le registre avec TOUT le gel — la page References liste tout
     (deck paginé : ``get_cited_entries`` ne voit que la slide courante)."""
     registry = get_bib_registry()
-    set_bib_config(CONFIG)
+    set_bib_config(config())
     registry.register_many(load_bib(str(BIB)))
     return len(registry)

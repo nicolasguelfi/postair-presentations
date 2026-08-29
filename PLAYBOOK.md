@@ -214,3 +214,4 @@ Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncé
 | i18n D1–D4 (feuilles dans le bloc, `block_kwargs`, double export, porte rouge) | 2026-08-28 | règle R-i18n + docstrings `postair_lang.py`, `check_i18n.py` |
 | Lot 1 i18n clos (opening, survey, waves, handsup bilingues) ; lot 2 au tag `en-final/<module>` | 2026-08-29 | `_project/i18n/rapport-lot1.md` (local) + `I18N_PENDING` de `check_i18n.py` |
 | La langue vit dans l'adresse (`?lang=`) : deux boutons par carte du hub, pas de sélecteur dans les modules | 2026-08-29 | docstring `postair_lang.py` + règle R-i18n |
+| streamtex 0.7.26 lève les trois contournements i18n : `<html lang>` posé par l'export (plus de `sed`), `BibConfig.locale` lu par les formateurs (`refs.config()`), cache paginé par langue (warmup EN puis FR au build) | 2026-08-29 | `entrypoint.sh`, `Dockerfile`, `modules/*/custom/refs.py`, règle R-i18n ; streamtex #37–#41 |
