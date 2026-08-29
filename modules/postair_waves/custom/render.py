@@ -89,7 +89,7 @@ def _tooltip_entries(span: list[dict], lang: str) -> list[tuple[str, str]]:
         subst = content.text(w.get("substitution"), lang)
         figures = ", ".join(f["name"] for f in w["figures"])
         detail = T(_UI["tooltip_detail"], lang).format(
-            period=w["period"], figures=figures)
+            period=content.text(w["period"], lang), figures=figures)
         if subst:
             detail += T(_UI["tooltip_substitution"], lang).format(subst=subst)
         else:
@@ -119,7 +119,7 @@ def _wave_button(w: dict, lang: str, width: str = "min(76%, 57vh)") -> None:
         f'style="display:block; position:relative; width:{width}; '
         f'margin:0 auto; border-radius:12px; overflow:hidden; '
         f'cursor:pointer;">'
-        f'<img src="{img}" alt="{name} ({w["period"]}) — AI-generated title '
+        f'<img src="{img}" alt="{name} ({content.text(w["period"], lang)}) — AI-generated title '
         f'card, click to open the wave" '
         f'style="width:100%; height:auto; display:block;"/>'
         f'{chip}'
@@ -167,7 +167,7 @@ def waves_grid_slide(marker: dict, title: dict, first: int, last: int,
                              tag=t.div)
                     st_write(gs.figures,
                              T(_UI["figures_line"], lang).format(
-                                 period=w["period"],
+                                 period=content.text(w["period"], lang),
                                  figures=" · ".join(f["name"] for f in w["figures"])),
                              tag=t.div)
 
@@ -198,7 +198,7 @@ def wave_hero_grid_slide(marker: dict, title: dict, wave_id: str,
         st_write(gs.name,
                  T(_UI["wave_line_period"], lang).format(
                      order=w["order"], name=content.text(w["name"], lang),
-                     period=w["period"]),
+                     period=content.text(w["period"], lang)),
                  tag=t.div)
         st_write(gs.figures, " · ".join(f["name"] for f in w["figures"]),
                  tag=t.div)
@@ -257,7 +257,7 @@ def _stage(w: dict, etage: str, lang: str, first: bool) -> None:
     with st_block(s.project.containers.page_fill_full):
         st_write(ss.overline,
                  T(_UI["wave_line_period"], lang).format(
-                     order=w["order"], name=name, period=w["period"]),
+                     order=w["order"], name=name, period=content.text(w["period"], lang)),
                  tag=t.div)
         if first:
             # La carte-titre de la vague : son entrée TOC de niveau 1.
@@ -280,7 +280,7 @@ def _stage(w: dict, etage: str, lang: str, first: bool) -> None:
             f'cursor:pointer;">'
             f'<img src="app/static/{content.image_uri(w["id"], etage)}" '
             f'alt="{content.etage_label(etage, "en")} — {name} '
-            f'({w["period"]}): AI-generated historical reconstruction" '
+            f'({content.text(content.text(w["period"], lang), "en")}): AI-generated historical reconstruction" '
             f'style="width:100%; height:auto; display:block;"/>'
             f'{chip}'
             f'</a>')

@@ -2,14 +2,14 @@
  "metadata": {
   "_doc": "GÉNÉRÉ par _project/tools/build_glossary_content.py — ne jamais éditer : régénérer. Le hub est la vérité.",
   "source": "questionnaire/TRANSLATION-DE-GLOSSARY.json",
-  "hub_commit": "ae06fbc6",
+  "hub_commit": "8e50c813",
   "languages": [
    "en",
    "fr",
    "de"
   ],
   "default_language": "en",
-  "entries": 101
+  "entries": 103
  },
  "terms": {
   "term.inclusive-strategy": {
@@ -286,6 +286,16 @@
    "en": "TRAN",
    "fr": "TRAN",
    "de": "TRAN"
+  },
+  "pole.effect.accelerator": {
+   "en": "accelerator",
+   "fr": "accélérateur",
+   "de": "Beschleuniger"
+  },
+  "pole.effect.decelerator": {
+   "en": "decelerator",
+   "fr": "ralentisseur",
+   "de": "Entschleuniger"
   },
   "archetype.promethean.name": {
    "en": "Promethean Visionary",

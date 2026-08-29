@@ -61,6 +61,19 @@ _TOOLS = Path(__file__).parent
 _REPO = _TOOLS.parent.parent
 _OUT = _REPO / "modules" / "postair_debates" / "static" / "data" / "content.json"
 _BIB_OUT = _OUT.parent / "references.bib"
+_GLOSSARY = _REPO / "modules" / "shared-blocks" / "static" / "data" / "glossary.json"
+
+
+def _effect_label(effect: str) -> dict[str, str]:
+    """Le nom de l'effet d'un pôle (« accelerator » / « accélérateur »…) — du
+    glossaire du hub GELÉ (``pole.effect.<effect>``, entrées V4 du 2026-08-29),
+    jamais d'une chaîne écrite ici. Absent = erreur bruyante : regel du glossaire."""
+    terms = json.loads(_GLOSSARY.read_text(encoding="utf-8"))["terms"]
+    try:
+        return terms[f"pole.effect.{effect}"]
+    except KeyError:
+        raise SystemExit(f"pole.effect.{effect} absent du glossaire gelé — "
+                         f"uv run python _project/tools/build_glossary_content.py") from None
 
 # Pedagogical order of the axes — the three registers of the instrument.
 AXIS_ORDER = ["trust", "optimism", "rationality",          # Knowing
@@ -465,9 +478,16 @@ class Hub:
         5. puis, comme avant, l'édition bilingue, le degré de vérification et
            enfin la longueur, qui ne départage plus que des égalités.
         """
-        curated = {_norm(q["text"]["en"]): q
-                   for q in (self.editorial.get(fid, {}).get("quotes") or [])
-                   if q.get("text", {}).get("en")}
+        # Apparié sur TOUTE langue de l'éditorial (contrat v2.7, 2026-08-29) :
+        # cinq originaux français (Saint-Simon, Hugo, Pasteur, Saint-Exupéry,
+        # Duhamel) sont dans le registre en français et trilingues à l'éditorial.
+        curated = {}
+        for q in (self.editorial.get(fid, {}).get("quotes") or []):
+            if not q.get("text", {}).get("en"):
+                continue
+            for lang_text in q["text"].values():
+                if lang_text:
+                    curated.setdefault(_norm(lang_text), q)
         # Le CHOIX ÉDITORIAL d'abord (planche citdeb, NG 2026-08-14) : quand
         # l'auteur a désigné LA citation d'un couple figure × pôle dans
         # ``editorial/<id>.json``, elle gagne d'office — le classement P3 ne
@@ -538,7 +558,11 @@ class Hub:
                    if src.get("citekeys_confidence") in _BIBKEY_TRUSTED else [])
         return {"en": display_override
                       or (match or {}).get("text", {}).get("en") or q["text"],
-                "fr": None if display_override else (match or {}).get("text", {}).get("fr"),
+                # Un extrait raccourci par l'auteur porte SA traduction
+                # (debate_choice {en, fr, de}, contrat v2.7) — jamais le FR de
+                # la citation entière sous un EN tronqué.
+                "fr": (choice.get("fr") or None) if display_override
+                      else (match or {}).get("text", {}).get("fr"),
                 "reference": _short_reference(full),
                 "reference_full": full,
                 "citekeys": bibkeys,
@@ -735,6 +759,7 @@ def build(hub: Hub) -> dict:
             poles.append({
                 "axis": axis, "axis_name": meta["name"], "register": REGISTER[axis],
                 "side": side, "pole": pole, "effect": pole["effect"],
+                "effect_label": _effect_label(pole["effect"]),
                 "statements": [{"id": i, "text": hub.cards[i]["question"],
                                 "guidance": hub.cards[i]["guidance"]}
                                for i in hub.pole_items(axis, side)],
@@ -787,7 +812,7 @@ def report(data: dict) -> str:
                     f"## Axe — {pole['axis_name']['en']} · {pole['axis_name']['fr']}"
                     f"  ({pole['register']})", ""]
         p = pole["pole"]
-        effect = "accélérateur" if pole["effect"] == "accelerator" else "ralentisseur"
+        effect = pole["effect_label"]["fr"]
         out += [f"### Pôle {p['en']} · {p['fr']} — `{p['abbr']['en']}`, {effect}", "",
                 "Questions du sondage : "
                 + " · ".join(f"**{s['id']}**" for s in pole["statements"]), ""]

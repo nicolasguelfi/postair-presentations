@@ -1,7 +1,7 @@
 {
  "_doc": "GÉNÉRÉ par _project/tools/sync_media.py --freeze depuis mascoties/shared/cartes/cartes-design.json. Ne pas éditer à la main. Ce fichier ne contient que des URL content-adressées : les octets, eux, sont matérialisés au build et ne sont jamais versionnés.",
  "source": "mascoties/shared/cartes/cartes-design.json",
- "design_version": "2.2.0",
+ "design_version": "2.3.0",
  "mascots": [
   {
    "file": "axis-01-animals-left-self-reliance-solo.webp",

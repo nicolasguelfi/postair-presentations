@@ -2,7 +2,7 @@
   "metadata": {
     "_doc": "GÉNÉRÉ par _project/tools/build_waves_content.py — ne jamais éditer : régénérer. Le hub est la vérité.",
     "generated_by": "build_waves_content.py (lot L1)",
-    "hub_commit": "ae06fbc6",
+    "hub_commit": "8e50c813",
     "languages": [
       "en",
       "fr"
@@ -14,10 +14,14 @@
       "id": "writing",
       "code": "WRT",
       "order": 1,
-      "period": "5th-4th c. BCE",
+      "period": {
+        "en": "5th-4th c. BCE",
+        "fr": "Ve–IVe s. av. J.-C.",
+        "de": "5.–4. Jh. v. Chr."
+      },
       "name": {
         "en": "Writing",
-        "fr": "L'écriture"
+        "fr": "Écriture"
       },
       "substitution": {
         "en": "writing",
@@ -75,7 +79,11 @@
       "id": "printing-china",
       "code": "PCH",
       "order": 2,
-      "period": "11th c.",
+      "period": {
+        "en": "11th c.",
+        "fr": "XIe s.",
+        "de": "11. Jh."
+      },
       "name": {
         "en": "Chinese movable type",
         "fr": "Imprimerie chinoise à caractères mobiles"
@@ -114,7 +122,11 @@
       "id": "medieval-crafts",
       "code": "CRF",
       "order": 3,
-      "period": "14th c.",
+      "period": {
+        "en": "14th c.",
+        "fr": "XIVe s.",
+        "de": "14. Jh."
+      },
       "name": {
         "en": "Crafts and techniques of urban civilisation",
         "fr": "Arts et techniques de la civilisation urbaine"
@@ -153,10 +165,14 @@
       "id": "printing-press",
       "code": "PRS",
       "order": 4,
-      "period": "1450-1550",
+      "period": {
+        "en": "1450-1550",
+        "fr": "1450-1550",
+        "de": "1450-1550"
+      },
       "name": {
         "en": "Printing press",
-        "fr": "L'imprimerie"
+        "fr": "Imprimerie"
       },
       "substitution": {
         "en": "the printing press",
@@ -236,7 +252,11 @@
       "id": "new-science",
       "code": "SCI",
       "order": 5,
-      "period": "1600-1650",
+      "period": {
+        "en": "1600-1650",
+        "fr": "1600-1650",
+        "de": "1600-1650"
+      },
       "name": {
         "en": "New science / telescope",
         "fr": "Science nouvelle / télescope"
@@ -319,7 +339,11 @@
       "id": "industrialisation",
       "code": "STM",
       "order": 6,
-      "period": "1780-1850",
+      "period": {
+        "en": "1780-1850",
+        "fr": "1780-1850",
+        "de": "1780-1850"
+      },
       "name": {
         "en": "Steam engine, industrialisation",
         "fr": "Machine à vapeur, industrialisation"
@@ -434,7 +458,11 @@
       "id": "rail-telegraph",
       "code": "RLW",
       "order": 7,
-      "period": "1830-1870",
+      "period": {
+        "en": "1830-1870",
+        "fr": "1830-1870",
+        "de": "1830-1870"
+      },
       "name": {
         "en": "Railway and telegraph",
         "fr": "Chemin de fer et télégraphe"
@@ -539,7 +567,11 @@
       "id": "germ-theory",
       "code": "VAC",
       "order": 8,
-      "period": "1860-1900",
+      "period": {
+        "en": "1860-1900",
+        "fr": "1860-1900",
+        "de": "1860-1900"
+      },
       "name": {
         "en": "Microbiology and vaccination",
         "fr": "Microbiologie et vaccination"
@@ -600,10 +632,14 @@
       "id": "electricity",
       "code": "ELC",
       "order": 9,
-      "period": "1880-1910",
+      "period": {
+        "en": "1880-1910",
+        "fr": "1880-1910",
+        "de": "1880-1910"
+      },
       "name": {
         "en": "Electricity",
-        "fr": "L'électricité"
+        "fr": "Électricité"
       },
       "substitution": {
         "en": "electricity",
@@ -705,7 +741,11 @@
       "id": "motor-aviation",
       "code": "MTR",
       "order": 10,
-      "period": "1900-1940",
+      "period": {
+        "en": "1900-1940",
+        "fr": "1900-1940",
+        "de": "1900-1940"
+      },
       "name": {
         "en": "Motor, automobile, aviation",
         "fr": "Moteur, automobile, aviation"
@@ -787,7 +827,11 @@
       "id": "mass-media",
       "code": "MED",
       "order": 11,
-      "period": "1920-1950",
+      "period": {
+        "en": "1920-1950",
+        "fr": "1920-1950",
+        "de": "1920-1950"
+      },
       "name": {
         "en": "Mass media (radio, cinema)",
         "fr": "Médias de masse (radio, cinéma)"
@@ -870,7 +914,11 @@
       "id": "atom",
       "code": "ATM",
       "order": 12,
-      "period": "1945-1965",
+      "period": {
+        "en": "1945-1965",
+        "fr": "1945-1965",
+        "de": "1945-1965"
+      },
       "name": {
         "en": "Atomic energy and weapons",
         "fr": "Énergie et arme atomiques"
@@ -975,7 +1023,11 @@
       "id": "computer-cybernetics",
       "code": "CMP",
       "order": 13,
-      "period": "1843; 1945-1975",
+      "period": {
+        "en": "1843; 1945-1975",
+        "fr": "1843; 1945-1975",
+        "de": "1843; 1945-1975"
+      },
       "name": {
         "en": "Computer, cybernetics, automation",
         "fr": "Ordinateur, cybernétique, automation"
@@ -1080,7 +1132,11 @@
       "id": "synthetic-chemistry",
       "code": "CHM",
       "order": 14,
-      "period": "1940-1970",
+      "period": {
+        "en": "1940-1970",
+        "fr": "1940-1970",
+        "de": "1940-1970"
+      },
       "name": {
         "en": "Synthetic chemistry, technosphere",
         "fr": "Chimie de synthèse, technosphère"
@@ -1163,7 +1219,11 @@
       "id": "genetic-engineering",
       "code": "GEN",
       "order": 15,
-      "period": "1970-2000",
+      "period": {
+        "en": "1970-2000",
+        "fr": "1970-2000",
+        "de": "1970-2000"
+      },
       "name": {
         "en": "Genetic engineering",
         "fr": "Génie génétique"
@@ -1224,7 +1284,11 @@
       "id": "internet-web",
       "code": "NET",
       "order": 16,
-      "period": "1990-2010",
+      "period": {
+        "en": "1990-2010",
+        "fr": "1990-2010",
+        "de": "1990-2010"
+      },
       "name": {
         "en": "Internet and Web",
         "fr": "Internet et le Web"
@@ -1307,7 +1371,11 @@
       "id": "ai",
       "code": "AIA",
       "order": 17,
-      "period": "2010-",
+      "period": {
+        "en": "2010-",
+        "fr": "2010-",
+        "de": "2010-"
+      },
       "name": {
         "en": "Artificial intelligence",
         "fr": "Intelligence artificielle"
