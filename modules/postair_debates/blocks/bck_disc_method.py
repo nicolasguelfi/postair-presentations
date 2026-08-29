@@ -8,6 +8,12 @@ Opens the discussion sequence. The questions are not chosen by the speaker:
 they come out of what this room answered, which is the whole point and the
 reason the survey came first.
 
+Steps, not a stopwatch (NG 2026-08-29): the projected rule names the four
+steps of a round — statement, for, against, show of hands — and no duration.
+In a hall of five hundred to fifteen hundred, a short timer kills the debate
+before it starts; the speaker keeps the twenty-minute slot by opening two
+axes instead of three when the room is lively.
+
 SPEAKER NOTES:
 Three minutes. Insist on one thing above all: nobody defends a position in
 their own name. The mascots carry the postures, so a student can argue for
@@ -27,7 +33,11 @@ from postair_pack.components.ai_mark import dd35_overlay
 
 _RULES = [
     ("Your questions", "the ones where this room splits"),
-    ("Two minutes", "one question, one round"),
+    # Des ÉTAPES, pas un chronomètre (NG 2026-08-29) : devant 500 à 1500
+    # personnes, un timing trop court étouffe le débat avant qu'il n'existe.
+    # La séquence est fixe, la durée est à l'orateur — qui tient les 20' du
+    # créneau en ouvrant deux axes plutôt que trois si la salle s'anime.
+    ("Four steps", "statement · for · against · hands"),
     # « both sides speak before anyone counts » disait la même chose en une
     # tournure qu'il fallait relire deux fois. Ce qu'elle voulait dire : sur
     # chaque question on entend un argument pour, puis un contre, et le vote à
@@ -64,8 +74,10 @@ def build(lang: str = "en", **_):
                          "the selection ranks the statements by disagreement, by engagement and "
                          "by response rate, and keeps the most divisive ones, at most two per "
                          "axis so the debate does not collapse onto a single theme."),
-                        ("Two minutes each", "One statement, one argument for, one argument "
-                         "against, one show of hands. Short rounds keep a large room awake."),
+                        ("Four steps, no stopwatch", "One statement, one argument for, one "
+                         "argument against, one show of hands. A round closes when both sides "
+                         "have been heard, not when a timer rings — the speaker keeps the slot "
+                         "by opening two axes rather than three when the room is lively."),
                         ("Nobody speaks in their own name", "The mascots carry the postures. You "
                          "argue for prudence, not as a prudent person — which is what makes it "
                          "possible to change your mind in public."),
