@@ -13,7 +13,7 @@ the approach slide. Do not enumerate the waves here: the three grids do it.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
-from postair_lang import T, TF
+from postair_lang import T, TF, st_stage_lang_selector
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -41,3 +41,7 @@ def build(lang: str = "en", **_):
         st_space("v", s.project.spacing.title_gap)
         st_write(bs.line, *TF(_LINE_1, lang), tag=t.div)
         st_write(bs.line, *TF(_LINE_2, lang), tag=t.div)
+        st_space("v", "3vh")
+        # Le sélecteur de langue de l'orateur (règle R-i18n, exception R-live) :
+        # posé UNE fois, sur le premier bloc du module.
+        st_stage_lang_selector()

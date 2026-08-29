@@ -46,7 +46,7 @@ from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import is_synthetic
 from postair_i18n import ui
-from postair_lang import T, TF
+from postair_lang import T, TF, st_stage_lang_selector
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -177,6 +177,9 @@ def build(lang: str = "en", **_):
                  # un retour à la ligne les séparerait et referait naître la
                  # lecture « publication anonyme » (incompris NG 2026-08-13).
                  citation("guelfi-postair", inline=True), tag=t.div)
+        # Le sélecteur de langue de l'orateur (règle R-i18n, exception R-live) :
+        # posé UNE fois, sur le premier bloc du module.
+        st_stage_lang_selector()
 
 
 def _wheel_image():
