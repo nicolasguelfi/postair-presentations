@@ -21,7 +21,7 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "Age requirement", "fr": "Condition d'âge"}
+_MARKER = {"en": "Age requirement", "fr": "Condition d’âge"}
 _TITLE = {"en": ("The ", (s.project.titles.keyword, "age"), " requirement"), "fr": ("La condition d'", (s.project.titles.keyword, "âge"), "")}
 _MESSAGES = [
     ({"en": "A simple declaration", "fr": "Une simple déclaration"},
