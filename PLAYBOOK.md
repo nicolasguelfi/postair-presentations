@@ -114,7 +114,22 @@ uv run python _project/tools/build_debates_content.py --work-order
 
 # Glossaire (après toute campagne de traduction du hub)
 uv run python _project/tools/build_glossary_content.py --work-order
+
+# Vocabulaire des écrans (après tout changement d'intitulé dans l'application sumvadis)
+uv run python _project/tools/build_screens_vocabulary.py --work-order
 ```
+
+- **Quatre gels par chemin avant chaque export** : débats, glossaire, captures,
+  vocabulaire des écrans — `check_all.py` porte les quatre en `--work-order`.
+- **Le vocabulaire des écrans (septième tuyau, DD-113 O2, 2026-08-29)** : ce
+  qu'une slide CITE de l'application — le nom d'un bouton, le titre d'une vue
+  que le participant verra sur son téléphone — passe par
+  `screen("04-question", "action", lang)` (gel `shared-blocks/static/data/screens.json`
+  de `sumvadis/packages/core/assets/ecrans/vocabulaire.json`). Ce que le deck
+  dit avec ses mots (marqueur, titre, messages) reste une feuille du bloc. Un
+  intitulé faux se corrige DANS sumvadis, puis se regèle ici. La lentille de
+  `check_i18n --parity --verbose` signale les feuilles qui recopient un intitulé
+  à la ponctuation près — avertissement, à trancher au cas par cas.
 
 - Le gel des captures est **matrice complète + opportuniste** : la matrice de
   base (mobile/desktop × sombre/clair × en/fr/de) est exigée, toute facette
@@ -218,3 +233,4 @@ Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncé
 | Gel du studio refait (cast v2.3.0 `pole_code`, profils `{_doc, profiles}`) ; le libellé de pôle traduit se cherche PAR CLÉ, jamais par égalité de libellés | 2026-08-29 | `_SHARED/mascots/PROVENANCE.md`, `media_duo._pole_label`, `postair_data.axes()[…]["code"]` |
 | Campagne hub du 2026-08-29 absorbée (figures 0.2.0 : `period` feuille, noms FR sans article ; glossaire 103 : `pole.effect.*` ; contrat éditorial v2.7 : 39 citations promues FR/DE, `debate_choice` {en, fr}) — `quote()` apparie sur toute langue et prend le FR du choix éditorial ; effet de pôle lu au glossaire ; baseline EN des débats refaite (référence imprimable sur 39 citations, 4 originaux FR passés en EN) | 2026-08-29 | `build_debates_content.py`, `waves/custom/render.py`, gels régénérés (hub `8e50c813`) |
 | Registres et pôles PAR CLÉ : `REGISTERS` = (code, sous-titre feuille, axes), nom au glossaire (`register_name`), `axes(family, lang)` traduit les libellés de pôle ; vidéos de figures par langue (`videos` du gel débats, `FIGURE_VIDEO_LANGS` de `sync_media`) | 2026-08-29 | `postair_data.py`, `survey/bck_axes_registers.py`, `media_duo.py`, `build_debates_content.py` |
+| Septième tuyau sumvadis → présentations : vocabulaire des écrans gelé (`build_screens_vocabulary.py` → `screens.json`), `screen(id, role, lang)` pour ce qu'une slide CITE de l'app ; porte `gate_frozen_vocabularies` (glossaire + écrans) ; lentille de recopie dans `check_i18n --parity` | 2026-08-29 | DD-113 (sumvadis), `ECOSYSTEM.md` v1.8, CLAUDE.md « Le troisième amont » |

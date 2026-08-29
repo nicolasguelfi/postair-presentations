@@ -7,6 +7,7 @@ l'inclusion et l'exclusion se règlent par une ligne du book.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_i18n import screen
 from postair_lang import T, TF
 from streamtex import *
 
@@ -18,12 +19,17 @@ _MESSAGES = [
      {"en": ("Your position between the two poles of each axis — the whole "
              "survey in one figure."), "fr": "Votre position entre les deux pôles de chaque axe — tout le sondage en une seule image."}),
     ({"en": "How to read it", "fr": "Comment le lire"},
-     {"en": ("The centre is one pole, not 'no opinion'; distance is a "
-             "position, not a score. No shape is better than another."), "fr": "Le centre est un pôle, pas « Sans opinion » ; la distance est une position, pas un score. Aucune forme ne vaut mieux qu'une autre."}),
+     {"en": ("The centre is one pole, not '{no_opinion}'; distance is a "
+             "position, not a score. No shape is better than another."), "fr": "Le centre est un pôle, pas «{nb}{no_opinion}{nb}»{nb}; la distance est une position, pas un score. Aucune forme ne vaut mieux qu'une autre."}),
     ({"en": "The trap: comparing sizes", "fr": "Le piège : comparer les tailles"},
      {"en": ("A small shape is not a small personality — remember the reading "
              "lesson from a few slides ago."), "fr": "Une petite forme n'est pas une petite personnalité — rappelez-vous la leçon de lecture, quelques slides plus tôt."}),
 ]
+
+
+def _cite(text: str, lang: str) -> str:
+    """Le bouton « Sans opinion » est CITÉ tel que l'application le nomme (gel sumvadis, DD-113)."""
+    return text.format(no_opinion=screen("04-question", "action", lang), nb="\u00a0")
 
 
 def build(lang: str = "en", **_):
@@ -32,7 +38,7 @@ def build(lang: str = "en", **_):
         TF(_TITLE, lang),
         "09-res-radar",
         "Mobile screen of the personal nine-axis posture radar, dark theme",
-        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
+        [(_cite(T(h, lang), lang), _cite(T(d, lang), lang)) for h, d in _MESSAGES],
         zoomImage=190,
         zoomText=140,
         lang=lang

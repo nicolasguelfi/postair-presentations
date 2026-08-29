@@ -100,6 +100,21 @@ signature C2PA des deux côtés et signale les clips sans source. **Ne jamais en
 un fichier du gel à la main** : ce serait créer une seconde vérité. Une évolution se
 demande au studio, puis le gel se refait.
 
+## Le troisième amont — le vocabulaire des écrans de l'application (DD-113, 2026-08-29)
+
+Ce qu'une slide **cite** de l'application sumvadis — le nom d'un bouton, le titre
+d'une vue que le participant voit sur son téléphone — ne s'écrit plus à la main :
+`sumvadis/packages/core/assets/ecrans/vocabulaire.json` (33 écrans, les identifiants
+du registre des captures, `title`/`action`/`hint` en en/fr/de ; fichier de dépôt lu
+par chemin, jamais servi par le CDN) est **gelé** dans
+`modules/shared-blocks/static/data/screens.json` par
+`_project/tools/build_screens_vocabulary.py` (généré = intouchable, `--work-order`),
+et les blocs le lisent par `postair_i18n.screen(id, role, lang)` — écran ou rôle
+inconnu = erreur bruyante. Ce que le deck dit **avec ses mots** (marqueur, titre,
+messages, notes d'orateur) reste une feuille `{en, fr}` du bloc. Un intitulé faux ou
+manquant se corrige **dans sumvadis**, puis se regèle ici. Les quatre gels par
+chemin (débats, glossaire, captures, écrans) sont portés par `check_all.py`.
+
 ## Le thème — un module = un `.streamlit/config.toml`
 
 Le conteneur fait `cd` dans le module avant de lancer Streamlit : le thème

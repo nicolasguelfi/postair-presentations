@@ -45,6 +45,7 @@ from __future__ import annotations
 import argparse
 import ast
 import json
+from functools import lru_cache
 import os
 import re
 import subprocess
@@ -369,6 +370,51 @@ def _whitelist() -> set[str]:
             if l.strip() and not l.startswith("#")}
 
 
+_SCREENS_FREEZE = _REPO / "modules" / "shared-blocks" / "static" / "data" / "screens.json"
+
+
+def _ui_norm(t: str) -> str:
+    return "".join(c for c in t.lower().replace("\u00a0", " ") if c.isalnum() or c == " ").strip()
+
+
+@lru_cache(maxsize=1)
+def _ui_vocabulary() -> dict[str, tuple[str, str]]:
+    """{forme normalisée → (id.role.lang, libellé exact)} des intitulés de
+    l'application (gel sumvadis, DD-113) — titres et actions seulement."""
+    if not _SCREENS_FREEZE.exists():
+        return {}
+    data = json.loads(_SCREENS_FREEZE.read_text(encoding="utf-8"))["screens"]
+    out = {}
+    for sid, roles in data.items():
+        for role in ("title", "action"):
+            for lang, text in roles.get(role, {}).items():
+                if lang in LANGS and len(_ui_norm(text)) >= 8:
+                    out.setdefault(_ui_norm(text), (f"{sid}.{role}.{lang}", text))
+    return out
+
+
+def ui_drift(module: str) -> list[str]:
+    """Les feuilles qui RECOPIENT un intitulé de l'application au lieu de le
+    citer par ``screen()`` — à un caractère de ponctuation ou de casse près.
+    Avertissement, pas erreur : un titre de diapo peut légitimement
+    ressembler au titre de l'écran (règle de partage DD-113)."""
+    vocab = _ui_vocabulary()
+    if not vocab:
+        return []
+    out = []
+    for path in _py_files(module):
+        rel = path.relative_to(_MODULES_DIR).as_posix()
+        for line, leaf in _leaves(path):
+            for lang, text in leaf.items():
+                if not isinstance(text, str):
+                    continue
+                hit = vocab.get(_ui_norm(text))
+                if hit and hit[0].endswith("." + lang):
+                    same = " (identique)" if text == hit[1] else f" ≠ {hit[1]!r}"
+                    out.append(f"{rel}:{line}: {lang} recopie {hit[0]}{same} — passer par screen() ?")
+    return out
+
+
 def parity(module: str) -> list[str]:
     wl = _whitelist()
     out = []
@@ -491,10 +537,14 @@ def cmd_parity(modules: list[str], with_export: bool, verbose: bool) -> int:
                 probs.append(str(e))
         total += len(probs)
         state = f"{_GREEN}✓{_OFF}" if not probs else f"{_RED}!{_OFF}"
-        print(f"  {state} {m}: {len(probs)} problème(s) de parité")
+        drifts = ui_drift(m)
+        print(f"  {state} {m}: {len(probs)} problème(s) de parité"
+              + (f" · {len(drifts)} recopie(s) d'intitulé d'application (avertissement)" if drifts else ""))
         if verbose:
             for p in probs:
                 print(f"      {p}")
+            for d in drifts:
+                print(f"      ~ {d}")
     return total
 
 

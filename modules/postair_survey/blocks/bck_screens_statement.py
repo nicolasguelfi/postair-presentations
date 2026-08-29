@@ -17,7 +17,7 @@ yourself. Some statements feel « reversed » — that is intentional
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
-from postair_i18n import ui
+from postair_i18n import screen, ui
 from postair_lang import T, TF
 from streamtex import *
 
@@ -31,7 +31,7 @@ _MESSAGES = [
     ({"en": "Answer for YOURSELF", "fr": "Répondez pour VOUS"},
      {"en": ("Not for the image you would like to give — the result is only "
              "useful if it is yours."), "fr": "Pas pour l'image que vous aimeriez donner — le résultat n'est utile que s'il est le vôtre."}),
-    ({"en": "“No opinion” ≠ a middle answer", "fr": "« Sans opinion » ≠ le milieu"},
+    ({"en": "“{no_opinion}” ≠ a middle answer", "fr": "«{nb}{no_opinion}{nb}» ≠ le milieu"},
      {"en": ("A separate button OUTSIDE the six levels — excluded from your "
              "scores, never counted as halfway."), "fr": "Un bouton à part, HORS des six niveaux — exclu de vos scores, jamais compté comme un milieu."}),
 ]
@@ -43,13 +43,19 @@ _TIP = [
              "scores."), "fr": "Le milieu d'une échelle attire les non-réponses. Si vous n'avez vraiment pas d'opinion, utilisez le bouton dédié — il est exclu de vos scores."}),
     ({"en": "Why that matters", "fr": "Pourquoi ça compte"},
      {"en": ("A middle answer would be counted as a position halfway between "
-             "the poles; 'no opinion' is counted as nothing at all. Confusing "
-             "them is the one mistake that distorts a profile."), "fr": "Une réponse du milieu compterait comme une position à mi-chemin entre les pôles ; « sans opinion » ne compte pour rien du tout. Les confondre est la seule erreur qui déforme un profil."}),
+             "the poles; '{no_opinion}' is counted as nothing at all. Confusing "
+             "them is the one mistake that distorts a profile."), "fr": "Une réponse du milieu compterait comme une position à mi-chemin entre les pôles{nb}; «{nb}{no_opinion}{nb}» ne compte pour rien du tout. Les confondre est la seule erreur qui déforme un profil."}),
 ]
 #: La tête « Help per question » vient du lexique (partagée avec la slide de
 #: l'instrument).
 _TIP_HELP = {"en": ("Every statement has a help button: clarification, anchors "
                     "and two concrete examples."), "fr": "Chaque énoncé a un bouton d'aide : clarification, repères et deux exemples concrets."}
+
+
+def _cite(text: str, lang: str) -> str:
+    """Le bouton « Sans opinion » est CITÉ tel que l'application le nomme
+    (gel sumvadis, DD-113) — jamais recopié dans la feuille."""
+    return text.format(no_opinion=screen("04-question", "action", lang), nb="\u00a0")
 
 
 def build(lang: str = "en", **_):
@@ -59,10 +65,10 @@ def build(lang: str = "en", **_):
         "04-question",
         "Desktop screen of the survey journey: one statement with its six "
         "agreement levels and the help button, dark theme",
-        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
+        [(_cite(T(h, lang), lang), _cite(T(d, lang), lang)) for h, d in _MESSAGES],
         toc_label=T(_MARKER, lang),
         tooltip=(T(_TIP_TITLE, lang),
-                 [*[(T(h, lang), T(d, lang)) for h, d in _TIP],
+                 [*[(_cite(T(h, lang), lang), _cite(T(d, lang), lang)) for h, d in _TIP],
                   (ui("help_per_question", lang), T(_TIP_HELP, lang))]),
         # Desktop PAYSAGE (NG 2026-08-21) : capture pleine scène en haut,
         # les trois règles en ligne dessous — permis par le gel matrice

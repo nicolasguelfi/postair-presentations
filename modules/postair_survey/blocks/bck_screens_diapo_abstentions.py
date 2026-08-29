@@ -7,6 +7,7 @@ l'inclusion et l'exclusion se règlent par une ligne du book.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_i18n import screen
 from postair_lang import T, TF
 from streamtex import *
 
@@ -14,7 +15,7 @@ from streamtex import *
 _MARKER = {"en": "Where the room abstains", "fr": "Là où la salle s'abstient"}
 _TITLE = {"en": ("Where the room ", (s.project.titles.keyword, "abstains")), "fr": ("Là où la salle ", (s.project.titles.keyword, "s'abstient"))}
 _MESSAGES = [
-    ({"en": "The 'no opinion' map", "fr": "Carte des « sans opinion »"},
+    ({"en": "The '{no_opinion}' map", "fr": "Carte des «{nb}{no_opinion}{nb}»"},
      {"en": ("Where the room chose not to answer — counted apart, never as a "
              "middle answer."), "fr": "Là où la salle a choisi de ne pas répondre — compté à part, jamais comme une réponse neutre."}),
     ({"en": "An abstention is information", "fr": "Une abstention est une information"},
@@ -23,13 +24,18 @@ _MESSAGES = [
 ]
 
 
+def _cite(text: str, lang: str) -> str:
+    """Le bouton « Sans opinion » est CITÉ tel que l'application le nomme (gel sumvadis, DD-113)."""
+    return text.format(no_opinion=screen("04-question", "action", lang), nb="\u00a0")
+
+
 def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     screen_slide(
         TF(_TITLE, lang),
         '28-diapo-abstentions',
         "Desktop view of the /present full-screen slideshow: Where the room abstains, dark theme",
-        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
+        [(_cite(T(h, lang), lang), _cite(T(d, lang), lang)) for h, d in _MESSAGES],
         device="desktop", landscape=True,
         lang=lang
     )

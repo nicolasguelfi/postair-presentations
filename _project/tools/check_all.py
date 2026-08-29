@@ -135,6 +135,29 @@ def gate_captures() -> None:
                 if missing else "", warn=bool(missing))
 
 
+# ── 5b. gels par chemin : glossaire (hub) et vocabulaire des écrans (sumvadis) ─
+
+def gate_frozen_vocabularies() -> None:
+    for gate, config, tool in (
+            ("gel du glossaire (work-order)", "debates-hub.config.local.json",
+             "build_glossary_content.py"),
+            ("gel du vocabulaire des écrans (work-order)", "survey-captures.config.local.json",
+             "build_screens_vocabulary.py")):
+        if not (_TOOLS / config).exists():
+            _record(gate, True, "config machine absente — sauté", warn=True)
+            continue
+        code, out = _run([sys.executable, str(_TOOLS / tool), "--work-order"])
+        m = re.search(r"\*\*(\d+) (?:entrée|écran)\(s\) modifiée?\(s\) · (\d+) disparue?\(s\)", out)
+        if code not in (0, 1) or not m:
+            _record(gate, False, "sortie illisible — " + out.strip().splitlines()[-1][:80] if out.strip() else "sortie vide")
+            continue
+        changed, gone = map(int, m.groups())
+        if changed or gone:
+            _record(gate, False, f"{changed} modifié(s), {gone} disparu(s) — regeler")
+        else:
+            _record(gate, True)
+
+
 # ── 6. gel des débats ───────────────────────────────────────────────────────
 
 def gate_debates() -> None:
@@ -237,6 +260,7 @@ def main() -> int:
     gate_media()
     gate_shared_freeze()
     gate_captures()
+    gate_frozen_vocabularies()
     gate_debates()
     gate_handsup()
     if args.fast:

@@ -20,6 +20,7 @@ from pathlib import Path
 from postair_lang import T
 
 _GLOSSARY = Path(__file__).parent / "static" / "data" / "glossary.json"
+_SCREENS = Path(__file__).parent / "static" / "data" / "screens.json"
 
 #: Le chrome partagé — clé → feuille. Ordre : navigation, tooltips
 #: récurrents, boutons, libellés d'opérateur.
@@ -105,6 +106,33 @@ def term(key: str, lang: str | None = None) -> str:
     except KeyError:
         raise KeyError(f"terme absent du glossaire gelé : {key!r} — une "
                        f"évolution se demande au hub, puis regel") from None
+    return T(node, lang)
+
+
+@lru_cache(maxsize=1)
+def _screens() -> dict:
+    if not _SCREENS.exists():
+        raise FileNotFoundError(
+            "screens.json est absent — le gel du vocabulaire des écrans n'a pas été "
+            "fait : uv run python _project/tools/build_screens_vocabulary.py")
+    return json.loads(_SCREENS.read_text(encoding="utf-8"))["screens"]
+
+
+def screen(screen_id: str, role: str, lang: str | None = None) -> str:
+    """Un intitulé de l'APPLICATION (``title`` / ``action`` / ``hint`` d'un écran),
+    tel que le participant le voit sur son téléphone — gel sumvadis (DD-113).
+
+    C'est ce qu'une slide CITE de l'interface ; ce que le deck dit avec ses
+    mots reste une feuille du bloc. Écran ou rôle inconnu = erreur bruyante,
+    jamais une chaîne vide : un libellé manquant se corrige dans sumvadis.
+    """
+    if role not in ("title", "action", "hint"):
+        raise KeyError(f"rôle d'écran inconnu : {role!r} (title | action | hint)")
+    try:
+        node = _screens()[screen_id][role]
+    except KeyError:
+        raise KeyError(f"vocabulaire des écrans : {screen_id}.{role} absent du gel — "
+                       f"une évolution se demande à sumvadis, puis regel") from None
     return T(node, lang)
 
 

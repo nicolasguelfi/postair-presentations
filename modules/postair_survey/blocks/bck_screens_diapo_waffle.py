@@ -7,6 +7,7 @@ l'inclusion et l'exclusion se règlent par une ligne du book.
 
 from custom.screen_slide import screen_slide
 from custom.styles import Styles as s
+from postair_i18n import screen
 from postair_lang import T, TF
 from streamtex import *
 
@@ -14,7 +15,7 @@ from streamtex import *
 _MARKER = {"en": "The archetype waffle", "fr": "La gaufre des archétypes"}
 _TITLE = {"en": ("The archetype ", (s.project.titles.keyword, "waffle")), "fr": ("Les archétypes en ", (s.project.titles.keyword, "gaufre"))}
 _MESSAGES = [
-    ({"en": "Each dot is one of you", "fr": "Chaque point est l'un d'entre vous"},
+    ({"en": "{waffle_title}", "fr": "{waffle_title}"},   # le titre de la vue, CITÉ (gel sumvadis)
      {"en": ("Every anonymous answer takes its place in an archetype — the "
              "room, person by person, name by nobody."), "fr": "Chaque réponse anonyme prend sa place dans un archétype — la salle, personne par personne, sans nommer personne."}),
     ({"en": "Six archetypes at a glance", "fr": "Six archétypes d'un coup d'œil"},
@@ -23,13 +24,19 @@ _MESSAGES = [
 ]
 
 
+def _cite(text: str, lang: str) -> str:
+    """Le titre de la vue « Chaque point est l'un d'entre vous » est CITÉ tel que
+    l'application l'affiche (gel sumvadis, DD-113) — l'EN devient celui de l'app."""
+    return text.format(waffle_title=screen("26-diapo-gaufre", "title", lang), nb="\u00a0")
+
+
 def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     screen_slide(
         TF(_TITLE, lang),
         '26-diapo-gaufre',
         "Desktop view of the /present full-screen slideshow: The archetype waffle, dark theme",
-        [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
+        [(_cite(T(h, lang), lang), _cite(T(d, lang), lang)) for h, d in _MESSAGES],
         device="desktop", landscape=True,
         lang=lang
     )

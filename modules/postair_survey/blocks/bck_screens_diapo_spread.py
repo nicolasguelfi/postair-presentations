@@ -12,7 +12,7 @@ from streamtex import *
 
 
 _MARKER = {"en": "The room's spread", "fr": "L'étendue de la salle"}
-_TITLE = {"en": ("The room's ", (s.project.titles.keyword, "spread")), "fr": ("La salle, son ", (s.project.titles.keyword, "étendue"))}
+_TITLE = {"en": ("The room's ", (s.project.titles.keyword, "spread")), "fr": ("La salle, et son ", (s.project.titles.keyword, "étendue"))}
 _MESSAGES = [
     ({"en": "Beyond the average", "fr": "Au-delà de la moyenne"},
      {"en": ("The interquartile band shows where the middle half of the room "

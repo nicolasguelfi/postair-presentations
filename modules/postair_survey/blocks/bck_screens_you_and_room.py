@@ -15,8 +15,8 @@ from postair_lang import T, TF
 from streamtex import *
 
 
-_MARKER = {"en": "You and the room", "fr": "Vous et la salle"}
-_TITLE = {"en": ("You and the ", (s.project.titles.keyword, "room")), "fr": ("Vous et la ", (s.project.titles.keyword, "salle"))}
+_MARKER = {"en": "You and the room", "fr": "Vous, et la salle"}
+_TITLE = {"en": ("You and the ", (s.project.titles.keyword, "room")), "fr": ("Vous, et la ", (s.project.titles.keyword, "salle"))}
 _MESSAGES = [
     ({"en": "Your shape against the room's", "fr": "Votre forme face à la salle"},
      {"en": ("Your radar overlaid on the room's averages — the moment a "

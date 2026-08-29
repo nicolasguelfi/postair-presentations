@@ -1,0 +1,636 @@
+{
+ "metadata": {
+  "_doc": "GÉNÉRÉ par _project/tools/build_screens_vocabulary.py — ne jamais éditer : régénérer. sumvadis est la vérité (DD-113).",
+  "source": "packages/core/assets/ecrans/vocabulaire.json",
+  "source_version": 1,
+  "source_sha256": "77d49d07eb77bff7778f005616667f9bb3fbfbf2d8eb0aa70f4618b045b71f0a",
+  "sumvadis_commit": "5252091",
+  "languages": [
+   "en",
+   "fr",
+   "de"
+  ],
+  "default_language": "en",
+  "screens": 33
+ },
+ "screens": {
+  "01-saisie-code": {
+   "title": {
+    "key": "joinTitle",
+    "en": "Join a survey",
+    "fr": "Rejoindre une enquête",
+    "de": "An einer Umfrage teilnehmen"
+   },
+   "action": {
+    "key": "join",
+    "en": "Join",
+    "fr": "Rejoindre",
+    "de": "Teilnehmen"
+   },
+   "hint": {
+    "key": "joinHint",
+    "en": "Enter the 6-digit code displayed on the screen.",
+    "fr": "Saisissez le code à 6 chiffres affiché à l’écran.",
+    "de": "Geben Sie den 6-stelligen Code ein, der auf dem Bildschirm angezeigt wird."
+   }
+  },
+  "02-accueil-campagne": {
+   "title": {
+    "key": "welcome",
+    "en": "Where do you stand on AI?",
+    "fr": "Où vous situez-vous face à l’IA ?",
+    "de": "Wo stehen Sie zur KI?"
+   },
+   "action": {
+    "key": "start",
+    "en": "Start",
+    "fr": "Commencer",
+    "de": "Beginnen"
+   },
+   "hint": {
+    "key": "welcomeSub",
+    "en": "54 quick statements · about 10 minutes · anonymous by design.",
+    "fr": "54 affirmations rapides · environ 10 minutes · anonyme par conception.",
+    "de": "54 kurze Aussagen · etwa 10 Minuten · von Grund auf anonym."
+   }
+  },
+  "02-eligibilite": {
+   "title": {
+    "key": "eligibilityTitle",
+    "en": "Age requirement",
+    "fr": "Condition d’âge",
+    "de": "Altersvoraussetzung"
+   },
+   "action": {
+    "key": "continueLabel",
+    "en": "Continue",
+    "fr": "Continuer",
+    "de": "Weiter"
+   }
+  },
+  "03-consentement": {
+   "title": {
+    "key": "consentTitle",
+    "en": "Before we start",
+    "fr": "Avant de commencer",
+    "de": "Bevor es losgeht"
+   },
+   "action": {
+    "key": "consentAccept",
+    "en": "I consent — let’s go",
+    "fr": "Je consens — c’est parti",
+    "de": "Ich willige ein — los geht’s"
+   },
+   "hint": {
+    "key": "consentRead",
+    "en": "Information notice",
+    "fr": "Notice d’information",
+    "de": "Teilnahmeinformation"
+   }
+  },
+  "04-question": {
+   "title": {
+    "key": "progressLabel",
+    "en": "Questionnaire progress",
+    "fr": "Progression du questionnaire",
+    "de": "Fortschritt des Fragebogens"
+   },
+   "action": {
+    "key": "noOpinion",
+    "en": "No opinion",
+    "fr": "Sans opinion",
+    "de": "Keine Meinung"
+   },
+   "hint": {
+    "key": "whyThis",
+    "en": "What does this mean?",
+    "fr": "C’est-à-dire ?",
+    "de": "Was heißt das?"
+   }
+  },
+  "05-progression": {
+   "title": {
+    "key": "progressLabel",
+    "en": "Questionnaire progress",
+    "fr": "Progression du questionnaire",
+    "de": "Fortschritt des Fragebogens"
+   },
+   "action": {
+    "key": "skip",
+    "en": "Skip",
+    "fr": "Passer",
+    "de": "Überspringen"
+   },
+   "hint": {
+    "key": "back",
+    "en": "Back",
+    "fr": "Retour",
+    "de": "Zurück"
+   }
+  },
+  "06-envoi": {
+   "title": {
+    "key": "submitTitle",
+    "en": "All done — send your answers?",
+    "fr": "Terminé — envoyer vos réponses ?",
+    "de": "Fertig — Ihre Antworten senden?"
+   },
+   "action": {
+    "key": "send",
+    "en": "Send and see my results",
+    "fr": "Envoyer et consulter mes résultats",
+    "de": "Senden und meine Ergebnisse ansehen"
+   },
+   "hint": {
+    "key": "contextTitle",
+    "en": "Optional: a bit of context",
+    "fr": "Optionnel : un peu de contexte",
+    "de": "Optional: ein wenig Kontext"
+   }
+  },
+  "07-res-entete": {
+   "title": {
+    "key": "resultTitle",
+    "en": "Your AI posture",
+    "fr": "Votre posture face à l’IA",
+    "de": "Ihre Haltung zur KI"
+   },
+   "action": {
+    "key": "download",
+    "en": "Download my answers & result",
+    "fr": "Télécharger mes réponses et mon résultat",
+    "de": "Meine Antworten und mein Ergebnis herunterladen"
+   },
+   "hint": {
+    "key": "retestKeepTitle",
+    "en": "Your consult/retest code — keep it safe:",
+    "fr": "Votre code de consultation / re-test — conservez-le :",
+    "de": "Ihr Abruf-/Retest-Code — bewahren Sie ihn gut auf:"
+   }
+  },
+  "08-res-carte": {
+   "title": {
+    "key": "carteYouLabel",
+    "en": "You, specifically",
+    "fr": "Vous, précisément",
+    "de": "Sie, ganz konkret"
+   },
+   "action": {
+    "key": "shareCard",
+    "en": "Share my card",
+    "fr": "Partager ma carte",
+    "de": "Meine Karte teilen"
+   },
+   "hint": {
+    "key": "carteSwitchFamily",
+    "en": "Change family",
+    "fr": "Changer de famille",
+    "de": "Familie wechseln"
+   }
+  },
+  "09-res-radar": {
+   "title": {
+    "key": "reportYourProfile",
+    "en": "Your profile",
+    "fr": "Votre profil",
+    "de": "Ihr Profil"
+   },
+   "action": {
+    "key": "radarZoomIn",
+    "en": "Enlarge the radar chart",
+    "fr": "Agrandir le diagramme radar",
+    "de": "Radardiagramm vergrößern"
+   },
+   "hint": {
+    "key": "toggleOverlay",
+    "en": "Tap to show/hide on the radar",
+    "fr": "Touchez pour afficher/retirer du radar",
+    "de": "Antippen, um auf dem Radar ein- oder auszublenden"
+   }
+  },
+  "10-res-salle": {
+   "title": {
+    "key": "youAndRoom",
+    "en": "You, and the room",
+    "fr": "Vous, et la salle",
+    "de": "Sie und der Saal"
+   },
+   "action": {
+    "key": "showCounts",
+    "en": "Show counts",
+    "fr": "Afficher les effectifs",
+    "de": "Zahlen einblenden"
+   }
+  },
+  "11-res-detail": {
+   "title": {
+    "key": "details",
+    "en": "Details by question",
+    "fr": "Détails par question",
+    "de": "Details je Frage"
+   },
+   "action": {
+    "key": "yourAnswers",
+    "en": "Your answers, question by question",
+    "fr": "Vos réponses, question par question",
+    "de": "Ihre Antworten, Frage für Frage"
+   }
+  },
+  "12-res-profils": {
+   "title": {
+    "key": "nearest",
+    "en": "Your nearest archetypal profiles",
+    "fr": "Vos profils archétypaux les plus proches",
+    "de": "Ihre nächstgelegenen archetypischen Profile"
+   },
+   "action": {
+    "key": "archetypesExplore",
+    "en": "Explore the archetypes",
+    "fr": "Explorer les archétypes",
+    "de": "Die Archetypen erkunden"
+   },
+   "hint": {
+    "key": "sectionProfiles",
+    "en": "Archetypes",
+    "fr": "Archétypes",
+    "de": "Archetypen"
+   }
+  },
+  "13-res-figures": {
+   "title": {
+    "key": "nearestFigures",
+    "en": "Great figures who saw it most like you",
+    "fr": "Les grandes figures qui voyaient les choses comme vous",
+    "de": "Große Figuren, die es am ehesten so sahen wie Sie"
+   },
+   "action": {
+    "key": "fullProfile",
+    "en": "Full profile page",
+    "fr": "Fiche complète",
+    "de": "Vollständige Profilseite"
+   },
+   "hint": {
+    "key": "sectionFigures",
+    "en": "Great figures",
+    "fr": "Grandes figures",
+    "de": "Große Figuren"
+   }
+  },
+  "14-res-contraste": {
+   "title": {
+    "key": "contrastFigures",
+    "en": "Most contrasting with you",
+    "fr": "Les plus contrastées avec vous",
+    "de": "Am stärksten im Kontrast zu Ihnen"
+   },
+   "hint": {
+    "key": "sectionContrast",
+    "en": "Contrasts",
+    "fr": "Contrastes",
+    "de": "Kontraste"
+   }
+  },
+  "15-res-exemples": {
+   "title": {
+    "key": "exampleResults",
+    "en": "Example result(s) to explore",
+    "fr": "Exemple(s) de résultat(s) à consulter",
+    "de": "Beispielergebnis(se) zum Erkunden"
+   },
+   "hint": {
+    "key": "sectionExamples",
+    "en": "Examples",
+    "fr": "Exemples",
+    "de": "Beispiele"
+   }
+  },
+  "16-res-code-partage": {
+   "title": {
+    "key": "retestKeepTitle",
+    "en": "Your consult/retest code — keep it safe:",
+    "fr": "Votre code de consultation / re-test — conservez-le :",
+    "de": "Ihr Abruf-/Retest-Code — bewahren Sie ihn gut auf:"
+   },
+   "action": {
+    "key": "shareResults",
+    "en": "Share my results link",
+    "fr": "Partager le lien de mes résultats",
+    "de": "Link zu meinen Ergebnissen teilen"
+   },
+   "hint": {
+    "key": "resultsUrlHint",
+    "en": "Consult again anytime (any device):",
+    "fr": "Consultez à nouveau à tout moment (tout appareil) :",
+    "de": "Jederzeit erneut abrufbar (auf jedem Gerät):"
+   }
+  },
+  "17-res-page-entiere": {
+   "title": {
+    "key": "resultTitle",
+    "en": "Your AI posture",
+    "fr": "Votre posture face à l’IA",
+    "de": "Ihre Haltung zur KI"
+   },
+   "action": {
+    "key": "downloadHtml",
+    "en": "Download the report (HTML)",
+    "fr": "Télécharger le rapport (HTML)",
+    "de": "Bericht herunterladen (HTML)"
+   },
+   "hint": {
+    "key": "disclaimer",
+    "en": "Archetype proximity is indicative only — it locates a profile in the nine-axis space, it does not label a person.",
+    "fr": "La proximité d’archétype est indicative — elle situe un profil dans l’espace à neuf axes, elle n’étiquette pas une personne.",
+    "de": "Die Archetyp-Nähe ist nur ein Anhaltspunkt — sie verortet ein Profil im Raum der neun Achsen, sie etikettiert keine Person."
+   }
+  },
+  "18-explorateur": {
+   "title": {
+    "key": "archetypesPageTitle",
+    "en": "The six archetypes",
+    "fr": "Les six archétypes",
+    "de": "Die sechs Archetypen"
+   },
+   "action": {
+    "key": "compareOpen",
+    "en": "Compare with friends and figures",
+    "fr": "Comparer avec vos amis et des figures",
+    "de": "Mit Freunden und Figuren vergleichen"
+   },
+   "hint": {
+    "key": "archetypesExplorerHint",
+    "en": "Tap an archetype — card or legend — to show or hide it on the radar; several can be compared.",
+    "fr": "Touchez un archétype — carte ou légende — pour l’afficher ou le masquer sur le radar ; plusieurs se comparent.",
+    "de": "Tippen Sie auf einen Archetyp — Karte oder Legende —, um ihn auf dem Radar ein- oder auszublenden; mehrere lassen sich vergleichen."
+   }
+  },
+  "19-fiche-figure": {
+   "title": {
+    "key": "moreAbout",
+    "en": "More about this profile",
+    "fr": "En savoir plus sur ce profil",
+    "de": "Mehr über dieses Profil"
+   },
+   "action": {
+    "key": "fullProfile",
+    "en": "Full profile page",
+    "fr": "Fiche complète",
+    "de": "Vollständige Profilseite"
+   },
+   "hint": {
+    "key": "quotes",
+    "en": "Key quotes",
+    "fr": "Citations clés",
+    "de": "Schlüsselzitate"
+   }
+  },
+  "20-admin-console": {
+   "title": {
+    "key": "operatorKey",
+    "en": "Operator key",
+    "fr": "Clé opérateur",
+    "de": "Operator-Schlüssel"
+   },
+   "action": {
+    "key": "operatorEnter",
+    "en": "Enter",
+    "fr": "Entrer",
+    "de": "Weiter"
+   },
+   "hint": {
+    "key": "operatorRemember",
+    "en": "Remember on this device (12 h)",
+    "fr": "Se souvenir sur cet appareil (12 h)",
+    "de": "Auf diesem Gerät merken (12 h)"
+   }
+  },
+  "21-admin-salle": {
+   "title": {
+    "key": "liveJoin",
+    "en": "Join at",
+    "fr": "Rejoignez sur",
+    "de": "Teilnehmen unter"
+   },
+   "action": {
+    "key": "liveClose",
+    "en": "Close campaign",
+    "fr": "Clôturer la campagne",
+    "de": "Kampagne schließen"
+   },
+   "hint": {
+    "key": "liveCount",
+    "en": "responses received",
+    "fr": "réponses reçues",
+    "de": "eingegangene Antworten"
+   }
+  },
+  "22-admin-projection": {
+   "title": {
+    "key": "presentTitle",
+    "en": "Session screen",
+    "fr": "Écran de séance",
+    "de": "Sitzungsbildschirm"
+   },
+   "action": {
+    "key": "slidesOpen",
+    "en": "▶ Slideshow",
+    "fr": "▶ Diaporama",
+    "de": "▶ Diashow"
+   },
+   "hint": {
+    "key": "presentLive",
+    "en": "Live results",
+    "fr": "Résultats en direct",
+    "de": "Live-Ergebnisse"
+   }
+  },
+  "23-diapo-radar": {
+   "title": {
+    "key": "roomTitle",
+    "en": "Where the room stands (mean profile)",
+    "fr": "Où se situe la salle (profil moyen)",
+    "de": "Wo der Saal steht (Durchschnittsprofil)"
+   },
+   "action": {
+    "key": "slidesNext",
+    "en": "Next view",
+    "fr": "Vue suivante",
+    "de": "Nächste Ansicht"
+   },
+   "hint": {
+    "key": "roomArchetypes",
+    "en": "Nearest archetypes",
+    "fr": "Archétypes les plus proches",
+    "de": "Nächstgelegene Archetypen"
+   }
+  },
+  "24-diapo-etendue": {
+   "title": {
+    "key": "roomBand",
+    "en": "The room, and how spread out it is",
+    "fr": "La salle, et son étendue",
+    "de": "Der Saal — und wie breit er streut"
+   },
+   "action": {
+    "key": "slidesNext",
+    "en": "Next view",
+    "fr": "Vue suivante",
+    "de": "Nächste Ansicht"
+   },
+   "hint": {
+    "key": "roomBandHint",
+    "en": "Solid line: the average. Band: the middle half of the answers, from the lower quarter to the upper quarter — the extremes sit outside, and the average need not be centred in it.",
+    "fr": "Trait plein : la moyenne. Bande : la moitié centrale des réponses, du quart bas au quart haut — les extrêmes sont dehors, et la moyenne n’est pas forcément au centre.",
+    "de": "Durchgezogene Linie: der Durchschnitt. Band: die mittlere Hälfte der Antworten, vom unteren Viertel bis zum oberen Viertel — die Extreme liegen außerhalb, und der Durchschnitt muss darin nicht mittig liegen."
+   }
+  },
+  "25-diapo-details": {
+   "title": {
+    "key": "details",
+    "en": "Details by question",
+    "fr": "Détails par question",
+    "de": "Details je Frage"
+   },
+   "action": {
+    "key": "slidesNext",
+    "en": "Next view",
+    "fr": "Vue suivante",
+    "de": "Nächste Ansicht"
+   }
+  },
+  "26-diapo-gaufre": {
+   "title": {
+    "key": "roomWaffle",
+    "en": "Every dot is one of you",
+    "fr": "Chaque point est l’un d’entre vous",
+    "de": "Jeder Punkt ist eine Person aus dem Saal"
+   },
+   "action": {
+    "key": "slidesNext",
+    "en": "Next view",
+    "fr": "Vue suivante",
+    "de": "Nächste Ansicht"
+   }
+  },
+  "27-diapo-divisions": {
+   "title": {
+    "key": "roomDivided",
+    "en": "What divides the room most",
+    "fr": "Ce qui divise le plus la salle",
+    "de": "Was den Saal am stärksten spaltet"
+   },
+   "action": {
+    "key": "slidesNext",
+    "en": "Next view",
+    "fr": "Vue suivante",
+    "de": "Nächste Ansicht"
+   },
+   "hint": {
+    "key": "roomDividedShades",
+    "en": "Darker shade = a firmer answer, lighter = a more nuanced one.",
+    "fr": "Teinte foncée = réponse plus ferme, teinte claire = plus nuancée.",
+    "de": "Dunklerer Farbton = eine entschiedenere Antwort, hellerer = eine nuanciertere."
+   }
+  },
+  "28-diapo-abstentions": {
+   "title": {
+    "key": "roomSkipped",
+    "en": "Where the room would rather not say",
+    "fr": "Là où la salle préfère ne pas se prononcer",
+    "de": "Wo der Saal sich lieber nicht äußert"
+   },
+   "action": {
+    "key": "slidesNext",
+    "en": "Next view",
+    "fr": "Vue suivante",
+    "de": "Nächste Ansicht"
+   },
+   "hint": {
+    "key": "roomSkippedHint",
+    "en": "Share of “no opinion” — the five most skipped statements.",
+    "fr": "Part de « sans opinion » — les cinq affirmations les plus esquivées.",
+    "de": "Anteil von „Keine Meinung“ — die fünf Aussagen, bei denen diese Antwort am häufigsten gewählt wurde."
+   }
+  },
+  "29-diapo-groupes": {
+   "title": {
+    "key": "roomGroups",
+    "en": "Those who use AI every day, and the others",
+    "fr": "Ceux qui utilisent l’IA tous les jours, et les autres",
+    "de": "Diejenigen, die KI täglich nutzen, und die anderen"
+   },
+   "action": {
+    "key": "slidesExit",
+    "en": "Back to live",
+    "fr": "Revenir au direct",
+    "de": "Zurück zur Live-Ansicht"
+   },
+   "hint": {
+    "key": "roomGroupsHint",
+    "en": "Mean score per group, on the five axes where the gap is widest.",
+    "fr": "Score moyen par groupe, sur les cinq axes où l’écart est le plus net.",
+    "de": "Mittelwert je Gruppe, auf den fünf Achsen mit dem größten Abstand."
+   }
+  },
+  "30-consultation-code": {
+   "title": {
+    "key": "lookupEntryTitle",
+    "en": "Consult your results",
+    "fr": "Consultez vos résultats",
+    "de": "Rufen Sie Ihre Ergebnisse ab"
+   },
+   "action": {
+    "key": "lookupEntryGo",
+    "en": "See my results",
+    "fr": "Voir mes résultats",
+    "de": "Meine Ergebnisse ansehen"
+   },
+   "hint": {
+    "key": "lookupEntrySub",
+    "en": "Enter the 12-letter personal code you kept after sending your answers.",
+    "fr": "Saisissez le code personnel à 12 lettres conservé après l’envoi de vos réponses.",
+    "de": "Geben Sie den persönlichen 12-Buchstaben-Code ein, den Sie nach dem Absenden Ihrer Antworten aufbewahrt haben."
+   }
+  },
+  "31-consultation-mdp": {
+   "title": {
+    "key": "lookupTitle",
+    "en": "Consult results",
+    "fr": "Consulter des résultats",
+    "de": "Ergebnisse abrufen"
+   },
+   "action": {
+    "key": "lookupOpen",
+    "en": "Open",
+    "fr": "Ouvrir",
+    "de": "Öffnen"
+   },
+   "hint": {
+    "key": "lookupKeyLabel",
+    "en": "This page is protected — enter the password:",
+    "fr": "Cette page est protégée — saisissez le mot de passe :",
+    "de": "Diese Seite ist geschützt — geben Sie das Passwort ein:"
+   }
+  },
+  "32-consultation-bascule": {
+   "title": {
+    "key": "lookupCompareOk",
+    "en": "Adding my profile to the comparison page:",
+    "fr": "Ajout de mon profil à la page de comparaison :",
+    "de": "Hinzufügen meines Profils zur Vergleichsseite:"
+   },
+   "action": {
+    "key": "lookupCompareAllow",
+    "en": "Allow",
+    "fr": "Autoriser",
+    "de": "Erlauben"
+   },
+   "hint": {
+    "key": "compareOkShort",
+    "en": "I allow people to add my profile to the comparison page.",
+    "fr": "J’autorise l’ajout de mon profil à la page de comparaison.",
+    "de": "Ich erlaube, mein Profil zur Vergleichsseite hinzuzufügen."
+   }
+  }
+ }
+}
