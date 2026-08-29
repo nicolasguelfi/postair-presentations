@@ -1511,7 +1511,7 @@
       "name": "Voxo",
       "role": "moderator",
       "family": "Objets",
-      "axis_name": "Modérateur",
+      "axis_name": "Modératrice",
       "pole_label": "neutre (host)",
       "pole_code": null,
       "seed": 77003,
@@ -1520,7 +1520,7 @@
         "rgb": "moderator-objects-voxo.png",
         "rgba": "moderator-objects-voxo.rgba.png"
       },
-      "description": "Voxo, le micro-modérateur des Objets : il capte toutes les voix sans en favoriser aucune, et recadre quand ça monte dans les aigus.",
+      "description": "Voxo, la micro-modératrice des Objets : elle capte toutes les voix sans en favoriser aucune, et recadre quand ça monte dans les aigus.",
       "quotes": [
         "Je capte tout le monde, je ne coupe personne… sauf hors sujet.",
         "Un débat, pas un concert de cris.",
@@ -1537,7 +1537,7 @@
       "family_en": "objects"
     }
   },
-  "updated_utc": "2026-08-29T11:23:40+00:00",
+  "updated_utc": "2026-08-29T15:20:49+00:00",
   "naming": "axis-NN-<family>-<side>-<pole>-<name> ; NN = ordre pédagogique (Connaître 1-3, Agir 4-6, Devenir 7-9)",
   "pole_code_source": "hub ai-social-profiles/questionnaire/TRANSLATION-DE-GLOSSARY.json — clés pole.<CODE>.{name,abbr} ; 18 codes (SELF TRUS PESS OPTI EMOT RATI PRUD SPEE RESI OPEN FREE CONT DECE CENT INDI ALTR HUMA TRAN), null pour les modérateurs ; l'aval cherche le libellé traduit PAR CLÉ, jamais par égalité avec pole_label_en (MC-260829-001)",
   "taxonomy": {

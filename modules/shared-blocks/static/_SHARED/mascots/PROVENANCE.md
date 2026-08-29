@@ -29,6 +29,11 @@ trois manifestes.
 
 ## Les trois manifestes — rafraîchis le 2026-08-29 (studio `7b1ae53`)
 
+**Rafraîchis une seconde fois le 2026-08-29 (studio `49a7fac`, gel au `b57e17a`)** :
+Voxo est **féminisée** dans les trois langues (`axis_name` « Modératrice »,
+description « la micro-modératrice des Objets : elle capte… ») et les descriptions EN
+des deux modérateurs sont validées — studio MC-260829-003. Rien d'autre ne bouge.
+
 `cast_final.json` (contrat cartes v2.3.0 : chaque item porte le `pole_code` canonique
 du hub, `null` pour les deux modérateurs — studio MC-260829-001), `profiles_fr.json`
 (forme unifiée `{_doc, profiles}` × 38, parité fr/en/de au checker du studio —

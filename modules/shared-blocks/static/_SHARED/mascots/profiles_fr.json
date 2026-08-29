@@ -557,7 +557,7 @@
       ]
     },
     "moderator-objects-voxo": {
-      "description": "Voxo, le micro-modérateur des Objets : il capte toutes les voix sans en favoriser aucune, et recadre quand ça monte dans les aigus.",
+      "description": "Voxo, la micro-modératrice des Objets : elle capte toutes les voix sans en favoriser aucune, et recadre quand ça monte dans les aigus.",
       "quotes": [
         "Je capte tout le monde, je ne coupe personne… sauf hors sujet.",
         "Un débat, pas un concert de cris.",
