@@ -22,11 +22,25 @@ ACCEL_SIDE = {1: "right", 2: "right", 3: "right", 4: "right", 5: "right",
               6: "left", 7: "right", 8: "left", 9: "right"}
 
 # Registers (category_en of cast_final.json) with EN subtitles.
+#: Les trois registres : (code, sous-titre en feuille {en, fr}, axes). Le code
+#: est la CLÉ (``register_axes``, tooltips) ; le NOM projeté vient du glossaire
+#: du hub gelé par ``register_name(code, lang)`` (``register.<code>.name``) —
+#: jamais d'un libellé écrit ici (2026-08-29, même règle que les pôles). Le
+#: sous-titre est une formule de deck, pas un terme de l'instrument : feuille.
 REGISTERS = [
-    ("Knowing", "how I judge / whom I trust", [1, 2, 3]),
-    ("Acting", "how fast / under which rules I deploy", [4, 5, 6]),
-    ("Becoming", "which social order · which human condition", [7, 8, 9]),
+    ("know", {"en": "how I judge / whom I trust",
+              "fr": "comment je juge / à qui je fais confiance"}, [1, 2, 3]),
+    ("act", {"en": "how fast / under which rules I deploy",
+             "fr": "à quelle vitesse / selon quelles règles je déploie"}, [4, 5, 6]),
+    ("become", {"en": "which social order · which human condition",
+                "fr": "quel ordre social · quelle condition humaine"}, [7, 8, 9]),
 ]
+
+
+def register_name(code: str, lang: str = "en") -> str:
+    """Le nom projeté d'un registre (« Knowing » / « Connaître »), par clé."""
+    from postair_i18n import term   # import local : postair_i18n ne dépend pas d'ici
+    return term(f"register.{code}.name", lang)
 
 
 @lru_cache(maxsize=1)
@@ -101,11 +115,13 @@ def mascot_clip(name: str, lang: str = "en") -> str:
 
 
 @lru_cache(maxsize=4)
-def axes(family_en: str = "animals") -> dict[int, dict]:
+def axes(family_en: str = "animals", lang: str = "en") -> dict[int, dict]:
     """Return {axis_num: axis info} for one mascot family.
 
     Each axis dict: ``axis_code``, ``axis_name``, ``category_en`` and two
-    pole dicts ``accel`` / ``decel`` with ``label`` (EN, capitalised),
+    pole dicts ``accel`` / ``decel`` with ``label`` (EN: the cast's label,
+    capitalised, byte-identical to before i18n ; other languages: the hub
+    glossary by key ``pole.<code>.name`` — 2026-08-29),
     ``code`` (the hub's canonical pole code, ``TRUS``/``SELF``… — the join key
     to the frozen glossary, cast contract v2.3.0), ``mascot`` (name), ``image``
     (static uri), ``description`` (FR tagline).
@@ -121,9 +137,15 @@ def axes(family_en: str = "animals") -> dict[int, dict]:
             "axis_name": item["axis_name"],
             "category_en": item.get("category_en", ""),
         })
+        code = item.get("pole_code")
+        if lang == "en" or not code:
+            label = item["pole_label_en"].replace("-", " ").capitalize()
+        else:
+            from postair_i18n import term
+            label = term(f"pole.{code}.name", lang)
         pole = {
-            "label": item["pole_label_en"].replace("-", " ").capitalize(),
-            "code": item.get("pole_code"),
+            "label": label,
+            "code": code,
             "mascot": item["name"],
             "image": _webp_uri(item),
             "description": item.get("description", ""),
@@ -182,8 +204,8 @@ def mascot(name: str) -> dict:
     raise KeyError(f"no mascot named {name!r} in the frozen cast manifest")
 
 
-def register_axes(register_name: str, family_en: str = "animals") -> list[dict]:
-    """Axes of one register (by EN name), in pedagogical order."""
-    nums = next(nums for name, _sub, nums in REGISTERS if name == register_name)
-    data = axes(family_en)
+def register_axes(code: str, family_en: str = "animals", lang: str = "en") -> list[dict]:
+    """Axes of one register (by code ``know``/``act``/``become``), in pedagogical order."""
+    nums = next(nums for c, _sub, nums in REGISTERS if c == code)
+    data = axes(family_en, lang)
     return [data[n] for n in nums]

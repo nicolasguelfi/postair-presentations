@@ -91,6 +91,8 @@ FIGURE_VIDEO_MODULES: dict[str, tuple[str, ...]] = {
 #: master d'Ada corrompu — soit réparé.) MIROIR de _ROLE dans
 #: postair_survey/custom/media_duo.py.
 FIGURE_VIDEO_ROLE = "video"
+#: Langues embarquées — miroir de ``postair_lang.LANGS`` (en, fr).
+FIGURE_VIDEO_LANGS = ("en", "fr")
 
 _TIMEOUT = 30
 
@@ -299,10 +301,16 @@ def figure_video_catalogue(names: tuple[str, ...]) -> list[tuple[str, str]]:
         if name not in seen:
             raise SystemExit(f"figure inconnue du gel debates : {name!r} — "
                              "corriger FIGURE_VIDEO_MODULES ou régénérer le gel")
-        url = (seen[name].get("media") or {}).get(FIGURE_VIDEO_ROLE)
+        media = seen[name].get("media") or {}
+        url = media.get(FIGURE_VIDEO_ROLE)
         if not url:
             raise SystemExit(f"figure sans {FIGURE_VIDEO_ROLE} au gel : {name!r}")
-        entries.append(("__".join(url.split("/")[-2:]), url))
+        # Les langues projetées (miroir de ``postair_lang.LANGS`` — le DE publié
+        # au CDN n'est pas embarqué) : le deck FR joue la bande-son FR, ``video``
+        # (EN) reste le repli.
+        videos = media.get("videos") or {}
+        for u in dict.fromkeys([url, *(videos[c] for c in FIGURE_VIDEO_LANGS if c in videos)]):
+            entries.append(("__".join(u.split("/")[-2:]), u))
     return entries
 
 

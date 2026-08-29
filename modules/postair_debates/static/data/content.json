@@ -146,14 +146,14 @@
      "presentation": "Leo Tolstoy (1828–1910), Russian novelist turned moral-religious critic, excommunicated by the Orthodox Church in 1901, addressed peasants and educated classes alike from his estate. His wave was the railway and the telegraph binding Imperial Russia — a society nine-tenths peasant — this study’s mirror for today’s AI. His stance was skeptical on two joined grounds: class — the telegraph served the “so-called cultured class” while the peasant heard “only the buzzing of the wires” — and moral-religious, judging technology by conscience and the Gospel; his instrument was voluntary moral renunciation, not law or force. No caricature: at 67 he learned to ride a bicycle with childlike pleasure. What instructs is the discipline of his recurring test — who benefits, who bears the cost, and by what standard a society should judge what it is told to call progress.",
      "epoch": "Leo Tolstoy (1828–1910) was a Russian novelist and moral-religious thinker whose later work turned from fiction toward social and ethical criticism. Alongside the fiction for which he was internationally known, he produced a substantial body of essays and treatises — \"Progress and the Definition of Education\" (1862), the autobiographical \"A Confession\" (written 1879–1882), the treatise \"What Shall We Do?\" (1886), \"The Kingdom of God Is Within You\" (1894), and \"The Slavery of Our Times\" (1900) — that made him a leading voice of Christian anarchism and pacifism. Writing from his estate in Imperial Russia, he addressed peasants and educated classes alike, and his moral authority extended well beyond literature. In 1901 the Russian Orthodox Church excommunicated him, a measure of how far his religious dissent unsettled the established institutions of his time.",
      "quote": {
-      "en": "we should be on our guard not to overestimate science and scientific methods … concerning investigations as to how to set an axe … science never troubles itself.",
-      "fr": null,
-      "reference": "tolstoy1886-whatshallwedo",
-      "reference_full": "tolstoy1886-whatshallwedo",
+      "en": "All learned men are occupied with their sacred businesses … but concerning investigations as to how to set an axe … science never troubles itself, or does so very slightly. Yet all this is the business of science.",
+      "fr": "Tous les savants sont occupés à leurs affaires sacrées … mais quant aux recherches sur la manière d'emmancher une hache … la science ne s'en soucie jamais, ou fort peu. Et pourtant tout cela est l'affaire de la science.",
+      "reference": "What Shall We Do?, 1886, ch. XXXIV (trad. angl. Maude, Free Age Press)",
+      "reference_full": "What Shall We Do?, 1886, ch. XXXIV (trad. angl. Maude, Free Age Press)",
       "citekeys": [
        "tolstoy1886-whatshallwedo"
       ],
-      "curated": false,
+      "curated": true,
       "documents": [
        "TRU-02",
        "TRU-04"
@@ -186,13 +186,18 @@
        }
       ],
       "anchored": false,
-      "verification": "Verbatim (source verified)"
+      "verification": "Verbatim (source verified; re-bounded 2026-08-29 — the former opening fragment \"we should be on our guard not to overestimate science and scientific methods\" is Einstein, Why Socialism?, 1949, and is absent from the text)"
      },
      "media": {
       "portrait": "figures/08181b1e-512.png",
       "portrait_cdn": "https://media.sumvadis.ai/tolstoi/08181b1e-512.png",
       "portrait_source": "figures/content/russia/tolstoi.leon/image/tolstoi.leon__pulid__chest__v2.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
+       "fr": "https://media.sumvadis.ai/tolstoi/6f856db3.mp4",
+       "de": "https://media.sumvadis.ai/tolstoi/99cd7d57.mp4"
+      },
       "video": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -259,6 +264,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/barlow/c75a5d70-512.png",
       "portrait_source": "figures/content/united-states/barlow.john-perry/image/barlow.john-perry__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/barlow/00e26cc5.mp4",
+       "fr": "https://media.sumvadis.ai/barlow/cdc4d3d9.mp4",
+       "de": "https://media.sumvadis.ai/barlow/cf5f6200.mp4"
+      },
       "video": "https://media.sumvadis.ai/barlow/00e26cc5.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -325,6 +335,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/turing/e18e5d50-512.png",
       "portrait_source": "figures/content/united-kingdom/turing.alan/image/turing.alan__frame__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/turing/a9dfc4ff.mp4",
+       "fr": "https://media.sumvadis.ai/turing/0d48f508.mp4",
+       "de": "https://media.sumvadis.ai/turing/1fa39320.mp4"
+      },
       "video": "https://media.sumvadis.ai/turing/a9dfc4ff.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -566,6 +581,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/borlaug/bd2f5dec-512.png",
       "portrait_source": "figures/content/united-states/borlaug.norman/image/borlaug.norman__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/borlaug/85015c73.mp4",
+       "fr": "https://media.sumvadis.ai/borlaug/799ecb28.mp4",
+       "de": "https://media.sumvadis.ai/borlaug/1762062b.mp4"
+      },
       "video": "https://media.sumvadis.ai/borlaug/85015c73.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -632,6 +652,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/berg/6cbe48a1-512.png",
       "portrait_source": "figures/content/united-states/berg.paul/image/berg.paul__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/berg/b46948db.mp4",
+       "en": "https://media.sumvadis.ai/berg/84011ea3.mp4",
+       "de": "https://media.sumvadis.ai/berg/e4ded329.mp4"
+      },
       "video": "https://media.sumvadis.ai/berg/84011ea3.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -685,6 +710,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/bengio/dc36c740-512.png",
       "portrait_source": "figures/content/france/bengio.yoshua/image/bengio.yoshua__source__01.jpg",
       "portrait_ai": false,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/bengio/f77bcbd6.mp4",
+       "en": "https://media.sumvadis.ai/bengio/4592a958.mp4",
+       "de": "https://media.sumvadis.ai/bengio/3b79074f.mp4"
+      },
       "video": "https://media.sumvadis.ai/bengio/4592a958.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -913,6 +943,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/chargaff/4fd42a07-512.png",
       "portrait_source": "figures/content/austria/chargaff.erwin/image/chargaff.erwin__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
+       "fr": "https://media.sumvadis.ai/chargaff/3892cc9a.mp4",
+       "de": "https://media.sumvadis.ai/chargaff/c70a4cea.mp4"
+      },
       "video": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -979,6 +1014,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/oe/450bc375-512.png",
       "portrait_source": "figures/content/japan/oe.kenzaburo/image/oe.kenzaburo__crop11__pulid__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/oe/b7121a4b.mp4",
+       "en": "https://media.sumvadis.ai/oe/19b14574.mp4",
+       "de": "https://media.sumvadis.ai/oe/5da281b5.mp4"
+      },
       "video": "https://media.sumvadis.ai/oe/19b14574.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -1045,6 +1085,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/wallace/3707b2cd-512.png",
       "portrait_source": "figures/content/united-kingdom/wallace.alfred-russel/image/wallace.alfred-russel__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/wallace/e28038df.mp4",
+       "fr": "https://media.sumvadis.ai/wallace/516697a8.mp4",
+       "de": "https://media.sumvadis.ai/wallace/16a60258.mp4"
+      },
       "video": "https://media.sumvadis.ai/wallace/e28038df.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -1312,6 +1357,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/marinetti/5cf530ca-512.png",
       "portrait_source": "figures/content/italy/marinetti.filippo-tommaso/image/marinetti.filippo-tommaso__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/marinetti/0084d933.mp4",
+       "fr": "https://media.sumvadis.ai/marinetti/6ec7ad6f.mp4",
+       "de": "https://media.sumvadis.ai/marinetti/b61e5327.mp4"
+      },
       "video": "https://media.sumvadis.ai/marinetti/0084d933.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -1378,6 +1428,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/saint-simon/eae45309-512.png",
       "portrait_source": "figures/content/france/saint-simon.henri/image/saint-simon.henri__pulid__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/saint-simon/74d5342d.mp4",
+       "fr": "https://media.sumvadis.ai/saint-simon/8c4ed858.mp4",
+       "de": "https://media.sumvadis.ai/saint-simon/7d046847.mp4"
+      },
       "video": "https://media.sumvadis.ai/saint-simon/74d5342d.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -1444,6 +1499,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/tesla/d733d921-512.png",
       "portrait_source": "figures/content/serbia/tesla.nikola/image/tesla.nikola__frame__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/tesla/462a2483.mp4",
+       "fr": "https://media.sumvadis.ai/tesla/d056235c.mp4",
+       "de": "https://media.sumvadis.ai/tesla/d468e6c1.mp4"
+      },
       "video": "https://media.sumvadis.ai/tesla/462a2483.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -1698,6 +1758,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/carlyle/e9cfd863-512.png",
       "portrait_source": "figures/content/united-kingdom/carlyle.thomas/image/carlyle.thomas__frame__elbows.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/carlyle/34c074fa.mp4",
+       "fr": "https://media.sumvadis.ai/carlyle/964f6160.mp4",
+       "de": "https://media.sumvadis.ai/carlyle/4d195a91.mp4"
+      },
       "video": "https://media.sumvadis.ai/carlyle/34c074fa.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -1764,6 +1829,10 @@
       "portrait_cdn": "https://media.sumvadis.ai/saint-exupery/a4f1f2fc-512.png",
       "portrait_source": "figures/content/france/saint-exupery.antoine/image/saint-exupery.antoine__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/saint-exupery/2677c5d2.mp4",
+       "fr": "https://media.sumvadis.ai/saint-exupery/598f47e9.mp4"
+      },
       "video": "https://media.sumvadis.ai/saint-exupery/2677c5d2.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -1869,6 +1938,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/hugo/bc978448-512.png",
       "portrait_source": "figures/content/france/hugo.victor/image/hugo.victor__frame__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/hugo/08ddce6d.mp4",
+       "fr": "https://media.sumvadis.ai/hugo/efba9784.mp4",
+       "de": "https://media.sumvadis.ai/hugo/2c0a9809.mp4"
+      },
       "video": "https://media.sumvadis.ai/hugo/08ddce6d.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -2123,6 +2197,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/teller/91e74e45-512.png",
       "portrait_source": "figures/content/hungary/teller.edward/image/teller.edward__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/teller/1354adf2.mp4",
+       "fr": "https://media.sumvadis.ai/teller/9fec6045.mp4",
+       "de": "https://media.sumvadis.ai/teller/f3b1de77.mp4"
+      },
       "video": "https://media.sumvadis.ai/teller/1354adf2.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -2189,6 +2268,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/bacon/f437d31e-512.png",
       "portrait_source": "figures/content/united-kingdom/bacon.francis/image/bacon.francis__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/bacon/27444853.mp4",
+       "fr": "https://media.sumvadis.ai/bacon/36232d1f.mp4",
+       "de": "https://media.sumvadis.ai/bacon/bd63cb66.mp4"
+      },
       "video": "https://media.sumvadis.ai/bacon/27444853.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -2255,6 +2339,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/fukuzawa/24ccf8ba-512.png",
       "portrait_source": "figures/content/japan/fukuzawa.yukichi/image/fukuzawa.yukichi__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/fukuzawa/e8420bca.mp4",
+       "fr": "https://media.sumvadis.ai/fukuzawa/18c9873c.mp4",
+       "de": "https://media.sumvadis.ai/fukuzawa/6125eea7.mp4"
+      },
       "video": "https://media.sumvadis.ai/fukuzawa/e8420bca.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -2483,6 +2572,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/carson/9bf4354c-512.png",
       "portrait_source": "figures/content/united-states/carson.rachel/image/carson.rachel__frame__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/carson/6f12e88c.mp4",
+       "fr": "https://media.sumvadis.ai/carson/4a463074.mp4",
+       "de": "https://media.sumvadis.ai/carson/f7dd73da.mp4"
+      },
       "video": "https://media.sumvadis.ai/carson/6f12e88c.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -2536,6 +2630,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/platon/ed35b1d0-512.png",
       "portrait_source": "figures/content/greece/plato/image/plato__frame__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/platon/504be6bd.mp4",
+       "fr": "https://media.sumvadis.ai/platon/d4f77a29.mp4",
+       "de": "https://media.sumvadis.ai/platon/28b4e370.mp4"
+      },
       "video": "https://media.sumvadis.ai/platon/504be6bd.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -2602,6 +2701,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/arendt/8fd7db01-512.png",
       "portrait_source": "figures/content/germany/arendt.hannah/image/arendt.hannah__frame__elbows.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/arendt/0f0088e5.mp4",
+       "fr": "https://media.sumvadis.ai/arendt/9dac76e9.mp4",
+       "de": "https://media.sumvadis.ai/arendt/375c10c2.mp4"
+      },
       "video": "https://media.sumvadis.ai/arendt/0f0088e5.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -2797,13 +2901,13 @@
      "epoch": "Bertolt Brecht (1898–1956) was a German playwright, poet, and theatre theorist whose work reshaped the dramaturgy of the Weimar Republic and the decades that followed. Formed in the theatrical and literary milieu of 1920s Germany, he became the theorist of what he called epic theatre, codified in his mature essay \"A Short Organum for the Theatre\" (written 1948, published 1949), in which he defined the alienation effect (Verfremdungseffekt) meant to keep \"the spectator's intellect free and highly mobile.\" His output included The Threepenny Opera, over whose film adaptation he later litigated, and he worked as writer and collaborator across theatre, radio, and cinema. Committed to a Marxist reading of art and society, Brecht treated the playhouse as an instrument for critical reason \"in the scientific age\" rather than for emotional catharsis.",
      "quote": {
       "en": "the increasing concentration of mechanical means and the increasingly specialized training — tendencies that should be accelerated — call for a kind of resistance by the listener, and for his mobilization and redrafting as a producer.",
-      "fr": null,
-      "reference": "brecht1932-radio",
-      "reference_full": "brecht1932-radio",
+      "fr": "la concentration croissante des moyens mécaniques et la spécialisation croissante de la formation — tendances qu'il faut accélérer — appellent une sorte de résistance de l'auditeur, ainsi que sa mobilisation et son réengagement comme producteur.",
+      "reference": "An Example of Pedagogics (Notes to Der Flug der Lindberghs), 1930, trans. John Willett …",
+      "reference_full": "An Example of Pedagogics (Notes to Der Flug der Lindberghs), 1930, trans. John Willett, Brecht on Theatre, 1964 — original : Erläuterungen zum Ozeanflug, Versuche 1930 ; GBA 24, S. 87–89",
       "citekeys": [
-       "brecht1932-radio"
+       "brecht1930-pedagogics"
       ],
-      "curated": false,
+      "curated": true,
       "documents": [
        "SPE-01",
        "SPE-06"
@@ -2843,6 +2947,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/brecht/94338e63-512.png",
       "portrait_source": "figures/content/germany/brecht.bertolt/image/brecht.bertolt__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/brecht/2b2862e7.mp4",
+       "fr": "https://media.sumvadis.ai/brecht/8b6fe912.mp4",
+       "de": "https://media.sumvadis.ai/brecht/79e23778.mp4"
+      },
       "video": "https://media.sumvadis.ai/brecht/2b2862e7.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -2896,6 +3005,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/edison/91294d3f-512.png",
       "portrait_source": "figures/content/united-states/edison.thomas/image/edison.thomas__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/edison/19d7d43c.mp4",
+       "fr": "https://media.sumvadis.ai/edison/0bf667a1.mp4",
+       "de": "https://media.sumvadis.ai/edison/42996fe8.mp4"
+      },
       "video": "https://media.sumvadis.ai/edison/19d7d43c.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -2949,6 +3063,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/galilee/9c62fa4a-512.png",
       "portrait_source": "figures/content/italy/galilei.galileo/image/galilei.galileo__master__kontext.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
+       "fr": "https://media.sumvadis.ai/galilee/81f0a3a8.mp4",
+       "de": "https://media.sumvadis.ai/galilee/ea827cef.mp4"
+      },
       "video": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -3190,6 +3309,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/postman/f639a90a-512.png",
       "portrait_source": "figures/content/united-states/postman.neil/image/postman.neil__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/postman/10d677d1.mp4",
+       "fr": "https://media.sumvadis.ai/postman/9d2c6323.mp4",
+       "de": "https://media.sumvadis.ai/postman/8b9817c9.mp4"
+      },
       "video": "https://media.sumvadis.ai/postman/10d677d1.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -3256,6 +3380,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/thoreau/391e5c59-512.png",
       "portrait_source": "figures/content/united-states/thoreau.henry-david/image/thoreau.henry-david__pulid__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/thoreau/a9cfb9b5.mp4",
+       "fr": "https://media.sumvadis.ai/thoreau/1bb41336.mp4",
+       "de": "https://media.sumvadis.ai/thoreau/aed3796d.mp4"
+      },
       "video": "https://media.sumvadis.ai/thoreau/a9cfb9b5.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -3322,6 +3451,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/duhamel/6665ba19-512.png",
       "portrait_source": "figures/content/france/duhamel.georges/image/duhamel.georges__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/duhamel/69dfe407.mp4",
+       "fr": "https://media.sumvadis.ai/duhamel/105bf261.mp4",
+       "de": "https://media.sumvadis.ai/duhamel/58cff2b6.mp4"
+      },
       "video": "https://media.sumvadis.ai/duhamel/69dfe407.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -3563,6 +3697,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/berners-lee/79ebaedd-512.png",
       "portrait_source": "figures/content/united-kingdom/berners-lee.tim/image/berners-lee.tim__source__03.jpg",
       "portrait_ai": false,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/berners-lee/dba4fbf7.mp4",
+       "en": "https://media.sumvadis.ai/berners-lee/7c81c4af.mp4",
+       "de": "https://media.sumvadis.ai/berners-lee/bb2188ee.mp4"
+      },
       "video": "https://media.sumvadis.ai/berners-lee/7c81c4af.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -3668,6 +3807,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/wiener/5f53d0c8-512.png",
       "portrait_source": "figures/content/united-states/wiener.norbert/image/wiener.norbert__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/wiener/e3a15951.mp4",
+       "fr": "https://media.sumvadis.ai/wiener/fef4e8bf.mp4",
+       "de": "https://media.sumvadis.ai/wiener/00acf9ce.mp4"
+      },
       "video": "https://media.sumvadis.ai/wiener/e3a15951.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -3734,6 +3878,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/pasteur/c15b6537-512.png",
       "portrait_source": "figures/content/france/pasteur.louis/image/pasteur.louis__frame__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/pasteur/69c486cf.mp4",
+       "fr": "https://media.sumvadis.ai/pasteur/9e8adc14.mp4",
+       "de": "https://media.sumvadis.ai/pasteur/130efe6c.mp4"
+      },
       "video": "https://media.sumvadis.ai/pasteur/69c486cf.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -3962,6 +4111,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/orwell/f06ce0c8-512.png",
       "portrait_source": "figures/content/united-kingdom/orwell.george/image/orwell.george__frame__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/orwell/625e685d.mp4",
+       "fr": "https://media.sumvadis.ai/orwell/53e9003b.mp4",
+       "de": "https://media.sumvadis.ai/orwell/2ad4fde2.mp4"
+      },
       "video": "https://media.sumvadis.ai/orwell/625e685d.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -4028,6 +4182,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/whitman/97b21a2a-512.png",
       "portrait_source": "figures/content/united-states/whitman.walt/image/whitman.walt__frame__chest__v2.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/whitman/29001c30.mp4",
+       "fr": "https://media.sumvadis.ai/whitman/0e0bc8b9.mp4",
+       "de": "https://media.sumvadis.ai/whitman/d68a83d6.mp4"
+      },
       "video": "https://media.sumvadis.ai/whitman/29001c30.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -4081,6 +4240,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/lecun/fa0eb55c-512.png",
       "portrait_source": "figures/content/france/lecun.yann/image/lecun.yann__source__01.jpg",
       "portrait_ai": false,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/lecun/18a78d85.mp4",
+       "en": "https://media.sumvadis.ai/lecun/e10960f8.mp4",
+       "de": "https://media.sumvadis.ai/lecun/ab3f0c68.mp4"
+      },
       "video": "https://media.sumvadis.ai/lecun/e10960f8.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -4322,6 +4486,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/marx/2215731b-512.png",
       "portrait_source": "figures/content/germany/marx.karl/image/marx.karl__frame__elbows.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/marx/4981d27c.mp4",
+       "fr": "https://media.sumvadis.ai/marx/c3d827ee.mp4",
+       "de": "https://media.sumvadis.ai/marx/0f8aecf3.mp4"
+      },
       "video": "https://media.sumvadis.ai/marx/4981d27c.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -4375,6 +4544,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/gebru/13a2acd9-512.png",
       "portrait_source": "figures/content/ethiopia/gebru.timnit/image/gebru.timnit__source__01.jpg",
       "portrait_ai": false,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/gebru/cfefed2e.mp4",
+       "en": "https://media.sumvadis.ai/gebru/69fd55ba.mp4",
+       "de": "https://media.sumvadis.ai/gebru/2b953ea9.mp4"
+      },
       "video": "https://media.sumvadis.ai/gebru/69fd55ba.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -4441,6 +4615,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/einstein/29d220ff-512.png",
       "portrait_source": "figures/content/germany/einstein.albert/image/einstein.albert__source__01.jpg",
       "portrait_ai": false,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/einstein/a724262c.mp4",
+       "en": "https://media.sumvadis.ai/einstein/64c4a2be.mp4",
+       "de": "https://media.sumvadis.ai/einstein/d4220661.mp4"
+      },
       "video": "https://media.sumvadis.ai/einstein/64c4a2be.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -4682,6 +4861,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/tang/2635260b-512.png",
       "portrait_source": "figures/content/taiwan/tang.audrey/image/tang.audrey__source__01.jpg",
       "portrait_ai": false,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/tang/6575aa2b.mp4",
+       "en": "https://media.sumvadis.ai/tang/8a25dd87.mp4",
+       "de": "https://media.sumvadis.ai/tang/4ee675ad.mp4"
+      },
       "video": "https://media.sumvadis.ai/tang/8a25dd87.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -4787,6 +4971,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/marti/ff4d46e0-512.png",
       "portrait_source": "figures/content/cuba/marti.jose/image/marti.jose__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/marti/980d7a63.mp4",
+       "fr": "https://media.sumvadis.ai/marti/e2b807d5.mp4",
+       "de": "https://media.sumvadis.ai/marti/fcff6ee1.mp4"
+      },
       "video": "https://media.sumvadis.ai/marti/980d7a63.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -4866,6 +5055,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/maathai/19c6a260-512.png",
       "portrait_source": "figures/content/kenya/maathai.wangari/image/maathai.wangari__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/maathai/1af36454.mp4",
+       "fr": "https://media.sumvadis.ai/maathai/b2630049.mp4",
+       "de": "https://media.sumvadis.ai/maathai/d094cbf7.mp4"
+      },
       "video": "https://media.sumvadis.ai/maathai/1af36454.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -5107,6 +5301,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/oppenheimer/ed9b6256-512.png",
       "portrait_source": "figures/content/united-states/oppenheimer.robert/image/oppenheimer.robert__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/oppenheimer/e58c5f03.mp4",
+       "fr": "https://media.sumvadis.ai/oppenheimer/d8050c5e.mp4",
+       "de": "https://media.sumvadis.ai/oppenheimer/318297e6.mp4"
+      },
       "video": "https://media.sumvadis.ai/oppenheimer/e58c5f03.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -5186,6 +5385,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/ibn-khaldun/c3deb8aa-512.png",
       "portrait_source": "figures/content/tunisia/ibn-khaldun/image/ibn-khaldun__master__kontext.png",
       "portrait_ai": true,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/ibn-khaldun/17735e04.mp4",
+       "en": "https://media.sumvadis.ai/ibn-khaldun/2861836e.mp4",
+       "de": "https://media.sumvadis.ai/ibn-khaldun/3254fe62.mp4"
+      },
       "video": "https://media.sumvadis.ai/ibn-khaldun/2861836e.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -5265,6 +5469,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/erasme/c44a4b14-512.png",
       "portrait_source": "figures/content/netherlands/erasmus/image/erasmus__pulid__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/erasme/5ecaa161.mp4",
+       "fr": "https://media.sumvadis.ai/erasme/5c47fe79.mp4",
+       "de": "https://media.sumvadis.ai/erasme/9ecf85f7.mp4"
+      },
       "video": "https://media.sumvadis.ai/erasme/5ecaa161.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -5506,6 +5715,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/benjamin/5efd8841-512.png",
       "portrait_source": "figures/content/germany/benjamin.walter/image/benjamin.walter__frame__elbows.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
+       "fr": "https://media.sumvadis.ai/benjamin/941e48db.mp4",
+       "de": "https://media.sumvadis.ai/benjamin/9c15bf94.mp4"
+      },
       "video": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -5559,6 +5773,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/fei-fei-li/73ef826f-512.png",
       "portrait_source": "figures/content/china/li.fei-fei/image/li.fei-fei__source__01.jpg",
       "portrait_ai": false,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/fei-fei-li/49183a2b.mp4",
+       "en": "https://media.sumvadis.ai/fei-fei-li/a41a59cc.mp4",
+       "de": "https://media.sumvadis.ai/fei-fei-li/4177c49b.mp4"
+      },
       "video": "https://media.sumvadis.ai/fei-fei-li/a41a59cc.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -5612,6 +5831,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/shen-kuo/ebcb4bdf-512.png",
       "portrait_source": "figures/content/china/shen.kuo/image/shen.kuo__frame__elbows.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
+       "fr": "https://media.sumvadis.ai/shen-kuo/d67d8ee7.mp4",
+       "de": "https://media.sumvadis.ai/shen-kuo/e6f7b616.mp4"
+      },
       "video": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -5840,6 +6064,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/hinton/656adba8-512.png",
       "portrait_source": "figures/content/united-kingdom/hinton.geoffrey/image/hinton.geoffrey__source__02.jpg",
       "portrait_ai": false,
+      "videos": {
+       "fr": "https://media.sumvadis.ai/hinton/f440d083.mp4",
+       "en": "https://media.sumvadis.ai/hinton/e946d55f.mp4",
+       "de": "https://media.sumvadis.ai/hinton/cc0fe228.mp4"
+      },
       "video": "https://media.sumvadis.ai/hinton/e946d55f.mp4",
       "video_kind": "presented",
       "video_ai": true,
@@ -5893,6 +6122,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/weizenbaum/bae75722-512.png",
       "portrait_source": "figures/content/germany/weizenbaum.joseph/image/weizenbaum.joseph__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/weizenbaum/9bf1b78c.mp4",
+       "fr": "https://media.sumvadis.ai/weizenbaum/0bdc228c.mp4",
+       "de": "https://media.sumvadis.ai/weizenbaum/04f19370.mp4"
+      },
       "video": "https://media.sumvadis.ai/weizenbaum/9bf1b78c.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -5959,6 +6193,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/tolstoi/08181b1e-512.png",
       "portrait_source": "figures/content/russia/tolstoi.leon/image/tolstoi.leon__pulid__chest__v2.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
+       "fr": "https://media.sumvadis.ai/tolstoi/6f856db3.mp4",
+       "de": "https://media.sumvadis.ai/tolstoi/99cd7d57.mp4"
+      },
       "video": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -6200,6 +6439,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/henry-adams/6da182bb-512.png",
       "portrait_source": "figures/content/united-states/adams.henry/image/adams.henry__frame__elbows.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/henry-adams/58762b1e.mp4",
+       "fr": "https://media.sumvadis.ai/henry-adams/3f5161f0.mp4",
+       "de": "https://media.sumvadis.ai/henry-adams/37d87df5.mp4"
+      },
       "video": "https://media.sumvadis.ai/henry-adams/58762b1e.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -6266,6 +6510,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/trithemius/50d04d24-512.png",
       "portrait_source": "figures/content/germany/trithemius/image/trithemius__crop11__pulid__chest.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/trithemius/769eaa9d.mp4",
+       "fr": "https://media.sumvadis.ai/trithemius/750e1268.mp4",
+       "de": "https://media.sumvadis.ai/trithemius/ec2beb6a.mp4"
+      },
       "video": "https://media.sumvadis.ai/trithemius/769eaa9d.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -6332,6 +6581,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/chargaff/4fd42a07-512.png",
       "portrait_source": "figures/content/austria/chargaff.erwin/image/chargaff.erwin__frame__chest__v2.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
+       "fr": "https://media.sumvadis.ai/chargaff/3892cc9a.mp4",
+       "de": "https://media.sumvadis.ai/chargaff/c70a4cea.mp4"
+      },
       "video": "https://media.sumvadis.ai/chargaff/f2ba5e99.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -6586,6 +6840,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/isocrate/09695f5b-512.png",
       "portrait_source": "figures/content/greece/isocrates/image/isocrates__master__t2i.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/isocrate/c3db233e.mp4",
+       "fr": "https://media.sumvadis.ai/isocrate/ff34d150.mp4",
+       "de": "https://media.sumvadis.ai/isocrate/df90c7a9.mp4"
+      },
       "video": "https://media.sumvadis.ai/isocrate/c3db233e.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -6639,6 +6898,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/lovelace/330a5df4-512.png",
       "portrait_source": "figures/content/united-kingdom/lovelace.ada/image/lovelace.ada__frame__chest.jpeg",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/lovelace/40aa6b2b.mp4",
+       "fr": "https://media.sumvadis.ai/lovelace/f557e028.mp4",
+       "de": "https://media.sumvadis.ai/lovelace/fc6035fc.mp4"
+      },
       "video": "https://media.sumvadis.ai/lovelace/40aa6b2b.mp4",
       "video_kind": "talk",
       "video_ai": true,
@@ -6705,6 +6969,11 @@
       "portrait_cdn": "https://media.sumvadis.ai/galilee/9c62fa4a-512.png",
       "portrait_source": "figures/content/italy/galilei.galileo/image/galilei.galileo__master__kontext.png",
       "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
+       "fr": "https://media.sumvadis.ai/galilee/81f0a3a8.mp4",
+       "de": "https://media.sumvadis.ai/galilee/ea827cef.mp4"
+      },
       "video": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
       "video_kind": "talk",
       "video_ai": true,

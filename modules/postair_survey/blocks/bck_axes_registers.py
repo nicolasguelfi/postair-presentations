@@ -16,7 +16,7 @@ postures. On Becoming, insist that 'accelerator' does not mean 'good'.
 
 from custom.styles import DS
 from custom.styles import Styles as s
-from postair_data import REGISTERS, register_axes
+from postair_data import REGISTERS, register_axes, register_name
 from postair_i18n import ui
 from postair_lang import T
 from shared_widgets import st_info_tooltip
@@ -33,12 +33,14 @@ class BlockStyles:
 
 bs = BlockStyles
 
-#: Le nom et le sous-titre d'un registre viennent de ``postair_data``
-#: (REGISTERS) — hors feuille. Les têtes « Mascots » viennent du lexique.
+#: Le nom d'un registre vient du glossaire du hub (``register_name``, par
+#: clé), son sous-titre de la feuille ``postair_data.REGISTERS`` ; les
+#: tooltips ci-dessous sont indexés par CODE. Les têtes « Mascots » viennent
+#: du lexique.
 _MARKER = {"en": "Axes — {name}", "fr": "Axes — {name}"}
 _TIP_TITLE = {"en": "Register: {name}", "fr": "Registre : {name}"}
 _TOOLTIPS = {
-    "Knowing": [
+    "know": [
         ({"en": "Trust vs Self-reliance", "fr": "Confiance vs Autonomie de jugement"},
          {"en": ("Do I rely on institutions, experts and tools — or only on "
                  "my own verified judgement?"), "fr": "Est-ce que je m'appuie sur les institutions, les experts et les outils — ou seulement sur mon propre jugement vérifié ?"}),
@@ -52,7 +54,7 @@ _TOOLTIPS = {
                  "posture, so opinions are depersonalised: a figure holds a posture, "
                  "not a person."), "fr": "Fido & Solo · Solyo & Nimbo · Logos & Pathos — chaque mascotte porte une posture, ce qui dépersonnalise les opinions : c'est un personnage qui tient une posture, pas une personne."}),
     ],
-    "Acting": [
+    "act": [
         ({"en": "Speed vs Prudence", "fr": "Vitesse vs Prudence"},
          {"en": ("Deploy AI as fast as possible — or step by step, only after "
                  "each risk is understood?"), "fr": "Déployer l'IA aussi vite que possible — ou pas à pas, seulement une fois chaque risque compris ?"}),
@@ -63,7 +65,7 @@ _TOOLTIPS = {
                  "strictly?"), "fr": "Laisser chacun utiliser l'IA comme il l'entend — ou en réglementer strictement les usages ?"}),
         ("mascots", {"en": "Rapo & Lento · Kuri & Piko · Libero & Guardo.", "fr": "Rapo & Lento · Kuri & Piko · Libero & Guardo."}),
     ],
-    "Becoming": [
+    "become": [
         ({"en": "Centralisation vs Decentralisation", "fr": "Centralisation vs Décentralisation"},
          {"en": ("Should AI power be concentrated in a few large "
                  "actors — or distributed among many small ones?"), "fr": "Le pouvoir de l'IA doit-il être concentré chez quelques grands acteurs — ou réparti entre de nombreux petits ?"}),
@@ -80,15 +82,16 @@ _TOOLTIPS = {
 }
 
 
-def _entries(name: str, lang: str):
+def _entries(code: str, lang: str):
     """Les entrées ``(tête, détail)`` du tooltip d'un registre : une tête
     écrite ``"mascots"`` est une clé du lexique, les autres sont des feuilles.
     (Pas d'annotation générique : règle R14, ``list`` est masqué ici.)"""
     return [(ui(head, lang) if isinstance(head, str) else T(head, lang),
-             T(detail, lang)) for head, detail in _TOOLTIPS[name]]
+             T(detail, lang)) for head, detail in _TOOLTIPS[code]]
 
 
-def _register_slide(name: str, subtitle: str, lang: str) -> None:
+def _register_slide(code: str, subtitle: str, lang: str) -> None:
+    name = register_name(code, lang)
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -97,11 +100,11 @@ def _register_slide(name: str, subtitle: str, lang: str) -> None:
                 st_write(bs.subtitle, subtitle, tag=t.div)
             with g.cell():
                 st_info_tooltip(title=T(_TIP_TITLE, lang).format(name=name),
-                                entries=_entries(name, lang))
+                                entries=_entries(code, lang))
         st_space("v", "1.5vh")
         # ONE flat responsive grid — 3 columns on a projector, stacking on
         # narrow windows; each cell is a self-contained axis stack.
-        axes_here = register_axes(name)
+        axes_here = register_axes(code, lang=lang)
         # align-start (NG 2026-08-13) : le centrage vertical décalait les
         # colonnes en escalier quand leurs étiquettes n'avaient pas le même
         # nombre de lignes.
@@ -116,11 +119,12 @@ def _register_slide(name: str, subtitle: str, lang: str) -> None:
 
 def build(lang: str = "en", **_):
     first = True
-    for name, subtitle, _nums in REGISTERS:
+    for code, subtitle, _nums in REGISTERS:
+        name = register_name(code, lang)
         if not first:
             st_slide_break(marker_label=T(_MARKER, lang).format(name=name),
                            config=SlideBreakConfig(mode=SlideBreakMode.MARKER_ONLY))
         else:
             st_marker(T(_MARKER, lang).format(name=name))
-        _register_slide(name, subtitle, lang)
+        _register_slide(code, T(subtitle, lang), lang)
         first = False

@@ -40,8 +40,8 @@ bs = BlockStyles
 def _all_poles() -> list[dict]:
     """The eighteen pole mascots, in register order, accelerator first."""
     return [axis[kind]
-            for name, _sub, _n in REGISTERS
-            for axis in register_axes(name)
+            for code, _sub, _n in REGISTERS
+            for axis in register_axes(code)
             for kind in ("accel", "decel")]
 
 

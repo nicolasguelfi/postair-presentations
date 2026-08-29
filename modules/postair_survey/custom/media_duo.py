@@ -105,8 +105,9 @@ def _mascot_pole(name: str) -> dict:
 
 
 @lru_cache(maxsize=8)
-def _figure_video(name: str) -> str:
-    """Le chemin LOCAL de la vidéo de présentation d'une figure.
+def _figure_video(name: str, lang: str = "en") -> str:
+    """Le chemin LOCAL de la vidéo de présentation d'une figure, dans la
+    langue projetée (``videos[lang]`` du gel, repli sur le master EN).
 
     L'URL CDN du gel debates désigne ; les octets sont matérialisés par
     ``sync_media.py`` sous ``figure-videos/`` (nom = deux derniers segments
@@ -116,7 +117,7 @@ def _figure_video(name: str) -> str:
     for pole in data["poles"]:
         for f in pole.get("figures", []):
             if f["name"] == name:
-                url = f["media"][_ROLE]
+                url = (f["media"].get("videos") or {}).get(lang) or f["media"][_ROLE]
                 local = _MEDIA / "figure-videos" / "__".join(url.split("/")[-2:])
                 if not local.exists():
                     raise FileNotFoundError(
@@ -152,7 +153,7 @@ def mascot_duo(lang: str = "en") -> tuple[dict, dict]:
 def figure_duo(lang: str = "en") -> tuple[dict, dict]:
     """Un homme, une femme — les noms les plus sûrs devant l'assemblée."""
     return tuple(
-        {"name": name, "tagline": T(_FIGURE_TAGLINE, lang), "src": _figure_video(name)}
+        {"name": name, "tagline": T(_FIGURE_TAGLINE, lang), "src": _figure_video(name, lang)}
         for name in ("Platon", "Ada Lovelace"))
 
 

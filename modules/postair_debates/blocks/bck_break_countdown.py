@@ -46,8 +46,8 @@ def _break_minutes() -> int:
 def _company() -> list[dict]:
     """Every pole mascot — the full company, waiting for the second half."""
     return [axis[kind]
-            for name, _sub, _n in REGISTERS
-            for axis in register_axes(name)
+            for code, _sub, _n in REGISTERS
+            for axis in register_axes(code)
             for kind in ("accel", "decel")]
 
 

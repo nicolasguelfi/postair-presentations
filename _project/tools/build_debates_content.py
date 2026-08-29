@@ -598,9 +598,18 @@ class Hub:
                 # Le drapeau DD-35 voyage avec le média : c'est lui qui pose la
                 # pastille « ✦ AI » sur la slide, jamais une liste locale.
                 out["portrait_ai"] = bool(a.get("ai_generated"))
-            elif a["role"] == "video" and a["source"].endswith(f"__{lang}.mp4"):
+            elif a["role"] == "video":
                 name = a["source"].rsplit("/", 1)[-1]
                 kind = "presented" if name.startswith("ng__presente__") else "talk"
+                # Toutes les langues publiées (``…__<lang>.mp4``), comme le gel
+                # des vagues : un deck choisit ``videos[lang]`` (2026-08-29).
+                for code in ("en", "fr", "de"):
+                    if a["source"].endswith(f"__{code}.mp4") and a.get("url"):
+                        videos = out.setdefault("videos", {})
+                        if code not in videos or kind == "talk":
+                            videos[code] = a["url"]
+                if not a["source"].endswith(f"__{lang}.mp4"):
+                    continue
                 if out.get("video") and out.get("video_kind") == "talk":
                     continue                      # a figure's own talk wins
                 # Les vidéos restent au CDN : 51 masters de 12 Mo, ouverts deux
