@@ -23,16 +23,20 @@ winner. Then turn the page for the take-aways.
 
 from custom.content import manifest, poles
 from custom.styles import Styles as s
+from postair_data import mascot
 from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
+
+from postair_pack.components.ai_mark import dd35_overlay
 
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     point = s.project.body.bullet + s.center_txt + s.bold
     detail = s.project.body.caption + s.center_txt
+    mascot_name = s.project.body.mascot_name
 
 
 bs = BlockStyles
@@ -41,13 +45,20 @@ bs = BlockStyles
 _MARKER = {"en": "Thank you", "fr": "Merci"}
 _TITLE = {"en": ("Thank you for ", (s.project.titles.keyword, "arguing")), "fr": ("Merci d'avoir ", (s.project.titles.keyword, "débattu"))}
 _LABEL = {"en": "Thank you", "fr": "Merci"}
-#: Trois points courts (≤ 8 mots, un keyword) — un point, une carte bleue.
+#: Trois points courts (≤ 8 mots, un keyword) — un point, une mascotte, une
+#: carte bleue. Les mascottes sont nommées, jamais des fichiers (NG 2026-08-30) :
+#: Pathos, la pieuvre aux ventouses en cœur, pour le merci ; Voxo, la
+#: modératrice « qui capte toutes les voix », pour l'écoute ; Sardo, le banc
+#: qui nage « en égaux, sans chef », pour la société.
 _POINTS = [
-    ({"en": ("Thank you for ", (s.project.titles.keyword, "taking part")), "fr": ("Merci d'avoir ", (s.project.titles.keyword, "participé"))},
+    ("Pathos",
+     {"en": ("Thank you for ", (s.project.titles.keyword, "taking part")), "fr": ("Merci d'avoir ", (s.project.titles.keyword, "participé"))},
      {"en": "every hand raised, every microphone taken", "fr": "chaque main levée, chaque micro pris"}),
-    ({"en": ("Every point of view was ", (s.project.titles.keyword, "heard")), "fr": ("Chaque point de vue a été ", (s.project.titles.keyword, "entendu"))},
+    ("Voxo",
+     {"en": ("Every point of view was ", (s.project.titles.keyword, "heard")), "fr": ("Chaque point de vue a été ", (s.project.titles.keyword, "entendu"))},
      {"en": "for and against, on each pole", "fr": "pour et contre, sur chaque pôle"}),
-    ({"en": ("All of them live in ", (s.project.titles.keyword, "society")), "fr": ("Tous existent dans la ", (s.project.titles.keyword, "société"))},
+    ("Sardo",
+     {"en": ("All of them live in ", (s.project.titles.keyword, "society")), "fr": ("Tous existent dans la ", (s.project.titles.keyword, "société"))},
      {"en": "side by side — this room is a fair sample", "fr": "côte à côte — cette salle en est un échantillon"}),
 ]
 _TIP_TITLE = {"en": "Where this material comes from", "fr": "D'où vient ce matériau"}
@@ -92,13 +103,21 @@ def build(lang: str = "en", **_):
                         (T(_TIP_TYPED[0], lang), T(_TIP_TYPED[1], lang)),
                     ],
                 )
-        st_space("v", s.project.spacing.title_gap)
-        # ONE flat grid — one card per point, stretched to the remaining height.
+        st_space("v", "1vh")
+        # ONE flat grid — per cell, the mascot above its card (never a second
+        # grid for the mascot row), stretched to the remaining height.
         with st_grid(cols=s.project.grids.balanced(len(_POINTS)), gap="1.5vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            for point, detail in _POINTS:
-                with g.cell(), st_block(s.project.cards.blue):
-                    with st_zoom(150):
-                        st_write(bs.point, *TF(point, lang), tag=t.div)
-                        st_write(bs.detail, T(detail, lang), tag=t.div)
+            for name, point, detail in _POINTS:
+                m = mascot(name)
+                with g.cell():
+                    st_image(s.project.cards.media_center, width="min(14vw, 30vh)",
+                             uri=m["image"],
+                             alt=f"{m['name']}, mascot of the {m['pole'] or 'moderator'} posture",
+                             overlay=dd35_overlay())
+                    st_write(bs.mascot_name, m["name"], tag=t.div)
+                    with st_block(s.project.cards.blue):
+                        with st_zoom(150):
+                            st_write(bs.point, *TF(point, lang), tag=t.div)
+                            st_write(bs.detail, T(detail, lang), tag=t.div)
