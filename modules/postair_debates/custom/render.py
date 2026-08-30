@@ -23,6 +23,7 @@ from shared_widgets import st_info_tooltip, st_poster_video
 from streamtex import (
     SlideBreakConfig,
     SlideBreakMode,
+    page_url,
     st_block,
     st_grid,
     st_html,
@@ -237,10 +238,10 @@ def _wave_image_ai(order: int) -> bool:
 
 def _waves_deck_url(lang: str) -> str:
     """Le deck des vagues, dans la langue projetée — résolu comme la chaîne du
-    jour (env local > collection.toml). Ouvre le deck en PREMIÈRE page :
-    streamtex 0.7.26 n'adresse pas une page par l'URL (évolution demandée à la
-    librairie : streamtex #42, 2026-08-30) ; le jour où elle existe, le
-    paramètre ``?marker=<vague>`` s'ajoute ici."""
+    jour (env local > collection.toml). URL de BASE : chaque carte y ajoute
+    ``?marker=<id de vague>`` par ``page_url`` (streamtex ≥ 0.7.27, #42) et
+    ouvre le deck DIRECTEMENT sur la vague — app et export HTML, dans la
+    langue courante (``?lang=`` conservé)."""
     for m in chain():
         if m["key"] == "waves":
             return with_lang(m["url"], lang)
@@ -292,7 +293,9 @@ def _waves(pole: dict, lang: str | None) -> None:
         for w in waves:
             with g.cell(), st_block(s.project.containers.media_stage(_WAVE_CARD_RATIO,
                                                                      _WAVE_STAGE_VH)):
-                _wave_card(w, lang, url, width="100%")
+                # La clé du marqueur côté waves est l'id de la vague (stable,
+                # indépendant du libellé traduit) : le lien marche en EN et FR.
+                _wave_card(w, lang, page_url(url, marker=w["id"]), width="100%")
                 strength = T(_WAVES_UI["strength"].get(w.get("strength"), {"en": "", "fr": ""}), lang)
                 # Une seule ligne de légende, trois couleurs sémantiques du DS
                 # (NG 2026-08-30) : la révolution en texte, la période en bleu

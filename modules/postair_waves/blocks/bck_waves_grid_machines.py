@@ -18,4 +18,4 @@ _TITLE = {"en": ("From the telescope to the ", (s.project.titles.keyword, "vacci
 
 
 def build(lang: str = "en", **_):
-    waves_grid_slide(_MARKER, _TITLE, first=5, last=8, lang=lang)
+    waves_grid_slide(_MARKER, _TITLE, first=5, last=8, lang=lang, key="grid-machines")

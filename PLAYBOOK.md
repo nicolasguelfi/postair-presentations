@@ -206,6 +206,11 @@ Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncé
   `fr` retombe sur l'anglais en séance et c'est `check_i18n --parity` qui la
   signale avant la répétition (règle R-i18n).
 
+- **Marqueur adressable = clé stable.** Un `st_marker` qu'un lien externe doit
+  pouvoir ouvrir porte `key=<slug ASCII>` (id de donnée ou nom explicite) : le
+  libellé est une feuille traduite, son slug change avec la langue. Le lien se
+  construit par `page_url(base, marker=key)`, jamais par un numéro de page.
+
 ## Annexe — index des décisions datées (pointeurs, jamais de copie)
 
 | Décision | Date | Où vit le texte canonique |
@@ -238,3 +243,4 @@ Leçon générale : les garde-fous de `sync_media` (magic bytes, taille annoncé
 | R-case — tête capitalisée, détail en fragment minuscule, données jamais recasées | 2026-08-30 | guideline (R-case) |
 | Slide « vagues par pôle » dans debates (A1 artefact hub `waves-by-pole.json`, B1 lien vers le deck des vagues en 1re page + B2 saut de page demandé — streamtex #42, C1 cartes-titres copiées) | 2026-08-30 | `render.py::_waves`, `build_debates_content.py::_waves_for`, `_project/plans/demande-hub-waves-by-pole.md` |
 | Lot 2 i18n : debates bilingue (142 feuilles, 3 lots, V1→V2→V3→assemblage), sorti d'I18N_PENDING ; « And today for AI? » en 2+1 ; slide « When society chose » (table hub waves-by-pole) ; titres d'arguments réécrits au hub (54/54, planches argtitles) | 2026-08-30 | tags `en-final/postair_debates`, `i18n/postair_debates-done` ; `_project/i18n/postair_debates/` (local) ; `render.py` |
+| Deep links inter-decks (streamtex ≥ 0.7.27, #42/#43) : `st_marker(label, key=<slug stable>)` sur chaque slide adressable (waves : `key=w["id"]`, galeries `grid-*`), lien construit par `page_url(with_lang(url, lang), marker=key)` — jamais un numéro de page dans un bloc, jamais un libellé traduit comme clé ; même URL pour l'app et l'export `/html/<lang>/…?marker=` ; cache paginé reconstruit à l'upgrade (warmup par langue déjà dans Dockerfile/entrypoint) | 2026-08-30 | `waves/custom/render.py`, `debates/custom/render.py::_waves_deck_url`, `pyproject.toml` |

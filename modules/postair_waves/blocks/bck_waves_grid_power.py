@@ -18,4 +18,4 @@ _TITLE = {"en": ("From the dynamo to the ", (s.project.titles.keyword, "atom")),
 
 
 def build(lang: str = "en", **_):
-    waves_grid_slide(_MARKER, _TITLE, first=9, last=12, lang=lang)
+    waves_grid_slide(_MARKER, _TITLE, first=9, last=12, lang=lang, key="grid-power")

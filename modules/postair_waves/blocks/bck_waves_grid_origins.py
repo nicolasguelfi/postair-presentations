@@ -18,4 +18,4 @@ _TITLE = {"en": ("From writing to the ", (s.project.titles.keyword, "press")), "
 
 
 def build(lang: str = "en", **_):
-    waves_grid_slide(_MARKER, _TITLE, first=1, last=4, lang=lang)
+    waves_grid_slide(_MARKER, _TITLE, first=1, last=4, lang=lang, key="grid-origins")

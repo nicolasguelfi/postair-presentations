@@ -17,4 +17,4 @@ _TITLE = {"en": ("The seventeenth ", (s.project.titles.keyword, "wave")), "fr": 
 
 
 def build(lang: str = "en", **_):
-    wave_hero_grid_slide(_MARKER, _TITLE, "ai", lang=lang)
+    wave_hero_grid_slide(_MARKER, _TITLE, "ai", lang=lang, key="grid-ai")

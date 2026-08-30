@@ -127,7 +127,7 @@ def _wave_button(w: dict, lang: str, width: str = "min(76%, 57vh)") -> None:
 
 
 def waves_grid_slide(marker: dict, title: dict, first: int, last: int,
-                     lang: str | None = None) -> None:
+                     lang: str | None = None, key: str | None = None) -> None:
     """Une planche de vagues en boutons-image (2×2), sommaire ILLUSTRÉ du deck.
 
     Ligne NG 2026-08-26 (planche design) : la vignette de l'OBJET est le
@@ -140,7 +140,7 @@ def waves_grid_slide(marker: dict, title: dict, first: int, last: int,
     lang = lang or content.default_language()
     span = content.wave_span(first, last)
     marker = T(marker, lang)
-    st_marker(marker)
+    st_marker(marker, key=key)   # clé stable (deep link), jamais le libellé traduit
     # page_fill_full : pas de marge latérale — les cellules prennent toute la
     # fenêtre pour que la ligne période+figures tienne sur UNE ligne ;
     # interlignes au minimum (retour NG tour 4).
@@ -173,7 +173,7 @@ def waves_grid_slide(marker: dict, title: dict, first: int, last: int,
 
 
 def wave_hero_grid_slide(marker: dict, title: dict, wave_id: str,
-                         lang: str | None = None) -> None:
+                         lang: str | None = None, key: str | None = None) -> None:
     """La dernière planche du sommaire : UNE vague, seule et en grand (l'IA).
 
     Amendement NG (ligne ``design``, 2026-08-26) : « l'IA seule sur la
@@ -183,7 +183,7 @@ def wave_hero_grid_slide(marker: dict, title: dict, wave_id: str,
     lang = lang or content.default_language()
     w = content.wave(wave_id)
     marker = T(marker, lang)
-    st_marker(marker)
+    st_marker(marker, key=key)   # clé stable (deep link), jamais le libellé traduit
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -471,7 +471,10 @@ def wave_slides(wave_id: str, lang: str | None = None,
     """
     lang = lang or content.default_language()
     w = content.wave(wave_id)
-    st_marker(content.text(w["name"], lang))
+    # `key=` : identifiant STABLE du marqueur (streamtex 0.7.27, #42) — le
+    # libellé est une feuille traduite, la clé est l'id de la vague : un lien
+    # `?marker=electricity` ouvre la vague dans les deux langues.
+    st_marker(content.text(w["name"], lang), key=w["id"])
     _stage(w, "objet", lang, first=True)
     for etage in ("avant", "crise", "recompose"):
         st_slide_break(**_HIDDEN)
