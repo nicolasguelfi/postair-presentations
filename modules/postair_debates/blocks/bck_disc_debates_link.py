@@ -12,8 +12,9 @@ intro slides do not already carry.
 The right column is the floor-taking procedure for a participant (NG
 2026-08-30): three bullets — raise your hand, take the microphone, say why
 you favour the pole on screen — each under eight words with one keyword
-(R3). The promise left the screen: the room does not need it, the speaker
-does.
+(R3), rendered with the library's own ``st_list`` — never stacked writes
+pretending to be a list. The promise left the screen: the room does not
+need it, the speaker does.
 
 SPEAKER NOTES:
 Ten seconds — this slide is a hinge, not a stop. The results page told you
@@ -88,5 +89,10 @@ def build(lang: str = "en", **_):
                          overlay=dd35_overlay())
                 st_write(bs.mascot_name, voxo["name"], tag=t.div)
             with g.cell(), st_block(s.project.containers.column_stack):
-                for step in _STEPS:
-                    st_write(bs.bullet, *TF(step, lang), tag=t.div)
+                # La liste native de streamtex (`st_list`), pas des écrits
+                # empilés (NG 2026-08-30) — les puces sont celles de la
+                # librairie, le style de l'item est celui du DS.
+                with st_zoom(150), st_list(list_type="ul", li_style=bs.bullet) as l:
+                    for step in _STEPS:
+                        with l.item():
+                            st_write(bs.bullet, *TF(step, lang))
