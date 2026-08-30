@@ -18,7 +18,7 @@ from __future__ import annotations
 import streamlit as st
 
 from custom.styles import Styles as s
-from postair_pack.components.ai_mark import DD35_CSS, dd35_overlay
+from postair_pack.components.ai_mark import DD35_CSS
 from postair_pack.components.hero_split import hero_split
 from postair_i18n import ui
 from postair_lang import T, TF
