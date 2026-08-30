@@ -13,6 +13,7 @@ sub-slide still breaks so PageDown advances one screen at a time.
 from __future__ import annotations
 
 import json
+from functools import lru_cache
 from pathlib import Path
 
 from postair_chain import chain
@@ -183,6 +184,19 @@ def _header(title_parts, tooltip_title, entries, label=None, toc_lvl="+1") -> No
             st_info_tooltip(title=tooltip_title, entries=entries)
 
 
+@lru_cache(maxsize=64)
+def _mascot_ratio(uri: str) -> float:
+    """Largeur/hauteur du FICHIER de la mascotte (R4d : une propriété du
+    média). Lu une fois par Pillow sur la copie matérialisée ; repli neutre
+    (carré) si l'image ou Pillow manquent — jamais d'erreur en séance."""
+    try:
+        from PIL import Image
+        with Image.open(Path(__file__).parent.parent / "static" / "media" / uri) as im:
+            return im.width / im.height
+    except Exception:
+        return 1.0
+
+
 def _identity(pole: dict, lang: str | None) -> None:
     pole_name = text(pole["pole"], lang)
     axis_name = text(pole["axis_name"], lang)
@@ -207,7 +221,21 @@ def _identity(pole: dict, lang: str | None) -> None:
              T(_UI["axis_effect"], lang).format(axis=axis_name, effect=_effect(pole, lang)),
              tag=t.div)
     st_space("v", s.project.spacing.title_gap)
-    pole_identity(both, [text(x["text"], lang) for x in pole["statements"]], DS)
+    # +20 % demandés (NG 2026-08-30), tempérés au rendu : à zoom fixe, la
+    # troisième carte passait sous le pli sur les pôles aux énoncés longs.
+    # Le zoom suit le nombre de LIGNES estimé du texte RENDU (la langue
+    # courante — les longueurs EN et FR diffèrent) : ~34 caractères par ligne
+    # dans la colonne à ce corps ; ≤ 6 lignes → 116, ≤ 8 → 106, au-delà → 98
+    # (mesuré à 1920×1080 sur Contrôle, Transhumanisme, Confiance).
+    # Mascottes : largeur +20 % (13vw→15.6vw), et la borne de hauteur suit le
+    # RATIO du fichier (R4d) : min(15.6vw, 27vh × ratio) — une mascotte
+    # portrait (Serro : 0,51) obtient une largeur plus étroite pour la même
+    # hauteur, au lieu de pousser la colonne sous le pli (vu sur Contrôle).
+    statements = [text(x["text"], lang) for x in pole["statements"]]
+    lines = sum(-(-len(x) // 34) for x in statements)
+    widths = [f"min(15.6vw, {27 * _mascot_ratio(m['image']):.1f}vh)" for m in both]
+    pole_identity(both, statements, DS, mascot_width=widths,
+                  statement_zoom=116 if lines <= 6 else (106 if lines <= 8 else 98))
 
 
 # ── La slide « vagues » d'un pôle (NG 2026-08-30) ────────────────────────────
