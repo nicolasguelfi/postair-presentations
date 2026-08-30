@@ -19,6 +19,7 @@ from __future__ import annotations
 from custom.styles import Styles as s
 from postair_data import mascot
 from postair_event import AGENDA
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -29,10 +30,32 @@ from postair_pack.components.ai_mark import dd35_overlay
 #: capitale initiale, règle R-case (NG 2026-08-30). Les titres de session, eux,
 #: viennent de l'agenda et ne sont jamais recasés.
 _PROMISE = {
-    "Introduction to AI & Generative AI": "Understand",
-    "Using models & agents to study": "See it in practice",
-    "The UL AI guidelines": "The rules of the game",
+    "Introduction to AI & Generative AI": {"en": "Understand"},
+    "Using models & agents to study": {"en": "See it in practice"},
+    "The UL AI guidelines": {"en": "The rules of the game"},
 }
+
+# ── Le texte projeté (règle R-i18n) ──────────────────────────────────────────
+_MARKER = {"en": "Part two"}
+_TITLE = {"en": ("Part two — ", (s.project.titles.keyword, "the agenda"))}
+_TIP_TITLE = {"en": "The second half"}
+_TIP = [
+    ({"en": "Understand"},
+     {"en": ("What a large language model is doing when it answers: prediction, not "
+             "knowledge — and why that explains both the usefulness and the confident "
+             "mistakes.")}),
+    ({"en": "Practice"},
+     {"en": ("A revision agent built live with Mistral, including the anti-patterns: the "
+             "agent that flatters, the one that invents sources, the one that does the work "
+             "you needed to do yourself.")}),
+    ({"en": "The rules"},
+     {"en": ("The university's AI charter: permitted by default, the syllabus prevails, "
+             "disclose your use, three risk levels, ten red lines — and the test that "
+             "decides the rest: can you defend it out loud?")}),
+    ({"en": "Same posture, new light"},
+     {"en": ("Everything in the second half connects back to the nine axes you answered "
+             "on this morning.")}),
+]
 
 
 class BlockStyles:
@@ -60,29 +83,17 @@ def _second_half() -> list[tuple[str, str]]:
 
 
 def build(lang: str = "en", **_):
-    st_marker("Part two")
+    st_marker(T(_MARKER, lang))
     medio = mascot("Medio")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Part two — ", (s.project.titles.keyword, "the agenda"),
-                         tag=t.div, toc_lvl="+1", label="Part two")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="The second half",
-                    entries=[
-                        ("Understand", "What a large language model is doing when it answers: "
-                         "prediction, not knowledge — and why that explains both the usefulness "
-                         "and the confident mistakes."),
-                        ("Practice", "A revision agent built live with Mistral, including the "
-                         "anti-patterns: the agent that flatters, the one that invents sources, "
-                         "the one that does the work you needed to do yourself."),
-                        ("The rules", "The university's AI charter: permitted by default, the "
-                         "syllabus prevails, disclose your use, three risk levels, ten red lines "
-                         "— and the test that decides the rest: can you defend it out loud?"),
-                        ("Same posture, new light", "Everything in the second half connects back "
-                         "to the nine axes you answered on this morning."),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", s.project.spacing.title_gap)
         # ONE flat grid — the moderator is a cell like the others, never a
@@ -99,6 +110,6 @@ def build(lang: str = "en", **_):
                 st_write(bs.mascot_name, medio["name"], tag=t.div)
             for session, duration in second:
                 with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.promise, _PROMISE[session], tag=t.div)
+                    st_write(bs.promise, T(_PROMISE[session], lang), tag=t.div)
                     st_write(bs.session, session, tag=t.div)
                     st_write(bs.duration, duration, tag=t.div)

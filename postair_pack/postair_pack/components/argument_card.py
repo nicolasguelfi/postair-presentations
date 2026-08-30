@@ -30,7 +30,8 @@ NATURES = {
 
 
 def argument_card(argument: dict, design_system, title: str, badge_style=None,
-                  source_html: str | None = None, person: str | None = None) -> None:
+                  source_html: str | None = None, person: str | None = None,
+                  nature: str | None = None) -> None:
     """Render one argument column.
 
     Parameters
@@ -47,11 +48,15 @@ def argument_card(argument: dict, design_system, title: str, badge_style=None,
     person: attribution to display; when None, the manifest's ``person`` is
         shown as-is. Depuis le 2026-08-13 l'appelant passe la forme COURTE
         (« Andrew Ng ») — la titulature complète vit dans le tooltip.
+    nature: the badge wording, already resolved to the display language
+        (i18n, 2026-08-30). When None, falls back to the English ``NATURES``
+        table — the pre-i18n behaviour.
     """
     ds = design_system
     with st_block(ds.cards.coral):
         st_write(badge_style or ds.titles.keyword,
-                 NATURES.get(argument.get("category"), argument.get("category") or ""),
+                 nature if nature is not None
+                 else NATURES.get(argument.get("category"), argument.get("category") or ""),
                  tag=t.div)
         st_space("v", "0.6vh")
         st_write(ds.body.body, title, tag=t.div)

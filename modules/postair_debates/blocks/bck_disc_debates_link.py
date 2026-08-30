@@ -48,33 +48,40 @@ _STEPS = [
     {"en": ("Take the ", (s.project.titles.keyword, "microphone")), "fr": ("Prenez le ", (s.project.titles.keyword, "micro"))},
     {"en": ("Say ", (s.project.titles.keyword, "why"), " you favour the pole"), "fr": ("Dites ", (s.project.titles.keyword, "pourquoi"), " vous défendez le pôle")},
 ]
+_MARKER = {"en": "The debates"}
+_TITLE = {"en": ("Now ... ", (s.project.titles.keyword, "HANDS ON"))}
+_TIP_TITLE = {"en": "Navigating the debates bank"}
 _TIP_PLAN = ({"en": "The plan", "fr": "Le plan"},
              {"en": ("Two or three axes — the ones where this room splits, read on the "
                      "results page. Name them out loud before opening the first; two axes "
                      "done properly beat five rushed."), "fr": "Deux ou trois axes — ceux sur lesquels cette salle se divise, lus sur la page des résultats. Nommez-les à voix haute avant d'ouvrir le premier ; deux axes bien menés valent mieux que cinq bâclés."})
+_TIP_OFFERS = ({"en": "What each pole offers"},
+               {"en": ("What the pole claims and its three survey statements; three "
+                       "historical figures who defended it, with a portrait, a sourced "
+                       "quotation and a presentation video; three sourced contemporary "
+                       "arguments; then the two poles face to face.")})
+_TIP_BOTH = ({"en": "Both sides, always"},
+             {"en": ("The material is symmetrical. Never open one pole without its opposite "
+                     "— the room must hear the two best cases, not the one the speaker "
+                     "prefers.")})
 
 
 def build(lang: str = "en", **_):
-    st_marker("The debates")
+    st_marker(T(_MARKER, lang))
     voxo = mascot("Voxo")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 with st_zoom(150):
-                    st_write(bs.title, "Now ... ", (s.project.titles.keyword, "HANDS ON"),
-                         tag=t.div, toc_lvl="+1", label="The debates")
+                    st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Navigating the debates bank",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
                         (T(_TIP_PLAN[0], lang), T(_TIP_PLAN[1], lang)),
-                        ("What each pole offers", "What the pole claims and its three survey "
-                         "statements; three historical figures who defended it, with a portrait, "
-                         "a sourced quotation and a presentation video; three sourced "
-                         "contemporary arguments; then the two poles face to face."),
-                        ("Both sides, always", "The material is symmetrical. Never open one pole "
-                         "without its opposite — the room must hear the two best cases, not the "
-                         "one the speaker prefers."),
+                        (T(_TIP_OFFERS[0], lang), T(_TIP_OFFERS[1], lang)),
+                        (T(_TIP_BOTH[0], lang), T(_TIP_BOTH[1], lang)),
                     ],
                 )
         # Un franc espace sous le titre (NG 2026-08-03) : la slide ne porte

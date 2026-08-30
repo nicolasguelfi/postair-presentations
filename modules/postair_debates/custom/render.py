@@ -16,7 +16,8 @@ import json
 from pathlib import Path
 
 from postair_chain import chain
-from postair_lang import T, with_lang
+from postair_i18n import ui
+from postair_lang import T, TF, with_lang
 from shared_widgets import st_info_tooltip, st_poster_video
 
 from streamtex import (
@@ -63,10 +64,104 @@ class RenderStyles:
 
 rs = RenderStyles
 
-#: What each pole does to the diffusion of the technology. Neutral wording:
-#: neither side of an axis is the good one, and the badge must not suggest it.
-_EFFECT = {"accelerator": "accelerates adoption",
-           "decelerator": "slows adoption down"}
+#: Le chrome du gabarit d'axe — les feuilles partagées par les sous-slides
+#: d'ici (règle R-i18n : module-local, pas dans le lexique partagé). Les
+#: gabarits ``.format(...)`` les valeurs du gel (nom de pôle, d'axe, de
+#: figure) — jamais un f-string projeté. Ce qui se répète entre modules
+#: (« Mascots », « Reference ») vient de ``postair_i18n.ui``.
+#: Le badge de nature des cartes d'argument (i18n 2026-08-30) — résolu ici,
+#: passé au composant du pack par ``nature=`` ; l'EN reprend ``NATURES``.
+_NATURES = {
+    "policy": {"en": "public policy"},
+    "case": {"en": "concrete case"},
+    "quote": {"en": "public statement"},
+    "historical": {"en": "historical precedent"},
+    "tradition": {"en": "established practice"},
+}
+
+_UI = {
+    # What each pole does to the diffusion of the technology. Neutral wording:
+    # neither side of an axis is the good one, and the badge must not suggest it.
+    "effect": {"accelerator": {"en": "accelerates adoption"},
+               "decelerator": {"en": "slows adoption down"}},
+    # _identity
+    "claims": {"en": "What this pole claims"},
+    "claims_text": {"en": ("{pole} — the posture that {effect} on the {axis} axis. It is a "
+                           "legitimate position, held and argued by people whose names are "
+                           "in the history of technology.")},
+    "axis_pole": {"en": "{axis} — {pole}"},
+    "axis_effect": {"en": "{axis} · {effect}"},
+    # _pole_banner
+    "no_champion": {"en": ("No figure in this study champions this pole. These are the three "
+                           "closest to it — the strongest voices this corpus has to offer on "
+                           "this side, and that absence is itself worth debating.")},
+    # _why_here
+    "agrees": {"en": "agrees"},
+    "disagrees": {"en": "disagrees"},
+    "no_answer": {"en": "did not answer"},
+    "stance_line": {"en": "“{statement}” — {name} {stance}"},
+    "stance_score": {"en": " ({response}/5)"},
+    "points_toward": {"en": ", which points to {pole}."},
+    "points_away": {"en": (", which points AWAY from {pole} — the figure is here on its "
+                           "overall score for the axis, not on this statement.")},
+    "evidence": {"en": "Evidence: {anchor}."},
+    "transposed": {"en": "Transposed to AI: {transposition}."},
+    "confidence": {"en": "Confidence of the inference: {confidence}."},
+    "why_pole": {"en": "Why this pole — {item}"},
+    # _figure
+    "who": {"en": "Who — and why {name}"},
+    "epoch": {"en": "In the society of their time"},
+    "name_dates": {"en": "{name} ({dates})"},
+    "figure_meta": {"en": "{origin} · {wave} · score {score} on this axis."},
+    "video": {"en": "Video"},
+    "video_player": {"en": ("The portrait IS the player: press play and the video runs in "
+                            "its frame — full screen and back, without leaving the deck. ")},
+    "video_talk": {"en": ("It is an AI-generated talking portrait — synthetic face and "
+                          "voice, built from documented sources. ")},
+    "video_live": {"en": ("A living person is never made to speak by generative AI: "
+                          "the author presents the figure on camera. ")},
+    "video_rules": {"en": "The provenance rules are on the Provenance slide, at the start."},
+    "reference_text": {"en": ("The quotation is verbatim and verified; its citation code "
+                              "opens the full reference on hover, and the References page "
+                              "lists them all.")},
+    "full_reference": {"en": "Full reference"},
+    "before_us": {"en": "Before us — "},
+    "figure_pole": {"en": "{name} — {pole}"},
+    "figure_stance": {"en": "{axis} · {pole} · {effect}"},
+    "quote": {"en": "“{quote}”"},
+    # _arguments
+    "symmetry": {"en": "Symmetry"},
+    "symmetry_text": {"en": ("The opposite pole has its own three arguments, of the same "
+                             "three natures. Never open this slide without the other one — "
+                             "the room must hear both best cases.")},
+    "paraphrase": {"en": "Paraphrase or verbatim"},
+    "paraphrase_text": {"en": ("A card carrying a quotation gives it verbatim; the others are "
+                               "documented paraphrases of a sourced position.")},
+    "today_title": {"en": ("And today for ", (s.project.titles.keyword, "AI"), "? — ")},
+    "today_tip": {"en": "Contemporary arguments for {pole}"},
+    # _faceoff
+    "where_room": {"en": "Where is this room?"},
+    "where_room_text": {"en": ("The live distribution is in the survey application, on the "
+                               "results page of the day. It cannot be drawn here: it changes "
+                               "while you speak.")},
+    "reading": {"en": "Reading a distribution"},
+    "reading_text": {"en": ("Averages hide diversity. An axis at fifty can be a room of "
+                            "moderates or two opposed halves — look at the shape, not the "
+                            "number.")},
+    "codes": {"en": "Posture codes"},
+    "codes_text": {"en": ("Directional: clearly on one pole. Ambivalent: agrees with BOTH "
+                          "poles, which is not indecision but a held tension. Balanced: "
+                          "deliberately in between. Detached: the question does not mobilise.")},
+    "three_moves": {"en": "Three moves"},
+    "three_moves_text": {"en": ("Show of hands — who is on which side. Then one argument from "
+                                "each bench. Then what the measurement actually says.")},
+    "faceoff_label": {"en": "{left} ⇄ {right}"},
+    "protocol": {"en": "show of hands → one argument each bench → the measurement"},
+}
+
+
+def _effect(pole: dict, lang: str | None) -> str:
+    return T(_UI["effect"][pole["effect"]], lang)
 
 
 def _header(title_parts, tooltip_title, entries, label=None, toc_lvl="+1") -> None:
@@ -79,10 +174,10 @@ def _header(title_parts, tooltip_title, entries, label=None, toc_lvl="+1") -> No
 
 def _identity(pole: dict, lang: str | None) -> None:
     pole_name = text(pole["pole"], lang)
-    entries = [("What this pole claims",
-                f"{pole_name} — the posture that {_EFFECT[pole['effect']]} on the "
-                f"{text(pole['axis_name'], lang)} axis. It is a legitimate position, held and "
-                f"argued by people whose names are in the history of technology.")]
+    axis_name = text(pole["axis_name"], lang)
+    entries = [(T(_UI["claims"], lang),
+                T(_UI["claims_text"], lang).format(
+                    pole=pole_name, effect=_effect(pole, lang), axis=axis_name))]
     for st_item in pole["statements"]:
         guidance = st_item.get("guidance") or {}
         parts = [text(guidance.get("clarification"), lang),
@@ -92,13 +187,14 @@ def _identity(pole: dict, lang: str | None) -> None:
             parts.append(text(example, lang))
         entries.append((text(st_item["text"], lang), " ".join(p for p in parts if p)))
     both = mascots(pole)
-    entries.append(("Mascots",
+    entries.append((ui("mascots", lang),
                     " · ".join(f"{m['mascot']}: {m.get('description') or m['label']}"
                                for m in both)))
-    _header([pole_name], f"{text(pole['axis_name'], lang)} — {pole_name}", entries,
-            label=pole_name, toc_lvl="1")
+    _header([pole_name], T(_UI["axis_pole"], lang).format(axis=axis_name, pole=pole_name),
+            entries, label=pole_name, toc_lvl="1")
     st_write(rs.subtitle,
-             f"{text(pole['axis_name'], lang)} · {_EFFECT[pole['effect']]}", tag=t.div)
+             T(_UI["axis_effect"], lang).format(axis=axis_name, effect=_effect(pole, lang)),
+             tag=t.div)
     st_space("v", s.project.spacing.title_gap)
     pole_identity(both, [text(x["text"], lang) for x in pole["statements"]], DS)
 
@@ -211,16 +307,13 @@ def _waves(pole: dict, lang: str | None) -> None:
                     st_write(rs.wave_name, *parts, tag=t.div)
 
 
-def _pole_banner(pole: dict) -> None:
+def _pole_banner(pole: dict, lang: str | None) -> None:
     """L'avertissement « aucune figure ne défend ce pôle », s'il existe."""
     for warning in warnings_for(pole["axis"]):
         if pole["pole"].get("abbr", {}).get("en", "") in warning:
             st_space("v", "1vh")
             with st_block(s.project.cards.amber):
-                st_write(rs.banner,
-                         "No figure in this study champions this pole. These are the three "
-                         "closest to it — the strongest voices this corpus has to offer on "
-                         "this side, and that absence is itself worth debating.", tag=t.div)
+                st_write(rs.banner, T(_UI["no_champion"], lang), tag=t.div)
 
 
 def _why_here(f: dict, pole_name: str, lang: str | None) -> list[tuple[str, str]]:
@@ -239,21 +332,21 @@ def _why_here(f: dict, pole_name: str, lang: str | None) -> list[tuple[str, str]
     for r in (f["quote"].get("reasoning") or []):
         statement = text(r.get("statement"), lang) or ""
         response = r.get("response")
-        stance = ("agrees" if isinstance(response, int) and response >= 3
-                  else "disagrees") if response is not None else "did not answer"
-        parts = [f"“{statement}” — {f['name']} {stance}"]
+        stance = T(_UI[("agrees" if isinstance(response, int) and response >= 3
+                        else "disagrees") if response is not None else "no_answer"], lang)
+        parts = [T(_UI["stance_line"], lang).format(statement=statement, name=f["name"],
+                                                    stance=stance)]
         if isinstance(response, int):
-            parts[0] += f" ({response}/5)"
-        parts[0] += (f", which points to {pole_name}." if r.get("direction") == "toward"
-                     else f", which points AWAY from {pole_name} — the figure is here on "
-                          f"its overall score for the axis, not on this statement.")
+            parts[0] += T(_UI["stance_score"], lang).format(response=response)
+        parts[0] += T(_UI["points_toward" if r.get("direction") == "toward"
+                          else "points_away"], lang).format(pole=pole_name)
         if r.get("anchor"):
-            parts.append(f"Evidence: {r['anchor']}.")
+            parts.append(T(_UI["evidence"], lang).format(anchor=r["anchor"]))
         if r.get("transposition"):
-            parts.append(f"Transposed to AI: {r['transposition']}.")
+            parts.append(T(_UI["transposed"], lang).format(transposition=r["transposition"]))
         if r.get("confidence"):
-            parts.append(f"Confidence of the inference: {r['confidence']}.")
-        out.append((f"Why this pole — {r['item']}", " ".join(parts)))
+            parts.append(T(_UI["confidence"], lang).format(confidence=r["confidence"]))
+        out.append((T(_UI["why_pole"], lang).format(item=r["item"]), " ".join(parts)))
     return out
 
 
@@ -270,31 +363,27 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
     # pourquoi elle, sa révolution, son rôle dans la société de l'époque).
     # Les deux textes sont la ``presentation`` et la ``biography.place``
     # éditoriales du hub, gelées telles quelles — jamais rédigés ici.
-    who = [(f"Who — and why {f['name']}", f["presentation"])] if f.get("presentation") else []
+    who = ([(T(_UI["who"], lang).format(name=f["name"]), f["presentation"])]
+           if f.get("presentation") else [])
     if f.get("epoch"):
-        who.append(("In the society of their time", f["epoch"]))
+        who.append((T(_UI["epoch"], lang), f["epoch"]))
     entries = who + _why_here(f, pole_name, lang) + [
-               (f"{f['name']} ({f.get('dates', '')})",
-                f"{f.get('origin', '')} · {f.get('wave', '')} · score {f['score']} on "
-                f"this axis."),
-               ("Video", "The portrait IS the player: press play and the video runs in "
-                         "its frame — full screen and back, without leaving the deck. "
-                         + ("It is an AI-generated talking portrait — synthetic face and "
-                            "voice, built from documented sources. "
-                            if (f.get("media") or {}).get("video_kind") == "talk" else
-                            "A living person is never made to speak by generative AI: "
-                            "the author presents the figure on camera. ")
-                         + "The provenance rules are on the Provenance slide, at the start."),
-               ("Reference", "The quotation is verbatim and verified; its citation code "
-                             "opens the full reference on hover, and the References page "
-                             "lists them all.")]
+               (T(_UI["name_dates"], lang).format(name=f["name"], dates=f.get("dates", "")),
+                T(_UI["figure_meta"], lang).format(origin=f.get("origin", ""),
+                                                   wave=f.get("wave", ""), score=f["score"])),
+               (T(_UI["video"], lang),
+                T(_UI["video_player"], lang)
+                + T(_UI["video_talk" if (f.get("media") or {}).get("video_kind") == "talk"
+                        else "video_live"], lang)
+                + T(_UI["video_rules"], lang)),
+               (ui("reference", lang), T(_UI["reference_text"], lang))]
     full = f["quote"].get("reference_full")
     if full and full != f["quote"].get("reference"):
-        entries.append(("Full reference", full))
-    _header(["Before us — ", (s.project.titles.keyword, pole_name)],
-            f"{f['name']} — {pole_name}", entries)
+        entries.append((T(_UI["full_reference"], lang), full))
+    _header([T(_UI["before_us"], lang), (s.project.titles.keyword, pole_name)],
+            T(_UI["figure_pole"], lang).format(name=f["name"], pole=pole_name), entries)
     if index == 0:
-        _pole_banner(pole)
+        _pole_banner(pole, lang)
     st_space("v", s.project.spacing.title_gap)
     media = f.get("media") or {}
     quote = text(f["quote"], lang) or f["quote"].get("en") or ""
@@ -329,10 +418,11 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
                  " · ".join(x for x in (f.get("dates"), f.get("origin"),
                                         f.get("wave")) if x), tag=t.div)
         st_write(rs.figure_stance,
-                 f"{text(pole['axis_name'], lang)} · {pole_name} · "
-                 f"{_EFFECT[pole['effect']]}", tag=t.div)
+                 T(_UI["figure_stance"], lang).format(
+                     axis=text(pole["axis_name"], lang), pole=pole_name,
+                     effect=_effect(pole, lang)), tag=t.div)
         st_space("v", "1vh")
-        st_write(rs.quote, f"“{quote}”", tag=t.div)
+        st_write(rs.quote, T(_UI["quote"], lang).format(quote=quote), tag=t.div)
         st_space("v", "0.6vh")
         st_write(rs.figure_ref,
                  citation_or(f["quote"].get("reference"),
@@ -364,14 +454,10 @@ def _arguments(pole: dict, lang: str | None) -> None:
                 " — ".join(x for x in (a.get("person"),
                                        text(a.get("text"), lang) or "") if x))
                for a in pole["arguments"]]
-    entries.append(("Symmetry", "The opposite pole has its own three arguments, of the same "
-                                "three natures. Never open this slide without the other one — "
-                                "the room must hear both best cases."))
-    entries.append(("Paraphrase or verbatim", "A card carrying a quotation gives it verbatim; "
-                                              "the others are documented paraphrases of a "
-                                              "sourced position."))
-    _header(["And today for ", (s.project.titles.keyword, "AI"), "? — ", pole_name],
-            f"Contemporary arguments for {pole_name}", entries)
+    entries.append((T(_UI["symmetry"], lang), T(_UI["symmetry_text"], lang)))
+    entries.append((T(_UI["paraphrase"], lang), T(_UI["paraphrase_text"], lang)))
+    _header([*TF(_UI["today_title"], lang), pole_name],
+            T(_UI["today_tip"], lang).format(pole=pole_name), entries)
     st_space("v", "1vh")
     # Grille 2+1 (NG 2026-08-30) : rangée 1 = public policy | public statement,
     # rangée 2 = concrete case pleine largeur — trois colonnes faisaient trois
@@ -388,6 +474,7 @@ def _arguments(pole: dict, lang: str | None) -> None:
         # pas gelée.
         person_short = (a.get("person") or "").split(",")[0].strip() or None
         argument_card(a, DS, text(a["title"], lang), person=person_short,
+                      nature=T(_NATURES.get(a["category"], {"en": a["category"] or ""}), lang),
                       source_html=citation_or(
                           a.get("reference") or a.get("citekey") or "",
                           *([a["citekey"]] if a.get("citekey") else [])))
@@ -422,26 +509,19 @@ def _arguments(pole: dict, lang: str | None) -> None:
 def _faceoff(both: list[dict], lang: str | None) -> None:
     left, right = (text(p["pole"], lang) for p in both)
     entries = [
-        ("Where is this room?", "The live distribution is in the survey application, on the "
-                                "results page of the day. It cannot be drawn here: it changes "
-                                "while you speak."),
-        ("Reading a distribution", "Averages hide diversity. An axis at fifty can be a room of "
-                                   "moderates or two opposed halves — look at the shape, not the "
-                                   "number."),
-        ("Posture codes", "Directional: clearly on one pole. Ambivalent: agrees with BOTH poles, "
-                          "which is not indecision but a held tension. Balanced: deliberately in "
-                          "between. Detached: the question does not mobilise."),
-        ("Three moves", "Show of hands — who is on which side. Then one argument from each "
-                        "bench. Then what the measurement actually says."),
+        (T(_UI["where_room"], lang), T(_UI["where_room_text"], lang)),
+        (T(_UI["reading"], lang), T(_UI["reading_text"], lang)),
+        (T(_UI["codes"], lang), T(_UI["codes_text"], lang)),
+        (T(_UI["three_moves"], lang), T(_UI["three_moves_text"], lang)),
     ]
-    _header([left, " ⇄ ", right], f"{left} ⇄ {right}", entries, label=f"{left} ⇄ {right}")
+    label = T(_UI["faceoff_label"], lang).format(left=left, right=right)
+    _header([left, " ⇄ ", right], label, entries, label=label)
     st_space("v", s.project.spacing.title_gap)
     pole_faceoff(faceoff_sides(both, lang), DS)
     st_space("v", "2vh")
     # Le protocole, VISIBLE (NG 2026-08-13) : la slide-pivot du débat ne
     # doit plus dépendre du tooltip pour être comprise.
-    st_write(rs.banner, "show of hands → one argument each bench → the measurement",
-             tag=t.div)
+    st_write(rs.banner, T(_UI["protocol"], lang), tag=t.div)
 
 
 def axis_slides(axis: str, lang: str | None = None) -> None:
@@ -473,6 +553,7 @@ def axis_slides(axis: str, lang: str | None = None) -> None:
                                config=SlideBreakConfig(mode=SlideBreakMode.FULL, space="30vh"))
             with st_block(s.project.containers.page_fill_top):
                 part(pole, lang)
-    st_slide_break(marker_label=" ⇄ ".join(text(p["pole"], lang) for p in both))
+    st_slide_break(marker_label=T(_UI["faceoff_label"], lang).format(
+        left=text(both[0]["pole"], lang), right=text(both[1]["pole"], lang)))
     with st_block(s.project.containers.page_fill_top):
         _faceoff(both, lang)

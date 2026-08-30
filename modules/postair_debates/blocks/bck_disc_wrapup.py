@@ -21,6 +21,8 @@ from __future__ import annotations
 
 from custom.styles import Styles as s
 from postair_data import REGISTERS, register_axes
+from postair_i18n import ui
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -36,6 +38,29 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# ── Le texte projeté (règle R-i18n) — marqueur et libellé : ui("no_consensus").
+_TITLE = {"en": ("No consensus — and that is ", (s.project.titles.keyword, "normal"))}
+_LEAD = {"en": ("posture = ", (s.project.titles.keyword, "snapshot"), " → retake at year end")}
+_TIP_TITLE = {"en": "After today"}
+_TIP = [
+    ({"en": "A posture is a snapshot"},
+     {"en": ("It is where you stand today, with what you know today. The instrument "
+             "measures a position, not a personality — and positions move, especially in "
+             "a first year.")}),
+    ({"en": "Retake it later"},
+     {"en": ("The same survey can be retaken at the end of the year with the same code. "
+             "Comparing the two is the interesting part; most people are surprised by "
+             "which axis moved.")}),
+    ({"en": "Disagreement is the material"},
+     {"en": ("Every one of these eighteen postures has been held, argued and written down "
+             "by someone whose name is in the history of technology. None of them is a "
+             "mistake.")}),
+    ({"en": "Where to go next"},
+     {"en": ("The afternoon sessions take the same questions to practice: how generative "
+             "AI actually works, how to use it for study, and what the university's rules "
+             "say.")}),
+]
+
 
 def _all_poles() -> list[dict]:
     """The eighteen pole mascots, in register order, accelerator first."""
@@ -46,34 +71,19 @@ def _all_poles() -> list[dict]:
 
 
 def build(lang: str = "en", **_):
-    st_marker("No consensus")
+    st_marker(ui("no_consensus", lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "No consensus — and that is ",
-                         (s.project.titles.keyword, "normal"),
-                         tag=t.div, toc_lvl="+1", label="No consensus")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=ui("no_consensus", lang))
             with g.cell():
                 st_info_tooltip(
-                    title="After today",
-                    entries=[
-                        ("A posture is a snapshot", "It is where you stand today, with what you "
-                         "know today. The instrument measures a position, not a personality — "
-                         "and positions move, especially in a first year."),
-                        ("Retake it later", "The same survey can be retaken at the end of the "
-                         "year with the same code. Comparing the two is the interesting part; "
-                         "most people are surprised by which axis moved."),
-                        ("Disagreement is the material", "Every one of these eighteen postures "
-                         "has been held, argued and written down by someone whose name is in the "
-                         "history of technology. None of them is a mistake."),
-                        ("Where to go next", "The afternoon sessions take the same questions to "
-                         "practice: how generative AI actually works, how to use it for study, "
-                         "and what the university's rules say."),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", s.project.spacing.title_gap)
-        st_write(bs.lead, "posture = ", (s.project.titles.keyword, "snapshot"),
-                 " → retake at year end", tag=t.div)
+        st_write(bs.lead, *TF(_LEAD, lang), tag=t.div)
         st_space("v", "1.5vh")
         # ONE flat grid, the full company: eighteen cells, wrapping naturally.
         company = _all_poles()

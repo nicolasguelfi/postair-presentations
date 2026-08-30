@@ -21,4 +21,4 @@ from streamtex import st_space
 
 
 def build(lang: str = "en", **_):
-    axis_slides("trust")
+    axis_slides("trust", lang=lang)

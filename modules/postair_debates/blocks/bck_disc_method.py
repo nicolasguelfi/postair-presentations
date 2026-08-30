@@ -31,7 +31,7 @@ rules plainly, promise the microphone will come to them, and move on.
 
 from custom.styles import Styles as s
 from postair_data import mascot
-from postair_lang import T
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -44,17 +44,18 @@ from postair_pack.components.ai_mark import dd35_overlay
 # un timing trop court étouffe le débat avant qu'il n'existe ; la durée reste à
 # l'orateur, qui tient les 20' du créneau en ouvrant deux axes plutôt que trois
 # si la salle s'anime.
+# Chaque règle : (feuille du titre, tuple de feuilles — une par ligne).
 _RULES = [
     # Les sujets viennent des réponses de la salle, jamais de l'orateur.
-    ("Your concerns", "the ones that split"),
+    ({"en": "Your concerns"}, ({"en": "the ones that split"},)),
     # La salle argumente elle-même, dans les deux sens ; le vote à main levée
     # vient après que les deux camps ont été entendus — jamais avant.
-    # Deux lignes voulues (NG 2026-08-30) : un détail peut être un tuple de
+    # Deux lignes voulues (NG 2026-08-30) : un détail est un tuple de
     # lignes — `st_write` n'interprète pas « \n », chaque ligne est un écrit.
-    ("Hands on", ("your arguments", "each way")),
+    ({"en": "Hands on"}, ({"en": "your arguments"}, {"en": "each way"})),
     # Le fil de chaque axe : les figures d'hier, les arguments d'aujourd'hui,
     # le face-à-face qui engage demain — l'ordre des sous-slides de la banque.
-    ("DEBATE", "past · present · future"),
+    ({"en": "DEBATE"}, ({"en": "past · present · future"},)),
 ]
 
 # The moderator flanked by an opposed pair — the visual grammar of a debate.
@@ -65,6 +66,37 @@ _STAGE = ("Libero", "Medio")  # , "Guardo"
 #: `ng__portrait__studio__v1`, public-ok, image de synthèse ⇒ DD-35), jamais au CDN.
 _HOST_PORTRAIT = "images/host/host_portrait.webp"
 _HOST_NAME = {"en": "Your host", "fr": "Votre hôte"}
+
+# ── Le texte projeté (règle R-i18n) ──────────────────────────────────────────
+_MARKER = {"en": "How we debate"}
+_TITLE = {"en": ("Let's ", (s.project.titles.keyword, "debate"))}
+_TIP_TITLE = {"en": "How the questions are chosen"}
+_TIP = [
+    ({"en": "Not by the speaker"},
+     {"en": ("The debate questions come from your own answers: the selection ranks the "
+             "statements by disagreement, by engagement and by response rate, and keeps "
+             "the most divisive ones, at most two per axis so the debate does not collapse "
+             "onto a single theme.")}),
+    ({"en": "Hands on, no stopwatch"},
+     {"en": ("You make the arguments, in both directions: one for, one against, then a "
+             "show of hands. A round closes when both sides have been heard, not when a "
+             "timer rings — the speaker keeps the slot by opening two axes rather than "
+             "three when the room is lively.")}),
+    ({"en": "Past, present, future"},
+     {"en": ("Each axis runs the same way: who held this posture before us and in what "
+             "words, what is argued today with sources, then the two poles face to face — "
+             "where this room stands.")}),
+    ({"en": "Nobody speaks in their own name"},
+     {"en": ("The mascots carry the postures. You argue for prudence, not as a prudent "
+             "person — which is what makes it possible to change your mind in public.")}),
+    ({"en": "Microphones"},
+     {"en": ("Roaming microphones; wait for one before speaking, so the whole "
+             "amphitheatre hears you and not just your row.")}),
+    ({"en": "Respect"},
+     {"en": ("Attack the position, never the person holding it. Every posture in this "
+             "instrument is defensible, and each one has been held by someone whose name "
+             "you know.")}),
+]
 
 
 class BlockStyles:
@@ -78,36 +110,16 @@ bs = BlockStyles
 
 
 def build(lang: str = "en", **_):
-    st_marker("How we debate")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Let's ", (s.project.titles.keyword, "debate"),
-                         tag=t.div, toc_lvl="1", label="How we debate")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="How the questions are chosen",
-                    entries=[
-                        ("Not by the speaker", "The debate questions come from your own answers: "
-                         "the selection ranks the statements by disagreement, by engagement and "
-                         "by response rate, and keeps the most divisive ones, at most two per "
-                         "axis so the debate does not collapse onto a single theme."),
-                        ("Hands on, no stopwatch", "You make the arguments, in both directions: "
-                         "one for, one against, then a show of hands. A round closes when both "
-                         "sides have been heard, not when a timer rings — the speaker keeps the "
-                         "slot by opening two axes rather than three when the room is lively."),
-                        ("Past, present, future", "Each axis runs the same way: who held this "
-                         "posture before us and in what words, what is argued today with "
-                         "sources, then the two poles face to face — where this room stands."),
-                        ("Nobody speaks in their own name", "The mascots carry the postures. You "
-                         "argue for prudence, not as a prudent person — which is what makes it "
-                         "possible to change your mind in public."),
-                        ("Microphones", "Roaming microphones; wait for one before speaking, so "
-                         "the whole amphitheatre hears you and not just your row."),
-                        ("Respect", "Attack the position, never the person holding it. Every "
-                         "posture in this instrument is defensible, and each one has been held "
-                         "by someone whose name you know."),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", "1vh")
         # ONE flat grid: pole · moderator · pole.
@@ -136,6 +148,6 @@ def build(lang: str = "en", **_):
             for rule, detail in _RULES:
                 with g.cell(), st_block(s.project.cards.coral):
                     with st_zoom(150):
-                        st_write(bs.rule, rule, tag=t.div)
-                        for line in (detail if isinstance(detail, tuple) else (detail,)):
-                            st_write(bs.detail, line, tag=t.div)
+                        st_write(bs.rule, T(rule, lang), tag=t.div)
+                        for line in detail:
+                            st_write(bs.detail, T(line, lang), tag=t.div)

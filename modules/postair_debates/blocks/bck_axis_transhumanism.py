@@ -18,4 +18,4 @@ from custom.render import axis_slides
 
 
 def build(lang: str = "en", **_):
-    axis_slides("transhumanism")
+    axis_slides("transhumanism", lang=lang)

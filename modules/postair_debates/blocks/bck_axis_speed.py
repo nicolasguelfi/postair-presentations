@@ -18,4 +18,4 @@ from custom.render import axis_slides
 
 
 def build(lang: str = "en", **_):
-    axis_slides("speed")
+    axis_slides("speed", lang=lang)

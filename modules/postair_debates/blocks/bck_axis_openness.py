@@ -19,4 +19,4 @@ from custom.render import axis_slides
 
 
 def build(lang: str = "en", **_):
-    axis_slides("openness")
+    axis_slides("openness", lang=lang)
