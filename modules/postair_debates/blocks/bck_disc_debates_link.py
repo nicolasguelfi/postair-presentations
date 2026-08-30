@@ -5,8 +5,15 @@ movement as bck_disc_wrapup (NG 2026-08-03). In opening this slide was a door
 to another document, mascot left and one big button right; now that it LIVES
 in the debates deck there is no tab to switch to and no button to press: Voxo
 opens the debate, and the next page IS the first axis. What survives is the
-promise — two or three axes, the ones where this room splits — and the two
-tooltip entries the earlier intro slides do not already carry.
+promise — two or three axes, the ones where this room splits — now carried
+by the tooltip and by these notes, and the two tooltip entries the earlier
+intro slides do not already carry.
+
+The right column is the floor-taking procedure for a participant (NG
+2026-08-30): three bullets — raise your hand, take the microphone, say why
+you favour the pole on screen — each under eight words with one keyword
+(R3). The promise left the screen: the room does not need it, the speaker
+does.
 
 SPEAKER NOTES:
 Ten seconds — this slide is a hinge, not a stop. The results page told you
@@ -18,6 +25,7 @@ not read the bank in order — two axes done properly beat five rushed.
 
 from custom.styles import Styles as s
 from postair_data import mascot
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -27,11 +35,22 @@ from postair_pack.components.ai_mark import dd35_overlay
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
-    lead = s.project.titles.subtitle + s.center_txt
+    bullet = s.project.body.bullet
     mascot_name = s.project.body.mascot_name
 
 
 bs = BlockStyles
+
+# ── Le texte projeté (règle R-i18n) — la procédure de prise de parole.
+_STEPS = [
+    {"en": ("Raise your ", (s.project.titles.keyword, "hand")), "fr": ("Levez la ", (s.project.titles.keyword, "main"))},
+    {"en": ("Take the ", (s.project.titles.keyword, "microphone")), "fr": ("Prenez le ", (s.project.titles.keyword, "micro"))},
+    {"en": ("Say ", (s.project.titles.keyword, "why"), " you favour the pole on screen"), "fr": ("Dites ", (s.project.titles.keyword, "pourquoi"), " vous défendez le pôle à l'écran")},
+]
+_TIP_PLAN = ({"en": "The plan", "fr": "Le plan"},
+             {"en": ("Two or three axes — the ones where this room splits, read on the "
+                     "results page. Name them out loud before opening the first; two axes "
+                     "done properly beat five rushed."), "fr": "Deux ou trois axes — ceux sur lesquels cette salle se divise, lus sur la page des résultats. Nommez-les à voix haute avant d'ouvrir le premier ; deux axes bien menés valent mieux que cinq bâclés."})
 
 
 def build(lang: str = "en", **_):
@@ -40,12 +59,13 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Now, let's ", (s.project.titles.keyword, "argue"),
+                st_write(bs.title, "Now ... ", (s.project.titles.keyword, "HANDS ON"),
                          tag=t.div, toc_lvl="+1", label="The debates")
             with g.cell():
                 st_info_tooltip(
                     title="Navigating the debates bank",
                     entries=[
+                        (T(_TIP_PLAN[0], lang), T(_TIP_PLAN[1], lang)),
                         ("What each pole offers", "What the pole claims and its three survey "
                          "statements; three historical figures who defended it, with a portrait, "
                          "a sourced quotation and a presentation video; three sourced "
@@ -67,6 +87,6 @@ def build(lang: str = "en", **_):
                          alt=f"{voxo['name']}, the moderator mascot, opening the floor to debate",
                          overlay=dd35_overlay())
                 st_write(bs.mascot_name, voxo["name"], tag=t.div)
-            with g.cell():
-                st_write(bs.lead, "Two or three axes — the ones where ",
-                         (s.project.titles.keyword, "this room"), " splits", tag=t.div)
+            with g.cell(), st_block(s.project.containers.column_stack):
+                for step in _STEPS:
+                    st_write(bs.bullet, *TF(step, lang), tag=t.div)
