@@ -23,6 +23,7 @@ from shared_widgets import st_info_tooltip, st_poster_video
 from streamtex import (
     SlideBreakConfig,
     SlideBreakMode,
+    Style,
     page_url,
     st_block,
     st_grid,
@@ -50,9 +51,12 @@ from postair_pack.components.pole_identity import pole_identity
 
 class RenderStyles:
     title = s.project.titles.slide_title + s.center_txt
-    # Badge de nature des cartes d'argument (NG 2026-08-30) : triplé — la
-    # taille du sous-titre, en teal gras, au lieu de la taille de base.
-    nature_badge = s.project.titles.subtitle + s.project.titles.keyword
+    # Badge de nature des cartes d'argument (NG 2026-08-30) : la taille du
+    # sous-titre réduite de 20 % (mêmes jetons d'échelle que le DS — 5vw→4vw,
+    # ×1,5→×1,2), en teal gras. Réglage NG du 2026-08-30 soir.
+    nature_badge = (s.project.titles.subtitle + s.project.titles.keyword
+                    + Style("font-size: min(4vw, calc(var(--stx-scale-12, 32pt) * 1.2));",
+                            "pa_nature_badge_80"))
     subtitle = s.project.titles.subtitle + s.center_txt
     wave_name = s.project.body.pole_label_compact + s.center_txt
     wave_period = s.project.body.caption + s.center_txt
@@ -435,9 +439,14 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
                              *(f["quote"].get("citekeys") or [])), tag=t.div)
 
 
-#: Zoom de DÉPART des cartes d'argument (NG 2026-08-30) — le levier de taille
-#: de la slide ; `_fit_zoom` en redescend selon la longueur des titres.
-_ARG_ZOOM_START = 200
+#: PLAFOND de zoom des cartes d'argument (NG 2026-08-30, porté à 250) — la
+#: taille effective est min(plafond, palier mesuré) : les paliers viennent de
+#: la GÉOMÉTRIE (badge triplé + grille 2+1 sous le pli à 1920×1080, mesuré au
+#: rendu) et des longueurs réelles des titres du corpus (max FR par trio :
+#: 94 à 133 caractères). Monter le plafond au-delà du palier ne change rien ;
+#: pour gagner encore, il faut raccourcir les titres (hub) ou changer la
+#: composition, pas le zoom.
+_ARG_ZOOM_START = 250
 
 
 def _fit_zoom(longest: int, steps: tuple[int, int], start: int = _ARG_ZOOM_START,
@@ -495,8 +504,11 @@ def _arguments(pole: dict, lang: str | None) -> None:
     # UN SEUL zoom pour les deux rangées (NG 2026-08-30 : même taille de
     # texte partout) — calé sur le titre le plus long des trois cartes ; le
     # badge triplé prend sa part du budget de hauteur (paliers resserrés).
-    zoom = _fit_zoom(max((len(text(a["title"], lang)) for a in args), default=0),
-                     (22, 45), drop=45)
+    # Paliers calés sur le corpus (le plus long titre FR d'un trio va de 94 à
+    # 133 caractères, mesuré au rendu 1920×1080) : ≤ 100 → 130, ≤ 115 → 120,
+    # au-delà → 110 — puis le plafond `_ARG_ZOOM_START` s'applique.
+    longest = max((len(text(a["title"], lang)) for a in args), default=0)
+    zoom = min(_ARG_ZOOM_START, _fit_zoom(longest, (100, 115), start=130, drop=10))
     zoom_top = zoom
     with st_grid(cols=s.project.grids.balanced(len(top), min_px=340), gap="1.2vw",
                  grid_style=s.project.grids.stretch,
