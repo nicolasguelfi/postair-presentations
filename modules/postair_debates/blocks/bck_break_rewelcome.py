@@ -25,10 +25,13 @@ from streamtex.enums import Tags as t
 
 from postair_pack.components.ai_mark import dd35_overlay
 
+#: La promesse est la TÊTE de la carte (rendue au-dessus du titre de session) :
+#: capitale initiale, règle R-case (NG 2026-08-30). Les titres de session, eux,
+#: viennent de l'agenda et ne sont jamais recasés.
 _PROMISE = {
-    "Introduction to AI & Generative AI": "understand",
-    "Using Mistral models & agents to study": "practice",
-    "The UL AI guidelines": "the rules of the game",
+    "Introduction to AI & Generative AI": "Understand",
+    "Using Mistral models & agents to study": "Practice",
+    "The UL AI guidelines": "The rules of the game",
 }
 
 
@@ -62,8 +65,7 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Part two — ", (s.project.titles.keyword, "how it works"),
-                         ", and what you may do with it",
+                st_write(bs.title, "Part two — ", (s.project.titles.keyword, "the agenda"),
                          tag=t.div, toc_lvl="+1", label="Part two")
             with g.cell():
                 st_info_tooltip(
