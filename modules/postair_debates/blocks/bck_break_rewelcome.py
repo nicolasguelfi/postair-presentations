@@ -30,7 +30,7 @@ from postair_pack.components.ai_mark import dd35_overlay
 #: viennent de l'agenda et ne sont jamais recasés.
 _PROMISE = {
     "Introduction to AI & Generative AI": "Understand",
-    "Using Mistral models & agents to study": "Practice",
+    "Using models & agents to study": "See it in practice",
     "The UL AI guidelines": "The rules of the game",
 }
 

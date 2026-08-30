@@ -18,7 +18,7 @@ AGENDA = [
     ("Survey discussion", "20'", "debate"),
     ("Break", "15'+5'", "break"),
     ("Introduction to AI & Generative AI", "30'", "stage"),
-    ("Using Mistral models & agents to study", "20'", "stage"),
+    ("Using models & agents to study", "20'", "stage"),
     ("The UL AI guidelines", "15'", "stage"),
     ("Closing", "5'", "stage"),
 ]

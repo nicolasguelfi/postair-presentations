@@ -118,6 +118,6 @@ def build(lang: str = "en", **_):
                              overlay=dd35_overlay())
                     st_write(bs.mascot_name, m["name"], tag=t.div)
                     with st_block(s.project.cards.blue):
-                        with st_zoom(150):
+                        with st_zoom(130):
                             st_write(bs.point, *TF(point, lang), tag=t.div)
                             st_write(bs.detail, T(detail, lang), tag=t.div)

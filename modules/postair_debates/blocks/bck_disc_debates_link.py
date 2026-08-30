@@ -60,7 +60,8 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Now ... ", (s.project.titles.keyword, "HANDS ON"),
+                with st_zoom(150):
+                    st_write(bs.title, "Now ... ", (s.project.titles.keyword, "HANDS ON"),
                          tag=t.div, toc_lvl="+1", label="The debates")
             with g.cell():
                 st_info_tooltip(
@@ -80,7 +81,7 @@ def build(lang: str = "en", **_):
         # qu'une promesse, et une promesse collée à son titre se lit comme une
         # note de bas de page.
         st_space("v", s.project.spacing.title_gap)
-        with st_grid(cols="45% 55%", gap="1.5vw",
+        with st_grid(cols="40% 60%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_image(s.project.cards.media_center, width="min(22vw, 46vh)",
@@ -92,7 +93,7 @@ def build(lang: str = "en", **_):
                 # La liste native de streamtex (`st_list`), pas des écrits
                 # empilés (NG 2026-08-30) — les puces sont celles de la
                 # librairie, le style de l'item est celui du DS.
-                with st_zoom(150), st_list(list_type="ul", li_style=bs.bullet) as l:
+                with st_zoom(190), st_list(list_type="ul", li_style=bs.bullet) as l:
                     for step in _STEPS:
                         with l.item():
                             st_write(bs.bullet, *TF(step, lang))
