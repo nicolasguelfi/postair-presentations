@@ -104,4 +104,7 @@ def build(lang: str = "en", **_):
                          overlay=dd35_overlay())
                 st_write(bs.mascot_name, m["name"], tag=t.div)
             with g.cell():
-                st_countdown(_break_minutes(), height=520)
+                # `scale` est LE levier de taille : le widget est une iframe dimensionnée
+                # en vw, un st_zoom autour serait inerte (R-zoom). La hauteur ne
+                # fait que loger les chiffres agrandis.
+                st_countdown(_break_minutes(), height=620, scale=1.8)

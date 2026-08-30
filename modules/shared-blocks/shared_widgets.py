@@ -73,8 +73,16 @@ def st_info_tooltip(title: str, entries: list[tuple[str, str]], **kw):
     return st_hover_tooltip(icon="ℹ️", title=title, entries=entries, **kw)
 
 
-def st_countdown(minutes: int, label: str = "Back in", height: int = 340) -> None:
+def st_countdown(minutes: int, label: str = "Back in", height: int = 340,
+                 scale: float = 1.0) -> None:
     """A live break countdown, readable from the back of an amphitheatre.
+
+    ``scale`` is THE size lever (NG 2026-08-30): the widget is an iframe
+    (``st_html`` with a height) whose text is sized in ``vw`` of the iframe —
+    an enclosing ``st_zoom`` is therefore inert on it (the browser divides the
+    iframe's layout width by the zoom, and the ``vw`` sizes cancel it out
+    exactly — the R-zoom rule, iframe edition). ``height`` only sizes the
+    frame: give it enough room for the scaled digits, nothing more.
 
     The clock starts when the slide is displayed, not when the deck is built:
     the presenter reaches the break when they reach it, and a break screen
@@ -89,11 +97,11 @@ def st_countdown(minutes: int, label: str = "Back in", height: int = 340) -> Non
     html = f"""
 <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;
             height:100%;font-family:'Source Sans Pro',sans-serif;color:#F2EEE6;">
-  <div style="font-size:3.2vw;color:#7AB8F5;font-weight:700;">{label}</div>
+  <div style="font-size:{3.2 * scale:.2f}vw;color:#7AB8F5;font-weight:700;">{label}</div>
   <div id="stx-countdown"
-       style="font-size:14vw;font-weight:900;letter-spacing:0.04em;line-height:1;
+       style="font-size:{14 * scale:.2f}vw;font-weight:900;letter-spacing:0.04em;line-height:1;
               color:#F39C12;">--:--</div>
-  <div id="stx-countdown-at" style="font-size:2.6vw;color:#95A5A6;"></div>
+  <div id="stx-countdown-at" style="font-size:{2.6 * scale:.2f}vw;color:#95A5A6;"></div>
 </div>
 <script>
 (function () {{
