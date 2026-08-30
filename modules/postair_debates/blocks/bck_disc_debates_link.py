@@ -45,7 +45,7 @@ bs = BlockStyles
 _STEPS = [
     {"en": ("Raise your ", (s.project.titles.keyword, "hand")), "fr": ("Levez la ", (s.project.titles.keyword, "main"))},
     {"en": ("Take the ", (s.project.titles.keyword, "microphone")), "fr": ("Prenez le ", (s.project.titles.keyword, "micro"))},
-    {"en": ("Say ", (s.project.titles.keyword, "why"), " you favour the pole on screen"), "fr": ("Dites ", (s.project.titles.keyword, "pourquoi"), " vous défendez le pôle à l'écran")},
+    {"en": ("Say ", (s.project.titles.keyword, "why"), " you favour the pole"), "fr": ("Dites ", (s.project.titles.keyword, "pourquoi"), " vous défendez le pôle")},
 ]
 _TIP_PLAN = ({"en": "The plan", "fr": "Le plan"},
              {"en": ("Two or three axes — the ones where this room splits, read on the "

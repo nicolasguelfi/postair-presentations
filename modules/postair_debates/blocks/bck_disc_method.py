@@ -49,7 +49,9 @@ _RULES = [
     ("Your concerns", "the ones that split"),
     # La salle argumente elle-même, dans les deux sens ; le vote à main levée
     # vient après que les deux camps ont été entendus — jamais avant.
-    ("Hands on", "your arguments each way"),
+    # Deux lignes voulues (NG 2026-08-30) : un détail peut être un tuple de
+    # lignes — `st_write` n'interprète pas « \n », chaque ligne est un écrit.
+    ("Hands on", ("your arguments", "each way")),
     # Le fil de chaque axe : les figures d'hier, les arguments d'aujourd'hui,
     # le face-à-face qui engage demain — l'ordre des sous-slides de la banque.
     ("DEBATE", "Past · Present · Future"),
@@ -135,4 +137,5 @@ def build(lang: str = "en", **_):
                 with g.cell(), st_block(s.project.cards.coral):
                     with st_zoom(150):
                         st_write(bs.rule, rule, tag=t.div)
-                        st_write(bs.detail, detail, tag=t.div)
+                        for line in (detail if isinstance(detail, tuple) else (detail,)):
+                            st_write(bs.detail, line, tag=t.div)
