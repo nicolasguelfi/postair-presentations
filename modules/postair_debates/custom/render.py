@@ -12,12 +12,18 @@ sub-slide still breaks so PageDown advances one screen at a time.
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
+from postair_chain import chain
+from postair_lang import T, with_lang
 from shared_widgets import st_info_tooltip, st_poster_video
 from streamtex import (
     SlideBreakConfig,
     SlideBreakMode,
     st_block,
     st_grid,
+    st_html,
     st_image,
     st_marker,
     st_slide_break,
@@ -31,7 +37,7 @@ from custom.pole import faceoff_sides, mascots
 from custom.refs import citation_or
 from custom.styles import DS
 from custom.styles import Styles as s
-from postair_pack.components.ai_mark import dd35_overlay
+from postair_pack.components.ai_mark import DD35_CSS, dd35_overlay
 from postair_pack.components.argument_card import argument_card
 from postair_pack.components.hero_split import hero_split
 from postair_pack.components.pole_faceoff import pole_faceoff
@@ -41,6 +47,8 @@ from postair_pack.components.pole_identity import pole_identity
 class RenderStyles:
     title = s.project.titles.slide_title + s.center_txt
     subtitle = s.project.titles.subtitle + s.center_txt
+    wave_name = s.project.body.pole_label_compact + s.center_txt
+    wave_period = s.project.body.caption + s.center_txt
     banner = s.project.body.body + s.center_txt
     # La slide une-figure (NG 2026-08-13) : nom en très grand, méta et
     # référence discrètes, verbatim en corps de lecture.
@@ -91,6 +99,95 @@ def _identity(pole: dict, lang: str | None) -> None:
              f"{text(pole['axis_name'], lang)} · {_EFFECT[pole['effect']]}", tag=t.div)
     st_space("v", s.project.spacing.title_gap)
     pole_identity(both, [text(x["text"], lang) for x in pole["statements"]], DS)
+
+
+# ── La slide « vagues » d'un pôle (NG 2026-08-30) ────────────────────────────
+#: Provenance des cartes-titres copiées du deck des vagues (drapeau DD-35).
+_WAVES_IMAGES = Path(__file__).parent.parent / "static" / "data" / "waves-images.json"
+_WAVES_UI = {
+    "title_before": {"en": "When society chose ", "fr": "Quand la société a choisi "},
+    "tip_title": {"en": "The waves that illustrate ", "fr": "Les vagues qui illustrent "},
+    "how": ({"en": "How a wave is chosen", "fr": "Comment une vague est retenue"},
+            {"en": ("A wave illustrates a pole when the collective behaviour that dominated "
+                    "the society of the time — institutions, market, opinion, mass practice, "
+                    "not only the elites' discourse — committed unanimously and durably in the "
+                    "direction of that pole. Rank 1 is the best example; the strength of the "
+                    "match is stated. Click a card to open the wave in the waves deck."),
+             "fr": "Une vague illustre un pôle quand le comportement collectif dominant de la société de l'époque — institutions, marché, opinion, pratiques de masse, pas seulement le discours des élites — s'est engagé unanimement et durablement dans le sens de ce pôle. Le rang 1 est le meilleur exemple ; la solidité du rapprochement est dite. Cliquer une carte ouvre la vague dans le deck des vagues."}),
+    "strength": {"strong": {"en": "strong match", "fr": "rapprochement fort"},
+                 "medium": {"en": "moderate match", "fr": "rapprochement moyen"},
+                 "weak": {"en": "weak match — best approximation", "fr": "rapprochement faible — meilleure approximation"}},
+    "open": {"en": "click to open the wave", "fr": "cliquer pour ouvrir la vague"},
+}
+
+
+def _wave_image_ai(order: int) -> bool:
+    """Le drapeau DD-35 de la carte-titre — bruyant si la provenance manque."""
+    key = f"v{order:02d}-objet"
+    entry = json.loads(_WAVES_IMAGES.read_text(encoding="utf-8"))["images"].get(key)
+    if entry is None:
+        raise KeyError(f"carte-titre {key!r} absente de waves-images.json (debates) — "
+                       f"une image sans provenance ne se projette pas.")
+    return bool(entry.get("ai", True))
+
+
+def _waves_deck_url(lang: str) -> str:
+    """Le deck des vagues, dans la langue projetée — résolu comme la chaîne du
+    jour (env local > collection.toml). Ouvre le deck en PREMIÈRE page :
+    streamtex 0.7.26 n'adresse pas une page par l'URL (évolution demandée à la
+    librairie, 2026-08-30) ; le jour où elle existe, le paramètre s'ajoute ici."""
+    for m in chain():
+        if m["key"] == "waves":
+            return with_lang(m["url"], lang)
+    raise LookupError("collection.toml ne déclare pas le module `waves`")
+
+
+def _wave_card(w: dict, lang: str, url: str, width: str) -> None:
+    """La carte-titre d'une vague, cliquable (nouvel onglet). Markup ici, pas
+    dans un bloc (esprit R11) ; pastille DD-35 en superposition, jamais
+    incrustée — même geste que ``_wave_button`` du deck des vagues."""
+    img = f"app/static/images/waves/v{w['order']:02d}-objet.webp"
+    name = text(w["name"], lang)
+    chip = ('<span style="' + DD35_CSS + ' position:absolute; right:0.6em; top:0.6em; '
+            'pointer-events:none;">✦ AI</span>') if _wave_image_ai(w["order"]) else ""
+    st_html(
+        f'<a href="{url}" target="_blank" rel="noopener" '
+        f'style="display:block; position:relative; width:{width}; margin:0 auto; '
+        f'border-radius:12px; overflow:hidden; cursor:pointer;">'
+        f'<img src="{img}" alt="{name} ({text(w["period"], lang)}) — AI-generated title card, '
+        f'{T(_WAVES_UI["open"], lang)}" style="width:100%; height:auto; display:block;"/>'
+        f'{chip}</a>')
+
+
+def _waves(pole: dict, lang: str | None) -> None:
+    """Les révolutions où une société majoritaire a tenu ce pôle — une ligne
+    de cartes-titres cliquables vers le deck des vagues. Tout vient du gel
+    (``pole["waves"]``, joint depuis l'artefact du hub) : rien n'est nommé ici."""
+    lang = lang or "en"
+    pole_name = text(pole["pole"], lang)
+    waves = pole["waves"]
+    entries = [(T(_WAVES_UI["how"][0], lang), T(_WAVES_UI["how"][1], lang))]
+    for w in waves:
+        just = w.get("justification") or {}
+        strength = T(_WAVES_UI["strength"].get(w.get("strength"), {"en": "", "fr": ""}), lang)
+        entries.append((f"{w['order']} · {text(w['name'], lang)} ({text(w['period'], lang)})"
+                        + (f" — {strength}" if strength else ""),
+                        just.get(lang) or just.get("fr") or just.get("en") or ""))
+    _header([T(_WAVES_UI["title_before"], lang), (s.project.titles.keyword, pole_name)],
+            T(_WAVES_UI["tip_title"], lang) + pole_name, entries)
+    st_space("v", s.project.spacing.title_gap)
+    url = _waves_deck_url(lang)
+    # ONE flat grid — one cell per wave, on a single line (never more than a few).
+    with st_grid(cols=s.project.grids.balanced(len(waves)), gap="1.5vw",
+                 cell_styles=s.project.containers.grid_cell_centered) as g:
+        for w in waves:
+            with g.cell():
+                _wave_card(w, lang, url, width="min(38vw, 56vh)")
+                st_write(rs.wave_name, text(w["name"], lang), tag=t.div)
+                strength = T(_WAVES_UI["strength"].get(w.get("strength"), {"en": "", "fr": ""}), lang)
+                st_write(rs.wave_period,
+                         " · ".join(x for x in (text(w["period"], lang), strength) if x),
+                         tag=t.div)
 
 
 def _pole_banner(pole: dict) -> None:
@@ -284,14 +381,17 @@ def axis_slides(axis: str, lang: str | None = None) -> None:
 
     Depuis le 2026-08-13 : identité du pôle, puis UNE slide PAR figure (trois
     par pôle), puis les arguments contemporains — onze slides par axe plus le
-    face-à-face. Le deck est paginé et le présentateur n'ouvre que les axes
+    face-à-face. Depuis le 2026-08-30, entre l'identité et les figures : la
+    slide des VAGUES qui illustrent le pôle, quand le gel en porte. Le deck est paginé et le présentateur n'ouvre que les axes
     clivants : le nombre de pages n'est pas un coût, la lisibilité en est un.
     """
     both = axis_poles(axis)
     first = True
     for pole in both:
         pole_name = text(pole["pole"], lang)
-        parts = [_identity] + \
+        # La slide « vagues » suit l'identité (NG 2026-08-30) et ne se rend
+        # que si le gel porte des vagues pour ce pôle (artefact du hub).
+        parts = [_identity] + ([_waves] if pole.get("waves") else []) + \
             [(lambda p, lg, ff=f, i=i: _figure(p, ff, i, lg))
              for i, f in enumerate(pole["figures"])] + [_arguments]
         for part in parts:

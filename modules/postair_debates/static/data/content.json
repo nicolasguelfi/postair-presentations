@@ -402,7 +402,8 @@
      "quote": "There are definitely large tech companies that would rather not have to try to compete with open source [AI], so they're creating fear of AI leading to human extinction."
     }
    ],
-   "argument_pool": 27
+   "argument_pool": 27,
+   "waves": []
   },
   {
    "axis": "trust",
@@ -777,7 +778,8 @@
      "quote": "However, we think that regulatory intervention by governments will be critical to mitigate the risks of increasingly powerful models."
     }
    ],
-   "argument_pool": 28
+   "argument_pool": 28,
+   "waves": []
   },
   {
    "axis": "optimism",
@@ -1152,7 +1154,8 @@
      "quote": "It is not too much to expect that our children will enjoy in their homes electrical energy too cheap to meter, will know of great periodic regional famines in the world only as matters of history, will travel effortlessly over the seas and under them and through the air with a minimum of danger and at great speeds, and will experience a lifespan far longer than ours [...]"
     }
    ],
-   "argument_pool": 31
+   "argument_pool": 31,
+   "waves": []
   },
   {
    "axis": "optimism",
@@ -1566,7 +1569,8 @@
      "quote": "The development of AI is as fundamental as the creation of the microprocessor, the personal computer, the Internet, and the mobile phone. It will change the way people work, learn, travel, get health care, and communicate with each other."
     }
    ],
-   "argument_pool": 32
+   "argument_pool": 32,
+   "waves": []
   },
   {
    "axis": "rationality",
@@ -2005,7 +2009,8 @@
      "quote": "Models are opinions embedded in mathematics."
     }
    ],
-   "argument_pool": 30
+   "argument_pool": 30,
+   "waves": []
   },
   {
    "axis": "rationality",
@@ -2406,7 +2411,8 @@
      "quote": "I often say that when you can measure what you are speaking about, and express it in numbers, you know something about it; but when you cannot measure it, when you cannot express it in numbers, your knowledge is of a meagre and unsatisfactory kind."
     }
    ],
-   "argument_pool": 27
+   "argument_pool": 27,
+   "waves": []
   },
   {
    "axis": "speed",
@@ -2768,7 +2774,8 @@
      "quote": "we call on all AI labs to immediately pause for at least 6 months the training of AI systems more powerful than GPT-4."
     }
    ],
-   "argument_pool": 29
+   "argument_pool": 29,
+   "waves": []
   },
   {
    "axis": "speed",
@@ -3130,7 +3137,8 @@
      "quote": "We believe any deceleration of AI will cost lives. Deaths that were preventable by the AI that was prevented from existing is a form of murder."
     }
    ],
-   "argument_pool": 27
+   "argument_pool": 27,
+   "waves": []
   },
   {
    "axis": "openness",
@@ -3518,7 +3526,8 @@
      "quote": null
     }
    ],
-   "argument_pool": 28
+   "argument_pool": 28,
+   "waves": []
   },
   {
    "axis": "openness",
@@ -3945,7 +3954,8 @@
      "quote": "I had early access to the first Mythos-class AI model being released to the public, Claude 5 Fable."
     }
    ],
-   "argument_pool": 29
+   "argument_pool": 29,
+   "waves": []
   },
   {
    "axis": "control",
@@ -4307,7 +4317,8 @@
      "quote": "We believe any deceleration of AI will cost lives. Deaths that were preventable by the AI that was prevented from existing is a form of murder."
     }
    ],
-   "argument_pool": 25
+   "argument_pool": 25,
+   "waves": []
   },
   {
    "axis": "control",
@@ -4682,7 +4693,8 @@
      "quote": "We think that regulatory intervention by governments will be critical to mitigate the risks of increasingly powerful models."
     }
    ],
-   "argument_pool": 30
+   "argument_pool": 30,
+   "waves": []
   },
   {
    "axis": "centralisation",
@@ -5122,7 +5134,8 @@
      "quote": "The peculiar character of the problem of a rational economic order is determined precisely by the fact that the knowledge of the circumstances of which we must make use never exists in concentrated or integrated form but solely as the dispersed bits of incomplete and frequently contradictory knowledge which all the separate individuals possess."
     }
    ],
-   "argument_pool": 27
+   "argument_pool": 27,
+   "waves": []
   },
   {
    "axis": "centralisation",
@@ -5536,7 +5549,8 @@
      "quote": null
     }
    ],
-   "argument_pool": 31
+   "argument_pool": 31,
+   "waves": []
   },
   {
    "axis": "altruism",
@@ -5898,7 +5912,8 @@
      "quote": "We believe a Universal Basic Income would turn people into zoo animals to be farmed by the state."
     }
    ],
-   "argument_pool": 25
+   "argument_pool": 25,
+   "waves": []
   },
   {
    "axis": "altruism",
@@ -6260,7 +6275,8 @@
      "quote": "We commit to use any influence we obtain over AGI's deployment to ensure it is used for the benefit of all, and to avoid enabling uses of AI or AGI that harm humanity or unduly concentrate power."
     }
    ],
-   "argument_pool": 30
+   "argument_pool": 30,
+   "waves": []
   },
   {
    "axis": "transhumanism",
@@ -6648,7 +6664,8 @@
      "quote": "The problem with eugenics and genetic engineering is that they represent the one-sided triumph of willfulness over giftedness, of dominion over reverence, of molding over beholding."
     }
    ],
-   "argument_pool": 31
+   "argument_pool": 31,
+   "waves": []
   },
   {
    "axis": "transhumanism",
@@ -7036,12 +7053,14 @@
      "quote": "The human species can, if it wishes, transcend itself — not just sporadically, an individual here in one way, an individual there in another way, but in its entirety, as humanity."
     }
    ],
-   "argument_pool": 31
+   "argument_pool": 31,
+   "waves": []
   }
  ],
  "warnings": [
   "altruism/INDI: no figure within 40 points of the pole — threshold relaxed"
  ],
+ "waves_by_pole": false,
  "figures_used": 51,
  "figures_reused": 3
 }

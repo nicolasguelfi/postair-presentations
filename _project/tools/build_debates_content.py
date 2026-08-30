@@ -379,6 +379,16 @@ class Hub:
         figures = json.loads((gf / "figures.json").read_text(encoding="utf-8"))
         self.figure = {f["id"]: f for f in figures["figures"]}
         self.wave = {w["id"]: w for w in figures["waves"]}
+        # La table pôle → vagues (NG 2026-08-30) : quelle(s) révolution(s)
+        # illustre(nt) la position majoritaire d'une société pour ce pôle.
+        # Artefact OPTIONNEL du hub, ``great-figures/waves-by-pole.json``
+        # (contrat : ``_project/plans/demande-hub-waves-by-pole.md``) — validé
+        # LÀ-BAS, jamais rédigé ici. Absent → aucune slide « vagues » ne se
+        # rend, et le work-order le dit.
+        self.waves_by_pole: list[dict] | None = None
+        wbp = gf / "waves-by-pole.json"
+        if wbp.exists():
+            self.waves_by_pole = json.loads(wbp.read_text(encoding="utf-8"))["entries"]
         self.media = json.loads((gf / "media-manifest.json").read_text(encoding="utf-8"))["figures"]
         ledger = json.loads((gf / "quote-ledger.json").read_text(encoding="utf-8"))
         version = ledger.get("version", "0")
@@ -706,6 +716,28 @@ def _dedupe_by_scarcity(hub: Hub, poles: list[dict], warnings: list[str]) -> Non
                                 f"from the dossier")
 
 
+def _waves_for(hub: Hub, axis: str, pole_code: str, warnings: list[str]) -> list[dict]:
+    """Les vagues qui illustrent ce pôle, par rang — nom, période et ordre
+    lus dans ``figures.json`` (jamais recopiés), solidité et justification
+    de l'artefact du hub. Une vague inconnue est un avertissement, pas une
+    invention."""
+    if hub.waves_by_pole is None:
+        return []
+    out = []
+    for e in sorted((e for e in hub.waves_by_pole
+                     if e["axis"] == axis and e["pole"] == pole_code),
+                    key=lambda e: e.get("rank", 99)):
+        w = hub.wave.get(e["wave"])
+        if not w:
+            warnings.append(f"{axis}/{pole_code}: waves-by-pole names unknown wave {e['wave']!r}")
+            continue
+        out.append({"id": w["id"], "code": w["code"], "order": w["order"],
+                    "name": w["name"], "period": w["period"],
+                    "rank": e.get("rank"), "strength": e.get("strength"),
+                    "justification": e.get("justification") or {}})
+    return out
+
+
 def build(hub: Hub) -> dict:
     used: collections.Counter[str] = collections.Counter()
     poles, warnings = [], []
@@ -765,6 +797,7 @@ def build(hub: Hub) -> dict:
                                     f"printable reference — resolve it from the dossier")
 
             arguments, pool_size = hub.arguments(axis, side, ARGUMENTS_PER_POLE)
+            waves = _waves_for(hub, axis, pole["abbr"]["en"], warnings)
             poles.append({
                 "axis": axis, "axis_name": meta["name"], "register": REGISTER[axis],
                 "side": side, "pole": pole, "effect": pole["effect"],
@@ -773,6 +806,7 @@ def build(hub: Hub) -> dict:
                                 "guidance": hub.cards[i]["guidance"]}
                                for i in hub.pole_items(axis, side)],
                 "figures": picked, "arguments": arguments, "argument_pool": pool_size,
+                "waves": waves,
             })
     _dedupe_by_scarcity(hub, poles, warnings)
     # Ecosystem convention (NG, 2026-08-01): a shared or translated resource
@@ -794,6 +828,7 @@ def build(hub: Hub) -> dict:
             "instrument_version": hub.instrument_version,
             "debate_version": hub.deck_version,
             "poles": poles, "warnings": warnings,
+            "waves_by_pole": hub.waves_by_pole is not None,
             "figures_used": len(used), "figures_reused": sum(1 for n in used.values() if n > 1)}
 
 
@@ -898,7 +933,19 @@ def work_order(data: dict) -> str:
             displayed.setdefault((f["id"], f["quote"]["en"][:60]), f["quote"])
     no_bibkey = sum(1 for q in displayed.values() if not q.get("citekeys"))
     bib_problems = data.get("bib_problems") or []
-    out += ["---", "",
+    # La table pôle → vagues (NG 2026-08-30) : absente du hub = pas de slide ;
+    # présente = chaque pôle doit avoir au moins une vague, et chaque
+    # justification son anglais (le deck est projeté en EN).
+    if data.get("waves_by_pole"):
+        no_wave = [f"{p['axis']}/{p['pole']['abbr']['en']}" for p in data["poles"] if not p.get("waves")]
+        no_en = sum(1 for p in data["poles"] for w in p.get("waves", [])
+                    if not (w.get("justification") or {}).get("en"))
+        waves_line = (f"table pôle→vagues : {len(no_wave)} pôle(s) sans vague"
+                      + (f" ({', '.join(no_wave)})" if no_wave else "")
+                      + f" · {no_en} justification(s) sans anglais")
+    else:
+        waves_line = "table pôle→vagues : ABSENTE du hub (great-figures/waves-by-pole.json) — slides « vagues » non rendues"
+    out += ["---", "", f"**{waves_line}.**", "",
             f"**{missing_ref} sans référence imprimable · "
             f"{sum(1 for *_, n in rows if 'traduction FR' in n)} sans traduction française · "
             f"{no_bibkey} citations sans clé BibTeX promue (repli chaîne gelée) · "

@@ -1,0 +1,82 @@
+{
+ "_doc": "COPIE GELÉE (NG 2026-08-30, chantier « vagues par pôle ») des 17 cartes-titres « objet » du deck des vagues — la vérité est modules/postair_waves/static/data/waves-images.json ; regel = recopier (même geste que le portrait de l'hôte). Le drapeau `ai` pilote la pastille DD-35 — la donnée décide, jamais le bloc.",
+ "source": "modules/postair_waves/static/data/waves-images.json",
+ "defaults": {
+  "engine": "gemini-3-pro-image-preview (Google) · 16:9 · 2K",
+  "conversion": "webp q86, 2048px (PIL), 2026-08-26",
+  "chain": "chaîne de série : avant ancré sur le style de la paire validée de la vague 1 (s2-avant/s2-apres), après ancré sur style + avant (ligne NG vague1t2)",
+  "validated": "planches review-board des 25-26/08/2026, lignes NG journalisées"
+ },
+ "images": {
+  "v01-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague1/objet-stele.png"
+  },
+  "v02-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague2/objet-casse-02.png"
+  },
+  "v03-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague3/objet-outils.png"
+  },
+  "v04-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague4/objet-presse.png"
+  },
+  "v05-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague5/objet-lunette.png"
+  },
+  "v06-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague6/objet-vapeur.png"
+  },
+  "v07-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague7/rail-objet.png"
+  },
+  "v08-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague8/microbe-objet.png"
+  },
+  "v09-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague9/elec-objet.png"
+  },
+  "v10-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague10/moteur-objet.png"
+  },
+  "v11-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague11/medias-objet.png"
+  },
+  "v12-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague12/atome-objet.png"
+  },
+  "v13-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague13/calcul-objet.png"
+  },
+  "v14-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague14/chimie-objet.png"
+  },
+  "v15-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague15/gene-objet.png"
+  },
+  "v16-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague16/web-objet-02.png",
+   "retouche": "logos réels (USRobotics ×3) effacés (FLUX Kontext)"
+  },
+  "v17-objet": {
+   "ai": true,
+   "master": "_project/_explorations/260825-photoreal-vague17/ia-objet-02.png",
+   "retouche": "seconde version (retour NG 2026-08-26) : bureau aux trois assistants — Claude/ChatGPT/Gemini, icônes réelles sur demande explicite de l'auteur"
+  }
+ }
+}
