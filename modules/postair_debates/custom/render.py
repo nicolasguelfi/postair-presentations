@@ -104,6 +104,12 @@ def _identity(pole: dict, lang: str | None) -> None:
 # ── La slide « vagues » d'un pôle (NG 2026-08-30) ────────────────────────────
 #: Provenance des cartes-titres copiées du deck des vagues (drapeau DD-35).
 _WAVES_IMAGES = Path(__file__).parent.parent / "static" / "data" / "waves-images.json"
+#: Rapport largeur/hauteur des cartes-titres (série 16:9 du deck des vagues) —
+#: une propriété du média, pas un choix de mise en page (R4d).
+_WAVE_CARD_RATIO = 16 / 9
+#: Hauteur maximale d'une carte, en vh : ce qui reste sous le titre pour
+#: l'image ET sa ligne de légende. Le levier de taille de cette slide.
+_WAVE_STAGE_VH = 62
 _WAVES_UI = {
     "title_before": {"en": "When society chose ", "fr": "Quand la société a choisi "},
     "tip_title": {"en": "The waves that illustrate ", "fr": "Les vagues qui illustrent "},
@@ -176,18 +182,24 @@ def _waves(pole: dict, lang: str | None) -> None:
                         just.get(lang) or just.get("fr") or just.get("en") or ""))
     _header([T(_WAVES_UI["title_before"], lang), (s.project.titles.keyword, pole_name)],
             T(_WAVES_UI["tip_title"], lang) + pole_name, entries)
-    st_space("v", s.project.spacing.title_gap)
+    st_space("v", "1vh")
     url = _waves_deck_url(lang)
-    # ONE flat grid — one cell per wave, on a single line (never more than a few).
-    with st_grid(cols=s.project.grids.balanced(len(waves)), gap="1.5vw",
+    # ONE flat grid — one cell per wave, on a single line. La carte prend 100 %
+    # de sa cellule (NG 2026-08-30) : la largeur suit le NOMBRE de cartes et la
+    # fenêtre — deux cartes ≈ la moitié chacune, une seule ≈ toute la largeur,
+    # mobile = une colonne pleine largeur — et `media_stage` (R4d) borne chaque
+    # cellule par la hauteur disponible, jamais un `vw` écrit en dur.
+    with st_grid(cols=s.project.grids.balanced(len(waves)), gap="1vw",
                  cell_styles=s.project.containers.grid_cell_centered) as g:
         for w in waves:
-            with g.cell():
-                _wave_card(w, lang, url, width="min(38vw, 56vh)")
-                st_write(rs.wave_name, text(w["name"], lang), tag=t.div)
+            with g.cell(), st_block(s.project.containers.media_stage(_WAVE_CARD_RATIO,
+                                                                     _WAVE_STAGE_VH)):
+                _wave_card(w, lang, url, width="100%")
                 strength = T(_WAVES_UI["strength"].get(w.get("strength"), {"en": "", "fr": ""}), lang)
-                st_write(rs.wave_period,
-                         " · ".join(x for x in (text(w["period"], lang), strength) if x),
+                # Une seule ligne de légende : nom · période · solidité.
+                st_write(rs.wave_name,
+                         " · ".join(x for x in (text(w["name"], lang),
+                                                text(w["period"], lang), strength) if x),
                          tag=t.div)
 
 
