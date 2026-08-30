@@ -47,15 +47,15 @@ from postair_pack.components.ai_mark import dd35_overlay
 # Chaque règle : (feuille du titre, tuple de feuilles — une par ligne).
 _RULES = [
     # Les sujets viennent des réponses de la salle, jamais de l'orateur.
-    ({"en": "Your concerns"}, ({"en": "the ones that split"},)),
+    ({"en": "Your concerns", "fr": "Vos préoccupations"}, ({"en": "the ones that split", "fr": "celles qui divisent"},)),
     # La salle argumente elle-même, dans les deux sens ; le vote à main levée
     # vient après que les deux camps ont été entendus — jamais avant.
     # Deux lignes voulues (NG 2026-08-30) : un détail est un tuple de
     # lignes — `st_write` n'interprète pas « \n », chaque ligne est un écrit.
-    ({"en": "Hands on"}, ({"en": "your arguments"}, {"en": "each way"})),
+    ({"en": "Hands on", "fr": "À vous"}, ({"en": "your arguments", "fr": "vos arguments"}, {"en": "each way", "fr": "pour et contre"})),
     # Le fil de chaque axe : les figures d'hier, les arguments d'aujourd'hui,
     # le face-à-face qui engage demain — l'ordre des sous-slides de la banque.
-    ({"en": "DEBATE"}, ({"en": "past · present · future"},)),
+    ({"en": "DEBATE", "fr": "DÉBAT"}, ({"en": "past · present · future", "fr": "passé · présent · futur"},)),
 ]
 
 # The moderator flanked by an opposed pair — the visual grammar of a debate.
@@ -68,34 +68,34 @@ _HOST_PORTRAIT = "images/host/host_portrait.webp"
 _HOST_NAME = {"en": "Your host", "fr": "Votre hôte"}
 
 # ── Le texte projeté (règle R-i18n) ──────────────────────────────────────────
-_MARKER = {"en": "How we debate"}
-_TITLE = {"en": ("Let's ", (s.project.titles.keyword, "debate"))}
-_TIP_TITLE = {"en": "How the questions are chosen"}
+_MARKER = {"en": "How we debate", "fr": "Comment on débat"}
+_TITLE = {"en": ("Let's ", (s.project.titles.keyword, "debate")), "fr": ("Place au ", (s.project.titles.keyword, "débat"))}
+_TIP_TITLE = {"en": "How the questions are chosen", "fr": "Comment on choisit les questions"}
 _TIP = [
-    ({"en": "Not by the speaker"},
+    ({"en": "Not by the speaker", "fr": "Pas par l'orateur"},
      {"en": ("The debate questions come from your own answers: the selection ranks the "
              "statements by disagreement, by engagement and by response rate, and keeps "
              "the most divisive ones, at most two per axis so the debate does not collapse "
-             "onto a single theme.")}),
-    ({"en": "Hands on, no stopwatch"},
+             "onto a single theme."), "fr": "Les questions du débat viennent de vos propres réponses : la sélection classe les énoncés par désaccord, par engagement et par taux de réponse, et garde les plus clivants, au plus deux par axe pour que le débat ne se réduise pas à un seul thème."}),
+    ({"en": "Hands on, no stopwatch", "fr": "À vous, sans chronomètre"},
      {"en": ("You make the arguments, in both directions: one for, one against, then a "
              "show of hands. A round closes when both sides have been heard, not when a "
              "timer rings — the speaker keeps the slot by opening two axes rather than "
-             "three when the room is lively.")}),
-    ({"en": "Past, present, future"},
+             "three when the room is lively."), "fr": "Vous portez les arguments, dans les deux sens : un pour, un contre, puis un vote à main levée. Un tour se termine quand les deux camps ont été entendus, pas quand un minuteur sonne — l'orateur tient le créneau en ouvrant deux axes plutôt que trois quand la salle s'anime."}),
+    ({"en": "Past, present, future", "fr": "Passé, présent, futur"},
      {"en": ("Each axis runs the same way: who held this posture before us and in what "
              "words, what is argued today with sources, then the two poles face to face — "
-             "where this room stands.")}),
-    ({"en": "Nobody speaks in their own name"},
+             "where this room stands."), "fr": "Chaque axe se déroule de la même façon : qui a tenu cette posture avant nous, et en quels mots ; ce qui s'argumente aujourd'hui, avec des sources ; puis les deux pôles face à face — où cette salle se situe."}),
+    ({"en": "Nobody speaks in their own name", "fr": "Personne ne parle en son nom propre"},
      {"en": ("The mascots carry the postures. You argue for prudence, not as a prudent "
-             "person — which is what makes it possible to change your mind in public.")}),
-    ({"en": "Microphones"},
+             "person — which is what makes it possible to change your mind in public."), "fr": "Les mascottes portent les postures. Vous plaidez pour la prudence, pas en votre nom — c'est ce qui permet de changer d'avis en public."}),
+    ({"en": "Microphones", "fr": "Micros"},
      {"en": ("Roaming microphones; wait for one before speaking, so the whole "
-             "amphitheatre hears you and not just your row.")}),
-    ({"en": "Respect"},
+             "amphitheatre hears you and not just your row."), "fr": "Des micros baladeurs ; attendez d'en avoir un avant de parler, pour que tout l'amphi vous entende, et pas seulement votre rangée."}),
+    ({"en": "Respect", "fr": "Respect"},
      {"en": ("Attack the position, never the person holding it. Every posture in this "
              "instrument is defensible, and each one has been held by someone whose name "
-             "you know.")}),
+             "you know."), "fr": "Attaquez la position, jamais la personne qui la tient. Chaque posture de cet instrument est défendable, et chacune a été tenue par quelqu'un dont vous connaissez le nom."}),
 ]
 
 

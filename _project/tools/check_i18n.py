@@ -66,8 +66,9 @@ LANGS = ("en", "fr")
 #: sont des avertissements. Un module en sort au tag ``i18n/<module>-done``.
 I18N_PENDING = {
     # lot 1 : opening, waves, handsup, survey sortis le 2026-08-29 (tags i18n/<module>-done)
-    # lot 2 : quand leur anglais sera fini (tag en-final/<module>)
-    "postair_debates", "postair_genai", "postair_guidelines", "postair_collection",
+    # lot 2 : debates sorti le 2026-08-30 (tag i18n/postair_debates-done) ;
+    # les autres quand leur anglais sera fini (tag en-final/<module>)
+    "postair_genai", "postair_guidelines", "postair_collection",
 }
 
 #: Les appels dont les chaînes sont projetées.

@@ -24,38 +24,38 @@ from streamtex.enums import Tags as t
 from postair_pack.components.hero_split import hero_split
 
 _STEPS = [
-    ({"en": "Read the room first"}, {"en": "results page → divisive axes"}),
-    ({"en": "Two or three axes"}, {"en": "never all nine · never in order"}),
-    ({"en": "Both poles, always"}, {"en": "symmetrical corpus → play BOTH poles"}),
+    ({"en": "Read the room first", "fr": "Lisez d'abord la salle"}, {"en": "results page → divisive axes", "fr": "page des résultats → axes clivants"}),
+    ({"en": "Two or three axes", "fr": "Deux ou trois axes"}, {"en": "never all nine · never in order", "fr": "jamais les neuf · jamais dans l'ordre"}),
+    ({"en": "Both poles, always", "fr": "Les deux pôles, toujours"}, {"en": "symmetrical corpus → play BOTH poles", "fr": "corpus symétrique → jouez LES DEUX pôles"}),
 ]
 
 # ── Le texte projeté (règle R-i18n) ──────────────────────────────────────────
-_MARKER = {"en": "A bank"}
-_TITLE = {"en": ("A ", (s.project.titles.keyword, "bank"), ", not a talk")}
+_MARKER = {"en": "A bank", "fr": "Une banque"}
+_TITLE = {"en": ("A ", (s.project.titles.keyword, "bank"), ", not a talk"), "fr": ("Une ", (s.project.titles.keyword, "banque"), ", pas un exposé")}
 _LEAD = {"en": ("Open only the axes where ", (s.project.titles.keyword, "this room"),
-                " disagrees")}
-_TIP_TITLE = {"en": "Using the debates bank"}
-_TIP_CONTENT = ({"en": "What is in it"},
+                " disagrees"), "fr": ("N'ouvrez que là où ", (s.project.titles.keyword, "cette salle"), " se divise")}
+_TIP_TITLE = {"en": "Using the debates bank", "fr": "Utiliser la banque des débats"}
+_TIP_CONTENT = ({"en": "What is in it", "fr": "Ce qu'elle contient"},
                 {"en": ("{poles} poles — the two sides of each of the nine axes. Each pole "
                         "has its identity and three survey statements, three historical "
                         "figures with a sourced quotation and a presentation video, and "
-                        "three contemporary arguments of three different natures.")})
-_TIP_CHOOSE = ({"en": "How to choose"},
+                        "three contemporary arguments of three different natures."), "fr": "{poles} pôles — les deux versants de chacun des neuf axes. Chaque pôle a son identité et trois énoncés du sondage, trois figures historiques avec une citation sourcée et une vidéo de présentation, et trois arguments contemporains de trois natures différentes."})
+_TIP_CHOOSE = ({"en": "How to choose", "fr": "Comment choisir"},
                {"en": ("The results page of the day ranks the statements by disagreement. "
                        "Open the axes where this room splits — they are never the same two "
-                       "rooms running.")})
-_TIP_SYMMETRY = ({"en": "Symmetry is the rule"},
+                       "rooms running."), "fr": "La page des résultats du jour classe les énoncés par désaccord. Ouvrez les axes où cette salle se divise — ce ne sont jamais les mêmes d'une salle à l'autre."})
+_TIP_SYMMETRY = ({"en": "Symmetry is the rule", "fr": "La symétrie est la règle"},
                  {"en": ("Every pole has a facing pole with equally sourced material. "
                          "Opening one without the other turns a debate into a lecture with "
-                         "a slide deck.")})
-_TIP_PROVENANCE = ({"en": "Provenance"},
+                         "a slide deck."), "fr": "Chaque pôle a un pôle en face, avec un matériau aussi sourcé. Ouvrir l'un sans l'autre transforme un débat en cours magistral avec des slides."})
+_TIP_PROVENANCE = ({"en": "Provenance", "fr": "Provenance"},
                    {"en": ("The figures' postures are reconstructed from primary sources and "
                            "commit their author, not the figures. For living people, the "
                            "video presents them — this corpus never makes a living person "
-                           "speak through generative AI.")})
-_TIP_DECK = ({"en": "Provenance of the deck"},
+                           "speak through generative AI."), "fr": "Les postures des figures sont reconstruites à partir de sources primaires et engagent leur auteur, pas les figures. Pour les personnes vivantes, la vidéo les présente — ce corpus ne fait jamais parler une personne vivante par IA générative."})
+_TIP_DECK = ({"en": "Provenance of the deck", "fr": "Provenance du deck"},
              {"en": ("Instrument v{instrument} · debate material v{debate} · content "
-                     "regenerated from the study, never typed into a slide.")})
+                     "regenerated from the study, never typed into a slide."), "fr": "Instrument v{instrument} · matériau de débat v{debate} · contenu régénéré depuis l'étude, jamais saisi dans une slide."})
 
 #: La roue des neuf axes — le visuel que la salle a déjà vu dans l'ouverture ;
 #: copie versionnée du SVG d'opening (illustration, exception assumée).

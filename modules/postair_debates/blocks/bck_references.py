@@ -41,9 +41,9 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Le texte projeté (règle R-i18n) — marqueur et libellé : ui("references").
-_TITLE = {"en": ("Where the arguments ", (s.project.titles.keyword, "come from"))}
+_TITLE = {"en": ("Where the arguments ", (s.project.titles.keyword, "come from")), "fr": ("Les arguments et leurs ", (s.project.titles.keyword, "sources"))}
 _LEAD = {"en": ("every quotation and every contemporary argument of the nine axes, with "
-                "its source")}
+                "its source"), "fr": "chaque citation et chaque argument contemporain des neuf axes, avec sa source"}
 
 
 def build(lang: str = "en", **_):

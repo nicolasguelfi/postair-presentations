@@ -25,24 +25,24 @@ from streamtex.enums import Tags as t
 #: (picto, règle courte, forme télégraphique, phrase complète → tooltip) —
 #: les trois textes sont des feuilles (règle R-i18n).
 _CLAUSES = [
-    ("🧭", {"en": "Reconstructed postures"},
-     {"en": "primary sources · commits the AUTHOR, never the figure"},
+    ("🧭", {"en": "Reconstructed postures", "fr": "Postures reconstruites"},
+     {"en": "primary sources · commits the AUTHOR, never the figure", "fr": "sources primaires · engage l'AUTEUR, jamais la figure"},
      {"en": ("Each figure's position on an axis is a reconstruction from primary "
-             "sources — it commits its author, never the figure.")}),
-    ("🎙️", {"en": "Living people"},
-     {"en": "zero AI voice · video by the author, in his own name"},
+             "sources — it commits its author, never the figure."), "fr": "La position de chaque figure sur un axe est une reconstruction à partir de sources primaires — elle engage son auteur, jamais la figure."}),
+    ("🎙️", {"en": "Living people", "fr": "Personnes vivantes"},
+     {"en": "zero AI voice · video by the author, in his own name", "fr": "zéro voix IA · vidéo par l'auteur, en son nom"},
      {"en": ("No living person is made to speak by generative AI. Their video is a "
-             "presentation of them, by the author, in the author's own name.")}),
-    ("❝", {"en": "Quotations"},
-     {"en": "VERBATIM, verified · code → full reference → References page"},
+             "presentation of them, by the author, in the author's own name."), "fr": "Jamais une IA générative ne fait parler une personne vivante. Sa vidéo est une présentation de cette personne par l'auteur, qui parle en son propre nom."}),
+    ("❝", {"en": "Quotations", "fr": "Citations"},
+     {"en": "VERBATIM, verified · code → full reference → References page", "fr": "VERBATIM, vérifiées · code → référence complète → page Références"},
      {"en": ("Every quotation is verbatim and verified; its citation code opens the "
-             "full reference, and the References page closes the document.")}),
+             "full reference, and the References page closes the document."), "fr": "Chaque citation est verbatim et vérifiée ; son code de citation ouvre la référence complète, et la page Références clôt le document."}),
 ]
 
 # ── Le texte projeté (règle R-i18n) ──────────────────────────────────────────
-_MARKER = {"en": "Provenance"}
-_TITLE = {"en": ("Three ", (s.project.titles.keyword, "rules"))}
-_TIP_TITLE = {"en": "Provenance — the full clauses"}
+_MARKER = {"en": "Provenance", "fr": "Provenance"}
+_TITLE = {"en": ("Three ", (s.project.titles.keyword, "rules")), "fr": ("Trois ", (s.project.titles.keyword, "règles"))}
+_TIP_TITLE = {"en": "Provenance — the full clauses", "fr": "Provenance — les clauses complètes"}
 
 
 class BlockStyles:

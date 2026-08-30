@@ -72,91 +72,91 @@ rs = RenderStyles
 #: Le badge de nature des cartes d'argument (i18n 2026-08-30) — résolu ici,
 #: passé au composant du pack par ``nature=`` ; l'EN reprend ``NATURES``.
 _NATURES = {
-    "policy": {"en": "public policy"},
-    "case": {"en": "concrete case"},
-    "quote": {"en": "public statement"},
-    "historical": {"en": "historical precedent"},
-    "tradition": {"en": "established practice"},
+    "policy": {"en": "public policy", "fr": "politique publique"},
+    "case": {"en": "concrete case", "fr": "cas concret"},
+    "quote": {"en": "public statement", "fr": "déclaration publique"},
+    "historical": {"en": "historical precedent", "fr": "précédent historique"},
+    "tradition": {"en": "established practice", "fr": "pratique établie"},
 }
 
 _UI = {
     # What each pole does to the diffusion of the technology. Neutral wording:
     # neither side of an axis is the good one, and the badge must not suggest it.
-    "effect": {"accelerator": {"en": "accelerates adoption"},
-               "decelerator": {"en": "slows adoption down"}},
+    "effect": {"accelerator": {"en": "accelerates adoption", "fr": "accélère l'adoption"},
+               "decelerator": {"en": "slows adoption down", "fr": "freine l'adoption"}},
     # _identity
-    "claims": {"en": "What this pole claims"},
+    "claims": {"en": "What this pole claims", "fr": "Ce qu'affirme ce pôle"},
     "claims_text": {"en": ("{pole} — the posture that {effect} on the {axis} axis. It is a "
                            "legitimate position, held and argued by people whose names are "
-                           "in the history of technology.")},
-    "axis_pole": {"en": "{axis} — {pole}"},
-    "axis_effect": {"en": "{axis} · {effect}"},
+                           "in the history of technology."), "fr": "{pole} — la posture qui {effect} sur l'axe {axis}. C'est une position légitime, tenue et défendue par des gens dont le nom est dans l'histoire des techniques."},
+    "axis_pole": {"en": "{axis} — {pole}", "fr": "{axis} — {pole}"},
+    "axis_effect": {"en": "{axis} · {effect}", "fr": "{axis} · {effect}"},
     # _pole_banner
     "no_champion": {"en": ("No figure in this study champions this pole. These are the three "
                            "closest to it — the strongest voices this corpus has to offer on "
-                           "this side, and that absence is itself worth debating.")},
+                           "this side, and that absence is itself worth debating."), "fr": "Aucune figure de cette étude ne défend ce pôle. Voici les trois qui s'en approchent le plus — les voix les plus fortes du corpus de ce côté. Et cette absence, en soi, mérite débat."},
     # _why_here
-    "agrees": {"en": "agrees"},
-    "disagrees": {"en": "disagrees"},
-    "no_answer": {"en": "did not answer"},
-    "stance_line": {"en": "“{statement}” — {name} {stance}"},
-    "stance_score": {"en": " ({response}/5)"},
-    "points_toward": {"en": ", which points to {pole}."},
+    "agrees": {"en": "agrees", "fr": "est d'accord"},
+    "disagrees": {"en": "disagrees", "fr": "n'est pas d'accord"},
+    "no_answer": {"en": "did not answer", "fr": "n'a pas répondu"},
+    "stance_line": {"en": "“{statement}” — {name} {stance}", "fr": "« {statement} » — {name} {stance}"},
+    "stance_score": {"en": " ({response}/5)", "fr": " ({response}/5)"},
+    "points_toward": {"en": ", which points to {pole}.", "fr": ", ce qui pointe vers {pole}."},
     "points_away": {"en": (", which points AWAY from {pole} — the figure is here on its "
-                           "overall score for the axis, not on this statement.")},
-    "evidence": {"en": "Evidence: {anchor}."},
-    "transposed": {"en": "Transposed to AI: {transposition}."},
-    "confidence": {"en": "Confidence of the inference: {confidence}."},
-    "why_pole": {"en": "Why this pole — {item}"},
+                           "overall score for the axis, not on this statement."), "fr": ", ce qui pointe À L'OPPOSÉ de {pole} — la figure est ici pour son score global sur l'axe, pas pour cet énoncé."},
+    "evidence": {"en": "Evidence: {anchor}.", "fr": "Preuve : {anchor}."},
+    "transposed": {"en": "Transposed to AI: {transposition}.", "fr": "Transposé à l'IA : {transposition}."},
+    "confidence": {"en": "Confidence of the inference: {confidence}.", "fr": "Confiance dans l'inférence : {confidence}."},
+    "why_pole": {"en": "Why this pole — {item}", "fr": "Pourquoi ce pôle — {item}"},
     # _figure
-    "who": {"en": "Who — and why {name}"},
-    "epoch": {"en": "In the society of their time"},
-    "name_dates": {"en": "{name} ({dates})"},
-    "figure_meta": {"en": "{origin} · {wave} · score {score} on this axis."},
-    "video": {"en": "Video"},
+    "who": {"en": "Who — and why {name}", "fr": "Qui — et pourquoi {name}"},
+    "epoch": {"en": "In the society of their time", "fr": "Dans la société de son temps"},
+    "name_dates": {"en": "{name} ({dates})", "fr": "{name} ({dates})"},
+    "figure_meta": {"en": "{origin} · {wave} · score {score} on this axis.", "fr": "{origin} · {wave} · score {score} sur cet axe."},
+    "video": {"en": "Video", "fr": "Vidéo"},
     "video_player": {"en": ("The portrait IS the player: press play and the video runs in "
-                            "its frame — full screen and back, without leaving the deck. ")},
+                            "its frame — full screen and back, without leaving the deck. "), "fr": "Le portrait EST le lecteur : lancez la lecture et la vidéo tourne dans son cadre — plein écran et retour, sans quitter le deck. "},
     "video_talk": {"en": ("It is an AI-generated talking portrait — synthetic face and "
-                          "voice, built from documented sources. ")},
+                          "voice, built from documented sources. "), "fr": "C'est un portrait parlant généré par IA — visage et voix synthétiques, construits à partir de sources documentées. "},
     "video_live": {"en": ("A living person is never made to speak by generative AI: "
-                          "the author presents the figure on camera. ")},
-    "video_rules": {"en": "The provenance rules are on the Provenance slide, at the start."},
+                          "the author presents the figure on camera. "), "fr": "Jamais l'IA générative ne fait parler une personne vivante : l'auteur présente la figure face caméra. "},
+    "video_rules": {"en": "The provenance rules are on the Provenance slide, at the start.", "fr": "Les règles de provenance sont sur la slide Provenance, au début."},
     "reference_text": {"en": ("The quotation is verbatim and verified; its citation code "
                               "opens the full reference on hover, and the References page "
-                              "lists them all.")},
-    "full_reference": {"en": "Full reference"},
-    "before_us": {"en": "Before us — "},
-    "figure_pole": {"en": "{name} — {pole}"},
-    "figure_stance": {"en": "{axis} · {pole} · {effect}"},
-    "quote": {"en": "“{quote}”"},
+                              "lists them all."), "fr": "La citation est verbatim et vérifiée ; son code de citation ouvre la référence complète au survol, et la page Références les liste toutes."},
+    "full_reference": {"en": "Full reference", "fr": "Référence complète"},
+    "before_us": {"en": "Before us — ", "fr": "Avant nous — "},
+    "figure_pole": {"en": "{name} — {pole}", "fr": "{name} — {pole}"},
+    "figure_stance": {"en": "{axis} · {pole} · {effect}", "fr": "{axis} · {pole} · {effect}"},
+    "quote": {"en": "“{quote}”", "fr": "« {quote} »"},
     # _arguments
-    "symmetry": {"en": "Symmetry"},
+    "symmetry": {"en": "Symmetry", "fr": "Symétrie"},
     "symmetry_text": {"en": ("The opposite pole has its own three arguments, of the same "
                              "three natures. Never open this slide without the other one — "
-                             "the room must hear both best cases.")},
-    "paraphrase": {"en": "Paraphrase or verbatim"},
+                             "the room must hear both best cases."), "fr": "Le pôle opposé a ses trois propres arguments, des trois mêmes natures. N'ouvrez jamais cette slide sans l'autre — la salle doit entendre les deux meilleurs plaidoyers."},
+    "paraphrase": {"en": "Paraphrase or verbatim", "fr": "Paraphrase ou verbatim"},
     "paraphrase_text": {"en": ("A card carrying a quotation gives it verbatim; the others are "
-                               "documented paraphrases of a sourced position.")},
-    "today_title": {"en": ("And today for ", (s.project.titles.keyword, "AI"), "? — ")},
-    "today_tip": {"en": "Contemporary arguments for {pole}"},
+                               "documented paraphrases of a sourced position."), "fr": "Une carte qui porte une citation la donne verbatim ; les autres sont des paraphrases documentées d'une position sourcée."},
+    "today_title": {"en": ("And today for ", (s.project.titles.keyword, "AI"), "? — "), "fr": ("Et aujourd'hui pour l'", (s.project.titles.keyword, "IA"), " ? — ")},
+    "today_tip": {"en": "Contemporary arguments for {pole}", "fr": "Arguments contemporains pour {pole}"},
     # _faceoff
-    "where_room": {"en": "Where is this room?"},
+    "where_room": {"en": "Where is this room?", "fr": "Où se situe cette salle ?"},
     "where_room_text": {"en": ("The live distribution is in the survey application, on the "
                                "results page of the day. It cannot be drawn here: it changes "
-                               "while you speak.")},
-    "reading": {"en": "Reading a distribution"},
+                               "while you speak."), "fr": "La distribution en direct est dans l'application du sondage, sur la page des résultats du jour. Impossible de la dessiner ici : elle bouge pendant que vous parlez."},
+    "reading": {"en": "Reading a distribution", "fr": "Lire une distribution"},
     "reading_text": {"en": ("Averages hide diversity. An axis at fifty can be a room of "
                             "moderates or two opposed halves — look at the shape, not the "
-                            "number.")},
-    "codes": {"en": "Posture codes"},
+                            "number."), "fr": "Les moyennes cachent la diversité. Un axe à cinquante peut être une salle de modérés ou deux moitiés opposées — regardez la forme, pas le chiffre."},
+    "codes": {"en": "Posture codes", "fr": "Codes de posture"},
     "codes_text": {"en": ("Directional: clearly on one pole. Ambivalent: agrees with BOTH "
                           "poles, which is not indecision but a held tension. Balanced: "
-                          "deliberately in between. Detached: the question does not mobilise.")},
-    "three_moves": {"en": "Three moves"},
+                          "deliberately in between. Detached: the question does not mobilise."), "fr": "Tranchée : nettement sur un pôle. Ambivalente : adhère aux DEUX pôles, ce qui n'est pas de l'indécision mais une tension assumée. Équilibrée : délibérément entre les deux. Détachée : la question ne mobilise pas."},
+    "three_moves": {"en": "Three moves", "fr": "Trois temps"},
     "three_moves_text": {"en": ("Show of hands — who is on which side. Then one argument from "
-                                "each bench. Then what the measurement actually says.")},
-    "faceoff_label": {"en": "{left} ⇄ {right}"},
-    "protocol": {"en": "show of hands → one argument each bench → the measurement"},
+                                "each bench. Then what the measurement actually says."), "fr": "À main levée — qui est de quel côté. Puis un argument de chaque banc. Puis ce que la mesure dit vraiment."},
+    "faceoff_label": {"en": "{left} ⇄ {right}", "fr": "{left} ⇄ {right}"},
+    "protocol": {"en": "show of hands → one argument each bench → the measurement", "fr": "à main levée → un argument par banc → la mesure"},
 }
 
 

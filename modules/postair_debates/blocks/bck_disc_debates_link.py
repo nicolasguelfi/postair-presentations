@@ -48,22 +48,22 @@ _STEPS = [
     {"en": ("Take the ", (s.project.titles.keyword, "microphone")), "fr": ("Prenez le ", (s.project.titles.keyword, "micro"))},
     {"en": ("Say ", (s.project.titles.keyword, "why"), " you favour the pole"), "fr": ("Dites ", (s.project.titles.keyword, "pourquoi"), " vous défendez le pôle")},
 ]
-_MARKER = {"en": "The debates"}
-_TITLE = {"en": ("Now ... ", (s.project.titles.keyword, "HANDS ON"))}
-_TIP_TITLE = {"en": "Navigating the debates bank"}
+_MARKER = {"en": "The debates", "fr": "Les débats"}
+_TITLE = {"en": ("Now ... ", (s.project.titles.keyword, "HANDS ON")), "fr": ("Maintenant... ", (s.project.titles.keyword, "À VOUS"))}
+_TIP_TITLE = {"en": "Navigating the debates bank", "fr": "Naviguer dans la banque des débats"}
 _TIP_PLAN = ({"en": "The plan", "fr": "Le plan"},
              {"en": ("Two or three axes — the ones where this room splits, read on the "
                      "results page. Name them out loud before opening the first; two axes "
                      "done properly beat five rushed."), "fr": "Deux ou trois axes — ceux sur lesquels cette salle se divise, lus sur la page des résultats. Nommez-les à voix haute avant d'ouvrir le premier ; deux axes bien menés valent mieux que cinq bâclés."})
-_TIP_OFFERS = ({"en": "What each pole offers"},
+_TIP_OFFERS = ({"en": "What each pole offers", "fr": "Ce qu'offre chaque pôle"},
                {"en": ("What the pole claims and its three survey statements; three "
                        "historical figures who defended it, with a portrait, a sourced "
                        "quotation and a presentation video; three sourced contemporary "
-                       "arguments; then the two poles face to face.")})
-_TIP_BOTH = ({"en": "Both sides, always"},
+                       "arguments; then the two poles face to face."), "fr": "Ce que le pôle affirme et ses trois énoncés du sondage ; trois figures historiques qui l'ont défendu, avec un portrait, une citation sourcée et une vidéo de présentation ; trois arguments contemporains sourcés ; puis les deux pôles face à face."})
+_TIP_BOTH = ({"en": "Both sides, always", "fr": "Les deux camps, toujours"},
              {"en": ("The material is symmetrical. Never open one pole without its opposite "
                      "— the room must hear the two best cases, not the one the speaker "
-                     "prefers.")})
+                     "prefers."), "fr": "Le matériau est symétrique. N'ouvrez jamais un pôle sans son opposé — la salle doit entendre les deux meilleurs plaidoyers, pas celui que l'orateur préfère."})
 
 
 def build(lang: str = "en", **_):

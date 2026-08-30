@@ -39,26 +39,26 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Le texte projeté (règle R-i18n) — marqueur et libellé : ui("no_consensus").
-_TITLE = {"en": ("No consensus — and that is ", (s.project.titles.keyword, "normal"))}
-_LEAD = {"en": ("posture = ", (s.project.titles.keyword, "snapshot"), " → retake at year end")}
-_TIP_TITLE = {"en": "After today"}
+_TITLE = {"en": ("No consensus — and that is ", (s.project.titles.keyword, "normal")), "fr": ("Pas de consensus — et c'est ", (s.project.titles.keyword, "normal"))}
+_LEAD = {"en": ("posture = ", (s.project.titles.keyword, "snapshot"), " → retake at year end"), "fr": ("posture = ", (s.project.titles.keyword, "instantané"), " → à refaire fin d'année")}
+_TIP_TITLE = {"en": "After today", "fr": "Et après ?"}
 _TIP = [
-    ({"en": "A posture is a snapshot"},
+    ({"en": "A posture is a snapshot", "fr": "Une posture est un instantané"},
      {"en": ("It is where you stand today, with what you know today. The instrument "
              "measures a position, not a personality — and positions move, especially in "
-             "a first year.")}),
-    ({"en": "Retake it later"},
+             "a first year."), "fr": "C'est là où vous en êtes aujourd'hui, avec ce que vous savez aujourd'hui. L'instrument mesure une position, pas une personnalité — et les positions bougent, surtout en première année."}),
+    ({"en": "Retake it later", "fr": "Refaites-le plus tard"},
      {"en": ("The same survey can be retaken at the end of the year with the same code. "
              "Comparing the two is the interesting part; most people are surprised by "
-             "which axis moved.")}),
-    ({"en": "Disagreement is the material"},
+             "which axis moved."), "fr": "Le même sondage peut se refaire en fin d'année, avec le même code. L'intéressant, c'est de comparer les deux : la plupart des gens sont surpris par l'axe qui a bougé."}),
+    ({"en": "Disagreement is the material", "fr": "Le désaccord est la matière"},
      {"en": ("Every one of these eighteen postures has been held, argued and written down "
              "by someone whose name is in the history of technology. None of them is a "
-             "mistake.")}),
-    ({"en": "Where to go next"},
+             "mistake."), "fr": "Chacune de ces dix-huit postures a été tenue, défendue et écrite par quelqu'un dont le nom est dans l'histoire des techniques. Aucune n'est une erreur."}),
+    ({"en": "Where to go next", "fr": "Pour aller plus loin"},
      {"en": ("The afternoon sessions take the same questions to practice: how generative "
              "AI actually works, how to use it for study, and what the university's rules "
-             "say.")}),
+             "say."), "fr": "Les séances de l'après-midi mettent les mêmes questions à l'épreuve de la pratique : comment marche vraiment l'IA générative, comment étudier avec elle, et ce que disent les règles de l'université."}),
 ]
 
 

@@ -30,31 +30,31 @@ from postair_pack.components.ai_mark import dd35_overlay
 #: capitale initiale, règle R-case (NG 2026-08-30). Les titres de session, eux,
 #: viennent de l'agenda et ne sont jamais recasés.
 _PROMISE = {
-    "Introduction to AI & Generative AI": {"en": "Understand"},
-    "Using models & agents to study": {"en": "See it in practice"},
-    "The UL AI guidelines": {"en": "The rules of the game"},
+    "Introduction to AI & Generative AI": {"en": "Understand", "fr": "Comprendre"},
+    "Using models & agents to study": {"en": "See it in practice", "fr": "Voir en pratique"},
+    "The UL AI guidelines": {"en": "The rules of the game", "fr": "Les règles du jeu"},
 }
 
 # ── Le texte projeté (règle R-i18n) ──────────────────────────────────────────
-_MARKER = {"en": "Part two"}
-_TITLE = {"en": ("Part two — ", (s.project.titles.keyword, "the agenda"))}
-_TIP_TITLE = {"en": "The second half"}
+_MARKER = {"en": "Part two", "fr": "Deuxième partie"}
+_TITLE = {"en": ("Part two — ", (s.project.titles.keyword, "the agenda")), "fr": ("Deuxième partie — ", (s.project.titles.keyword, "le programme"))}
+_TIP_TITLE = {"en": "The second half", "fr": "La deuxième partie"}
 _TIP = [
-    ({"en": "Understand"},
+    ({"en": "Understand", "fr": "Comprendre"},
      {"en": ("What a large language model is doing when it answers: prediction, not "
              "knowledge — and why that explains both the usefulness and the confident "
-             "mistakes.")}),
-    ({"en": "Practice"},
+             "mistakes."), "fr": "Ce que fait un grand modèle de langage quand il répond : de la prédiction, pas du savoir — et pourquoi cela explique à la fois l'utilité et les erreurs affirmées avec aplomb."}),
+    ({"en": "Practice", "fr": "En pratique"},
      {"en": ("A revision agent built live with Mistral, including the anti-patterns: the "
              "agent that flatters, the one that invents sources, the one that does the work "
-             "you needed to do yourself.")}),
-    ({"en": "The rules"},
+             "you needed to do yourself."), "fr": "Un agent pour réviser vos cours, construit en direct avec Mistral, avec les pièges à éviter : l'agent qui flatte, celui qui invente des sources, celui qui fait le travail que vous deviez faire vous-même."}),
+    ({"en": "The rules", "fr": "Les règles"},
      {"en": ("The university's AI charter: permitted by default, the syllabus prevails, "
              "disclose your use, three risk levels, ten red lines — and the test that "
-             "decides the rest: can you defend it out loud?")}),
-    ({"en": "Same posture, new light"},
+             "decides the rest: can you defend it out loud?"), "fr": "La charte IA de l'université : autorisé par défaut, le syllabus prime, déclarez votre usage, trois niveaux de risque, dix lignes rouges — et le test qui tranche le reste : pouvez-vous le défendre à voix haute ?"}),
+    ({"en": "Same posture, new light", "fr": "Même posture, nouvel éclairage"},
      {"en": ("Everything in the second half connects back to the nine axes you answered "
-             "on this morning.")}),
+             "on this morning."), "fr": "Tout, dans la deuxième partie, renvoie aux neuf axes sur lesquels vous avez répondu ce matin."}),
 ]
 
 
