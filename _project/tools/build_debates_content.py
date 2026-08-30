@@ -165,6 +165,47 @@ def _flat(text: str) -> str:
     return "".join(c for c in (text or "").lower() if c.isalnum())
 
 
+#: Longueur minimale (caractères alphanumériques) d'un fragment pour qu'un
+#: appariement par INCLUSION soit accepté — en dessous, un bout de phrase
+#: banal apparierait n'importe quoi (même garde que ``similar`` du hub, qui
+#: refuse le recouvrement de mots sous huit mots).
+_INCLUSION_MIN = 40
+
+
+def curated_match(text: str, candidates: list[tuple[str, dict]]) -> tuple[dict | None, str | None]:
+    """La citation éditoriale qui correspond à un verbatim du registre.
+
+    Deux régimes, dans l'ordre (durci le 2026-08-30 après Pasteur) :
+
+    1. **égalité stricte** de ``_norm`` — prioritaire, inchangée ;
+    2. **inclusion** : le fragment du registre est contenu dans une langue de
+       la citation éditoriale, ou l'inverse (le hub cite parfois la phrase
+       entière là où le dossier n'en a retenu qu'un membre — Pasteur : « dans
+       les champs de l'observation… » ⊂ « Souvenez-vous que dans les
+       champs… »). C'est ce que fait ``quote_ledger.py`` côté hub
+       (``matches``/``similar``). Un appariement par inclusion est journalisé
+       au work-order pour que le hub aligne dossier et éditorial à son rythme.
+
+    Sans appariement, la slide projetterait le fragment du registre TEL QUEL
+    dans le champ ``en`` — pour un original français, du français sans ``fr``
+    (le défaut vu le 2026-08-30).
+
+    :param candidates: ``[(texte éditorial d'une langue, citation), …]``.
+    :return: ``(citation, "exact" | "inclusion")`` ou ``(None, None)``.
+    """
+    key = _norm(text)
+    for lang_text, q in candidates:
+        if _norm(lang_text) == key:
+            return q, "exact"
+    flat = _flat(text)
+    if len(flat) >= _INCLUSION_MIN:
+        for lang_text, q in candidates:
+            other = _flat(lang_text)
+            if len(other) >= _INCLUSION_MIN and (flat in other or other in flat):
+                return q, "inclusion"
+    return None, None
+
+
 #: Les fragments que l'auteur a cités *entre apostrophes* dans un ``anchor`` de
 #: profil : ce sont les phrases exactes sur lesquelles repose la réponse validée.
 _ANCHOR_FRAGMENT = re.compile(r"'([^']{20,})'")
@@ -491,13 +532,13 @@ class Hub:
         # Apparié sur TOUTE langue de l'éditorial (contrat v2.7, 2026-08-29) :
         # cinq originaux français (Saint-Simon, Hugo, Pasteur, Saint-Exupéry,
         # Duhamel) sont dans le registre en français et trilingues à l'éditorial.
-        curated = {}
+        curated: list[tuple[str, dict]] = []
         for q in (self.editorial.get(fid, {}).get("quotes") or []):
             if not q.get("text", {}).get("en"):
                 continue
             for lang_text in q["text"].values():
                 if lang_text:
-                    curated.setdefault(_norm(lang_text), q)
+                    curated.append((lang_text, q))
         # Le CHOIX ÉDITORIAL d'abord (planche citdeb, NG 2026-08-14) : quand
         # l'auteur a désigné LA citation d'un couple figure × pôle dans
         # ``editorial/<id>.json``, elle gagne d'office — le classement P3 ne
@@ -522,7 +563,7 @@ class Hub:
             # unusable. A key the hub resolved is a complete reference.
             if q.get("source_status") == "unresolved-key":
                 continue
-            match = curated.get(_norm(text))
+            match, how = curated_match(text, curated)
             display = (match or {}).get("text", {}).get("en") or text
             # Une figure présente sur deux pôles ne redit pas la même phrase.
             if _norm(display) in exclude:
@@ -542,21 +583,21 @@ class Hub:
                            (0 if match else 1),                # bilingual + precise reference
                            _verification_tier(q.get("verification")),
                            abs(len(text) - 150),               # closest to the ideal slide length
-                           q, match, sorted(items)))
+                           q, match, sorted(items), how))
         if not ranked:
             return None
         ranked.sort(key=lambda r: r[:10])
-        *_, q, match, items = ranked[0]
+        *_, q, match, items, how = ranked[0]
         display_override = None
         if choice:
             wanted = _flat(choice["en"])
-            holders = [r for r in ranked if wanted in _flat(r[-3]["text"])]
+            holders = [r for r in ranked if wanted in _flat(r[-4]["text"])]
             if not holders:
                 raise SystemExit(
                     f"{fid} {axis}/{side}: le choix éditorial n'est un extrait "
                     f"d'aucune citation éligible du registre — corriger "
                     f"editorial/{fid}.json ou le registre, jamais ici")
-            *_, q, match, items = holders[0]
+            *_, q, match, items, how = holders[0]
             if _flat(choice["en"]) != _flat(q["text"]):
                 display_override = choice["en"]      # extrait verbatim raccourci
         full = _reference(q, match)
@@ -576,7 +617,7 @@ class Hub:
                 "reference": _short_reference(full),
                 "reference_full": full,
                 "citekeys": bibkeys,
-                "curated": bool(match), "documents": items,
+                "curated": bool(match), "curated_by": how, "documents": items,
                 "editorial": bool(choice),
                 "reasoning": self.reasoning(fid, items, axis, side),
                 "anchored": any(_anchored(q["text"],
@@ -945,7 +986,16 @@ def work_order(data: dict) -> str:
                       + f" · {no_en} justification(s) sans anglais")
     else:
         waves_line = "table pôle→vagues : ABSENTE du hub (great-figures/waves-by-pole.json) — slides « vagues » non rendues"
+    # Appariements par INCLUSION (règle durcie 2026-08-30) : le dossier et
+    # l'éditorial ne disent pas exactement la même phrase — projeté quand même,
+    # mais listé ici pour que le hub les aligne (registre == éditorial).
+    inclusions = sorted({(f["id"], f["quote"]["en"][:50]) for p in data["poles"]
+                         for f in p["figures"] if f["quote"].get("curated_by") == "inclusion"})
+    if inclusions:
+        out += ["## Appariés par inclusion (registre ≠ éditorial mot pour mot) — à aligner au hub", ""]
+        out += [f"- `{fid}` : « {t}… »" for fid, t in inclusions] + [""]
     out += ["---", "", f"**{waves_line}.**", "",
+            f"**{len(inclusions)} citation(s) appariée(s) par inclusion.**", "",
             f"**{missing_ref} sans référence imprimable · "
             f"{sum(1 for *_, n in rows if 'traduction FR' in n)} sans traduction française · "
             f"{no_bibkey} citations sans clé BibTeX promue (repli chaîne gelée) · "
