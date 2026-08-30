@@ -339,6 +339,23 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
                              *(f["quote"].get("citekeys") or [])), tag=t.div)
 
 
+#: Zoom de DÉPART des cartes d'argument (NG 2026-08-30) — le levier de taille
+#: de la slide ; `_fit_zoom` en redescend selon la longueur des titres.
+_ARG_ZOOM_START = 200
+
+
+def _fit_zoom(longest: int, steps: tuple[int, int], start: int = _ARG_ZOOM_START,
+              drop: int = 35) -> int:
+    """Le zoom qui tient : ``start`` jusqu'au premier seuil de longueur,
+    puis deux crans de ``drop`` en dessous — un titre plus long prend plus
+    de lignes, et les DEUX rangées doivent rester au-dessus du pli (mesuré
+    au rendu 1920×1080, 2026-08-30 : une demi-largeur porte ~22 caractères
+    par ligne à 200, ~30 à 160)."""
+    if longest <= steps[0]:
+        return start
+    return start - drop if longest <= steps[1] else start - 2 * drop
+
+
 def _arguments(pole: dict, lang: str | None) -> None:
     pole_name = text(pole["pole"], lang)
     # Attribution COURTE à l'écran (« Andrew Ng ») — la titulature complète
@@ -353,23 +370,53 @@ def _arguments(pole: dict, lang: str | None) -> None:
     entries.append(("Paraphrase or verbatim", "A card carrying a quotation gives it verbatim; "
                                               "the others are documented paraphrases of a "
                                               "sourced position."))
-    _header(["And ", (s.project.titles.keyword, "today"), "? — ", pole_name],
+    _header(["And today for ", (s.project.titles.keyword, "AI"), "? — ", pole_name],
             f"Contemporary arguments for {pole_name}", entries)
-    st_space("v", s.project.spacing.title_gap)
-    with st_grid(cols=s.project.grids.balanced(len(pole["arguments"])), gap="1.2vw",
+    st_space("v", "1vh")
+    # Grille 2+1 (NG 2026-08-30) : rangée 1 = public policy | public statement,
+    # rangée 2 = concrete case pleine largeur — trois colonnes faisaient trois
+    # cartes étroites et la moitié de l'écran vide ; une longue ligne par
+    # argument se lisait mal. L'ordre par NATURE est déterministe : le gel
+    # choisit toujours trois natures différentes.
+    order = {"policy": 0, "quote": 1, "case": 2, "historical": 2, "tradition": 2}
+    args = sorted(pole["arguments"], key=lambda a: order.get(a["category"], 3))
+    top, bottom = args[:2], args[2:]
+
+    def _card(a: dict) -> None:
+        # La ligne de source est le code de citation natif — carte complète
+        # au survol — avec repli sur la chaîne du manifeste si la clé n'était
+        # pas gelée.
+        person_short = (a.get("person") or "").split(",")[0].strip() or None
+        argument_card(a, DS, text(a["title"], lang), person=person_short,
+                      source_html=citation_or(
+                          a.get("reference") or a.get("citekey") or "",
+                          *([a["citekey"]] if a.get("citekey") else [])))
+
+    # Le zoom part de `_ARG_ZOOM_START` (200, NG) et redescend AUTOMATIQUEMENT
+    # avec le titre le plus long de la rangée, pour que les DEUX rangées
+    # tiennent au-dessus du pli (même mécanisme que la citation de `_figure`).
+    # Le zoom s'applique DANS la cellule, jamais autour de la grille : les
+    # planchers en px d'une grille suivent le zoom (R-zoom) et, doublés,
+    # feraient retomber deux colonnes en une.
+    zoom_top = _fit_zoom(max((len(text(a["title"], lang)) for a in top), default=0),
+                         (22, 45))
+    with st_grid(cols=s.project.grids.balanced(len(top), min_px=340), gap="1.2vw",
                  grid_style=s.project.grids.stretch,
-                 cell_styles=s.project.containers.grid_cell_centered) as g:
-        for a in pole["arguments"]:
-            with g.cell():
-                # La ligne de source est le code de citation natif — carte
-                # complète au survol — avec repli sur la chaîne du manifeste
-                # si la clé n'était pas gelée.
-                person_short = (a.get("person") or "").split(",")[0].strip() or None
-                argument_card(a, DS, text(a["title"], lang),
-                              person=person_short,
-                              source_html=citation_or(
-                                  a.get("reference") or a.get("citekey") or "",
-                                  *([a["citekey"]] if a.get("citekey") else [])))
+                 cell_styles=s.project.containers.grid_cell_top) as g:
+        for a in top:
+            with g.cell(), st_zoom(zoom_top):
+                _card(a)
+    if bottom:
+        st_space("v", "1.5vh")
+        # La rangée du bas est pleine largeur (titre sur 1-2 lignes) mais
+        # n'a que la hauteur restante : elle part plus bas.
+        zoom_bottom = _fit_zoom(max(len(text(a["title"], lang)) for a in bottom),
+                                (55, 90), start=_ARG_ZOOM_START - 70, drop=15)
+        with st_grid(cols="1fr", grid_style=s.project.grids.stretch,
+                     cell_styles=s.project.containers.grid_cell_top) as g:
+            for a in bottom:
+                with g.cell(), st_zoom(zoom_bottom):
+                    _card(a)
 
 
 def _faceoff(both: list[dict], lang: str | None) -> None:
