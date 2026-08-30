@@ -9,12 +9,12 @@
   "default_language": "en",
   "generated_by": "_project/tools/build_debates_content.py",
   "instrument_version": "1.11.0",
-  "debate_version": "2.4.0"
+  "debate_version": "2.4.1"
  },
  "version": 1,
  "generated_by": "_project/tools/build_debates_content.py",
  "instrument_version": "1.11.0",
- "debate_version": "2.4.0",
+ "debate_version": "2.4.1",
  "poles": [
   {
    "axis": "trust",
@@ -2782,8 +2782,8 @@
      "statement": "RAT-01",
      "category": "case",
      "title": {
-      "en": "Every model goes through the same test sheet",
-      "fr": "Chaque modèle passe la même grille de tests"
+      "en": "Judge an AI by its score sheet, not by the hype",
+      "fr": "Juger une IA sur sa fiche de scores, pas sur le battage médiatique"
      },
      "person": "Matthew Berman",
      "text": {
@@ -2799,8 +2799,8 @@
      "statement": "RAT-01",
      "category": "quote",
      "title": {
-      "en": "Kelvin: to measure is to know",
-      "fr": "Kelvin : mesurer, c'est connaître"
+      "en": "A physicist's 1883 maxim: judge AI by benchmarks and error rates, not impressions",
+      "fr": "La maxime d'un physicien en 1883 : juger l'IA à ses bancs d'essai et à ses taux d'erreur, pas aux impressions"
      },
      "person": "William Thomson (Lord Kelvin), physicist",
      "text": {
@@ -3199,8 +3199,8 @@
      "statement": "SPE-03",
      "category": "policy",
      "title": {
-      "en": "Rio Principle 15: the precautionary approach",
-      "fr": "Principe 15 de Rio : l'approche de précaution"
+      "en": "Irreversible harm possible? Do not wait for proof: a 1992 rule, applied to AI",
+      "fr": "Dommage irréversible possible ? Ne pas attendre la preuve : une règle de 1992, appliquée à l'IA"
      },
      "person": null,
      "text": {
@@ -3216,8 +3216,8 @@
      "statement": "SPE-01",
      "category": "case",
      "title": {
-      "en": "Don't rush ever-larger models out the door",
-      "fr": "Ne pas précipiter la sortie de modèles toujours plus grands"
+      "en": "Peer-reviewed research shows large language models ship faster than their harms are assessed",
+      "fr": "La recherche évaluée par les pairs montre que les grands modèles de langage sont déployés plus vite que leurs dangers ne sont évalués"
      },
      "person": "Timnit Gebru",
      "text": {
@@ -3233,8 +3233,8 @@
      "statement": "SPE-01",
      "category": "quote",
      "title": {
-      "en": "The 2023 pause letter",
-      "fr": "La lettre ouverte de 2023 pour une pause"
+      "en": "30,000 signatories asked all AI labs to pause training beyond GPT-4 for six months",
+      "fr": "30 000 signataires ont demandé à tous les labos d'IA une pause de six mois des entraînements au-delà de GPT-4"
      },
      "person": "Open-letter signatories incl. Yoshua Bengio, Steve Wozniak, Elon Musk (Future of Life Institute)",
      "text": {
@@ -3613,8 +3613,8 @@
      "statement": "SPE-04",
      "category": "policy",
      "title": {
-      "en": "You can't prove a negative",
-      "fr": "On ne prouve pas une négation"
+      "en": "Demanding proof of safety before release is impossible: no one can prove a negative",
+      "fr": "Exiger la preuve de sûreté avant la sortie est impossible : nul ne peut prouver une négation"
      },
      "person": "Andrew Ng",
      "text": {
@@ -3630,8 +3630,8 @@
      "statement": "SPE-03",
      "category": "case",
      "title": {
-      "en": "Just build it with AI, learn as you go",
-      "fr": "Construis-le avec l'IA, apprends en chemin"
+      "en": "Do not wait to study it all: build with AI, learn as you go",
+      "fr": "N'attendez pas d'avoir tout étudié : construisez avec l'IA, apprenez en chemin"
      },
      "person": "Riley Brown",
      "text": {
@@ -3647,8 +3647,8 @@
      "statement": "SPE-01",
      "category": "quote",
      "title": {
-      "en": "Marc Andreessen: deceleration costs lives",
-      "fr": "Marc Andreessen : la décélération coûte des vies"
+      "en": "Slowing AI delays cures, safety gains and prosperity: the techno-optimist manifesto",
+      "fr": "Freiner l'IA retarde les remèdes, les gains de sûreté et la prospérité : le manifeste techno-optimiste"
      },
      "person": "Marc Andreessen, co-founder of Andreessen Horowitz",
      "text": {
@@ -4511,14 +4511,14 @@
      "presentation": "Louis Pasteur (1822–1895), French chemist, was not a commentator on his era's disruptive wave but its principal architect: germ theory, and the medicine it made possible. His optimism was total — the new science as “a law of peace, of work, of salvation” — but never naive: enthusiasm, he insisted, must keep “a severe control as its inseparable companion.” His method was proof-first and public: at Pouilly-le-Fort he signed the protocol in advance and let a controlled trial decide before witnesses; at the human frontier he treated the child Joseph Meister “not without grave and cruel misgivings.” What instructs is the pairing: confident enthusiasm disciplined by demonstrated proof and restraint.",
      "epoch": "Louis Pasteur (1822-1895) was a French chemist whose work reached from crystallography and fermentation into medicine. From the inaugural address he delivered at Douai in December 1854, marking the installation of the science faculty at Lille, to the reception speech he gave at the Academie francaise on 27 April 1882, taking Littre's seat and answered by Ernest Renan, he moved at the centre of France's scientific establishment. His Sorbonne conference of 7 April 1864 argued against spontaneous generation; his 1881 report to the Academie des sciences recorded the public anthrax-vaccine trial at Pouilly-le-Fort; and in November 1888 the Institut Pasteur was inaugurated in Paris before President Sadi Carnot. He held standing across the era's academies of sciences, of medicine, and the Academie francaise, both as an experimenter and as a public figure.",
      "quote": {
-      "en": "dans les champs de l'observation le hasard ne favorise que les esprits préparés.",
-      "fr": null,
-      "reference": "pasteur1854-douai",
-      "reference_full": "pasteur1854-douai",
+      "en": "Remember that in the fields of observation chance favors only the prepared mind.",
+      "fr": "Souvenez-vous que dans les champs de l'observation le hasard ne favorise que les esprits préparés.",
+      "reference": "Louis Pasteur — Wikiquote (Citations sourcées; discours à Douai, 7 décembre 1854 …",
+      "reference_full": "Louis Pasteur — Wikiquote (Citations sourcées; discours à Douai, 7 décembre 1854, Œuvres de Pasteur, t. 7)",
       "citekeys": [
        "pasteur1854-douai"
       ],
-      "curated": false,
+      "curated": true,
       "documents": [
        "OPE-01",
        "OPE-03"
