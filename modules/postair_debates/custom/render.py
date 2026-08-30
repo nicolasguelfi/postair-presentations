@@ -50,6 +50,9 @@ from postair_pack.components.pole_identity import pole_identity
 
 class RenderStyles:
     title = s.project.titles.slide_title + s.center_txt
+    # Badge de nature des cartes d'argument (NG 2026-08-30) : triplé — la
+    # taille du sous-titre, en teal gras, au lieu de la taille de base.
+    nature_badge = s.project.titles.subtitle + s.project.titles.keyword
     subtitle = s.project.titles.subtitle + s.center_txt
     wave_name = s.project.body.pole_label_compact + s.center_txt
     wave_period = s.project.body.caption + s.center_txt
@@ -477,6 +480,7 @@ def _arguments(pole: dict, lang: str | None) -> None:
         # pas gelée.
         person_short = (a.get("person") or "").split(",")[0].strip() or None
         argument_card(a, DS, text(a["title"], lang), person=person_short,
+                      badge_style=rs.nature_badge,
                       nature=T(_NATURES.get(a["category"], {"en": a["category"] or ""}), lang),
                       source_html=citation_or(
                           a.get("reference") or a.get("citekey") or "",
@@ -488,8 +492,12 @@ def _arguments(pole: dict, lang: str | None) -> None:
     # Le zoom s'applique DANS la cellule, jamais autour de la grille : les
     # planchers en px d'une grille suivent le zoom (R-zoom) et, doublés,
     # feraient retomber deux colonnes en une.
-    zoom_top = _fit_zoom(max((len(text(a["title"], lang)) for a in top), default=0),
-                         (22, 45))
+    # UN SEUL zoom pour les deux rangées (NG 2026-08-30 : même taille de
+    # texte partout) — calé sur le titre le plus long des trois cartes ; le
+    # badge triplé prend sa part du budget de hauteur (paliers resserrés).
+    zoom = _fit_zoom(max((len(text(a["title"], lang)) for a in args), default=0),
+                     (22, 45), drop=45)
+    zoom_top = zoom
     with st_grid(cols=s.project.grids.balanced(len(top), min_px=340), gap="1.2vw",
                  grid_style=s.project.grids.stretch,
                  cell_styles=s.project.containers.grid_cell_top) as g:
@@ -497,11 +505,8 @@ def _arguments(pole: dict, lang: str | None) -> None:
             with g.cell(), st_zoom(zoom_top):
                 _card(a)
     if bottom:
-        st_space("v", "1.5vh")
-        # La rangée du bas est pleine largeur (titre sur 1-2 lignes) mais
-        # n'a que la hauteur restante : elle part plus bas.
-        zoom_bottom = _fit_zoom(max(len(text(a["title"], lang)) for a in bottom),
-                                (55, 90), start=_ARG_ZOOM_START - 70, drop=15)
+        st_space("v", "1vh")
+        zoom_bottom = zoom
         with st_grid(cols="1fr", grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_top) as g:
             for a in bottom:
