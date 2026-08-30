@@ -41,8 +41,8 @@ bs = BlockStyles
 
 # ── Le fait : la procédure en cas de soupçon (guidelines, section 4) ────────
 #: La ligne des garanties, projetée en quatre puces (split sur « · »).
-_LINE = ("standard procedure · solid evidence required · a detector alone "
-         "≠ proof · your rights protected")
+_LINE = ("Standard procedure · Solid evidence required · A detector alone "
+         "≠ proof · Your rights protected")
 #: « short » titre l'entrée du tooltip ; « detail » en est le corps.
 _CARDS = [
     {"icon": "⚖️", "short": "Standard procedure",

@@ -54,7 +54,7 @@ _RULES = [
     ("Hands on", ("your arguments", "each way")),
     # Le fil de chaque axe : les figures d'hier, les arguments d'aujourd'hui,
     # le face-à-face qui engage demain — l'ordre des sous-slides de la banque.
-    ("DEBATE", "Past · Present · Future"),
+    ("DEBATE", "past · present · future"),
 ]
 
 # The moderator flanked by an opposed pair — the visual grammar of a debate.

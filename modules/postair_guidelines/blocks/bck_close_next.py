@@ -31,10 +31,10 @@ bs = BlockStyles
 
 # ── Le fait : ce qui reste après la séance ──────────────────────────────────
 _ITEMS = [
-    "your result: /r/<code> · anonymous · yours",
+    "Your result: /r/<code> · anonymous · yours",
     "4 decks online · one hub",
     "Mistral walkthrough → rebuild at home",
-    "retake the survey at year end → postures MOVE",
+    "Retake the survey at year end → postures MOVE",
 ]
 _HUB_URL = "postair-collection.streamtex.org"
 _CONTACTS = "Guidelines: I2TL@uni.lu · the speakers stay around during the break"

@@ -63,7 +63,7 @@ _BARS = [
     {"who": "Physician alone", "value": "74 %", "tone": "blue"},
     {"who": "Physician + AI", "value": "76 %", "tone": "teal"},
 ]
-_MESSAGE = "same tool · same doctors · +2 points → collaborating is LEARNED"
+_MESSAGE = "Same tool · same doctors · +2 points → collaborating is LEARNED"
 _LOYALTY = ("Randomized clinical trial · 50 physicians with their usual "
             "tools · peer-reviewed, 2024")
 _DETAIL = ("In a randomized clinical trial, GPT-4 alone scored a median 92 % "

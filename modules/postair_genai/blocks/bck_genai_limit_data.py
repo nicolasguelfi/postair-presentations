@@ -39,8 +39,8 @@ bs = BlockStyles
 _MARKER = "Your data"
 _ICON = "🔐"
 _LABEL = "Your data is the raw material"
-_MESSAGE = "« free » = paid with your conversations"
-_PUNCH = "read what you sign · personal / sensitive = OUT"
+_MESSAGE = "« Free » = paid with your conversations"
+_PUNCH = "Read what you sign · personal / sensitive = OUT"
 _DETAIL = ("Free tools pay themselves with your conversations. Read what you "
            "accept — and keep personal and sensitive data out.")
 

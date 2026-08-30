@@ -61,15 +61,15 @@ _HERO_PROMPT = (
 #: l'entrée : medical ; son pictogramme d'origine : 🩺.
 _LABEL = "The diagnosis: 85 % vs 20 %"
 _AI_VALUE = "85.5 %"
-_AI_LABEL = "specialised AI orchestrator"
+_AI_LABEL = "Specialised AI orchestrator"
 _HUMAN_VALUE = "20 %"
 _HUMAN_LABEL = "21 experienced physicians"
-_MESSAGE = "medicine's hardest cases · specialised AI ≫ unaided doctor"
+_MESSAGE = "Medicine's hardest cases · specialised AI ≫ unaided doctor"
 #: La ligne de loyauté EN CLAIR : les conditions de l'étude font partie du
 #: message, pas des notes de bas de page.
 _LOYALTY = ("304 NEJM clinical puzzles · physicians without internet or "
             "colleagues · preprint, 2025")
-_CONFIRM = ("confirmed in live dialogue: AMIE > GPs · 7/9 multimodal axes · "
+_CONFIRM = ("Confirmed in live dialogue: AMIE > GPs · 7/9 multimodal axes · "
             "blinded RCT — actors, not patients")
 _CONFIRM_CITEKEYS = ["saab2025-amie"]
 _DETAIL = ("Microsoft's MAI-DxO orchestrator solved 304 New England Journal "

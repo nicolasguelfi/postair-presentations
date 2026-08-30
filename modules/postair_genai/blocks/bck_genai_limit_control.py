@@ -38,7 +38,7 @@ bs = BlockStyles
 _MARKER = "Control"
 _ICON = "🏛️"
 _LABEL = "Who controls the models?"
-_MESSAGE = "frontier models = a handful of companies"
+_MESSAGE = "Frontier models = a handful of companies"
 _PUNCH = "EU sovereignty → Mistral, next session"
 _DETAIL = ("A handful of companies train the frontier models. What Europe "
            "builds itself is a sovereignty question — the Mistral session is "

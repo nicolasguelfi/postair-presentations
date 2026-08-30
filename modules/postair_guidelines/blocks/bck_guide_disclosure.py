@@ -91,5 +91,5 @@ def build(lang: str = "en", **_):
                     st_write(bs.short, item["short"], tag=t.div)
         st_space("v", "2.5vh")
         st_write(bs.example, _EXAMPLE, tag=t.div)
-        st_write(bs.cite, "one honest sentence is enough ",
+        st_write(bs.cite, "One honest sentence is enough ",
                  citation(*_CITEKEYS), tag=t.div)

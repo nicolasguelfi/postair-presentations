@@ -36,7 +36,7 @@ from streamtex.enums import Tags as t
 _TIPS = [
     ({"en": "QR won't scan?", "fr": "QR illisible ?"}, {"en": "Type the address and the code by hand", "fr": "Tapez l'adresse et le code à la main"},
      s.project.cards.blue, s.project.colors.primary),
-    ({"en": "Wifi struggling?", "fr": "Le wifi rame ?"}, {"en": "wifi OFF → mobile data", "fr": "wifi coupé → données mobiles"},
+    ({"en": "Wifi struggling?", "fr": "Le wifi rame ?"}, {"en": "Wifi OFF → mobile data", "fr": "Wifi coupé → données mobiles"},
      s.project.cards.amber, s.project.colors.amber),
     ({"en": "Finished early?", "fr": "Déjà fini ?"}, {"en": "Read the six archetype descriptions", "fr": "Lisez les six descriptions d'archétypes"},
      s.project.cards.teal, s.project.colors.keyword),
@@ -44,7 +44,7 @@ _TIPS = [
      s.project.cards.blue, s.project.colors.success),
     ({"en": "Battery low?", "fr": "Batterie à plat ?"}, {"en": "Pair up with a neighbour and share one", "fr": "Mettez-vous à deux sur un appareil"},
      s.project.cards.coral, s.project.colors.critical),
-    ({"en": "Something else?", "fr": "Autre chose ?"}, {"en": "raise a hand → we come to you", "fr": "levez la main → on vient à vous"},
+    ({"en": "Something else?", "fr": "Autre chose ?"}, {"en": "Raise a hand → we come to you", "fr": "Levez la main → on vient à vous"},
      s.project.cards.coral, s.project.colors.coral),
 ]
 

@@ -48,10 +48,10 @@ _DESK_PROMPT = (
 
 # ── Les quatre usages recommandés — ce que l'IA fait POUR l'apprentissage ───
 _DO = [
-    "concepts explained until they CLICK · 24/7",
-    "quizzes + flashcards from YOUR notes",
-    "outlines & first drafts → the thinking stays yours",
-    "a tireless language partner",
+    "Concepts explained until they CLICK · 24/7",
+    "Quizzes + flashcards from YOUR notes",
+    "Outlines & first drafts → the thinking stays yours",
+    "A tireless language partner",
 ]
 
 

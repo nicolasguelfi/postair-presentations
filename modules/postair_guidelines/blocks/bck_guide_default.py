@@ -48,8 +48,8 @@ _VERBATIM = ("In the absence of explicit course directives, students MAY use "
              "generative AI to support their learning — within academic "
              "integrity, transparency, and respect of third-party rights.")
 _CAVEATS = [
-    "the syllabus PRIMES · a course can restrict or forbid",
-    "in doubt → ask BEFORE",
+    "The syllabus PRIMES · a course can restrict or forbid",
+    "In doubt → ask BEFORE",
 ]
 _ANECDOTE = ("The default rule became permissive after the community "
              "consultation — the openness is deliberate, not an oversight.")

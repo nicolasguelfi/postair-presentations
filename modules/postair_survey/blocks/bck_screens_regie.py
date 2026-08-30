@@ -38,7 +38,7 @@ bs = BlockStyles
 _REGIE = [
     ("20-admin-console", "min(18vw, 32vh)",
      "Desktop screen of the sumvadis admin console, dark theme",
-     {"en": "the console — operator key · FR/EN", "fr": "la console — clé opérateur · FR/EN"},
+     {"en": "The console — operator key · FR/EN", "fr": "La console — clé opérateur · FR/EN"},
      ({"en": "Pause first, diagnose after", "fr": "Pause d'abord, diagnostic ensuite"},
       {"en": ("The console steers the campaigns — pause, resume, close, reopen per "
               "day. Any incident: pause, then think."), "fr": "La console pilote les campagnes — pause, reprise, clôture, réouverture par jour. Au moindre incident : pause, puis réflexion."})),

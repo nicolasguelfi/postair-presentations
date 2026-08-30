@@ -54,7 +54,7 @@ _SCENE = ("A papercut humanities scene: a pile of colourful paper books, a "
 # ── Les constats (headline projetée ; detail + caveat dans le tooltip) ──────
 _EXAMPLES = [
     {
-        "headline": {"en": "non-native writers are detected as AI", "fr": "les non-natifs de l'anglais détectés comme IA"},
+        "headline": {"en": "Non-native writers are detected as AI", "fr": "Les non-natifs de l'anglais détectés comme IA"},
         "detail": {"en": ("Writing in a second language is read as writing by a "
                    "machine. Seven detectors wrongly flagged 61 % of essays "
                    "by non-native English writers while classifying US "

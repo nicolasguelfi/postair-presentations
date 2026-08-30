@@ -73,7 +73,7 @@ _EXAMPLES = [
         "reported": False,
     },
     {
-        "headline": {"en": "the model follows precedent — the judges followed sympathy", "fr": "le modèle suit la jurisprudence — les juges, la sympathie"},
+        "headline": {"en": "The model follows precedent — the judges followed sympathy", "fr": "Le modèle suit la jurisprudence — les juges, la sympathie"},
         "detail": {"en": ("A controlled experiment once run on 31 real US federal "
                    "judges was replicated with GPT-4o judging the same full "
                    "case file: the model follows legal precedent and ignores "

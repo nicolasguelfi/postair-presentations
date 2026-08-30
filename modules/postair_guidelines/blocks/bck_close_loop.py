@@ -41,13 +41,13 @@ bs = BlockStyles
 #: « label » est projeté sur la carte ; « session » vit dans le tooltip.
 _STEPS = [
     {"icon": "🎡", "label": "Your posture",
-     "session": "the morning: nine axes, your radar, the debates"},
+     "session": "The morning: nine axes, your radar, the debates"},
     {"icon": "🤖", "label": "Understanding",
      "session": "GenAI: what it is, what it gets wrong"},
     {"icon": "⚡", "label": "Practice",
      "session": "Mistral: build your own study agent"},
     {"icon": "📋", "label": "The rules",
-     "session": "these guidelines: use it well, openly"},
+     "session": "These guidelines: use it well, openly"},
 ]
 _CITEKEYS = ["guelfi-postair"]
 #: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien

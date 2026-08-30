@@ -24,9 +24,9 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "The Survey — poster", "fr": "Le Sondage — affiche"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "Survey")), "fr": ("Le ", (s.project.titles.keyword, "Sondage"))}
-_LABEL = {"en": "The Survey", "fr": "Le Sondage"}
+_MARKER = {"en": "The survey — poster", "fr": "Le sondage — affiche"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "survey")), "fr": ("Le ", (s.project.titles.keyword, "sondage"))}
+_LABEL = {"en": "The survey", "fr": "Le sondage"}
 _TIP_TITLE = {"en": "Next 30 minutes", "fr": "Les 30 prochaines minutes"}
 _TIP = [
     ({"en": "Now", "fr": "Maintenant"},

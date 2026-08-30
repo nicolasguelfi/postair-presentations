@@ -42,7 +42,7 @@ _CAPABILITIES = [
     {
         "icon": "✍️",
         "label": "Write",
-        "example": "writing: ~40 % faster (controlled trial)",
+        "example": "Writing: ~40 % faster (controlled trial)",
         "citekeys": ["noy-zhang-2023"],
     },
     {
@@ -54,7 +54,7 @@ _CAPABILITIES = [
     {
         "icon": "💻",
         "label": "Code",
-        "example": "sentence → program · explains others' code",
+        "example": "Sentence → program · explains others' code",
         "citekeys": [],
     },
     {
@@ -66,19 +66,19 @@ _CAPABILITIES = [
     {
         "icon": "🎨",
         "label": "Create media",
-        "example": "text → image / music / video · this deck: 100 % generated",
+        "example": "Text → image / music / video · this deck: 100 % generated",
         "citekeys": [],
     },
     {
         "icon": "🧩",
         "label": "Reason (a bit)",
-        "example": "reasoning ↑ fast · unverified: fragile",
+        "example": "Reasoning ↑ fast · unverified: fragile",
         "citekeys": [],
     },
     {
         "icon": "⚡",
         "label": "Act — agents",
-        "example": "agents = tools in a loop → Mistral session",
+        "example": "Agents = tools in a loop → Mistral session",
         "citekeys": [],
         "accent": True,   # LA carte ambre — le teaser de la session Mistral.
     },

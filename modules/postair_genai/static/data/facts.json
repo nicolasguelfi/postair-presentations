@@ -22,13 +22,13 @@
     "en": "New York bail decisions · algorithm's prediction > judge's"
    },
    "second": {
-    "en": "in the lab: the LLM follows PRECEDENT · real judges followed sympathy"
+    "en": "In the lab: the LLM follows PRECEDENT · real judges followed sympathy"
    },
    "counterpoint": {
-    "en": "specialised ≠ better: commercial tool ≈ laypeople · 65 % vs 64 %"
+    "en": "Specialised ≠ better: commercial tool ≈ laypeople · 65 % vs 64 %"
    },
    "message": {
-    "en": "moods ≠ constancy"
+    "en": "Moods ≠ constancy"
    },
    "detail": {
     "en": "Two solid results, one caution. Kleinberg et al. (Quarterly Journal of Economics, 2018): on New York pre-trial release decisions, following a machine-learning risk prediction instead of the judge would cut crime by up to 24.7 % at an unchanged jailing rate — a policy simulation on real dossiers, not a deployment. Posner and Saran (2026) replicated a controlled experiment run on 31 real US federal judges with GPT-4o judging the same full case file: the model follows precedent and ignores the defendant's sympathy — the judges did the opposite. Practitioner anecdote: on the briefs alone, Claude decided 27 of 37 US Supreme Court cases the same way as the Court (Unikowsky 2024 — an essay, not peer review). And the famous \"AI predicts judges at 79 %\" figure classifies the text of ALREADY-written judgments; on genuinely future cases it drops to 58–68 %. Predicting a risk is not rendering justice — proportionality, dignity and the right to be heard stay human."

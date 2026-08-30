@@ -65,7 +65,7 @@ _FRAME_DETAIL = ("Employers surveyed across 55 economies expect 39 % of core "
                  "skills to change by 2030; analytical thinking and AI "
                  "literacy top the rising list.")
 _FRAME_SHORT = "55 economies · 39 % of core skills change → 2030"
-_FRAME_RISING = "fastest-rising skill: JUDGING what the AI produced"
+_FRAME_RISING = "Fastest-rising skill: JUDGING what the AI produced"
 _FRAME_CITEKEYS = ["wef2025-jobs"]
 
 

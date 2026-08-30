@@ -48,7 +48,7 @@ _SYNTHETIC = True
 # passe devant 1500 personnes. (fait court, détail lisible du fond.)
 _FACTS = [
     ({"en": "Dr. Nicolas Guelfi", "fr": "Dr Nicolas Guelfi"}, {"en": "your host for these three hours", "fr": "votre hôte pour ces trois heures"}),
-    ({"en": "Professor, FSTM", "fr": "Professeur, FSTM"}, {"en": "software engineering & artifical intelligence · University of Luxembourg", "fr": "génie logiciel & intelligence artificielle · Université du Luxembourg"}),  # TODO-NG vérifier l'intitulé exact
+    ({"en": "Professor, FSTM", "fr": "Professeur, FSTM"}, {"en": "software engineering & artificial intelligence · University of Luxembourg", "fr": "génie logiciel & intelligence artificielle · Université du Luxembourg"}),  # TODO-NG vérifier l'intitulé exact
     ({"en": "POSTAIR", "fr": "POSTAIR"}, {"en": "author of the posture instrument used today ;)", "fr": "auteur de l'instrument de posture utilisé aujourd'hui ;)"}),    # TODO-NG formulation
 ]
 

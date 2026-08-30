@@ -47,14 +47,14 @@ _EXAM_PROMPT = (
 
 # ── Les trois mises en garde — la dernière porte le chiffre HEPI sourcé ─────
 _DONT = [
-    "human exam = human learning",
-    "shortcut = the skill-building effort, replaced",
+    "Human exam = human learning",
+    "Shortcut = the skill-building effort, replaced",
     "94 % UK already use it → the question is HOW",
 ]
 _DONT_CITEKEYS = ["hepi-survey-2026"]
 
 # ── Le paradoxe — LE message de la slide ────────────────────────────────────
-_PARADOX = "well used → learning ↑ · INSTEAD of learning → cancelled"
+_PARADOX = "Well used → learning ↑ · INSTEAD of learning → cancelled"
 
 
 def build(lang: str = "en", **_):

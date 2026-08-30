@@ -41,7 +41,7 @@ bs = BlockStyles
 _MARKER = "Bias"
 _ICON = "⚖️"
 _LABEL = "Bias in, bias out"
-_MESSAGE = "our biases in → industrialised out"
+_MESSAGE = "Our biases in → industrialised out"
 _PUNCH = "34.7 % error · darker-skinned women — under 1 % · lighter-skinned men"
 _DETAIL = ("Commercial face classifiers erred up to 34.7 % on darker-skinned "
            "women against under 1 % on lighter-skinned men — the training "

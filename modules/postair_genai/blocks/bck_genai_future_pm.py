@@ -56,13 +56,13 @@ _HERO_PROMPT = (
 
 # ── La place de l'humain (message projeté ; phrase complète au survol) ──────
 _LABEL = "You will all be project managers"
-_MESSAGE = ("generative assistants → professional production · your place: "
+_MESSAGE = ("Generative assistants → professional production · your place: "
             "DIRECT · JUDGE · OWN IT")
 #: La maxime dans les deux langues — l'anglaise en ambre porte le message,
 #: l'originale française de l'auteur se lit telle quelle.
 _PUNCH = "How do you have it done, if you do not know how to do it?"
 _PUNCH_ORIGINAL = "« Comment faire faire, si nous ne savons pas faire ? »"
-_ANSWER = ("you can only direct what you can judge → learn the craft DURING "
+_ANSWER = ("You can only direct what you can judge → learn the craft DURING "
            "your studies")
 _DETAIL = ("Employers surveyed across 55 economies expect 39 % of core "
            "skills to change by 2030, with AI literacy and analytical "

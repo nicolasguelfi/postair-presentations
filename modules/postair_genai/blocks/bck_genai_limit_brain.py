@@ -42,7 +42,7 @@ bs = BlockStyles
 _MARKER = "Your brain"
 _ICON = "🧠"
 _LABEL = "The brain is a muscle"
-_MESSAGE = "effort delegated = muscle melted"
+_MESSAGE = "Effort delegated = muscle melted"
 _PUNCH = "EEG: brain connectivity ↓ · memory of YOUR OWN text ↓"
 _DETAIL = ("In an EEG study, students writing essays with an LLM showed "
            "weaker brain connectivity and remembered their own text less — "

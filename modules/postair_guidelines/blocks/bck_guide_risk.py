@@ -52,7 +52,7 @@ _LEVELS = [
                 "AI replaces the assessed learning objective itself. "
                 "Hallucinations, fabricated citations, overconfidence.")},
 ]
-_FRAME = "risk level ↑ = verification ↑ · never a ban"
+_FRAME = "Risk level ↑ = verification ↑ · never a ban"
 _CITEKEYS = ["i2tl2026-guidelines", "parmentier-vicens-2025"]
 #: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
 #: facts.json) : « Three risk levels ».

@@ -42,12 +42,12 @@ _TAKEAWAYS = [
     {
         "n": "2",
         "short": "Verify everything that matters",
-        "detail": "names · numbers · references → check at the source",
+        "detail": "Names · numbers · references → check at the source",
     },
     {
         "n": "3",
         "short": "A learning tool, not a replacement",
-        "detail": "it explains · it never learns IN YOUR PLACE",
+        "detail": "It explains · it never learns IN YOUR PLACE",
     },
     {
         "n": "4",

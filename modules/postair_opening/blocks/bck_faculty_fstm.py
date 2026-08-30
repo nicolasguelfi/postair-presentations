@@ -82,7 +82,7 @@ _EXAMPLES = [
         "reported": False,
     },
     {
-        "headline": {"en": "the least accurate student but the most confident", "fr": "l’étudiant le moins exact mais le plus sûr de lui"},
+        "headline": {"en": "The least accurate student but the most confident", "fr": "L’étudiant le moins exact mais le plus sûr de lui"},
         "detail": {"en": ("In medicine the danger is confidence, not error. Medical "
                    "students working virtual patient cases with AI support "
                    "and no human feedback produced the least accurate "

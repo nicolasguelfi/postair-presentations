@@ -40,10 +40,10 @@ bs = BlockStyles
 _SUPPORTED = ("Copilot + UL account = THE supported choice · your data stays "
               "in UL's M365")
 _UNIGPT = "UniGPT (internal, secure) · staff first"
-_OUTSIDE = "outside → paid with your data · personal / sensitive = NEVER"
+_OUTSIDE = "Outside → paid with your data · personal / sensitive = NEVER"
 _EQUITY = [
-    "course REQUIRES AI → a free path must exist",
-    "conscientious objection → CAR committee",
+    "Course REQUIRES AI → a free path must exist",
+    "Conscientious objection → CAR committee",
 ]
 _CITEKEYS = ["i2tl2026-guidelines"]
 #: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
@@ -88,5 +88,5 @@ def build(lang: str = "en", **_):
         st_space("v", "1.5vh")
         st_write(bs.accent, "Copilot with your UL account — the supported choice",
                  tag=t.div)
-        st_write(bs.line, "inside the bubble your data stays UL's · outside, it is "
+        st_write(bs.line, "Inside the bubble your data stays UL's · outside, it is "
                           "the product ", citation(*_CITEKEYS), tag=t.div)

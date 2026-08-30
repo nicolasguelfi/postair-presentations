@@ -54,7 +54,7 @@ _HORIZON_PROMPT = (
 _VERBS = ["Stay informed", "Test things", "Keep doubting"]
 #: Les trois compagnons — demandés par leur NOM au cast gelé.
 _MASCOTS = ["Kuri", "Solyo", "Lento"]
-_MASCOT_WHY = "curiosity · optimism · prudence — three postures, together"
+_MASCOT_WHY = "Curiosity · optimism · prudence — three postures, together"
 _CITEKEYS = ["guelfi-postair"]
 
 
