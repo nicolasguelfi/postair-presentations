@@ -135,7 +135,8 @@ def _waves_deck_url(lang: str) -> str:
     """Le deck des vagues, dans la langue projetée — résolu comme la chaîne du
     jour (env local > collection.toml). Ouvre le deck en PREMIÈRE page :
     streamtex 0.7.26 n'adresse pas une page par l'URL (évolution demandée à la
-    librairie, 2026-08-30) ; le jour où elle existe, le paramètre s'ajoute ici."""
+    librairie : streamtex #42, 2026-08-30) ; le jour où elle existe, le
+    paramètre ``?marker=<vague>`` s'ajoute ici."""
     for m in chain():
         if m["key"] == "waves":
             return with_lang(m["url"], lang)
