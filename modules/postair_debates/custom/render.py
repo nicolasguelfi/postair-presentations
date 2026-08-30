@@ -57,6 +57,9 @@ class RenderStyles:
     nature_badge = (s.project.titles.subtitle + s.project.titles.keyword
                     + Style("font-size: min(4vw, calc(var(--stx-scale-12, 32pt) * 1.2));",
                             "pa_nature_badge_80"))
+    # Le nom (attribution) calé à GAUCHE (NG 2026-08-30) — le jeton du DS est
+    # centré ; on ne change que l'alignement, la taille reste celle du DS.
+    person = s.project.body.pole_label + Style("text-align: left;", "pa_arg_person_left")
     subtitle = s.project.titles.subtitle + s.center_txt
     wave_name = s.project.body.pole_label_compact + s.center_txt
     wave_period = s.project.body.caption + s.center_txt
@@ -446,7 +449,7 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
 #: 94 à 133 caractères). Monter le plafond au-delà du palier ne change rien ;
 #: pour gagner encore, il faut raccourcir les titres (hub) ou changer la
 #: composition, pas le zoom.
-_ARG_ZOOM_START = 250
+_ARG_ZOOM_START = 240
 
 
 def _fit_zoom(longest: int, steps: tuple[int, int], start: int = _ARG_ZOOM_START,
@@ -489,7 +492,7 @@ def _arguments(pole: dict, lang: str | None) -> None:
         # pas gelée.
         person_short = (a.get("person") or "").split(",")[0].strip() or None
         argument_card(a, DS, text(a["title"], lang), person=person_short,
-                      badge_style=rs.nature_badge,
+                      badge_style=rs.nature_badge, person_style=rs.person,
                       nature=T(_NATURES.get(a["category"], {"en": a["category"] or ""}), lang),
                       source_html=citation_or(
                           a.get("reference") or a.get("citekey") or "",

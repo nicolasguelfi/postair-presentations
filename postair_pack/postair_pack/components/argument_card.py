@@ -31,7 +31,7 @@ NATURES = {
 
 def argument_card(argument: dict, design_system, title: str, badge_style=None,
                   source_html: str | None = None, person: str | None = None,
-                  nature: str | None = None) -> None:
+                  nature: str | None = None, person_style=None) -> None:
     """Render one argument column.
 
     Parameters
@@ -51,6 +51,9 @@ def argument_card(argument: dict, design_system, title: str, badge_style=None,
     nature: the badge wording, already resolved to the display language
         (i18n, 2026-08-30). When None, falls back to the English ``NATURES``
         table — the pre-i18n behaviour.
+    person_style: style of the attribution line; defaults to the design
+        system's ``body.pole_label`` (centred) — debates passes a
+        left-aligned variant (NG 2026-08-30).
     """
     ds = design_system
     with st_block(ds.cards.coral):
@@ -63,7 +66,7 @@ def argument_card(argument: dict, design_system, title: str, badge_style=None,
         st_space("v", "0.6vh")
         shown = person if person is not None else argument.get("person")
         if shown:
-            st_write(ds.body.pole_label, shown, tag=t.div)
+            st_write(person_style or ds.body.pole_label, shown, tag=t.div)
         if source_html is None:
             source_html = argument.get("reference") or argument.get("citekey") or ""
         st_write(ds.body.caption, source_html, tag=t.div)
