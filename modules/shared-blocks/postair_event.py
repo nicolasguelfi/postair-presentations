@@ -30,14 +30,15 @@ AGENDA = [
 # créées dans la console /admin de sumvadis.
 DAYS = [
     ("BEFORE AIDAY", "650001"),
-    ("Monday 8 September", "201048"),
-    ("Tuesday 9 September", "101048"),
-    ("Wednesday 10 September", "091048"),
+    ("Tuesday 8 September", "201048"),
+    ("Wednesday 9 September", "101048"),
+    ("Thursday 10 September", "091048"),
 ]
 
 #: Ce que le sélecteur affiche tant qu'aucun jour n'est choisi. La slide montre
 #: alors la PLACE du QR et un code masqué : elle s'explique sans rien livrer.
-#: Un étudiant de la séance de lundi ne doit pas repartir avec le code de mardi.
+#: Un étudiant de la séance de mardi ne doit pas repartir avec le code de mercredi.
+#: (Jours corrigés le 2026-08-30 : l'AI Day tombe mardi 8, mercredi 9, jeudi 10.)
 NO_DAY = "Survey Date"
 
 

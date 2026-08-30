@@ -3,8 +3,8 @@
 Data-driven from postair_event.py (three daily sumvadis campaigns).
 
 ONE slide, not one per day (NG 2026-08-03). Three sub-slides put the three
-access codes one arrow-key apart from each other: a student on Monday only had
-to press the right arrow to read Tuesday's code, and a code seen by a room that
+access codes one arrow-key apart from each other: a student on Tuesday only had
+to press the right arrow to read Wednesday's code, and a code seen by a room that
 must not use it is a code that can pollute another day's campaign. The day is
 therefore chosen by the speaker, in the subtitle, and only the chosen day is on
 screen.
