@@ -18,6 +18,7 @@ from pathlib import Path
 from postair_chain import chain
 from postair_lang import T, with_lang
 from shared_widgets import st_info_tooltip, st_poster_video
+
 from streamtex import (
     SlideBreakConfig,
     SlideBreakMode,
@@ -28,6 +29,7 @@ from streamtex import (
     st_marker,
     st_slide_break,
     st_space,
+    st_zoom,
     st_write,
 )
 from streamtex.enums import Tags as t
@@ -182,7 +184,7 @@ def _waves(pole: dict, lang: str | None) -> None:
                         just.get(lang) or just.get("fr") or just.get("en") or ""))
     _header([T(_WAVES_UI["title_before"], lang), (s.project.titles.keyword, pole_name)],
             T(_WAVES_UI["tip_title"], lang) + pole_name, entries)
-    st_space("v", "1vh")
+    st_space("v", "3vh")
     url = _waves_deck_url(lang)
     # ONE flat grid — one cell per wave, on a single line. La carte prend 100 %
     # de sa cellule (NG 2026-08-30) : la largeur suit le NOMBRE de cartes et la
@@ -196,11 +198,17 @@ def _waves(pole: dict, lang: str | None) -> None:
                                                                      _WAVE_STAGE_VH)):
                 _wave_card(w, lang, url, width="100%")
                 strength = T(_WAVES_UI["strength"].get(w.get("strength"), {"en": "", "fr": ""}), lang)
-                # Une seule ligne de légende : nom · période · solidité.
-                st_write(rs.wave_name,
-                         " · ".join(x for x in (text(w["name"], lang),
-                                                text(w["period"], lang), strength) if x),
-                         tag=t.div)
+                # Une seule ligne de légende, trois couleurs sémantiques du DS
+                # (NG 2026-08-30) : la révolution en texte, la période en bleu
+                # (cadrage), la solidité en teal (keyword) — jamais d'ambre ici,
+                # l'accent focal unique de la slide reste au titre (R5).
+                parts = [text(w["name"], lang)]
+                if text(w["period"], lang):
+                    parts += [" · ", (s.project.colors.primary, text(w["period"], lang))]
+                if strength:
+                    parts += [" · ", (s.project.colors.keyword, strength)]
+                with st_zoom(180):
+                    st_write(rs.wave_name, *parts, tag=t.div)
 
 
 def _pole_banner(pole: dict) -> None:
