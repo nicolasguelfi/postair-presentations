@@ -8,11 +8,17 @@ Opens the discussion sequence. The questions are not chosen by the speaker:
 they come out of what this room answered, which is the whole point and the
 reason the survey came first.
 
-Steps, not a stopwatch (NG 2026-08-29): the projected rule names the four
-steps of a round — statement, for, against, show of hands — and no duration.
-In a hall of five hundred to fifteen hundred, a short timer kills the debate
-before it starts; the speaker keeps the twenty-minute slot by opening two
-axes instead of three when the room is lively.
+The host takes the third seat (NG 2026-08-30): Guardo is commented out of
+the stage and the speaker's own portrait (the opening deck's illustration,
+DD-35 marked) faces Libero beside the moderator.
+
+Steps, not a stopwatch (NG 2026-08-29, cards rewritten 2026-08-30): the
+three projected cards say what is debated (your concerns), how the room
+takes part (hands on, arguments each way) and the thread of every axis
+(past · present · future) — and no duration. In a hall of five hundred to
+fifteen hundred, a short timer kills the debate before it starts; the
+speaker keeps the twenty-minute slot by opening two axes instead of three
+when the room is lively.
 
 SPEAKER NOTES:
 Three minutes. Insist on one thing above all: nobody defends a position in
@@ -25,28 +31,38 @@ rules plainly, promise the microphone will come to them, and move on.
 
 from custom.styles import Styles as s
 from postair_data import mascot
+from postair_lang import T
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
 from postair_pack.components.ai_mark import dd35_overlay
 
+# Trois cartes, réécrites par NG le 2026-08-30 : ce que la salle débat, comment
+# elle y prend part, et le fil de chaque axe. Aucune durée n'est projetée — des
+# ÉTAPES, jamais un chronomètre (NG 2026-08-29) : devant 500 à 1500 personnes,
+# un timing trop court étouffe le débat avant qu'il n'existe ; la durée reste à
+# l'orateur, qui tient les 20' du créneau en ouvrant deux axes plutôt que trois
+# si la salle s'anime.
 _RULES = [
-    ("Your questions", "the ones where this room splits"),
-    # Des ÉTAPES, pas un chronomètre (NG 2026-08-29) : devant 500 à 1500
-    # personnes, un timing trop court étouffe le débat avant qu'il n'existe.
-    # La séquence est fixe, la durée est à l'orateur — qui tient les 20' du
-    # créneau en ouvrant deux axes plutôt que trois si la salle s'anime.
-    ("Four steps", "statement · for · against · hands"),
-    # « both sides speak before anyone counts » disait la même chose en une
-    # tournure qu'il fallait relire deux fois. Ce qu'elle voulait dire : sur
-    # chaque question on entend un argument pour, puis un contre, et le vote à
-    # main levée vient seulement après — jamais avant.
-    ("For, against, hands", "one argument each way, then the vote"),
+    # Les sujets viennent des réponses de la salle, jamais de l'orateur.
+    ("Your concerns", "the ones that split"),
+    # La salle argumente elle-même, dans les deux sens ; le vote à main levée
+    # vient après que les deux camps ont été entendus — jamais avant.
+    ("Hands on", "your arguments each way"),
+    # Le fil de chaque axe : les figures d'hier, les arguments d'aujourd'hui,
+    # le face-à-face qui engage demain — l'ordre des sous-slides de la banque.
+    ("DEBATE", "Past · Present · Future"),
 ]
 
 # The moderator flanked by an opposed pair — the visual grammar of a debate.
-_STAGE = ("Libero", "Medio", "Guardo")
+# Guardo cède sa place à l'hôte (NG 2026-08-30) : le troisième siège est
+# tenu par l'orateur lui-même, face à Libero — il défendra chaque posture.
+_STAGE = ("Libero", "Medio")  # , "Guardo"
+#: Portrait de l'hôte — illustration versionnée (copie de celle d'opening,
+#: `ng__portrait__studio__v1`, public-ok, image de synthèse ⇒ DD-35), jamais au CDN.
+_HOST_PORTRAIT = "images/host/host_portrait.webp"
+_HOST_NAME = {"en": "Your host", "fr": "Votre hôte"}
 
 
 class BlockStyles:
@@ -74,10 +90,13 @@ def build(lang: str = "en", **_):
                          "the selection ranks the statements by disagreement, by engagement and "
                          "by response rate, and keeps the most divisive ones, at most two per "
                          "axis so the debate does not collapse onto a single theme."),
-                        ("Four steps, no stopwatch", "One statement, one argument for, one "
-                         "argument against, one show of hands. A round closes when both sides "
-                         "have been heard, not when a timer rings — the speaker keeps the slot "
-                         "by opening two axes rather than three when the room is lively."),
+                        ("Hands on, no stopwatch", "You make the arguments, in both directions: "
+                         "one for, one against, then a show of hands. A round closes when both "
+                         "sides have been heard, not when a timer rings — the speaker keeps the "
+                         "slot by opening two axes rather than three when the room is lively."),
+                        ("Past, present, future", "Each axis runs the same way: who held this "
+                         "posture before us and in what words, what is argued today with "
+                         "sources, then the two poles face to face — where this room stands."),
                         ("Nobody speaks in their own name", "The mascots carry the postures. You "
                          "argue for prudence, not as a prudent person — which is what makes it "
                          "possible to change your mind in public."),
@@ -88,7 +107,7 @@ def build(lang: str = "en", **_):
                          "by someone whose name you know."),
                     ],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "1vh")
         # ONE flat grid: pole · moderator · pole.
         with st_grid(cols="1fr 1.2fr 1fr", gap="1vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -101,11 +120,19 @@ def build(lang: str = "en", **_):
                              alt=f"{m['name']}, mascot of the {m['pole'] or 'moderator'} posture",
                              overlay=dd35_overlay())
                     st_write(bs.mascot_name, m["name"], tag=t.div)
-        st_space("v", "2vh")
+            with g.cell():
+                with st_zoom(140):
+                    st_image(s.project.cards.media_center, width="min(14vw, 30vh)",
+                            uri=_HOST_PORTRAIT,
+                            alt="Portrait of the host of the AI Day, taking the third seat of the debate",
+                            overlay=dd35_overlay())
+                st_write(bs.mascot_name, T(_HOST_NAME, lang), tag=t.div)
+        st_space("v", "0.5vh")
         with st_grid(cols=s.project.grids.balanced(len(_RULES)), gap="1.5vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for rule, detail in _RULES:
                 with g.cell(), st_block(s.project.cards.coral):
-                    st_write(bs.rule, rule, tag=t.div)
-                    st_write(bs.detail, detail, tag=t.div)
+                    with st_zoom(150):
+                        st_write(bs.rule, rule, tag=t.div)
+                        st_write(bs.detail, detail, tag=t.div)
