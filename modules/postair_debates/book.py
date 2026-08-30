@@ -154,7 +154,7 @@ st_book(
         blocks.bck_axis_centralisation,
         blocks.bck_axis_altruism,
         blocks.bck_axis_transhumanism,
-        blocks.bck_debate_wrapup,          # the corpus behind the argument
+        blocks.bck_debate_wrapup,          # thank you — every view heard, all of them in society
         # ── Closing the morning ─────────────────────────────────────
         # Moved here from the opening deck (NG 2026-08-03). The speaker is in
         # this document when the debate ends, and closing the morning from the

@@ -1,21 +1,29 @@
-"""Closing the debate — the corpus behind what the room just argued about.
+"""Closing the debate — thank you, every view was heard, all of them live in society.
 
-Ends the bank on the only claim the whole document is really making: every one
-of these postures has been held, argued and written down by someone whose name
-is in the history of technology. The counts come from the manifest, so the
-slide cannot overstate the corpus.
+Rewritten on NG's request (2026-08-30): the slide that ends the bank is now a
+NEUTRAL close — no claim, no count on screen. Three short points: thanks for
+taking part, every point of view was heard, and all of these postures exist
+side by side in society. The corpus (how many figures, how many arguments,
+where it all comes from) left the screen and lives in the tooltip, for the
+speaker and for whoever is challenged on provenance. The counts still come
+from the manifest, so the tooltip cannot overstate the corpus.
+
+The next slide (« No consensus — and that is normal ») says what to take
+away; this one only closes the act. Its marker is « Thank you » so the two
+no longer share a label in the navigation.
 
 SPEAKER NOTES:
-Two minutes, whichever axes you opened. Say the number out loud — this many
-figures, this many centuries — and then the point of it: not one of these
-positions is a mistake, and not one of them was invented this morning. The
-room has just argued its way into a conversation that is older than every
-technology it knows. Then hand back to the opening deck for the wrap-up.
+One minute, whichever axes you opened. Thank the room first — every hand
+raised, every microphone taken, in a hall this size, is a small act of
+courage. Then the point: every view heard this morning is held by someone
+in this society, and this room is a fair sample of it. No verdict, no
+winner. Then turn the page for the take-aways.
 """
 # @guideline: postair-minimal
 
 from custom.content import manifest, poles
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -23,57 +31,74 @@ from streamtex.enums import Tags as t
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
-    figure = s.project.titles.register_title + s.center_txt
-    label = s.project.body.body + s.center_txt
-    lead = s.project.body.bullet + s.center_txt
+    point = s.project.body.bullet + s.center_txt + s.bold
+    detail = s.project.body.caption + s.center_txt
 
 
 bs = BlockStyles
 
+# ── Le texte projeté (règle R-i18n) ──────────────────────────────────────────
+_MARKER = {"en": "Thank you", "fr": "Merci"}
+_TITLE = {"en": ("Thank you for ", (s.project.titles.keyword, "arguing")), "fr": ("Merci d'avoir ", (s.project.titles.keyword, "débattu"))}
+_LABEL = {"en": "Thank you", "fr": "Merci"}
+#: Trois points courts (≤ 8 mots, un keyword) — un point, une carte bleue.
+_POINTS = [
+    ({"en": ("Thank you for ", (s.project.titles.keyword, "taking part")), "fr": ("Merci d'avoir ", (s.project.titles.keyword, "participé"))},
+     {"en": "every hand raised, every microphone taken", "fr": "chaque main levée, chaque micro pris"}),
+    ({"en": ("Every point of view was ", (s.project.titles.keyword, "heard")), "fr": ("Chaque point de vue a été ", (s.project.titles.keyword, "entendu"))},
+     {"en": "for and against, on each pole", "fr": "pour et contre, sur chaque pôle"}),
+    ({"en": ("All of them live in ", (s.project.titles.keyword, "society")), "fr": ("Tous existent dans la ", (s.project.titles.keyword, "société"))},
+     {"en": "side by side — this room is a fair sample", "fr": "côte à côte — cette salle en est un échantillon"}),
+]
+_TIP_TITLE = {"en": "Where this material comes from", "fr": "D'où vient ce matériau"}
+_TIP_CORPUS = {"en": "The corpus", "fr": "Le corpus"}
+_TIP_CORPUS_TEXT = {"en": ("{postures} postures, {figures} figures of the study drawn from "
+                           "seventeen technological waves — printing, steam, electricity, the "
+                           "atom, the network — and {arguments} sourced contemporary arguments. "
+                           "{reused} figures defend two different poles, which is exactly as "
+                           "inconsistent as real people are."), "fr": "{postures} postures, {figures} figures de l'étude issues de dix-sept vagues technologiques — l'imprimerie, la vapeur, l'électricité, l'atome, le réseau — et {arguments} arguments contemporains sourcés. {reused} figures défendent deux pôles différents, exactement aussi inconséquentes que les vraies personnes."}
+_TIP_QUOTES = ({"en": "The quotations", "fr": "Les citations"},
+               {"en": ("Verbatim and verified against primary sources. Where a reference is "
+                       "still being established, the card says so."), "fr": "Verbatim et vérifiées sur les sources primaires. Quand une référence est encore en cours d'établissement, la carte le dit."})
+_TIP_ARGS = ({"en": "The arguments", "fr": "Les arguments"},
+             {"en": ("Drawn from the debate material of the study, of three natures — a "
+                     "public policy, a concrete case, a public statement — so no pole is "
+                     "defended from a single angle."), "fr": "Tirés du matériau de débat de l'étude, de trois natures — une politique publique, un cas concret, une parole publique — pour qu'aucun pôle ne soit défendu sous un seul angle."})
+_TIP_TYPED = ({"en": "Nothing typed here", "fr": "Rien n'est écrit ici"},
+              {"en": ("Every name, quotation, reference and argument on these slides is "
+                      "regenerated from the study. A correction upstream reaches the deck by "
+                      "rebuilding it, never by editing a slide."), "fr": "Chaque nom, citation, référence et argument de ces slides est régénéré depuis l'étude. Une correction en amont arrive au deck par régénération, jamais en éditant une slide."})
+
 
 def build(lang: str = "en", **_):
-    st_marker("No consensus")
+    st_marker(T(_MARKER, lang))
     data = manifest()
-    counts = [
-        (str(len(poles())), "postures"),
-        (str(data.get("figures_used", 0)), "figures who held one"),
-        (str(sum(len(p["arguments"]) for p in poles())), "arguments made today"),
-    ]
+    corpus = T(_TIP_CORPUS_TEXT, lang).format(
+        postures=len(poles()), figures=data.get("figures_used", 0),
+        arguments=sum(len(p["arguments"]) for p in poles()),
+        reused=data.get("figures_reused", 0))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Not one of these positions is ",
-                         (s.project.titles.keyword, "new"),
-                         tag=t.div, toc_lvl="1", label="No consensus")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="1", label=T(_LABEL, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Where this material comes from",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("The corpus", f"{data.get('figures_used', 0)} figures of the study "
-                         f"appear in this bank, drawn from seventeen technological waves — "
-                         f"printing, steam, electricity, the atom, the network. "
-                         f"{data.get('figures_reused', 0)} of them defend two different poles, "
-                         f"which is exactly as inconsistent as real people are."),
-                        ("The quotations", "Verbatim and verified against primary sources. "
-                         "Where a reference is still being established, the card says so."),
-                        ("The arguments", "Drawn from the debate material of the study, of three "
-                         "natures — a public policy, a concrete case, a public statement — so no "
-                         "pole is defended from a single angle."),
-                        ("Nothing typed here", "Every name, quotation, reference and argument on "
-                         "these slides is regenerated from the study. A correction upstream "
-                         "reaches the deck by rebuilding it, never by editing a slide."),
-                        ("Your posture", "It is a snapshot, and it moves. The survey can be "
-                         "retaken with the same code at the end of the year."),
+                        (T(_TIP_CORPUS, lang), corpus),
+                        (T(_TIP_QUOTES[0], lang), T(_TIP_QUOTES[1], lang)),
+                        (T(_TIP_ARGS[0], lang), T(_TIP_ARGS[1], lang)),
+                        (T(_TIP_TYPED[0], lang), T(_TIP_TYPED[1], lang)),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
-        st_write(bs.lead, "Every one of them was ",
-                 (s.project.titles.keyword, "argued before you were born"), tag=t.div)
-        st_space("v", "3vh")
-        with st_grid(cols=s.project.grids.balanced(len(counts)), gap="1.5vw",
+        # ONE flat grid — one card per point, stretched to the remaining height.
+        with st_grid(cols=s.project.grids.balanced(len(_POINTS)), gap="1.5vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            for value, label in counts:
-                with g.cell(), st_block(s.project.cards.teal):
-                    st_write(bs.figure, value, tag=t.div)
-                    st_write(bs.label, label, tag=t.div)
+            for point, detail in _POINTS:
+                with g.cell(), st_block(s.project.cards.blue):
+                    with st_zoom(150):
+                        st_write(bs.point, *TF(point, lang), tag=t.div)
+                        st_write(bs.detail, T(detail, lang), tag=t.div)
