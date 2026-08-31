@@ -48,6 +48,15 @@ _STEPS = [
     {"en": ("Take the ", (s.project.titles.keyword, "microphone")), "fr": ("Prenez le ", (s.project.titles.keyword, "micro"))},
     {"en": ("Say ", (s.project.titles.keyword, "why"), " you favour the pole"), "fr": ("Dites ", (s.project.titles.keyword, "pourquoi"), " vous défendez le pôle")},
 ]
+# ── Réglages visuels de CETTE slide (NG 2026-08-31 soir) — hors gabarit
+# d'axe : cette slide d'intro est autonome, son TUNING est local et câblé
+# ci-dessous. Valeurs = défauts exacts (aucun impact tel quel).
+TUNING: dict = {
+    "title_zoom": 150,                 # zoom du titre « Next ... HANDS ON »
+    "voxo_width": "min(22vw, 46vh)",   # largeur de Voxo (référence des 70 % de la scène d'axe)
+    "bullets_zoom": 190,               # zoom des 3 puces main/micro/pourquoi
+}
+
 _MARKER = {"en": "The debates", "fr": "Les débats"}
 _TITLE = {"en": ("Next ... ", (s.project.titles.keyword, "HANDS ON")), "fr": ("Maintenant... ", (s.project.titles.keyword, "À VOUS"))}
 _TIP_TITLE = {"en": "Navigating the debates bank", "fr": "Naviguer dans la banque des débats"}
@@ -72,7 +81,7 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                with st_zoom(150):
+                with st_zoom(TUNING["title_zoom"]):
                     st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -91,7 +100,7 @@ def build(lang: str = "en", **_):
         with st_grid(cols="40% 60%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_image(s.project.cards.media_center, width="min(22vw, 46vh)",
+                st_image(s.project.cards.media_center, width=TUNING["voxo_width"],
                          uri=voxo["image"],
                          alt=f"{voxo['name']}, the moderator mascot, opening the floor to debate",
                          overlay=dd35_overlay())
@@ -100,7 +109,7 @@ def build(lang: str = "en", **_):
                 # La liste native de streamtex (`st_list`), pas des écrits
                 # empilés (NG 2026-08-30) — les puces sont celles de la
                 # librairie, le style de l'item est celui du DS.
-                with st_zoom(190), st_list(list_type="ul", li_style=bs.bullet) as l:
+                with st_zoom(TUNING["bullets_zoom"]), st_list(list_type="ul", li_style=bs.bullet) as l:
                     for step in _STEPS:
                         with l.item():
                             st_write(bs.bullet, *TF(step, lang))
