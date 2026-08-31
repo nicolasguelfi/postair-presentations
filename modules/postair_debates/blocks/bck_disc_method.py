@@ -147,7 +147,7 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for rule, detail in _RULES:
                 with g.cell(), st_block(s.project.cards.coral):
-                    with st_zoom(150):
+                    with st_zoom(130):
                         st_write(bs.rule, T(rule, lang), tag=t.div)
                         for line in detail:
                             st_write(bs.detail, T(line, lang), tag=t.div)

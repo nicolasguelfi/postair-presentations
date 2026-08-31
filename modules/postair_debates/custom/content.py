@@ -49,6 +49,13 @@ def text(node, lang: str | None = None) -> str:
     return node.get(lang) or node.get(default_language()) or ""
 
 
+def corpus_figures() -> int:
+    """La taille du corpus étudié (nombre de figures profilées au hub) —
+    gelée par l'outil (v2) pour que la slide « pôle sans champion » n'écrive
+    jamais un effectif à la main (R-facts)."""
+    return int(manifest().get("corpus_figures", 0))
+
+
 @lru_cache(maxsize=1)
 def poles() -> list[dict]:
     return manifest()["poles"]

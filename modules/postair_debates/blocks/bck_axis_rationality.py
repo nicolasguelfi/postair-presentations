@@ -103,6 +103,16 @@ TUNING: dict = {
         "portrait_width": "min(38vw, 66vh)",
         "portrait_scale": None,        # k → min(38k vw, 66k vh) (portrait_width doit être None)
     },
+    # Pôle sans champion (gel no_champion) : la slide d'absence qui REMPLACE
+    # les trois figures — rendue seulement si le gel la déclare.
+    "absence_a": {
+        "zoom": None,                  # auto : 130 (zoom de la carte d'absence)
+        "zoom_scale": None,
+    },
+    "absence_b": {
+        "zoom": None,
+        "zoom_scale": None,
+    },
     # « And today for AI? » (grille 2+1 des arguments).
     "arguments_a": {
         "zoom": None,                  # auto : min(240, palier 130/120/110 selon le titre le plus long) ; un absolu passe outre le plafond

@@ -42,7 +42,7 @@ from streamtex import (
 )
 from streamtex.enums import Tags as t
 
-from custom.content import axis_poles, text, warnings_for
+from custom.content import axis_poles, corpus_figures, text, warnings_for
 from custom.pole import faceoff_sides, mascots
 from custom.refs import citation_or
 from custom.styles import DS
@@ -174,6 +174,20 @@ _UI = {
     "stage_both": ({"en": "Both sides, always", "fr": "Les deux camps, toujours"},
                    {"en": ("Give the floor alternately — the room must hear the two best "
                            "cases, not the one the speaker prefers."), "fr": "Donnez la parole en alternance — la salle doit entendre les deux meilleurs plaidoyers, pas celui que l'orateur préfère."}),
+    # _absence — le pôle sans champion (décision A NG 2026-08-31 + audit hub).
+    "absence_title": {"en": ("Before us — ", (s.project.titles.keyword, "no one"), "?"), "fr": ("Avant nous... ", (s.project.titles.keyword, "personne"), " ?")},
+    "absence_text": {"en": ("No major figure — of the {n} in this study — can be classed on "
+                            "the {pole} side: the closest voices all lean toward {other}. "
+                            "That absence is itself worth debating."), "fr": "Aucune figure majeure — des {n} de cette étude — ne peut être classée du côté « {pole} » : les voix les plus proches penchent toutes vers « {other} ». Cette absence, en soi, mérite débat."},
+    "absence_tip_title": {"en": "Why no figure here", "fr": "Pourquoi aucune figure ici"},
+    "absence_how": ({"en": "How champions are chosen", "fr": "Comment les champions sont choisis"},
+                    {"en": ("A figure champions a pole when its validated answers put it "
+                            "within 40 points of the pole — and never across the middle of "
+                            "the axis. Here the corpus offers no such trio: showing the "
+                            "nearest figures would put voices of {other} under this pole's "
+                            "name."), "fr": "Une figure défend un pôle quand ses réponses validées la placent à moins de 40 points du pôle — et jamais de l'autre côté du milieu de l'axe. Ici le corpus n'offre pas un tel trio : montrer les figures les plus proches mettrait des voix de « {other} » sous le nom de ce pôle."}),
+    "absence_closest": {"en": "The closest voices", "fr": "Les voix les plus proches"},
+    "absence_closest_line": {"en": "{name} — score {score} on this axis", "fr": "{name} — score {score} sur cet axe"},
     # _faceoff
     "where_room": {"en": "Where is this room?", "fr": "Où se situe cette salle ?"},
     "where_room_text": {"en": ("The live distribution is in the survey application, on the "
@@ -707,6 +721,40 @@ def _debate_stage(both: list[dict], lang: str | None, *,
             _side(both[1])
 
 
+# ── Le pôle sans champion (décision A NG 2026-08-31 + audit hub §6) ─────────
+def _absence(pole: dict, lang: str | None, *,
+             zoom: int | None = None,
+             zoom_scale: float | None = None) -> None:
+    """À la place des trois slides de figure : l'absence, assumée. Le gel dit
+    ``no_champion`` quand moins d'un trio est du bon côté de la médiane
+    (build_debates_content.py, audit hub 2026-08-31) ; les plus proches vont
+    au tooltip avec leur score — jamais à l'écran en contre-emploi."""
+    pole_name = text(pole["pole"], lang)
+    other = next(text(p["pole"], lang) for p in axis_poles(pole["axis"])
+                 if p["side"] != pole["side"])
+    entries = [(T(_UI["absence_how"][0], lang),
+                T(_UI["absence_how"][1], lang).format(other=other))]
+    if pole.get("closest"):
+        entries.append((T(_UI["absence_closest"], lang),
+                        " · ".join(T(_UI["absence_closest_line"], lang).format(
+                            name=c["name"], score=c["score"])
+                            for c in pole["closest"])))
+    _header([*TF(_UI["absence_title"], lang)],
+            T(_UI["absence_tip_title"], lang), entries)
+    st_space("v", s.project.spacing.title_gap)
+    body = T(_UI["absence_text"], lang).format(
+        n=corpus_figures(), pole=pole_name, other=other)
+    with st_grid(cols="15% 70% 15%",
+                 cell_styles=s.project.containers.grid_cell_centered) as g:
+        with g.cell():
+            st_space("v", "1vh")
+        with g.cell(), st_zoom(_tuned(130, zoom, zoom_scale)):
+            with st_block(s.project.cards.amber):
+                st_write(rs.banner, body, tag=t.div)
+        with g.cell():
+            st_space("v", "1vh")
+
+
 # Retirée du rythme d'axe (NG 2026-08-31, décision 3A : l'axe se ferme sur
 # les arguments du second pôle, « la mesure » est un geste d'orateur vers
 # /present) — conservée pour réversibilité.
@@ -735,6 +783,7 @@ _TUNING_KEYS = frozenset({"identity_a", "identity_b", "stage",
                           "waves_a", "waves_b",
                           "figure_a1", "figure_a2", "figure_a3",
                           "figure_b1", "figure_b2", "figure_b3",
+                          "absence_a", "absence_b",
                           "arguments_a", "arguments_b"})
 
 
@@ -763,6 +812,7 @@ def axis_slides(axis: str, lang: str | None = None,
       ``voxo_width`` / ``voxo_scale`` ;
     - waves : ``stage_vh(_scale)`` (auto 62), ``caption_zoom(_scale)`` (auto 180) ;
     - figure : ``quote_zoom(_scale)``, ``portrait_width`` / ``portrait_scale`` ;
+    - absence (pôle sans champion, remplace les figures) : ``zoom(_scale)`` (auto 130) ;
     - arguments : ``zoom(_scale)`` (le plafond saute si absolu), ``badge_scale``.
 
     Un réglage ABSOLU fige le rendu du texte d'aujourd'hui : le gel se
@@ -793,11 +843,12 @@ def axis_slides(axis: str, lang: str | None = None,
     # (ou s'échantillonne) APRÈS le débat.
     for i, pole in enumerate(both):
         side = "ab"[i]
+        figs = ([(f"absence_{side}", _absence)] if pole.get("no_champion")
+                else [(f"figure_{side}{j + 1}",
+                       (lambda p, lg, ff=f, jj=j, **kw: _figure(p, ff, jj, lg, **kw)))
+                      for j, f in enumerate(pole["figures"])])
         parts = ([(f"waves_{side}", _waves)] if pole.get("waves") else []) + \
-            [(f"figure_{side}{j + 1}",
-              (lambda p, lg, ff=f, jj=j, **kw: _figure(p, ff, jj, lg, **kw)))
-             for j, f in enumerate(pole["figures"])] + \
-            [(f"arguments_{side}", _arguments)]
+            figs + [(f"arguments_{side}", _arguments)]
         for key, part in parts:
             st_slide_break(marker_hidden=True,
                            config=SlideBreakConfig(mode=SlideBreakMode.FULL, space="30vh"))

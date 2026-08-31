@@ -1,7 +1,7 @@
 {
  "metadata": {
   "id": "postair-debates-content",
-  "version": 1,
+  "version": 2,
   "languages": [
    "en",
    "fr"
@@ -11,8 +11,9 @@
   "instrument_version": "1.11.0",
   "debate_version": "2.4.1"
  },
- "version": 1,
+ "version": 2,
  "generated_by": "_project/tools/build_debates_content.py",
+ "corpus_figures": 55,
  "instrument_version": "1.11.0",
  "debate_version": "2.4.1",
  "poles": [
@@ -384,6 +385,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "TRU-02",
@@ -835,6 +838,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "TRU-03",
@@ -1286,6 +1291,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "OPT-02",
@@ -1779,6 +1786,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "OPT-05",
@@ -2299,6 +2308,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "RAT-02",
@@ -2778,6 +2789,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "RAT-01",
@@ -3215,6 +3228,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "SPE-03",
@@ -3632,6 +3647,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "SPE-04",
@@ -4097,6 +4114,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "OPE-02",
@@ -4604,6 +4623,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "OPE-01",
@@ -5041,6 +5062,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "CON-01",
@@ -5492,6 +5515,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "CON-02",
@@ -6013,6 +6038,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "CEN-02",
@@ -6506,6 +6533,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "CEN-01",
@@ -6747,200 +6776,23 @@
      }
     }
    ],
-   "figures": [
+   "figures": [],
+   "no_champion": true,
+   "closest": [
     {
-     "id": "benjamin",
-     "name": "Walter Benjamin",
-     "dates": "1892-1940",
-     "origin": "Germany",
-     "stance": "dialectic",
-     "wave": "Mass media (radio, cinema)",
-     "score": 73,
-     "presentation": "Walter Benjamin (1892–1940), German critic and philosopher of media, wrote from exile after the Nazi seizure of power and died in 1940 fleeing the regime; he was also a working broadcaster, with some eighty Weimar radio programmes. His wave was mass media — cinema and radio, mechanical reproduction dissolving the “aura” of the unique artwork while film capital and the fascist state bent the same apparatus toward the star cult and the aestheticisation of politics. His stance was dialectical: promise and peril held in one view, the remedy never to ban but to turn consumers into producers. His Marxism and sympathy for the Soviet reorganisation of the media are positions of the figure, disclosed as such — selection for documentary richness, never moral endorsement. What instructs is the discipline of seeing both at once.",
-     "epoch": "Walter Benjamin (1892–1940) was a German literary critic, essayist, and philosopher whose work ranged across aesthetics, media, and cultural history. Its landmarks include the aphoristic One-Way Street (Einbahnstraße, 1928), the Little History of Photography (1931), the essay The Storyteller (1936), and his best-known text, The Work of Art in the Age of Mechanical Reproduction, first published in French in the Institute for Social Research's Zeitschrift für Sozialforschung in 1936. Unusually for a theorist, he was also a working broadcaster, writing and presenting some eighty radio programmes between 1927 and 1933. He wrote from exile after the Nazi seizure of power, and died in 1940 in flight from the regime. His standing today rests less on any academic post than on the enduring influence of these essays on media and cultural theory.",
-     "quote": {
-      "en": "the capitalistic exploitation of the film denies consideration to modern man's legitimate claim to being reproduced",
-      "fr": "l'exploitation capitaliste du cinéma refuse de prendre en considération la revendication légitime de l'homme moderne à être reproduit",
-      "reference": "The Work of Art in the Age of Mechanical Reproduction, §X …",
-      "reference_full": "The Work of Art in the Age of Mechanical Reproduction, §X, Zeitschrift für Sozialforschung 5(1), 1936 (trans. Harry Zohn, Illuminations, 1968)",
-      "citekeys": [
-       "benjamin1935-workofart"
-      ],
-      "curated": true,
-      "curated_by": "exact",
-      "documents": [
-       "ALT-01",
-       "ALT-05"
-      ],
-      "editorial": false,
-      "reasoning": [
-       {
-        "item": "ALT-01",
-        "statement": {
-         "en": "The benefits of AI should be shared across society, even if that reduces my personal advantage.",
-         "fr": "Les bénéfices de l'IA devraient être partagés dans la société, même si cela réduit mon avantage personnel.",
-         "de": "Die Vorteile der KI sollten in der gesamten Gesellschaft geteilt werden, auch wenn das meinen persönlichen Vorteil verringert."
-        },
-        "response": 4,
-        "direction": "against",
-        "anchor": "benjamin1935-workofart: 'modern man's legitimate claim to being reproduced' + Epilogue: 'The masses have a right to change property relations'",
-        "confidence": "high",
-        "transposition": "benefits → access to cultural production"
-       },
-       {
-        "item": "ALT-05",
-        "statement": {
-         "en": "It is up to each person to secure their own access to the benefits of AI.",
-         "fr": "C'est à chacun de s'assurer son propre accès aux bénéfices de l'IA.",
-         "de": "Es ist Sache jeder einzelnen Person, sich ihren eigenen Zugang zu den Vorteilen der KI zu sichern."
-        },
-        "response": 1,
-        "direction": "against",
-        "anchor": "benjamin1935-workofart §X: access is a collective claim denied by capital, not an individual achievement",
-        "confidence": "medium",
-        "transposition": null
-       }
-      ],
-      "anchored": true,
-      "verification": "Verbatim (source verified)"
-     },
-     "media": {
-      "portrait": "figures/5efd8841-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/benjamin/5efd8841-512.png",
-      "portrait_source": "figures/content/germany/benjamin.walter/image/benjamin.walter__frame__elbows.jpeg",
-      "portrait_ai": true,
-      "videos": {
-       "en": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
-       "fr": "https://media.sumvadis.ai/benjamin/941e48db.mp4",
-       "de": "https://media.sumvadis.ai/benjamin/9c15bf94.mp4"
-      },
-      "video": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
-      "video_kind": "talk",
-      "video_ai": true,
-      "video_light": "https://media.sumvadis.ai/benjamin/fd23b351-050.mp4",
-      "poster": "figures/509c925b-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/benjamin/509c925b-poster-512.png"
-     }
+     "id": "marinetti",
+     "name": "Filippo Tommaso Marinetti",
+     "score": 30
     },
     {
-     "id": "fei-fei-li",
-     "name": "Fei-Fei Li",
-     "dates": "1976-",
-     "origin": "China/USA",
-     "stance": "human-centered",
-     "wave": "Artificial intelligence",
-     "score": 77,
-     "presentation": "Fei-Fei Li (born 1976), Stanford computer scientist, initiated ImageNet in 2009 and co-founded the Institute for Human-Centered AI; her wave is artificial intelligence itself, the deep-learning turn her own benchmark helped catalyse — a direct contemporary witness rather than a historical mirror. Her stance is human-centered and deliberately two-sided: machines as partners “enhancing us, not replacing us”; government urged to lead ethical deployment; caution against extinction hype in favour of near-term bias and misinformation; “govern on the basis of science, not science fiction.” She nonetheless opposed California’s SB 1047 as mis-aimed. A living figure still in motion, she models holding optimism and guardrails together, calibrating rules to demonstrated, application-specific risk.",
-     "epoch": "Fei-Fei Li (b. 1976), whose path from a childhood in China to education and a career in the United States is recounted in her memoir The Worlds I See, is a computer scientist whose career has centred on Stanford University, where she is a professor and, since 2019, co-founder and co-director of the Stanford Institute for Human-Centered Artificial Intelligence (HAI), an institute whose mission is to \"advance AI research, education, policy, and practice to improve the human condition.\" In 2009 she initiated ImageNet, the large-scale labelled image dataset that became a canonical benchmark of the field. She served as chief scientist for AI/ML at Google Cloud (2017-2018), co-founded the non-profit AI4ALL (2017), and in 2024 founded the startup World Labs. That 2023 memoir, together with frequent public testimony, has made her a widely cited voice — popularly styled the \"Godmother of AI\", the label Bloomberg's 2024 profile carries in its very title — at the intersection of machine-learning research and technology policy.",
-     "quote": {
-      "en": "However autonomous our technology becomes, its impact on the world — for better or worse — will always be our responsibility.",
-      "fr": "Aussi autonome que devienne notre technologie, son impact sur le monde — pour le meilleur ou pour le pire — restera toujours notre responsabilité.",
-      "reference": "How to Make A.I. That's Good for People, The New York Times (opinion), 7 March 2018",
-      "reference_full": "How to Make A.I. That's Good for People, The New York Times (opinion), 7 March 2018",
-      "citekeys": [
-       "li2018-nyt"
-      ],
-      "curated": true,
-      "curated_by": "exact",
-      "documents": [
-       "ALT-03"
-      ],
-      "editorial": false,
-      "reasoning": [
-       {
-        "item": "ALT-03",
-        "statement": {
-         "en": "When I use AI, I think about the consequences for other people.",
-         "fr": "Quand j'utilise l'IA, je pense aux conséquences pour les autres.",
-         "de": "Wenn ich KI nutze, denke ich an die Folgen für andere Menschen."
-        },
-        "response": 4,
-        "direction": "against",
-        "anchor": "li2018-nyt (2018-03-07): 'However autonomous our technology becomes, its impact on the world — for better or worse — will always be our responsibility.'",
-        "confidence": "high",
-        "transposition": null
-       }
-      ],
-      "anchored": true,
-      "verification": "Verbatim"
-     },
-     "media": {
-      "portrait": "figures/73ef826f-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/fei-fei-li/73ef826f-512.png",
-      "portrait_source": "figures/content/china/li.fei-fei/image/li.fei-fei__source__01.jpg",
-      "portrait_ai": false,
-      "videos": {
-       "fr": "https://media.sumvadis.ai/fei-fei-li/49183a2b.mp4",
-       "en": "https://media.sumvadis.ai/fei-fei-li/a41a59cc.mp4",
-       "de": "https://media.sumvadis.ai/fei-fei-li/4177c49b.mp4"
-      },
-      "video": "https://media.sumvadis.ai/fei-fei-li/a41a59cc.mp4",
-      "video_kind": "presented",
-      "video_ai": true,
-      "video_light": "https://media.sumvadis.ai/fei-fei-li/ce63d9be-050.mp4",
-      "poster": "figures/e4d97dc8-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/fei-fei-li/e4d97dc8-poster-512.png"
-     }
+     "id": "ibn-khaldun",
+     "name": "Ibn Khaldun",
+     "score": 57
     },
     {
-     "id": "shen-kuo",
-     "name": "Shen Kuo",
-     "dates": "1031-1095",
-     "origin": "China (Song)",
-     "stance": "observer-enthusiast",
-     "wave": "Chinese movable type",
-     "score": 80,
-     "presentation": "Shen Kuo (1031–1095), scholar-official of Song China — astronomer, finance commissioner, diplomat, military commander — retired to his Dream Brook estate and wrote the Mengxi Bitan, six hundred jottings on techniques and natural phenomena. There he preserved the only record of movable type and of Bi Sheng, the uncredentialed artisan who invented it: without Shen's notebook, both would be unknown. His verdict is sober and quantified — of little use for two or three copies, “marvellously quick” for hundreds or thousands. His method instructs more than his verdict: learn how a technology actually works, judge it by demonstrated results rather than by the authority of its makers, and preserve the name of the person who built it.",
-     "epoch": "Shen Kuo (1031–1095) was a scholar-official of Northern Song China whose career ran through the empire's technical and administrative institutions. Sivin's Dictionary of Scientific Biography records his appointment to direct the Bureau of Astronomy (1072), his service on the Finance Commission, his appointment as a Hanlin academician (1076), a diplomatic embassy to the Liao (1075) and a military command at Yanzhou (1080–81). After a fall from favour in 1082 he retired to his Dream Brook (Mengxi) estate, where he completed his best-known work, the Mengxi Bitan (Brush Talks from Dream Brook, also rendered Dream Pool Essays), around 1088 — a notebook of some six hundred jottings recording and evaluating techniques, natural phenomena and administrative affairs. In modern scholarship he stands as an observer of unusual range across the practical knowledge of Song China.",
-     "quote": {
-      "en": "How could all of this have come from the Sages? Every sort of workman and administrator, the people of the towns and those of the countryside — none failed to take part.",
-      "fr": "Comment tout cela aurait-il pu venir des Sages ? Artisans et administrateurs de toute sorte, les gens des villes et ceux des campagnes — aucun n'a manqué d'y prendre part.",
-      "reference": "Changxing ji 19:53b, lettre ; trad. angl. Nathan Sivin, « Shen Kua » …",
-      "reference_full": "Changxing ji 19:53b, lettre ; trad. angl. Nathan Sivin, « Shen Kua », Dictionary of Scientific Biography, vol. 12, 1975",
-      "citekeys": [
-       "sivin1975-dsb"
-      ],
-      "curated": true,
-      "curated_by": "exact",
-      "documents": [
-       "ALT-01"
-      ],
-      "editorial": false,
-      "reasoning": [
-       {
-        "item": "ALT-01",
-        "statement": {
-         "en": "The benefits of AI should be shared across society, even if that reduces my personal advantage.",
-         "fr": "Les bénéfices de l'IA devraient être partagés dans la société, même si cela réduit mon avantage personnel.",
-         "de": "Die Vorteile der KI sollten in der gesamten Gesellschaft geteilt werden, auch wenn das meinen persönlichen Vorteil verringert."
-        },
-        "response": 4,
-        "direction": "against",
-        "anchor": "sivin1975-dsb: Changxing ji 19:53b — technique as a collective creation whose credit is shared across society, against elite monopoly of invention",
-        "confidence": "medium",
-        "transposition": "benefits of AI shared → credit and fruits of technique shared across society"
-       }
-      ],
-      "anchored": false,
-      "verification": "Verbatim (source verified)"
-     },
-     "media": {
-      "portrait": "figures/ebcb4bdf-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/shen-kuo/ebcb4bdf-512.png",
-      "portrait_source": "figures/content/china/shen.kuo/image/shen.kuo__frame__elbows.png",
-      "portrait_ai": true,
-      "videos": {
-       "en": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
-       "fr": "https://media.sumvadis.ai/shen-kuo/d67d8ee7.mp4",
-       "de": "https://media.sumvadis.ai/shen-kuo/e6f7b616.mp4"
-      },
-      "video": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
-      "video_kind": "talk",
-      "video_ai": true,
-      "video_light": "https://media.sumvadis.ai/shen-kuo/be306129-050.mp4",
-      "poster": "figures/6aa9ebe3-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/shen-kuo/6aa9ebe3-poster-512.png"
-     }
+     "id": "fukuzawa",
+     "name": "Fukuzawa Yukichi",
+     "score": 63
     }
    ],
    "arguments": [
@@ -7306,80 +7158,68 @@
      }
     },
     {
-     "id": "tolstoi",
-     "name": "Léon Tolstoï",
-     "dates": "1828-1910",
-     "origin": "Russia",
-     "stance": "skeptic",
-     "wave": "Railway and telegraph",
-     "score": 100,
-     "presentation": "Leo Tolstoy (1828–1910), Russian novelist turned moral-religious critic, excommunicated by the Orthodox Church in 1901, addressed peasants and educated classes alike from his estate. His wave was the railway and the telegraph binding Imperial Russia — a society nine-tenths peasant — this study’s mirror for today’s AI. His stance was skeptical on two joined grounds: class — the telegraph served the “so-called cultured class” while the peasant heard “only the buzzing of the wires” — and moral-religious, judging technology by conscience and the Gospel; his instrument was voluntary moral renunciation, not law or force. No caricature: at 67 he learned to ride a bicycle with childlike pleasure. What instructs is the discipline of his recurring test — who benefits, who bears the cost, and by what standard a society should judge what it is told to call progress.",
-     "epoch": "Leo Tolstoy (1828–1910) was a Russian novelist and moral-religious thinker whose later work turned from fiction toward social and ethical criticism. Alongside the fiction for which he was internationally known, he produced a substantial body of essays and treatises — \"Progress and the Definition of Education\" (1862), the autobiographical \"A Confession\" (written 1879–1882), the treatise \"What Shall We Do?\" (1886), \"The Kingdom of God Is Within You\" (1894), and \"The Slavery of Our Times\" (1900) — that made him a leading voice of Christian anarchism and pacifism. Writing from his estate in Imperial Russia, he addressed peasants and educated classes alike, and his moral authority extended well beyond literature. In 1901 the Russian Orthodox Church excommunicated him, a measure of how far his religious dissent unsettled the established institutions of his time.",
+     "id": "shen-kuo",
+     "name": "Shen Kuo",
+     "dates": "1031-1095",
+     "origin": "China (Song)",
+     "stance": "observer-enthusiast",
+     "wave": "Chinese movable type",
+     "score": 80,
+     "presentation": "Shen Kuo (1031–1095), scholar-official of Song China — astronomer, finance commissioner, diplomat, military commander — retired to his Dream Brook estate and wrote the Mengxi Bitan, six hundred jottings on techniques and natural phenomena. There he preserved the only record of movable type and of Bi Sheng, the uncredentialed artisan who invented it: without Shen's notebook, both would be unknown. His verdict is sober and quantified — of little use for two or three copies, “marvellously quick” for hundreds or thousands. His method instructs more than his verdict: learn how a technology actually works, judge it by demonstrated results rather than by the authority of its makers, and preserve the name of the person who built it.",
+     "epoch": "Shen Kuo (1031–1095) was a scholar-official of Northern Song China whose career ran through the empire's technical and administrative institutions. Sivin's Dictionary of Scientific Biography records his appointment to direct the Bureau of Astronomy (1072), his service on the Finance Commission, his appointment as a Hanlin academician (1076), a diplomatic embassy to the Liao (1075) and a military command at Yanzhou (1080–81). After a fall from favour in 1082 he retired to his Dream Brook (Mengxi) estate, where he completed his best-known work, the Mengxi Bitan (Brush Talks from Dream Brook, also rendered Dream Pool Essays), around 1088 — a notebook of some six hundred jottings recording and evaluating techniques, natural phenomena and administrative affairs. In modern scholarship he stands as an observer of unusual range across the practical knowledge of Song China.",
      "quote": {
-      "en": "the advocates of progress … understand their personal advantage, which thus is always contrary to the advantage of the masses.",
-      "fr": "les partisans du progrès … entendent par là leur avantage personnel, lequel est ainsi toujours contraire à l'avantage des masses.",
-      "reference": "Progress and the Definition of Education, Yasnaya Polyana, 1862 (Leo Wiener translation …",
-      "reference_full": "Progress and the Definition of Education, Yasnaya Polyana, 1862 (Leo Wiener translation, Pedagogical Articles, 1904)",
+      "en": "How could all of this have come from the Sages? Every sort of workman and administrator, the people of the towns and those of the countryside — none failed to take part.",
+      "fr": "Comment tout cela aurait-il pu venir des Sages ? Artisans et administrateurs de toute sorte, les gens des villes et ceux des campagnes — aucun n'a manqué d'y prendre part.",
+      "reference": "Changxing ji 19:53b, lettre ; trad. angl. Nathan Sivin, « Shen Kua » …",
+      "reference_full": "Changxing ji 19:53b, lettre ; trad. angl. Nathan Sivin, « Shen Kua », Dictionary of Scientific Biography, vol. 12, 1975",
       "citekeys": [
-       "tolstoy1862-progress"
+       "sivin1975-dsb"
       ],
       "curated": true,
       "curated_by": "exact",
       "documents": [
-       "ALT-04",
-       "ALT-06"
+       "ALT-01"
       ],
       "editorial": false,
       "reasoning": [
        {
-        "item": "ALT-04",
+        "item": "ALT-01",
         "statement": {
-         "en": "If sharing an AI advantage with others meant losing my personal edge, I would keep it for myself.",
-         "fr": "Si partager un avantage lié à l'IA devait me faire perdre mon avance personnelle, je le garderais pour moi.",
-         "de": "Wenn das Teilen eines KI-Vorteils mit anderen bedeuten würde, meinen persönlichen Vorsprung zu verlieren, würde ich den Vorteil für mich behalten."
+         "en": "The benefits of AI should be shared across society, even if that reduces my personal advantage.",
+         "fr": "Les bénéfices de l'IA devraient être partagés dans la société, même si cela réduit mon avantage personnel.",
+         "de": "Die Vorteile der KI sollten in der gesamten Gesellschaft geteilt werden, auch wenn das meinen persönlichen Vorteil verringert."
         },
-        "response": 0,
+        "response": 4,
         "direction": "toward",
-        "anchor": "tolstoy1862-progress: personal advantage from progress named as the corrupting motive",
-        "confidence": "high",
-        "transposition": null
-       },
-       {
-        "item": "ALT-06",
-        "statement": {
-         "en": "In my choices about AI, my own interest comes before the collective interest.",
-         "fr": "Dans mes choix concernant l'IA, mon intérêt propre passe avant l'intérêt collectif.",
-         "de": "Bei meinen Entscheidungen zur KI geht mein eigenes Interesse dem kollektiven Interesse vor."
-        },
-        "response": 0,
-        "direction": "toward",
-        "anchor": "tolstoy1900-slavery + tolstoy1886-whatshallwedo: the collective good of the people placed before self-interest as a moral law",
-        "confidence": "high",
-        "transposition": null
+        "anchor": "sivin1975-dsb: Changxing ji 19:53b — technique as a collective creation whose credit is shared across society, against elite monopoly of invention",
+        "confidence": "medium",
+        "transposition": "benefits of AI shared → credit and fruits of technique shared across society"
        }
       ],
       "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/08181b1e-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/tolstoi/08181b1e-512.png",
-      "portrait_source": "figures/content/russia/tolstoi.leon/image/tolstoi.leon__pulid__chest__v2.png",
+      "portrait": "figures/ebcb4bdf-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/shen-kuo/ebcb4bdf-512.png",
+      "portrait_source": "figures/content/china/shen.kuo/image/shen.kuo__frame__elbows.png",
       "portrait_ai": true,
       "videos": {
-       "en": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
-       "fr": "https://media.sumvadis.ai/tolstoi/6f856db3.mp4",
-       "de": "https://media.sumvadis.ai/tolstoi/99cd7d57.mp4"
+       "en": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
+       "fr": "https://media.sumvadis.ai/shen-kuo/d67d8ee7.mp4",
+       "de": "https://media.sumvadis.ai/shen-kuo/e6f7b616.mp4"
       },
-      "video": "https://media.sumvadis.ai/tolstoi/24dbb9b1.mp4",
+      "video": "https://media.sumvadis.ai/shen-kuo/737d261f.mp4",
       "video_kind": "talk",
       "video_ai": true,
-      "video_light": "https://media.sumvadis.ai/tolstoi/5c80b8ea-050.mp4",
-      "poster": "figures/9d777b82-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/tolstoi/9d777b82-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/shen-kuo/be306129-050.mp4",
+      "poster": "figures/6aa9ebe3-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/shen-kuo/6aa9ebe3-poster-512.png"
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "ALT-03",
@@ -7845,6 +7685,8 @@
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "TRA-01",
@@ -8216,25 +8058,23 @@
      }
     },
     {
-     "id": "galilee",
-     "name": "Galilée",
-     "dates": "1564-1642",
-     "origin": "Italy",
-     "stance": "enthusiast",
-     "wave": "New science / telescope",
-     "score": 100,
-     "presentation": "Galileo Galilei (1564–1642), Italian mathematician and natural philosopher, heard a rumour of a Dutch spyglass, rebuilt a better instrument within weeks, turned it on the sky — and went from observation to published book in about eight weeks. He then spent decades defending “sense experiences and necessary demonstrations” against consecrated authority, mocking the philosophers who refused to look through the telescope. His posture is early, active adoption: trust instrument-aided evidence over inherited authority, and iterate in the open. The record also keeps its costs — a thirteen-year self-embargo out of fear of ridicule, the frank pursuit of patronage, and the coerced abjuration of 1633, evidence of the control regime he lived under.",
-     "epoch": "Galileo Galilei (1564–1642) was an Italian mathematician and natural philosopher of the late Renaissance. By his own account in Il Saggiatore (1623), he was reappointed and confirmed for life in his professorship of mathematics at the University of Padua at double his previous salary, and he subsequently entered the service of the Medici court of Tuscany. His principal works span a compressed public career: the observational booklet Sidereus Nuncius (1610), the doctrinal Letter to the Grand Duchess Christina (1615), the polemical Il Saggiatore (1623), and the Dialogue Concerning the Two Chief World Systems (1632). His earlier correspondence with Johannes Kepler (1597, 1610) documents that his Copernican convictions predate his fame and place him in exchange with a leading astronomer of the age. He worked within a world whose epistemic authority rested with the university Aristotelians and the doctrinal organs of Counter-Reformation Rome.",
+     "id": "benjamin",
+     "name": "Walter Benjamin",
+     "dates": "1892-1940",
+     "origin": "Germany",
+     "stance": "dialectic",
+     "wave": "Mass media (radio, cinema)",
+     "score": 68,
+     "presentation": "Walter Benjamin (1892–1940), German critic and philosopher of media, wrote from exile after the Nazi seizure of power and died in 1940 fleeing the regime; he was also a working broadcaster, with some eighty Weimar radio programmes. His wave was mass media — cinema and radio, mechanical reproduction dissolving the “aura” of the unique artwork while film capital and the fascist state bent the same apparatus toward the star cult and the aestheticisation of politics. His stance was dialectical: promise and peril held in one view, the remedy never to ban but to turn consumers into producers. His Marxism and sympathy for the Soviet reorganisation of the media are positions of the figure, disclosed as such — selection for documentary richness, never moral endorsement. What instructs is the discipline of seeing both at once.",
+     "epoch": "Walter Benjamin (1892–1940) was a German literary critic, essayist, and philosopher whose work ranged across aesthetics, media, and cultural history. Its landmarks include the aphoristic One-Way Street (Einbahnstraße, 1928), the Little History of Photography (1931), the essay The Storyteller (1936), and his best-known text, The Work of Art in the Age of Mechanical Reproduction, first published in French in the Institute for Social Research's Zeitschrift für Sozialforschung in 1936. Unusually for a theorist, he was also a working broadcaster, writing and presenting some eighty radio programmes between 1927 and 1933. He wrote from exile after the Nazi seizure of power, and died in 1940 in flight from the regime. His standing today rests less on any academic post than on the enduring influence of these essays on media and cultural theory.",
      "quote": {
-      "en": "Certainly it is a great thing to add to the countless multitude of fixed stars visible hitherto by natural means and expose to our eyes innumerable others never seen before, which exceed tenfold the number of old and known ones",
-      "fr": "C'est assurément une grande chose que d'ajouter à la multitude sans nombre des étoiles fixes visibles jusqu'ici par les moyens naturels et d'exposer à nos yeux d'innombrables autres, jamais vues auparavant, qui dépassent de dix fois le nombre des anciennes et connues",
-      "reference": "Sidereus Nuncius (Venise, 1610), f. 5r (trad. angl. Albert Van Helden …",
-      "reference_full": "Sidereus Nuncius (Venise, 1610), f. 5r (trad. angl. Albert Van Helden, University of Chicago Press, 1989)",
-      "citekeys": [
-       "galilei1610-sidereus"
-      ],
-      "curated": true,
-      "curated_by": "exact",
+      "en": "It is through photography that we first discover the existence of this optical unconscious, just as we discover the instinctual unconscious through psychoanalysis.",
+      "fr": null,
+      "reference": "Photography 1931 (SW2 trans.)",
+      "reference_full": "Photography 1931 (SW2 trans.)",
+      "citekeys": [],
+      "curated": false,
+      "curated_by": null,
       "documents": [
        "TRA-01",
        "TRA-03"
@@ -8248,11 +8088,11 @@
          "fr": "Je suis favorable aux technologies qui portent les capacités mentales humaines au-delà de leur niveau naturel.",
          "de": "Ich befürworte Technologien, die die geistigen Fähigkeiten des Menschen über ihr natürliches Niveau hinaus steigern."
         },
-        "response": 5,
+        "response": 4,
         "direction": "toward",
-        "anchor": "galilei1610-sidereus 5r: adding to the stars 'visible hitherto by natural means… innumerable others never seen before'; 6r: 'a thousand times larger and more than thirty times closer than… the natural faculty only'",
+        "anchor": "benjamin1935-workofart §XIII: 'With the close-up, space expands; with slow motion, movement is extended' + 'unconscious optics'; benjamin1931-photography: the optical unconscious",
         "confidence": "high",
-        "transposition": "mental abilities → the era's augmentation of the human senses (telescope doctrine)"
+        "transposition": "mental abilities → perception augmented by camera and microphone (era-augmentation doctrine)"
        },
        {
         "item": "TRA-03",
@@ -8261,35 +8101,37 @@
          "fr": "L'humanité devrait utiliser la technologie pour dépasser ses limites biologiques.",
          "de": "Die Menschheit sollte Technologie nutzen, um ihre biologischen Grenzen zu überwinden."
         },
-        "response": 5,
+        "response": 4,
         "direction": "toward",
-        "anchor": "galilei1610-sidereus 5r/6r: the augmentation manifesto; galilei1632-dialogo Day 1: celebration of writing as communication-augmentation ('what sublimity of mind… twenty characters upon a page')",
-        "confidence": "high",
-        "transposition": "biological limits → the born limits of natural vision"
+        "anchor": "benjamin1935-workofart §XIII: film bursting the 'prison-world' of the natural sensorium; benjamin1931-photography: photography reveals what the naked eye cannot",
+        "confidence": "medium",
+        "transposition": "biological limits → the natural limits of human perception"
        }
       ],
-      "anchored": true,
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
-      "portrait": "figures/9c62fa4a-512.png",
-      "portrait_cdn": "https://media.sumvadis.ai/galilee/9c62fa4a-512.png",
-      "portrait_source": "figures/content/italy/galilei.galileo/image/galilei.galileo__master__kontext.png",
+      "portrait": "figures/5efd8841-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/benjamin/5efd8841-512.png",
+      "portrait_source": "figures/content/germany/benjamin.walter/image/benjamin.walter__frame__elbows.jpeg",
       "portrait_ai": true,
       "videos": {
-       "en": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
-       "fr": "https://media.sumvadis.ai/galilee/81f0a3a8.mp4",
-       "de": "https://media.sumvadis.ai/galilee/ea827cef.mp4"
+       "en": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
+       "fr": "https://media.sumvadis.ai/benjamin/941e48db.mp4",
+       "de": "https://media.sumvadis.ai/benjamin/9c15bf94.mp4"
       },
-      "video": "https://media.sumvadis.ai/galilee/ec3591dc.mp4",
+      "video": "https://media.sumvadis.ai/benjamin/47386e52.mp4",
       "video_kind": "talk",
       "video_ai": true,
-      "video_light": "https://media.sumvadis.ai/galilee/d7ad29c6-050.mp4",
-      "poster": "figures/6f1f114f-poster-512.png",
-      "poster_cdn": "https://media.sumvadis.ai/galilee/6f1f114f-poster-512.png"
+      "video_light": "https://media.sumvadis.ai/benjamin/fd23b351-050.mp4",
+      "poster": "figures/509c925b-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/benjamin/509c925b-poster-512.png"
      }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "TRA-02",
@@ -8389,9 +8231,10 @@
   }
  ],
  "warnings": [
-  "altruism/INDI: no figure within 40 points of the pole — threshold relaxed"
+  "altruism/INDI: fewer than 3 figures within 40 points — completed up to the median, never across it",
+  "altruism/INDI: only 1 eligible figure(s) on the pole's side of the median — NO CHAMPION: the deck assumes the absence on screen instead of casting counter-employed figures"
  ],
  "waves_by_pole": true,
- "figures_used": 51,
- "figures_reused": 3
+ "figures_used": 50,
+ "figures_reused": 1
 }

@@ -91,6 +91,13 @@ MAX_POLES_PER_FIGURE = 2
 #: Beyond this distance to the pole (0 = perfectly on it) a figure no longer
 #: "represents" it. Relaxed, with a warning, when a pole cannot be filled.
 MAX_DISTANCE = 40
+
+#: La MÉDIANE de l'axe — la ligne qu'un champion ne franchit JAMAIS (audit
+#: hub 2026-08-31, §9) : une figure à distance ≥ 50 est du côté du pôle
+#: OPPOSÉ ; l'afficher en champion serait un contre-emploi (vécu : le trio
+#: Individualisme gelait trois altruistes à 73-80). La relaxation du seuil
+#: complète les retenus jusqu'à la médiane exclue, jamais au-delà.
+MEDIAN_DISTANCE = 50
 #: Quotes must read on a slide seen from the back of an auditorium. This one IS
 #: ours: a length limit is a property of the room, not of the corpus.
 QUOTE_MIN, QUOTE_MAX = 60, 300
@@ -796,41 +803,62 @@ def build(hub: Hub) -> dict:
                     candidates.append((distance, fid, quote, assets))
             candidates.sort(key=lambda c: c[0])
 
-            for limit in (MAX_DISTANCE, 100):
-                picked: list[dict] = []
+            def _entry(fid: str, distance: float, quote, assets) -> dict:
+                f = hub.figure[fid]
+                editorial = hub.editorial.get(fid, {})
+                return {
+                    "id": fid, "name": f["name"], "dates": f.get("dates"),
+                    "origin": f.get("origin"), "stance": f.get("stance"),
+                    "wave": (hub.wave.get(f.get("wave"), {}).get("name") or {}).get("en"),
+                    "score": round(100 - distance if side == "right" else distance),
+                    # La présentation éditoriale (pourquoi cette figure,
+                    # sa révolution, sa posture) et sa place dans la
+                    # société de l'époque — demande NG 2026-08-14 : le
+                    # tooltip de chaque slide figure doit rappeler qui
+                    # elle est. Rédigé DANS le hub, jamais ici.
+                    "presentation": (editorial.get("presentation") or {}).get("en"),
+                    "epoch": ((editorial.get("biography") or {}).get("place") or {}).get("en"),
+                    "quote": quote, "media": assets,
+                }
+
+            # Sélection (réécrite après l'audit hub 2026-08-31) : champions à
+            # ≤ MAX_DISTANCE ; s'il en manque, la relaxation COMPLÈTE les
+            # retenus (l'ancienne remise à zéro évinçait Marinetti/INDI au
+            # profit de figures jamais utilisées mais à contre-emploi, §3)
+            # et ne franchit JAMAIS la médiane (§9). Moins d'un trio du bon
+            # côté = pôle SANS CHAMPION (décision A NG 2026-08-31) : figures
+            # vides, l'absence s'assume à l'écran, les plus proches vont au
+            # tooltip.
+            picked: list[dict] = []
+
+            def _fill(ok) -> None:
                 for cap in range(1, MAX_POLES_PER_FIGURE + 1):
                     for distance, fid, quote, assets in candidates:
                         if len(picked) == FIGURES_PER_POLE:
-                            break
-                        if distance > limit or used[fid] >= cap:
+                            return
+                        if not ok(distance) or used[fid] >= cap:
                             continue
                         if any(p["id"] == fid for p in picked):
                             continue
-                        f = hub.figure[fid]
-                        editorial = hub.editorial.get(fid, {})
-                        picked.append({
-                            "id": fid, "name": f["name"], "dates": f.get("dates"),
-                            "origin": f.get("origin"), "stance": f.get("stance"),
-                            "wave": (hub.wave.get(f.get("wave"), {}).get("name") or {}).get("en"),
-                            "score": round(100 - distance if side == "right" else distance),
-                            # La présentation éditoriale (pourquoi cette figure,
-                            # sa révolution, sa posture) et sa place dans la
-                            # société de l'époque — demande NG 2026-08-14 : le
-                            # tooltip de chaque slide figure doit rappeler qui
-                            # elle est. Rédigé DANS le hub, jamais ici.
-                            "presentation": (editorial.get("presentation") or {}).get("en"),
-                            "epoch": ((editorial.get("biography") or {}).get("place") or {}).get("en"),
-                            "quote": quote, "media": assets,
-                        })
-                    if len(picked) == FIGURES_PER_POLE:
-                        break
-                if len(picked) == FIGURES_PER_POLE:
-                    break
-            if limit != MAX_DISTANCE:
-                warnings.append(f"{axis}/{pole['abbr']['en']}: no figure within "
-                                f"{MAX_DISTANCE} points of the pole — threshold relaxed")
+                        picked.append(_entry(fid, distance, quote, assets))
+
+            _fill(lambda d: d <= MAX_DISTANCE)
             if len(picked) < FIGURES_PER_POLE:
-                warnings.append(f"{axis}/{pole['abbr']['en']}: only {len(picked)} figures")
+                warnings.append(f"{axis}/{pole['abbr']['en']}: fewer than "
+                                f"{FIGURES_PER_POLE} figures within {MAX_DISTANCE} points — "
+                                f"completed up to the median, never across it")
+                _fill(lambda d: d < MEDIAN_DISTANCE)
+            no_champion = len(picked) < FIGURES_PER_POLE
+            closest: list[dict] = []
+            if no_champion:
+                closest = [{"id": fid, "name": hub.figure[fid]["name"],
+                            "score": round(100 - d if side == "right" else d)}
+                           for d, fid, _q, _a in candidates[:FIGURES_PER_POLE]]
+                warnings.append(f"{axis}/{pole['abbr']['en']}: only {len(picked)} eligible "
+                                f"figure(s) on the pole's side of the median — NO CHAMPION: "
+                                f"the deck assumes the absence on screen instead of casting "
+                                f"counter-employed figures")
+                picked = []
             for p in picked:
                 used[p["id"]] += 1
                 if not p["quote"]["reference"]:
@@ -846,7 +874,8 @@ def build(hub: Hub) -> dict:
                 "statements": [{"id": i, "text": hub.cards[i]["question"],
                                 "guidance": hub.cards[i]["guidance"]}
                                for i in hub.pole_items(axis, side)],
-                "figures": picked, "arguments": arguments, "argument_pool": pool_size,
+                "figures": picked, "no_champion": no_champion, "closest": closest,
+                "arguments": arguments, "argument_pool": pool_size,
                 "waves": waves,
             })
     _dedupe_by_scarcity(hub, poles, warnings)
@@ -858,14 +887,15 @@ def build(hub: Hub) -> dict:
     if any(f["quote"].get("fr") for p in poles for f in p["figures"]):
         langs.append("fr")
     return {"metadata": {"id": "postair-debates-content",
-                         "version": 1,
+                         "version": 2,
                          "languages": langs,
                          "default_language": "en",
                          "generated_by": "_project/tools/build_debates_content.py",
                          "instrument_version": hub.instrument_version,
                          "debate_version": hub.deck_version},
-            "version": 1,
+            "version": 2,
             "generated_by": "_project/tools/build_debates_content.py",
+            "corpus_figures": len(hub.scores),
             "instrument_version": hub.instrument_version,
             "debate_version": hub.deck_version,
             "poles": poles, "warnings": warnings,
@@ -903,6 +933,11 @@ def report(data: dict) -> str:
                 + " · ".join(f"**{s['id']}**" for s in pole["statements"]), ""]
         for s in pole["statements"]:
             out.append(f"- `{s['id']}` — {s['text']['en']}")
+        if pole.get("no_champion"):
+            out += ["", "> **AUCUN CHAMPION** — moins de trois figures éligibles du bon côté",
+                    "> de la médiane : le deck assume l'absence à l'écran. Les plus proches : "
+                    + ", ".join(f"{c['name']} ({c['score']})" for c in pole.get("closest", []))
+                    + ".", ""]
         out += ["", "| Figure | Score | Citation | Référence |", "|---|--:|---|---|"]
         for f in pole["figures"]:
             q = f["quote"]
