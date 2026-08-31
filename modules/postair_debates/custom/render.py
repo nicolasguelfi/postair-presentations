@@ -65,10 +65,7 @@ class RenderStyles:
     # Le nom (attribution) calé à GAUCHE (NG 2026-08-30) — le jeton du DS est
     # centré ; on ne change que l'alignement, la taille reste celle du DS.
     person = s.project.body.pole_label + Style("text-align: left;", "pa_arg_person_left")
-    # La scène du débat (NG 2026-08-31) : sous-titre AU CORPS DU TITRE mais
-    # en teal — la consigne de prise de parole, lisible pendant le débat.
-    stage_subtitle = (s.project.titles.slide_title + s.center_txt
-                      + s.project.colors.keyword)
+    # La scène du débat (NG 2026-08-31) : nom du pôle en tête de carte.
     stage_pole = (s.project.body.pole_label
                   + Style("font-size: min(5.2vw, calc(var(--stx-scale-12, 32pt) * 1.3));",
                           "pa_stage_pole_130"))
@@ -166,7 +163,6 @@ _UI = {
     # _debate_stage (NG 2026-08-31) — la scène du débat, une par axe.
     "stage_title": {"en": "{axis} — {a} / {d}", "fr": "{axis} — {a} / {d}"},
     "stage_title_short": {"en": "{a} / {d}", "fr": "{a} / {d}"},
-    "stage_subtitle": {"en": "hands on — mic — tell us", "fr": "à vous — micro — dites-nous"},
     "stage_tip_title": {"en": "Running the debate of this axis", "fr": "Mener le débat de cet axe"},
     "stage_floor": ({"en": "Taking the floor", "fr": "Prendre la parole"},
                     {"en": ("Raise your hand; take the microphone; say why you favour "
@@ -642,8 +638,9 @@ def _debate_stage(both: list[dict], lang: str | None, *,
     pôle en tête — ``pole.synthesis`` du gel, la phrase du sondage rapide).
     Au centre : Voxo, la modératrice au micro (NG 2026-08-31), à 70 % de sa
     taille d'intro dans ``bck_disc_debates_link`` (min(22vw, 46vh) × 0,7).
-    Le titre nomme l'axe et les deux pôles ; le sous-titre, au corps du
-    titre et en teal, porte la consigne « hands on — mic — tell us »."""
+    Le titre nomme l'axe et les deux pôles ; le sous-titre a été retiré
+    (NG 2026-08-31 soir) pour rendre l'espace aux énoncés — la consigne de
+    prise de parole vit au tooltip et sur la slide d'intro HANDS ON."""
     a, d = (text(p["pole"], lang) for p in both)
     axis_name = text(both[0]["axis_name"], lang)
     label = T(_UI["faceoff_label"], lang).format(left=a, right=d)
@@ -657,7 +654,6 @@ def _debate_stage(both: list[dict], lang: str | None, *,
     title_key = "stage_title_short" if axis_name in (a, d) else "stage_title"
     _header([T(_UI[title_key], lang).format(axis=axis_name, a=a, d=d)],
             T(_UI["stage_tip_title"], lang), entries, label=label)
-    st_write(rs.stage_subtitle, T(_UI["stage_subtitle"], lang), tag=t.div)
     st_space("v", "1vh")
 
     mvh = _tuned(16.0, mascot_vh, mascot_vh_scale)
@@ -678,11 +674,13 @@ def _debate_stage(both: list[dict], lang: str | None, *,
         # L'énoncé synthétique va de 89 à 160 caractères selon le pôle et la
         # langue : le zoom suit la longueur RENDUE pour que la carte reste
         # au-dessus du pli (mesuré à 1920×1080 — même logique que _identity).
-        # +20 % demandés (NG 2026-08-31), tempérés sur le palier le plus long :
-        # à 130, le nom du pôle +30 % et Voxo pris, les 160 caractères FR de
-        # l'Humanisme passaient deux lignes sous le pli.
+        # Paliers mesurés au rendu 1920×1080 après retrait du sous-titre
+        # (NG 2026-08-31 soir) : 130/118 débordaient encore (Rationalité FR
+        # 127 et Émotion FR 112 coupées ; Optimisme FR 93 au ras du pli) —
+        # la longueur est un proxy des LIGNES, il faut de la marge. Pour
+        # pousser un axe précis au-delà : TUNING["stage"]["synth_zoom"].
         synth = text(pole["pole"].get("synthesis"), lang)
-        with st_zoom(_tuned(118 if len(synth) <= 100 else (108 if len(synth) <= 130 else 96),
+        with st_zoom(_tuned(122 if len(synth) <= 100 else (108 if len(synth) <= 130 else 100),
                             synth_zoom, synth_zoom_scale)):
             with st_block(DS.cards.blue):
                 # Le nom du pôle EN TÊTE DE CARTE (pas au-dessus des
