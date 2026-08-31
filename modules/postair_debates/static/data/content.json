@@ -8055,17 +8055,19 @@
      "epoch": "Walter Benjamin (1892–1940) was a German literary critic, essayist, and philosopher whose work ranged across aesthetics, media, and cultural history. Its landmarks include the aphoristic One-Way Street (Einbahnstraße, 1928), the Little History of Photography (1931), the essay The Storyteller (1936), and his best-known text, The Work of Art in the Age of Mechanical Reproduction, first published in French in the Institute for Social Research's Zeitschrift für Sozialforschung in 1936. Unusually for a theorist, he was also a working broadcaster, writing and presenting some eighty radio programmes between 1927 and 1933. He wrote from exile after the Nazi seizure of power, and died in 1940 in flight from the regime. His standing today rests less on any academic post than on the enduring influence of these essays on media and cultural theory.",
      "quote": {
       "en": "It is through photography that we first discover the existence of this optical unconscious, just as we discover the instinctual unconscious through psychoanalysis.",
-      "fr": null,
-      "reference": "Photography 1931 (SW2 trans.)",
-      "reference_full": "Photography 1931 (SW2 trans.)",
-      "citekeys": [],
-      "curated": false,
-      "curated_by": null,
+      "fr": "C'est par la photographie que nous découvrons pour la première fois l'existence de cet inconscient optique, comme nous découvrons l'inconscient pulsionnel par la psychanalyse.",
+      "reference": "Little History of Photography, 1931 (Selected Writings, Volume 2, Part 2: 1931–1934 …",
+      "reference_full": "Little History of Photography, 1931 (Selected Writings, Volume 2, Part 2: 1931–1934, Harvard UP; SW2 translation)",
+      "citekeys": [
+       "benjamin1931-photography"
+      ],
+      "curated": true,
+      "curated_by": "exact",
       "documents": [
        "TRA-01",
        "TRA-03"
       ],
-      "editorial": false,
+      "editorial": true,
       "reasoning": [
        {
         "item": "TRA-01",
