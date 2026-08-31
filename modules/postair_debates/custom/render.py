@@ -20,6 +20,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from postair_chain import chain
+from postair_data import mascot
 from postair_i18n import ui
 from postair_lang import T, TF, with_lang
 from shared_widgets import st_info_tooltip, st_poster_video
@@ -68,7 +69,10 @@ class RenderStyles:
     # en teal — la consigne de prise de parole, lisible pendant le débat.
     stage_subtitle = (s.project.titles.slide_title + s.center_txt
                       + s.project.colors.keyword)
-    stage_pole = s.project.body.pole_label
+    stage_pole = (s.project.body.pole_label
+                  + Style("font-size: min(5.2vw, calc(var(--stx-scale-12, 32pt) * 1.3));",
+                          "pa_stage_pole_130"))
+    stage_synth = s.project.body.bullet + s.center_txt
     subtitle = s.project.titles.subtitle + s.center_txt
     wave_name = s.project.body.pole_label_compact + s.center_txt
     wave_period = s.project.body.caption + s.center_txt
@@ -262,11 +266,6 @@ def _identity(pole: dict, lang: str | None) -> None:
 
 
 # ── La slide « vagues » d'un pôle (NG 2026-08-30) ────────────────────────────
-#: L'illustration du micro de la scène du débat (NG 2026-08-31) — dessinée
-#: pour ce deck aux couleurs du DS (exception assumée : versionnée ici,
-#: jamais au CDN) ; pas d'origine IA, donc pas de marque DD-35.
-_MIC_IMAGE = "images/debate_mic.svg"
-
 #: Provenance des cartes-titres copiées du deck des vagues (drapeau DD-35).
 _WAVES_IMAGES = Path(__file__).parent.parent / "static" / "data" / "waves-images.json"
 #: Rapport largeur/hauteur des cartes-titres (série 16:9 du deck des vagues) —
@@ -590,11 +589,13 @@ def _debate_stage(both: list[dict], lang: str | None) -> None:
     """Le moment-débat de l'axe, juste après les deux identités : la salle
     s'exprime PENDANT que l'écran rappelle la thématique (NG 2026-08-31).
 
-    Trois colonnes — pôle accélérateur / micro / pôle ralentisseur. Chaque
-    côté : le nom du pôle, ses deux mascottes, puis son énoncé SYNTHÉTIQUE
-    (``pole.synthesis`` du gel — la phrase du sondage rapide). Le titre
-    nomme l'axe et les deux pôles ; le sous-titre, au corps du titre et en
-    teal, porte la consigne « hands on — mic — tell us »."""
+    Trois colonnes — pôle accélérateur / VOXO / pôle ralentisseur. Chaque
+    côté : ses deux mascottes, puis son énoncé SYNTHÉTIQUE en carte (nom du
+    pôle en tête — ``pole.synthesis`` du gel, la phrase du sondage rapide).
+    Au centre : Voxo, la modératrice au micro (NG 2026-08-31), à 70 % de sa
+    taille d'intro dans ``bck_disc_debates_link`` (min(22vw, 46vh) × 0,7).
+    Le titre nomme l'axe et les deux pôles ; le sous-titre, au corps du
+    titre et en teal, porte la consigne « hands on — mic — tell us »."""
     a, d = (text(p["pole"], lang) for p in both)
     axis_name = text(both[0]["axis_name"], lang)
     label = T(_UI["faceoff_label"], lang).format(left=a, right=d)
@@ -617,7 +618,7 @@ def _debate_stage(both: list[dict], lang: str | None) -> None:
             for m in mascots(pole):
                 with gg.cell():
                     st_image(s.project.cards.media_center,
-                             width=f"min(9vw, {18 * _mascot_ratio(m['image']):.1f}vh)",
+                             width=f"min(9vw, {16 * _mascot_ratio(m['image']):.1f}vh)",
                              uri=m["image"],
                              alt=f"{m['mascot']} — mascot of the {m['label']} posture",
                              overlay=dd35_overlay())
@@ -626,22 +627,29 @@ def _debate_stage(both: list[dict], lang: str | None) -> None:
         # L'énoncé synthétique va de 89 à 160 caractères selon le pôle et la
         # langue : le zoom suit la longueur RENDUE pour que la carte reste
         # au-dessus du pli (mesuré à 1920×1080 — même logique que _identity).
+        # +20 % demandés (NG 2026-08-31), tempérés sur le palier le plus long :
+        # à 130, le nom du pôle +30 % et Voxo pris, les 160 caractères FR de
+        # l'Humanisme passaient deux lignes sous le pli.
         synth = text(pole["pole"].get("synthesis"), lang)
-        with st_zoom(108 if len(synth) <= 100 else (98 if len(synth) <= 130 else 90)):
+        with st_zoom(118 if len(synth) <= 100 else (108 if len(synth) <= 130 else 96)):
             with st_block(DS.cards.blue):
                 # Le nom du pôle EN TÊTE DE CARTE (pas au-dessus des
                 # mascottes : un stub st_block décalait la première cellule
                 # de la grille de ~49 px et désalignait les deux intitulés).
                 st_write(rs.stage_pole, text(pole["pole"], lang), tag=t.div)
-                st_write(s.project.body.bullet, synth, tag=t.div)
+                st_write(rs.stage_synth, synth, tag=t.div)
 
     with st_grid(cols="37% 26% 37%", gap="1.2vw",
                  cell_styles=s.project.containers.grid_cell_top) as g:
         with g.cell():
             _side(both[0])
         with g.cell():
-            st_image(s.project.cards.media_center, width="min(15vw, 40vh)",
-                     uri=_MIC_IMAGE, alt="A microphone — the floor is open")
+            voxo = mascot("Voxo")
+            st_image(s.project.cards.media_center, width="min(15.4vw, 32.2vh)",
+                     uri=voxo["image"],
+                     alt=f"{voxo['name']}, the moderator mascot, opening the floor",
+                     overlay=dd35_overlay())
+            st_write(s.project.body.mascot_name, voxo["name"], tag=t.div)
         with g.cell():
             _side(both[1])
 

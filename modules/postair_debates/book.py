@@ -138,13 +138,10 @@ st_book(
         # « discussion » d'opening vivent désormais là où le débat se joue —
         # même mouvement que bck_disc_wrapup (NG 2026-08-03).
         blocks.bck_disc_method,            # 1. let's debate — the rules, for the room
-        #blocks.bck_debate_method,          # 2. a bank, not a talk — how it is used, for the speaker
+        blocks.bck_disc_debates_link,      # 2. next, hands on — the process, remis (NG 2026-08-31)
+        #blocks.bck_debate_method,          # a bank, not a talk — how it is used, for the speaker
         #blocks.bck_provenance,             # 3. three rules of provenance, said once
         blocks.bck_disc_results,           # open /present — where does this room split? (NG 2026-08-30)
-        # Retiré (NG 2026-08-31) : la scène du débat vit désormais DANS
-        # chaque axe (custom/render.py::_debate_stage) — identités, puis
-        # micro, puis le matériau du pôle. Le bloc reste pour réversibilité.
-        #blocks.bck_disc_debates_link,     # 4. now, let's argue — the pivot into the first axis
         # ── Knowing ─────────────────────────────────────────────────
         blocks.bck_axis_trust,
         blocks.bck_axis_optimism,
