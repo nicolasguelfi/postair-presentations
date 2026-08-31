@@ -1,12 +1,15 @@
-"""The seven sub-slides of one axis, rendered from the manifest.
+"""The sub-slides of one axis, rendered from the manifest, in debate order.
 
-Every axis block is the same code with a different axis id: three sub-slides
-for the accelerating pole, three for the decelerating one, then the two face to
-face. Writing it once means a change of gabarit reaches all nine axes at the
-same instant, and that no axis can quietly drift from the others.
+Every axis block is the same code with a different axis id. Since NG's
+2026-08-31 decision the rhythm follows the DEBATE, not the material: the two
+pole identities first (the questions, recalled), then the debate stage — the
+room speaks BEFORE seeing the material — and only then the content, pole by
+pole (waves, figures, contemporary arguments). Writing it once means a change
+of gabarit reaches all nine axes at the same instant, and that no axis can
+quietly drift from the others.
 
 Navigation follows the speaker, not the templates: a visible marker per pole
-and one for the face-off — three stops in the marker list — while every
+and one for the debate stage — three stops in the marker list — while every
 sub-slide still breaks so PageDown advances one screen at a time.
 """
 
@@ -61,6 +64,11 @@ class RenderStyles:
     # Le nom (attribution) calé à GAUCHE (NG 2026-08-30) — le jeton du DS est
     # centré ; on ne change que l'alignement, la taille reste celle du DS.
     person = s.project.body.pole_label + Style("text-align: left;", "pa_arg_person_left")
+    # La scène du débat (NG 2026-08-31) : sous-titre AU CORPS DU TITRE mais
+    # en teal — la consigne de prise de parole, lisible pendant le débat.
+    stage_subtitle = (s.project.titles.slide_title + s.center_txt
+                      + s.project.colors.keyword)
+    stage_pole = s.project.body.pole_label
     subtitle = s.project.titles.subtitle + s.center_txt
     wave_name = s.project.body.pole_label_compact + s.center_txt
     wave_period = s.project.body.caption + s.center_txt
@@ -151,6 +159,21 @@ _UI = {
                                "documented paraphrases of a sourced position."), "fr": "Une carte qui porte une citation la donne verbatim ; les autres sont des paraphrases documentées d'une position sourcée."},
     "today_title": {"en": ("And today for ", (s.project.titles.keyword, "AI"), "? — "), "fr": ("Et aujourd'hui pour l'", (s.project.titles.keyword, "IA"), " ? — ")},
     "today_tip": {"en": "Contemporary arguments for {pole}", "fr": "Arguments contemporains pour {pole}"},
+    # _debate_stage (NG 2026-08-31) — la scène du débat, une par axe.
+    "stage_title": {"en": "{axis} — {a} / {d}", "fr": "{axis} — {a} / {d}"},
+    "stage_title_short": {"en": "{a} / {d}", "fr": "{a} / {d}"},
+    "stage_subtitle": {"en": "hands on — mic — tell us", "fr": "à vous — micro — dites-nous"},
+    "stage_tip_title": {"en": "Running the debate of this axis", "fr": "Mener le débat de cet axe"},
+    "stage_floor": ({"en": "Taking the floor", "fr": "Prendre la parole"},
+                    {"en": ("Raise your hand; take the microphone; say why you favour "
+                            "the pole on screen — one argument, thirty seconds."), "fr": "Levez la main ; prenez le micro ; dites pourquoi vous défendez le pôle à l'écran — un argument, trente secondes."}),
+    "stage_synthesis": ({"en": "The two sentences", "fr": "Les deux phrases"},
+                        {"en": ("Each side shows the pole's synthetic statement — the one "
+                                "sentence of the quick poll. The material of the axis "
+                                "(waves, figures, arguments) comes AFTER the debate."), "fr": "Chaque côté montre l'énoncé synthétique du pôle — la phrase du sondage rapide. Le matériau de l'axe (vagues, figures, arguments) vient APRÈS le débat."}),
+    "stage_both": ({"en": "Both sides, always", "fr": "Les deux camps, toujours"},
+                   {"en": ("Give the floor alternately — the room must hear the two best "
+                           "cases, not the one the speaker prefers."), "fr": "Donnez la parole en alternance — la salle doit entendre les deux meilleurs plaidoyers, pas celui que l'orateur préfère."}),
     # _faceoff
     "where_room": {"en": "Where is this room?", "fr": "Où se situe cette salle ?"},
     "where_room_text": {"en": ("The live distribution is in the survey application, on the "
@@ -239,6 +262,11 @@ def _identity(pole: dict, lang: str | None) -> None:
 
 
 # ── La slide « vagues » d'un pôle (NG 2026-08-30) ────────────────────────────
+#: L'illustration du micro de la scène du débat (NG 2026-08-31) — dessinée
+#: pour ce deck aux couleurs du DS (exception assumée : versionnée ici,
+#: jamais au CDN) ; pas d'origine IA, donc pas de marque DD-35.
+_MIC_IMAGE = "images/debate_mic.svg"
+
 #: Provenance des cartes-titres copiées du deck des vagues (drapeau DD-35).
 _WAVES_IMAGES = Path(__file__).parent.parent / "static" / "data" / "waves-images.json"
 #: Rapport largeur/hauteur des cartes-titres (série 16:9 du deck des vagues) —
@@ -557,6 +585,70 @@ def _arguments(pole: dict, lang: str | None) -> None:
                     _card(a)
 
 
+# ── La scène du débat (NG 2026-08-31) ────────────────────────────────────────
+def _debate_stage(both: list[dict], lang: str | None) -> None:
+    """Le moment-débat de l'axe, juste après les deux identités : la salle
+    s'exprime PENDANT que l'écran rappelle la thématique (NG 2026-08-31).
+
+    Trois colonnes — pôle accélérateur / micro / pôle ralentisseur. Chaque
+    côté : le nom du pôle, ses deux mascottes, puis son énoncé SYNTHÉTIQUE
+    (``pole.synthesis`` du gel — la phrase du sondage rapide). Le titre
+    nomme l'axe et les deux pôles ; le sous-titre, au corps du titre et en
+    teal, porte la consigne « hands on — mic — tell us »."""
+    a, d = (text(p["pole"], lang) for p in both)
+    axis_name = text(both[0]["axis_name"], lang)
+    label = T(_UI["faceoff_label"], lang).format(left=a, right=d)
+    entries = [
+        (T(_UI["stage_floor"][0], lang), T(_UI["stage_floor"][1], lang)),
+        (T(_UI["stage_synthesis"][0], lang), T(_UI["stage_synthesis"][1], lang)),
+        (T(_UI["stage_both"][0], lang), T(_UI["stage_both"][1], lang)),
+    ]
+    # Forme courte quand l'axe est homonyme d'un pôle (Trust, Centralisation,
+    # Transhumanisme…) : « Trust — Trust / … » doublonne et prend deux lignes.
+    title_key = "stage_title_short" if axis_name in (a, d) else "stage_title"
+    _header([T(_UI[title_key], lang).format(axis=axis_name, a=a, d=d)],
+            T(_UI["stage_tip_title"], lang), entries, label=label)
+    st_write(rs.stage_subtitle, T(_UI["stage_subtitle"], lang), tag=t.div)
+    st_space("v", "1vh")
+
+    def _side(pole: dict) -> None:
+        with st_grid(cols="1fr 1fr", gap="0.8vw",
+                     cell_styles=s.project.containers.grid_cell_centered) as gg:
+            for m in mascots(pole):
+                with gg.cell():
+                    st_image(s.project.cards.media_center,
+                             width=f"min(9vw, {18 * _mascot_ratio(m['image']):.1f}vh)",
+                             uri=m["image"],
+                             alt=f"{m['mascot']} — mascot of the {m['label']} posture",
+                             overlay=dd35_overlay())
+                    st_write(s.project.body.mascot_name, m["mascot"], tag=t.div)
+        st_space("v", "1vh")
+        # L'énoncé synthétique va de 89 à 160 caractères selon le pôle et la
+        # langue : le zoom suit la longueur RENDUE pour que la carte reste
+        # au-dessus du pli (mesuré à 1920×1080 — même logique que _identity).
+        synth = text(pole["pole"].get("synthesis"), lang)
+        with st_zoom(108 if len(synth) <= 100 else (98 if len(synth) <= 130 else 90)):
+            with st_block(DS.cards.blue):
+                # Le nom du pôle EN TÊTE DE CARTE (pas au-dessus des
+                # mascottes : un stub st_block décalait la première cellule
+                # de la grille de ~49 px et désalignait les deux intitulés).
+                st_write(rs.stage_pole, text(pole["pole"], lang), tag=t.div)
+                st_write(s.project.body.bullet, synth, tag=t.div)
+
+    with st_grid(cols="37% 26% 37%", gap="1.2vw",
+                 cell_styles=s.project.containers.grid_cell_top) as g:
+        with g.cell():
+            _side(both[0])
+        with g.cell():
+            st_image(s.project.cards.media_center, width="min(15vw, 40vh)",
+                     uri=_MIC_IMAGE, alt="A microphone — the floor is open")
+        with g.cell():
+            _side(both[1])
+
+
+# Retirée du rythme d'axe (NG 2026-08-31, décision 3A : l'axe se ferme sur
+# les arguments du second pôle, « la mesure » est un geste d'orateur vers
+# /present) — conservée pour réversibilité.
 def _faceoff(both: list[dict], lang: str | None) -> None:
     left, right = (text(p["pole"], lang) for p in both)
     entries = [
@@ -576,35 +668,39 @@ def _faceoff(both: list[dict], lang: str | None) -> None:
 
 
 def axis_slides(axis: str, lang: str | None = None) -> None:
-    """Les sous-slides d'un axe, pôle accélérateur d'abord.
+    """Les sous-slides d'un axe, au rythme du débat (NG 2026-08-31).
 
-    Depuis le 2026-08-13 : identité du pôle, puis UNE slide PAR figure (trois
-    par pôle), puis les arguments contemporains — onze slides par axe plus le
-    face-à-face. Depuis le 2026-08-30, entre l'identité et les figures : la
-    slide des VAGUES qui illustrent le pôle, quand le gel en porte. Le deck est paginé et le présentateur n'ouvre que les axes
-    clivants : le nombre de pages n'est pas un coût, la lisibilité en est un.
+    D'abord les deux identités — le rappel des questions de chaque pôle —
+    puis la SCÈNE DU DÉBAT (la salle s'exprime avant d'avoir vu le
+    matériau), et enfin le contenu, pôle par pôle : vagues (si le gel en
+    porte), figures, arguments contemporains. Le face-à-face de fin d'axe
+    est retiré (3A). Le deck est paginé et le présentateur n'ouvre que les
+    axes clivants : le nombre de pages n'est pas un coût, la lisibilité en
+    est un.
     """
     both = axis_poles(axis)
-    first = True
-    for pole in both:
+    # 1-2 : l'identité de chaque pôle — accélérateur d'abord.
+    for i, pole in enumerate(both):
         pole_name = text(pole["pole"], lang)
-        # La slide « vagues » suit l'identité (NG 2026-08-30) et ne se rend
-        # que si le gel porte des vagues pour ce pôle (artefact du hub).
-        parts = [_identity] + ([_waves] if pole.get("waves") else []) + \
-            [(lambda p, lg, ff=f, i=i: _figure(p, ff, i, lg))
-             for i, f in enumerate(pole["figures"])] + [_arguments]
-        for part in parts:
-            if first:
-                st_marker(pole_name)
-                first = False
-            elif part is _identity:
-                st_slide_break(marker_label=pole_name)
-            else:
-                st_slide_break(marker_hidden=True,
-                               config=SlideBreakConfig(mode=SlideBreakMode.FULL, space="30vh"))
-            with st_block(s.project.containers.page_fill_top):
-                part(pole, lang)
+        if i == 0:
+            st_marker(pole_name)
+        else:
+            st_slide_break(marker_label=pole_name)
+        with st_block(s.project.containers.page_fill_top):
+            _identity(pole, lang)
+    # 3 : la scène du débat — marqueur visible « A ⇄ B ».
     st_slide_break(marker_label=T(_UI["faceoff_label"], lang).format(
         left=text(both[0]["pole"], lang), right=text(both[1]["pole"], lang)))
     with st_block(s.project.containers.page_fill_top):
-        _faceoff(both, lang)
+        _debate_stage(both, lang)
+    # 4+ : le matériau, pôle par pôle, en marqueurs cachés — il se parcourt
+    # (ou s'échantillonne) APRÈS le débat.
+    for pole in both:
+        parts = ([_waves] if pole.get("waves") else []) + \
+            [(lambda p, lg, ff=f, i=i: _figure(p, ff, i, lg))
+             for i, f in enumerate(pole["figures"])] + [_arguments]
+        for part in parts:
+            st_slide_break(marker_hidden=True,
+                           config=SlideBreakConfig(mode=SlideBreakMode.FULL, space="30vh"))
+            with st_block(s.project.containers.page_fill_top):
+                part(pole, lang)
