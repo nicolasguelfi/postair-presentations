@@ -499,9 +499,14 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
     # zoom suit la longueur pour que TOUT reste au-dessus du pli.
     zoom = _tuned(100 if len(quote) <= 180 else (90 if len(quote) <= 240 else 80),
                   quote_zoom, quote_zoom_scale)
+    # R4d (NG 2026-08-31 après-midi) : la borne « 66vh » ne bornait que la
+    # LARGEUR — un fichier en portrait (Hinton 0,67) montait à 99vh et la
+    # couture des breaks (30vh) devenait visible. La largeur suit le ratio
+    # du FICHIER : min(38vw, 66vh × ratio) = hauteur réelle ≤ 66vh pour
+    # toutes les figures ; `portrait_scale` multiplie les deux bornes.
     kp = portrait_scale or 1.0
-    p_width = portrait_width or (f"min({38 * kp:.1f}vw, {66 * kp:.1f}vh)"
-                                 if portrait_scale else "min(38vw, 66vh)")
+    p_width = portrait_width or (
+        f"min({38 * kp:.1f}vw, {66 * kp * _mascot_ratio(media.get('portrait') or ''):.1f}vh)")
     def _portrait() -> None:
         # Le portrait EST le poster du lecteur (NG 2026-08-24) : la vidéo se
         # joue dans le cadre de la photo, plein écran natif compris, au lieu
