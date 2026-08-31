@@ -501,14 +501,16 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
     # zoom suit la longueur pour que TOUT reste au-dessus du pli.
     zoom = _tuned(100 if len(quote) <= 180 else (90 if len(quote) <= 240 else 80),
                   quote_zoom, quote_zoom_scale)
-    # R4d (NG 2026-08-31) : la largeur suit le ratio du FICHIER pour que la
-    # borne de hauteur soit réelle (un portrait 0,67 montait à 99vh quand
-    # « 66vh » ne bornait que la largeur). Bornes NG 2026-08-31 soir :
-    # min(40vw, 75vh × ratio) — à 1080p, portraits à 75vh (810 px), carrés
-    # bornés par les 40vw (~71vh) ; `portrait_scale` multiplie les deux.
+    # R4d par la CELLULE (NG 2026-08-31 soir — correctif de fb28308) : la
+    # borne en vw ignorait la cellule à 40 % ; un fichier carré (810 px au
+    # budget 75vh) passait SOUS la colonne de texte (mesuré au DOM : cellule
+    # 659 px, image 810 px). Le média se dimensionne par SA CELLULE via
+    # media_stage(ratio du fichier, 75vh) : largeur = min(100 % de la
+    # cellule, 75vh × ratio) — débordement impossible par construction, même
+    # geste que les cartes de vagues. `portrait_scale` multiplie le budget
+    # vh ; `portrait_width` (absolu) reste un override direct de la largeur.
     kp = portrait_scale or 1.0
-    p_width = portrait_width or (
-        f"min({40 * kp:.1f}vw, {75 * kp * _mascot_ratio(media.get('portrait') or ''):.1f}vh)")
+    p_ratio = _mascot_ratio(media.get("portrait") or "")
     def _portrait() -> None:
         # Le portrait EST le poster du lecteur (NG 2026-08-24) : la vidéo se
         # joue dans le cadre de la photo, plein écran natif compris, au lieu
@@ -516,18 +518,20 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
         # Streaming pur : `preload="none"` + Range du CDN, rien n'est
         # embarqué dans l'image (les 54 masters pèsent 612 Mo).
         video = media.get("video")
-        if video:
-            st_poster_video(
-                video, f"app/static/media/{media.get('portrait')}",
-                alt=f"Presentation video of {f['name']}",
-                width=p_width,
-                ai_marked=bool(media.get("video_ai")
-                               or media.get("video_kind") == "talk"))
-            return
-        st_image(DS.cards.media_center, width=p_width,
-                 uri=media.get("portrait"),
-                 alt=f"Portrait of {f['name']}",
-            overlay=dd35_overlay(media.get("portrait_ai", False)))
+        with st_block(s.project.containers.media_stage(p_ratio, round(75 * kp))):
+            w = portrait_width or "100%"
+            if video:
+                st_poster_video(
+                    video, f"app/static/media/{media.get('portrait')}",
+                    alt=f"Presentation video of {f['name']}",
+                    width=w,
+                    ai_marked=bool(media.get("video_ai")
+                                   or media.get("video_kind") == "talk"))
+                return
+            st_image(DS.cards.media_center, width=w,
+                     uri=media.get("portrait"),
+                     alt=f"Portrait of {f['name']}",
+                overlay=dd35_overlay(media.get("portrait_ai", False)))
 
     # Colonnes 40 % image / 60 % texte (NG 2026-08-31 soir) — le défaut 50/50
     # du gabarit coupait la slide en deux.
