@@ -71,37 +71,37 @@ TUNING: dict = {
     "figure_a1": {
         "quote_zoom": None,            # auto : 100 (≤180 car.) / 90 (≤240) / 80
         "quote_zoom_scale": None,
-        "portrait_width": None,        # auto : min(38vw, 66vh × ratio du FICHIER) — R4d
+        "portrait_width": None,        # auto : min(40vw, 75vh × ratio du FICHIER) — R4d
         "portrait_scale": None,        # k multiplie les deux bornes (portrait_width doit être None)
     },
     "figure_a2": {
         "quote_zoom": None,            # auto : 100 (≤180 car.) / 90 (≤240) / 80
         "quote_zoom_scale": None,
-        "portrait_width": None,        # auto : min(38vw, 66vh × ratio du FICHIER) — R4d
+        "portrait_width": None,        # auto : min(40vw, 75vh × ratio du FICHIER) — R4d
         "portrait_scale": None,        # k multiplie les deux bornes (portrait_width doit être None)
     },
     "figure_a3": {
         "quote_zoom": None,            # auto : 100 (≤180 car.) / 90 (≤240) / 80
         "quote_zoom_scale": None,
-        "portrait_width": None,        # auto : min(38vw, 66vh × ratio du FICHIER) — R4d
+        "portrait_width": None,        # auto : min(40vw, 75vh × ratio du FICHIER) — R4d
         "portrait_scale": None,        # k multiplie les deux bornes (portrait_width doit être None)
     },
     "figure_b1": {
         "quote_zoom": None,            # auto : 100 (≤180 car.) / 90 (≤240) / 80
         "quote_zoom_scale": None,
-        "portrait_width": None,        # auto : min(38vw, 66vh × ratio du FICHIER) — R4d
+        "portrait_width": None,        # auto : min(40vw, 75vh × ratio du FICHIER) — R4d
         "portrait_scale": None,        # k multiplie les deux bornes (portrait_width doit être None)
     },
     "figure_b2": {
         "quote_zoom": None,            # auto : 100 (≤180 car.) / 90 (≤240) / 80
         "quote_zoom_scale": None,
-        "portrait_width": None,        # auto : min(38vw, 66vh × ratio du FICHIER) — R4d
+        "portrait_width": None,        # auto : min(40vw, 75vh × ratio du FICHIER) — R4d
         "portrait_scale": None,        # k multiplie les deux bornes (portrait_width doit être None)
     },
     "figure_b3": {
         "quote_zoom": None,            # auto : 100 (≤180 car.) / 90 (≤240) / 80
         "quote_zoom_scale": None,
-        "portrait_width": None,        # auto : min(38vw, 66vh × ratio du FICHIER) — R4d
+        "portrait_width": None,        # auto : min(40vw, 75vh × ratio du FICHIER) — R4d
         "portrait_scale": None,        # k multiplie les deux bornes (portrait_width doit être None)
     },
     # Pôle sans champion (gel no_champion) : la slide d'absence qui REMPLACE

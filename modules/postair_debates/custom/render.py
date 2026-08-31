@@ -499,14 +499,14 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
     # zoom suit la longueur pour que TOUT reste au-dessus du pli.
     zoom = _tuned(100 if len(quote) <= 180 else (90 if len(quote) <= 240 else 80),
                   quote_zoom, quote_zoom_scale)
-    # R4d (NG 2026-08-31 après-midi) : la borne « 66vh » ne bornait que la
-    # LARGEUR — un fichier en portrait (Hinton 0,67) montait à 99vh et la
-    # couture des breaks (30vh) devenait visible. La largeur suit le ratio
-    # du FICHIER : min(38vw, 66vh × ratio) = hauteur réelle ≤ 66vh pour
-    # toutes les figures ; `portrait_scale` multiplie les deux bornes.
+    # R4d (NG 2026-08-31) : la largeur suit le ratio du FICHIER pour que la
+    # borne de hauteur soit réelle (un portrait 0,67 montait à 99vh quand
+    # « 66vh » ne bornait que la largeur). Bornes NG 2026-08-31 soir :
+    # min(40vw, 75vh × ratio) — à 1080p, portraits à 75vh (810 px), carrés
+    # bornés par les 40vw (~71vh) ; `portrait_scale` multiplie les deux.
     kp = portrait_scale or 1.0
     p_width = portrait_width or (
-        f"min({38 * kp:.1f}vw, {66 * kp * _mascot_ratio(media.get('portrait') or ''):.1f}vh)")
+        f"min({40 * kp:.1f}vw, {75 * kp * _mascot_ratio(media.get('portrait') or ''):.1f}vh)")
     def _portrait() -> None:
         # Le portrait EST le poster du lecteur (NG 2026-08-24) : la vidéo se
         # joue dans le cadre de la photo, plein écran natif compris, au lieu
@@ -527,7 +527,9 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
                  alt=f"Portrait of {f['name']}",
             overlay=dd35_overlay(media.get("portrait_ai", False)))
 
-    with hero_split(s, zoom=zoom, image=_portrait):
+    # Colonnes 40 % image / 60 % texte (NG 2026-08-31 soir) — le défaut 50/50
+    # du gabarit coupait la slide en deux.
+    with hero_split(s, zoom=zoom, image=_portrait, ratio=40):
         st_write(rs.figure_name, f["name"], tag=t.div)
         st_write(rs.figure_meta,
                  " · ".join(x for x in (f.get("dates"), f.get("origin"),
