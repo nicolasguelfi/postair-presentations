@@ -825,10 +825,11 @@ def build(hub: Hub) -> dict:
             # ≤ MAX_DISTANCE ; s'il en manque, la relaxation COMPLÈTE les
             # retenus (l'ancienne remise à zéro évinçait Marinetti/INDI au
             # profit de figures jamais utilisées mais à contre-emploi, §3)
-            # et ne franchit JAMAIS la médiane (§9). Moins d'un trio du bon
-            # côté = pôle SANS CHAMPION (décision A NG 2026-08-31) : figures
-            # vides, l'absence s'assume à l'écran, les plus proches vont au
-            # tooltip.
+            # et ne franchit JAMAIS la médiane (§9). Règle NG 2026-08-31
+            # (amendement de la décision A) : « trio de préférence, sinon
+            # deux, sinon une seule figure » — le pôle SANS CHAMPION (figures
+            # vides, absence assumée à l'écran, plus proches au tooltip) ne
+            # vaut plus que pour ZÉRO figure éligible.
             picked: list[dict] = []
 
             def _fill(ok) -> None:
@@ -848,17 +849,20 @@ def build(hub: Hub) -> dict:
                                 f"{FIGURES_PER_POLE} figures within {MAX_DISTANCE} points — "
                                 f"completed up to the median, never across it")
                 _fill(lambda d: d < MEDIAN_DISTANCE)
-            no_champion = len(picked) < FIGURES_PER_POLE
+            no_champion = not picked
             closest: list[dict] = []
             if no_champion:
                 closest = [{"id": fid, "name": hub.figure[fid]["name"],
                             "score": round(100 - d if side == "right" else d)}
                            for d, fid, _q, _a in candidates[:FIGURES_PER_POLE]]
-                warnings.append(f"{axis}/{pole['abbr']['en']}: only {len(picked)} eligible "
-                                f"figure(s) on the pole's side of the median — NO CHAMPION: "
-                                f"the deck assumes the absence on screen instead of casting "
-                                f"counter-employed figures")
-                picked = []
+                warnings.append(f"{axis}/{pole['abbr']['en']}: no eligible figure on the "
+                                f"pole's side of the median — NO CHAMPION: the deck assumes "
+                                f"the absence on screen")
+            elif len(picked) < FIGURES_PER_POLE:
+                warnings.append(f"{axis}/{pole['abbr']['en']}: partial bench — "
+                                f"{len(picked)}/{FIGURES_PER_POLE} eligible figure(s) on the "
+                                f"pole's side of the median (NG 2026-08-31: trio preferred, "
+                                f"else two, else one)")
             for p in picked:
                 used[p["id"]] += 1
                 if not p["quote"]["reference"]:

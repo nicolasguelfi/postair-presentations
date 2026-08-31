@@ -6762,25 +6762,84 @@
      }
     }
    ],
-   "figures": [],
-   "no_champion": true,
-   "closest": [
+   "figures": [
     {
      "id": "marinetti",
      "name": "Filippo Tommaso Marinetti",
-     "score": 30
-    },
-    {
-     "id": "ibn-khaldun",
-     "name": "Ibn Khaldun",
-     "score": 57
-    },
-    {
-     "id": "fukuzawa",
-     "name": "Fukuzawa Yukichi",
-     "score": 63
+     "dates": "1876-1944",
+     "origin": "Italy",
+     "stance": "futurist-enthusiast",
+     "wave": "Motor, automobile, aviation",
+     "score": 30,
+     "presentation": "Filippo Tommaso Marinetti (1876–1944), Italian poet and impresario of the avant-garde, founded Futurism with the 1909 manifesto on the front page of Le Figaro. His wave was the motor-aviation complex — racing car, aeroplane, the whole machine age of speed — this study’s mirror for today’s AI. His stance was unqualified exaltation, the wave’s machine-worship extreme: “a roaring motor car… is more beautiful than the Victory of Samothrace,” “Time and Space died yesterday,” danger and rupture embraced as first principles. He instructs as a limit case: a genuine aesthetic response to a new technology hardening into a doctrine that scorns caution, restraint and every voice of the past. The disclosure is plain: Marinetti co-founded the Fasci italiani di combattimento in 1919 and co-authored the Fascist manifesto, and the 1909 text glorifies war and voices “contempt for woman” — documentary richness, never a moral example.",
+     "epoch": "Filippo Tommaso Marinetti (born Alexandria, Egypt, 22 December 1876; died Bellagio, 2 December 1944) was an Italian poet and cultural agitator who founded the Futurist movement with the manifesto he published on the front page of the Paris daily Le Figaro on 20 February 1909, after a first Italian printing in the Gazzetta dell'Emilia of Bologna earlier that month. Writing across French and Italian, he extended the movement's programme through his 1911 essay Multiplied Man and the Reign of the Machine (collected in Le Futurisme), the Technical Manifesto of Futurist Literature (1912), and the typographic sound-poem Zang Tumb Tuuum (1914), the last drawn from his own reporting on the 1912 Siege of Adrianople. His standing in the pre-war avant-garde rested less on a single masterwork than on his role as impresario and theorist of a self-declared break with the museums, academies and inherited culture of his day.",
+     "quote": {
+      "en": "Beauty exists only in struggle. There is no masterpiece that has not an aggressive character.",
+      "fr": "Il n'y a plus de beauté que dans la lutte. Pas de chef-d'œuvre sans un caractère agressif.",
+      "reference": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, point 7 …",
+      "reference_full": "The Founding and Manifesto of Futurism, Le Figaro, 20 February 1909, point 7 (R.W. Flint translation)",
+      "citekeys": [
+       "marinetti1909-manifesto"
+      ],
+      "curated": true,
+      "curated_by": "exact",
+      "documents": [
+       "ALT-01",
+       "ALT-03"
+      ],
+      "editorial": true,
+      "reasoning": [
+       {
+        "item": "ALT-01",
+        "statement": {
+         "en": "The benefits of AI should be shared across society, even if that reduces my personal advantage.",
+         "fr": "Les bénéfices de l'IA devraient être partagés dans la société, même si cela réduit mon avantage personnel.",
+         "de": "Die Vorteile der KI sollten in der gesamten Gesellschaft geteilt werden, auch wenn das meinen persönlichen Vorteil verringert."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "marinetti1909-manifesto, point 7: aggression and self-assertion, not benefit-shared-with-others, as the value; consequences for the weak are not his concern",
+        "confidence": "medium",
+        "transposition": null
+       },
+       {
+        "item": "ALT-03",
+        "statement": {
+         "en": "When I use AI, I think about the consequences for other people.",
+         "fr": "Quand j'utilise l'IA, je pense aux conséquences pour les autres.",
+         "de": "Wenn ich KI nutze, denke ich an die Folgen für andere Menschen."
+        },
+        "response": 1,
+        "direction": "toward",
+        "anchor": "marinetti1909-manifesto, points 7 and 9: aggression/'contempt for woman' — consequences for others are not weighed (point 9's content disclosed, not used positively)",
+        "confidence": "medium",
+        "transposition": null
+       }
+      ],
+      "anchored": false,
+      "verification": "Verbatim (source verified)"
+     },
+     "media": {
+      "portrait": "figures/5cf530ca-512.png",
+      "portrait_cdn": "https://media.sumvadis.ai/marinetti/5cf530ca-512.png",
+      "portrait_source": "figures/content/italy/marinetti.filippo-tommaso/image/marinetti.filippo-tommaso__frame__chest.jpeg",
+      "portrait_ai": true,
+      "videos": {
+       "en": "https://media.sumvadis.ai/marinetti/0084d933.mp4",
+       "fr": "https://media.sumvadis.ai/marinetti/6ec7ad6f.mp4",
+       "de": "https://media.sumvadis.ai/marinetti/b61e5327.mp4"
+      },
+      "video": "https://media.sumvadis.ai/marinetti/0084d933.mp4",
+      "video_kind": "talk",
+      "video_ai": true,
+      "video_light": "https://media.sumvadis.ai/marinetti/b95a5fa7-050.mp4",
+      "poster": "figures/8a39ed64-poster-512.png",
+      "poster_cdn": "https://media.sumvadis.ai/marinetti/8a39ed64-poster-512.png"
+     }
     }
    ],
+   "no_champion": false,
+   "closest": [],
    "arguments": [
     {
      "statement": "ALT-03",
@@ -8220,9 +8279,9 @@
  ],
  "warnings": [
   "altruism/INDI: fewer than 3 figures within 40 points — completed up to the median, never across it",
-  "altruism/INDI: only 1 eligible figure(s) on the pole's side of the median — NO CHAMPION: the deck assumes the absence on screen instead of casting counter-employed figures"
+  "altruism/INDI: partial bench — 1/3 eligible figure(s) on the pole's side of the median (NG 2026-08-31: trio preferred, else two, else one)"
  ],
  "waves_by_pole": true,
  "figures_used": 50,
- "figures_reused": 1
+ "figures_reused": 2
 }

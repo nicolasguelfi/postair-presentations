@@ -488,8 +488,10 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
         entries.append((T(_UI["full_reference"], lang), full))
     _header([T(_UI["before_us"], lang), (s.project.titles.keyword, pole_name)],
             T(_UI["figure_pole"], lang).format(name=f["name"], pole=pole_name), entries)
-    if index == 0:
-        _pole_banner(pole, lang)
+    # Bandeau _pole_banner retiré (NG Q2b 2026-08-31) : avec la règle « banc
+    # partiel » (trio de préférence, sinon deux, sinon une), un champion réel
+    # n'est plus « la voix la plus proche » — le texte du bandeau serait faux,
+    # et NG n'en veut aucun autre. L'asymétrie du banc EST l'information.
     st_space("v", s.project.spacing.title_gap)
     media = f.get("media") or {}
     quote = text(f["quote"], lang) or f["quote"].get("en") or ""
