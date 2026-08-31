@@ -19,5 +19,15 @@ themselves, and for one where they could not.
 from custom.render import axis_slides
 
 
+
+# ── Réglages visuels de CET axe (NG 2026-08-31) — la main de l'artiste.
+# {"<sous-slide>": {"<paramètre>": valeur}} — clés : identity_a/b, stage,
+# waves_a/b, figure_a1..a3/b1..b3, arguments_a/b ; paramètres en ABSOLU
+# (statement_zoom=120) ou en FACTEUR sur le calcul auto
+# (statement_zoom_scale=1.15). Vide = calcul auto partout. La liste
+# complète des paramètres est dans la docstring d'axis_slides.
+TUNING: dict = {}
+
+
 def build(lang: str = "en", **_):
-    axis_slides("trust", lang=lang)
+    axis_slides("trust", lang=lang, tuning=TUNING)

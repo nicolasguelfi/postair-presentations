@@ -224,7 +224,24 @@ def _mascot_ratio(uri: str) -> float:
         return 1.0
 
 
-def _identity(pole: dict, lang: str | None) -> None:
+def _tuned(auto, value=None, scale=None):
+    """Résolution d'un réglage de brique (NG 2026-08-31) : la valeur ABSOLUE
+    gagne, sinon le FACTEUR s'applique au calcul auto, sinon l'auto. L'auto
+    reste le repli sûr : il se recalcule à chaque régénération du gel, là où
+    une valeur absolue fige le rendu d'aujourd'hui (pas de filet outillé —
+    décision NG 2026-08-31 : contrôle visuel humain après campagne hub)."""
+    if value is not None:
+        return value
+    if scale is not None:
+        return round(auto * scale) if isinstance(auto, int) else auto * scale
+    return auto
+
+
+def _identity(pole: dict, lang: str | None, *,
+              statement_zoom: int | None = None,
+              statement_zoom_scale: float | None = None,
+              mascot_vh: float | None = None,
+              mascot_vh_scale: float | None = None) -> None:
     pole_name = text(pole["pole"], lang)
     axis_name = text(pole["axis_name"], lang)
     entries = [(T(_UI["claims"], lang),
@@ -260,9 +277,12 @@ def _identity(pole: dict, lang: str | None) -> None:
     # hauteur, au lieu de pousser la colonne sous le pli (vu sur Contrôle).
     statements = [text(x["text"], lang) for x in pole["statements"]]
     lines = sum(-(-len(x) // 34) for x in statements)
-    widths = [f"min(15.6vw, {27 * _mascot_ratio(m['image']):.1f}vh)" for m in both]
+    vh = _tuned(27.0, mascot_vh, mascot_vh_scale)
+    kf = vh / 27.0
+    widths = [f"min({15.6 * kf:.1f}vw, {vh * _mascot_ratio(m['image']):.1f}vh)" for m in both]
     pole_identity(both, statements, DS, mascot_width=widths,
-                  statement_zoom=116 if lines <= 6 else (106 if lines <= 8 else 98))
+                  statement_zoom=_tuned(116 if lines <= 6 else (106 if lines <= 8 else 98),
+                                        statement_zoom, statement_zoom_scale))
 
 
 # ── La slide « vagues » d'un pôle (NG 2026-08-30) ────────────────────────────
@@ -330,7 +350,11 @@ def _wave_card(w: dict, lang: str, url: str, width: str) -> None:
         f'{chip}</a>')
 
 
-def _waves(pole: dict, lang: str | None) -> None:
+def _waves(pole: dict, lang: str | None, *,
+           stage_vh: float | None = None,
+           stage_vh_scale: float | None = None,
+           caption_zoom: int | None = None,
+           caption_zoom_scale: float | None = None) -> None:
     """Les révolutions où une société majoritaire a tenu ce pôle — une ligne
     de cartes-titres cliquables vers le deck des vagues. Tout vient du gel
     (``pole["waves"]``, joint depuis l'artefact du hub) : rien n'est nommé ici."""
@@ -356,8 +380,8 @@ def _waves(pole: dict, lang: str | None) -> None:
     with st_grid(cols=s.project.grids.balanced(len(waves)), gap="1vw",
                  cell_styles=s.project.containers.grid_cell_centered) as g:
         for w in waves:
-            with g.cell(), st_block(s.project.containers.media_stage(_WAVE_CARD_RATIO,
-                                                                     _WAVE_STAGE_VH)):
+            with g.cell(), st_block(s.project.containers.media_stage(
+                    _WAVE_CARD_RATIO, _tuned(float(_WAVE_STAGE_VH), stage_vh, stage_vh_scale))):
                 # La clé du marqueur côté waves est l'id de la vague (stable,
                 # indépendant du libellé traduit) : le lien marche en EN et FR.
                 _wave_card(w, lang, page_url(url, marker=w["id"]), width="100%")
@@ -371,7 +395,7 @@ def _waves(pole: dict, lang: str | None) -> None:
                     parts += [" · ", (s.project.colors.primary, text(w["period"], lang))]
                 if strength:
                     parts += [" · ", (s.project.colors.keyword, strength)]
-                with st_zoom(180):
+                with st_zoom(_tuned(180, caption_zoom, caption_zoom_scale)):
                     st_write(rs.wave_name, *parts, tag=t.div)
 
 
@@ -418,7 +442,11 @@ def _why_here(f: dict, pole_name: str, lang: str | None) -> list[tuple[str, str]
     return out
 
 
-def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
+def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
+            quote_zoom: int | None = None,
+            quote_zoom_scale: float | None = None,
+            portrait_width: str | None = None,
+            portrait_scale: float | None = None) -> None:
     """UNE figure par slide (NG 2026-08-13, 1 idée = 1 slide).
 
     Le portrait — enfin grand — à gauche sur ~la moitié de la largeur, et à
@@ -459,7 +487,11 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
     # n'en affiche ~180 qu'à taille pleine : au-delà, la ligne de référence
     # passait sous le pli (constaté sur Marinetti et Arendt, 2026-08-13). Le
     # zoom suit la longueur pour que TOUT reste au-dessus du pli.
-    zoom = 100 if len(quote) <= 180 else (90 if len(quote) <= 240 else 80)
+    zoom = _tuned(100 if len(quote) <= 180 else (90 if len(quote) <= 240 else 80),
+                  quote_zoom, quote_zoom_scale)
+    kp = portrait_scale or 1.0
+    p_width = portrait_width or (f"min({38 * kp:.1f}vw, {66 * kp:.1f}vh)"
+                                 if portrait_scale else "min(38vw, 66vh)")
     def _portrait() -> None:
         # Le portrait EST le poster du lecteur (NG 2026-08-24) : la vidéo se
         # joue dans le cadre de la photo, plein écran natif compris, au lieu
@@ -471,11 +503,11 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None) -> None:
             st_poster_video(
                 video, f"app/static/media/{media.get('portrait')}",
                 alt=f"Presentation video of {f['name']}",
-                width="min(38vw, 66vh)",
+                width=p_width,
                 ai_marked=bool(media.get("video_ai")
                                or media.get("video_kind") == "talk"))
             return
-        st_image(DS.cards.media_center, width="min(38vw, 66vh)",
+        st_image(DS.cards.media_center, width=p_width,
                  uri=media.get("portrait"),
                  alt=f"Portrait of {f['name']}",
             overlay=dd35_overlay(media.get("portrait_ai", False)))
@@ -519,7 +551,10 @@ def _fit_zoom(longest: int, steps: tuple[int, int], start: int = _ARG_ZOOM_START
     return start - drop if longest <= steps[1] else start - 2 * drop
 
 
-def _arguments(pole: dict, lang: str | None) -> None:
+def _arguments(pole: dict, lang: str | None, *,
+               zoom: int | None = None,
+               zoom_scale: float | None = None,
+               badge_scale: float | None = None) -> None:
     pole_name = text(pole["pole"], lang)
     # Attribution COURTE à l'écran (« Andrew Ng ») — la titulature complète
     # (« co-founder of Google Brain, professor at Stanford ») vit au tooltip.
@@ -541,13 +576,19 @@ def _arguments(pole: dict, lang: str | None) -> None:
     args = sorted(pole["arguments"], key=lambda a: order.get(a["category"], 3))
     top, bottom = args[:2], args[2:]
 
+    badge_style = rs.nature_badge if badge_scale is None else (
+        s.project.titles.subtitle + s.project.titles.keyword
+        + Style(f"font-size: min({4 * badge_scale:.2f}vw, "
+                f"calc(var(--stx-scale-12, 32pt) * {1.2 * badge_scale:.2f}));",
+                f"pa_nature_badge_{int(100 * badge_scale)}"))
+
     def _card(a: dict) -> None:
         # La ligne de source est le code de citation natif — carte complète
         # au survol — avec repli sur la chaîne du manifeste si la clé n'était
         # pas gelée.
         person_short = (a.get("person") or "").split(",")[0].strip() or None
         argument_card(a, DS, text(a["title"], lang), person=person_short,
-                      badge_style=rs.nature_badge, person_style=rs.person,
+                      badge_style=badge_style, person_style=rs.person,
                       nature=T(_NATURES.get(a["category"], {"en": a["category"] or ""}), lang),
                       source_html=citation_or(
                           a.get("reference") or a.get("citekey") or "",
@@ -566,7 +607,8 @@ def _arguments(pole: dict, lang: str | None) -> None:
     # 133 caractères, mesuré au rendu 1920×1080) : ≤ 100 → 130, ≤ 115 → 120,
     # au-delà → 110 — puis le plafond `_ARG_ZOOM_START` s'applique.
     longest = max((len(text(a["title"], lang)) for a in args), default=0)
-    zoom = min(_ARG_ZOOM_START, _fit_zoom(longest, (100, 115), start=130, drop=10))
+    zoom = _tuned(min(_ARG_ZOOM_START, _fit_zoom(longest, (100, 115), start=130, drop=10)),
+                  zoom, zoom_scale)
     zoom_top = zoom
     with st_grid(cols=s.project.grids.balanced(len(top), min_px=340), gap="1.2vw",
                  grid_style=s.project.grids.stretch,
@@ -585,7 +627,13 @@ def _arguments(pole: dict, lang: str | None) -> None:
 
 
 # ── La scène du débat (NG 2026-08-31) ────────────────────────────────────────
-def _debate_stage(both: list[dict], lang: str | None) -> None:
+def _debate_stage(both: list[dict], lang: str | None, *,
+                  synth_zoom: int | None = None,
+                  synth_zoom_scale: float | None = None,
+                  mascot_vh: float | None = None,
+                  mascot_vh_scale: float | None = None,
+                  voxo_width: str | None = None,
+                  voxo_scale: float | None = None) -> None:
     """Le moment-débat de l'axe, juste après les deux identités : la salle
     s'exprime PENDANT que l'écran rappelle la thématique (NG 2026-08-31).
 
@@ -612,13 +660,16 @@ def _debate_stage(both: list[dict], lang: str | None) -> None:
     st_write(rs.stage_subtitle, T(_UI["stage_subtitle"], lang), tag=t.div)
     st_space("v", "1vh")
 
+    mvh = _tuned(16.0, mascot_vh, mascot_vh_scale)
+    mcap = 9.0 * mvh / 16.0
+
     def _side(pole: dict) -> None:
         with st_grid(cols="1fr 1fr", gap="0.8vw",
                      cell_styles=s.project.containers.grid_cell_centered) as gg:
             for m in mascots(pole):
                 with gg.cell():
                     st_image(s.project.cards.media_center,
-                             width=f"min(9vw, {16 * _mascot_ratio(m['image']):.1f}vh)",
+                             width=f"min({mcap:.1f}vw, {mvh * _mascot_ratio(m['image']):.1f}vh)",
                              uri=m["image"],
                              alt=f"{m['mascot']} — mascot of the {m['label']} posture",
                              overlay=dd35_overlay())
@@ -631,7 +682,8 @@ def _debate_stage(both: list[dict], lang: str | None) -> None:
         # à 130, le nom du pôle +30 % et Voxo pris, les 160 caractères FR de
         # l'Humanisme passaient deux lignes sous le pli.
         synth = text(pole["pole"].get("synthesis"), lang)
-        with st_zoom(118 if len(synth) <= 100 else (108 if len(synth) <= 130 else 96)):
+        with st_zoom(_tuned(118 if len(synth) <= 100 else (108 if len(synth) <= 130 else 96),
+                            synth_zoom, synth_zoom_scale)):
             with st_block(DS.cards.blue):
                 # Le nom du pôle EN TÊTE DE CARTE (pas au-dessus des
                 # mascottes : un stub st_block décalait la première cellule
@@ -645,7 +697,10 @@ def _debate_stage(both: list[dict], lang: str | None) -> None:
             _side(both[0])
         with g.cell():
             voxo = mascot("Voxo")
-            st_image(s.project.cards.media_center, width="min(15.4vw, 32.2vh)",
+            kv = voxo_scale or 1.0
+            st_image(s.project.cards.media_center,
+                     width=voxo_width or (f"min({15.4 * kv:.1f}vw, {32.2 * kv:.1f}vh)"
+                                          if voxo_scale else "min(15.4vw, 32.2vh)"),
                      uri=voxo["image"],
                      alt=f"{voxo['name']}, the moderator mascot, opening the floor",
                      overlay=dd35_overlay())
@@ -675,17 +730,52 @@ def _faceoff(both: list[dict], lang: str | None) -> None:
     st_write(rs.banner, T(_UI["protocol"], lang), tag=t.div)
 
 
-def axis_slides(axis: str, lang: str | None = None) -> None:
+#: Les clés de réglage reconnues par ``axis_slides`` — a = pôle accélérateur,
+#: b = ralentisseur ; une clé inconnue est une erreur BRUYANTE, jamais un
+#: réglage ignoré en silence.
+_TUNING_KEYS = frozenset({"identity_a", "identity_b", "stage",
+                          "waves_a", "waves_b",
+                          "figure_a1", "figure_a2", "figure_a3",
+                          "figure_b1", "figure_b2", "figure_b3",
+                          "arguments_a", "arguments_b"})
+
+
+def axis_slides(axis: str, lang: str | None = None,
+                tuning: dict | None = None) -> None:
     """Les sous-slides d'un axe, au rythme du débat (NG 2026-08-31).
 
     D'abord les deux identités — le rappel des questions de chaque pôle —
     puis la SCÈNE DU DÉBAT (la salle s'exprime avant d'avoir vu le
     matériau), et enfin le contenu, pôle par pôle : vagues (si le gel en
-    porte), figures, arguments contemporains. Le face-à-face de fin d'axe
-    est retiré (3A). Le deck est paginé et le présentateur n'ouvre que les
-    axes clivants : le nombre de pages n'est pas un coût, la lisibilité en
-    est un.
+    porte), figures, arguments contemporains. Le deck est paginé et le
+    présentateur n'ouvre que les axes clivants : le nombre de pages n'est
+    pas un coût, la lisibilité en est un.
+
+    ``tuning`` — la main de l'artiste, par axe (NG 2026-08-31) : un dict
+    ``{clé de sous-slide: {paramètre: valeur}}`` déclaré dans le bloc de
+    l'axe (``TUNING``). Clés : ``identity_a/b``, ``stage``, ``waves_a/b``,
+    ``figure_a1..a3/b1..b3``, ``arguments_a/b``. Chaque paramètre existe en
+    ABSOLU (``statement_zoom=120``, ``voxo_width="34vh"``) ou en FACTEUR
+    sur le calcul auto (``statement_zoom_scale=1.15``) ; sans réglage, le
+    calcul auto s'applique (repli sûr, recalculé à chaque régénération du
+    gel). Paramètres par brique :
+
+    - identity : ``statement_zoom(_scale)``, ``mascot_vh(_scale)`` (auto 27) ;
+    - stage : ``synth_zoom(_scale)``, ``mascot_vh(_scale)`` (auto 16),
+      ``voxo_width`` / ``voxo_scale`` ;
+    - waves : ``stage_vh(_scale)`` (auto 62), ``caption_zoom(_scale)`` (auto 180) ;
+    - figure : ``quote_zoom(_scale)``, ``portrait_width`` / ``portrait_scale`` ;
+    - arguments : ``zoom(_scale)`` (le plafond saute si absolu), ``badge_scale``.
+
+    Un réglage ABSOLU fige le rendu du texte d'aujourd'hui : le gel se
+    régénère après chaque campagne hub — repasser visuellement sur les axes
+    réglés (décision NG 2026-08-31 : pas de filet outillé).
     """
+    tuning = dict(tuning or {})
+    unknown = set(tuning) - _TUNING_KEYS
+    if unknown:
+        raise KeyError(f"TUNING de l'axe {axis!r} : clé(s) inconnue(s) "
+                       f"{sorted(unknown)} — clés valides : {sorted(_TUNING_KEYS)}")
     both = axis_poles(axis)
     # 1-2 : l'identité de chaque pôle — accélérateur d'abord.
     for i, pole in enumerate(both):
@@ -695,20 +785,23 @@ def axis_slides(axis: str, lang: str | None = None) -> None:
         else:
             st_slide_break(marker_label=pole_name)
         with st_block(s.project.containers.page_fill_top):
-            _identity(pole, lang)
+            _identity(pole, lang, **tuning.get(f"identity_{'ab'[i]}", {}))
     # 3 : la scène du débat — marqueur visible « A ⇄ B ».
     st_slide_break(marker_label=T(_UI["faceoff_label"], lang).format(
         left=text(both[0]["pole"], lang), right=text(both[1]["pole"], lang)))
     with st_block(s.project.containers.page_fill_top):
-        _debate_stage(both, lang)
+        _debate_stage(both, lang, **tuning.get("stage", {}))
     # 4+ : le matériau, pôle par pôle, en marqueurs cachés — il se parcourt
     # (ou s'échantillonne) APRÈS le débat.
-    for pole in both:
-        parts = ([_waves] if pole.get("waves") else []) + \
-            [(lambda p, lg, ff=f, i=i: _figure(p, ff, i, lg))
-             for i, f in enumerate(pole["figures"])] + [_arguments]
-        for part in parts:
+    for i, pole in enumerate(both):
+        side = "ab"[i]
+        parts = ([(f"waves_{side}", _waves)] if pole.get("waves") else []) + \
+            [(f"figure_{side}{j + 1}",
+              (lambda p, lg, ff=f, jj=j, **kw: _figure(p, ff, jj, lg, **kw)))
+             for j, f in enumerate(pole["figures"])] + \
+            [(f"arguments_{side}", _arguments)]
+        for key, part in parts:
             st_slide_break(marker_hidden=True,
                            config=SlideBreakConfig(mode=SlideBreakMode.FULL, space="30vh"))
             with st_block(s.project.containers.page_fill_top):
-                part(pole, lang)
+                part(pole, lang, **tuning.get(key, {}))
