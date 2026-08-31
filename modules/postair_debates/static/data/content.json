@@ -6367,10 +6367,10 @@
      "presentation": "Ibn Khaldun (1332–1406), Arab scholar, jurist and chief judge in Cairo, founded in the Muqaddima (1377) a new science of civilization explaining why societies rise, flourish and decay. The disruptive capability of his world was the crafts of settled urban life — building, writing, calculation, medicine — which he showed arise with the city and multiply where societies are large, stable and strongly governed. His stance is analytic rather than advocative: technique is a distinctively human power whose crafts “give intelligence” to their practitioners, yet whose perfection is tied to the life-cycle of civilization — they recede as the city declines. Neither boosterism nor alarm: a causal account of technology as inseparable from the social order that sustains it.",
      "epoch": "Abd ar-Rahman Ibn Khaldun (1332-1406) was an Arab scholar, jurist and administrator born in Tunis, active across the Maghrib and later in Mamluk Egypt, where he served as a Maliki chief judge in Cairo. His standing rests on the Muqaddima (1377), the introductory volume of his universal history Kitab al-'Ibar, in which he set out to found a new science of human social organization ('umran) explaining why civilizations rise, flourish and decay. The publisher's description of Rosenthal's translation credits the work with having established the foundations of several fields, including the philosophy of history, sociology, ethnography and economics (Rosenthal 1958). Rather than a chronicler of dynasties, he presented himself as an analyst of their underlying causes, cross-checking transmitted reports against what a settled society could plausibly support.",
      "quote": {
-      "en": "The crafts are firmly rooted in a city only when sedentary culture is firmly rooted and of long duration.",
-      "fr": "Les métiers ne s'enracinent solidement dans une ville que lorsque la civilisation sédentaire y est solidement enracinée et de longue durée.",
-      "reference": "Muqaddima, chap. V, sect. 17 (trad. angl. Franz Rosenthal, 1958)",
-      "reference_full": "Muqaddima, chap. V, sect. 17 (trad. angl. Franz Rosenthal, 1958)",
+      "en": "It is the ruling dynasty that demands crafts and their improvement. It causes the demand for them and makes them desirable. … the dynasty is the biggest market.",
+      "fr": "C'est la dynastie régnante qui demande les métiers et leur perfectionnement. C'est elle qui en crée la demande et les rend désirables. … la dynastie est le plus grand marché.",
+      "reference": "Muqaddima, chap. V, sect. 18 (trad. angl. Franz Rosenthal, 1958)",
+      "reference_full": "Muqaddima, chap. V, sect. 18 (trad. angl. Franz Rosenthal, 1958)",
       "citekeys": [
        "ibnkhaldun1377-muqaddima"
       ],
@@ -6378,10 +6378,9 @@
       "curated_by": "exact",
       "documents": [
        "CEN-02",
-       "CEN-04",
-       "CEN-05"
+       "CEN-06"
       ],
-      "editorial": false,
+      "editorial": true,
       "reasoning": [
        {
         "item": "CEN-02",
@@ -6397,34 +6396,21 @@
         "transposition": null
        },
        {
-        "item": "CEN-04",
+        "item": "CEN-06",
         "statement": {
-         "en": "Decisions about AI use are best taken locally, by the communities concerned.",
-         "fr": "Les décisions sur l'usage de l'IA sont mieux prises localement, par les communautés concernées.",
-         "de": "Entscheidungen über den Einsatz von KI werden am besten lokal getroffen, von den betroffenen Gemeinschaften."
+         "en": "Each organisation should set its own rules for AI use, rather than follow rules imposed from outside.",
+         "fr": "Chaque organisation devrait fixer ses propres règles d'usage de l'IA, plutôt que de suivre des règles imposées de l'extérieur.",
+         "de": "Jede Organisation sollte ihre eigenen Regeln für den KI-Einsatz festlegen, statt von außen auferlegten Regeln zu folgen."
         },
         "response": 2,
         "direction": "toward",
-        "anchor": "Muqaddima V,16: 'A small or Bedouin civilization needs only the simple crafts … neither perfect nor well developed' — the local unit does not develop technique",
-        "confidence": "medium",
-        "transposition": null
-       },
-       {
-        "item": "CEN-05",
-        "statement": {
-         "en": "I prefer several independent approaches to AI governance over one single framework.",
-         "fr": "Je préfère plusieurs approches indépendantes de la gouvernance de l'IA plutôt qu'un cadre unique.",
-         "de": "Ich ziehe mehrere unabhängige Ansätze der KI-Governance einem einzigen Rahmen vor."
-        },
-        "response": 2,
-        "direction": "toward",
-        "anchor": "Muqaddima V,17/19: craft-flourishing correlates with one strong continuous dynasty; fragmentation with decline (descriptive, not advocacy)",
+        "anchor": "Muqaddima V,18: the ruling dynasty (not each actor) 'demands crafts and their improvement'; III: the muhtasib sets market rules centrally",
         "confidence": "low",
-        "transposition": null
+        "transposition": "each organisation sets its own rules → self-regulation by scattered local actors"
        }
       ],
-      "anchored": false,
-      "verification": "Verbatim (with the Spain/Egypt examples)"
+      "anchored": true,
+      "verification": "Verbatim"
      },
      "media": {
       "portrait": "figures/c3deb8aa-512.png",
