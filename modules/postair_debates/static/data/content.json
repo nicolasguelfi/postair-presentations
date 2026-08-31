@@ -6455,21 +6455,20 @@
      "presentation": "Erasmus (1466–1536), among the foremost humanists of the northern Renaissance, edited the first published Greek New Testament (1516) and lived inside Europe’s leading presses — Aldus in Venice, Froben in Basel — arguably the first author to build a career entirely on print. His wave was the printing press, multiplying texts at unprecedented speed and filling the world, as he complained, with “swarms of new books” of every quality — this study’s mirror for today’s AI. He was a critical adopter: among the technology’s heaviest professional users and one of its sharpest critics — printers “so grasping and mercenary” that errors stand — calling for public remedy: magistrates against abuse, law against fraud, subsidy for works of common use. One asymmetry is disclosed: he used the press fully for himself while at times seeking to limit others’ use of it.",
      "epoch": "Desiderius Erasmus (1466-1536), born in the Netherlands, ranks among the foremost humanist scholars of the northern Renaissance. He built his career on classical and biblical philology, producing the Adagia (a continually expanded compendium of proverbs, from 1500), the Colloquies, and, in 1516, the Novum Instrumentum omne — the first published Greek New Testament, edited from the manuscript evidence rather than accepted on the authority of the received Vulgate (Froben, Basel). He worked inside the leading presses of Europe, living in Aldus Manutius's Venetian shop in 1508 and in Johann Froben's Basel household across 1514-1516 and again 1521-1529. His writings circulated on an unusual scale for the period — roughly 1,260 printings and reprintings before his death, on one scholarly estimate — making him arguably the first European author to build an entire career on the medium of print.",
      "quote": {
-      "en": "If this situation continues as it has begun, and the Sum of Things is brought under the control of a few, we will wind up burdened with a barbarous tyranny like the Turks. The world will obey the whims of one man, or of a few … Such is the wish of whoever would be the Universal Dictator.",
-      "fr": "Si cette situation se poursuit comme elle a commencé, et que la Somme des choses passe sous le contrôle de quelques-uns, nous finirons accablés d'une tyrannie barbare semblable à celle des Turcs. Le monde obéira aux caprices d'un seul homme, ou de quelques-uns … Tel est le souhait de quiconque voudrait être le Dictateur universel.",
-      "reference": "Festina lente (Adagia II.1.1), Froben edition, 1525/1526, §22 (trans. Otto Steinmayer …",
-      "reference_full": "Festina lente (Adagia II.1.1), Froben edition, 1525/1526, §22 (trans. Otto Steinmayer, The Philological Museum, 2001)",
+      "en": "princes and magistrates take care that good-for-nothing people … should be checked as far as possible. … rewards should be instituted to help and succor them, either by princes or by bishops and abbots, or from the public treasury.",
+      "fr": "les princes et les magistrats veillent à ce que les vauriens … soient contenus autant que possible. … des récompenses devraient être instituées pour les aider et les secourir, soit par les princes, soit par les évêques et les abbés, soit sur le trésor public.",
+      "reference": "erasmus1525-festina, §25",
+      "reference_full": "erasmus1525-festina, §25",
       "citekeys": [
        "erasmus1525-festina"
       ],
-      "curated": true,
-      "curated_by": "exact",
+      "curated": false,
+      "curated_by": null,
       "documents": [
        "CEN-01",
-       "CEN-02",
        "CEN-03"
       ],
-      "editorial": false,
+      "editorial": true,
       "reasoning": [
        {
         "item": "CEN-01",
@@ -6485,19 +6484,6 @@
         "transposition": "international rules → universal Church + common norms across Christendom"
        },
        {
-        "item": "CEN-02",
-        "statement": {
-         "en": "A single authority responsible for AI regulation would be more effective than many separate authorities.",
-         "fr": "Une autorité unique chargée de la régulation de l'IA serait plus efficace que de nombreuses autorités séparées.",
-         "de": "Eine einzige, für die Regulierung von KI zuständige Behörde wäre wirksamer als viele getrennte Behörden."
-        },
-        "response": 3,
-        "direction": "toward",
-        "anchor": "church unity endorsed, but erasmus1525-festina §22: horror of 'the Sum of Things brought under the control of a few… Universal Dictator'",
-        "confidence": "low",
-        "transposition": null
-       },
-       {
         "item": "CEN-03",
         "statement": {
          "en": "The global risks of AI can only be addressed through centralised decisions.",
@@ -6506,12 +6492,12 @@
         },
         "response": 2,
         "direction": "against",
-        "anchor": "erasmus1525-festina §25: the remedy is plural and distributed (princes AND magistrates AND bishops AND public treasury), not centralised",
+        "anchor": "erasmus1525-festina §25: the remedy runs through public authorities — princes AND magistrates AND bishops AND the public treasury — authority-led but plural, no single centralised decider",
         "confidence": "low",
         "transposition": null
        }
       ],
-      "anchored": true,
+      "anchored": false,
       "verification": "Verbatim (source verified)"
      },
      "media": {
