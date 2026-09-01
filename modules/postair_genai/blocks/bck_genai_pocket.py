@@ -63,9 +63,11 @@ _ITEMS = [
     },
     {
         "icon": "📷",
-        "label": {"en": "Photo filters"},
-        "detail": {"en": ("Portrait mode, night mode, face unlock: neural networks "
-                          "process every shot.")},
+        # « Photo filters » était moins couvrant (retouche NG 2026-09-01).
+        "label": {"en": "Photo & video tools"},
+        "detail": {"en": ("Portrait mode, night mode, face unlock, video "
+                          "stabilisation: neural networks process every shot "
+                          "you take.")},
     },
     {
         "icon": "🎬",
