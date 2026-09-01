@@ -161,6 +161,12 @@ st_book(
         # même mouvement que bck_disc_wrapup (NG 2026-08-03).
         blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         # ── Appendix ────────────────────────────────────────────────
+        # Les chronos de l'agenda (NG 2026-09-01) : outils d'orateur en
+        # appendix — sidebar, jamais dans le fil répété. Data-driven depuis
+        # postair_event.AGENDA (mécanique : custom/agenda_timers.py).
+        blocks.bck_agenda_timers_before,  # chronos · avant la pause (chaîne)
+        blocks.bck_agenda_timers_break,   # chronos · pause 15' + re-welcome 5'
+        blocks.bck_agenda_timers_after,   # chronos · après la pause (chaîne)
         blocks.bck_refs_bibliography,  # never presented; opened when a figure is challenged
     ],
     toc_config=toc,
