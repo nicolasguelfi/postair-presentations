@@ -2,9 +2,11 @@
 
 The amber warms up milestone by milestone toward today: the point of the
 slide IS that gradient (nothing magical, a long history and a recent tipping
-point). Les pastilles sont des compositions de ``Style`` (R11, revue genaipat
-2026-09-01 — l'ancien ``st_html`` portait ses couleurs en dur) ; les deux
-extrémités du lavis sont les jetons de la palette.
+point). Les pastilles sont un ``st_html`` ASSUMÉ aux jetons de la palette
+(revue genaipat + correctif 2026-09-01 : la recomposition en ``st_block``
+stylés n'émettait rien dans l'application — un bloc sans enfant visible
+s'affiche à taille nulle ; l'esprit de R11, une seule vérité des couleurs,
+est préservé par les jetons).
 
 Each milestone card carries its citation code in the visible text — full
 reference on hover, canonical bib rule.
@@ -49,13 +51,13 @@ _DOT_COLOURS = [PRIMARY, "#8FB0E0", "#A8A8C8", "#C4A06E", "#D9973F",
                 AMBER, AMBER]
 
 
-def _dot(colour: str, idx: int) -> Style:
-    """La pastille du jalon — composition de ``Style`` (R11), pas de HTML."""
-    return Style(
-        f"width: 1.6vw; height: 1.6vw; border-radius: 50%; "
-        f"margin: 0.5vh auto 0; background: {colour};",
-        f"genai_timeline_dot_{idx}",
-    )
+def _dot_html(colour: str) -> str:
+    """La pastille du jalon — ``st_html`` assumé (correctif 2026-09-01,
+    capture NG : un ``st_block`` vide n'émet RIEN dans l'application) ;
+    les couleurs restent les jetons de la palette."""
+    return (f'<div style="text-align:center;padding-top:0.5vh;">'
+            f'<span style="display:inline-block;width:1.6vw;height:1.6vw;'
+            f'border-radius:50%;background:{colour};"></span></div>')
 
 # ── Les sept jalons (année + étiquette projetées ; détail au survol) ────────
 #: Jamais projeté, gardé pour la vérifiabilité — les identifiants d'origine
@@ -116,7 +118,7 @@ _MILESTONES = [
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
 _MARKER = {"en": "70 years"}
-_TITLE = {"en": ((s.project.titles.keyword, "Seventy years"), " in one line")}
+_TITLE = {"en": ((s.project.titles.keyword, "Seventy years"), " in 7 dates")}
 _TIP_TITLE = {"en": "The milestones, one sentence each"}
 
 
@@ -142,9 +144,9 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for i, m in enumerate(_MILESTONES):
                 with g.cell(), st_block(s.project.cards.blue):
-                    with st_block(_dot(_DOT_COLOURS[i], i)):
-                        pass
-                    st_write(bs.year, m["year"], tag=t.div)
-                    st_write(bs.label, T(m["label"], lang), tag=t.div)
-                    if m["citekeys"]:
-                        st_write(bs.cite, citation(*m["citekeys"]), tag=t.div)
+                    st_html(_dot_html(_DOT_COLOURS[i]))
+                    with st_zoom(150):
+                        st_write(bs.year, m["year"], tag=t.div)
+                        st_write(bs.label, T(m["label"], lang), tag=t.div)
+                        if m["citekeys"]:
+                            st_write(bs.cite, citation(*m["citekeys"]), tag=t.div)

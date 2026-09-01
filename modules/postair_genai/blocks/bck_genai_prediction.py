@@ -50,20 +50,15 @@ bs = BlockStyles
 #: revue genaipat 2026-09-01 : l'ancien st_html portait les hex en dur).
 _BAR_COLOURS = [AMBER, PRIMARY, KEYWORD]
 
-_TROUGH = Style(
-    "width: 100%; background: rgba(255,255,255,0.06); border-radius: 0.6vh;",
-    "genai_prob_trough",
-)
-
-
-def _bar(share: float, idx: int) -> Style:
-    """Le remplissage proportionnel — composition de ``Style``, pas de HTML."""
+def _bar_html(share: float, idx: int) -> str:
+    """La barre proportionnelle — ``st_html`` assumé (correctif 2026-09-01,
+    capture NG : un ``st_block`` vide n'émet RIEN dans l'application) ;
+    les couleurs restent les jetons de la palette."""
     width = max(share * 100, 1.5)          # la barre 0,1 % reste visible
-    return Style(
-        f"width: {width}%; background: {_BAR_COLOURS[idx]}; height: 3.2vh; "
-        f"border-radius: 0.6vh;",
-        f"genai_prob_bar_{idx}",
-    )
+    return (f'<div style="width:100%;background:rgba(255,255,255,0.06);'
+            f'border-radius:0.6vh;">'
+            f'<div style="width:{width}%;background:{_BAR_COLOURS[idx]};'
+            f'height:3.2vh;border-radius:0.6vh;"></div></div>')
 
 # ── La phrase à trou et ses candidats (probabilités illustratives) ──────────
 #: La MÊME feuille sert les deux temps — la phrase répétée au temps 2 est
@@ -134,9 +129,7 @@ def build(lang: str = "en", **_):
                 with g.cell():
                     st_write(bs.word, T(cand["word"], lang), tag=t.div)
                 with g.cell():
-                    with st_block(_TROUGH):
-                        with st_block(_bar(cand["share"], i)):
-                            pass
+                    st_html(_bar_html(cand["share"], i))
                 with g.cell():
                     st_write(bs.prob, cand["prob"], tag=t.div)
             st_space("v", "1vh")

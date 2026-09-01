@@ -42,21 +42,18 @@ bs = BlockStyles
 #: Trois jauges qui montent — la hauteur dit « plus », pas une mesure.
 _GAUGE_HEIGHTS = ["52%", "72%", "92%"]
 
-#: Le fût et son remplissage teal — compositions de ``Style`` (R11, revue
-#: genaipat 2026-09-01 : l'ancien st_html portait le teal en dur).
-_GAUGE_TUBE = Style(
-    "height: 18vh; width: 3.2vw; margin: 1vh auto; "
-    "background: rgba(255,255,255,0.06); border-radius: 1vw; "
-    "display: flex; flex-direction: column; justify-content: flex-end;",
-    "genai_gauge_tube",
-)
-
-
-def _gauge_fill(height: str, idx: int) -> Style:
-    return Style(
-        f"height: {height}; background: {KEYWORD}; border-radius: 1vw;",
-        f"genai_gauge_fill_{idx}",
-    )
+#: EXCEPTION R11 assumée (correctif 2026-09-01, capture NG) : la
+#: recomposition en ``st_block`` stylés (lot B) n'émettait RIEN dans
+#: l'application — un bloc sans enfant visible s'affiche à taille nulle.
+#: Le fragment revient à ``st_html`` ; les couleurs restent les JETONS de
+#: la palette (l'esprit de la décision stxonly=p1), la balise attendra la
+#: primitive de tracé demandée à la librairie.
+def _gauge_html(height: str) -> str:
+    return (f'<div style="height:18vh;width:3.2vw;margin:1vh auto;'
+            f'background:rgba(255,255,255,0.06);border-radius:1vw;'
+            f'display:flex;flex-direction:column;justify-content:flex-end;">'
+            f'<div style="height:{height};background:{KEYWORD};'
+            f'border-radius:1vw;"></div></div>')
 
 # ── Les trois ordres de grandeur (valeur projetée ; détail au survol) ───────
 #: La jauge « Data » est un ordre de grandeur de notoriété publique, sans
@@ -127,20 +124,20 @@ def build(lang: str = "en", **_):
                 with g.cell(), st_block(s.project.cards.blue):
                     st_write(bs.gauge_label, T(sl["label"], lang), tag=t.div)
                     # La jauge : un fût sombre, un remplissage teal qui monte.
-                    with st_block(_GAUGE_TUBE):
-                        with st_block(_gauge_fill(_GAUGE_HEIGHTS[i], i)):
-                            pass
+                    st_html(_gauge_html(_GAUGE_HEIGHTS[i]))
                     st_write(bs.gauge_value, T(sl["value"], lang), tag=t.div)
                     if sl["citekeys"]:
                         st_write(bs.cite, citation(*sl["citekeys"]), tag=t.div)
         st_space("v", "2.5vh")
         # La courbe d'émergence (plan G5) : plate, puis le saut — en ambre,
         # le seul accent chaud de la slide. EXCEPTION R11 ASSUMÉE (revue
-        # genaipat 2026-09-01) : un tracé SVG n'a pas d'équivalent en
-        # composition stx — le fragment reste, mais ses couleurs sont les
-        # jetons de la palette, plus aucun hex en dur.
+        # genaipat 2026-09-01), couleurs aux jetons de la palette. Dimensions
+        # EXPLICITES (largeur ET hauteur, correctif 2026-09-01 capture NG) :
+        # le Shadow DOM de l'app ne sait pas auto-dimensionner un SVG — sans
+        # hauteur, la courbe ne s'affichait qu'à l'export, jamais en app.
         st_html(f'<div style="text-align:center;">'
-                f'<svg viewBox="0 0 600 110" style="width:34vw;max-width:60%;">'
+                f'<svg viewBox="0 0 600 110" '
+                f'style="width:34vw;height:6.23vw;display:inline-block;">'
                 f'<line x1="0" y1="100" x2="600" y2="100" stroke="{PRIMARY}" '
                 f'stroke-opacity="0.4" stroke-width="2"/>'
                 f'<path d="M0 96 C 240 92, 330 88, 390 78 C 440 68, 470 20, 560 12" '
