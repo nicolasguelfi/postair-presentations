@@ -138,10 +138,9 @@ st_book(
         blocks.bck_genai_predict_film,   # G4b · the mechanism, animated (full screen)
         blocks.bck_genai_scale,          # G5  · data + compute + energy, emergence
         blocks.bck_genai_capabilities,   # G6  · seven capabilities, agents in amber
-        blocks.bck_genai_augment_medical,   # G6b · augmentation: 85 % vs 20 %
-        blocks.bck_genai_augment_twist,     # G6c · the tool alone is not enough
-        blocks.bck_genai_augment_justice,   # G6d · justice 1/2 : the case file
-        blocks.bck_genai_augment_justice_lab,  # G6e · justice 2/2 : in the lab
+        # La série « augmentation » (G6b→G6e) a DÉMÉNAGÉ dans l'annexe BACKUP
+        # en fin de book (décision NG drafts1 annexe=p1, 2026-09-01) : le flux
+        # se recentre sur la compréhension du génératif, rien n'est supprimé.
         blocks.bck_genai_hallucinations,  # G7 · the fabricated case, projected
         # G8, découpé en quatre (NG 2026-08-11) : un message fort, une image
         # forte, un texte en gros — jamais quatre revers sur une slide.
@@ -157,6 +156,14 @@ st_book(
         blocks.bck_genai_actor,          # G11 · the loop back to the posture
         blocks.bck_genai_takeaways,      # G12 · four cards to photograph
         blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
+        # ── Annexe BACKUP (drafts1 annexe=p1 + mecanisme=p1, NG 2026-09-01) ──
+        # Jamais présentée ; accessible en 2 s par la barre latérale pendant
+        # les questions. Les 4 slides « augmentation » y vivent INTACTES.
+        blocks.bck_genai_backup_divider,       # seuil « — Backup — »
+        blocks.bck_genai_augment_medical,      # ex-G6b · diagnosis: 85 % vs 20 %
+        blocks.bck_genai_augment_twist,        # ex-G6c · the tool alone is not enough
+        blocks.bck_genai_augment_justice,      # ex-G6d · justice 1/2 : the case file
+        blocks.bck_genai_augment_justice_lab,  # ex-G6e · justice 2/2 : in the lab
         blocks.bck_refs_bibliography,    # never presented; opened when challenged
     ],
     toc_config=toc,
