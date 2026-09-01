@@ -1618,7 +1618,7 @@ dev = [
 requires-dist = [
     { name = "postair-pack", editable = "postair_pack" },
     { name = "segno", specifier = ">=1.6.6" },
-    { name = "streamtex", extras = ["ai", "cli"], specifier = ">=0.7.27,<0.8" },
+    { name = "streamtex", extras = ["ai", "cli"], specifier = ">=0.7.29,<0.8" },
 ]
 
 [package.metadata.requires-dev]
@@ -2217,7 +2217,7 @@ wheels = [
 
 [[package]]
 name = "streamtex"
-version = "0.7.28"
+version = "0.7.29"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -2231,9 +2231,9 @@ dependencies = [
     { name = "streamlit-mermaid" },
     { name = "watchdog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/99/5f/844bef49e7a066525bba5a07eb132732692f6e45afb63381f5408677f486/streamtex-0.7.28.tar.gz", hash = "sha256:ee259652ad668be232cfc8788d51776f1d3bc1752e47283383fb3195928ad27c", size = 411664, upload-time = "2026-08-31T20:35:02.354Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/43/59/4790baa32422c4d8b9e0d2e33010f80f6fe8f664a004f07bd8bcf68368b7/streamtex-0.7.29.tar.gz", hash = "sha256:c6dafd3334b76248868d9bf6c887810edb1efd8b35ae1b85b8757461d2cf9886", size = 413255, upload-time = "2026-09-01T05:22:17.309Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ed/77/1597ff725c82929068efe1f5c266e7c3e3a41bf12017564fe48e082ffd56/streamtex-0.7.28-py3-none-any.whl", hash = "sha256:1f8a2a3b058ab168b140d61d15e5e971517917b80f864a126c8555b85a722280", size = 466108, upload-time = "2026-08-31T20:35:00.36Z" },
+    { url = "https://files.pythonhosted.org/packages/e6/38/f8fb0c25ff21d2cb68112e22712971be8047f6a672f5444a3274368cded7/streamtex-0.7.29-py3-none-any.whl", hash = "sha256:a96b2a915f43bc22962cef3bb186b8a347292f8763f0bfed4fbb337c68c7ab15", size = 467858, upload-time = "2026-09-01T05:22:15.453Z" },
 ]
 
 [package.optional-dependencies]
