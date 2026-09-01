@@ -31,6 +31,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.design_systems.postair_dark import AMBER, KEYWORD, PRIMARY
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -43,8 +45,24 @@ class BlockStyles:
 bs = BlockStyles
 
 #: Barres de probabilité : la première est ambre (la réponse du modèle), les
-#: suivantes bleu et teal — trois couleurs de la ligne, jamais plus.
-_BAR_COLOURS = ["#F39C12", "#7AB8F5", "#2EC4B6"]
+#: suivantes bleu et teal — trois JETONS de la palette, jamais plus (R11,
+#: revue genaipat 2026-09-01 : l'ancien st_html portait les hex en dur).
+_BAR_COLOURS = [AMBER, PRIMARY, KEYWORD]
+
+_TROUGH = Style(
+    "width: 100%; background: rgba(255,255,255,0.06); border-radius: 0.6vh;",
+    "genai_prob_trough",
+)
+
+
+def _bar(share: float, idx: int) -> Style:
+    """Le remplissage proportionnel — composition de ``Style``, pas de HTML."""
+    width = max(share * 100, 1.5)          # la barre 0,1 % reste visible
+    return Style(
+        f"width: {width}%; background: {_BAR_COLOURS[idx]}; height: 3.2vh; "
+        f"border-radius: 0.6vh;",
+        f"genai_prob_bar_{idx}",
+    )
 
 # ── La phrase à trou et ses candidats (probabilités illustratives) ──────────
 _SENTENCE_HEAD = "Luxembourg is a"
@@ -108,16 +126,14 @@ def build(lang: str = "en", **_):
         st_space("v", "3vh")
         # Les trois candidats : mot, barre proportionnelle, probabilité.
         for i, cand in enumerate(_CANDIDATES):
-            width = max(cand["share"] * 100, 1.5)          # la barre 0,1 % reste visible
             with st_grid(cols="18% 64% 18%",
                          cell_styles=s.project.containers.grid_cell_centered) as g:
                 with g.cell():
                     st_write(bs.word, cand["word"], tag=t.div)
                 with g.cell():
-                    st_html(f'<div style="width:100%;background:rgba(255,255,255,0.06);'
-                            f'border-radius:0.6vh;">'
-                            f'<div style="width:{width}%;background:{_BAR_COLOURS[i]};'
-                            f'height:3.2vh;border-radius:0.6vh;"></div></div>')
+                    with st_block(_TROUGH):
+                        with st_block(_bar(cand["share"], i)):
+                            pass
                 with g.cell():
                     st_write(bs.prob, cand["prob"], tag=t.div)
             st_space("v", "1vh")

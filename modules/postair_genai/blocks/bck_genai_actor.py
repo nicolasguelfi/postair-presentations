@@ -21,7 +21,7 @@ do the rest.
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
-from custom.visuals import hero_image
+from custom.visuals import staged_hero_image
 from postair_data import mascot
 from shared_widgets import st_info_tooltip
 from streamtex import *
@@ -57,6 +57,17 @@ _MASCOTS = ["Kuri", "Solyo", "Lento"]
 _MASCOT_WHY = "Curiosity · optimism · prudence — three postures, together"
 _CITEKEYS = ["guelfi-postair"]
 
+# ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─
+#: ``hero_vh`` = budget hauteur de l'image héro (staged_hero_image, R4d) —
+#: remplace l'ancien ``width="62%"``, inerte au zoom : titre + verbes +
+#: rangée de mascottes doivent tenir sous elle. ``mascot_width`` borne les
+#: DEUX dimensions (l'ancien ``7vw`` n'avait pas de borne verticale — geste
+#: guidelines ``min(7vw, 13vh)``). À confirmer à la repasse visuelle NG.
+TUNING = {
+    "hero_vh": 50,
+    "mascot_width": "min(7vw, 13vh)",
+}
+
 
 def build(lang: str = "en", **_):
     st_marker("Actor")
@@ -78,13 +89,13 @@ def build(lang: str = "en", **_):
                     ],
                 )
         st_space("v", "1vh")
-        hero_image(
+        staged_hero_image(
             "genai_horizon", _HORIZON_PROMPT, "images/genai_horizon_fallback.svg",
             alt_ready=("Papercut silhouette from behind walking toward a large amber "
                        "sun on the horizon, navy sky"),
             alt_fallback=("Silhouette from behind facing an amber sun on the horizon, "
                           "three small companions beside it"),
-            width="62%",
+            stage_vh=TUNING["hero_vh"],
         )
         st_space("v", "1vh")
         st_write(bs.verbs,
@@ -97,7 +108,7 @@ def build(lang: str = "en", **_):
             for name in _MASCOTS:
                 m = mascot(name)
                 with g.cell():
-                    st_image(s.project.cards.media_center, width="7vw",
+                    st_image(s.project.cards.media_center, width=TUNING["mascot_width"],
                              uri=m["image"], alt=f"Mascot {m['name']}",
                              overlay=dd35_overlay())
                     st_write(bs.mascot_name, m["name"], tag=t.div)

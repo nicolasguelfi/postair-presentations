@@ -28,7 +28,7 @@ should the doctor just hand over? Watch the twist."
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
-from custom.visuals import hero_image
+from custom.visuals import staged_hero_image
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -114,7 +114,7 @@ def build(lang: str = "en", **_):
                                          ("The multimodal check — AMIE",
                                           _AMIE_DETAIL)])
         st_space("v", s.project.spacing.title_gap)
-        with hero_split(s, image=lambda: hero_image(
+        with hero_split(s, image=lambda: staged_hero_image(
                 "genai_diagnosis", _HERO_PROMPT,
                 "images/genai_diagnosis_fallback.svg",
                 alt_ready=("Papercut doctor silhouette from behind, facing an amber "

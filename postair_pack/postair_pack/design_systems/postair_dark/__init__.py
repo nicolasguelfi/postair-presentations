@@ -56,17 +56,36 @@ class _Spacing:
     title_gap = "7vh"
 
 
+# Valeurs BRUTES de la palette — la source des jetons ``_Colors`` ci-dessous,
+# et des compositions qui peignent un FOND, une BORDURE ou un SVG (jauges,
+# pastilles, barres, courbes) : un jeton ``_Colors`` ne pose que ``color:``.
+# Une retouche de palette se fait ICI (revue genaipat 2026-09-01 : cinq
+# fragments portaient ces hex en dur et une retouche ne les atteignait pas).
+# Le reste du fichier garde ses littéraux historiques — leur bascule vers ces
+# constantes est un geste de capitalisation post-AI Day.
+NAVY = "#1A1A2E"
+WHITE = "#FFFFFF"
+TEXT = "#F2EEE6"
+PRIMARY = "#7AB8F5"       # electric blue
+KEYWORD = "#2EC4B6"       # teal
+AMBER = "#F39C12"
+CORAL = "#E07A6E"
+SUCCESS = "#27AE60"
+CRITICAL = "#E74C3C"
+MUTED = "#95A5A6"
+
+
 class _Colors:
-    bg_navy = Style("color: #1A1A2E;", "postair_color_bg_navy")
-    white = Style("color: #FFFFFF;", "postair_color_white")
-    text = Style("color: #F2EEE6;", "postair_color_text")
-    primary = Style("color: #7AB8F5;", "postair_color_primary")        # electric blue
-    keyword = Style("color: #2EC4B6;", "postair_color_keyword")        # teal
-    amber = Style("color: #F39C12;", "postair_color_amber")
-    coral = Style("color: #E07A6E;", "postair_color_coral")
-    success = Style("color: #27AE60;", "postair_color_success")
-    critical = Style("color: #E74C3C;", "postair_color_critical")
-    muted = Style("color: #95A5A6;", "postair_color_muted")
+    bg_navy = Style(f"color: {NAVY};", "postair_color_bg_navy")
+    white = Style(f"color: {WHITE};", "postair_color_white")
+    text = Style(f"color: {TEXT};", "postair_color_text")
+    primary = Style(f"color: {PRIMARY};", "postair_color_primary")     # electric blue
+    keyword = Style(f"color: {KEYWORD};", "postair_color_keyword")     # teal
+    amber = Style(f"color: {AMBER};", "postair_color_amber")
+    coral = Style(f"color: {CORAL};", "postair_color_coral")
+    success = Style(f"color: {SUCCESS};", "postair_color_success")
+    critical = Style(f"color: {CRITICAL};", "postair_color_critical")
+    muted = Style(f"color: {MUTED};", "postair_color_muted")
 
 
 class _Titles:

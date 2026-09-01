@@ -11,14 +11,22 @@ minimum. Pattern repris de la roue de ``postair_survey/bck_axes_radar`` :
   trou devant l'amphithéâtre : chaque visuel a donc son repli SVG, versionné
   (exception assumée du dépôt : les illustrations de ces présentations restent
   en git et ne vont jamais au CDN).
+
+Divergence locale assumée (revue genaipat 2026-09-01) : ce fichier ajoute
+``image_ratio`` et ``staged_hero_image`` (règle R4d, leçon debates 56fdcc1 —
+le média se borne par SA CELLULE et par la hauteur, largeur =
+``min(100 % de la cellule, stage_vh × ratio du fichier)``, débordement
+impossible par construction). La copie partagée entre modules redeviendra une
+seule vérité au geste de capitalisation post-AI Day (plan-capitalisation P5).
 """
 
 from __future__ import annotations
 
 import json
+from functools import lru_cache
 from pathlib import Path
 
-from streamtex import st_image
+from streamtex import st_block, st_image
 
 from custom.config import IS_EDITABLE
 from custom.prompts import AI_SUFFIX_LANDSCAPE, AI_SUFFIX_PORTRAIT, AI_SUFFIX_SQUARE
@@ -65,6 +73,45 @@ def hero_image(name: str, prompt: str, fallback: str, alt_ready: str,
         prompt=prompt, provider="openai", ai_size=ai_size,
         overlay=dd35_overlay(ready and is_synthetic(full_name)),
     )
+
+
+@lru_cache(maxsize=32)
+def image_ratio(full_name: str, default: float = 1.0) -> float:
+    """Largeur / hauteur du FICHIER managé — une propriété du média (R4d).
+
+    Repris de ``postair_debates/custom/render.py::_mascot_ratio`` (copie
+    locale, promotion pack post-AI Day) : Pillow lit l'image matérialisée,
+    le résultat est mémoïsé, et tout échec (Pillow absent, image pas encore
+    générée — le repli SVG est carré d'intention) retombe sur ``default``
+    sans jamais lever en séance.
+    """
+    path = _MANAGED / f"{full_name}.webp"
+    try:
+        from PIL import Image
+        with Image.open(path) as im:
+            width, height = im.size
+        return (width / height) if height else default
+    except Exception:
+        return default
+
+
+def staged_hero_image(name: str, prompt: str, fallback: str, alt_ready: str,
+                      alt_fallback: str, width: str = "100%",
+                      variant: str | None = None, stage_vh: int = 70) -> None:
+    """``hero_image`` bornée par sa cellule ET par la hauteur (règle R4d).
+
+    Leçon debates 56fdcc1 (mesurée au DOM) : une image servie à 100 % de sa
+    cellule n'est bornée que par la LARGEUR — un fichier carré passe sous le
+    contenu voisin. Ici largeur = ``min(stage_vh × ratio du fichier,
+    100 % de la cellule)`` : le débordement vertical est impossible par
+    construction. ``stage_vh`` est LE levier de taille d'un média (R-zoom :
+    un ``st_zoom`` englobant est inerte sur les largeurs en %) — il se règle
+    par slide, via le ``TUNING`` du bloc quand il quitte le défaut.
+    """
+    full_name = f"{name}_{variant}" if variant else name
+    with st_block(s.project.containers.media_stage(image_ratio(full_name), stage_vh)):
+        hero_image(name, prompt, fallback, alt_ready, alt_fallback,
+                   width=width, variant=variant)
 
 
 def is_synthetic(full_name: str) -> bool:

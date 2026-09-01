@@ -25,7 +25,7 @@ from streamtex.enums import Tags as t
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
-from custom.visuals import hero_image
+from custom.visuals import staged_hero_image
 from postair_pack.components.hero_split import hero_split
 
 
@@ -77,7 +77,7 @@ def build(lang: str = "en", **_):
         st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche ~50 %,
         # message + punch empilés à droite — plus rien sous le pli.
-        with hero_split(s, image=lambda: hero_image(
+        with hero_split(s, image=lambda: staged_hero_image(
                 _IMAGE, prompt, _FALLBACK, alt_ready=_ALT, alt_fallback=_ALT,
                 variant="sq")):
             st_write(bs.message, _MESSAGE, tag=t.div)

@@ -21,7 +21,7 @@ slide carries it, and it lands harder when this one was generous.
 
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.styles import Styles as s
-from custom.visuals import hero_image
+from custom.visuals import staged_hero_image
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -73,7 +73,7 @@ def build(lang: str = "en", **_):
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
-        with hero_split(s, image=lambda: hero_image(
+        with hero_split(s, image=lambda: staged_hero_image(
                 "genai_desk", _DESK_PROMPT, "images/genai_desk_fallback.svg",
                 alt_ready=("Papercut student desk with open notebook, book stack, "
                            "and an amber orb lighting the page while the student "

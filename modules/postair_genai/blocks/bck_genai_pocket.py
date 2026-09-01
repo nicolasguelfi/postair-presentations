@@ -21,7 +21,7 @@ it is the hinge of the whole session.
 
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.styles import Styles as s
-from custom.visuals import hero_image
+from custom.visuals import staged_hero_image
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -109,7 +109,7 @@ def build(lang: str = "en", **_):
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
-        with hero_split(s, image=lambda: hero_image(
+        with hero_split(s, image=lambda: staged_hero_image(
                 "genai_pocket", _POCKET_PROMPT, "images/genai_pocket_fallback.svg",
                 alt_ready=("Papercut smartphone with an amber glowing screen, five "
                            "paper satellites orbiting it: camera, speech bubble, "

@@ -27,6 +27,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.design_systems.postair_dark import AMBER, TEXT
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -37,6 +39,16 @@ class BlockStyles:
 
 
 bs = BlockStyles
+
+#: Le duo « humain + orbe » de chaque carte — compositions de ``Style`` (R11,
+#: revue genaipat 2026-09-01 : l'ancien st_html portait texte et ambre en
+#: dur). L'orbe est le glyphe plein ● aux couleurs de la palette — même
+#: geste, zéro HTML.
+_DUO_LINE = Style("text-align: center; padding: 0.6vh 0;", "genai_duo_line")
+_DUO_HUMAN = Style("font-size: 3.2vw;", "genai_duo_human")
+_DUO_PLUS = Style(f"font-size: 2vw; color: {TEXT};", "genai_duo_plus")
+_DUO_ORB = Style(f"font-size: 2.6vw; color: {AMBER}; vertical-align: middle;",
+                 "genai_duo_orb")
 
 # ── Les trois duos par faculté (carte projetée ; détail au survol) ──────────
 #: Jamais projeté, gardé pour la vérifiabilité — les identifiants d'origine
@@ -96,12 +108,9 @@ def build(lang: str = "en", **_):
                     st_space("v", "0.6vh")
                     # Silhouette humaine + orbe côte à côte (plan G10) : le
                     # duo est le visuel de la carte, pas une décoration.
-                    st_html('<div style="text-align:center;padding:0.6vh 0;">'
-                            '<span style="font-size:3.2vw;">👤</span>'
-                            '<span style="font-size:2vw;color:#F2EEE6;"> + </span>'
-                            '<span style="display:inline-block;width:2.6vw;height:2.6vw;'
-                            'border-radius:50%;background:#F39C12;vertical-align:middle;">'
-                            '</span></div>')
+                    st_write(_DUO_LINE,
+                             (_DUO_HUMAN, "👤"), (_DUO_PLUS, " + "),
+                             (_DUO_ORB, "●"), tag=t.div)
                     st_write(bs.pair, c["pair"], tag=t.div)
         st_space("v", "2vh")
         # Télégraphique (NG 2026-08-13) : la phrase-cadre complète vit dans

@@ -1,8 +1,10 @@
 """Seventy years in one frieze (G3) — seven milestones, amber rising rightward.
 
-The frieze is drawn in HTML — crisp at any projection size, and the amber
-warms up milestone by milestone toward today: the point of the slide IS that
-gradient (nothing magical, a long history and a recent tipping point).
+The amber warms up milestone by milestone toward today: the point of the
+slide IS that gradient (nothing magical, a long history and a recent tipping
+point). Les pastilles sont des compositions de ``Style`` (R11, revue genaipat
+2026-09-01 — l'ancien ``st_html`` portait ses couleurs en dur) ; les deux
+extrémités du lavis sont les jetons de la palette.
 
 Each milestone card carries its citation code in the visible text — full
 reference on hover, canonical bib rule.
@@ -26,6 +28,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.design_systems.postair_dark import AMBER, PRIMARY
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -37,10 +41,20 @@ class BlockStyles:
 bs = BlockStyles
 
 #: L'ambre monte vers la droite : interpolation bleu → ambre par jalon.
-#: C'est le message visuel de la slide — la chaleur récente d'une longue
-#: histoire — donc il vit ici, pas dans un style partagé.
-_DOT_COLOURS = ["#7AB8F5", "#8FB0E0", "#A8A8C8", "#C4A06E", "#D9973F",
-                "#F39C12", "#F39C12"]
+#: Les EXTRÉMITÉS sont les jetons de la palette (PRIMARY → AMBER) ; les
+#: intermédiaires sont un lavis réglé à l'œil pour CETTE frise — c'est le
+#: message visuel de la slide, il vit ici, pas dans un style partagé.
+_DOT_COLOURS = [PRIMARY, "#8FB0E0", "#A8A8C8", "#C4A06E", "#D9973F",
+                AMBER, AMBER]
+
+
+def _dot(colour: str, idx: int) -> Style:
+    """La pastille du jalon — composition de ``Style`` (R11), pas de HTML."""
+    return Style(
+        f"width: 1.6vw; height: 1.6vw; border-radius: 50%; "
+        f"margin: 0.5vh auto 0; background: {colour};",
+        f"genai_timeline_dot_{idx}",
+    )
 
 # ── Les sept jalons (année + étiquette projetées ; détail au survol) ────────
 #: Jamais projeté, gardé pour la vérifiabilité — les identifiants d'origine
@@ -121,9 +135,8 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for i, m in enumerate(_MILESTONES):
                 with g.cell(), st_block(s.project.cards.blue):
-                    st_html(f'<div style="text-align:center;padding-top:0.5vh;">'
-                            f'<span style="display:inline-block;width:1.6vw;height:1.6vw;'
-                            f'border-radius:50%;background:{_DOT_COLOURS[i]};"></span></div>')
+                    with st_block(_dot(_DOT_COLOURS[i], i)):
+                        pass
                     st_write(bs.year, m["year"], tag=t.div)
                     st_write(bs.label, m["label"], tag=t.div)
                     if m["citekeys"]:

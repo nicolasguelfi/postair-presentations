@@ -24,6 +24,8 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
+from postair_pack.design_systems.postair_dark import AMBER, KEYWORD, PRIMARY
+
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
@@ -38,6 +40,22 @@ bs = BlockStyles
 
 #: Trois jauges qui montent — la hauteur dit « plus », pas une mesure.
 _GAUGE_HEIGHTS = ["52%", "72%", "92%"]
+
+#: Le fût et son remplissage teal — compositions de ``Style`` (R11, revue
+#: genaipat 2026-09-01 : l'ancien st_html portait le teal en dur).
+_GAUGE_TUBE = Style(
+    "height: 18vh; width: 3.2vw; margin: 1vh auto; "
+    "background: rgba(255,255,255,0.06); border-radius: 1vw; "
+    "display: flex; flex-direction: column; justify-content: flex-end;",
+    "genai_gauge_tube",
+)
+
+
+def _gauge_fill(height: str, idx: int) -> Style:
+    return Style(
+        f"height: {height}; background: {KEYWORD}; border-radius: 1vw;",
+        f"genai_gauge_fill_{idx}",
+    )
 
 # ── Les trois ordres de grandeur (valeur projetée ; détail au survol) ───────
 #: La jauge « Data » est un ordre de grandeur de notoriété publique, sans
@@ -102,24 +120,25 @@ def build(lang: str = "en", **_):
                 with g.cell(), st_block(s.project.cards.blue):
                     st_write(bs.gauge_label, sl["label"], tag=t.div)
                     # La jauge : un fût sombre, un remplissage teal qui monte.
-                    st_html(f'<div style="height:18vh;width:3.2vw;margin:1vh auto;'
-                            f'background:rgba(255,255,255,0.06);border-radius:1vw;'
-                            f'display:flex;flex-direction:column;justify-content:flex-end;">'
-                            f'<div style="height:{_GAUGE_HEIGHTS[i]};background:#2EC4B6;'
-                            f'border-radius:1vw;"></div></div>')
+                    with st_block(_GAUGE_TUBE):
+                        with st_block(_gauge_fill(_GAUGE_HEIGHTS[i], i)):
+                            pass
                     st_write(bs.gauge_value, sl["value"], tag=t.div)
                     if sl["citekeys"]:
                         st_write(bs.cite, citation(*sl["citekeys"]), tag=t.div)
         st_space("v", "2.5vh")
         # La courbe d'émergence (plan G5) : plate, puis le saut — en ambre,
-        # le seul accent chaud de la slide. Inline : trois traits suffisent.
-        st_html('<div style="text-align:center;">'
-                '<svg viewBox="0 0 600 110" style="width:34vw;max-width:60%;">'
-                '<line x1="0" y1="100" x2="600" y2="100" stroke="#7AB8F5" '
-                'stroke-opacity="0.4" stroke-width="2"/>'
-                '<path d="M0 96 C 240 92, 330 88, 390 78 C 440 68, 470 20, 560 12" '
-                'fill="none" stroke="#F39C12" stroke-width="6" stroke-linecap="round"/>'
-                '</svg></div>')
+        # le seul accent chaud de la slide. EXCEPTION R11 ASSUMÉE (revue
+        # genaipat 2026-09-01) : un tracé SVG n'a pas d'équivalent en
+        # composition stx — le fragment reste, mais ses couleurs sont les
+        # jetons de la palette, plus aucun hex en dur.
+        st_html(f'<div style="text-align:center;">'
+                f'<svg viewBox="0 0 600 110" style="width:34vw;max-width:60%;">'
+                f'<line x1="0" y1="100" x2="600" y2="100" stroke="{PRIMARY}" '
+                f'stroke-opacity="0.4" stroke-width="2"/>'
+                f'<path d="M0 96 C 240 92, 330 88, 390 78 C 440 68, 470 20, 560 12" '
+                f'fill="none" stroke="{AMBER}" stroke-width="6" stroke-linecap="round"/>'
+                f'</svg></div>')
         st_write(bs.claim, _EMERGENCE_CLAIM, " ",
                  citation(*_EMERGENCE_CITEKEYS), tag=t.div)
         st_write(bs.counter, _EMERGENCE_COUNTERPOINT, tag=t.div)

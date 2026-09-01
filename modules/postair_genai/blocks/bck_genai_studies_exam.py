@@ -20,7 +20,7 @@ not whether. Bridge: Mistral shows the how, the guidelines give the rules.
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
-from custom.visuals import hero_image
+from custom.visuals import staged_hero_image
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -56,6 +56,15 @@ _DONT_CITEKEYS = ["hepi-survey-2026"]
 # ── Le paradoxe — LE message de la slide ────────────────────────────────────
 _PARADOX = "Well used → learning ↑ · INSTEAD of learning → cancelled"
 
+# ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─
+#: Les réglages visuels de la slide vivent ICI, nommés et commentés — jamais
+#: en littéral anonyme au point d'appel. ``zoom`` = paramètre ``zoom=`` du
+#: hero_split (réglage préexistant à la revue, motif non consigné — à
+#: confirmer à la repasse visuelle NG).
+TUNING = {
+    "zoom": 92,
+}
+
 
 def build(lang: str = "en", **_):
     st_marker("The exam")
@@ -75,7 +84,7 @@ def build(lang: str = "en", **_):
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
-        with hero_split(s, zoom=92, image=lambda: hero_image(
+        with hero_split(s, zoom=TUNING["zoom"], image=lambda: staged_hero_image(
                 "genai_exam", _EXAM_PROMPT, "images/genai_exam_fallback.svg",
                 alt_ready=("Papercut exam room: a silhouette writing alone at a "
                            "desk, an amber orb waiting outside the closed door"),

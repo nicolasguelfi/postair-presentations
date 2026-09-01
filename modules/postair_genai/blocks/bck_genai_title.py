@@ -14,7 +14,7 @@ to learn those at UL is in the info panel.
 
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.styles import Styles as s
-from custom.visuals import hero_image
+from custom.visuals import staged_hero_image
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -35,6 +35,15 @@ _HERO_PROMPT = (
       "of abstract paper silhouettes seen from behind, looking up."
     + AI_SUFFIX_LANDSCAPE
 )
+
+# ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─
+#: ``hero_vh`` = budget hauteur de l'image héro (staged_hero_image, R4d) —
+#: remplace l'ancien ``width="82%"``, inerte au zoom (R-zoom) et borné par la
+#: seule largeur : titre ≈13vh + écart 7vh + image + sous-titre ≈9vh ≈ une
+#: fenêtre. À confirmer à la repasse visuelle NG.
+TUNING = {
+    "hero_vh": 62,
+}
 
 
 def build(lang: str = "en", **_):
@@ -61,13 +70,13 @@ def build(lang: str = "en", **_):
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
-        hero_image(
+        staged_hero_image(
             "genai_hero", _HERO_PROMPT, "images/genai_hero_fallback.svg",
             alt_ready=("Papercut constellation: an amber paper sun linked to stars by "
                        "luminous threads, small paper silhouettes watching from below"),
             alt_fallback=("Amber orb at the centre of a blue constellation on navy, "
                           "abstract silhouettes watching"),
-            width="82%",
+            stage_vh=TUNING["hero_vh"],
         )
         st_space("v", "1vh")
         st_write(bs.subtitle, "70 years in 30 minutes", tag=t.div)
