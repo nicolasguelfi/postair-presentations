@@ -7,16 +7,13 @@ chaud) et que l'annexe n'est jamais présentée : le deck consommateur réel
 n'est pas encore nommé. Quand il le sera, ce bloc déménage (un bloc mince
 par deck, la liste des durées dans son TUNING) et cette démo disparaît d'ici.
 
-Deux temps cachés (pattern debates), un par mode :
-
-1. **chain** — le clic Start lance « Read » ; chaque zéro lance le suivant
-   (Discuss, puis Vote) ; les cartes finies passent au ✓ teal, les heures de
-   fin murales sont CUMULÉES ;
-2. **parallel** — le même clic lance les trois ensemble ; à zéro, corail
-   (le vocabulaire du chrono de pause).
-
-Le ↺ en coin remet la rangée à zéro (faux départ, répétition). Durées
-COURTES à dessein (1' / 0,5' / 1') : la démo se joue en une minute.
+Deux temps cachés (pattern debates), un par mode. Retouches NG 2026-09-01 :
+chaque carte porte SES boutons ▶ ⏸ ↺ (chain : une seule carte court, le zéro
+lance la suivante non finie ; parallel : cartes indépendantes), les cartes
+sont de VRAIS ``st_block(cards.blue)`` sur ``st_grid``, et le zéro s'affiche
+sur une ligne : ✓ verte + durée initiale en rouge translucide. Les boutons
+globaux (▶ Start / ↺ Reset) restent au-dessus de la grille. Durées COURTES à
+dessein (1' / 0,5' / 1') : la démo se joue en une minute.
 
 SPEAKER NOTES:
 Never presented — a widget demo. Click Start, watch the chain hand over at
@@ -43,30 +40,35 @@ bs = BlockStyles
 #: dessein. Un deck consommateur portera SA liste dans SON bloc.
 TUNING = {
     "steps": [({"en": "Read"}, 1), ({"en": "Discuss"}, 0.5), ({"en": "Vote"}, 1)],
-    "height": 460,
+    "height": 300,      # hauteur du CADRAN de chaque carte (px)
     "scale": 1.0,
 }
 
 _MARKER = {"en": "Chrono (demo)"}
 _TITLE = {"en": ("Countdown rack — ", (s.project.titles.keyword, "chain"))}
 _TITLE_PAR = {"en": ("Countdown rack — ", (s.project.titles.keyword, "parallel"))}
-_LINE_CHAIN = {"en": "Start launches the first · each zero launches the next"}
-_LINE_PAR = {"en": "Start launches ALL · coral at zero"}
+_LINE_CHAIN = {"en": "one card runs at a time · each zero launches the next · ▶ ⏸ ↺ per card"}
+_LINE_PAR = {"en": "independent cards · ▶ Start launches ALL · ▶ ⏸ ↺ per card"}
 
 _TIP_TITLE = {"en": "The widget, precisely"}
 _TOOLTIP = [
     ({"en": "Generic"},
-     {"en": ("st_countdown_rack(steps, mode) in shared_widgets — steps is a "
-             "list of (label, minutes), fractions allowed (0.5 = 30 s). Any "
-             "deck can call it with its own list.")}),
-    ({"en": "Two modes"},
-     {"en": ("« chain »: each zero starts the next counter; « parallel »: one "
-             "click starts them all. Same Start button in both.")}),
-    ({"en": "On stage"},
-     {"en": ("The clock never runs while you give the instructions — nothing "
-             "starts before the click; the ↺ corner button recovers a false "
-             "start. Wall-clock end times are shown per counter (cumulative "
-             "in chain mode).")}),
+     {"en": ("st_countdown_rack(s, steps, mode, key=…) in shared_widgets — "
+             "steps is a list of (label, minutes), fractions allowed (0.5 = "
+             "30 s). Any deck can call it with its own list; the cards are "
+             "real streamtex grid cells.")}),
+    ({"en": "Per-card buttons"},
+     {"en": ("▶ starts or resumes · ⏸ pauses · ↺ resets that counter to its "
+             "full duration. In chain mode only ONE card runs at a time (▶ "
+             "pauses the others) and a zero starts the next unfinished card; "
+             "in parallel mode cards are independent.")}),
+    ({"en": "Global buttons"},
+     {"en": ("▶ Start launches the first unfinished card (chain) or all of "
+             "them (parallel); ↺ Reset restores the whole row. Nothing runs "
+             "before a click — the clock never counts during instructions.")}),
+    ({"en": "At zero"},
+     {"en": ("One line: a green check, then the INITIAL duration in "
+             "translucent red — same in both modes.")}),
     ({"en": "To relocate"},
      {"en": ("This demo lives in the genai backup annex only while the "
              "consumer deck is unnamed — moving it is one thin block in that "
@@ -93,13 +95,15 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     steps = [(T(label, lang), minutes) for label, minutes in TUNING["steps"]]
     # ── Temps 1 : le mode chaîne ────────────────────────────────────────────
+    # `key` unique par rangée — l'export inline les deux temps dans le même
+    # document, deux rangées sans clé partageraient leur bus.
     with st_block(s.project.containers.page_fill_top):
         _header(_TITLE, _LINE_CHAIN, lang)
-        st_countdown_rack(steps, mode="chain",
+        st_countdown_rack(s, steps, mode="chain", key="genai-demo-chain",
                           height=TUNING["height"], scale=TUNING["scale"])
     st_slide_break(marker_hidden=True)
     # ── Temps 2 : le mode parallèle ─────────────────────────────────────────
     with st_block(s.project.containers.page_fill_top):
         _header(_TITLE_PAR, _LINE_PAR, lang)
-        st_countdown_rack(steps, mode="parallel",
+        st_countdown_rack(s, steps, mode="parallel", key="genai-demo-parallel",
                           height=TUNING["height"], scale=TUNING["scale"])

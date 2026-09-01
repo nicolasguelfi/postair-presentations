@@ -14,9 +14,11 @@ from streamtex import st_hover_tooltip, st_html
 from postair_pack.design_systems.postair_dark import (
     AMBER,
     CORAL,
+    CRITICAL,
     KEYWORD,
     MUTED,
     PRIMARY,
+    SUCCESS,
     TEXT,
     TOOLTIP_BG,
     TOOLTIP_DEF_CSS,
@@ -134,156 +136,207 @@ def st_countdown(minutes: int, label: str = "Back in", height: int = 340,
     st_html(html, height=height)
 
 
-def st_countdown_rack(steps: list[tuple[str, float]], mode: str = "chain",
-                      *, start_label: str = "▶ Start", ends_at_label: str = "ends at",
-                      height: int = 520, scale: float = 1.0) -> None:
-    """Une rangée de comptes à rebours — en chaîne ou en parallèle.
+def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
+                      *, key: str, ends_at_label: str = "ends at",
+                      start_all_label: str = "▶ Start", reset_all_label: str = "↺ Reset",
+                      height: int = 300, scale: float = 1.0) -> None:
+    """Une rangée de comptes à rebours sur une VRAIE grille streamtex.
 
-    Décision NG (planche chrono, 2026-09-01 : ``archi=p1 moteur=p1
-    commande=p1 habillage=p1``) — la généralisation de ``st_countdown`` :
+    Décisions NG (planche chrono ``archi=p1 moteur=p1 commande=p1
+    habillage=p1`` puis retouches du 2026-09-01) :
 
-    - ``steps`` : liste de ``(étiquette, minutes)`` — étiquettes déjà
-      RÉSOLUES par le bloc appelant (feuilles ``{en, fr}``, règle R-i18n) ;
-      les minutes acceptent les fractions (``0.5`` = 30 s, utile en
-      répétition). La liste vit dans le TUNING du bloc appelant, jamais ici.
-    - ``mode`` : ``"chain"`` — le clic Start lance le premier, chaque zéro
-      lance le suivant ; ``"parallel"`` — le clic lance tout.
-    - Le bouton **Start est commun aux deux modes** (leçon inverse du chrono
-      de pause : un exercice minuté ne court jamais pendant la consigne) ;
-      un **↺ Reset** discret apparaît en coin une fois lancé — le faux
-      départ se rattrape devant la salle.
-    - UN SEUL fragment ``st_html`` porte toute la rangée : la coordination
-      (l'enchaînement, le start commun) vit dans un unique script — deux
-      iframes ne se parlent pas. Même statut d'exception que
-      ``st_countdown``, au même endroit sanctionné ; identique dans
-      l'application et dans l'export HTML statique, zéro rerun.
-    - États par carte (le vocabulaire appris à la pause) : à venir = gris
-      muted · en cours = ambre · fini = corail en parallèle, ✓ teal en
-      chaîne (le suivant a pris l'ambre). Chaque carte affiche son heure de
-      fin murale au lancement (en chaîne : heures CUMULÉES — ce que la
-      salle consulte vraiment).
-    - ``scale`` est LE levier de taille (R-zoom, édition iframe : un
-      ``st_zoom`` englobant est inerte — tailles en ``vw`` de l'iframe) ;
-      ``height`` ne fait que loger la rangée. Au-delà de ~5 durées, les
-      chiffres rapetrissent d'eux-mêmes (largeur partagée) — con documenté
-      sur la planche.
-    - Aucun son (R7) — la couleur fait l'annonce.
+    - **Grille streamtex** : les cartes sont des ``st_block(cards.blue)``
+      dans un ``st_grid`` équilibré — l'étiquette est un ``st_write`` (donc
+      un vrai texte, vu par la baseline i18n) ; seul le cadran (chiffres,
+      heure de fin, boutons) est un fragment ``st_html`` par carte. ``s``
+      est l'objet Styles du module appelant (précédent :
+      ``build_next_module_slide(s, …)``).
+    - **Boutons PAR carte** : ▶ démarre/reprend · ⏸ met en pause · ↺ remet
+      la carte à sa durée pleine (à l'arrêt). Comportements par mode :
+      *chain* — UNE seule carte court à la fois (▶ sur une carte met l'autre
+      en pause) et le zéro d'une carte lance la première carte suivante non
+      finie ; *parallel* — les cartes sont indépendantes. Les boutons
+      globaux restent : ▶ Start lance la première carte non finie (chain) ou
+      toutes (parallel) ; ↺ Reset remet toute la rangée.
+    - **Zéro** : UNE ligne — la coche verte puis la durée INITIALE en rouge
+      translucide (``✓ 01:00``), identique dans les deux modes (retouche NG
+      2026-09-01, remplace le teal/corail de la v1).
+    - **Coordination** : chaque cadran est sa propre iframe ``srcdoc``
+      (même origine) dans l'application, et du HTML inliné dans l'export —
+      dans les deux cas ``window.parent`` est le MÊME document pour toutes
+      les cartes d'une page : un petit bus ``__cdrBus`` y vit, indexé par
+      ``key`` (OBLIGATOIRE et unique par rangée — l'export met toutes les
+      slides dans un seul document, deux rangées sans clé se marcheraient
+      dessus).
+    - ``steps`` : liste de ``(étiquette RÉSOLUE, minutes)`` — fractions
+      permises (``0.5`` = 30 s) ; la liste vit dans le TUNING du bloc
+      appelant. Heure de fin murale par carte pendant qu'elle court
+      (``now + restant`` — la pause la recalcule à la reprise).
+    - Tailles du cadran en ``vw`` de SON iframe : elles suivent la largeur
+      de la cellule de grille, quel que soit le nombre de cartes ; ``scale``
+      reste le levier fin (R-zoom édition iframe), ``height`` loge le
+      cadran. Aucun son (R7) — la couleur fait l'annonce.
     """
     if mode not in ("chain", "parallel"):
         raise ValueError(f"mode inconnu : {mode!r} — « chain » ou « parallel »")
     if not steps:
         raise ValueError("st_countdown_rack : la liste de durées est vide")
-    # Les secondes par étape, gelées côté Python ; le script ne calcule que
-    # les instants. Étiquettes échappées par json.dumps (guillemets, accents).
-    payload = json.dumps([[label, max(1, round(minutes * 60))]
-                          for label, minutes in steps])
+    if not key or not key.strip():
+        raise ValueError("st_countdown_rack : `key` est obligatoire et unique "
+                         "par rangée (l'export inline toutes les slides dans "
+                         "un seul document)")
+    from streamtex import st_block, st_grid, st_write
+    from streamtex.enums import Tags as _t
+
+    rack_id = json.dumps(key)
     n = len(steps)
-    digit_vw = min(9.0, 30.0 / n) * scale
-    label_vw = min(2.4, 8.0 / n) * scale
-    at_vw = min(1.6, 5.5 / n) * scale
-    btn_vw = 2.2 * scale
-    html = f"""
-<div style="position:relative;display:flex;flex-direction:column;align-items:center;
-            justify-content:center;gap:2.5vh;height:100%;
-            font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
-  <button id="cdr-start" style="font-size:{btn_vw:.2f}vw;font-weight:700;
-          color:{AMBER};background:transparent;border:0.18vw solid {AMBER};
-          border-radius:0.8vw;padding:0.35em 1.6em;cursor:pointer;">{start_label}</button>
-  <button id="cdr-reset" title="reset" style="position:absolute;top:0.8vh;right:0.6vw;
-          display:none;font-size:{1.4 * scale:.2f}vw;color:{MUTED};background:transparent;
-          border:none;cursor:pointer;">↺</button>
-  <div id="cdr-row" style="display:flex;gap:1.2vw;width:96%;justify-content:center;">
+    secs = [max(1, round(minutes * 60)) for _label, minutes in steps]
+    label_style = s.project.body.bullet + s.center_txt + s.bold
+
+    #: Le prélude commun de chaque script : le bus sur le document parent —
+    #: en app, le parent des iframes srcdoc ; en export, window lui-même.
+    bus_js = f"""
+  var P; try {{ P = window.parent || window; }} catch (e) {{ P = window; }}
+  var bus = P.__cdrBus = P.__cdrBus || {{}};
+  var rack = bus[{rack_id}] = bus[{rack_id}] || {{cards: {{}}, mode: {json.dumps(mode)}, n: {n}}};
+"""
+
+    # ── Les boutons globaux — un petit fragment au-dessus de la grille ──────
+    st_html(f"""
+<div style="display:flex;gap:1.2vw;justify-content:center;align-items:center;height:100%;
+            font-family:'Source Sans Pro',sans-serif;">
+  <button id="cdr-all-start" style="font-size:{2.0 * scale:.2f}vw;font-weight:700;
+          color:{AMBER};background:transparent;border:0.16vw solid {AMBER};
+          border-radius:0.7vw;padding:0.3em 1.4em;cursor:pointer;">{start_all_label}</button>
+  <button id="cdr-all-reset" style="font-size:{1.6 * scale:.2f}vw;font-weight:700;
+          color:{MUTED};background:transparent;border:0.12vw solid {MUTED};
+          border-radius:0.7vw;padding:0.3em 1.1em;cursor:pointer;">{reset_all_label}</button>
+</div>
+<script>
+(function () {{
+{bus_js}
+  document.getElementById('cdr-all-start').addEventListener('click', function () {{
+    var ids = Object.keys(rack.cards).sort(function (a, b) {{ return a - b; }});
+    if (rack.mode === 'parallel') {{
+      ids.forEach(function (i) {{ if (!rack.cards[i].isDone()) rack.cards[i].start(); }});
+    }} else {{
+      for (var k = 0; k < ids.length; k++) {{
+        if (!rack.cards[ids[k]].isDone()) {{ rack.cards[ids[k]].start(); break; }}
+      }}
+    }}
+  }});
+  document.getElementById('cdr-all-reset').addEventListener('click', function () {{
+    Object.keys(rack.cards).forEach(function (i) {{ rack.cards[i].reset(); }});
+  }});
+}})();
+</script>
+""", height=int(72 * scale))
+
+    # ── La grille streamtex : une carte Style par durée, un cadran par carte ─
+    with st_grid(cols=s.project.grids.balanced(n), gap="1.2vw",
+                 grid_style=s.project.grids.stretch,
+                 cell_styles=s.project.containers.grid_cell_centered) as g:
+        for i, (label, _minutes) in enumerate(steps):
+            with g.cell(), st_block(s.project.cards.blue):
+                st_write(label_style, label, tag=_t.div)
+                st_html(f"""
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+            gap:1.5vh;height:100%;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
+  <div id="cdr-digits" style="font-size:{26 * scale:.2f}vw;font-weight:900;
+       letter-spacing:0.04em;line-height:1.1;color:{MUTED};white-space:nowrap;"></div>
+  <div id="cdr-at" style="font-size:{6 * scale:.2f}vw;color:{MUTED};">&nbsp;</div>
+  <div style="display:flex;gap:1.5vw;">
+    <button id="cdr-go" style="font-size:{7 * scale:.2f}vw;color:{AMBER};
+            background:transparent;border:0.4vw solid {AMBER};border-radius:1.5vw;
+            padding:0.1em 0.9em;cursor:pointer;">▶</button>
+    <button id="cdr-halt" style="font-size:{7 * scale:.2f}vw;color:{PRIMARY};
+            background:transparent;border:0.4vw solid {PRIMARY};border-radius:1.5vw;
+            padding:0.1em 0.9em;cursor:pointer;">⏸</button>
+    <button id="cdr-zero" style="font-size:{7 * scale:.2f}vw;color:{MUTED};
+            background:transparent;border:0.4vw solid {MUTED};border-radius:1.5vw;
+            padding:0.1em 0.9em;cursor:pointer;">↺</button>
   </div>
 </div>
 <script>
 (function () {{
-  var STEPS = {payload};
-  var MODE = {json.dumps(mode)};
-  var row = document.getElementById('cdr-row');
-  var startBtn = document.getElementById('cdr-start');
-  var resetBtn = document.getElementById('cdr-reset');
-  var cards = STEPS.map(function (s, i) {{
-    var card = document.createElement('div');
-    card.style.cssText = 'flex:1 1 0;min-width:0;text-align:center;padding:2vh 0.5vw;' +
-      'background:rgba(122,184,245,0.08);border:0.12vw solid rgba(122,184,245,0.25);' +
-      'border-radius:0.9vw;';
-    card.innerHTML =
-      '<div style="font-size:{label_vw:.2f}vw;font-weight:700;color:{PRIMARY};">' + s[0] + '</div>' +
-      '<div class="cdr-digits" style="font-size:{digit_vw:.2f}vw;font-weight:900;' +
-      'letter-spacing:0.04em;line-height:1.15;color:{MUTED};"></div>' +
-      '<div class="cdr-at" style="font-size:{at_vw:.2f}vw;color:{MUTED};">&nbsp;</div>';
-    row.appendChild(card);
-    return card;
-  }});
-  var timer = null, startAt = null, endAt = null;
+{bus_js}
+  var IDX = {i}, TOTAL = {secs[i]};
+  var digits = document.getElementById('cdr-digits');
+  var at = document.getElementById('cdr-at');
+  var remaining = TOTAL, endAt = null, timer = null;
   function fmt(sec) {{
-    var m = Math.floor(sec / 60), s = sec % 60;
-    return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    var m = Math.floor(sec / 60), s2 = Math.floor(sec) % 60;
+    return String(m).padStart(2, '0') + ':' + String(s2).padStart(2, '0');
   }}
+  function isDone() {{ return remaining <= 0; }}
   function paint() {{
-    var now = Date.now();
-    var running = startAt !== null;
-    STEPS.forEach(function (s, i) {{
-      var digits = cards[i].querySelector('.cdr-digits');
-      var at = cards[i].querySelector('.cdr-at');
-      if (!running) {{
-        digits.textContent = fmt(s[1]);
-        digits.style.color = '{MUTED}';
-        at.innerHTML = '&nbsp;';
-        return;
+    if (isDone()) {{
+      // UNE ligne : la coche verte + la durée INITIALE en rouge translucide.
+      digits.innerHTML = '<span style="color:{SUCCESS};">✓</span> ' +
+        '<span style="color:{CRITICAL};opacity:0.45;">' + fmt(TOTAL) + '</span>';
+      at.innerHTML = '&nbsp;';
+      return;
+    }}
+    digits.textContent = fmt(Math.ceil(remaining));
+    digits.style.color = (endAt !== null) ? '{AMBER}' : '{MUTED}';
+  }}
+  function tick() {{
+    if (endAt === null) return;
+    remaining = (endAt - Date.now()) / 1000;
+    if (remaining <= 0) {{
+      remaining = 0; endAt = null;
+      clearInterval(timer); timer = null;
+      paint();
+      if (rack.mode === 'chain') {{
+        var ids = Object.keys(rack.cards).map(Number).sort(function (a, b) {{ return a - b; }});
+        for (var k = 0; k < ids.length; k++) {{
+          if (ids[k] > IDX && !rack.cards[ids[k]].isDone()) {{
+            rack.cards[ids[k]].start(); break;
+          }}
+        }}
       }}
-      var left = Math.max(0, Math.ceil((endAt[i] - now) / 1000));
-      if (now < startAt[i]) {{           // à venir (chaîne)
-        digits.textContent = fmt(s[1]);
-        digits.style.color = '{MUTED}';
-      }} else if (now < endAt[i]) {{     // en cours
-        digits.textContent = fmt(left);
-        digits.style.color = '{AMBER}';
-      }} else if (MODE === 'chain') {{   // fini, la chaîne a avancé
-        digits.textContent = '✓ 00:00';
-        digits.style.color = '{KEYWORD}';
-      }} else {{                          // fini, parallèle : le corail de la pause
-        digits.textContent = '00:00';
-        digits.style.color = '{CORAL}';
-      }}
-    }});
+      return;
+    }}
+    paint();
   }}
   function start() {{
-    var t0 = Date.now();
-    startAt = []; endAt = [];
-    var cursor = t0;
-    STEPS.forEach(function (s) {{
-      var from = (MODE === 'chain') ? cursor : t0;
-      startAt.push(from);
-      endAt.push(from + s[1] * 1000);
-      cursor = from + s[1] * 1000;
-    }});
-    STEPS.forEach(function (s, i) {{
-      var back = new Date(endAt[i]);
-      cards[i].querySelector('.cdr-at').textContent = '{ends_at_label} ' +
-        String(back.getHours()).padStart(2, '0') + ':' +
-        String(back.getMinutes()).padStart(2, '0');
-    }});
-    startBtn.style.display = 'none';
-    resetBtn.style.display = 'block';
-    timer = setInterval(paint, 250);
+    if (isDone() || endAt !== null) return;
+    if (rack.mode === 'chain') {{
+      // Une seule carte court : ▶ ici met les autres en pause.
+      Object.keys(rack.cards).forEach(function (j) {{
+        if (Number(j) !== IDX) rack.cards[j].pause();
+      }});
+    }}
+    endAt = Date.now() + remaining * 1000;
+    var back = new Date(endAt);
+    at.textContent = '{ends_at_label} ' +
+      String(back.getHours()).padStart(2, '0') + ':' +
+      String(back.getMinutes()).padStart(2, '0');
+    timer = setInterval(tick, 250);
+    paint();
+  }}
+  function pause() {{
+    if (endAt === null) return;
+    remaining = Math.max(0, (endAt - Date.now()) / 1000);
+    endAt = null;
+    if (timer) {{ clearInterval(timer); timer = null; }}
+    at.innerHTML = '&nbsp;';
     paint();
   }}
   function reset() {{
-    if (timer) clearInterval(timer);
-    timer = null; startAt = null; endAt = null;
-    startBtn.style.display = 'block';
-    resetBtn.style.display = 'none';
+    if (timer) {{ clearInterval(timer); timer = null; }}
+    remaining = TOTAL; endAt = null;
+    at.innerHTML = '&nbsp;';
     paint();
   }}
-  startBtn.addEventListener('click', start);
-  resetBtn.addEventListener('click', reset);
+  rack.cards[IDX] = {{start: start, pause: pause, reset: reset, isDone: isDone}};
+  document.getElementById('cdr-go').addEventListener('click', start);
+  document.getElementById('cdr-halt').addEventListener('click', pause);
+  document.getElementById('cdr-zero').addEventListener('click', reset);
   paint();
 }})();
 </script>
-"""
-    st_html(html, height=height)
-
+""", height=height)
 
 def st_poster_video(video_url: str, poster_uri: str, *, alt: str = "",
                     width: str = "min(38vw, 66vh)", ai_marked: bool = False,
