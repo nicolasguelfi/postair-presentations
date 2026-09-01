@@ -180,6 +180,8 @@ st_book(
         blocks.bck_genai_bk_aiact,        # bk · la pyramide EU AI Act
         blocks.bck_genai_bk_skills,       # bk · quelles compétences pour 2030
         blocks.bck_genai_bk_moralmachine, # bk · 40 M de décisions + contrepoint
+        blocks.bck_chrono_demo,           # bk · DÉMO st_countdown_rack (à déplacer
+                                          #      vers le deck consommateur, non nommé)
         blocks.bck_refs_bibliography,    # never presented; opened when challenged
     ],
     toc_config=toc,

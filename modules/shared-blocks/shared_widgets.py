@@ -6,10 +6,18 @@ never write markup themselves (design guideline, rule "stx-only"): when a
 slide needs behaviour the style system cannot express, it comes from here.
 """
 
+import json
+
 import streamlit as st
 from streamtex import st_hover_tooltip, st_html
 
 from postair_pack.design_systems.postair_dark import (
+    AMBER,
+    CORAL,
+    KEYWORD,
+    MUTED,
+    PRIMARY,
+    TEXT,
     TOOLTIP_BG,
     TOOLTIP_DEF_CSS,
     TOOLTIP_MAX_HEIGHT,
@@ -120,6 +128,157 @@ def st_countdown(minutes: int, label: str = "Back in", height: int = 340,
   }}
   var timer = setInterval(tick, 1000);
   tick();
+}})();
+</script>
+"""
+    st_html(html, height=height)
+
+
+def st_countdown_rack(steps: list[tuple[str, float]], mode: str = "chain",
+                      *, start_label: str = "▶ Start", ends_at_label: str = "ends at",
+                      height: int = 520, scale: float = 1.0) -> None:
+    """Une rangée de comptes à rebours — en chaîne ou en parallèle.
+
+    Décision NG (planche chrono, 2026-09-01 : ``archi=p1 moteur=p1
+    commande=p1 habillage=p1``) — la généralisation de ``st_countdown`` :
+
+    - ``steps`` : liste de ``(étiquette, minutes)`` — étiquettes déjà
+      RÉSOLUES par le bloc appelant (feuilles ``{en, fr}``, règle R-i18n) ;
+      les minutes acceptent les fractions (``0.5`` = 30 s, utile en
+      répétition). La liste vit dans le TUNING du bloc appelant, jamais ici.
+    - ``mode`` : ``"chain"`` — le clic Start lance le premier, chaque zéro
+      lance le suivant ; ``"parallel"`` — le clic lance tout.
+    - Le bouton **Start est commun aux deux modes** (leçon inverse du chrono
+      de pause : un exercice minuté ne court jamais pendant la consigne) ;
+      un **↺ Reset** discret apparaît en coin une fois lancé — le faux
+      départ se rattrape devant la salle.
+    - UN SEUL fragment ``st_html`` porte toute la rangée : la coordination
+      (l'enchaînement, le start commun) vit dans un unique script — deux
+      iframes ne se parlent pas. Même statut d'exception que
+      ``st_countdown``, au même endroit sanctionné ; identique dans
+      l'application et dans l'export HTML statique, zéro rerun.
+    - États par carte (le vocabulaire appris à la pause) : à venir = gris
+      muted · en cours = ambre · fini = corail en parallèle, ✓ teal en
+      chaîne (le suivant a pris l'ambre). Chaque carte affiche son heure de
+      fin murale au lancement (en chaîne : heures CUMULÉES — ce que la
+      salle consulte vraiment).
+    - ``scale`` est LE levier de taille (R-zoom, édition iframe : un
+      ``st_zoom`` englobant est inerte — tailles en ``vw`` de l'iframe) ;
+      ``height`` ne fait que loger la rangée. Au-delà de ~5 durées, les
+      chiffres rapetrissent d'eux-mêmes (largeur partagée) — con documenté
+      sur la planche.
+    - Aucun son (R7) — la couleur fait l'annonce.
+    """
+    if mode not in ("chain", "parallel"):
+        raise ValueError(f"mode inconnu : {mode!r} — « chain » ou « parallel »")
+    if not steps:
+        raise ValueError("st_countdown_rack : la liste de durées est vide")
+    # Les secondes par étape, gelées côté Python ; le script ne calcule que
+    # les instants. Étiquettes échappées par json.dumps (guillemets, accents).
+    payload = json.dumps([[label, max(1, round(minutes * 60))]
+                          for label, minutes in steps])
+    n = len(steps)
+    digit_vw = min(9.0, 30.0 / n) * scale
+    label_vw = min(2.4, 8.0 / n) * scale
+    at_vw = min(1.6, 5.5 / n) * scale
+    btn_vw = 2.2 * scale
+    html = f"""
+<div style="position:relative;display:flex;flex-direction:column;align-items:center;
+            justify-content:center;gap:2.5vh;height:100%;
+            font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
+  <button id="cdr-start" style="font-size:{btn_vw:.2f}vw;font-weight:700;
+          color:{AMBER};background:transparent;border:0.18vw solid {AMBER};
+          border-radius:0.8vw;padding:0.35em 1.6em;cursor:pointer;">{start_label}</button>
+  <button id="cdr-reset" title="reset" style="position:absolute;top:0.8vh;right:0.6vw;
+          display:none;font-size:{1.4 * scale:.2f}vw;color:{MUTED};background:transparent;
+          border:none;cursor:pointer;">↺</button>
+  <div id="cdr-row" style="display:flex;gap:1.2vw;width:96%;justify-content:center;">
+  </div>
+</div>
+<script>
+(function () {{
+  var STEPS = {payload};
+  var MODE = {json.dumps(mode)};
+  var row = document.getElementById('cdr-row');
+  var startBtn = document.getElementById('cdr-start');
+  var resetBtn = document.getElementById('cdr-reset');
+  var cards = STEPS.map(function (s, i) {{
+    var card = document.createElement('div');
+    card.style.cssText = 'flex:1 1 0;min-width:0;text-align:center;padding:2vh 0.5vw;' +
+      'background:rgba(122,184,245,0.08);border:0.12vw solid rgba(122,184,245,0.25);' +
+      'border-radius:0.9vw;';
+    card.innerHTML =
+      '<div style="font-size:{label_vw:.2f}vw;font-weight:700;color:{PRIMARY};">' + s[0] + '</div>' +
+      '<div class="cdr-digits" style="font-size:{digit_vw:.2f}vw;font-weight:900;' +
+      'letter-spacing:0.04em;line-height:1.15;color:{MUTED};"></div>' +
+      '<div class="cdr-at" style="font-size:{at_vw:.2f}vw;color:{MUTED};">&nbsp;</div>';
+    row.appendChild(card);
+    return card;
+  }});
+  var timer = null, startAt = null, endAt = null;
+  function fmt(sec) {{
+    var m = Math.floor(sec / 60), s = sec % 60;
+    return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+  }}
+  function paint() {{
+    var now = Date.now();
+    var running = startAt !== null;
+    STEPS.forEach(function (s, i) {{
+      var digits = cards[i].querySelector('.cdr-digits');
+      var at = cards[i].querySelector('.cdr-at');
+      if (!running) {{
+        digits.textContent = fmt(s[1]);
+        digits.style.color = '{MUTED}';
+        at.innerHTML = '&nbsp;';
+        return;
+      }}
+      var left = Math.max(0, Math.ceil((endAt[i] - now) / 1000));
+      if (now < startAt[i]) {{           // à venir (chaîne)
+        digits.textContent = fmt(s[1]);
+        digits.style.color = '{MUTED}';
+      }} else if (now < endAt[i]) {{     // en cours
+        digits.textContent = fmt(left);
+        digits.style.color = '{AMBER}';
+      }} else if (MODE === 'chain') {{   // fini, la chaîne a avancé
+        digits.textContent = '✓ 00:00';
+        digits.style.color = '{KEYWORD}';
+      }} else {{                          // fini, parallèle : le corail de la pause
+        digits.textContent = '00:00';
+        digits.style.color = '{CORAL}';
+      }}
+    }});
+  }}
+  function start() {{
+    var t0 = Date.now();
+    startAt = []; endAt = [];
+    var cursor = t0;
+    STEPS.forEach(function (s) {{
+      var from = (MODE === 'chain') ? cursor : t0;
+      startAt.push(from);
+      endAt.push(from + s[1] * 1000);
+      cursor = from + s[1] * 1000;
+    }});
+    STEPS.forEach(function (s, i) {{
+      var back = new Date(endAt[i]);
+      cards[i].querySelector('.cdr-at').textContent = '{ends_at_label} ' +
+        String(back.getHours()).padStart(2, '0') + ':' +
+        String(back.getMinutes()).padStart(2, '0');
+    }});
+    startBtn.style.display = 'none';
+    resetBtn.style.display = 'block';
+    timer = setInterval(paint, 250);
+    paint();
+  }}
+  function reset() {{
+    if (timer) clearInterval(timer);
+    timer = null; startAt = null; endAt = null;
+    startBtn.style.display = 'block';
+    resetBtn.style.display = 'none';
+    paint();
+  }}
+  startBtn.addEventListener('click', start);
+  resetBtn.addEventListener('click', reset);
+  paint();
 }})();
 </script>
 """
