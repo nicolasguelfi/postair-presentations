@@ -42,9 +42,12 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 _REPO = Path(__file__).parent.parent.parent
+# postair_waves ajouté le 2026-09-01 (planche baseline, NG) : le deck le plus
+# riche en images (68 dans l'export) manquait à la liste depuis sa création —
+# la porte ne le contrôlait jamais par défaut.
 _MODULES = ["postair_opening", "postair_survey", "postair_debates",
             "postair_genai", "postair_guidelines", "postair_collection",
-            "postair_handsup"]
+            "postair_handsup", "postair_waves"]
 _CHIP_TEXT = "✦"
 _CHIP_CSS_SIGNATURE = "rgba(113, 113, 122, 0.35)"
 
