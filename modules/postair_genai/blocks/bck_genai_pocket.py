@@ -88,10 +88,25 @@ _ITEMS = [
 ]
 
 # ── La distinction — la charnière de toute la séance ────────────────────────
+#: Réécriture NG (planche hinge, 2026-09-01) : l'ancien couple « CHOOSES ·
+#: feed · faces · spam » / « PRODUCES · text · image · sound · code » mêlait
+#: un verbe faux sur deux exemples (« chooses spam ») et deux listes de
+#: natures différentes (domaines vs productions). La ligne projetée dit
+#: désormais la charnière telle que les notes d'orateur la disent — exister
+#: vs écrire la suite — et les exemples concrets vivent au survol, en phrases
+#: complètes (les cinq cartes au-dessus portent déjà le vécu).
 _CLASSIC_HEAD = {"en": "Classic AI"}
-_CLASSIC = {"en": "Classic AI = CHOOSES · feed · faces · spam"}
+_CLASSIC = {"en": "Classic AI = picks among what EXISTS"}
+_CLASSIC_TIP = {"en": ("Predictive and classifying AI: it ranks your feed, "
+                       "recognises the face that unlocks your phone, filters "
+                       "spam — always scoring or selecting something that "
+                       "already exists, never writing anything new.")}
 _GENERATIVE_HEAD = {"en": "Generative AI"}
-_GENERATIVE = {"en": "Generative AI = PRODUCES · text · image · sound · code"}
+_GENERATIVE = {"en": "Generative AI = WRITES the next thing"}
+_GENERATIVE_TIP = {"en": ("Generative AI produces new content — text, images, "
+                          "sound, code — by predicting what comes next: the "
+                          "mechanism of the Predict slide, a few minutes "
+                          "ahead.")}
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
 _MARKER = {"en": "In your pocket"}
@@ -110,8 +125,8 @@ def build(lang: str = "en", **_):
                 st_info_tooltip(
                     title=T(_TIP_TITLE, lang),
                     entries=[
-                        (T(_CLASSIC_HEAD, lang), T(_CLASSIC, lang)),
-                        (T(_GENERATIVE_HEAD, lang), T(_GENERATIVE, lang)),
+                        (T(_CLASSIC_HEAD, lang), T(_CLASSIC_TIP, lang)),
+                        (T(_GENERATIVE_HEAD, lang), T(_GENERATIVE_TIP, lang)),
                         *[(f"{item['icon']} {T(item['label'], lang)}",
                            T(item["detail"], lang))
                           for item in _ITEMS],
