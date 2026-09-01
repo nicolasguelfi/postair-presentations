@@ -5,7 +5,7 @@ Insertion draft des formations (planche drafts2 ``flux=intuition``, NG
 du même jour) : la marche conceptuelle qui manquait entre la frise (G3) et
 Predict (G4) — ce que « apprendre » VEUT DIRE, joué avec la salle.
 
-Cinq temps, UN marqueur (pattern debates, ``st_slide_break(marker_hidden=
+Six temps, UN marqueur (pattern debates, ``st_slide_break(marker_hidden=
 True)``) :
 
 1. le jeu — la salle devine l'âge de l'orateur depuis sa photo (elle sait
@@ -15,8 +15,9 @@ True)``) :
 3. premier essai — 245 ans : faux, et de loin ;
 4. la correction — CHAQUE molette est poussée dans le sens qui réduit
    l'erreur : c'est la rétro-propagation ;
-5. deuxième essai — 35 : plus près ; répété des millions de fois, ça
-   converge. « Piece of cake ».
+5. deuxième essai — 35 : plus près, le schéma seul en scène ;
+6. la chute (scission NG 2026-09-01) — le raton « Piece of Cake » et le
+   punch : répété des millions de fois, ça converge.
 
 Les visuels sont la séquence pédagogique des formations AISE de NG
 (``static/images/trainings/``, copyright NG, réutilisation autorisée
@@ -35,9 +36,9 @@ the picture because they trained on faces their whole life. PageDown — the
 machine version: picture becomes numbers, dials on the wires. PageDown — read
 the multiplication once, land on 245 vs 60: laugh WITH the machine. PageDown —
 the only idea that matters today: every dial nudged in the direction that
-reduces the error, that is back-propagation. PageDown — 35, closer; repeat
-millions of times. Bridge: « now replace “age” with “the next word” » — and
-PageDown into the Predict slide.
+reduces the error, that is back-propagation. PageDown — 35, closer. PageDown —
+the raccoon closes it: error, correction, repeat, millions of times. Bridge:
+« now replace “age” with “the next word” » — and PageDown into Predict.
 """
 # @guideline: postair-minimal
 
@@ -62,9 +63,8 @@ bs = BlockStyles
 #: Réglages datés (pattern TUNING, revue genaipat) : hauteur de scène par
 #: visuel — larges bandeaux ~2:1, la hauteur est la contrainte utile (R4d).
 TUNING = {
-    "stage_vh": 58,       # les 4 grands schémas du réseau
-    "retry_vh": 46,       # le schéma du 2e essai, temps 5 (partage l'écran)
-    "cake_vh": 28,        # la chute humoristique, temps 5
+    "stage_vh": 65,       # les 5 grands schémas du réseau (dont le 2e essai)
+    "cake_vh": 52,        # la chute humoristique, temps 6 (raton pleine scène)
 }
 
 #: Ratio largeur/hauteur DU FICHIER (mesuré Pillow 2026-09-01) — les images
@@ -175,12 +175,19 @@ def build(lang: str = "en", **_):
         # canonique) — la phrase complète vit dans la carte et References.
         st_write(bs.cite, citation("rumelhart1986-backprop"), tag=t.div)
     st_slide_break(marker_hidden=True)
-    # ── Temps 5 : deuxième essai — plus près, et la chute ───────────────────
+    # ── Temps 5 : deuxième essai — le schéma seul, pleine scène ─────────────
+    # (scission NG 2026-09-01 : le second try et la chute sur DEUX slides.)
+    with st_block(s.project.containers.page_fill_top):
+        st_write(bs.headline, *TF(_T5_HEAD, lang), tag=t.div)
+        st_space("v", s.project.spacing.title_gap)
+        _stage("retry", TUNING["stage_vh"])
+    st_slide_break(marker_hidden=True)
+    # ── Temps 6 : la chute — le raton-laveur et le punch ────────────────────
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.headline, *TF(_T5_HEAD, lang), tag=t.div)
+                st_space("v", "1vh")
             with g.cell():
                 # Autosuffisance du dernier temps (pattern debates) : l'en-tête
                 # du temps 1 et son ℹ️ sont hors écran depuis longtemps.
@@ -188,13 +195,8 @@ def build(lang: str = "en", **_):
                     title=T(_TIP_TITLE, lang),
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
-        st_space("v", s.project.spacing.title_gap)
-        with st_grid(cols="58% 42%", gap="1.5vw",
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
-                _stage("retry", TUNING["retry_vh"])
-            with g.cell():
-                _stage("cake", TUNING["cake_vh"])
-                st_space("v", "2vh")
-                for line in T(_PUNCH, lang):
-                    st_write(bs.punch, line, tag=t.div)
+        _stage("cake", TUNING["cake_vh"])
+        st_space("v", "3vh")
+        with st_zoom(130):
+            for line in T(_PUNCH, lang):
+                st_write(bs.punch, line, tag=t.div)
