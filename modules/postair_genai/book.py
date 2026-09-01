@@ -134,9 +134,16 @@ st_book(
         blocks.bck_genai_title,          # G1  · hero + the promise
         blocks.bck_genai_pocket,         # G2  · you have used AI for years
         blocks.bck_genai_timeline,       # G3  · seventy years in one frieze
+        # Ajouts draft des formations (drafts2 flux=…, NG 2026-09-01) : le
+        # flux se recentre sur la COMPRÉHENSION du génératif — 5 slides
+        # entrent, la série augmentation est partie en annexe BACKUP.
+        blocks.bck_genai_learning,       # G3b · back-propagation, joué avec la salle
         blocks.bck_genai_prediction,     # G4  · THE pedagogical slide: predict
+        blocks.bck_genai_tokens,         # G4c · la phrase en jetons (slide éclair)
         blocks.bck_genai_predict_film,   # G4b · the mechanism, animated (full screen)
         blocks.bck_genai_scale,          # G5  · data + compute + energy, emergence
+        blocks.bck_genai_multimodal,     # G5b · texte · image · son — un mécanisme
+        blocks.bck_genai_videogen,       # G5c · deux ans de vidéo générée, côte à côte
         blocks.bck_genai_capabilities,   # G6  · seven capabilities, agents in amber
         # La série « augmentation » (G6b→G6e) a DÉMÉNAGÉ dans l'annexe BACKUP
         # en fin de book (décision NG drafts1 annexe=p1, 2026-09-01) : le flux
@@ -148,6 +155,7 @@ st_book(
         blocks.bck_genai_limit_control,  # G8b · who controls the models
         blocks.bck_genai_limit_data,     # G8c · your data is the raw material
         blocks.bck_genai_limit_brain,    # G8d · the brain is a muscle
+        blocks.bck_genai_guardrails,     # G8e · le contrepoint : les garde-fous
         # G9, découpé en deux : le tuteur généreux, puis l'examen humain.
         blocks.bck_genai_studies_tutor,  # G9a · the tireless tutor
         blocks.bck_genai_studies_exam,   # G9b · the exam stays human
