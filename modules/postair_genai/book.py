@@ -172,6 +172,14 @@ st_book(
         blocks.bck_genai_augment_twist,        # ex-G6c · the tool alone is not enough
         blocks.bck_genai_augment_justice,      # ex-G6d · justice 1/2 : the case file
         blocks.bck_genai_augment_justice_lab,  # ex-G6e · justice 2/2 : in the lab
+        # Backups du draft des formations (drafts2 backtech=… + backsoc=…) :
+        blocks.bck_genai_bk_rag,          # bk · hallucinations, le remède
+        blocks.bck_genai_bk_compute,      # bk · la facture d'entraînement
+        blocks.bck_genai_bk_framing,      # bk · même question, deux réponses
+        blocks.bck_genai_bk_approaches,   # bk · 4 voies pour améliorer un LLM
+        blocks.bck_genai_bk_aiact,        # bk · la pyramide EU AI Act
+        blocks.bck_genai_bk_skills,       # bk · quelles compétences pour 2030
+        blocks.bck_genai_bk_moralmachine, # bk · 40 M de décisions + contrepoint
         blocks.bck_refs_bibliography,    # never presented; opened when challenged
     ],
     toc_config=toc,
