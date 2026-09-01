@@ -39,8 +39,8 @@ class BlockStyles:
 
 bs = BlockStyles
 
-#: Trois jauges qui montent — la hauteur dit « plus », pas une mesure.
-_GAUGE_HEIGHTS = ["52%", "72%", "92%"]
+#: Trois jauges qui avancent — la longueur dit « plus », pas une mesure.
+_GAUGE_FILLS = ["52%", "72%", "92%"]
 
 #: EXCEPTION R11 assumée (correctif 2026-09-01, capture NG) : la
 #: recomposition en ``st_block`` stylés (lot B) n'émettait RIEN dans
@@ -48,12 +48,14 @@ _GAUGE_HEIGHTS = ["52%", "72%", "92%"]
 #: Le fragment revient à ``st_html`` ; les couleurs restent les JETONS de
 #: la palette (l'esprit de la décision stxonly=p1), la balise attendra la
 #: primitive de tracé demandée à la librairie.
-def _gauge_html(height: str) -> str:
-    return (f'<div style="height:18vh;width:3.2vw;margin:1vh auto;'
-            f'background:rgba(255,255,255,0.06);border-radius:1vw;'
-            f'display:flex;flex-direction:column;justify-content:flex-end;">'
-            f'<div style="height:{height};background:{KEYWORD};'
-            f'border-radius:1vw;"></div></div>')
+def _gauge_html(fill: str) -> str:
+    # Jauges HORIZONTALES (préférence NG 2026-09-01) : un rail pleine
+    # largeur, un remplissage teal qui avance — même valeur, moins de
+    # hauteur mangée dans la carte.
+    return (f'<div style="width:82%;margin:1.2vh auto;'
+            f'background:rgba(255,255,255,0.06);border-radius:0.6vh;">'
+            f'<div style="width:{fill};background:{KEYWORD};'
+            f'height:3.2vh;border-radius:0.6vh;"></div></div>')
 
 # ── Les trois ordres de grandeur (valeur projetée ; détail au survol) ───────
 #: La jauge « Data » est un ordre de grandeur de notoriété publique, sans
@@ -123,8 +125,8 @@ def build(lang: str = "en", **_):
             for i, sl in enumerate(_SLIDERS):
                 with g.cell(), st_block(s.project.cards.blue):
                     st_write(bs.gauge_label, T(sl["label"], lang), tag=t.div)
-                    # La jauge : un fût sombre, un remplissage teal qui monte.
-                    st_html(_gauge_html(_GAUGE_HEIGHTS[i]))
+                    # La jauge : un rail sombre, un remplissage teal qui avance.
+                    st_html(_gauge_html(_GAUGE_FILLS[i]))
                     st_write(bs.gauge_value, T(sl["value"], lang), tag=t.div)
                     if sl["citekeys"]:
                         st_write(bs.cite, citation(*sl["citekeys"]), tag=t.div)

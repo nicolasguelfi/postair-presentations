@@ -71,7 +71,10 @@ _CANDIDATES = [
     {"word": {"en": "grand duchy"}, "prob": "12 %", "share": 0.12},
     {"word": {"en": "cheese"}, "prob": "0.1 %", "share": 0.001},
 ]
-_PUNCH = {"en": "Predict the next word = the WHOLE mechanism · at scale: enormous"}
+#: Trois LIGNES, jamais un ``\n`` : ``st_write`` ne l'interprète pas (piège
+#: documenté au PLAYBOOK) — la feuille porte un tuple, une écriture par ligne.
+_PUNCH = {"en": ("Predict the next word", "= the WHOLE goal",
+                 "at scale: enormous")}
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
 _MARKER = {"en": "Predict"}
@@ -104,8 +107,9 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, *TF(_TITLE, lang),
-                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
+                with st_zoom(120):
+                    st_write(bs.title, *TF(_TITLE, lang),
+                            tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
                     title=T(_TIP_TITLE, lang),
@@ -113,25 +117,40 @@ def build(lang: str = "en", **_):
                 )
         # La phrase descend vers le centre de l'écran : elle est seule en
         # scène sur ce premier temps, elle occupe la fenêtre (règle amphi).
-        st_space("v", "18vh")
-        st_write(bs.sentence, *TF(_SENTENCE, lang), tag=t.div)
+        st_space("v", "30vh")
+        with st_zoom(200):
+            st_write(bs.sentence, *TF(_SENTENCE, lang), tag=t.div)
     # Arrêt clavier SANS entrée de barre latérale (pattern debates) : la
     # config globale du book (FULL, 30vh) s'applique.
     st_slide_break(marker_hidden=True)
     # ── Temps 2 : la révélation — la phrase, les candidats, le punch ────────
     with st_block(s.project.containers.page_fill_top):
-        st_write(bs.sentence, *TF(_SENTENCE, lang), tag=t.div)
-        st_space("v", "3vh")
+        # Chaque sous-slide est AUTOSUFFISANTE (pattern debates) : le panneau
+        # d'info vit aussi sur ce temps — l'en-tête du temps 1 est hors écran
+        # après le PageDown, son ℹ️ avec lui (constat NG 2026-09-01).
+        with st_grid(cols="92% 8%",
+                     cell_styles=s.project.containers.grid_cell_centered) as g:
+            with g.cell():
+                st_write(bs.sentence, *TF(_SENTENCE, lang), tag=t.div)
+            with g.cell():
+                st_info_tooltip(
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
+                )
+        st_space("v", "10vh")
         # Les trois candidats : mot, barre proportionnelle, probabilité.
         for i, cand in enumerate(_CANDIDATES):
-            with st_grid(cols="18% 64% 18%",
-                         cell_styles=s.project.containers.grid_cell_centered) as g:
-                with g.cell():
-                    st_write(bs.word, T(cand["word"], lang), tag=t.div)
-                with g.cell():
-                    st_html(_bar_html(cand["share"], i))
-                with g.cell():
-                    st_write(bs.prob, cand["prob"], tag=t.div)
+            with st_zoom(150):
+                with st_grid(cols="30% 52% 18%",
+                            cell_styles=s.project.containers.grid_cell_centered) as g:
+                    with g.cell():
+                        st_write(bs.word, T(cand["word"], lang), tag=t.div)
+                    with g.cell():
+                        st_html(_bar_html(cand["share"], i))
+                    with g.cell():
+                        st_write(bs.prob, cand["prob"], tag=t.div)
             st_space("v", "1vh")
         st_space("v", "2vh")
-        st_write(bs.punch, T(_PUNCH, lang), tag=t.div)
+        with st_zoom(150):
+            for line in T(_PUNCH, lang):
+                st_write(bs.punch, line, tag=t.div)
