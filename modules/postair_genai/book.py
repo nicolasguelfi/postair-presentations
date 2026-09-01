@@ -135,6 +135,7 @@ st_book(
         blocks.bck_genai_pocket,         # G2  · you have used AI for years
         blocks.bck_genai_timeline,       # G3  · seventy years in one frieze
         blocks.bck_genai_prediction,     # G4  · THE pedagogical slide: predict
+        blocks.bck_genai_predict_film,   # G4b · the mechanism, animated (full screen)
         blocks.bck_genai_scale,          # G5  · data + compute + energy, emergence
         blocks.bck_genai_capabilities,   # G6  · seven capabilities, agents in amber
         blocks.bck_genai_augment_medical,   # G6b · augmentation: 85 % vs 20 %
