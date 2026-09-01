@@ -22,6 +22,7 @@ slide carries it, and it lands harder when this one was generous.
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.styles import Styles as s
 from custom.visuals import staged_hero_image
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -36,6 +37,15 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "Your tutor"}
+_TITLE = {"en": ("A ", (s.project.titles.keyword, "tireless tutor"), ", 24/7")}
+_TIP_TITLE = {"en": "Recommended uses"}
+_TIP_GUIDE = ({"en": "What the guidelines recommend"},
+              {"en": ("Clarification, training material, study plans, "
+                      "brainstorming — the UL guidelines session details every "
+                      "recommended use.")})
+_TIP_FOUR = {"en": "The four uses on screen"}
+
 _DESK_PROMPT = (
     AI_PREFIX
     + "A student desk seen from the side: an open paper notebook, a small "
@@ -48,28 +58,27 @@ _DESK_PROMPT = (
 
 # ── Les quatre usages recommandés — ce que l'IA fait POUR l'apprentissage ───
 _DO = [
-    "Concepts explained until they CLICK · 24/7",
-    "Quizzes + flashcards from YOUR notes",
-    "Outlines & first drafts → the thinking stays yours",
-    "A tireless language partner",
+    {"en": "Concepts explained until they CLICK · 24/7"},
+    {"en": "Quizzes + flashcards from YOUR notes"},
+    {"en": "Outlines & first drafts → the thinking stays yours"},
+    {"en": "A tireless language partner"},
 ]
 
 
 def build(lang: str = "en", **_):
-    st_marker("Your tutor")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "A ", (s.project.titles.keyword, "tireless tutor"),
-                         ", 24/7", tag=t.div, toc_lvl="+1", label="Your tutor")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Recommended uses",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("What the guidelines recommend", "Clarification, training "
-                         "material, study plans, brainstorming — the UL guidelines "
-                         "session details every recommended use."),
-                        ("The four uses on screen", " · ".join(_DO)),
+                        (T(_TIP_GUIDE[0], lang), T(_TIP_GUIDE[1], lang)),
+                        (T(_TIP_FOUR, lang),
+                         " · ".join(T(d, lang) for d in _DO)),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -82,4 +91,4 @@ def build(lang: str = "en", **_):
                               "over the notebook"),
                 variant="sq")):
             for item in _DO:
-                st_write(bs.item, "▸ ", item, tag=t.div)
+                st_write(bs.item, "▸ ", T(item, lang), tag=t.div)

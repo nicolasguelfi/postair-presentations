@@ -23,6 +23,8 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import staged_hero_image
+from postair_i18n import ui
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -57,36 +59,38 @@ _HERO_PROMPT = (
 # ── Le fait (ex-entrée « twist » de la section augment) ─────────────────────
 #: Jamais projeté, gardé pour la vérifiabilité — l'identifiant d'origine de
 #: l'entrée : twist ; son pictogramme d'origine : 🤝.
-_LABEL = "The twist: the tool alone is not enough"
+_MARKER = {"en": "The twist"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "twist"))}
+_LABEL = {"en": "The twist: the tool alone is not enough"}
 _BARS = [
-    {"who": "AI alone", "value": "92 %", "tone": "amber"},
-    {"who": "Physician alone", "value": "74 %", "tone": "blue"},
-    {"who": "Physician + AI", "value": "76 %", "tone": "teal"},
+    {"who": {"en": "AI alone"}, "value": "92 %", "tone": "amber"},
+    {"who": {"en": "Physician alone"}, "value": "74 %", "tone": "blue"},
+    {"who": {"en": "Physician + AI"}, "value": "76 %", "tone": "teal"},
 ]
-_MESSAGE = "Same tool · same doctors · +2 points → collaborating is LEARNED"
-_LOYALTY = ("Randomized clinical trial · 50 physicians with their usual "
-            "tools · peer-reviewed, 2024")
-_DETAIL = ("In a randomized clinical trial, GPT-4 alone scored a median 92 % "
-           "on diagnostic reasoning across six complex clinical vignettes; "
-           "50 physicians using their conventional resources scored 74 % — "
-           "and the physicians GIVEN GPT-4 scored only 76 %. Handing over "
-           "the tool changed almost nothing: knowing how to work with it is "
-           "a skill in itself, which is exactly what these study years are "
-           "for.")
+_MESSAGE = {"en": "Same tool · same doctors · +2 points → collaborating is LEARNED"}
+_LOYALTY = {"en": ("Randomized clinical trial · 50 physicians with their usual "
+                   "tools · peer-reviewed, 2024")}
+_DETAIL = {"en": ("In a randomized clinical trial, GPT-4 alone scored a median 92 % "
+                  "on diagnostic reasoning across six complex clinical vignettes; "
+                  "50 physicians using their conventional resources scored 74 % — "
+                  "and the physicians GIVEN GPT-4 scored only 76 %. Handing over "
+                  "the tool changed almost nothing: knowing how to work with it is "
+                  "a skill in itself, which is exactly what these study years are "
+                  "for.")}
 _CITEKEYS = ["goh2024llm"]
 
 
 def build(lang: str = "en", **_):
-    st_marker("The twist")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "The ", (s.project.titles.keyword, "twist"),
-                         tag=t.div, toc_lvl="+1", label="The twist")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
-                st_info_tooltip(title=_LABEL,
-                                entries=[("Verified at the source",
-                                          _DETAIL)])
+                st_info_tooltip(title=T(_LABEL, lang),
+                                entries=[(ui("verified_at_source", lang),
+                                          T(_DETAIL, lang))])
         st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: staged_hero_image(
                 "genai_twist", _HERO_PROMPT, "images/genai_twist_fallback.svg",
@@ -99,8 +103,8 @@ def build(lang: str = "en", **_):
                 with st_block(_CARD_TONES[bar["tone"]]):
                     st_write(bs.number_amber if bar["tone"] == "amber" else bs.number,
                              bar["value"], tag=t.div)
-                    st_write(bs.who, bar["who"], tag=t.div)
+                    st_write(bs.who, T(bar["who"], lang), tag=t.div)
             st_space("v", "0.5vh")
-            st_write(bs.message, _MESSAGE, " ",
+            st_write(bs.message, T(_MESSAGE, lang), " ",
                      citation(*_CITEKEYS), tag=t.div)
-            st_write(bs.loyalty, _LOYALTY, tag=t.div)
+            st_write(bs.loyalty, T(_LOYALTY, lang), tag=t.div)

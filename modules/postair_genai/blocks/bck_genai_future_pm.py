@@ -30,6 +30,7 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import staged_hero_image
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -59,37 +60,42 @@ _HERO_PROMPT = (
 )
 
 # ── La place de l'humain (message projeté ; phrase complète au survol) ──────
-_LABEL = "You will all be project managers"
-_MESSAGE = ("Generative assistants → professional production · your place: "
-            "DIRECT · JUDGE · OWN IT")
+_MARKER = {"en": "Your place"}
+_TITLE = {"en": ("All ", (s.project.titles.keyword, "project managers"))}
+_LABEL = {"en": "You will all be project managers"}
+_MESSAGE = {"en": ("Generative assistants → professional production · your "
+                   "place: DIRECT · JUDGE · OWN IT")}
 #: La maxime dans les deux langues — l'anglaise en ambre porte le message,
 #: l'originale française de l'auteur se lit telle quelle.
-_PUNCH = "How do you have it done, if you do not know how to do it?"
+_PUNCH = {"en": "How do you have it done, if you do not know how to do it?"}
+#: PAS une feuille : la formule ORIGINALE de l'auteur, projetée telle quelle
+#: dans les deux langues (comme un nom propre — les données ne se traduisent
+#: pas).
 _PUNCH_ORIGINAL = "« Comment faire faire, si nous ne savons pas faire ? »"
-_ANSWER = ("You can only direct what you can judge → learn the craft DURING "
-           "your studies")
+_ANSWER = {"en": ("You can only direct what you can judge → learn the craft "
+                  "DURING your studies")}
+_TIP_HEAD = {"en": "Why this is the hard part"}
 #: La suite LOCALE de la phrase du survol — le chiffre WEF et sa phrase
 #: viennent du fait partagé ``jobs``/``wef-outlook`` de facts.json.
-_DETAIL_LOCAL = ("Directing an assistant that produces in seconds requires "
-                 "exactly what a degree builds: knowing the domain well "
-                 "enough to specify, to judge the output, and to take "
-                 "responsibility for it.")
+_DETAIL_LOCAL = {"en": ("Directing an assistant that produces in seconds "
+                        "requires exactly what a degree builds: knowing the "
+                        "domain well enough to specify, to judge the output, "
+                        "and to take responsibility for it.")}
 
 
 def build(lang: str = "en", **_):
-    st_marker("Your place")
+    st_marker(T(_MARKER, lang))
     wef = next(f for f in section("jobs") if f["id"] == "wef-outlook")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "All ", (s.project.titles.keyword,
-                         "project managers"), tag=t.div,
-                         toc_lvl="+1", label="Your place")
+                st_write(bs.title, *TF(_TITLE, lang), tag=t.div,
+                         toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
-                st_info_tooltip(title=_LABEL,
-                                entries=[("Why this is the hard part",
-                                          text(wef["claim"]) + " "
-                                          + _DETAIL_LOCAL)])
+                st_info_tooltip(title=T(_LABEL, lang),
+                                entries=[(T(_TIP_HEAD, lang),
+                                          text(wef["claim"], lang) + " "
+                                          + T(_DETAIL_LOCAL, lang))])
         st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: staged_hero_image(
                 "genai_conductor", _HERO_PROMPT,
@@ -100,11 +106,11 @@ def build(lang: str = "en", **_):
                 alt_fallback=("Papercut conductor silhouette directing amber orbs "
                               "producing paper sheets"),
                 variant="sq")):
-            st_write(bs.message, _MESSAGE, " ",
+            st_write(bs.message, T(_MESSAGE, lang), " ",
                      citation(*citekeys(wef)), tag=t.div)
             st_space("v", "1vh")
             with st_block(s.project.cards.amber):
-                st_write(bs.punch, _PUNCH, tag=t.div)
+                st_write(bs.punch, T(_PUNCH, lang), tag=t.div)
                 st_write(bs.punch_original, _PUNCH_ORIGINAL, tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.answer, _ANSWER, tag=t.div)
+            st_write(bs.answer, T(_ANSWER, lang), tag=t.div)

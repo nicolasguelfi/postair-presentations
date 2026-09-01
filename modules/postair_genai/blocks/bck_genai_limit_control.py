@@ -16,6 +16,8 @@ session is built on a European model.
 """
 # @guideline: postair-minimal
 
+from postair_i18n import ui
+from postair_lang import T
 from shared_widgets import st_info_tooltip
 from streamtex import st_block, st_grid, st_marker, st_space, st_write
 from streamtex.enums import Tags as t
@@ -35,14 +37,14 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Le revers ───────────────────────────────────────────────────────────────
-_MARKER = "Control"
+_MARKER = {"en": "Control"}
 _ICON = "🏛️"
-_LABEL = "Who controls the models?"
-_MESSAGE = "Frontier models = a handful of companies"
-_PUNCH = "EU sovereignty → Mistral, next session"
-_DETAIL = ("A handful of companies train the frontier models. What Europe "
-           "builds itself is a sovereignty question — the Mistral session is "
-           "part of the answer.")
+_LABEL = {"en": "Who controls the models?"}
+_MESSAGE = {"en": "Frontier models = a handful of companies"}
+_PUNCH = {"en": "EU sovereignty → Mistral, next session"}
+_DETAIL = {"en": ("A handful of companies train the frontier models. What Europe "
+                  "builds itself is a sovereignty question — the Mistral session is "
+                  "part of the answer.")}
 
 # ── L'image papercut ────────────────────────────────────────────────────────
 _IMAGE = "genai_control"
@@ -55,25 +57,25 @@ _SCENE = ("Three enormous paper hands rising from the bottom of the frame, "
 
 
 def build(lang: str = "en", **_):
-    st_marker(_MARKER)
+    st_marker(T(_MARKER, lang))
     prompt = AI_PREFIX + _SCENE + AI_SUFFIX_LANDSCAPE
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 st_write(bs.title, _ICON, " ",
-                         (s.project.titles.keyword, _LABEL),
-                         tag=t.div, toc_lvl="+1", label=_LABEL)
+                         (s.project.titles.keyword, T(_LABEL, lang)),
+                         tag=t.div, toc_lvl="+1", label=T(_LABEL, lang))
             with g.cell():
-                st_info_tooltip(title=_LABEL,
-                                entries=[("Documented, not speculative",
-                                          _DETAIL)])
+                st_info_tooltip(title=T(_LABEL, lang),
+                                entries=[(ui("documented_note", lang),
+                                          T(_DETAIL, lang))])
         st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche ~50 %,
         # message + punch empilés à droite — plus rien sous le pli.
         with hero_split(s, image=lambda: staged_hero_image(
                 _IMAGE, prompt, _FALLBACK, alt_ready=_ALT, alt_fallback=_ALT,
                 variant="sq")):
-            st_write(bs.message, _MESSAGE, tag=t.div)
+            st_write(bs.message, T(_MESSAGE, lang), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.punch, _PUNCH, tag=t.div)
+            st_write(bs.punch, T(_PUNCH, lang), tag=t.div)

@@ -21,6 +21,7 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import staged_hero_image
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -47,14 +48,23 @@ _EXAM_PROMPT = (
 
 # ── Les trois mises en garde — la dernière porte le chiffre HEPI sourcé ─────
 _DONT = [
-    "Human exam = human learning",
-    "Shortcut = the skill-building effort, replaced",
-    "94 % UK already use it → the question is HOW",
+    {"en": "Human exam = human learning"},
+    {"en": "Shortcut = the skill-building effort, replaced"},
+    {"en": "94 % UK already use it → the question is HOW"},
 ]
 _DONT_CITEKEYS = ["hepi-survey-2026"]
 
 # ── Le paradoxe — LE message de la slide ────────────────────────────────────
-_PARADOX = "Well used → learning ↑ · INSTEAD of learning → cancelled"
+_PARADOX = {"en": "Well used → learning ↑ · INSTEAD of learning → cancelled"}
+
+_MARKER = {"en": "The exam"}
+_TITLE = {"en": ("The exam stays ", (s.project.titles.keyword, "human"))}
+_TIP_TITLE = {"en": "Tutor, not ghostwriter"}
+_TIP_PROCESS = ({"en": "Process originality"},
+                {"en": ("What is graded is YOUR process: drafts, choices, "
+                        "verification. Keeping your prompts and versions is "
+                        "how you show it.")})
+_TIP_PARADOX = {"en": "The paradox"}
 
 # ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─
 #: Les réglages visuels de la slide vivent ICI, nommés et commentés — jamais
@@ -67,20 +77,18 @@ TUNING = {
 
 
 def build(lang: str = "en", **_):
-    st_marker("The exam")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "The exam stays ", (s.project.titles.keyword, "human"),
-                         tag=t.div, toc_lvl="+1", label="The exam")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Tutor, not ghostwriter",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("Process originality", "What is graded is YOUR process: "
-                         "drafts, choices, verification. Keeping your prompts and "
-                         "versions is how you show it."),
-                        ("The paradox", _PARADOX),
+                        (T(_TIP_PROCESS[0], lang), T(_TIP_PROCESS[1], lang)),
+                        (T(_TIP_PARADOX, lang), T(_PARADOX, lang)),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -92,11 +100,11 @@ def build(lang: str = "en", **_):
                               "waiting behind the closed door"),
                 variant="pt")):
             for item in _DONT[:-1]:
-                st_write(bs.item, "▸ ", item, tag=t.div)
-            st_write(bs.item, "▸ ", _DONT[-1], " ",
+                st_write(bs.item, "▸ ", T(item, lang), tag=t.div)
+            st_write(bs.item, "▸ ", T(_DONT[-1], lang), " ",
                      citation(*_DONT_CITEKEYS), tag=t.div)
             st_space("v", "1vh")
             # Le paradoxe — LE message de la slide — en carte ambre, VISIBLE :
             # il vivait sous le pli dans l'ancienne pile verticale.
             with st_block(s.project.cards.amber):
-                st_write(bs.paradox, _PARADOX, tag=t.div)
+                st_write(bs.paradox, T(_PARADOX, lang), tag=t.div)

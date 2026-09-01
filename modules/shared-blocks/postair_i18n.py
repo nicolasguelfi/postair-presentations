@@ -65,6 +65,9 @@ UI: dict[str, dict[str, str]] = {
                             "at the original.",
                       "fr": "Rapporté dans la source citée sur la carte, non lu à "
                             "l'original."},
+    # genai — partagé par les quatre blocs de la série « limit »
+    "documented_note": {"en": "Documented, not speculative",
+                        "fr": "Documenté, pas spéculatif"},
     # survey — partagés par deux blocs ou plus du parcours
     "under_18": {"en": "Under 18", "fr": "Moins de 18 ans"},
     "anonymous_by_design": {"en": "Anonymous by design", "fr": "Anonyme par conception"},

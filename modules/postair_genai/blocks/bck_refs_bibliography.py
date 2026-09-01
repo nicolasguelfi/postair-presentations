@@ -21,6 +21,8 @@ whole point of having it.
 
 from custom.refs import all_entries, config
 from custom.styles import Styles as s
+from postair_i18n import ui
+from postair_lang import T, TF
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -34,19 +36,23 @@ class BlockStyles:
 
 bs = BlockStyles
 
+#: Le marqueur vient du lexique partagé (« References », déjà bilingue) ; le
+#: titre et la sous-ligne restent propres à ce deck (lot structure : {"en"}).
+_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from"))}
+_LEAD = {"en": "every number and claim of this session, with its source"}
+
 
 def build(lang: str = "en", **_):
-    st_marker("References")
+    st_marker(ui("references", lang))
     # Le registre est rempli ici, pas ailleurs : cette slide est la seule qui
     # ait besoin de TOUTES les entrées, y compris celles des slides que la
     # séance n'a pas atteintes.
     all_entries()
     with st_block(s.project.containers.page_fill_top):
-        st_write(bs.title, "Where all of this ", (s.project.titles.keyword, "comes from"),
-                 tag=t.div, toc_lvl="1", label="References")
+        st_write(bs.title, *TF(_TITLE, lang),
+                 tag=t.div, toc_lvl="1", label=ui("references", lang))
         st_space("v", "1vh")
-        st_write(bs.lead, "every number and claim of this session, with its source",
-                 tag=t.div)
+        st_write(bs.lead, T(_LEAD, lang), tag=t.div)
         st_space("v", "2vh")
         st_bibliography(title="", only_cited=False, format=config().format,
                         entry_style=bs.entry, number_style=bs.number)

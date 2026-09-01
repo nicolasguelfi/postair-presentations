@@ -21,6 +21,7 @@ you cannot verify.
 
 from custom.refs import citation
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -36,12 +37,22 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "Hallucinations"}
+_TITLE = {"en": ("What it gets wrong: ",
+                 (s.project.titles.keyword, "hallucinations"))}
+_TIP_TITLE = {"en": "Why this is structural"}
+_EXHIBIT_HEAD = {"en": "The exhibit"}
+
 # ── La pièce à conviction : la « référence » inventée, citée verbatim ───────
+#: PAS une feuille : la fausse référence est une DONNÉE, citée telle quelle
+#: dans toutes les langues (R-case — les données ne se recasent ni ne se
+#: traduisent).
 _CASE_QUOTE = ("Varghese v. China Southern Airlines Co., Ltd., 925 F.3d 1339 "
                "(11th Cir. 2019)")
-_CASE_VERDICT = ("This case does not exist. ChatGPT invented it — with a full "
-                 "docket number, quotes and internal citations — and two "
-                 "lawyers filed it in a New York federal court.")
+_CASE_VERDICT = {"en": ("This case does not exist. ChatGPT invented it — with a full "
+                        "docket number, quotes and internal citations — and two "
+                        "lawyers filed it in a New York federal court.")}
+_CASE_VERDICT_SHORT = {"en": "This case does not exist. "}
 #: La clé ouvre l'ordonnance de sanctions — la seule vraie référence de la
 #: carte corail.
 _CASE_CITEKEYS = ["mata-avianca-2023"]
@@ -51,49 +62,49 @@ _CASE_CITEKEYS = ["mata-avianca-2023"]
 #: deux autres sont des leçons structurelles, sans citekey — liste vide.
 _CLAIMS = [
     {
-        "short": "It does not « know » — it predicts",
-        "detail": ("The model optimises plausibility, not truth. A fluent, "
-                   "confident answer is what it is built to produce — even "
-                   "when wrong."),
+        "short": {"en": "It does not « know » — it predicts"},
+        "detail": {"en": ("The model optimises plausibility, not truth. A fluent, "
+                          "confident answer is what it is built to produce — even "
+                          "when wrong.")},
         "citekeys": [],
     },
     {
-        "short": "Plausible ≠ true",
-        "detail": ("On precise legal questions, large language models "
-                   "hallucinated in 69 % to 88 % of cases in a systematic "
-                   "profiling study."),
+        "short": {"en": "Plausible ≠ true"},
+        "detail": {"en": ("On precise legal questions, large language models "
+                          "hallucinated in 69 % to 88 % of cases in a systematic "
+                          "profiling study.")},
         "citekeys": ["dahl-legal-fictions-2024"],
     },
     {
-        "short": "Verification is non-negotiable",
-        "detail": ("Anything that matters gets checked at the source. This "
-                   "is the bridge to the UL guidelines: high risk = "
-                   "delegating what you cannot verify."),
+        "short": {"en": "Verification is non-negotiable"},
+        "detail": {"en": ("Anything that matters gets checked at the source. This "
+                          "is the bridge to the UL guidelines: high risk = "
+                          "delegating what you cannot verify.")},
         "citekeys": [],
     },
 ]
 
 
 def build(lang: str = "en", **_):
-    st_marker("Hallucinations")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "What it gets wrong: ",
-                         (s.project.titles.keyword, "hallucinations"),
-                         tag=t.div, toc_lvl="+1", label="Hallucinations")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Why this is structural",
-                    entries=[(c["short"], c["detail"]) for c in _CLAIMS]
-                            + [("The exhibit", _CASE_VERDICT)],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(c["short"], lang), T(c["detail"], lang))
+                             for c in _CLAIMS]
+                            + [(T(_EXHIBIT_HEAD, lang), T(_CASE_VERDICT, lang))],
                 )
         st_space("v", s.project.spacing.title_gap)
         # La pièce à conviction : une « référence » très convenable — et fausse.
         with st_block(s.project.cards.coral):
             st_write(bs.fake, "« ", _CASE_QUOTE, " »", tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.verdict, "This case does not exist. ",
+            st_write(bs.verdict, T(_CASE_VERDICT_SHORT, lang),
                      citation(*_CASE_CITEKEYS), tag=t.div)
         st_space("v", "2vh")
         with st_grid(cols=s.project.grids.balanced(len(_CLAIMS)), gap="1.2vw",
@@ -101,6 +112,6 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for c in _CLAIMS:
                 with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.claim, c["short"], tag=t.div)
+                    st_write(bs.claim, T(c["short"], lang), tag=t.div)
                     if c["citekeys"]:
                         st_write(bs.detail, citation(*c["citekeys"]), tag=t.div)

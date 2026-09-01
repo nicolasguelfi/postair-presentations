@@ -20,6 +20,7 @@ measure. Both are sourced, hover the codes if challenged.
 
 from custom.refs import citation
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -62,55 +63,61 @@ def _gauge_fill(height: str, idx: int) -> Style:
 #: source dédiée — sa liste de citekeys est vide.
 _SLIDERS = [
     {
-        "label": "Data",
-        "value": "≈ the public web",
-        "detail": ("Training corpora sample most of the accessible public "
-                   "web, plus books and code."),
+        "label": {"en": "Data"},
+        "value": {"en": "≈ the public web"},
+        "detail": {"en": ("Training corpora sample most of the accessible public "
+                          "web, plus books and code.")},
         "citekeys": [],
     },
     {
-        "label": "Compute",
-        "value": "×2.4 per year",
-        "detail": ("The training compute cost of frontier models has grown "
-                   "about 2.4× per year since 2016 — the largest runs cost "
-                   "tens to hundreds of millions of euros."),
+        "label": {"en": "Compute"},
+        "value": {"en": "×2.4 per year"},
+        "detail": {"en": ("The training compute cost of frontier models has grown "
+                          "about 2.4× per year since 2016 — the largest runs cost "
+                          "tens to hundreds of millions of euros.")},
         "citekeys": ["cottier2024-costs"],
     },
     {
-        "label": "Energy",
-        "value": "≈ 1.5 % → ×2 by 2030",
-        "detail": ("Data centres used about 1.5 % of world electricity in "
-                   "2024; that could more than double by 2030, with AI as "
-                   "the main driver."),
+        "label": {"en": "Energy"},
+        "value": {"en": "≈ 1.5 % → ×2 by 2030"},
+        "detail": {"en": ("Data centres used about 1.5 % of world electricity in "
+                          "2024; that could more than double by 2030, with AI as "
+                          "the main driver.")},
         "citekeys": ["iea2025-energy"],
     },
 ]
 
 # ── L'émergence — la revendication ET son contrepoint, tous deux sourcés ────
-_EMERGENCE_CLAIM = "Scale → capabilities NOBODY programmed"
-_EMERGENCE_DETAIL = ("Abilities like multi-step arithmetic or translation "
-                     "appear abruptly past certain scales — « emergent "
-                     "abilities ».")
-_EMERGENCE_COUNTERPOINT = "« mirage » debate open — measurement artefact?"
+_EMERGENCE_CLAIM = {"en": "Scale → capabilities NOBODY programmed"}
+_EMERGENCE_DETAIL = {"en": ("Abilities like multi-step arithmetic or translation "
+                            "appear abruptly past certain scales — « emergent "
+                            "abilities ».")}
+_EMERGENCE_COUNTERPOINT = {"en": "« mirage » debate open — measurement artefact?"}
+
+# ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
+_MARKER = {"en": "Scale"}
+_TITLE = {"en": ((s.project.titles.keyword, "Scale"), " changes everything")}
+_TIP_TITLE = {"en": "Orders of magnitude"}
 #: La source de la revendication ET celle du contrepoint — l'honnêteté est
 #: la ligne du deck.
 _EMERGENCE_CITEKEYS = ["wei2022-emergent", "schaeffer2023-mirage"]
 
 
 def build(lang: str = "en", **_):
-    st_marker("Scale")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, (s.project.titles.keyword, "Scale"),
-                         " changes everything", tag=t.div, toc_lvl="+1", label="Scale")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Orders of magnitude",
-                    entries=[(sl["label"], sl["detail"]) for sl in _SLIDERS]
-                            + [(_EMERGENCE_CLAIM,
-                                _EMERGENCE_DETAIL + " "
-                                + _EMERGENCE_COUNTERPOINT)],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(sl["label"], lang), T(sl["detail"], lang))
+                             for sl in _SLIDERS]
+                            + [(T(_EMERGENCE_CLAIM, lang),
+                                T(_EMERGENCE_DETAIL, lang) + " "
+                                + T(_EMERGENCE_COUNTERPOINT, lang))],
                 )
         st_space("v", s.project.spacing.title_gap)
         with st_grid(cols=s.project.grids.balanced(len(_SLIDERS)), gap="1.2vw",
@@ -118,12 +125,12 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for i, sl in enumerate(_SLIDERS):
                 with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.gauge_label, sl["label"], tag=t.div)
+                    st_write(bs.gauge_label, T(sl["label"], lang), tag=t.div)
                     # La jauge : un fût sombre, un remplissage teal qui monte.
                     with st_block(_GAUGE_TUBE):
                         with st_block(_gauge_fill(_GAUGE_HEIGHTS[i], i)):
                             pass
-                    st_write(bs.gauge_value, sl["value"], tag=t.div)
+                    st_write(bs.gauge_value, T(sl["value"], lang), tag=t.div)
                     if sl["citekeys"]:
                         st_write(bs.cite, citation(*sl["citekeys"]), tag=t.div)
         st_space("v", "2.5vh")
@@ -139,6 +146,6 @@ def build(lang: str = "en", **_):
                 f'<path d="M0 96 C 240 92, 330 88, 390 78 C 440 68, 470 20, 560 12" '
                 f'fill="none" stroke="{AMBER}" stroke-width="6" stroke-linecap="round"/>'
                 f'</svg></div>')
-        st_write(bs.claim, _EMERGENCE_CLAIM, " ",
+        st_write(bs.claim, T(_EMERGENCE_CLAIM, lang), " ",
                  citation(*_EMERGENCE_CITEKEYS), tag=t.div)
-        st_write(bs.counter, _EMERGENCE_COUNTERPOINT, tag=t.div)
+        st_write(bs.counter, T(_EMERGENCE_COUNTERPOINT, lang), tag=t.div)

@@ -19,6 +19,7 @@ goal — in the next session you will build one, live ».
 
 from custom.refs import citation
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -41,44 +42,44 @@ bs = BlockStyles
 _CAPABILITIES = [
     {
         "icon": "✍️",
-        "label": "Write",
-        "example": "Writing: ~40 % faster (controlled trial)",
+        "label": {"en": "Write"},
+        "example": {"en": "Writing: ~40 % faster (controlled trial)"},
         "citekeys": ["noy-zhang-2023"],
     },
     {
         "icon": "🌍",
-        "label": "Translate",
-        "example": "~100 languages · Lëtzebuergesch: imperfect",
+        "label": {"en": "Translate"},
+        "example": {"en": "~100 languages · Lëtzebuergesch: imperfect"},
         "citekeys": [],
     },
     {
         "icon": "💻",
-        "label": "Code",
-        "example": "Sentence → program · explains others' code",
+        "label": {"en": "Code"},
+        "example": {"en": "Sentence → program · explains others' code"},
         "citekeys": [],
     },
     {
         "icon": "📚",
-        "label": "Summarise",
-        "example": "60 pages → 1 · risk: THE nuance lost",
+        "label": {"en": "Summarise"},
+        "example": {"en": "60 pages → 1 · risk: THE nuance lost"},
         "citekeys": [],
     },
     {
         "icon": "🎨",
-        "label": "Create media",
-        "example": "Text → image / music / video · this deck: 100 % generated",
+        "label": {"en": "Create media"},
+        "example": {"en": "Text → image / music / video · this deck: 100 % generated"},
         "citekeys": [],
     },
     {
         "icon": "🧩",
-        "label": "Reason (a bit)",
-        "example": "Reasoning ↑ fast · unverified: fragile",
+        "label": {"en": "Reason (a bit)"},
+        "example": {"en": "Reasoning ↑ fast · unverified: fragile"},
         "citekeys": [],
     },
     {
         "icon": "⚡",
-        "label": "Act — agents",
-        "example": "Agents = tools in a loop → Mistral session",
+        "label": {"en": "Act — agents"},
+        "example": {"en": "Agents = tools in a loop → Mistral session"},
         "citekeys": [],
         "accent": True,   # LA carte ambre — le teaser de la session Mistral.
     },
@@ -86,35 +87,40 @@ _CAPABILITIES = [
 
 # ── Un exemple par faculté (panneau uniquement, plan G6) ────────────────────
 _FACULTY_EXAMPLES = [
-    ("Science & engineering",
-     "Code assistants draft, test and explain programs — the FSTM way in: "
-     "build with it, then break it to understand it."),
-    ("Law, economics, finance",
-     "Contract review and case-law search accelerate massively — and G7 "
-     "shows why a jurist verifies every citation it returns."),
-    ("Humanities, education, social sciences",
-     "Transcription, translation and thematic coding of interviews — the "
-     "analysis and the interpretation stay the researcher's."),
+    ({"en": "Science & engineering"},
+     {"en": ("Code assistants draft, test and explain programs — the FSTM way in: "
+             "build with it, then break it to understand it.")}),
+    ({"en": "Law, economics, finance"},
+     {"en": ("Contract review and case-law search accelerate massively — and G7 "
+             "shows why a jurist verifies every citation it returns.")}),
+    ({"en": "Humanities, education, social sciences"},
+     {"en": ("Transcription, translation and thematic coding of interviews — the "
+             "analysis and the interpretation stay the researcher's.")}),
 ]
+
+# ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
+_MARKER = {"en": "What it can do"}
+_TITLE = {"en": ("What it ", (s.project.titles.keyword, "can do"), " today")}
+_TIP_TITLE = {"en": "One dated example each"}
 
 
 def build(lang: str = "en", **_):
-    st_marker("What it can do")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "What it ", (s.project.titles.keyword, "can do"),
-                         " today", tag=t.div, toc_lvl="+1", label="What it can do")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="One dated example each",
-                    entries=[(f"{c['icon']} {c['label']}", c["example"])
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(f"{c['icon']} {T(c['label'], lang)}",
+                              T(c["example"], lang))
                              for c in _CAPABILITIES]
                             # Un exemple par faculté (plan G6) : chaque tiers
                             # de la salle se reconnaît dans au moins un.
-                            # [*…], pas list(…) : l'import * de streamtex
-                            # masque le builtin list (règle R14 d'opening).
-                            + [*_FACULTY_EXAMPLES],
+                            + [(T(h, lang), T(d, lang))
+                               for h, d in _FACULTY_EXAMPLES],
                 )
         st_space("v", s.project.spacing.title_gap)
         # Sept cartes sur une grille équilibrée ; « agents » est LA carte ambre.
@@ -125,6 +131,6 @@ def build(lang: str = "en", **_):
                 with g.cell(), st_block(s.project.cards.amber if c.get("accent")
                                         else s.project.cards.blue):
                     st_write(bs.icon, c["icon"], tag=t.div)
-                    st_write(bs.label, c["label"], tag=t.div)
+                    st_write(bs.label, T(c["label"], lang), tag=t.div)
                     if c["citekeys"]:
                         st_write(bs.cite, citation(*c["citekeys"]), tag=t.div)

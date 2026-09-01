@@ -27,6 +27,7 @@ say that the debate exists, it buys credibility for the whole deck.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -65,71 +66,73 @@ def _bar(share: float, idx: int) -> Style:
     )
 
 # ── La phrase à trou et ses candidats (probabilités illustratives) ──────────
-_SENTENCE_HEAD = "Luxembourg is a"
-_BLANK = "____"
+#: La MÊME feuille sert les deux temps — la phrase répétée au temps 2 est
+#: identique par construction.
+_SENTENCE = {"en": ("« Luxembourg is a ",
+                    (s.project.titles.keyword, "____"), " »")}
 #: ``share`` pilote la largeur de barre, ``prob`` est l'étiquette projetée.
 _CANDIDATES = [
-    {"word": "country", "prob": "78 %", "share": 0.78},
-    {"word": "grand duchy", "prob": "12 %", "share": 0.12},
-    {"word": "cheese", "prob": "0.1 %", "share": 0.001},
+    {"word": {"en": "country"}, "prob": "78 %", "share": 0.78},
+    {"word": {"en": "grand duchy"}, "prob": "12 %", "share": 0.12},
+    {"word": {"en": "cheese"}, "prob": "0.1 %", "share": 0.001},
 ]
-_PUNCH = "Predict the next word = the WHOLE mechanism · at scale: enormous"
+_PUNCH = {"en": "Predict the next word = the WHOLE mechanism · at scale: enormous"}
+
+# ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
+_MARKER = {"en": "Predict"}
+_TITLE = {"en": ("The trick: ", (s.project.titles.keyword, "predict the next word"))}
 
 # ── Le glossaire du panneau « What is really happening » ────────────────────
+_TIP_TITLE = {"en": "What is really happening"}
 _TOOLTIP = [
-    ("Tokens",
-     "The model reads and writes in fragments of words (tokens), a few "
-     "characters each. « Luxembourg » is 2–3 tokens."),
-    ("Probabilities",
-     "For every next token the model scores its whole vocabulary and samples "
-     "among the most probable — learned from billions of pages of text."),
-    ("Temperature",
-     "A dial on the sampling: low = always the safest word, high = more "
-     "surprising choices. Same question, different answers — by design, not "
-     "by bug."),
-    ("Predicting vs understanding",
-     "To predict well at this scale, models build internal representations "
-     "of grammar, facts and reasoning patterns. Whether that deserves the "
-     "word « understanding » is an open scientific debate — honest people "
-     "disagree."),
+    ({"en": "Tokens"},
+     {"en": ("The model reads and writes in fragments of words (tokens), a few "
+             "characters each. « Luxembourg » is 2–3 tokens.")}),
+    ({"en": "Probabilities"},
+     {"en": ("For every next token the model scores its whole vocabulary and samples "
+             "among the most probable — learned from billions of pages of text.")}),
+    ({"en": "Temperature"},
+     {"en": ("A dial on the sampling: low = always the safest word, high = more "
+             "surprising choices. Same question, different answers — by design, not "
+             "by bug.")}),
+    ({"en": "Predicting vs understanding"},
+     {"en": ("To predict well at this scale, models build internal representations "
+             "of grammar, facts and reasoning patterns. Whether that deserves the "
+             "word « understanding » is an open scientific debate — honest people "
+             "disagree.")}),
 ]
 
 
 def build(lang: str = "en", **_):
-    st_marker("Predict")
+    st_marker(T(_MARKER, lang))
     # ── Temps 1 : la phrase à trou SEULE — la salle devine d'abord ──────────
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "The trick: ",
-                         (s.project.titles.keyword, "predict the next word"),
-                         tag=t.div, toc_lvl="+1", label="Predict")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="What is really happening",
-                    # [*…], pas list(…) : l'import * de streamtex masque le
-                    # builtin list (règle R14 d'opening).
-                    entries=[*_TOOLTIP],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
         # La phrase descend vers le centre de l'écran : elle est seule en
         # scène sur ce premier temps, elle occupe la fenêtre (règle amphi).
         st_space("v", "18vh")
-        st_write(bs.sentence, "« ", _SENTENCE_HEAD, " ",
-                 (s.project.titles.keyword, _BLANK), " »", tag=t.div)
+        st_write(bs.sentence, *TF(_SENTENCE, lang), tag=t.div)
     # Arrêt clavier SANS entrée de barre latérale (pattern debates) : la
     # config globale du book (FULL, 30vh) s'applique.
     st_slide_break(marker_hidden=True)
     # ── Temps 2 : la révélation — la phrase, les candidats, le punch ────────
     with st_block(s.project.containers.page_fill_top):
-        st_write(bs.sentence, "« ", _SENTENCE_HEAD, " ",
-                 (s.project.titles.keyword, _BLANK), " »", tag=t.div)
+        st_write(bs.sentence, *TF(_SENTENCE, lang), tag=t.div)
         st_space("v", "3vh")
         # Les trois candidats : mot, barre proportionnelle, probabilité.
         for i, cand in enumerate(_CANDIDATES):
             with st_grid(cols="18% 64% 18%",
                          cell_styles=s.project.containers.grid_cell_centered) as g:
                 with g.cell():
-                    st_write(bs.word, cand["word"], tag=t.div)
+                    st_write(bs.word, T(cand["word"], lang), tag=t.div)
                 with g.cell():
                     with st_block(_TROUGH):
                         with st_block(_bar(cand["share"], i)):
@@ -138,4 +141,4 @@ def build(lang: str = "en", **_):
                     st_write(bs.prob, cand["prob"], tag=t.div)
             st_space("v", "1vh")
         st_space("v", "2vh")
-        st_write(bs.punch, _PUNCH, tag=t.div)
+        st_write(bs.punch, T(_PUNCH, lang), tag=t.div)

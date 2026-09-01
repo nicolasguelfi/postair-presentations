@@ -27,6 +27,8 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import staged_hero_image
+from postair_i18n import ui
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -43,6 +45,9 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "Justice"}
+_TITLE = {"en": ("Justice — the ", (s.project.titles.keyword, "case file"))}
+
 _HERO_PROMPT = (
     AI_PREFIX
     + "A large paper balance scale standing level: one pan holds a tall neat "
@@ -55,18 +60,17 @@ _HERO_PROMPT = (
 
 
 def build(lang: str = "en", **_):
-    st_marker("Justice")
+    st_marker(T(_MARKER, lang))
     fact = next(a for a in section("augment") if a["id"] == "justice")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Justice — the ",
-                         (s.project.titles.keyword, "case file"),
-                         tag=t.div, toc_lvl="+1", label="Justice")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
-                st_info_tooltip(title=text(fact["label"]),
-                                entries=[("Verified at the source",
-                                          text(fact["detail"]))])
+                st_info_tooltip(title=text(fact["label"], lang),
+                                entries=[(ui("verified_at_source", lang),
+                                          text(fact["detail"], lang))])
         st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: staged_hero_image(
                 "genai_justice", _HERO_PROMPT, "images/genai_justice_fallback.svg",
@@ -76,10 +80,10 @@ def build(lang: str = "en", **_):
                 alt_fallback=("Papercut balance scale weighing paper case files "
                               "against an amber orb"),
                 variant="sq")):
-            st_write(bs.headline, text(fact["headline"]), tag=t.div)
+            st_write(bs.headline, text(fact["headline"], lang), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.sub, text(fact["headline_sub"]), " ",
+            st_write(bs.sub, text(fact["headline_sub"], lang), " ",
                      citation(*citekeys(fact)), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.anecdote, text(fact["anecdote"]), " ",
+            st_write(bs.anecdote, text(fact["anecdote"], lang), " ",
                      citation(*fact["anecdote_source"]["citekeys"]), tag=t.div)

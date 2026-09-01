@@ -23,6 +23,7 @@ from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import staged_hero_image
 from postair_data import mascot
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -51,10 +52,27 @@ _HORIZON_PROMPT = (
 #: l'ancienne section « actor » de facts.json (entrée ``line``, jamais
 #: consommée par le rendu) : « The revolution is here. Your posture is your
 #: compass. »
-_VERBS = ["Stay informed", "Test things", "Keep doubting"]
+#: Tri DD-113 (revue genaipat 2026-09-01) : rien sur cette slide ne CITE un
+#: bouton ou un écran de l'application sumvadis — « retake the survey » est
+#: une phrase du deck, pas un intitulé d'interface : feuilles simples, pas de
+#: ``screen()``.
+_MARKER = {"en": "Actor"}
+_TITLE = {"en": ((s.project.titles.keyword, "Actor"), ", not spectator")}
+_VERBS = [{"en": "Stay informed"}, {"en": "Test things"}, {"en": "Keep doubting"}]
 #: Les trois compagnons — demandés par leur NOM au cast gelé.
 _MASCOTS = ["Kuri", "Solyo", "Lento"]
-_MASCOT_WHY = "Curiosity · optimism · prudence — three postures, together"
+_MASCOT_WHY = {"en": "Curiosity · optimism · prudence — three postures, together"}
+_TIP_TITLE = {"en": "Your posture is your compass"}
+_TIP = [
+    ({"en": "The nine axes"},
+     {"en": ("Trust, optimism, rationality — speed, openness, control — "
+             "centralisation, altruism, transhumanism. Your radar from this "
+             "morning.")}),
+    ({"en": "Not frozen"},
+     {"en": ("A posture is a position, not an identity: it moves when the "
+             "evidence moves. Retake the survey in a year.")}),
+]
+_TIP_COMPANIONS = {"en": "Three companions"}
 _CITEKEYS = ["guelfi-postair"]
 
 # ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─
@@ -70,23 +88,17 @@ TUNING = {
 
 
 def build(lang: str = "en", **_):
-    st_marker("Actor")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, (s.project.titles.keyword, "Actor"), ", not spectator",
-                         tag=t.div, toc_lvl="+1", label="Actor")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Your posture is your compass",
-                    entries=[
-                        ("The nine axes", "Trust, optimism, rationality — speed, "
-                         "openness, control — centralisation, altruism, "
-                         "transhumanism. Your radar from this morning."),
-                        ("Not frozen", "A posture is a position, not an identity: it "
-                         "moves when the evidence moves. Retake the survey in a year."),
-                        ("Three companions", _MASCOT_WHY),
-                    ],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[*[(T(h, lang), T(d, lang)) for h, d in _TIP],
+                             (T(_TIP_COMPANIONS, lang), T(_MASCOT_WHY, lang))],
                 )
         st_space("v", "1vh")
         staged_hero_image(
@@ -99,7 +111,7 @@ def build(lang: str = "en", **_):
         )
         st_space("v", "1vh")
         st_write(bs.verbs,
-                 " · ".join(_VERBS), "   ",
+                 " · ".join(T(v, lang) for v in _VERBS), "   ",
                  citation(*_CITEKEYS), tag=t.div)
         st_space("v", "1.5vh")
         # Les trois compagnons — demandés par leur NOM au cast gelé.

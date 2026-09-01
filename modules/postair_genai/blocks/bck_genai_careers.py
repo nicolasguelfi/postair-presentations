@@ -23,6 +23,7 @@ requires knowing the domain. That is why they are here for years, not weeks.
 from custom.facts import citekeys, section, text
 from custom.refs import citation
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -55,48 +56,54 @@ _DUO_ORB = Style(f"font-size: 2.6vw; color: {AMBER}; vertical-align: middle;",
 #: des cartes : health, law, science.
 _CAREERS = [
     {
-        "faculty": "Medicine & health",
-        "pair": "the clinician + AI",
-        "detail": ("Imaging triage, protein structures, paperwork — and a "
-                   "human who decides, explains and carries responsibility."),
+        "faculty": {"en": "Medicine & health"},
+        "pair": {"en": "the clinician + AI"},
+        "detail": {"en": ("Imaging triage, protein structures, paperwork — and a "
+                          "human who decides, explains and carries responsibility.")},
     },
     {
-        "faculty": "Law, economics, finance",
-        "pair": "the jurist + AI",
-        "detail": ("Research and drafting accelerate; judgement, strategy "
-                   "and accountability do not delegate."),
+        "faculty": {"en": "Law, economics, finance"},
+        "pair": {"en": "the jurist + AI"},
+        "detail": {"en": ("Research and drafting accelerate; judgement, strategy "
+                          "and accountability do not delegate.")},
     },
     {
-        "faculty": "Science & engineering",
-        "pair": "the researcher + AI",
-        "detail": ("Hypothesis search, code, literature triage — and the "
-                   "experiment, the proof and the doubt stay yours."),
+        "faculty": {"en": "Science & engineering"},
+        "pair": {"en": "the researcher + AI"},
+        "detail": {"en": ("Hypothesis search, code, literature triage — and the "
+                          "experiment, the proof and the doubt stay yours.")},
     },
 ]
 
 # ── La ligne-cadre (forme courte projetée ; phrase complète au survol) ──────
 #: Le chiffre et sa phrase viennent du fait partagé ``jobs``/``wef-outlook``
 #: de facts.json — une seule vérité pour les deux slides qui le projettent.
-_FRAME_CLAIM = "Transformation, not disappearance"
-_FRAME_RISING = "Fastest-rising skill: JUDGING what the AI produced"
+_FRAME_CLAIM = {"en": "Transformation, not disappearance"}
+_FRAME_RISING = {"en": "Fastest-rising skill: JUDGING what the AI produced"}
+
+_MARKER = {"en": "Your jobs"}
+_TITLE = {"en": ("And for your ", (s.project.titles.keyword, "future jobs"), "?")}
+_TIP_TITLE = {"en": "What the evidence says"}
+_TIP_DURABLE = ({"en": "The durable skills"},
+                {"en": ("Critical thinking, domain expertise, ethics: piloting "
+                        "an AI requires knowing the field better than it does.")})
 
 
 def build(lang: str = "en", **_):
-    st_marker("Your jobs")
+    st_marker(T(_MARKER, lang))
     wef = next(f for f in section("jobs") if f["id"] == "wef-outlook")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "And for your ", (s.project.titles.keyword, "future jobs"),
-                         "?", tag=t.div, toc_lvl="+1", label="Your jobs")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="What the evidence says",
-                    entries=[(c["faculty"], c["detail"]) for c in _CAREERS]
-                            + [(_FRAME_CLAIM, text(wef["claim"])),
-                               ("The durable skills", "Critical thinking, domain "
-                                "expertise, ethics: piloting an AI requires knowing "
-                                "the field better than it does.")],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(T(c["faculty"], lang), T(c["detail"], lang))
+                             for c in _CAREERS]
+                            + [(T(_FRAME_CLAIM, lang), text(wef["claim"], lang)),
+                               (T(_TIP_DURABLE[0], lang), T(_TIP_DURABLE[1], lang))],
                 )
         st_space("v", s.project.spacing.title_gap)
         with st_grid(cols=s.project.grids.balanced(len(_CAREERS)), gap="1.2vw",
@@ -104,18 +111,18 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for c in _CAREERS:
                 with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.faculty, c["faculty"], tag=t.div)
+                    st_write(bs.faculty, T(c["faculty"], lang), tag=t.div)
                     st_space("v", "0.6vh")
                     # Silhouette humaine + orbe côte à côte (plan G10) : le
                     # duo est le visuel de la carte, pas une décoration.
                     st_write(_DUO_LINE,
                              (_DUO_HUMAN, "👤"), (_DUO_PLUS, " + "),
                              (_DUO_ORB, "●"), tag=t.div)
-                    st_write(bs.pair, c["pair"], tag=t.div)
+                    st_write(bs.pair, T(c["pair"], lang), tag=t.div)
         st_space("v", "2vh")
         # Télégraphique (NG 2026-08-13) : la phrase-cadre complète vit dans
         # l'infobulle ; l'écran porte la forme courte.
-        st_write(bs.frame, _FRAME_CLAIM, " · ", text(wef["short"]), " ",
+        st_write(bs.frame, T(_FRAME_CLAIM, lang), " · ", text(wef["short"], lang), " ",
                  citation(*citekeys(wef)), tag=t.div)
         st_space("v", "1vh")
-        st_write(bs.rising, _FRAME_RISING, tag=t.div)
+        st_write(bs.rising, T(_FRAME_RISING, lang), tag=t.div)

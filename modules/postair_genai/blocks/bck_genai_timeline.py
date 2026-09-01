@@ -24,6 +24,7 @@ that it arrived in everyone's pocket at once.
 
 from custom.refs import citation
 from custom.styles import Styles as s
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -64,67 +65,73 @@ def _dot(colour: str, idx: int) -> Style:
 _MILESTONES = [
     {
         "year": "1950",
-        "label": "The Turing test",
-        "detail": ("Can a machine hold a conversation indistinguishable from "
-                   "a human's? The question that started the field."),
+        "label": {"en": "The Turing test"},
+        "detail": {"en": ("Can a machine hold a conversation indistinguishable from "
+                          "a human's? The question that started the field.")},
         "citekeys": ["turing1950-mind"],
     },
     {
         "year": "1956",
-        "label": "The name: « AI »",
-        "detail": ("A summer workshop at Dartmouth coins the term "
-                   "« artificial intelligence » — and predicts fast progress."),
+        "label": {"en": "The name: « AI »"},
+        "detail": {"en": ("A summer workshop at Dartmouth coins the term "
+                          "« artificial intelligence » — and predicts fast progress.")},
         "citekeys": ["mccarthy1955-dartmouth"],
     },
     {
         "year": "1974–1993",
-        "label": "Two AI winters",
-        "detail": ("Twice, promises outran results and funding collapsed. The "
-                   "field learned humility the hard way."),
+        "label": {"en": "Two AI winters"},
+        "detail": {"en": ("Twice, promises outran results and funding collapsed. The "
+                          "field learned humility the hard way.")},
         "citekeys": ["lighthill1973-survey"],
     },
     {
         "year": "2012",
-        "label": "Deep learning works",
-        "detail": ("AlexNet crushes the ImageNet vision contest: neural "
-                   "networks plus GPUs plus data finally deliver."),
+        "label": {"en": "Deep learning works"},
+        "detail": {"en": ("AlexNet crushes the ImageNet vision contest: neural "
+                          "networks plus GPUs plus data finally deliver.")},
         "citekeys": ["krizhevsky2012-alexnet"],
     },
     {
         "year": "2017",
-        "label": "Transformers",
-        "detail": ("« Attention Is All You Need » — the architecture every "
-                   "current large language model is built on."),
+        "label": {"en": "Transformers"},
+        "detail": {"en": ("« Attention Is All You Need » — the architecture every "
+                          "current large language model is built on.")},
         "citekeys": ["vaswani2017-attention"],
     },
     {
         "year": "2022",
-        "label": "ChatGPT",
-        "detail": ("An estimated 100 million users two months after launch — "
-                   "the fastest-adopted consumer application of its time."),
+        "label": {"en": "ChatGPT"},
+        "detail": {"en": ("An estimated 100 million users two months after launch — "
+                          "the fastest-adopted consumer application of its time.")},
         "citekeys": ["hu2023-fastest"],
     },
     {
         "year": "2026",
-        "label": "The year of agents",
-        "detail": ("Models that use tools in a loop to pursue a goal — the "
-                   "frontier you will see live in the Mistral session."),
+        "label": {"en": "The year of agents"},
+        "detail": {"en": ("Models that use tools in a loop to pursue a goal — the "
+                          "frontier you will see live in the Mistral session.")},
         "citekeys": [],
     },
 ]
 
+# ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
+_MARKER = {"en": "70 years"}
+_TITLE = {"en": ((s.project.titles.keyword, "Seventy years"), " in one line")}
+_TIP_TITLE = {"en": "The milestones, one sentence each"}
+
 
 def build(lang: str = "en", **_):
-    st_marker("70 years")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, (s.project.titles.keyword, "Seventy years"),
-                         " in one line", tag=t.div, toc_lvl="+1", label="70 years")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="The milestones, one sentence each",
-                    entries=[(f"{m['year']} — {m['label']}", m["detail"])
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(f"{m['year']} — {T(m['label'], lang)}",
+                              T(m["detail"], lang))
                              for m in _MILESTONES],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -138,6 +145,6 @@ def build(lang: str = "en", **_):
                     with st_block(_dot(_DOT_COLOURS[i], i)):
                         pass
                     st_write(bs.year, m["year"], tag=t.div)
-                    st_write(bs.label, m["label"], tag=t.div)
+                    st_write(bs.label, T(m["label"], lang), tag=t.div)
                     if m["citekeys"]:
                         st_write(bs.cite, citation(*m["citekeys"]), tag=t.div)
