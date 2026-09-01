@@ -58,7 +58,7 @@ TUNING: dict = {
 }
 
 _MARKER = {"en": "The debates", "fr": "Les débats"}
-_TITLE = {"en": ("Next ... ", (s.project.titles.keyword, "HANDS ON")), "fr": ("Maintenant... ", (s.project.titles.keyword, "À VOUS"))}
+_TITLE = {"en": ("Next ... ", (s.project.titles.keyword, "HANDS ON")), "fr": ("Bientôt... ", (s.project.titles.keyword, "À VOUS"))}
 _TIP_TITLE = {"en": "Navigating the debates bank", "fr": "Naviguer dans la banque des débats"}
 _TIP_PLAN = ({"en": "The plan", "fr": "Le plan"},
              {"en": ("Two or three axes — the ones where this room splits, read on the "
