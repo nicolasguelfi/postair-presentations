@@ -4,10 +4,12 @@ Three faculty cards (the visual loop with the morning's whole-university
 slide), one frame line sourced with its visible citation code, and the rising
 skill in amber.
 
-Le FAIT vit ici (règle NG 2026-08-18) : cartes par faculté, ligne-cadre et
-choix des citekeys s'éditent dans ce bloc. La phrase bibliographique reste
-dérivée de ``references.bib`` par ``citation()``/``cite`` — clé inconnue =
-erreur bruyante.
+Le FAIT vit ici (règle NG 2026-08-18) : les cartes par faculté s'éditent dans
+ce bloc. EXCEPTION (revue genaipat 2026-09-01) : le fait WEF (55 économies ·
+39 % · 2030, clé wef2025-jobs) est PARTAGÉ avec ``bck_genai_future_pm`` — il
+vit dans ``facts.json`` (section ``jobs``), chaque slide garde sa formulation
+autour de lui. La phrase bibliographique reste dérivée de ``references.bib``
+par ``citation()``/``cite`` — clé inconnue = erreur bruyante.
 
 SPEAKER NOTES:
 Three minutes, one card per third of the room, like the morning. The framing
@@ -18,6 +20,7 @@ requires knowing the domain. That is why they are here for years, not weeks.
 """
 # @guideline: postair-minimal
 
+from custom.facts import citekeys, section, text
 from custom.refs import citation
 from custom.styles import Styles as s
 from shared_widgets import st_info_tooltip
@@ -60,17 +63,15 @@ _CAREERS = [
 ]
 
 # ── La ligne-cadre (forme courte projetée ; phrase complète au survol) ──────
+#: Le chiffre et sa phrase viennent du fait partagé ``jobs``/``wef-outlook``
+#: de facts.json — une seule vérité pour les deux slides qui le projettent.
 _FRAME_CLAIM = "Transformation, not disappearance"
-_FRAME_DETAIL = ("Employers surveyed across 55 economies expect 39 % of core "
-                 "skills to change by 2030; analytical thinking and AI "
-                 "literacy top the rising list.")
-_FRAME_SHORT = "55 economies · 39 % of core skills change → 2030"
 _FRAME_RISING = "Fastest-rising skill: JUDGING what the AI produced"
-_FRAME_CITEKEYS = ["wef2025-jobs"]
 
 
 def build(lang: str = "en", **_):
     st_marker("Your jobs")
+    wef = next(f for f in section("jobs") if f["id"] == "wef-outlook")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -80,7 +81,7 @@ def build(lang: str = "en", **_):
                 st_info_tooltip(
                     title="What the evidence says",
                     entries=[(c["faculty"], c["detail"]) for c in _CAREERS]
-                            + [(_FRAME_CLAIM, _FRAME_DETAIL),
+                            + [(_FRAME_CLAIM, text(wef["claim"])),
                                ("The durable skills", "Critical thinking, domain "
                                 "expertise, ethics: piloting an AI requires knowing "
                                 "the field better than it does.")],
@@ -105,7 +106,7 @@ def build(lang: str = "en", **_):
         st_space("v", "2vh")
         # Télégraphique (NG 2026-08-13) : la phrase-cadre complète vit dans
         # l'infobulle ; l'écran porte la forme courte.
-        st_write(bs.frame, _FRAME_CLAIM, " · ", _FRAME_SHORT, " ",
-                 citation(*_FRAME_CITEKEYS), tag=t.div)
+        st_write(bs.frame, _FRAME_CLAIM, " · ", text(wef["short"]), " ",
+                 citation(*citekeys(wef)), tag=t.div)
         st_space("v", "1vh")
         st_write(bs.rising, _FRAME_RISING, tag=t.div)

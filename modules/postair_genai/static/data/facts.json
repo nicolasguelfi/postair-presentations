@@ -1,7 +1,7 @@
 {
  "metadata": {
   "id": "postair-genai-facts",
-  "version": 1,
+  "version": 2,
   "languages": [
    "en"
   ],
@@ -31,7 +31,15 @@
     "en": "Moods ≠ constancy"
    },
    "detail": {
-    "en": "Two solid results, one caution. Kleinberg et al. (Quarterly Journal of Economics, 2018): on New York pre-trial release decisions, following a machine-learning risk prediction instead of the judge would cut crime by up to 24.7 % at an unchanged jailing rate — a policy simulation on real dossiers, not a deployment. Posner and Saran (2026) replicated a controlled experiment run on 31 real US federal judges with GPT-4o judging the same full case file: the model follows precedent and ignores the defendant's sympathy — the judges did the opposite. Practitioner anecdote: on the briefs alone, Claude decided 27 of 37 US Supreme Court cases the same way as the Court (Unikowsky 2024 — an essay, not peer review). And the famous \"AI predicts judges at 79 %\" figure classifies the text of ALREADY-written judgments; on genuinely future cases it drops to 58–68 %. Predicting a risk is not rendering justice — proportionality, dignity and the right to be heard stay human."
+    "en": "Two solid results, one caution. On New York pre-trial release decisions, following a machine-learning risk prediction instead of the judge would cut crime by up to 24.7 % at an unchanged jailing rate — a policy simulation on real dossiers, not a deployment. A controlled experiment once run on 31 real US federal judges was replicated with GPT-4o judging the same full case file: the model follows precedent and ignores the defendant's sympathy — the judges did the opposite. Practitioner anecdote, from an essay that is not peer review: on the briefs alone, Claude decided 27 of 37 US Supreme Court cases the same way as the Court. And the famous \"AI predicts judges at 79 %\" figure classifies the text of ALREADY-written judgments; on genuinely future cases it drops to 58–68 %. Predicting a risk is not rendering justice — proportionality, dignity and the right to be heard stay human."
+   },
+   "anecdote": {
+    "en": "On the briefs alone: 27/37 Supreme Court cases like the Court · essay, not a proof"
+   },
+   "anecdote_source": {
+    "citekeys": [
+     "unikowsky2024trust"
+    ]
    },
    "source": {
     "citekeys": [
@@ -46,6 +54,22 @@
    "counterpoint_source": {
     "citekeys": [
      "dressel2018accuracy"
+    ]
+   }
+  }
+ ],
+ "jobs": [
+  {
+   "id": "wef-outlook",
+   "claim": {
+    "en": "Employers surveyed across 55 economies expect 39 % of core skills to change by 2030, with analytical thinking and AI literacy topping the rising list."
+   },
+   "short": {
+    "en": "55 economies · 39 % of core skills change → 2030"
+   },
+   "source": {
+    "citekeys": [
+     "wef2025-jobs"
     ]
    }
   }

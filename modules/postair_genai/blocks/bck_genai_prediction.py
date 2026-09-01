@@ -1,9 +1,13 @@
 """The trick: predict the next word (G4) — THE pedagogical slide of the session.
 
-One giant cloze sentence, three candidate words with probability bars. The
-visual IS the explanation: an auditorium reads the 78 % bar before the speaker
-finishes the sentence. Tokens, temperature and the predicting-vs-understanding
-debate live in the tooltip.
+Deux temps, un seul marqueur (revue genaipat 2026-09-01, pattern debates) :
+d'abord la phrase à trou SEULE — la salle devine avant de voir quoi que ce
+soit — puis, derrière un ``st_slide_break(marker_hidden=True)``, la
+révélation : la même phrase, les trois candidats probabilisés, le punch.
+PageDown s'arrête entre les deux ; la barre latérale ne liste qu'une slide.
+Avant ce découpage la réponse était projetée avant la question — les notes
+d'orateur décrivaient une révélation que la construction interdisait. Tokens,
+temperature et le débat prédire-vs-comprendre vivent dans le tooltip.
 
 Le FAIT vit ici (règle NG 2026-08-18) : la phrase à trou, les trois candidats
 et le glossaire du panneau s'éditent dans ce bloc. Aucune affirmation sourcée
@@ -12,11 +16,13 @@ dérivée de ``references.bib`` par ``citation()``/``cite`` — clé inconnue =
 erreur bruyante.
 
 SPEAKER NOTES:
-Four minutes — take them. Optional mini-demo: read the sentence aloud, stop at
-the blank, let the room shout the word: the room just DID what a language
-model does. Then the honest turn: predicting well at this scale starts to look
-like understanding, and whether it IS understanding is an open scientific
-debate — say that the debate exists, it buys credibility for the whole deck.
+Four minutes — take them. FIRST SCREEN: read the sentence aloud, stop at the
+blank, let the room shout the word — the invitation is the whole point of
+this screen, wait for the answers. THEN PageDown: the room just DID what a
+language model does, and the 78 % bar says it better than any definition.
+Then the honest turn: predicting well at this scale starts to look like
+understanding, and whether it IS understanding is an open scientific debate —
+say that the debate exists, it buys credibility for the whole deck.
 """
 # @guideline: postair-minimal
 
@@ -73,6 +79,7 @@ _TOOLTIP = [
 
 def build(lang: str = "en", **_):
     st_marker("Predict")
+    # ── Temps 1 : la phrase à trou SEULE — la salle devine d'abord ──────────
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -86,7 +93,16 @@ def build(lang: str = "en", **_):
                     # builtin list (règle R14 d'opening).
                     entries=[*_TOOLTIP],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        # La phrase descend vers le centre de l'écran : elle est seule en
+        # scène sur ce premier temps, elle occupe la fenêtre (règle amphi).
+        st_space("v", "18vh")
+        st_write(bs.sentence, "« ", _SENTENCE_HEAD, " ",
+                 (s.project.titles.keyword, _BLANK), " »", tag=t.div)
+    # Arrêt clavier SANS entrée de barre latérale (pattern debates) : la
+    # config globale du book (FULL, 30vh) s'applique.
+    st_slide_break(marker_hidden=True)
+    # ── Temps 2 : la révélation — la phrase, les candidats, le punch ────────
+    with st_block(s.project.containers.page_fill_top):
         st_write(bs.sentence, "« ", _SENTENCE_HEAD, " ",
                  (s.project.titles.keyword, _BLANK), " »", tag=t.div)
         st_space("v", "3vh")

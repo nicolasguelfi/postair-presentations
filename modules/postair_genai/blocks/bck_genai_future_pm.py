@@ -7,10 +7,13 @@ d'un cran (diriger, juger, assumer) et cette place S'APPREND pendant les
 en ambre porte le message, l'originale française reste sous elle — c'est la
 formule de l'auteur, elle se lit telle quelle.
 
-Le FAIT vit ici (règle NG 2026-08-18) : message, maxime, réponse et choix des
-citekeys s'éditent dans ce bloc. La phrase bibliographique reste dérivée de
-``references.bib`` par ``citation()``/``cite`` — clé inconnue = erreur
-bruyante.
+Le FAIT vit ici (règle NG 2026-08-18) : message, maxime et réponse s'éditent
+dans ce bloc. EXCEPTION (revue genaipat 2026-09-01) : le fait WEF (55
+économies · 39 % · 2030, clé wef2025-jobs) est PARTAGÉ avec
+``bck_genai_careers`` — il vit dans ``facts.json`` (section ``jobs``), la
+slide garde sa formulation autour de lui. La phrase bibliographique reste
+dérivée de ``references.bib`` par ``citation()``/``cite`` — clé inconnue =
+erreur bruyante.
 
 SPEAKER NOTES:
 Two minutes, right after the careers cards — this is their consequence. Ask
@@ -22,6 +25,7 @@ actor slide: choosing your posture is choosing how you will direct.
 """
 # @guideline: postair-minimal
 
+from custom.facts import citekeys, section, text
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
@@ -64,17 +68,17 @@ _PUNCH = "How do you have it done, if you do not know how to do it?"
 _PUNCH_ORIGINAL = "« Comment faire faire, si nous ne savons pas faire ? »"
 _ANSWER = ("You can only direct what you can judge → learn the craft DURING "
            "your studies")
-_DETAIL = ("Employers surveyed across 55 economies expect 39 % of core "
-           "skills to change by 2030, with AI literacy and analytical "
-           "thinking rising fastest. Directing an assistant that produces in "
-           "seconds requires exactly what a degree builds: knowing the "
-           "domain well enough to specify, to judge the output, and to take "
-           "responsibility for it.")
-_CITEKEYS = ["wef2025-jobs"]
+#: La suite LOCALE de la phrase du survol — le chiffre WEF et sa phrase
+#: viennent du fait partagé ``jobs``/``wef-outlook`` de facts.json.
+_DETAIL_LOCAL = ("Directing an assistant that produces in seconds requires "
+                 "exactly what a degree builds: knowing the domain well "
+                 "enough to specify, to judge the output, and to take "
+                 "responsibility for it.")
 
 
 def build(lang: str = "en", **_):
     st_marker("Your place")
+    wef = next(f for f in section("jobs") if f["id"] == "wef-outlook")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -84,7 +88,8 @@ def build(lang: str = "en", **_):
             with g.cell():
                 st_info_tooltip(title=_LABEL,
                                 entries=[("Why this is the hard part",
-                                          _DETAIL)])
+                                          text(wef["claim"]) + " "
+                                          + _DETAIL_LOCAL)])
         st_space("v", s.project.spacing.title_gap)
         with hero_split(s, image=lambda: hero_image(
                 "genai_conductor", _HERO_PROMPT,
@@ -96,7 +101,7 @@ def build(lang: str = "en", **_):
                               "producing paper sheets"),
                 variant="sq")):
             st_write(bs.message, _MESSAGE, " ",
-                     citation(*_CITEKEYS), tag=t.div)
+                     citation(*citekeys(wef)), tag=t.div)
             st_space("v", "1vh")
             with st_block(s.project.cards.amber):
                 st_write(bs.punch, _PUNCH, tag=t.div)

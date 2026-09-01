@@ -3,9 +3,11 @@
 Découpage NG (2026-08-13, 1 idée = 1 slide) : l'ancienne slide justice
 empilait cinq couches de texte et en noyait deux sous le pli. Celle-ci ne
 porte plus QUE le résultat Kleinberg : le chiffre, sa lecture télégraphique,
-le code de citation. Le laboratoire et le garde-fou ont LEUR slide
-(``bck_genai_augment_justice_lab``). Gabarit par défaut : image carrée à
-gauche, contenu à droite.
+le code de citation — plus la ligne-anecdote en caption AVEC son code (revue
+genaipat 2026-09-01 : la clé de l'essai était orpheline, sa phrase vivait en
+prose dans l'infobulle — R-bib veut le code visible, jamais la phrase). Le
+laboratoire et le garde-fou ont LEUR slide (``bck_genai_augment_justice_lab``).
+Gabarit par défaut : image carrée à gauche, contenu à droite.
 
 Exception à la règle « le fait vit dans son bloc » (NG 2026-08-18) : l'entrée
 ``augment``/``justice`` est PARTAGÉE par les 2 slides justice et reste servie
@@ -36,6 +38,7 @@ class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     headline = s.project.body.name_double + s.project.colors.amber + s.center_txt
     sub = s.project.body.bullet + s.center_txt
+    anecdote = s.project.body.caption + s.center_txt
 
 
 bs = BlockStyles
@@ -77,3 +80,6 @@ def build(lang: str = "en", **_):
             st_space("v", "1vh")
             st_write(bs.sub, text(fact["headline_sub"]), " ",
                      citation(*citekeys(fact)), tag=t.div)
+            st_space("v", "1vh")
+            st_write(bs.anecdote, text(fact["anecdote"]), " ",
+                     citation(*fact["anecdote_source"]["citekeys"]), tag=t.div)

@@ -3,8 +3,9 @@
 La seconde moitié du découpage justice (NG 2026-08-13) : le résultat Posner &
 Saran (le LLM suit le précédent là où de vrais juges suivaient la sympathie),
 le message « humeurs ≠ constance », et le garde-fou Dressel & Farid SUR la
-slide — l'honnêteté est la ligne du deck. L'anecdote Unikowsky et la mise en
-garde sur le « 79 % » légendaire restent dans l'infobulle de la slide 1/2.
+slide — l'honnêteté est la ligne du deck. L'anecdote du praticien (avec son
+code de citation) et la mise en garde sur le « 79 % » légendaire vivent sur
+la slide 1/2 et dans son infobulle.
 
 Exception à la règle « le fait vit dans son bloc » (NG 2026-08-18) : l'entrée
 ``augment``/``justice`` est PARTAGÉE par les 2 slides justice et reste servie
