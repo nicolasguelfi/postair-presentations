@@ -107,7 +107,8 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, *TF(_TITLE, lang),
+                with st_zoom(160):
+                    st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
@@ -124,13 +125,16 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for i, sl in enumerate(_SLIDERS):
                 with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.gauge_label, T(sl["label"], lang), tag=t.div)
+                    with st_zoom(160):
+                        st_write(bs.gauge_label, T(sl["label"], lang), tag=t.div)
+                    st_space("v", "3vh")
                     # La jauge : un rail sombre, un remplissage teal qui avance.
                     st_html(_gauge_html(_GAUGE_FILLS[i]))
+                    st_space("v", "3vh")
                     st_write(bs.gauge_value, T(sl["value"], lang), tag=t.div)
                     if sl["citekeys"]:
                         st_write(bs.cite, citation(*sl["citekeys"]), tag=t.div)
-        st_space("v", "2.5vh")
+        st_space("v", "5vh")
         # La courbe d'émergence (plan G5) : plate, puis le saut — en ambre,
         # le seul accent chaud de la slide. EXCEPTION R11 ASSUMÉE (revue
         # genaipat 2026-09-01), couleurs aux jetons de la palette. Dimensions
@@ -145,6 +149,7 @@ def build(lang: str = "en", **_):
                 f'<path d="M0 96 C 240 92, 330 88, 390 78 C 440 68, 470 20, 560 12" '
                 f'fill="none" stroke="{AMBER}" stroke-width="6" stroke-linecap="round"/>'
                 f'</svg></div>')
-        st_write(bs.claim, T(_EMERGENCE_CLAIM, lang), " ",
+        with st_zoom(130):
+            st_write(bs.claim, T(_EMERGENCE_CLAIM, lang), " ",
                  citation(*_EMERGENCE_CITEKEYS), tag=t.div)
-        st_write(bs.counter, T(_EMERGENCE_COUNTERPOINT, lang), tag=t.div)
+            st_write(bs.counter, T(_EMERGENCE_COUNTERPOINT, lang), tag=t.div)

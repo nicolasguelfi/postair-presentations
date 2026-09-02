@@ -64,7 +64,7 @@ bs = BlockStyles
 #: visuel — larges bandeaux ~2:1, la hauteur est la contrainte utile (R4d).
 TUNING = {
     "stage_vh": 65,       # les 5 grands schémas du réseau (dont le 2e essai)
-    "cake_vh": 52,        # la chute humoristique, temps 6 (raton pleine scène)
+    "cake_vh": 60,        # la chute humoristique, temps 6 (raton pleine scène)
 }
 
 #: Ratio largeur/hauteur DU FICHIER (mesuré Pillow 2026-09-01) — les images

@@ -145,7 +145,7 @@ def build(lang: str = "en", **_):
             for i, m in enumerate(_MILESTONES):
                 with g.cell(), st_block(s.project.cards.blue):
                     st_html(_dot_html(_DOT_COLOURS[i]))
-                    with st_zoom(150):
+                    with st_zoom(140):
                         st_write(bs.year, m["year"], tag=t.div)
                         st_write(bs.label, T(m["label"], lang), tag=t.div)
                         if m["citekeys"]:

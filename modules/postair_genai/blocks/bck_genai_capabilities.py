@@ -72,7 +72,7 @@ _CAPABILITIES = [
     },
     {
         "icon": "🧩",
-        "label": {"en": "Reason (a bit)"},
+        "label": {"en": "Reason\n(a bit)"},
         "example": {"en": "Reasoning ↑ fast · unverified: fragile"},
         "citekeys": [],
     },
@@ -128,9 +128,14 @@ def build(lang: str = "en", **_):
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for c in _CAPABILITIES:
-                with g.cell(), st_block(s.project.cards.amber if c.get("accent")
+                with st_zoom(130), g.cell(), st_block(s.project.cards.amber if c.get("accent")
                                         else s.project.cards.blue):
                     st_write(bs.icon, c["icon"], tag=t.div)
-                    st_write(bs.label, T(c["label"], lang), tag=t.div)
+                    # Une écriture PAR ligne : ``st_write`` n'interprète pas
+                    # le ``\n`` (piège documenté au PLAYBOOK) — la retouche NG
+                    # « Reason\n(a bit) » (2026-09-01) obtient ainsi sa vraie
+                    # coupure de ligne.
+                    for line in T(c["label"], lang).split("\n"):
+                        st_write(bs.label, line, tag=t.div)
                     if c["citekeys"]:
                         st_write(bs.cite, citation(*c["citekeys"]), tag=t.div)

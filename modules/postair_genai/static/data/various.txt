@@ -1,0 +1,10 @@
+
+t = 0.5 - k = 5	-> Luxembourg is a small country, and is home to a small number of
+
+t = 10 - k = 10	-> Luxembourg is a city of more 3 billion people
+
+t = 0.2 - k = 1	-> Luxembourg is a country of about 1.5 million people,
+
+t = 10 - k = 50	-> Luxembourg is a tiny area from western Spain and parts in the southeastern
+
+
