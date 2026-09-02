@@ -269,6 +269,10 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
 (function () {{
 {bus_js}
   var root = document.getElementById('{dom}-all');
+  if (window.frameElement) {{
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }}
   root.querySelector('.cdr-all-start').addEventListener('click', function () {{
     var ids = Object.keys(rack.cards).sort(function (a, b) {{ return a - b; }});
     if (rack.mode === 'parallel') {{
@@ -307,20 +311,20 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
 <div id="{dom}-c{i}" style="display:flex;flex-direction:column;align-items:center;
             justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
             overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
-  <div class="cdr-label" style="font-size:min({8 * scale:.2f}vw, {11 * scale:.2f}vh);
-       font-weight:700;color:{TEXT};text-align:center;white-space:nowrap;
+  <div class="cdr-label" style="font-size:min({8 * scale:.2f}vw, {10 * scale:.2f}vh);
+       font-weight:700;line-height:1.1;color:{TEXT};text-align:center;white-space:nowrap;
        max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
   <div class="cdr-digits" style="font-size:min({32 * scale:.2f}vw, {66 * scale:.2f}vh);
-       font-weight:900;letter-spacing:0.04em;line-height:1.02;color:{MUTED};
+       font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{MUTED};
        white-space:nowrap;"></div>
   <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">
-    <button class="cdr-go" style="font-size:min({6.5 * scale:.2f}vw, {13 * scale:.2f}vh);
+    <button class="cdr-go" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{AMBER};background:transparent;border:min(0.35vw, 0.8vh) solid {AMBER};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">▶</button>
-    <button class="cdr-halt" style="font-size:min({6.5 * scale:.2f}vw, {13 * scale:.2f}vh);
+    <button class="cdr-halt" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{PRIMARY};background:transparent;border:min(0.35vw, 0.8vh) solid {PRIMARY};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">⏸</button>
-    <button class="cdr-zero" style="font-size:min({6.5 * scale:.2f}vw, {13 * scale:.2f}vh);
+    <button class="cdr-zero" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{MUTED};background:transparent;border:min(0.35vw, 0.8vh) solid {MUTED};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">↺</button>
     <span class="cdr-at" style="font-size:min({4.5 * scale:.2f}vw, {8 * scale:.2f}vh);
@@ -338,6 +342,13 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
   // Auto-dimensionnement (rack_vh, ligne NG chronoh vertical=p1) : le cadran
   // pose SA hauteur = DIAL_VH % de la fenêtre parente — iframe même origine
   // en app (window.frameElement), hauteur vh CSS directe en export.
+  // En iframe, le document lui-même ne défile JAMAIS (les ascenseurs blancs,
+  // capture NG 2026-09-02) — posé en JS pour rester SCOPÉ à l'app : en
+  // export inliné, la page garde son défilement.
+  if (window.frameElement) {{
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }}
   var FIXED = {1 if fixed_px else 0}, DIAL_VH = {dial_vh:.2f};
   function fit() {{
     try {{
