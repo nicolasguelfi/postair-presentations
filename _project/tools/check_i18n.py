@@ -32,6 +32,13 @@ Sévérité pendant le chantier : ``--regress`` est ROUGE dès le socle ;
 inventaire et parité sont des avertissements tant que le module figure dans
 ``I18N_PENDING`` (vidé module par module au tag ``i18n/<module>-done``).
 
+Exception assumée : un littéral qui est une DONNÉE citée verbatim dans
+toutes les langues (règle R-case — ex. la fausse référence Varghese de
+genai) se marque ``i18n: verbatim`` dans un commentaire sur sa ligne ou la
+ligne au-dessus — l'inventaire le saute. Le marqueur est un engagement
+d'auteur, pas un échappatoire : il dit « ceci ne se traduit pas », il ne
+blanchit jamais un oubli.
+
 Usage::
 
     uv run python _project/tools/check_i18n.py --baseline
@@ -67,8 +74,10 @@ LANGS = ("en", "fr")
 I18N_PENDING = {
     # lot 1 : opening, waves, handsup, survey sortis le 2026-08-29 (tags i18n/<module>-done)
     # lot 2 : debates sorti le 2026-08-30 (tag i18n/postair_debates-done) ;
+    # lot 3 : genai sorti le 2026-09-03 (relecture NG planche prep1, tag
+    # i18n/postair_genai-done — l'exception Varghese porte « i18n: verbatim ») ;
     # les autres quand leur anglais sera fini (tag en-final/<module>)
-    "postair_genai", "postair_guidelines", "postair_collection",
+    "postair_guidelines", "postair_collection",
 }
 
 #: Les appels dont les chaînes sont projetées.
@@ -342,11 +351,18 @@ def inventory(module: str) -> tuple[list[str], list[str]]:
     """(littéraux nus, feuilles sans fr) — lignes lisibles."""
     bare, missing = [], []
     for path in _py_files(module):
-        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        source = path.read_text(encoding="utf-8")
+        tree = ast.parse(source, filename=str(path))
         inv = _Inventory(path)
         inv.visit(tree)
         rel = path.relative_to(_MODULES_DIR).as_posix()
+        src_lines = source.splitlines()
         for line, s in inv.bare:
+            # Donnée citée verbatim (marqueur ``i18n: verbatim`` sur la ligne
+            # ou celle du dessus) : assumée, jamais comptée.
+            context = " ".join(src_lines[max(line - 2, 0):line])
+            if "i18n: verbatim" in context:
+                continue
             bare.append(f"{rel}:{line}: {s}")
         for line, leaf in inv.leaves:
             for lang in LANGS:

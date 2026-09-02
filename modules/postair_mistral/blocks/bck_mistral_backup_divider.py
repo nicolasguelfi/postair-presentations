@@ -28,7 +28,7 @@ class BlockStyles:
 bs = BlockStyles
 
 _MARKER = {"en": "— Backup —", "fr": "— Réserve —"}
-_WORD = {"en": ((s.project.titles.keyword, "BACKUP"), " slides"), "fr": ((s.project.titles.keyword, "RÉSERVE"), " de slides")}
+_WORD = {"en": ((s.project.titles.keyword, "BACKUP"), " slides"), "fr": ("Slides de ", (s.project.titles.keyword, "RÉSERVE"))}
 _HINT = {"en": "extra depth · opened on demand, never presented", "fr": "approfondissements · ouverts à la demande, jamais présentés"}
 
 

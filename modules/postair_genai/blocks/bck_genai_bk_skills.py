@@ -51,7 +51,7 @@ _FAMILIES = [
      "line": {"en": "literacy · data · cybersecurity reflexes", "fr": "littératie numérique · données · réflexes de cybersécurité"}},
     {"icon": "🤝", "label": {"en": "Interpersonal", "fr": "Interpersonnelles"},
      "line": {"en": "teamwork · empathy · mobilising people", "fr": "travail d’équipe · empathie · mobiliser les autres"}},
-    {"icon": "🚀", "label": {"en": "Self-leadership", "fr": "Pilotage de soi"},
+    {"icon": "🚀", "label": {"en": "Self-leadership", "fr": "Leadership personnel"},
      "line": {"en": "learning to learn · grit · coping with uncertainty", "fr": "apprendre à apprendre · ténacité · vivre avec l’incertitude"}},
 ]
 

@@ -46,7 +46,7 @@ _EXHIBIT_HEAD = {"en": "The exhibit", "fr": "La pièce à conviction"}
 # ── La pièce à conviction : la « référence » inventée, citée verbatim ───────
 #: PAS une feuille : la fausse référence est une DONNÉE, citée telle quelle
 #: dans toutes les langues (R-case — les données ne se recasent ni ne se
-#: traduisent).
+#: traduisent). i18n: verbatim
 _CASE_QUOTE = ("Varghese v. China Southern Airlines Co., Ltd.,\n 925 F.3d 1339 "
                "(11th Cir. 2019)")
 _CASE_VERDICT = {"en": ("This case does not exist. ChatGPT invented it — with a full "
