@@ -57,12 +57,18 @@ _EXAM_PROMPT = (
 _DONT = [
     {"en": "The exam tests YOUR skill — Not the AI"},
     {"en": "Skip the effort → the skill never forms"},
-    {"en": "94 % UK already use it for the good\nBUT bad usage has grown by 300% since 2024"},
+    {"en": "94 % UK already use it for the good\nBUT bad usage has\ngrown by 300% since 2024"},
 ]
 _DONT_CITEKEYS = ["hepi-survey-2026"]
 
+#: Une couleur de palette par mise en garde (demande NG 2026-09-02, même
+#: geste que les puces du tuteur G9a) : bleu électrique, teal, corail —
+#: l'AMBRE reste réservé à la carte du paradoxe qui ferme la slide.
+_DONT_COLOURS = [s.project.colors.primary, s.project.colors.keyword,
+                 s.project.colors.coral]
+
 # ── Le paradoxe — LE message de la slide (formulation NG, grow/shrink) ──────
-_PARADOX = {"en": "Learn WITH it → you grow\nlet it REPLACE you → you shrink"}
+_PARADOX = {"en": "Learn WITH it → you grow\nlet it REPLACE you\n→ you shrink"}
 
 _MARKER = {"en": "The exam"}
 _TITLE = {"en": ("The exam stays ", (s.project.titles.keyword, "human"))}
@@ -118,15 +124,15 @@ def build(lang: str = "en", **_):
                 variant="pt")):
             # Une écriture PAR ligne (piège \n de st_write) ; le code HEPI se
             # pose sur la DERNIÈRE ligne de la dernière puce.
-            for i, item in enumerate(_DONT):
+            for i, (item, colour) in enumerate(zip(_DONT, _DONT_COLOURS)):
                 first, *rest = T(item, lang).split("\n")
                 last_of_deck = i == len(_DONT) - 1 and not rest
-                st_write(bs.item, "▸ ", first,
+                st_write(bs.item + colour, "▸ ", first,
                          *((" ", citation(*_DONT_CITEKEYS)) if last_of_deck else ()),
                          tag=t.div)
                 for j, line in enumerate(rest):
                     tail = i == len(_DONT) - 1 and j == len(rest) - 1
-                    st_write(bs.item, line,
+                    st_write(bs.item + colour, line,
                              *((" ", citation(*_DONT_CITEKEYS)) if tail else ()),
                              tag=t.div)
             st_space("v", "1vh")
