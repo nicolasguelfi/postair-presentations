@@ -1,0 +1,18 @@
+{
+  "name": "genai_practices",
+  "version": 1,
+  "timestamp": "2026-09-02T11:31:47.048165+00:00",
+  "source_type": "ai_generated",
+  "original_path": "/Volumes/Mac_Data/Win_data/data/backups/Dropbox-nicolas.guelfi@laposte.net/messir Dropbox/Nicolas Guelfi/users/NG/Projets/AISE/ROS/projects/sumvadis-central/sumvadis-presentations/sumvadis-presentations/sumvadis-streamtex/modules/postair_genai/static/images/ai/af6e9c49812f73ff.webp",
+  "prompt": "Layered paper-cut collage illustration, bright colored cardstock (yellow, coral, turquoise, lilac, leaf green), visible paper edges and soft drop shadows, playful handcrafted festive mood, luminous sky. Human figures as abstract paper silhouettes seen from behind, never faces. AI is always represented as a glowing warm amber paper sun or orb, never anthropomorphic. Clean layered composition. A paper student silhouette with a small backpack walking along a luminous winding paper path toward a bright horizon, a warm amber paper orb hovering at shoulder height like a companion lighting the way; along the path, small bright paper milestones: a checklist card, a compass, a shield with a check mark. Wide 16:9 composition, one off-centre focal point, rising diagonal energy. NO text, NO logos, NO signage, NO photorealism.",
+  "provider": "openai",
+  "model": "gpt-image-1",
+  "size": "1536x1024",
+  "quality": null,
+  "base_image": null,
+  "revised_prompt": null,
+  "display_zoom": null,
+  "display_width": null,
+  "display_height": null,
+  "display_keep_ratio": true
+}

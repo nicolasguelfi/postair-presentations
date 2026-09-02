@@ -41,8 +41,11 @@ class BlockStyles:
 bs = BlockStyles
 
 _MARKER = {"en": "Good practices"}
-_TITLE = {"en": ("Good practices for the ",
-                 (s.project.titles.keyword, "AI-augmented"), " student")}
+#: Le titre sur DEUX lignes (retouche NG 2026-09-02 — son ``\n`` d'intention
+#: rendu par deux écritures : ``st_write`` n'interprète pas le ``\n``,
+#: piège documenté au PLAYBOOK).
+_TITLE_L1 = {"en": "Good practices for the"}
+_TITLE_L2 = {"en": ((s.project.titles.keyword, "AI-AUGMENTED"), " STUDENT")}
 
 _TIP_TITLE = {"en": "This second half"}
 _TIP = [
@@ -79,8 +82,9 @@ def build(lang: str = "en", **_):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, *TF(_TITLE, lang),
+                st_write(bs.title, T(_TITLE_L1, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
+                st_write(bs.title, *TF(_TITLE_L2, lang), tag=t.div)
             with g.cell():
                 st_info_tooltip(
                     title=T(_TIP_TITLE, lang),
