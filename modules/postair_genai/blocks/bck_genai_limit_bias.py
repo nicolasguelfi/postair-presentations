@@ -51,7 +51,10 @@ class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     message = s.project.titles.subtitle + s.center_txt
     punch = s.project.body.body + s.project.colors.amber + s.center_txt + s.bold
-    counter = s.project.body.caption + s.center_txt
+    #: La maxime de NG — en gros, corail (rouge visible sans être criard,
+    #: le jeton « humain » de la palette), demande NG 2026-09-02.
+    maxim = s.project.titles.subtitle + s.project.colors.coral + s.center_txt + s.bold
+    cite = s.project.body.caption + s.center_txt
 
 
 bs = BlockStyles
@@ -62,21 +65,23 @@ _ICON = "⚖️"
 _LABEL = {"en": "Trained on WHOSE world?"}
 _MESSAGE = {"en": "Mostly the English-speaking, Western web"}
 _PUNCH = {"en": "≈ 93 % of GPT-3's training words: English"}
-#: Le contrepoint — la formulation de NG, projetée (l'honnêteté est la ligne
-#: du deck, comme la slide Scale) : sourcé par les mesures d'alignement.
-_COUNTER = {"en": ("not a bias for an American reader — a mismatch for a "
-                   "Chinese, Japanese or Iranian one")}
+#: LA maxime de NG, projetée en corail (remplace la ligne « mismatch »,
+#: demande NG 2026-09-02 — l'ancienne formulation vit au panneau) ; les
+#: mesures d'alignement qui la fondent gardent leurs codes visibles dessous.
+_MAXIM = {"en": ("Beware of “marketing bias” — the AI is not always aligned "
+                 "with its sellers' claims")}
 _CITE_PUNCH = ["brown2020-gpt3"]
-_CITE_COUNTER = ["santurkar2023-opinions", "cao2023-culture"]
+_CITE_MAXIM = ["santurkar2023-opinions", "cao2023-culture"]
 
 _TOOLTIP = [
     # L'entrée d'ouverture — la phrase de NG (variante B validée 2026-09-02) :
     # le biais vit dans l'écart entre la prétention commerciale et la cible
     # réelle de l'outil, pas dans les poids (fidèles à leur corpus).
     ({"en": "Marketing bias"},
-     {"en": ("Beware of “marketing bias” — the AI is not always aligned with "
-             "its sellers' claims. The pitch says « the world »; the corpus "
-             "says « the English-speaking web » — the gap is the bias.")}),
+     {"en": ("The pitch says « the world »; the corpus says « the English-"
+             "speaking web » — the gap is the bias. Not a bias for an "
+             "American reader — a mismatch for a Chinese, Japanese or "
+             "Iranian one.")}),
     ({"en": "The primary number — documented, not speculative"},
      {"en": ("92.65 % of GPT-3's training words were English — OpenAI's own "
              "dataset statistics, published with the paper. Recent frontier "
@@ -135,6 +140,6 @@ def build(lang: str = "en", **_):
             st_space("v", "1vh")
             st_write(bs.punch, T(_PUNCH, lang), " ",
                      citation(*_CITE_PUNCH), tag=t.div)
-            st_space("v", "1vh")
-            st_write(bs.counter, T(_COUNTER, lang), " ",
-                     citation(*_CITE_COUNTER), tag=t.div)
+            st_space("v", "2vh")
+            st_write(bs.maxim, T(_MAXIM, lang), tag=t.div)
+            st_write(bs.cite, citation(*_CITE_MAXIM), tag=t.div)
