@@ -51,7 +51,7 @@ bs = BlockStyles
 
 #: Réglages datés (2026-09-01) : les tables sont hautes (portrait ~0.9) —
 #: la hauteur de scène est la contrainte utile.
-TUNING = {"table_vh": 52}
+TUNING = {"table_vh": 62}
 
 #: Ratio largeur/hauteur DU FICHIER (mesuré Pillow 2026-09-01).
 _TABLES = [
@@ -104,12 +104,12 @@ def build(lang: str = "en", **_):
                     entries=[(ui("documented_note", lang), T(_TOOLTIP[0][1], lang))]
                             + [(T(h, lang), T(d, lang)) for h, d in _TOOLTIP[1:]],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "1vh")
         with st_grid(cols="50% 50%", gap="1.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for tbl in _TABLES:
                 with g.cell():
-                    st_write(bs.lang_label, T(tbl["label"], lang), tag=t.div)
+                    #st_write(bs.lang_label, T(tbl["label"], lang), tag=t.div)
                     st_space("v", "1vh")
                     with st_block(s.project.containers.media_stage(
                             tbl["ratio"], TUNING["table_vh"])):

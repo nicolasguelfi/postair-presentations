@@ -59,9 +59,8 @@ bs = BlockStyles
 _MARKER = {"en": "Your data"}
 _ICON = "🔐"
 _LABEL = {"en": "Your data is the raw material"}
-_MESSAGE = {"en": ("Consumer chats train the model — by DEFAULT, "
-                   "free or paid")}
-_PUNCH = {"en": "Read what you sign · personal / sensitive = OUT"}
+_MESSAGE = {"en": ("Consumer chats\n- free or paid -\ntrain the model\nby DEFAULT")}
+_PUNCH = {"en": "Read what you sign\npersonal / sensitive = OUT"}
 _CITEKEYS = ["openai2026-datause", "google2026-gemini-privacy"]
 
 _TOOLTIP = [
@@ -113,10 +112,11 @@ def build(lang: str = "en", **_):
         st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche ~50 %,
         # message + punch empilés à droite — plus rien sous le pli.
-        with hero_split(s, image=lambda: staged_hero_image(
+        with hero_split(s, ratio=40, image=lambda: staged_hero_image(
                 _IMAGE, prompt, _FALLBACK, alt_ready=_ALT, alt_fallback=_ALT,
                 variant="sq")):
-            st_write(bs.message, T(_MESSAGE, lang), tag=t.div)
-            st_write(bs.cite, citation(*_CITEKEYS), tag=t.div)
-            st_space("v", "1vh")
-            st_write(bs.punch, T(_PUNCH, lang), tag=t.div)
+            with st_zoom(150):
+                st_write(bs.message, T(_MESSAGE, lang), tag=t.div)
+                st_write(bs.cite, citation(*_CITEKEYS), tag=t.div)
+                st_space("v", "1vh")
+                st_write(bs.punch, T(_PUNCH, lang), tag=t.div)

@@ -57,7 +57,7 @@ _EXAM_PROMPT = (
 _DONT = [
     {"en": "The exam tests YOUR skill — Not the AI"},
     {"en": "Skip the effort → the skill never forms"},
-    {"en": "94 % UK already use it for the good\nBUT bad usage has\ngrown by 300% since 2024"},
+    {"en": "94 % UK use it (also) for the good\nBUT bad usage has\ngrown by 300% since 2024"},
 ]
 _DONT_CITEKEYS = ["hepi-survey-2026"]
 
@@ -99,6 +99,9 @@ _TOOLTIP = [
 #: confirmer à la repasse visuelle NG).
 TUNING = {
     "zoom": 92,
+    #: Largeur de la colonne image en % (demande NG 2026-09-02) : l'image
+    #: d'examen se resserre à 35 %, le texte respire sur les 65 % restants.
+    "ratio": 35,
 }
 
 
@@ -106,7 +109,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(150), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -115,7 +118,8 @@ def build(lang: str = "en", **_):
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
         st_space("v", s.project.spacing.title_gap)
-        with hero_split(s, zoom=TUNING["zoom"], image=lambda: staged_hero_image(
+        with hero_split(s, ratio=TUNING["ratio"], zoom=TUNING["zoom"],
+                        image=lambda: staged_hero_image(
                 "genai_exam", _EXAM_PROMPT, "images/genai_exam_fallback.svg",
                 alt_ready=("Papercut exam room: a silhouette writing alone at a "
                            "desk, an amber orb waiting outside the closed door"),

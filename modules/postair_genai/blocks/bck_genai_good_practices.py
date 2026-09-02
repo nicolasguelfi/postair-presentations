@@ -90,15 +90,16 @@ def build(lang: str = "en", **_):
                     title=T(_TIP_TITLE, lang),
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
-        st_space("v", s.project.spacing.title_gap)
-        staged_hero_image(
-            "genai_practices", _HERO_PROMPT,
-            "images/genai_practices_fallback.svg",
-            alt_ready=("Papercut student walking a luminous path with an amber "
-                       "orb companion, milestones of good practices along the "
-                       "way"),
-            alt_fallback=("Papercut student on a winding path, amber orb at "
-                          "the shoulder, checklist, compass and shield "
-                          "milestones"),
-            stage_vh=TUNING["hero_vh"],
-        )
+        st_space("v", "3vh")
+        with st_zoom(110):
+            staged_hero_image(
+                "genai_practices", _HERO_PROMPT,
+                "images/genai_practices_fallback.svg",
+                alt_ready=("Papercut student walking a luminous path with an amber "
+                        "orb companion, milestones of good practices along the "
+                        "way"),
+                alt_fallback=("Papercut student on a winding path, amber orb at "
+                            "the shoulder, checklist, compass and shield "
+                            "milestones"),
+                stage_vh=TUNING["hero_vh"],
+            )

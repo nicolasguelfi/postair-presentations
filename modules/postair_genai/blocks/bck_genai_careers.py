@@ -41,10 +41,12 @@ class BlockStyles:
 
 bs = BlockStyles
 
-#: Le duo « humain + orbe » de chaque carte — compositions de ``Style`` (R11,
+#: Le duo « humain + IA » de chaque carte — compositions de ``Style`` (R11,
 #: revue genaipat 2026-09-01 : l'ancien st_html portait texte et ambre en
-#: dur). L'orbe est le glyphe plein ● aux couleurs de la palette — même
-#: geste, zéro HTML.
+#: dur). L'IA est l'étincelle ✦ en ambre (choix NG 2026-09-02 : le code
+#: graphique universel de l'IA, préféré à l'orbe interne du deck) — même
+#: geste, zéro HTML. Sans pastille ni fond : aucune confusion possible avec
+#: la marque de divulgation DD-35 « ✦ AI ».
 _DUO_LINE = Style("text-align: center; padding: 0.6vh 0;", "genai_duo_line")
 _DUO_HUMAN = Style("font-size: 3.2vw;", "genai_duo_human")
 _DUO_PLUS = Style(f"font-size: 2vw; color: {TEXT};", "genai_duo_plus")
@@ -111,13 +113,14 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for c in _CAREERS:
                 with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.faculty, T(c["faculty"], lang), tag=t.div)
+                    with st_zoom(120):
+                        st_write(bs.faculty, T(c["faculty"], lang), tag=t.div)
                     st_space("v", "0.6vh")
                     # Silhouette humaine + orbe côte à côte (plan G10) : le
                     # duo est le visuel de la carte, pas une décoration.
                     st_write(_DUO_LINE,
                              (_DUO_HUMAN, "👤"), (_DUO_PLUS, " + "),
-                             (_DUO_ORB, "●"), tag=t.div)
+                             (_DUO_ORB, "✦"), tag=t.div)
                     st_write(bs.pair, T(c["pair"], lang), tag=t.div)
         st_space("v", "2vh")
         # Télégraphique (NG 2026-08-13) : la phrase-cadre complète vit dans

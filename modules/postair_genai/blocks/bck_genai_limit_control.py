@@ -19,7 +19,7 @@ session is built on a European model.
 from postair_i18n import ui
 from postair_lang import T
 from shared_widgets import st_info_tooltip
-from streamtex import st_block, st_grid, st_marker, st_space, st_write
+from streamtex import st_block, st_grid, st_marker, st_space, st_write, st_zoom
 from streamtex.enums import Tags as t
 
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
@@ -40,8 +40,8 @@ bs = BlockStyles
 _MARKER = {"en": "Control"}
 _ICON = "🏛️"
 _LABEL = {"en": "Who controls the models?"}
-_MESSAGE = {"en": "Frontier models = a handful of companies"}
-_PUNCH = {"en": "EU sovereignty → Mistral, next session"}
+_MESSAGE = {"en": "Frontier models\n=\na handful of companies"}
+_PUNCH = {"en": "EU sovereignty → Mistral"}
 _DETAIL = {"en": ("A handful of companies train the frontier models. What Europe "
                   "builds itself is a sovereignty question — the Mistral session is "
                   "part of the answer.")}
@@ -76,6 +76,7 @@ def build(lang: str = "en", **_):
         with hero_split(s, image=lambda: staged_hero_image(
                 _IMAGE, prompt, _FALLBACK, alt_ready=_ALT, alt_fallback=_ALT,
                 variant="sq")):
-            st_write(bs.message, T(_MESSAGE, lang), tag=t.div)
-            st_space("v", "1vh")
-            st_write(bs.punch, T(_PUNCH, lang), tag=t.div)
+            with st_zoom(150):
+                st_write(bs.message, T(_MESSAGE, lang), tag=t.div)
+                st_space("v", "1vh")
+                st_write(bs.punch, T(_PUNCH, lang), tag=t.div)

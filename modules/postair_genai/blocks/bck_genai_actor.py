@@ -1,8 +1,9 @@
 """Actor, not spectator (G11) — the loop back to the morning.
 
-One dominant image — a silhouette facing the amber horizon — and three
-mascots walking with it: curiosity, optimism, prudence. One line, three
-verbs. The mascots are asked by NAME (``postair_data.mascot``), never by
+Composition NG 2026-09-02 (2e retouche) : la ligne des trois compagnons,
+AUTONOME sous le titre, puis deux colonnes — l'image de l'horizon à GAUCHE,
+et à droite les trois verbes en puces et la citation-boussole de NG avec son
+code. The mascots are asked by NAME (``postair_data.mascot``), never by
 file.
 
 Le FAIT vit ici (règle NG 2026-08-18) : les trois verbes, les trois mascottes
@@ -29,11 +30,13 @@ from streamtex import *
 from streamtex.enums import Tags as t
 
 from postair_pack.components.ai_mark import dd35_overlay
+from postair_pack.components.hero_split import hero_split
 
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     verbs = s.project.titles.subtitle + s.project.colors.amber + s.center_txt
+    quote = s.project.titles.subtitle + s.center_txt
     mascot_name = s.project.body.mascot_name + s.center_txt
 
 
@@ -48,10 +51,9 @@ _HORIZON_PROMPT = (
 )
 
 # ── La posture-boussole ─────────────────────────────────────────────────────
-#: Jamais projeté, gardé pour la vérifiabilité — la ligne d'accroche de
-#: l'ancienne section « actor » de facts.json (entrée ``line``, jamais
-#: consommée par le rendu) : « The revolution is here. Your posture is your
-#: compass. »
+#: PROJETÉE depuis le 2026-09-02 (demande NG) : la ligne d'accroche de
+#: l'ancienne section « actor » de facts.json remonte à l'écran, avec son
+#: code de citation (clé ``guelfi-postair`` — la référence de NG).
 #: Tri DD-113 (revue genaipat 2026-09-01) : rien sur cette slide ne CITE un
 #: bouton ou un écran de l'application sumvadis — « retake the survey » est
 #: une phrase du deck, pas un intitulé d'interface : feuilles simples, pas de
@@ -59,6 +61,7 @@ _HORIZON_PROMPT = (
 _MARKER = {"en": "Actor"}
 _TITLE = {"en": ((s.project.titles.keyword, "Actor"), ", not spectator")}
 _VERBS = [{"en": "Stay informed"}, {"en": "Test things"}, {"en": "Keep doubting"}]
+_QUOTE = {"en": "The revolution is here. Your posture is your compass."}
 #: Les trois compagnons — demandés par leur NOM au cast gelé.
 _MASCOTS = ["Kuri", "Solyo", "Lento"]
 _MASCOT_WHY = {"en": "Curiosity · optimism · prudence — three postures, together"}
@@ -76,15 +79,30 @@ _TIP_COMPANIONS = {"en": "Three companions"}
 _CITEKEYS = ["guelfi-postair"]
 
 # ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─
-#: ``hero_vh`` = budget hauteur de l'image héro (staged_hero_image, R4d) —
-#: remplace l'ancien ``width="62%"``, inerte au zoom : titre + verbes +
-#: rangée de mascottes doivent tenir sous elle. ``mascot_width`` borne les
-#: DEUX dimensions (l'ancien ``7vw`` n'avait pas de borne verticale — geste
-#: guidelines ``min(7vw, 13vh)``). À confirmer à la repasse visuelle NG.
+#: ``ratio`` = part de largeur de l'image du hero_split (gabarit par défaut :
+#: 50/50). ``hero_vh`` = budget hauteur de l'image DANS sa cellule (R4d).
+#: ``mascot_width`` borne les DEUX dimensions — resserré à la recomposition
+#: pyramide 2026-09-02 : DEUX rangées de mascottes dans la colonne droite
+#: (l'ancien ``min(7vw, 13vh)`` valait pour une rangée pleine largeur).
+#: À confirmer à la repasse visuelle NG.
 TUNING = {
-    "hero_vh": 50,
-    "mascot_width": "min(7vw, 13vh)",
+    "ratio": 50,
+    #: L'image partage désormais la hauteur avec la ligne des compagnons
+    #: au-dessus d'elle : budget resserré en conséquence.
+    "hero_vh": 48,
+    #: Zoom de la colonne de contenu (verbes + citation).
+    "column_zoom": 90,
+    "mascot_width": "min(6vw, 10vh)",
 }
+
+
+def _companion(name: str) -> None:
+    """Une carte compagnon — demandé par son NOM au cast gelé."""
+    m = mascot(name)
+    st_image(s.project.cards.media_center, width=TUNING["mascot_width"],
+             uri=m["image"], alt=f"Mascot {m['name']}",
+             overlay=dd35_overlay())
+    st_write(bs.mascot_name, m["name"], tag=t.div)
 
 
 def build(lang: str = "en", **_):
@@ -100,27 +118,27 @@ def build(lang: str = "en", **_):
                     entries=[*[(T(h, lang), T(d, lang)) for h, d in _TIP],
                              (T(_TIP_COMPANIONS, lang), T(_MASCOT_WHY, lang))],
                 )
-        st_space("v", "1vh")
-        staged_hero_image(
-            "genai_horizon", _HORIZON_PROMPT, "images/genai_horizon_fallback.svg",
-            alt_ready=("Papercut silhouette from behind walking toward a large amber "
-                       "sun on the horizon, navy sky"),
-            alt_fallback=("Silhouette from behind facing an amber sun on the horizon, "
-                          "three small companions beside it"),
-            stage_vh=TUNING["hero_vh"],
-        )
-        st_space("v", "1vh")
-        st_write(bs.verbs,
-                 " · ".join(T(v, lang) for v in _VERBS), "   ",
-                 citation(*_CITEKEYS), tag=t.div)
-        st_space("v", "1.5vh")
-        # Les trois compagnons — demandés par leur NOM au cast gelé.
+        st_space("v", s.project.spacing.title_gap)
+        # La ligne des compagnons — AUTONOME, sous le titre (NG 2026-09-02).
         with st_grid(cols=s.project.grids.balanced(len(_MASCOTS)), gap="1vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for name in _MASCOTS:
-                m = mascot(name)
                 with g.cell():
-                    st_image(s.project.cards.media_center, width=TUNING["mascot_width"],
-                             uri=m["image"], alt=f"Mascot {m['name']}",
-                             overlay=dd35_overlay())
-                    st_write(bs.mascot_name, m["name"], tag=t.div)
+                    _companion(name)
+        st_space("v", "1.5vh")
+        # Puis deux colonnes : image à GAUCHE, verbes + citation à droite.
+        with hero_split(s, ratio=TUNING["ratio"], zoom=TUNING["column_zoom"],
+                        image=lambda: staged_hero_image(
+                "genai_horizon", _HORIZON_PROMPT, "images/genai_horizon_fallback.svg",
+                alt_ready=("Papercut silhouette from behind walking toward a large amber "
+                           "sun on the horizon, navy sky"),
+                alt_fallback=("Silhouette from behind facing an amber sun on the horizon, "
+                              "three small companions beside it"),
+                stage_vh=TUNING["hero_vh"])):
+            # Les trois verbes — en puces, une par ligne.
+            for v in _VERBS:
+                st_write(bs.verbs, "▸ ", T(v, lang), tag=t.div)
+            st_space("v", "1vh")
+            # La citation-boussole de NG, avec son code visible.
+            st_write(bs.quote, "« ", T(_QUOTE, lang), " » ",
+                     citation(*_CITEKEYS), tag=t.div)

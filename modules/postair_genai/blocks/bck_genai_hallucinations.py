@@ -37,9 +37,9 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Hallucinations"}
-_TITLE = {"en": ("What it gets wrong: ",
-                 (s.project.titles.keyword, "hallucinations"))}
+_MARKER = {"en": "'Hallucinations'"}
+_TITLE = {"en": ("When it goes wrong: ",
+                 (s.project.titles.keyword, "'hallucinations'"))}
 _TIP_TITLE = {"en": "Why this is structural"}
 _EXHIBIT_HEAD = {"en": "The exhibit"}
 
@@ -47,7 +47,7 @@ _EXHIBIT_HEAD = {"en": "The exhibit"}
 #: PAS une feuille : la fausse référence est une DONNÉE, citée telle quelle
 #: dans toutes les langues (R-case — les données ne se recasent ni ne se
 #: traduisent).
-_CASE_QUOTE = ("Varghese v. China Southern Airlines Co., Ltd., 925 F.3d 1339 "
+_CASE_QUOTE = ("Varghese v. China Southern Airlines Co., Ltd.,\n 925 F.3d 1339 "
                "(11th Cir. 2019)")
 _CASE_VERDICT = {"en": ("This case does not exist. ChatGPT invented it — with a full "
                         "docket number, quotes and internal citations — and two "
@@ -62,14 +62,14 @@ _CASE_CITEKEYS = ["mata-avianca-2023"]
 #: deux autres sont des leçons structurelles, sans citekey — liste vide.
 _CLAIMS = [
     {
-        "short": {"en": "It does not « know » — it predicts"},
+        "short": {"en": "Highly capable and reliable IF …"},
         "detail": {"en": ("The model optimises plausibility, not truth. A fluent, "
                           "confident answer is what it is built to produce — even "
                           "when wrong.")},
         "citekeys": [],
     },
     {
-        "short": {"en": "Plausible ≠ true"},
+        "short": {"en": "Plausible\n≠ true"},
         "detail": {"en": ("On precise legal questions, large language models "
                           "hallucinated in 69 % to 88 % of cases in a systematic "
                           "profiling study.")},
@@ -90,7 +90,8 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, *TF(_TITLE, lang),
+                with st_zoom(130):
+                    st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
@@ -104,14 +105,15 @@ def build(lang: str = "en", **_):
         with st_block(s.project.cards.coral):
             st_write(bs.fake, "« ", _CASE_QUOTE, " »", tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.verdict, T(_CASE_VERDICT_SHORT, lang),
+            with st_zoom(150):
+                st_write(bs.verdict, T(_CASE_VERDICT_SHORT, lang),
                      citation(*_CASE_CITEKEYS), tag=t.div)
         st_space("v", "2vh")
         with st_grid(cols=s.project.grids.balanced(len(_CLAIMS)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for c in _CLAIMS:
-                with g.cell(), st_block(s.project.cards.blue):
+                with st_zoom(140),g.cell(), st_block(s.project.cards.blue):
                     st_write(bs.claim, T(c["short"], lang), tag=t.div)
                     if c["citekeys"]:
                         st_write(bs.detail, citation(*c["citekeys"]), tag=t.div)

@@ -49,7 +49,7 @@ bs = BlockStyles
 #: ``st_zoom`` — consigne NG : pas de mécanique lourde, deux nombres à
 #: tourner). Contrainte : titre + DEUX rangées de cartes sous le pli —
 #: v1 300/220 débordait (capture NG), redescendu à l'œil le même jour.
-TUNING = {"icon_zoom": 170, "label_zoom": 140, "card_air_vh": 1.5}
+TUNING = {"icon_zoom": 170, "label_zoom": 160, "card_air_vh": 0.2}
 
 # ── Les quatre matières — une icône, un mot ─────────────────────────────────
 _CARDS = [
@@ -95,7 +95,7 @@ def build(lang: str = "en", **_):
                     title=T(_TIP_TITLE, lang),
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "2vh")
         with st_grid(cols=s.project.grids.balanced(len(_CARDS)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -107,7 +107,7 @@ def build(lang: str = "en", **_):
                     st_space("v", f"{TUNING['card_air_vh']}vh")
                     with st_zoom(TUNING["icon_zoom"]):
                         st_write(bs.icon, c["icon"], tag=t.div)
-                    st_space("v", "1.5vh")
+                    st_space("v", "1vh")
                     with st_zoom(TUNING["label_zoom"]):
                         st_write(bs.label, T(c["label"], lang), tag=t.div)
                     st_space("v", f"{TUNING['card_air_vh']}vh")

@@ -87,13 +87,14 @@ def build(lang: str = "en", **_):
                     title=T(_TIP_TITLE, lang),
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
-        st_space("v", s.project.spacing.title_gap)
-        with st_grid(cols=s.project.grids.balanced(len(_TAKEAWAYS)), gap="1.2vw",
+        st_space("v", "1vh")
+        with st_grid(cols=s.project.grids.balanced(len(_TAKEAWAYS)), gap="1vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for item in _TAKEAWAYS:
-                with g.cell(), st_block(s.project.cards.blue):
+                with st_zoom(120),g.cell(), st_block(s.project.cards.blue):
                     st_write(bs.number, item["n"], tag=t.div)
-                    st_write(bs.short, T(item["short"], lang), tag=t.div)
-                    st_space("v", "0.6vh")
+                    with st_zoom(120):
+                        st_write(bs.short, T(item["short"], lang), tag=t.div)
+                    st_space("v", "0.2vh")
                     st_write(bs.detail, T(item["detail"], lang), tag=t.div)
