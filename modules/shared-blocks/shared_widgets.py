@@ -20,7 +20,6 @@ from postair_pack.design_systems.postair_dark import (
     KEYWORD,
     MUTED,
     PRIMARY,
-    SUCCESS,
     TEXT,
     TOOLTIP_BG,
     TOOLTIP_DEF_CSS,
@@ -166,9 +165,10 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
       finie ; *parallel* — les cartes sont indépendantes. Les boutons
       globaux restent : ▶ Start lance la première carte non finie (chain) ou
       toutes (parallel) ; ↺ Reset remet toute la rangée.
-    - **Zéro** : UNE ligne — la coche verte puis la durée INITIALE en rouge
-      translucide (``✓ 01:00``), identique dans les deux modes (retouche NG
-      2026-09-01, remplace le teal/corail de la v1).
+    - **Zéro** : la durée INITIALE en rouge translucide, même nombre de
+      caractères que les autres états — identique dans les deux modes, la
+      couleur seule porte l'accompli (ligne NG ``chronocheck zero=p1``,
+      2026-09-02 : la coche verte essayée débordait la ligne maximisée).
     - **Coordination** : chaque cadran est sa propre iframe ``srcdoc``
       (même origine) dans l'application, et du HTML inliné dans l'export —
       dans les deux cas ``window.parent`` est le MÊME document pour toutes
@@ -365,9 +365,13 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
   function isDone() {{ return remaining <= 0; }}
   function paint() {{
     if (isDone()) {{
-      // UNE ligne : la coche verte + la durée INITIALE en rouge translucide.
-      digits.innerHTML = '<span style="color:{SUCCESS};">✓</span> ' +
-        '<span style="color:{CRITICAL};opacity:0.45;">' + fmt(TOTAL) + '</span>';
+      // État zéro SANS coche (ligne NG chronocheck zero=p1, 2026-09-02) :
+      // la durée INITIALE en rouge translucide — même nombre de caractères
+      // que les autres états, débordement impossible par construction ;
+      // la couleur seule porte l'accompli (l'essai « ✓ » débordait la
+      // ligne maximisée des deux côtés, capture NG).
+      digits.innerHTML = '<span style="color:{CRITICAL};opacity:0.45;">' +
+        fmt(TOTAL) + '</span>';
       at.innerHTML = '&nbsp;';
       return;
     }}

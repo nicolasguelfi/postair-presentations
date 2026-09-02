@@ -11,7 +11,8 @@ Deux temps cachés (pattern debates), un par mode. Retouches NG 2026-09-01 :
 chaque carte porte SES boutons ▶ ⏸ ↺ (chain : une seule carte court, le zéro
 lance la suivante non finie ; parallel : cartes indépendantes), les cartes
 sont de VRAIS ``st_block(cards.blue)`` sur ``st_grid``, et le zéro s'affiche
-sur une ligne : ✓ verte + durée initiale en rouge translucide. Les boutons
+en durée initiale rouge translucide (sans coche — ``chronocheck zero=p1``,
+2026-09-02 : la couleur seule porte l'accompli). Les boutons
 globaux (▶ Start / ↺ Reset) restent au-dessus de la grille. Durées COURTES à
 dessein (1' / 0,5' / 1') : la démo se joue en une minute.
 
@@ -75,8 +76,8 @@ _TOOLTIP = [
              "them (parallel); ↺ Reset restores the whole row. Nothing runs "
              "before a click — the clock never counts during instructions.")}),
     ({"en": "At zero"},
-     {"en": ("One line: a green check, then the INITIAL duration in "
-             "translucent red — same in both modes.")}),
+     {"en": ("The INITIAL duration in translucent red — same width as every "
+             "other state, colour alone says « done », in both modes.")}),
     ({"en": "To relocate"},
      {"en": ("This demo lives in the genai backup annex only while the "
              "consumer deck is unnamed — moving it is one thin block in that "
