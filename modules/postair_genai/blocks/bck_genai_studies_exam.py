@@ -122,19 +122,22 @@ def build(lang: str = "en", **_):
                 alt_fallback=("Papercut exam room, silhouette writing, amber orb "
                               "waiting behind the closed door"),
                 variant="pt")):
-            # Une écriture PAR ligne (piège \n de st_write) ; le code HEPI se
-            # pose sur la DERNIÈRE ligne de la dernière puce.
-            for i, (item, colour) in enumerate(zip(_DONT, _DONT_COLOURS)):
-                first, *rest = T(item, lang).split("\n")
-                last_of_deck = i == len(_DONT) - 1 and not rest
-                st_write(bs.item + colour, "▸ ", first,
-                         *((" ", citation(*_DONT_CITEKEYS)) if last_of_deck else ()),
-                         tag=t.div)
-                for j, line in enumerate(rest):
-                    tail = i == len(_DONT) - 1 and j == len(rest) - 1
-                    st_write(bs.item + colour, line,
-                             *((" ", citation(*_DONT_CITEKEYS)) if tail else ()),
-                             tag=t.div)
+            # Une écriture PAR ligne (st_write ignore le \n) : puces × lignes,
+            # UN seul corps (simplification NG 2026-09-02) — le « ▸ » n'orne
+            # que la 1re ligne d'une puce, le code HEPI ne s'accroche qu'à la
+            # toute dernière ligne de la dernière puce ; le zoom 120 (retouche
+            # NG) couvre TOUTES les lignes uniformément.
+            with st_zoom(120):
+                for i, (item, colour) in enumerate(zip(_DONT, _DONT_COLOURS)):
+                    lines = T(item, lang).split("\n")
+                    for j, line in enumerate(lines):
+                        prefix = ("▸ ",) if j == 0 else ()
+                        very_last = (i == len(_DONT) - 1
+                                     and j == len(lines) - 1)
+                        cite = ((" ", citation(*_DONT_CITEKEYS))
+                                if very_last else ())
+                        st_write(bs.item + colour, *prefix, line, *cite,
+                                 tag=t.div)
             st_space("v", "1vh")
             # Le paradoxe — LE message de la slide — en carte ambre, VISIBLE,
             # sur DEUX lignes (formulation NG grow/shrink).
