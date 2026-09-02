@@ -35,7 +35,6 @@ if challenged — the cultural-alignment measurements are in the panel.
 """
 # @guideline: postair-minimal
 
-from postair_i18n import ui
 from postair_lang import T
 from shared_widgets import st_info_tooltip
 from streamtex import st_block, st_grid, st_marker, st_space, st_write
@@ -71,7 +70,14 @@ _CITE_PUNCH = ["brown2020-gpt3"]
 _CITE_COUNTER = ["santurkar2023-opinions", "cao2023-culture"]
 
 _TOOLTIP = [
-    ({"en": "The primary number"},
+    # L'entrée d'ouverture — la phrase de NG (variante B validée 2026-09-02) :
+    # le biais vit dans l'écart entre la prétention commerciale et la cible
+    # réelle de l'outil, pas dans les poids (fidèles à leur corpus).
+    ({"en": "Marketing bias"},
+     {"en": ("Beware of “marketing bias” — the AI is not always aligned with "
+             "its sellers' claims. The pitch says « the world »; the corpus "
+             "says « the English-speaking web » — the gap is the bias.")}),
+    ({"en": "The primary number — documented, not speculative"},
      {"en": ("92.65 % of GPT-3's training words were English — OpenAI's own "
              "dataset statistics, published with the paper. Recent frontier "
              "corpora are less documented publicly; that opacity is itself "
@@ -117,10 +123,8 @@ def build(lang: str = "en", **_):
                          tag=t.div, toc_lvl="+1", label=T(_LABEL, lang))
             with g.cell():
                 st_info_tooltip(title=T(_LABEL, lang),
-                                entries=[(ui("documented_note", lang),
-                                          T(_TOOLTIP[0][1], lang))]
-                                        + [(T(h, lang), T(d, lang))
-                                           for h, d in _TOOLTIP[1:]])
+                                entries=[(T(h, lang), T(d, lang))
+                                         for h, d in _TOOLTIP])
         st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche ~50 %,
         # message + punch + contrepoint empilés à droite — rien sous le pli.
