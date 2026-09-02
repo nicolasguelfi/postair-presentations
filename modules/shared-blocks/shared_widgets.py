@@ -153,12 +153,12 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
       dans un ``st_grid`` ; chaque carte contient UN fragment-cadran
       (étiquette, chiffres, heure de fin, boutons). ``s`` est l'objet
       Styles du module appelant (précédent : ``build_next_module_slide``).
-      Depuis la maximisation (NG 2026-09-02), l'étiquette vit DANS le
-      cadran pour être zoomée comme le reste : tout le contenu remplit la
-      cellule sur l'axe contraignant — budgets verticaux ≈ 100 % du cadran
-      (étiquette 13 vh + chiffres 48 + heure 9 + boutons 15), répartis en
-      ``space-evenly``, centrés dans les deux axes, étiquette longue coupée
-      en ellipse plutôt que débordante.
+      Depuis la maximisation (NG 2026-09-02, deux passes) : l'étiquette vit
+      DANS le cadran pour être zoomée comme le reste, et LES CHIFFRES
+      priment — budgets verticaux ≈ 100 % du cadran : étiquette 11 vh +
+      chiffres 66 vh + un PIED commun (boutons 13 vh, heure de fin en ligne
+      à leur droite) ; répartis en ``space-evenly``, centrés dans les deux
+      axes, étiquette longue coupée en ellipse plutôt que débordante.
     - **Boutons PAR carte** : ▶ démarre/reprend · ⏸ met en pause · ↺ remet
       la carte à sa durée pleine (à l'arrêt). Comportements par mode :
       *chain* — UNE seule carte court à la fois (▶ sur une carte met l'autre
@@ -305,26 +305,26 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
                 # caché en ceinture).
                 st_html(f"""
 <div id="{dom}-c{i}" style="display:flex;flex-direction:column;align-items:center;
-            justify-content:space-evenly;height:100%;padding:1vh 0;box-sizing:border-box;
+            justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
             overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
-  <div class="cdr-label" style="font-size:min({9 * scale:.2f}vw, {13 * scale:.2f}vh);
+  <div class="cdr-label" style="font-size:min({8 * scale:.2f}vw, {11 * scale:.2f}vh);
        font-weight:700;color:{TEXT};text-align:center;white-space:nowrap;
        max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
-  <div class="cdr-digits" style="font-size:min({30 * scale:.2f}vw, {48 * scale:.2f}vh);
-       font-weight:900;letter-spacing:0.04em;line-height:1.05;color:{MUTED};
+  <div class="cdr-digits" style="font-size:min({32 * scale:.2f}vw, {66 * scale:.2f}vh);
+       font-weight:900;letter-spacing:0.04em;line-height:1.02;color:{MUTED};
        white-space:nowrap;"></div>
-  <div class="cdr-at" style="font-size:min({6 * scale:.2f}vw, {9 * scale:.2f}vh);
-       color:{MUTED};">&nbsp;</div>
-  <div style="display:flex;gap:min(2vw, 4vh);">
-    <button class="cdr-go" style="font-size:min({7 * scale:.2f}vw, {15 * scale:.2f}vh);
+  <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">
+    <button class="cdr-go" style="font-size:min({6.5 * scale:.2f}vw, {13 * scale:.2f}vh);
             color:{AMBER};background:transparent;border:min(0.35vw, 0.8vh) solid {AMBER};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">▶</button>
-    <button class="cdr-halt" style="font-size:min({7 * scale:.2f}vw, {15 * scale:.2f}vh);
+    <button class="cdr-halt" style="font-size:min({6.5 * scale:.2f}vw, {13 * scale:.2f}vh);
             color:{PRIMARY};background:transparent;border:min(0.35vw, 0.8vh) solid {PRIMARY};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">⏸</button>
-    <button class="cdr-zero" style="font-size:min({7 * scale:.2f}vw, {15 * scale:.2f}vh);
+    <button class="cdr-zero" style="font-size:min({6.5 * scale:.2f}vw, {13 * scale:.2f}vh);
             color:{MUTED};background:transparent;border:min(0.35vw, 0.8vh) solid {MUTED};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">↺</button>
+    <span class="cdr-at" style="font-size:min({4.5 * scale:.2f}vw, {8 * scale:.2f}vh);
+          color:{MUTED};white-space:nowrap;">&nbsp;</span>
   </div>
 </div>
 <script>
