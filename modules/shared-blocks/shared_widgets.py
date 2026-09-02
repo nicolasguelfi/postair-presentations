@@ -150,11 +150,15 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
     habillage=p1`` puis retouches du 2026-09-01) :
 
     - **Grille streamtex** : les cartes sont des ``st_block(cards.blue)``
-      dans un ``st_grid`` équilibré — l'étiquette est un ``st_write`` (donc
-      un vrai texte, vu par la baseline i18n) ; seul le cadran (chiffres,
-      heure de fin, boutons) est un fragment ``st_html`` par carte. ``s``
-      est l'objet Styles du module appelant (précédent :
-      ``build_next_module_slide(s, …)``).
+      dans un ``st_grid`` ; chaque carte contient UN fragment-cadran
+      (étiquette, chiffres, heure de fin, boutons). ``s`` est l'objet
+      Styles du module appelant (précédent : ``build_next_module_slide``).
+      Depuis la maximisation (NG 2026-09-02), l'étiquette vit DANS le
+      cadran pour être zoomée comme le reste : tout le contenu remplit la
+      cellule sur l'axe contraignant — budgets verticaux ≈ 100 % du cadran
+      (étiquette 13 vh + chiffres 48 + heure 9 + boutons 15), répartis en
+      ``space-evenly``, centrés dans les deux axes, étiquette longue coupée
+      en ellipse plutôt que débordante.
     - **Boutons PAR carte** : ▶ démarre/reprend · ⏸ met en pause · ↺ remet
       la carte à sa durée pleine (à l'arrêt). Comportements par mode :
       *chain* — UNE seule carte court à la fois (▶ sur une carte met l'autre
@@ -214,8 +218,7 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
         raise ValueError("st_countdown_rack : `key` est obligatoire et unique "
                          "par rangée (l'export inline toutes les slides dans "
                          "un seul document)")
-    from streamtex import st_block, st_grid, st_write
-    from streamtex.enums import Tags as _t
+    from streamtex import st_block, st_grid
 
     rack_id = json.dumps(key)
     n = len(steps)
@@ -230,16 +233,16 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
                 f"st_countdown_rack : grille {rows}×{cols} trop petite pour "
                 f"{n} compteur(s) — lignes×colonnes doit couvrir la liste")
     # Le budget vertical : ``rack_vh`` (% de fenêtre) partagé entre les
-    # lignes, moins l'habillage de chaque carte (étiquette + rembourrages
-    # ≈ 10 vh par ligne). ``height`` posé = override expert : cadran figé.
-    dial_vh = max(12.0, rack_vh / rows - 10.0)
+    # lignes, moins les rembourrages de carte (≈ 4 vh par ligne — depuis la
+    # maximisation NG 2026-09-02, l'étiquette vit DANS le cadran).
+    # ``height`` posé = override expert : cadran figé.
+    dial_vh = max(12.0, rack_vh / rows - 4.0)
     fixed_px = height is not None
     if height is None:
         # Première peinture avant l'auto-mesure (référence fenêtre 1080 px) ;
         # le script du cadran se recale aussitôt sur la fenêtre réelle.
         height = int(round(dial_vh * 10.8))
     secs = [max(1, round(minutes * 60)) for _label, minutes in steps]
-    label_style = s.project.body.bullet + s.center_txt + s.bold
     # Racine DOM unique par rangée : l'export inline tout dans UN document.
     dom = "cdr-" + re.sub(r"[^a-zA-Z0-9_-]", "-", key)
 
@@ -292,30 +295,35 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
                  cell_styles=s.project.containers.grid_cell_centered) as g:
         for i, (label, _minutes) in enumerate(steps):
             with g.cell(), st_block(s.project.cards.blue):
-                st_write(label_style, label, tag=_t.div)
-                # Chaque taille est un clamp min(vw, vh) DE L'IFRAME : bornée
-                # par la largeur de cellule ET la hauteur du cadre — le cadran
-                # tient dans sa carte quelle que soit la géométrie (correctif
-                # du débordement 2×2, NG 2026-09-02) ; boutons épinglés en
-                # pied, overflow caché.
+                # MAXIMISATION (NG 2026-09-02) : l'étiquette vit DANS le
+                # cadran et tout le contenu remplit la cellule — chaque
+                # taille est un clamp min(vw, vh) de l'iframe dont les
+                # budgets verticaux totalisent ~100 % du cadran (étiquette
+                # 13 + chiffres 48 + heure 9 + boutons 15 + air), répartis
+                # en space-evenly : plein sur l'axe contraignant, centré
+                # dans les deux axes, débordement impossible (overflow
+                # caché en ceinture).
                 st_html(f"""
 <div id="{dom}-c{i}" style="display:flex;flex-direction:column;align-items:center;
-            justify-content:space-between;height:100%;padding:2vh 0;box-sizing:border-box;
+            justify-content:space-evenly;height:100%;padding:1vh 0;box-sizing:border-box;
             overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
-  <div class="cdr-digits" style="font-size:min({24 * scale:.2f}vw, {46 * scale:.2f}vh);
-       font-weight:900;letter-spacing:0.04em;line-height:1.1;color:{MUTED};
+  <div class="cdr-label" style="font-size:min({9 * scale:.2f}vw, {13 * scale:.2f}vh);
+       font-weight:700;color:{TEXT};text-align:center;white-space:nowrap;
+       max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
+  <div class="cdr-digits" style="font-size:min({30 * scale:.2f}vw, {48 * scale:.2f}vh);
+       font-weight:900;letter-spacing:0.04em;line-height:1.05;color:{MUTED};
        white-space:nowrap;"></div>
-  <div class="cdr-at" style="font-size:min({5 * scale:.2f}vw, {11 * scale:.2f}vh);
+  <div class="cdr-at" style="font-size:min({6 * scale:.2f}vw, {9 * scale:.2f}vh);
        color:{MUTED};">&nbsp;</div>
-  <div style="display:flex;gap:min(1.5vw, 3vh);">
-    <button class="cdr-go" style="font-size:min({6 * scale:.2f}vw, {13 * scale:.2f}vh);
-            color:{AMBER};background:transparent;border:min(0.3vw, 0.6vh) solid {AMBER};
+  <div style="display:flex;gap:min(2vw, 4vh);">
+    <button class="cdr-go" style="font-size:min({7 * scale:.2f}vw, {15 * scale:.2f}vh);
+            color:{AMBER};background:transparent;border:min(0.35vw, 0.8vh) solid {AMBER};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">▶</button>
-    <button class="cdr-halt" style="font-size:min({6 * scale:.2f}vw, {13 * scale:.2f}vh);
-            color:{PRIMARY};background:transparent;border:min(0.3vw, 0.6vh) solid {PRIMARY};
+    <button class="cdr-halt" style="font-size:min({7 * scale:.2f}vw, {15 * scale:.2f}vh);
+            color:{PRIMARY};background:transparent;border:min(0.35vw, 0.8vh) solid {PRIMARY};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">⏸</button>
-    <button class="cdr-zero" style="font-size:min({6 * scale:.2f}vw, {13 * scale:.2f}vh);
-            color:{MUTED};background:transparent;border:min(0.3vw, 0.6vh) solid {MUTED};
+    <button class="cdr-zero" style="font-size:min({7 * scale:.2f}vw, {15 * scale:.2f}vh);
+            color:{MUTED};background:transparent;border:min(0.35vw, 0.8vh) solid {MUTED};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">↺</button>
   </div>
 </div>
