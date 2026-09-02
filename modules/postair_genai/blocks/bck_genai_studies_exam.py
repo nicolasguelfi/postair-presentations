@@ -46,25 +46,45 @@ _EXAM_PROMPT = (
     + AI_SUFFIX_LANDSCAPE
 )
 
-# ── Les trois mises en garde — la dernière porte le chiffre HEPI sourcé ─────
+# ── Les trois mises en garde — réécriture pédagogique (formulations NG,
+# planches examped/examped2, 2026-09-02) : chaque ligne a un acteur et une
+# conséquence, décodable SEULE. Choix rhétorique ASSUMÉ par NG sur la 3e :
+# « for the good » et « +300 % » projetés SANS les chiffres bruts (3→12 %) —
+# la précision complète vit au panneau et dans la note .bib (les 94 % sont
+# l'usage TOTAL ; +300 % = ×4 ; l'analyse R-facts versée à la planche,
+# décision d'auteur par-dessus). Les \n des feuilles = vraies coupures
+# (une écriture par ligne, piège st_write du PLAYBOOK).
 _DONT = [
-    {"en": "Human exam = human learning"},
-    {"en": "Shortcut = the skill-building effort, replaced"},
-    {"en": "94 % UK already use it → the question is HOW"},
+    {"en": "The exam tests YOUR skill — Not the AI"},
+    {"en": "Skip the effort → the skill never forms"},
+    {"en": "94 % UK already use it for the good\nBUT bad usage has grown by 300% since 2024"},
 ]
 _DONT_CITEKEYS = ["hepi-survey-2026"]
 
-# ── Le paradoxe — LE message de la slide ────────────────────────────────────
-_PARADOX = {"en": "Well used → learning ↑ · INSTEAD of learning → cancelled"}
+# ── Le paradoxe — LE message de la slide (formulation NG, grow/shrink) ──────
+_PARADOX = {"en": "Learn WITH it → you grow\nlet it REPLACE you → you shrink"}
 
 _MARKER = {"en": "The exam"}
 _TITLE = {"en": ("The exam stays ", (s.project.titles.keyword, "human"))}
 _TIP_TITLE = {"en": "Tutor, not ghostwriter"}
-_TIP_PROCESS = ({"en": "Process originality"},
-                {"en": ("What is graded is YOUR process: drafts, choices, "
-                        "verification. Keeping your prompts and versions is "
-                        "how you show it.")})
-_TIP_PARADOX = {"en": "The paradox"}
+_TOOLTIP = [
+    ({"en": "How to prove the work is yours"},
+     {"en": ("Graders look at your PROCESS: drafts, prompts, versions, "
+             "choices. Keep them — they are your signature.")}),
+    ({"en": "The paradox, in full"},
+     {"en": ("The same tool that multiplies learning when it assists you "
+             "cancels it when it replaces you. The exam room is where the "
+             "difference shows.")}),
+    ({"en": "The numbers, precisely"},
+     {"en": ("HEPI 2026 (1054 UK undergraduates): 94 % use generative AI in "
+             "some form; directly pasting AI text into GRADED work rose from "
+             "3 % (2024) to 8 % (2025) to 12 % (2026) — that is the "
+             "« +300 % » on screen, a fourfold rise.")}),
+    ({"en": "Why exams stay AI-free"},
+     {"en": ("Assessment is being redesigned in three regimes — AI-free, "
+             "AI-assisted, AI-integrated. The AI-free room measures what "
+             "remains when the tool is gone.")}),
+]
 
 # ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─
 #: Les réglages visuels de la slide vivent ICI, nommés et commentés — jamais
@@ -86,10 +106,7 @@ def build(lang: str = "en", **_):
             with g.cell():
                 st_info_tooltip(
                     title=T(_TIP_TITLE, lang),
-                    entries=[
-                        (T(_TIP_PROCESS[0], lang), T(_TIP_PROCESS[1], lang)),
-                        (T(_TIP_PARADOX, lang), T(_PARADOX, lang)),
-                    ],
+                    entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
         st_space("v", s.project.spacing.title_gap)
         with hero_split(s, zoom=TUNING["zoom"], image=lambda: staged_hero_image(
@@ -99,12 +116,22 @@ def build(lang: str = "en", **_):
                 alt_fallback=("Papercut exam room, silhouette writing, amber orb "
                               "waiting behind the closed door"),
                 variant="pt")):
-            for item in _DONT[:-1]:
-                st_write(bs.item, "▸ ", T(item, lang), tag=t.div)
-            st_write(bs.item, "▸ ", T(_DONT[-1], lang), " ",
-                     citation(*_DONT_CITEKEYS), tag=t.div)
+            # Une écriture PAR ligne (piège \n de st_write) ; le code HEPI se
+            # pose sur la DERNIÈRE ligne de la dernière puce.
+            for i, item in enumerate(_DONT):
+                first, *rest = T(item, lang).split("\n")
+                last_of_deck = i == len(_DONT) - 1 and not rest
+                st_write(bs.item, "▸ ", first,
+                         *((" ", citation(*_DONT_CITEKEYS)) if last_of_deck else ()),
+                         tag=t.div)
+                for j, line in enumerate(rest):
+                    tail = i == len(_DONT) - 1 and j == len(rest) - 1
+                    st_write(bs.item, line,
+                             *((" ", citation(*_DONT_CITEKEYS)) if tail else ()),
+                             tag=t.div)
             st_space("v", "1vh")
-            # Le paradoxe — LE message de la slide — en carte ambre, VISIBLE :
-            # il vivait sous le pli dans l'ancienne pile verticale.
+            # Le paradoxe — LE message de la slide — en carte ambre, VISIBLE,
+            # sur DEUX lignes (formulation NG grow/shrink).
             with st_block(s.project.cards.amber):
-                st_write(bs.paradox, T(_PARADOX, lang), tag=t.div)
+                for line in T(_PARADOX, lang).split("\n"):
+                    st_write(bs.paradox, line, tag=t.div)
