@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `genai_practices` : l'étudiant augmenté en
+       chemin — la silhouette avance sur un sentier lumineux, l'orbe ambre
+       en compagnon d'épaule, les jalons des bonnes pratiques au bord. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- le soleil de papier -->
+  <circle cx="1330" cy="180" r="110" fill="#FFD34D" filter="url(#ds)"/>
+  <circle cx="1330" cy="180" r="150" fill="#FFD34D" opacity="0.25"/>
+  <!-- le sentier lumineux, en lacets vers l'horizon -->
+  <path d="M120 860 q360 -60 560 -140 q260 -100 420 -200 q160 -100 320 -140
+           l0 40 q-160 44 -300 140 q-150 104 -410 204 q-210 82 -570 136 z"
+        fill="#FFF8EA" filter="url(#ds)"/>
+  <!-- les jalons du bord de chemin : liste, boussole, bouclier -->
+  <g filter="url(#ds)">
+    <rect x="300" y="560" width="130" height="170" rx="14" fill="#5AC8FA"/>
+    <line x1="325" y1="605" x2="405" y2="605" stroke="#FFF8EA" stroke-width="12"/>
+    <line x1="325" y1="650" x2="405" y2="650" stroke="#FFF8EA" stroke-width="12"/>
+    <line x1="325" y1="695" x2="380" y2="695" stroke="#FFF8EA" stroke-width="12"/>
+  </g>
+  <g filter="url(#ds)">
+    <circle cx="760" cy="470" r="74" fill="#4FD1C5"/>
+    <polygon points="760,414 784,470 760,526 736,470" fill="#FFF8EA"/>
+  </g>
+  <g filter="url(#ds)">
+    <path d="M1105 300 q55 22 110 0 l0 88 q0 66 -55 96 q-55 -30 -55 -96 z" fill="#FF6F61"/>
+    <path d="M1130 368 l22 24 l40 -52" stroke="#FFF8EA" stroke-width="14" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- la silhouette de l'étudiant, sac au dos, en marche -->
+  <g filter="url(#ds)">
+    <circle cx="560" cy="596" r="46" fill="#6B5CA5"/>
+    <path d="M520 640 q40 -22 80 0 l16 150 q-56 22 -112 0 z" fill="#6B5CA5"/>
+    <rect x="596" y="668" width="46" height="72" rx="20" fill="#B79CED"/>
+    <path d="M540 786 l-24 74 l30 0 l22 -60 z" fill="#6B5CA5"/>
+    <path d="M596 786 l20 74 l30 0 l-16 -78 z" fill="#6B5CA5"/>
+  </g>
+  <!-- l'orbe ambre, compagnon d'épaule, et son fil de lumière -->
+  <circle cx="700" cy="520 " r="40" fill="#FFB84D" filter="url(#ds)"/>
+  <circle cx="700" cy="520" r="62" fill="#FFB84D" opacity="0.3"/>
+  <path d="M700 560 q-40 30 -84 6" stroke="#FFB84D" stroke-width="8" fill="none" opacity="0.7"/>
+</svg>

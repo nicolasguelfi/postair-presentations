@@ -153,6 +153,10 @@ st_book(
         # forte, un texte en gros — jamais quatre revers sur une slide.
         blocks.bck_genai_limit_bias,     # G8a · bias in, bias out
         blocks.bck_genai_limit_control,  # G8b · who controls the models
+        
+        # Ouverture de section (NG 2026-09-02) : tout ce qui suit est le
+        # versant « bien s'en servir » — l'étudiant augmenté.
+        blocks.bck_genai_good_practices, # G8½ · Good practices, l'étudiant augmenté
         blocks.bck_genai_limit_data,     # G8c · your data is the raw material
         blocks.bck_genai_limit_brain,    # G8d · the brain is a muscle
         blocks.bck_genai_guardrails,     # G8e · le contrepoint : les garde-fous
