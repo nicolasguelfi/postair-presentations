@@ -36,7 +36,7 @@ class BlockStyles:
 bs = BlockStyles
 
 _MARKER = {"en": "4 approaches", "fr": "4 approches"}
-_TITLE = {"en": ("Four ways to ", (s.project.titles.keyword, "improve a model")), "fr": ("Quatre façons d’", (s.project.titles.keyword, "améliorer un modèle"))}
+_TITLE = {"en": ("Four ways to ", (s.project.titles.keyword, "improve the predictions")), "fr": ("Quatre façons d’", (s.project.titles.keyword, "améliorer les prédictions"))}
 
 _APPROACHES = [
     {"icon": "💬", "label": {"en": "Prompt engineering", "fr": "Prompt engineering"},
@@ -73,7 +73,7 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(120), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -94,7 +94,7 @@ def build(lang: str = "en", **_):
                         st_write(bs.label, T(a["label"], lang), tag=t.div)
                         st_space("v", "1vh")
                         st_write(bs.line, T(a["line"], lang), tag=t.div)
-        st_space("v", "5vh")
+        st_space("v", "1vh")
         with st_zoom(130):
             for line in T(_PUNCH, lang):
                 st_write(bs.punch, line, tag=t.div)

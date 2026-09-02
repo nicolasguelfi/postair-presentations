@@ -19,7 +19,8 @@ dessein (1' / 0,5' / 1') : la démo se joue en une minute.
 SPEAKER NOTES:
 Never presented — a widget demo. Click Start, watch the chain hand over at
 each zero; PageDown, click Start again, watch the three run together. The ↺
-resets. Real decks call the widget with their own list.
+resets. Real decks call the widget with their own list. Each zero now rings —
+bell on the chain, chime/gong across the parallel row, Discuss stays muted.
 """
 # @guideline: postair-minimal
 
@@ -40,7 +41,18 @@ bs = BlockStyles
 #: Réglages datés (2026-09-01) : la liste de durées de la DÉMO — courte à
 #: dessein. Un deck consommateur portera SA liste dans SON bloc.
 TUNING = {
-    "steps": [({"en": "Read", "fr": "Lire"}, 1), ({"en": "Discuss", "fr": "Discuter"}, 0.5), ({"en": "Vote", "fr": "Voter"}, 1)],
+    # Alarme (NG 2026-09-02) : le 3e élément OPTIONNEL d'un pas surcharge le
+    # global — un timbre (str), « off » (carte muette), ou {"alarm": …,
+    # "volume": …}. La démo montre les trois régimes : héritage · mutisme ·
+    # surcharge ; cloche sur la chaîne, carillon sur la parallèle, gong sur
+    # Vote. Défaut du widget = silence. Documentation projetée : l'entrée
+    # « Alarm » de _TOOLTIP (libellé validé NG, planche auditj6 2026-09-02).
+    "steps": [({"en": "Read", "fr": "Lire"}, 1),
+              ({"en": "Discuss", "fr": "Discuter"}, 0.5, "off"),
+              ({"en": "Vote", "fr": "Voter"}, 1, {"alarm": "gong", "volume": 1.0})],
+    "alarm_chain": "bell",
+    "alarm_parallel": "chime",
+    "alarm_volume": 0.6,
     # Le temps 1 laisse la grille COMPACTE par défaut (3 → 2×2 avec un trou,
     # spécification NG 2026-09-02 : remplissage gauche→droite, haut→bas) ;
     # le temps 2 force la rangée (1, 3) — la démo montre les deux régimes.
@@ -78,12 +90,22 @@ _TOOLTIP = [
     ({"en": "At zero", "fr": "À zéro"},
      {"en": ("The INITIAL duration in translucent red — same width as every "
              "other state, colour alone says « done », in both modes."), "fr": "La durée INITIALE en rouge translucide — même largeur que tous les autres états, la couleur seule dit « fini », dans les deux modes."}),
+    #: Réinsérée le 2026-09-02 (planche auditj6, alarmlbl=p1 : libellé EN
+    #: validé par NG) — elle était parquée hors du texte projeté en
+    #: attendant cette validation, la baseline se regèle avec le lot.
+    ({"en": "Alarm", "fr": "Alarme"},
+     {"en": ("Optional sound at zero — silent by default. alarm= picks a "
+             "WebAudio-synthesised timbre (bell, beep, chime, gong — no audio "
+             "file, the room is offline), alarm_volume= sets the intensity "
+             "(0–1, perceptual); a third element in a step overrides both for "
+             "that card (« off » mutes it). Browsers unlock audio on a click "
+             "only — any button of the rack arms it. Here: bell on the chain, "
+             "chime on the parallel row, Discuss muted, Vote a full-volume gong."), "fr": "Son optionnel au zéro — silence par défaut. alarm= choisit un timbre synthétisé en WebAudio (cloche, bip, carillon, gong — aucun fichier audio, la salle est hors réseau), alarm_volume= règle l’intensité (0–1, perceptive) ; un troisième élément d’un pas surcharge les deux pour cette carte (« off » la rend muette). Le navigateur ne débloque le son qu’au clic — n’importe quel bouton du rack l’arme. Ici : cloche sur la chaîne, carillon sur la rangée parallèle, Discuter muette, Voter en gong plein volume."}),
     ({"en": "To relocate", "fr": "À déménager"},
      {"en": ("This demo lives in the genai backup annex only while the "
              "consumer deck is unnamed — moving it is one thin block in that "
              "deck plus one book line."), "fr": "Cette démo ne vit dans l’annexe backup de genai que tant que le deck consommateur n’est pas nommé — la déplacer, c’est un bloc mince dans ce deck plus une ligne de book."}),
 ]
-
 
 def _header(title_sheet, line_sheet, lang: str) -> None:
     with st_grid(cols="92% 8%",
@@ -102,7 +124,9 @@ def _header(title_sheet, line_sheet, lang: str) -> None:
 
 def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
-    steps = [(T(label, lang), minutes) for label, minutes in TUNING["steps"]]
+    # La résolution i18n ne touche que l'étiquette : le 3e élément éventuel
+    # d'un pas est de la CONFIG d'alarme, pas du texte projeté — il traverse.
+    steps = [(T(step[0], lang), *step[1:]) for step in TUNING["steps"]]
     # ── Temps 1 : le mode chaîne ────────────────────────────────────────────
     # `key` unique par rangée — l'export inline les deux temps dans le même
     # document, deux rangées sans clé partageraient leur bus.
@@ -110,11 +134,15 @@ def build(lang: str = "en", **_):
         _header(_TITLE, _LINE_CHAIN, lang)
         # Grille compacte par défaut : 3 compteurs → 2×2 avec un trou.
         st_countdown_rack(s, steps, mode="chain", key="genai-demo-chain",
-                          rack_vh=TUNING["rack_vh"], scale=TUNING["scale"])
+                          rack_vh=TUNING["rack_vh"], scale=TUNING["scale"],
+                          alarm=TUNING["alarm_chain"],
+                          alarm_volume=TUNING["alarm_volume"])
     st_slide_break(marker_hidden=True)
     # ── Temps 2 : le mode parallèle, en rangée forcée (1, 3) ────────────────
     with st_block(s.project.containers.page_fill_top):
         _header(_TITLE_PAR, _LINE_PAR, lang)
         st_countdown_rack(s, steps, mode="parallel", key="genai-demo-parallel",
                           grid=TUNING["grid_parallel"],
-                          rack_vh=TUNING["rack_vh"], scale=TUNING["scale"])
+                          rack_vh=TUNING["rack_vh"], scale=TUNING["scale"],
+                          alarm=TUNING["alarm_parallel"],
+                          alarm_volume=TUNING["alarm_volume"])

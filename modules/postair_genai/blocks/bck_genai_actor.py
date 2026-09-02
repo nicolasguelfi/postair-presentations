@@ -109,7 +109,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(150), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -118,7 +118,7 @@ def build(lang: str = "en", **_):
                     entries=[*[(T(h, lang), T(d, lang)) for h, d in _TIP],
                              (T(_TIP_COMPANIONS, lang), T(_MASCOT_WHY, lang))],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "2vh")
         # La ligne des compagnons — AUTONOME, sous le titre (NG 2026-09-02).
         with st_grid(cols=s.project.grids.balanced(len(_MASCOTS)), gap="1vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -136,9 +136,10 @@ def build(lang: str = "en", **_):
                               "three small companions beside it"),
                 stage_vh=TUNING["hero_vh"])):
             # Les trois verbes — en puces, une par ligne.
-            for v in _VERBS:
-                st_write(bs.verbs, "▸ ", T(v, lang), tag=t.div)
-            st_space("v", "1vh")
-            # La citation-boussole de NG, avec son code visible.
-            st_write(bs.quote, "« ", T(_QUOTE, lang), " » ",
-                     citation(*_CITEKEYS), tag=t.div)
+            with st_zoom(120):
+                for v in _VERBS:
+                    st_write(bs.verbs, "▸ ", T(v, lang), tag=t.div)
+                st_space("v", "1vh")
+                # La citation-boussole de NG, avec son code visible.
+                st_write(bs.quote, "« ", T(_QUOTE, lang), " » ",
+                        citation(*_CITEKEYS), tag=t.div)

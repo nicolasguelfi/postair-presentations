@@ -149,6 +149,7 @@ st_book(
         # en fin de book (décision NG drafts1 annexe=p1, 2026-09-01) : le flux
         # se recentre sur la compréhension du génératif, rien n'est supprimé.
         blocks.bck_genai_hallucinations,  # G7 · the fabricated case, projected
+        blocks.bck_genai_techniques,   # 4 voies pour améliorer un LLM
         # G8, découpé en quatre (NG 2026-08-11) : un message fort, une image
         # forte, un texte en gros — jamais quatre revers sur une slide.
         blocks.bck_genai_guardrails,     # G8e · le contrepoint : les garde-fous
@@ -180,7 +181,6 @@ st_book(
         blocks.bck_genai_bk_rag,          # bk · hallucinations, le remède
         blocks.bck_genai_bk_compute,      # bk · la facture d'entraînement
         blocks.bck_genai_bk_framing,      # bk · même question, deux réponses
-        blocks.bck_genai_bk_approaches,   # bk · 4 voies pour améliorer un LLM
         blocks.bck_genai_bk_aiact,        # bk · la pyramide EU AI Act
         blocks.bck_genai_bk_skills,       # bk · quelles compétences pour 2030
         blocks.bck_genai_bk_moralmachine, # bk · 40 M de décisions + contrepoint

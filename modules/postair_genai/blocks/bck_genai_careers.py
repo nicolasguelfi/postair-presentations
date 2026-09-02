@@ -99,7 +99,7 @@ def build(lang: str = "en", **_):
     wef = next(f for f in section("jobs") if f["id"] == "wef-outlook")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(150), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -130,7 +130,7 @@ def build(lang: str = "en", **_):
         # l'infobulle ; l'écran porte la forme courte. Pied à zoom 90 (porte
         # projection 2026-09-02 : la ligne ambre repliée en deux débordait
         # de ×1.08 à 1920×1080).
-        with st_zoom(90):
+        with st_zoom(130):
             st_write(bs.frame, T(_FRAME_CLAIM, lang), " · ", text(wef["short"], lang), " ",
                      citation(*citekeys(wef)), tag=t.div)
             st_space("v", "1vh")

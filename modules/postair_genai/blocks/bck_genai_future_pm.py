@@ -63,8 +63,7 @@ _HERO_PROMPT = (
 _MARKER = {"en": "Your place", "fr": "Votre place"}
 _TITLE = {"en": ("All ", (s.project.titles.keyword, "project managers")), "fr": ("Tous ", (s.project.titles.keyword, "chefs de projet"))}
 _LABEL = {"en": "You will all be project managers", "fr": "Vous serez tous chefs de projet"}
-_MESSAGE = {"en": ("Generative assistants → professional production · your "
-                   "place: DIRECT · JUDGE · OWN IT"), "fr": "Assistants génératifs → production professionnelle · votre place : DIRIGER · JUGER · ASSUMER"}
+_MESSAGE = {"en": ("Generative assistants → professional production\nYou: LEAD · PRODUCE · BE ACCOUNTABLE"), "fr": "Assistants génératifs → production professionnelle · vous : PILOTER · PRODUIRE · ASSUMER"}
 #: La maxime dans les deux langues — l'anglaise en ambre porte le message,
 #: l'originale française de l'auteur se lit telle quelle.
 _PUNCH = {"en": "How do you have it done, if you do not know how to do it?", "fr": "Comment faire faire, si nous ne savons pas faire ?"}
@@ -72,8 +71,7 @@ _PUNCH = {"en": "How do you have it done, if you do not know how to do it?", "fr
 #: dans les deux langues (comme un nom propre — les données ne se traduisent
 #: pas).
 _PUNCH_ORIGINAL = "« Comment faire faire, si nous ne savons pas faire ? »"
-_ANSWER = {"en": ("You can only direct what you can judge → learn the craft "
-                  "DURING your studies"), "fr": "On ne dirige que ce qu’on sait juger → apprenez le métier PENDANT vos études"}
+_ANSWER = {"en": ("You can only direct what you can judge\n→\nlearn the craft DURING your studies"), "fr": "On ne dirige que ce qu’on sait juger\n→\napprenez le métier PENDANT vos études"}
 _TIP_HEAD = {"en": "Why this is the hard part", "fr": "Pourquoi c’est la partie difficile"}
 #: La suite LOCALE de la phrase du survol — le chiffre WEF et sa phrase
 #: viennent du fait partagé ``jobs``/``wef-outlook`` de facts.json.
@@ -88,7 +86,7 @@ def build(lang: str = "en", **_):
     wef = next(f for f in section("jobs") if f["id"] == "wef-outlook")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(150), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang), tag=t.div,
                          toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -97,7 +95,7 @@ def build(lang: str = "en", **_):
                                           text(wef["claim"], lang) + " "
                                           + T(_DETAIL_LOCAL, lang))])
         st_space("v", s.project.spacing.title_gap)
-        with hero_split(s, image=lambda: staged_hero_image(
+        with hero_split(s, ratio=35, image=lambda: staged_hero_image(
                 "genai_conductor", _HERO_PROMPT,
                 "images/genai_conductor_fallback.svg",
                 alt_ready=("Papercut silhouette on a podium conducting plain amber "
@@ -106,15 +104,12 @@ def build(lang: str = "en", **_):
                 alt_fallback=("Papercut conductor silhouette directing amber orbs "
                               "producing paper sheets"),
                 variant="sq")):
+
             st_write(bs.message, T(_MESSAGE, lang), " ",
                      citation(*citekeys(wef)), tag=t.div)
-            st_space("v", "1vh")
+            st_space("v", "4vh")
             with st_block(s.project.cards.amber):
                 st_write(bs.punch, T(_PUNCH, lang), tag=t.div)
-                # La caption « formule originale » ne s'affiche que si elle
-                # DIFFÈRE de la maxime projetée — en FR la feuille EST
-                # l'originale, la répéter serait un doublon (i18n 2026-09-02).
-                if T(_PUNCH, lang) not in _PUNCH_ORIGINAL:
-                    st_write(bs.punch_original, _PUNCH_ORIGINAL, tag=t.div)
-            st_space("v", "1vh")
-            st_write(bs.answer, T(_ANSWER, lang), tag=t.div)
+            st_space("v", "4vh")
+            with st_zoom(120):
+                st_write(bs.answer, T(_ANSWER, lang), tag=t.div)

@@ -137,12 +137,20 @@ def st_countdown(minutes: int, label: str = "Back in", height: int = 340,
     st_html(html, height=height)
 
 
-def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
+#: Les timbres d'alarme du rack — SYNTHÉTISÉS en WebAudio (oscillateurs +
+#: enveloppes), jamais des fichiers : aucun média dans git, et l'amphi est
+#: hors réseau — un son qui dépend d'un octet distant est un son muet.
+#: Liste blanche : elle borne ce qui descend dans le JS (garde d'injection).
+_ALARM_SOUNDS = ("bell", "beep", "chime", "gong")
+
+
+def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                       *, key: str, grid: tuple[int, int] | None = None,
                       rack_vh: float = 62,
                       ends_at_label: str = "ends at",
                       start_all_label: str = "▶ Start", reset_all_label: str = "↺ Reset",
-                      height: int | None = None, scale: float = 1.0) -> None:
+                      height: int | None = None, scale: float = 1.0,
+                      alarm: str | None = None, alarm_volume: float = 0.6) -> None:
     """Une rangée de comptes à rebours sur une VRAIE grille streamtex.
 
     Décisions NG (planche chrono ``archi=p1 moteur=p1 commande=p1
@@ -207,8 +215,18 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
     - **Identifiants DOM scopés par rangée et par carte** : l'export inline
       toutes les slides dans UN document — des ids nus (``cdr-digits``)
       accrocheraient tous les scripts à la première carte ; chaque fragment
-      cherche donc ses éléments SOUS sa racine ``cdr-<key>-…``. Aucun son
-      (R7) — la couleur fait l'annonce.
+      cherche donc ses éléments SOUS sa racine ``cdr-<key>-…``. **Silence
+      par défaut, alarme opt-in** (NG 2026-09-02) — la couleur porte
+      l'accompli, ``alarm=`` y ajoute un timbre.
+    - **Alarme (NG 2026-09-02)** : opt-in, silence par défaut ; timbres
+      SYNTHÉTISÉS en WebAudio (``bell``/``beep``/``chime``/``gong`` — aucun
+      média dans git, l'amphi est hors réseau) ; ``alarm_volume`` 0–1
+      perceptif ; 3ᵉ élément optionnel d'un pas = surcharge par carte
+      (timbre, ``"off"``, ou ``{"alarm": …, "volume": …}``) ; le navigateur
+      ne débloque l'audio qu'après un geste — chaque clic sur le rack arme
+      le contexte (unique, sur le document parent), le relais de chaîne
+      hérite du déblocage. Sans alarme, la sortie HTML est BYTE-IDENTIQUE à
+      l'existant (contrat baseline i18n).
     """
     if mode not in ("chain", "parallel"):
         raise ValueError(f"mode inconnu : {mode!r} — « chain » ou « parallel »")
@@ -218,6 +236,88 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
         raise ValueError("st_countdown_rack : `key` est obligatoire et unique "
                          "par rangée (l'export inline toutes les slides dans "
                          "un seul document)")
+    # ── Alarme (NG 2026-09-02) : tout se valide ICI, AVANT toute
+    # interpolation — liste blanche + bornes numériques, puis json.dumps :
+    # rien de textuel libre ne descend jamais dans le JS des fragments.
+    if alarm is not None and alarm != "off" and alarm not in _ALARM_SOUNDS:
+        raise ValueError(
+            f"st_countdown_rack : timbre inconnu {alarm!r} — "
+            f"{', '.join(_ALARM_SOUNDS)}, « off » ou None")
+    if not isinstance(alarm_volume, (int, float)) or not 0.0 <= alarm_volume <= 1.0:
+        raise ValueError(
+            f"st_countdown_rack : alarm_volume {alarm_volume!r} hors [0, 1]")
+    global_sound = None if alarm in (None, "off") else alarm
+
+    def _resolve_alarm(spec, i):
+        """Le réglage RÉSOLU d'une carte : {"sound", "vol"} ou None (muette).
+
+        Le 3ᵉ élément d'un pas surcharge le global — la config vit à CÔTÉ de
+        la durée dans le TUNING de l'appelant et survit aux réordonnancements
+        (retenu contre un dict indexé, désynchronisable). Erreur BRUYANTE sur
+        toute forme inattendue : un réglage silencieusement ignoré sonnerait
+        (ou se tairait) en séance, le pire moment pour le découvrir.
+        """
+        sound, vol = global_sound, float(alarm_volume)
+        if spec is None:
+            pass
+        elif isinstance(spec, str):
+            if spec != "off" and spec not in _ALARM_SOUNDS:
+                raise ValueError(
+                    f"st_countdown_rack : pas #{i}, timbre inconnu {spec!r} — "
+                    f"{', '.join(_ALARM_SOUNDS)} ou « off »")
+            sound = None if spec == "off" else spec
+        elif isinstance(spec, dict):
+            unknown = set(spec) - {"alarm", "volume"}
+            if unknown:
+                raise ValueError(
+                    f"st_countdown_rack : pas #{i}, clé(s) d'alarme "
+                    f"inconnue(s) {sorted(unknown)!r} — « alarm » et/ou "
+                    f"« volume »")
+            if "alarm" in spec:
+                cand = spec["alarm"]
+                if cand in (None, "off"):
+                    sound = None
+                elif cand in _ALARM_SOUNDS:
+                    sound = cand
+                else:
+                    raise ValueError(
+                        f"st_countdown_rack : pas #{i}, timbre inconnu "
+                        f"{cand!r} — {', '.join(_ALARM_SOUNDS)}, « off » ou "
+                        f"None")
+            if "volume" in spec:
+                cand = spec["volume"]
+                if not isinstance(cand, (int, float)) or not 0.0 <= cand <= 1.0:
+                    raise ValueError(
+                        f"st_countdown_rack : pas #{i}, volume {cand!r} "
+                        f"hors [0, 1]")
+                vol = float(cand)
+        else:
+            raise ValueError(
+                f"st_countdown_rack : pas #{i}, 3ᵉ élément de type "
+                f"{type(spec).__name__} — attendu un timbre (str), « off » "
+                f"ou un dict {{'alarm': …, 'volume': …}}")
+        # Volume nul = mutisme : le JS ne reçoit alors AUCUN spec.
+        if sound is None or vol <= 0:
+            return None
+        return {"sound": sound, "vol": vol}
+
+    norm = []  # triplets (étiquette, minutes, spec) — spec = dict ou None
+    for i, step in enumerate(steps):
+        if len(step) == 2:
+            label, minutes = step
+            spec = None
+        elif len(step) == 3:
+            label, minutes, spec = step
+        else:
+            raise ValueError(
+                f"st_countdown_rack : pas #{i} de longueur {len(step)} — "
+                f"attendu (étiquette, minutes) ou (étiquette, minutes, "
+                f"alarme)")
+        norm.append((label, minutes, _resolve_alarm(spec, i)))
+    #: Le contrat cardinal : rack muet ⇒ TOUS les fragments d'alarme valent
+    #: "" et le HTML émis est BYTE-IDENTIQUE à l'existant — c'est ce qui
+    #: protège les baselines i18n des decks qui n'opinent pas (opening).
+    rack_alarmed = any(sp for _l, _m, sp in norm)
     from streamtex import st_block, st_grid
 
     rack_id = json.dumps(key)
@@ -242,7 +342,7 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
         # Première peinture avant l'auto-mesure (référence fenêtre 1080 px) ;
         # le script du cadran se recale aussitôt sur la fenêtre réelle.
         height = int(round(dial_vh * 10.8))
-    secs = [max(1, round(minutes * 60)) for _label, minutes in steps]
+    secs = [max(1, round(minutes * 60)) for _label, minutes, _sp in norm]
     # Racine DOM unique par rangée : l'export inline tout dans UN document.
     dom = "cdr-" + re.sub(r"[^a-zA-Z0-9_-]", "-", key)
 
@@ -253,6 +353,121 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
   var bus = P.__cdrBus = P.__cdrBus || {{}};
   var rack = bus[{rack_id}] = bus[{rack_id}] || {{cards: {{}}, mode: {json.dumps(mode)}, n: {n}}};
 """
+    # ── Le cœur audio, appendu au PRÉLUDE quand le rack sonne ───────────────
+    # Le prélude est déjà dupliqué dans CHAQUE fragment : y loger l'alarme
+    # donne à chaque realm sa propre copie des fonctions (les realms d'iframe
+    # meurent au rerun — jamais de fonction partagée via le bus) tout en
+    # n'écrivant le code qu'à UN endroit Python. Chaîne ORDINAIRE (pas une
+    # f-string) : accolades JS simples, rien n'y est interpolé.
+    if rack_alarmed:
+        bus_js += """\
+  // ── Alarme de fin (NG 2026-09-02) ── UN AudioContext par page, créé par
+  // le constructeur du PARENT (P.AudioContext) et rangé sur P.__cdrAudio :
+  // il survit aux iframes reconstruites au rerun (contrat __cdrBus) et
+  // respecte le plafond navigateur (~6 contextes). Politique autoplay :
+  // créé/réveillé UNIQUEMENT dans un geste — l'activation d'une iframe
+  // srcdoc même origine se propage au parent (spec HTML). Un échec audio ne
+  // casse JAMAIS le chrono : tout sous try/catch, silence assumé.
+  function armAudio() {
+    try {
+      var C = P.AudioContext || P.webkitAudioContext;
+      if (!C) return;
+      var a = P.__cdrAudio = P.__cdrAudio || new C();
+      if (a.state === 'suspended') a.resume();
+      if (!a.__kicked) {           // ceinture Safari/iOS : un tampon MUET
+        var src = a.createBufferSource();          // joué dans le geste vaut
+        src.buffer = a.createBuffer(1, 1, 22050);  // autorisation là où
+        src.connect(a.destination); src.start(0);  // resume() seul ne suffit
+        a.__kicked = true;                         // pas
+      }
+    } catch (e) {}
+  }
+  // TRIM égalise la sonie PERÇUE entre timbres (graves ≠ aigus à gain
+  // égal) — LE bouton de recalibrage à l'oreille, en un seul endroit.
+  var TRIM = {bell: 0.50, beep: 0.35, chime: 0.60, gong: 0.45};
+  // Une voix : oscillateur + rampe linéaire d'attaque + extinction
+  // EXPONENTIELLE vers 0.0001 — jamais de coupure sèche, pas de claquement
+  // dans la sono de l'amphi.
+  function vc(a, out, type, freq, t0, atk, peak, decay) {
+    var o = a.createOscillator(), g = a.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.linearRampToValueAtTime(peak, t0 + atk);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + atk + decay);
+    o.connect(g); g.connect(out);
+    o.start(t0); o.stop(t0 + atk + decay + 0.05);
+  }
+  function ring(sp) {
+    if (!sp || sp.vol <= 0) return;
+    var a = P.__cdrAudio;
+    if (!a) return;
+    try {
+      if (a.state === 'suspended') a.resume();
+      if (a.state !== 'running') return;
+      var t0 = a.currentTime + 0.02;
+      var master = a.createGain();
+      // pow(1.6) : l'oreille est logarithmique, le curseur devient honnête.
+      master.gain.value = Math.pow(sp.vol, 1.6) * (TRIM[sp.sound] || 0.5);
+      master.connect(a.destination);
+      if (sp.sound === 'beep') {
+        // Trois carrés brefs au passe-bas 3 kHz : le carré nu agresse la
+        // sono, le filtre garde le mordant sans les harmoniques criardes.
+        var lp = a.createBiquadFilter();
+        lp.type = 'lowpass'; lp.frequency.value = 3000;
+        lp.connect(master);
+        for (var b = 0; b < 3; b++) {
+          vc(a, lp, 'square', 1046.5, t0 + b * 0.22, 0.01, 1.0, 0.12);
+        }
+      } else if (sp.sound === 'chime') {
+        // Carillon : arpège C5–E5–G5 en triangle, doublé d'une octave
+        // sinus discrète — le timbre « fin de tour » sans dureté.
+        var notes = [523.25, 659.25, 783.99];
+        for (var c = 0; c < notes.length; c++) {
+          vc(a, master, 'triangle', notes[c], t0 + c * 0.18, 0.01, 0.8, 1.2);
+          vc(a, master, 'sine', notes[c] * 2, t0 + c * 0.18, 0.01, 0.25, 0.9);
+        }
+      } else if (sp.sound === 'gong') {
+        // Gong : six partiels INHARMONIQUES sur 98 Hz derrière un passe-bas
+        // qui se referme (1200 → 300 Hz) — le métal s'assombrit en
+        // s'éteignant, comme le vrai.
+        var lp2 = a.createBiquadFilter();
+        lp2.type = 'lowpass';
+        lp2.frequency.setValueAtTime(1200, t0);
+        lp2.frequency.exponentialRampToValueAtTime(300, t0 + 2.5);
+        lp2.connect(master);
+        var gp = [1.0, 1.52, 2.01, 2.66, 3.22, 4.16];
+        for (var p2 = 0; p2 < gp.length; p2++) {
+          vc(a, lp2, 'sine', 98 * gp[p2], t0, 0.02, 0.9 / (1 + p2 * 0.4), 2.5);
+        }
+      } else {
+        // Cloche (défaut) : quatre partiels inharmoniques sur 660 Hz,
+        // frappe brève — les rapports non entiers font le « métal ».
+        var bp = [1.0, 2.0, 2.92, 4.07];
+        for (var p3 = 0; p3 < bp.length; p3++) {
+          vc(a, master, 'sine', 660 * bp[p3], t0, 0.005, 0.9 / (1 + p3 * 0.6), 0.9);
+        }
+      }
+    } catch (e) {}
+  }
+"""
+    # Les fragments conditionnels — "" quand le rack est muet : c'est LA
+    # garantie de sortie byte-identique (contrat baseline i18n ci-dessus).
+    # UN listener d'armement sur la racine de CHAQUE fragment (les clics
+    # boutons bullent jusqu'à elle) : le cas critique est la chaîne lancée
+    # par ▶ Start global — la carte qui sonnera n'a jamais été cliquée,
+    # seul le geste sur le fragment global porte alors le déblocage.
+    global_arm = ("\n  root.addEventListener('click', armAudio);"
+                  if rack_alarmed else "")
+    card_arm = global_arm
+    # ring() APRÈS paint() et AVANT le relais de chaîne : les DEUX modes
+    # passent par cette branche, et un start() du relais qui jetterait
+    # n'empêcherait pas la sonnerie.
+    ring_tick = "\n      ring(ALARM);" if rack_alarmed else ""
+    # ⏸ dans la fenêtre de 250 ms après expiration : le clamp pose 0 sans
+    # passer par tick — le temps EST écoulé, le zéro sonne. Pas de double
+    # sonnerie : la branche zéro de tick pose endAt=null avant, donc pause()
+    # sort en tête sans repasser ici.
+    ring_pause = "if (isDone()) ring(ALARM);\n    " if rack_alarmed else ""
 
     # ── Les boutons globaux — un petit fragment au-dessus de la grille ──────
     st_html(f"""
@@ -268,7 +483,7 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
 <script>
 (function () {{
 {bus_js}
-  var root = document.getElementById('{dom}-all');
+  var root = document.getElementById('{dom}-all');{global_arm}
   if (window.frameElement) {{
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
@@ -297,7 +512,11 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
     with st_grid(cols=f"repeat({cols}, minmax(0, 1fr))", gap="1.2vw",
                  grid_style=s.project.grids.stretch,
                  cell_styles=s.project.containers.grid_cell_centered) as g:
-        for i, (label, _minutes) in enumerate(steps):
+        for i, (label, _minutes, _sp) in enumerate(norm):
+            # Le spec de CETTE carte descend en JSON (garde d'injection) —
+            # null pour une carte muette : ring(null) se tait.
+            card_alarm_var = (f"\n  var ALARM = {json.dumps(norm[i][2])};"
+                              if rack_alarmed else "")
             with g.cell(), st_block(s.project.cards.blue):
                 # MAXIMISATION (NG 2026-09-02) : l'étiquette vit DANS le
                 # cadran et tout le contenu remplit la cellule — chaque
@@ -334,8 +553,8 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
 <script>
 (function () {{
 {bus_js}
-  var IDX = {i}, TOTAL = {secs[i]};
-  var root = document.getElementById('{dom}-c{i}');
+  var IDX = {i}, TOTAL = {secs[i]};{card_alarm_var}
+  var root = document.getElementById('{dom}-c{i}');{card_arm}
   var digits = root.querySelector('.cdr-digits');
   var at = root.querySelector('.cdr-at');
   var remaining = TOTAL, endAt = null, timer = null;
@@ -384,7 +603,7 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
     if (remaining <= 0) {{
       remaining = 0; endAt = null;
       clearInterval(timer); timer = null;
-      paint();
+      paint();{ring_tick}
       if (rack.mode === 'chain') {{
         var ids = Object.keys(rack.cards).map(Number).sort(function (a, b) {{ return a - b; }});
         for (var k = 0; k < ids.length; k++) {{
@@ -419,7 +638,7 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
     endAt = null;
     if (timer) {{ clearInterval(timer); timer = null; }}
     at.innerHTML = '&nbsp;';
-    paint();
+    {ring_pause}paint();
   }}
   function reset() {{
     if (timer) {{ clearInterval(timer); timer = null; }}
