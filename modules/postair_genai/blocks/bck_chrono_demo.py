@@ -43,8 +43,10 @@ TUNING = {
     # Le temps 1 laisse la grille COMPACTE par défaut (3 → 2×2 avec un trou,
     # spécification NG 2026-09-02 : remplissage gauche→droite, haut→bas) ;
     # le temps 2 force la rangée (1, 3) — la démo montre les deux régimes.
+    # Trio de leviers (chronoh leviers=p1) : grid · rack_vh (place verticale
+    # totale, % de fenêtre) · scale (zoom fin du contenu).
     "grid_parallel": (1, 3),
-    "height": None,     # auto selon le nombre de lignes
+    "rack_vh": 62,
     "scale": 1.0,
 }
 
@@ -107,11 +109,11 @@ def build(lang: str = "en", **_):
         _header(_TITLE, _LINE_CHAIN, lang)
         # Grille compacte par défaut : 3 compteurs → 2×2 avec un trou.
         st_countdown_rack(s, steps, mode="chain", key="genai-demo-chain",
-                          height=TUNING["height"], scale=TUNING["scale"])
+                          rack_vh=TUNING["rack_vh"], scale=TUNING["scale"])
     st_slide_break(marker_hidden=True)
     # ── Temps 2 : le mode parallèle, en rangée forcée (1, 3) ────────────────
     with st_block(s.project.containers.page_fill_top):
         _header(_TITLE_PAR, _LINE_PAR, lang)
         st_countdown_rack(s, steps, mode="parallel", key="genai-demo-parallel",
                           grid=TUNING["grid_parallel"],
-                          height=TUNING["height"], scale=TUNING["scale"])
+                          rack_vh=TUNING["rack_vh"], scale=TUNING["scale"])
