@@ -45,36 +45,37 @@ SCALE = ScaleConfig(base_pt_desktop=30, tablet_scale=0.70, mobile_scale=0.55)
 PROJECTION_REF = (1920, 1080)
 LAPTOP_REF = (1728, 1117)
 
-#: Les profils de SECOURS DE SALLE, partagés par les 7 decks paginés
-#: (``st_book(presentation_profiles=postair_profiles())``) — le hub
+#: Les RACCOURCIS DE ZOOM du panneau latéral, partagés par les 7 decks
+#: paginés (``st_book(presentation_profiles=postair_profiles())``) — le hub
 #: ``collection`` (continu) n'en reçoit pas : un profil paginé le
 #: basculerait. Le profil actif au démarrage reste « Default », construit
 #: par la librairie depuis les réglages du book : le rendu au démarrage ne
-#: bouge pas d'un pixel. Ces profils sont le levier de TOLÉRANCE aux salles
-#: différentes (décision ecran2 profils=p1) : un projecteur inattendu = UN
-#: geste dans le panneau, toutes les slides s'ajustent ensemble, zéro slide
-#: éditée. Les coupures reflètent le réglage commun des 7 books (FULL,
-#: 30 vh) pour qu'un changement de profil ne change QUE le zoom.
+#: bouge pas d'un pixel — Default EST le mode de calage et de séance.
 #:
-#: ⚠ Distinct du dispositif RETIRÉ le 2026-08-12 (docstring ci-dessus) :
-#: l'ancien appliquait un zoom AUTOMATIQUE par détection d'appareil et se
-#: cumulait avec les plafonds vw sur petits écrans. Ceux-ci sont des replis
-#: MANUELS d'orateur, pensés pour des écrans larges (≥ ~1400 px) où les
-#: plafonds ne mordent pas — leurs zooms sont étalonnés par la porte de
-#: projection, jamais à l'aveugle.
+#: Renommage NG (2026-09-02) : d'abord livrés « Laptop »/« Salle étroite »,
+#: ces profils promettaient un remède de salle qu'ils ne rendent pas — le
+#: deck étant entièrement relatif à la fenêtre (vh/vw + plafonds), un zoom
+#: CSS rétrécit AUSSI ce qui s'adapte déjà (capture NG : contenu réduit +
+#: bande morte ; même mécanique que le double rétrécissement du 2026-08-12).
+#: Ils s'assument désormais pour ce qu'ils sont : deux préréglages de zoom
+#: nommés, plus rapides que le champ Zoom % manuel, utiles à l'occasion.
+#: Une salle en résolution moindre se traite par la porte de projection
+#: (``--resolutions``) et le design system, jamais par ces zooms. Les
+#: coupures reflètent le réglage commun des 7 books (FULL, 30 vh) pour
+#: qu'un changement de profil ne change QUE le zoom.
 def postair_profiles() -> list[PresentationProfile]:
-    """Les profils de secours — une liste NEUVE par appel (objets mutables)."""
+    """Les raccourcis de zoom — une liste NEUVE par appel (objets mutables)."""
     _breaks = lambda: SlideBreakDisplayConfig(  # noqa: E731 — fabrique locale
         enabled=True, mode=SlideBreakMode.FULL, before=0, after=30)
     return [
         PresentationProfile(
-            name="Laptop",
+            name="Zoom 90 %",
             mode=_ProfileViewMode.PAGINATED,
             layout=PageLayout(width=100, zoom=90),
             breaks=_breaks(),
         ),
         PresentationProfile(
-            name="Salle étroite",
+            name="Zoom 80 %",
             mode=_ProfileViewMode.PAGINATED,
             layout=PageLayout(width=100, zoom=80),
             breaks=_breaks(),

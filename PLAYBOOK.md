@@ -153,9 +153,12 @@ débordement par arrêt clavier et dépose les captures sous
 `_project/projection/` pour l'œil. Incrémentale (manifest par bloc) : elle ne
 re-mesure que ce qui a changé depuis sa dernière application — `--all` pour
 tout reprendre. Elle ne tourne PAS dans `check_all` : c'est la porte
-d'avant-push, pas de mise au point. En séance, une salle inattendue se règle
-au panneau latéral (profils « Laptop » / « Salle étroite » — zoom global en
-un geste, zéro slide éditée).
+d'avant-push, pas de mise au point. Une salle en résolution moindre se
+VÉRIFIE par la porte (`--resolutions 1366x768`, captures à l'œil) et se
+corrige au design system seul (plafonds vw, SCALE) — jamais au zoom global,
+qui rétrécit aussi ce qui s'adapte déjà (capture NG 2026-09-02). Les profils
+« Zoom 90 % / 80 % » du panneau ne sont que des préréglages nommés de
+dernier recours ; « Default » est le mode de calage ET de séance.
 
 **Push sur `main` = production** (workflow « Deploy to Hetzner » → Coolify,
 les 6 services). Le workflow est **séquentiel pur** : un build à la fois,
