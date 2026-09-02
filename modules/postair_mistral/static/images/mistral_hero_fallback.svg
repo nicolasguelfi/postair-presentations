@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `mistral_hero` : l'étudiant de dos et son
+       agent-orbe ambre posé sur le bureau, entre les livres — le compagnon
+       de révision de la session. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- halo de l'orbe posé sur le bureau -->
+  <polygon points="1010,300 830,660 1190,660" fill="#FFD34D" opacity="0.4"/>
+  <!-- le bureau de carton -->
+  <rect x="300" y="640" width="1060" height="34" rx="17" fill="#2EC4B6" filter="url(#ds)"/>
+  <rect x="360" y="674" width="44" height="180" fill="#2EC4B6" filter="url(#ds)"/>
+  <rect x="1256" y="674" width="44" height="180" fill="#2EC4B6" filter="url(#ds)"/>
+  <!-- pile de livres stylisés -->
+  <g filter="url(#ds)">
+    <rect x="420" y="596" width="200" height="36" rx="10" fill="#FF6F61"/>
+    <rect x="438" y="560" width="164" height="36" rx="10" fill="#FFD34D"/>
+    <rect x="452" y="524" width="136" height="36" rx="10" fill="#B79CED"/>
+  </g>
+  <!-- feuilles de cours qui s'envolent -->
+  <g filter="url(#ds)">
+    <rect x="1180" y="360" width="90" height="64" rx="8" fill="#FFF8EA" transform="rotate(12 1225 392)"/>
+    <rect x="1260" y="250" width="80" height="58" rx="8" fill="#DFF3F0" transform="rotate(-9 1300 279)"/>
+    <rect x="1330" y="150" width="70" height="50" rx="8" fill="#FFE9B3" transform="rotate(16 1365 175)"/>
+  </g>
+  <!-- la silhouette étudiante, de dos, face à l'orbe -->
+  <g fill="#1A1A2E" filter="url(#ds)">
+    <circle cx="640" cy="400" r="52"/>
+    <path d="M588 444 q52 -34 104 0 l14 196 h-132 z"/>
+  </g>
+  <!-- l'agent-orbe ambre posé sur le bureau, rayonnant -->
+  <g filter="url(#ds)">
+    <circle cx="1010" cy="560" r="90" fill="#F39C12"/>
+    <circle cx="1010" cy="560" r="60" fill="#FFD34D"/>
+  </g>
+  <g stroke="#F39C12" stroke-width="10" stroke-linecap="round" opacity="0.7">
+    <line x1="1010" y1="430" x2="1010" y2="390"/>
+    <line x1="1110" y1="470" x2="1140" y2="440"/>
+    <line x1="910" y1="470" x2="880" y2="440"/>
+  </g>
+</svg>

@@ -19,8 +19,9 @@
 # run-postair.py pose STX_URL_<KEY>=http://localhost:<port> sur chaque
 # instance : une instance locale chaîne en local, sans geste ni réglage.
 #
-# En attente de production (à ajouter ici le jour où leur module existe) :
-# postair_mistral (« Using Mistral models & agents to study », 20').
+# postair_mistral ajouté le 2026-09-02 (première version du module — le
+# service Coolify et sa variable STX_URL_MISTRAL restent à créer au
+# déploiement ; l'URL ci-dessous suit la convention des autres modules).
 
 [collection]
 title = { en = "AI DAY — The presentations", fr = "AI DAY — Les présentations" }
@@ -59,13 +60,23 @@ button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
 project_url = "https://postair-genai.streamtex.org"
 order = 4
 
+# Ajouté le 2026-09-02 : la session « Using models & agents to study » de
+# l'agenda officiel (postair_event.AGENDA), entre genai et guidelines.
+[projects.mistral]
+title = { en = "Study Smarter: your course agent", fr = "Réviser plus malin : votre agent de cours" }
+description = { en = "a method · 5 steps · 2 live demos · 4 fatal mistakes — whatever YOUR tool", fr = "une méthode · 5 étapes · 2 démos live · 4 erreurs fatales — quel que soit VOTRE outil" }
+emoji = "🎓"
+button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
+project_url = "https://postair-mistral.streamtex.org"
+order = 5
+
 [projects.guidelines]
 title = { en = "The UL AI Guidelines — and Closing", fr = "Les lignes directrices IA de l'UL — et clôture" }
 description = { en = "permitted by default · say it · 3 risk levels · red lines · final test · AI Act", fr = "permis par défaut · le dire · 3 niveaux de risque · lignes rouges · test final · AI Act" }
 emoji = "📋"
 button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
 project_url = "https://postair-guidelines.streamtex.org"
-order = 5
+order = 6
 
 # Ajouté le 2026-08-26 (ss12-bics-svd-stx-revolutions). HORS AGENDA officiel
 # pour l'instant : la position dans l'agenda du jour est une décision NG —
@@ -76,7 +87,7 @@ description = { en = "16 revolutions crossed · every crisis opened and overcome
 emoji = "🌊"
 button_label = { en = "Open the bank", fr = "Ouvrir la banque" }
 project_url = "https://postair-waves.streamtex.org"
-order = 6
+order = 7
 
 # HORS AGENDA — deck de SECOURS (plan-postair_handsup, NG 2026-08-23) : le
 # sondage à main levée si le système tombe. Order élevé à dessein : dernier

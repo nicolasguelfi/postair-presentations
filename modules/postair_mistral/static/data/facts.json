@@ -1,0 +1,128 @@
+{
+ "metadata": {
+  "id": "postair-mistral-facts",
+  "version": 1,
+  "languages": [
+   "en",
+   "fr"
+  ],
+  "default_language": "en",
+  "note": "Hand-curated. Every claim verified at its source; sources carry ONLY citation keys — the printed sentence derives from references.bib (règle bib canonique). `method` est partagé par bck_mistral_method ET bck_mistral_recap ; `charter` ancre les avertissements de plusieurs infobulles (la vérité pédagogique est la session guidelines qui suit)."
+ },
+ "method": [
+  {
+   "id": "frame",
+   "n": "1",
+   "label": {
+    "en": "Frame the role",
+    "fr": "Cadre le rôle"
+   },
+   "line": {
+    "en": "Which tutor? Which teaching method? Which limits?",
+    "fr": "Quel tuteur ? Quelle méthode d’enseignement ? Quelles limites ?"
+   },
+   "detail": {
+    "en": "Write the system instructions first: who the agent is (a tutor that asks before it answers), for which course, in which language, at which level — and its limits, in the same paragraph: answer only from the provided documents and say « I don't know » outside them, cite the course section, never write the assessed work. A role framed once beats ten scattered corrections later.",
+    "fr": "Écrivez d’abord les instructions système : qui est l’agent (un tuteur qui questionne avant de répondre), pour quel cours, dans quelle langue, à quel niveau — et ses limites, dans le même paragraphe : répondre uniquement depuis les documents fournis et dire « je ne sais pas » hors d’eux, citer la section du cours, ne jamais rédiger le travail évalué. Un rôle cadré une fois vaut mieux que dix corrections éparses ensuite."
+   }
+  },
+  {
+   "id": "sources",
+   "n": "2",
+   "label": {
+    "en": "Give the right sources",
+    "fr": "Donne les bonnes sources"
+   },
+   "line": {
+    "en": "YOUR notes · YOUR slides (with permission)",
+    "fr": "VOS notes · VOS slides (avec permission)"
+   },
+   "detail": {
+    "en": "Upload the course documents the agent must answer FROM: your own notes always; the professor's material only with permission. Without sources the agent completes from its web average — Error #1 of this session.",
+    "fr": "Téléversez les documents de cours DEPUIS lesquels l’agent doit répondre : vos propres notes toujours ; le matériel du professeur seulement avec permission. Sans sources, l’agent complète depuis sa moyenne du web — l’erreur n°1 de cette session."
+   }
+  },
+  {
+   "id": "test",
+   "n": "3",
+   "label": {
+    "en": "Test against the course",
+    "fr": "Teste contre le cours"
+   },
+   "line": {
+    "en": "10 questions you can already answer",
+    "fr": "10 questions dont vous connaissez la réponse"
+   },
+   "detail": {
+    "en": "Before trusting the agent, ask it ten questions whose answers you know from the course. Every wrong or vague answer is a defect of YOUR setup — of the role (its limits included) or of the sources — not a fatality of the tool.",
+    "fr": "Avant de faire confiance à l’agent, posez-lui dix questions dont vous connaissez la réponse par le cours. Chaque réponse fausse ou vague est un défaut de VOTRE montage — du rôle (ses limites comprises) ou des sources — pas une fatalité de l’outil."
+   }
+  },
+  {
+   "id": "iterate",
+   "n": "4",
+   "label": {
+    "en": "Iterate",
+    "fr": "Itère"
+   },
+   "line": {
+    "en": "every drift → fix the instructions and sources",
+    "fr": "chaque dérive → corrige les instructions et les sources"
+   },
+   "detail": {
+    "en": "List what the test got wrong, fix the instructions or the sources, test again — the same loop professionals use to build personas: specify, generate, document, test, list the gaps, iterate. The agent is never finished; it is maintained.",
+    "fr": "Listez ce que le test a raté, corrigez les instructions ou les sources, retestez — la boucle même que les professionnels emploient pour construire des personas : spécifier, générer, documenter, tester, lister les écarts, itérer. L’agent n’est jamais fini ; il s’entretient."
+   }
+  }
+ ],
+ "charter": [
+  {
+   "id": "tools",
+   "claim": {
+    "en": "The UL guidelines make generative AI permitted by default with disclosure; Copilot is the institutionally supported tool, and external tools call for caution with your own data — never with other people's.",
+    "fr": "Les lignes directrices de l’UL rendent l’IA générative permise par défaut avec déclaration ; Copilot est l’outil institutionnellement supporté, et les outils externes appellent la prudence avec vos propres données — jamais avec celles des autres."
+   },
+   "short": {
+    "en": "permitted by default · say it · external tools = caution with data",
+    "fr": "permis par défaut · le dire · outils externes = prudence avec les données"
+   },
+   "source": {
+    "citekeys": [
+     "i2tl2026-guidelines"
+    ]
+   }
+  },
+  {
+   "id": "delegation",
+   "claim": {
+    "en": "The UL guidelines list as non-permitted practice having AI produce the central intellectual contribution that an assessment evaluates.",
+    "fr": "Les lignes directrices de l’UL classent parmi les pratiques non permises le fait de faire produire par l’IA la contribution intellectuelle centrale qu’une évaluation évalue."
+   },
+   "short": {
+    "en": "the assessed contribution stays YOURS",
+    "fr": "la contribution évaluée reste la VÔTRE"
+   },
+   "source": {
+    "citekeys": [
+     "i2tl2026-guidelines"
+    ]
+   }
+  },
+  {
+   "id": "data",
+   "claim": {
+    "en": "The UL guidelines forbid feeding tools with sensitive or third-party personal data, protected material, or course recordings without consent.",
+    "fr": "Les lignes directrices de l’UL interdisent de nourrir les outils de données personnelles sensibles ou de tiers, de matériel protégé, ou d’enregistrements de cours sans accord."
+   },
+   "short": {
+    "en": "never others' data · never recordings without consent",
+    "fr": "jamais les données des autres · jamais d’enregistrement sans accord"
+   },
+   "source": {
+    "citekeys": [
+     "i2tl2026-guidelines"
+    ]
+   }
+  }
+ ]
+}

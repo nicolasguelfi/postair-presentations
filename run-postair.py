@@ -58,6 +58,7 @@ MODULES = {
     "survey": {"path": "modules/postair_survey", "port": 8516},
     "debates": {"path": "modules/postair_debates", "port": 8513},
     "genai": {"path": "modules/postair_genai", "port": 8514},
+    "mistral": {"path": "modules/postair_mistral", "port": 8519},
     "guidelines": {"path": "modules/postair_guidelines", "port": 8515},
     "handsup": {"path": "modules/postair_handsup", "port": 8517},
     "waves": {"path": "modules/postair_waves", "port": 8518},

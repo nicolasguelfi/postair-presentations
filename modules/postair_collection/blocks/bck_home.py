@@ -106,6 +106,7 @@ def build(lang: str = "en", **_):
                 with g.cell():
                     _card(project, lang)
         st_space("v", "3vh")
+        # « Mistral joins the day it exists » est tombé le 2026-09-02 : le
+        # module postair_mistral existe et porte sa carte ci-dessus.
         st_write(bs.footer,
-                 "one service per deck · this hub only links · Mistral joins the day "
-                 "it exists", tag=t.div)
+                 "one service per deck · this hub only links", tag=t.div)

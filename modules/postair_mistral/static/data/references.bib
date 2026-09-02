@@ -1,0 +1,77 @@
+% POSTAIR — Mistral session bibliography (Study Smarter — Mistral & co., 20').
+%
+% SOURCE UNIQUE des références de ce document (règle bib canonique, CLAUDE.md).
+% CONVENTION D'ÉCRITURE — le lecteur est streamtex, pas LaTeX : UTF-8 direct,
+% sans accolades de protection, sans séquences TeX. Les entrées partagées avec
+% d'autres modules (i2tl2026-guidelines ← guidelines ; lewis2020-rag,
+% kosmyna2025-cognitive-debt, guelfi-postair ← genai) sont copiées VERBATIM
+% depuis leur references.bib.
+
+@techreport{i2tl2026-guidelines,
+  author      = {Institute for Innovative Teaching and Learning},
+  title       = {Guidelines on the Use of Generative AI for Teaching and Learning},
+  institution = {University of Luxembourg},
+  year        = {2026},
+  month       = {2},
+  note        = {Version 1.0, 16 February 2026, 19 pages. Le document officiel de cette session —
+                 chaque affirmation projetée en cite la section exacte dans son infobulle}
+}
+
+@inproceedings{lewis2020-rag,
+  author    = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and
+               Karpukhin, Vladimir and Goyal, Naman and K{\"u}ttler, Heinrich and Lewis, Mike and
+               Yih, Wen-tau and Rockt{\"a}schel, Tim and Riedel, Sebastian and Kiela, Douwe},
+  title     = {Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks},
+  booktitle = {Advances in Neural Information Processing Systems 33 (NeurIPS)},
+  year      = {2020},
+  note      = {L'article qui nomme le RAG : générer DEPUIS des documents retrouvés plutôt que
+             depuis la seule mémoire du modèle — la mécanique du backup « hallucinations,
+             le remède » et de l'agent de la session Mistral}
+}
+
+@misc{kosmyna2025-cognitive-debt,
+  author       = {Nataliya Kosmyna and Eugene Hauptmann and Ye Tong Yuan and Jessica Situ and Xian-Hao Liao and Ashly Vivian Beresnitzky and Iris Braunstein and Pattie Maes},
+  title        = {Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task},
+  howpublished = {arXiv:2506.08872},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2506.08872},
+  note         = {Étude EEG (MIT Media Lab) : connectivité cérébrale et mémorisation de son propre
+                 texte plus faibles quand l'essai est écrit avec un LLM}
+}
+
+@techreport{guelfi-postair,
+  author      = {Nicolas Guelfi},
+  title       = {Understanding human postures in front of the AI revolution},
+  institution = {University of Luxembourg},
+  year        = {2026},
+  note        = {Technical report — the instrument behind the nine axes and
+                 the six archetypes}
+}
+
+% --- Souveraineté des données (slide « Ton outil, ton choix ») — ajout 2026-09-02.
+% Les deux textes officiels, cités tels quels ; la synthèse pédagogique vit dans
+% l'infobulle de la slide (doc AISE us-eu-data-sovereignty).
+
+@misc{eu2016-gdpr,
+  author       = {European Parliament and Council},
+  title        = {Regulation (EU) 2016/679 on the protection of natural persons with regard to the processing of personal data (General Data Protection Regulation)},
+  howpublished = {Official Journal of the European Union, L 119},
+  year         = {2016},
+  month        = {4},
+  url          = {https://eur-lex.europa.eu/eli/reg/2016/679/oj},
+  note         = {Le cadre européen : les données personnelles traitées en Europe restent sous
+                 droits opposables (accès, effacement, finalité) — l'argument « vos données
+                 restent en Europe » de la slide s'y adosse}
+}
+
+@misc{us2018-cloudact,
+  author       = {United States Congress},
+  title        = {Clarifying Lawful Overseas Use of Data Act (CLOUD Act), H.R. 4943},
+  howpublished = {115th Congress, enacted as part of the Consolidated Appropriations Act},
+  year         = {2018},
+  month        = {3},
+  url          = {https://www.congress.gov/bill/115th-congress/house-bill/4943},
+  note         = {La loi américaine qui oblige un fournisseur US à remettre des données où
+                 qu'elles soient stockées — le contrepoint du RGPD dans l'infobulle
+                 souveraineté}
+}

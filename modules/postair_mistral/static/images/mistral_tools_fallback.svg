@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Repli PAPIER DÉCOUPÉ de `mistral_tools` : la rangée d'orbes-outils —
+       celui de la démo en avant, les autres présents SANS logos tiers —
+       devant une carte d'Europe stylisée en papier. -->
+  <defs>
+    <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#7a6a4f" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#BFE3EC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- l'Europe stylisée, une découpe de papier bleu doux -->
+  <g filter="url(#ds)" opacity="0.85">
+    <path d="M520 160 q120 -60 260 -20 q120 -70 240 -10 q140 -30 220 60 q90 70 40 170
+             q60 90 -30 160 q20 110 -110 130 q-90 90 -220 50 q-140 60 -250 -20
+             q-150 20 -200 -90 q-90 -80 -30 -180 q-40 -120 80 -160 q-20 -70 0 -90 z"
+          fill="#7AB8F5" opacity="0.55"/>
+  </g>
+  <!-- les étoiles de papier autour de la carte -->
+  <g fill="#FFD34D" filter="url(#ds)">
+    <circle cx="800" cy="130" r="16"/>
+    <circle cx="1080" cy="210" r="12"/>
+    <circle cx="500" cy="250" r="12"/>
+    <circle cx="1180" cy="420" r="14"/>
+    <circle cx="440" cy="470" r="14"/>
+  </g>
+  <!-- la rangée d'orbes-outils : celui de la démo devant, plus grand -->
+  <g filter="url(#ds)">
+    <circle cx="420" cy="700" r="58" fill="#B79CED"/>
+    <circle cx="600" cy="690" r="64" fill="#2EC4B6"/>
+    <circle cx="1010" cy="690" r="64" fill="#FF6F61"/>
+    <circle cx="1190" cy="700" r="58" fill="#7AB8F5"/>
+  </g>
+  <g filter="url(#ds)">
+    <circle cx="800" cy="650" r="110" fill="#F39C12"/>
+    <circle cx="800" cy="650" r="72" fill="#FFD34D"/>
+  </g>
+  <g stroke="#F39C12" stroke-width="10" stroke-linecap="round" opacity="0.7">
+    <line x1="800" y1="500" x2="800" y2="460"/>
+    <line x1="915" y1="545" x2="945" y2="515"/>
+    <line x1="685" y1="545" x2="655" y2="515"/>
+  </g>
+</svg>
