@@ -40,7 +40,11 @@ bs = BlockStyles
 #: dessein. Un deck consommateur portera SA liste dans SON bloc.
 TUNING = {
     "steps": [({"en": "Read"}, 1), ({"en": "Discuss"}, 0.5), ({"en": "Vote"}, 1)],
-    "height": 300,      # hauteur du CADRAN de chaque carte (px)
+    # Le temps 1 laisse la grille COMPACTE par défaut (3 → 2×2 avec un trou,
+    # spécification NG 2026-09-02 : remplissage gauche→droite, haut→bas) ;
+    # le temps 2 force la rangée (1, 3) — la démo montre les deux régimes.
+    "grid_parallel": (1, 3),
+    "height": None,     # auto selon le nombre de lignes
     "scale": 1.0,
 }
 
@@ -53,10 +57,12 @@ _LINE_PAR = {"en": "independent cards · ▶ Start launches ALL · ▶ ⏸ ↺ p
 _TIP_TITLE = {"en": "The widget, precisely"}
 _TOOLTIP = [
     ({"en": "Generic"},
-     {"en": ("st_countdown_rack(s, steps, mode, key=…) in shared_widgets — "
-             "steps is a list of (label, minutes), fractions allowed (0.5 = "
-             "30 s). Any deck can call it with its own list; the cards are "
-             "real streamtex grid cells.")}),
+     {"en": ("st_countdown_rack(s, steps, mode, key=…, grid=(rows, cols)) in "
+             "shared_widgets — steps is a list of (label, minutes), fractions "
+             "allowed (0.5 = 30 s). grid fixes the N×P geometry (cards fill "
+             "left-to-right, top-to-bottom, holes allowed); omitted = the "
+             "smallest compact grid with the biggest cells. Everything "
+             "resizes to the cell.")}),
     ({"en": "Per-card buttons"},
      {"en": ("▶ starts or resumes · ⏸ pauses · ↺ resets that counter to its "
              "full duration. In chain mode only ONE card runs at a time (▶ "
@@ -99,11 +105,13 @@ def build(lang: str = "en", **_):
     # document, deux rangées sans clé partageraient leur bus.
     with st_block(s.project.containers.page_fill_top):
         _header(_TITLE, _LINE_CHAIN, lang)
+        # Grille compacte par défaut : 3 compteurs → 2×2 avec un trou.
         st_countdown_rack(s, steps, mode="chain", key="genai-demo-chain",
                           height=TUNING["height"], scale=TUNING["scale"])
     st_slide_break(marker_hidden=True)
-    # ── Temps 2 : le mode parallèle ─────────────────────────────────────────
+    # ── Temps 2 : le mode parallèle, en rangée forcée (1, 3) ────────────────
     with st_block(s.project.containers.page_fill_top):
         _header(_TITLE_PAR, _LINE_PAR, lang)
         st_countdown_rack(s, steps, mode="parallel", key="genai-demo-parallel",
+                          grid=TUNING["grid_parallel"],
                           height=TUNING["height"], scale=TUNING["scale"])

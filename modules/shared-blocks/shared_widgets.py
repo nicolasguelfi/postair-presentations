@@ -7,6 +7,7 @@ slide needs behaviour the style system cannot express, it comes from here.
 """
 
 import json
+import math
 
 import streamlit as st
 from streamtex import st_hover_tooltip, st_html
@@ -137,9 +138,10 @@ def st_countdown(minutes: int, label: str = "Back in", height: int = 340,
 
 
 def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
-                      *, key: str, ends_at_label: str = "ends at",
+                      *, key: str, grid: tuple[int, int] | None = None,
+                      ends_at_label: str = "ends at",
                       start_all_label: str = "▶ Start", reset_all_label: str = "↺ Reset",
-                      height: int = 300, scale: float = 1.0) -> None:
+                      height: int | None = None, scale: float = 1.0) -> None:
     """Une rangée de comptes à rebours sur une VRAIE grille streamtex.
 
     Décisions NG (planche chrono ``archi=p1 moteur=p1 commande=p1
@@ -172,10 +174,22 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
       permises (``0.5`` = 30 s) ; la liste vit dans le TUNING du bloc
       appelant. Heure de fin murale par carte pendant qu'elle court
       (``now + restant`` — la pause la recalcule à la reprise).
-    - Tailles du cadran en ``vw`` de SON iframe : elles suivent la largeur
-      de la cellule de grille, quel que soit le nombre de cartes ; ``scale``
-      reste le levier fin (R-zoom édition iframe), ``height`` loge le
-      cadran. Aucun son (R7) — la couleur fait l'annonce.
+    - **Grille N×P** (spécification NG 2026-09-02, remplace ``balanced``) :
+      ``grid=(lignes, colonnes)`` fixe la géométrie ; les cartes remplissent
+      de gauche à droite puis de haut en bas, les cases restantes sont des
+      trous assumés. ``grid=None`` (défaut) = la grille COMPACTE minimale à
+      cellules maximales : ``colonnes = ⌈√k⌉``, ``lignes = ⌈k/colonnes⌉``
+      (4 → 2×2, 3 → 2×2 avec un trou, 5 → 2×3). ``lignes×colonnes < k`` =
+      erreur bruyante.
+    - **Tout se redimensionne** (correctif du débordement constaté sur le
+      2×2 d'opening, 2026-09-02) : chaque taille du cadran est un clamp CSS
+      ``min(X vw, Y vh)`` de SON iframe — bornée par la largeur de la
+      cellule ET par la hauteur du cadre, quelle que soit la géométrie ;
+      les boutons sont épinglés en pied de cadran, l'overflow est caché
+      (plus d'ascenseur). ``height=None`` = hauteur auto selon le nombre de
+      lignes (420/300/220/180 px pour 1/2/3/4+) ; ``scale`` reste le levier
+      fin (R-zoom édition iframe). Aucun son (R7) — la couleur fait
+      l'annonce.
     """
     if mode not in ("chain", "parallel"):
         raise ValueError(f"mode inconnu : {mode!r} — « chain » ou « parallel »")
@@ -190,6 +204,18 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
 
     rack_id = json.dumps(key)
     n = len(steps)
+    # La géométrie : explicite, ou compacte minimale à cellules maximales.
+    if grid is None:
+        cols = math.ceil(math.sqrt(n))
+        rows = math.ceil(n / cols)
+    else:
+        rows, cols = grid
+        if rows < 1 or cols < 1 or rows * cols < n:
+            raise ValueError(
+                f"st_countdown_rack : grille {rows}×{cols} trop petite pour "
+                f"{n} compteur(s) — lignes×colonnes doit couvrir la liste")
+    if height is None:
+        height = {1: 420, 2: 300, 3: 220}.get(rows, 180)
     secs = [max(1, round(minutes * 60)) for _label, minutes in steps]
     label_style = s.project.body.bullet + s.center_txt + s.bold
 
@@ -232,29 +258,40 @@ def st_countdown_rack(s, steps: list[tuple[str, float]], mode: str = "chain",
 </script>
 """, height=int(72 * scale))
 
-    # ── La grille streamtex : une carte Style par durée, un cadran par carte ─
-    with st_grid(cols=s.project.grids.balanced(n), gap="1.2vw",
+    # ── La grille streamtex N×P : remplissage gauche→droite, haut→bas ───────
+    # ``repeat(cols, minmax(0, 1fr))`` : P colonnes exactes ; le placement
+    # automatique de CSS grid remplit dans l'ordre de la liste, les cases
+    # restantes restent vides (trous assumés — spécification NG 2026-09-02).
+    with st_grid(cols=f"repeat({cols}, minmax(0, 1fr))", gap="1.2vw",
                  grid_style=s.project.grids.stretch,
                  cell_styles=s.project.containers.grid_cell_centered) as g:
         for i, (label, _minutes) in enumerate(steps):
             with g.cell(), st_block(s.project.cards.blue):
                 st_write(label_style, label, tag=_t.div)
+                # Chaque taille est un clamp min(vw, vh) DE L'IFRAME : bornée
+                # par la largeur de cellule ET la hauteur du cadre — le cadran
+                # tient dans sa carte quelle que soit la géométrie (correctif
+                # du débordement 2×2, NG 2026-09-02) ; boutons épinglés en
+                # pied, overflow caché.
                 st_html(f"""
-<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;
-            gap:1.5vh;height:100%;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
-  <div id="cdr-digits" style="font-size:{26 * scale:.2f}vw;font-weight:900;
-       letter-spacing:0.04em;line-height:1.1;color:{MUTED};white-space:nowrap;"></div>
-  <div id="cdr-at" style="font-size:{6 * scale:.2f}vw;color:{MUTED};">&nbsp;</div>
-  <div style="display:flex;gap:1.5vw;">
-    <button id="cdr-go" style="font-size:{7 * scale:.2f}vw;color:{AMBER};
-            background:transparent;border:0.4vw solid {AMBER};border-radius:1.5vw;
-            padding:0.1em 0.9em;cursor:pointer;">▶</button>
-    <button id="cdr-halt" style="font-size:{7 * scale:.2f}vw;color:{PRIMARY};
-            background:transparent;border:0.4vw solid {PRIMARY};border-radius:1.5vw;
-            padding:0.1em 0.9em;cursor:pointer;">⏸</button>
-    <button id="cdr-zero" style="font-size:{7 * scale:.2f}vw;color:{MUTED};
-            background:transparent;border:0.4vw solid {MUTED};border-radius:1.5vw;
-            padding:0.1em 0.9em;cursor:pointer;">↺</button>
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+            height:100%;padding:2vh 0;box-sizing:border-box;overflow:hidden;
+            font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
+  <div id="cdr-digits" style="font-size:min({24 * scale:.2f}vw, {46 * scale:.2f}vh);
+       font-weight:900;letter-spacing:0.04em;line-height:1.1;color:{MUTED};
+       white-space:nowrap;"></div>
+  <div id="cdr-at" style="font-size:min({5 * scale:.2f}vw, {11 * scale:.2f}vh);
+       color:{MUTED};">&nbsp;</div>
+  <div style="display:flex;gap:min(1.5vw, 3vh);">
+    <button id="cdr-go" style="font-size:min({6 * scale:.2f}vw, {13 * scale:.2f}vh);
+            color:{AMBER};background:transparent;border:min(0.3vw, 0.6vh) solid {AMBER};
+            border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">▶</button>
+    <button id="cdr-halt" style="font-size:min({6 * scale:.2f}vw, {13 * scale:.2f}vh);
+            color:{PRIMARY};background:transparent;border:min(0.3vw, 0.6vh) solid {PRIMARY};
+            border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">⏸</button>
+    <button id="cdr-zero" style="font-size:min({6 * scale:.2f}vw, {13 * scale:.2f}vh);
+            color:{MUTED};background:transparent;border:min(0.3vw, 0.6vh) solid {MUTED};
+            border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">↺</button>
   </div>
 </div>
 <script>

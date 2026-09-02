@@ -48,9 +48,11 @@ class BlockStyles:
 
 bs = BlockStyles
 
-#: Réglages datés (2026-09-01) : hauteur du cadran de chaque carte, levier
-#: fin d'échelle (R-zoom édition iframe).
-TUNING = {"height": 300, "scale": 1.0}
+#: Réglages datés (2026-09-02) : ``grid=None`` = grille compacte du widget
+#: (4 séances → 2×2, la pause → 1×2) — forcer ``(1, 4)`` ici pour la rangée
+#: linéaire ; ``height=None`` = hauteur auto selon les lignes ; ``scale``
+#: reste le levier fin (R-zoom édition iframe).
+TUNING = {"grid": None, "height": None, "scale": 1.0}
 
 # ── Les feuilles {en, fr} du bloc (opening est bilingue) ────────────────────
 _MARKERS = [
@@ -146,4 +148,5 @@ def build_timer_slide(index: int, lang: str = "en") -> None:
                 )
         st_space("v", s.project.spacing.title_gap)
         st_countdown_rack(s, steps, mode="chain", key=_KEYS[index],
-                          height=TUNING["height"], scale=TUNING["scale"])
+                          grid=TUNING["grid"], height=TUNING["height"],
+                          scale=TUNING["scale"])
