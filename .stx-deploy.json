@@ -61,6 +61,15 @@
       "folder": "modules/postair_genai",
       "serve_mode": "dual"
     },
+    "postair-mistral": {
+      "uuid": "xkvxoqqby2vo2irwhgpcyt6q",
+      "subdomain": "postair-mistral",
+      "fqdn": "https://postair-mistral.streamtex.org",
+      "repo": "https://github.com/nicolasguelfi/postair-presentations",
+      "branch": "main",
+      "folder": "modules/postair_mistral",
+      "serve_mode": "dual"
+    },
     "postair-guidelines": {
       "uuid": "cx1yh8ef3kyg1uf50m1w0wmi",
       "subdomain": "postair-guidelines",
