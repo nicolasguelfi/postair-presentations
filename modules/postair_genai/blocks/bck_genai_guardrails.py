@@ -56,37 +56,37 @@ TUNING = {"table_vh": 62}
 #: Ratio largeur/hauteur DU FICHIER (mesuré Pillow 2026-09-01).
 _TABLES = [
     {"uri": "images/trainings/moderation_fr.png", "ratio": 0.941,
-     "label": {"en": "Français"}},
+     "label": {"en": "Français", "fr": "Français"}},
     {"uri": "images/trainings/moderation_en.png", "ratio": 0.879,
-     "label": {"en": "English"}},
+     "label": {"en": "English", "fr": "Anglais"}},
 ]
 
-_MARKER = {"en": "Guardrails"}
-_TITLE = {"en": ("It can ", (s.project.titles.keyword, "refuse"))}
+_MARKER = {"en": "Guardrails", "fr": "Garde-fous"}
+_TITLE = {"en": ("It can ", (s.project.titles.keyword, "refuse")), "fr": ("Elle peut ", (s.project.titles.keyword, "refuser"))}
 _CAPTION = {"en": ("the SAME hostile message, scored twice — "
-                   "filters read INTENT, not keywords")}
-_PUNCH = {"en": ("guardrails exist · imperfect · uneven",)}
+                   "filters read INTENT, not keywords"), "fr": "le MÊME message hostile, noté deux fois — les filtres lisent l’INTENTION, pas les mots-clés"}
+_PUNCH = {"en": ("guardrails exist · imperfect · uneven",), "fr": ("des garde-fous existent · imparfaits · inégaux",)}
 
-_TIP_TITLE = {"en": "The experiment, precisely"}
+_TIP_TITLE = {"en": "The experiment, precisely", "fr": "L’expérience, précisément"}
 _TOOLTIP = [
-    ({"en": "What was tested"},
+    ({"en": "What was tested", "fr": "Ce qui a été testé"},
      {"en": ("A deliberately hostile message (insults plus an incitement to "
              "self-harm — not shown on screen on purpose) was submitted to "
              "OpenAI's moderation model in French, then in English (AISE "
-             "trainings, 2024).")}),
-    ({"en": "What the tables show"},
+             "trainings, 2024)."), "fr": "Un message délibérément hostile (des insultes plus une incitation à l’automutilation — volontairement non montré à l’écran) a été soumis au modèle de modération d’OpenAI en français, puis en anglais (formations AISE, 2024)."}),
+    ({"en": "What the tables show", "fr": "Ce que montrent les tables"},
      {"en": ("Per-category scores: harassment ≈ 89 % in BOTH languages, "
              "self-harm ≈ 80 % in both — the filter reads the intent. Some "
              "categories differ across languages (violence 20 % vs 35 %): "
-             "uneven, not absent.")}),
-    ({"en": "Where it runs"},
+             "uneven, not absent."), "fr": "Des scores par catégorie : harcèlement ≈ 89 % dans les DEUX langues, automutilation ≈ 80 % dans les deux — le filtre lit l’intention. Certaines catégories diffèrent selon la langue (violence 20 % contre 35 %) : inégal, pas absent."}),
+    ({"en": "Where it runs", "fr": "Où ça tourne"},
      {"en": ("Every big chat product runs such a scoring model before and "
              "after the main model — that is why « how to build a bomb » gets "
-             "a refusal, in any language.")}),
-    ({"en": "The honest limits"},
+             "a refusal, in any language."), "fr": "Chaque grand produit de chat exécute un tel modèle de notation avant et après le modèle principal — c’est pourquoi « comment fabriquer une bombe » reçoit un refus, dans toutes les langues."}),
+    ({"en": "The honest limits", "fr": "Les limites, honnêtement"},
      {"en": ("Jailbreaks exist and it is an arms race; thresholds are set by "
              "the vendors (the control slide you just saw). The legal side — "
-             "the EU AI Act — waits in the backup slides.")}),
+             "the EU AI Act — waits in the backup slides."), "fr": "Les jailbreaks existent et c’est une course aux armements ; les seuils sont fixés par les vendeurs (la slide sur le contrôle que vous venez de voir). Le versant juridique — l’AI Act européen — attend dans les slides backup."}),
 ]
 
 

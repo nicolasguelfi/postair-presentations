@@ -44,8 +44,8 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "In the lab"}
-_TITLE = {"en": ("Justice — in the ", (s.project.titles.keyword, "lab"))}
+_MARKER = {"en": "In the lab", "fr": "Au laboratoire"}
+_TITLE = {"en": ("Justice — in the ", (s.project.titles.keyword, "lab")), "fr": ("Justice — au ", (s.project.titles.keyword, "laboratoire"))}
 
 _HERO_PROMPT = (
     AI_PREFIX

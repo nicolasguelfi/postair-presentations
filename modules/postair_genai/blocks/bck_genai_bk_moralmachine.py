@@ -40,38 +40,41 @@ class BlockStyles:
 bs = BlockStyles
 
 #: Réglages datés (2026-09-01) ; ratio mesuré Pillow sur le fichier versionné.
-TUNING = {"chart_vh": 34, "chart_ratio": 2.648}
+#: ``punch_zoom`` 130 → 110 et ``chart_vh`` 34 → 30 (porte projection
+#: 2026-09-02 : à 130 les deux lignes ambre se repliaient en quatre,
+#: débordement ×1.23 à 1920×1080).
+TUNING = {"chart_vh": 30, "chart_ratio": 2.648, "punch_zoom": 110}
 
-_MARKER = {"en": "Moral Machine"}
-_TITLE = {"en": ("40 million ", (s.project.titles.keyword, "moral decisions"))}
+_MARKER = {"en": "Moral Machine", "fr": "Moral Machine"}
+_TITLE = {"en": ("40 million ", (s.project.titles.keyword, "moral decisions")), "fr": ("40 millions de ", (s.project.titles.keyword, "décisions morales"))}
 _CHART = "images/trainings/moralmachine_prefs.png"
 _ALT = ("Moral Machine country-level preferences chart: sparing the young, "
         "by country, France at one extreme")
-_FINDINGS = {"en": "spare humans · spare the YOUNG · spare the many"}
+_FINDINGS = {"en": "spare humans · spare the YOUNG · spare the many", "fr": "épargner les humains · épargner les JEUNES · épargner le plus grand nombre"}
 _PUNCH = {"en": ("the German ethics rules FORBID exactly that",
-                 "no distinction by age, gender, constitution — rule 9")}
+                 "no distinction by age, gender, constitution — rule 9"), "fr": ("les règles éthiques allemandes INTERDISENT exactement cela", "aucune distinction d’âge, de genre, de constitution — règle 9")}
 _CITE_STUDY = ["awad2018-moralmachine"]
 _CITE_RULES = ["bmvi2017-ethics"]
 
-_TIP_TITLE = {"en": "The experiment, precisely"}
+_TIP_TITLE = {"en": "The experiment, precisely", "fr": "L’expérience, précisément"}
 _TOOLTIP = [
-    ({"en": "Moral Machine"},
+    ({"en": "Moral Machine", "fr": "Moral Machine"},
      {"en": ("An MIT online experiment: dilemmas of an autonomous car that "
              "must crash — 40 million decisions from 233 countries and "
-             "territories (published 2018).")}),
-    ({"en": "The three global preferences"},
+             "territories (published 2018)."), "fr": "Une expérience en ligne du MIT : des dilemmes d’une voiture autonome qui va forcément percuter — 40 millions de décisions venues de 233 pays et territoires (publiée en 2018)."}),
+    ({"en": "The three global preferences", "fr": "Les trois préférences mondiales"},
      {"en": ("Spare humans over animals, spare the young over the old, spare "
              "more lives over fewer — with marked cultural variations "
-             "between country clusters.")}),
-    ({"en": "The counterpoint"},
+             "between country clusters."), "fr": "Épargner les humains plutôt que les animaux, les jeunes plutôt que les vieux, le plus grand nombre plutôt que le plus petit — avec des variations culturelles marquées entre groupes de pays."}),
+    ({"en": "The counterpoint", "fr": "Le contrepoint"},
      {"en": ("Germany's ethics commission (2017), the only official rules of "
              "that era: technology must PREVENT dilemmas (rule 5), and any "
              "distinction on personal features — age, gender, constitution — "
-             "is strictly prohibited (rule 9).")}),
-    ({"en": "The lesson"},
+             "is strictly prohibited (rule 9)."), "fr": "La commission d’éthique allemande (2017), les seules règles officielles de cette époque : la technologie doit PRÉVENIR les dilemmes (règle 5), et toute distinction sur des caractéristiques personnelles — âge, genre, constitution — est strictement interdite (règle 9)."}),
+    ({"en": "The lesson", "fr": "La leçon"},
      {"en": ("What crowds prefer and what ethics commissions allow can point "
              "in opposite directions — « ethics by poll » is not ethics. The "
-             "debates session digs deeper this afternoon.")}),
+             "debates session digs deeper this afternoon."), "fr": "Ce que les foules préfèrent et ce que les commissions d’éthique autorisent peuvent pointer dans des directions opposées — « l’éthique par sondage » n’est pas l’éthique. La séance de débats creuse la question cet après-midi."}),
 ]
 
 
@@ -97,7 +100,7 @@ def build(lang: str = "en", **_):
                 TUNING["chart_ratio"], TUNING["chart_vh"])):
             st_image(s.project.cards.media_center, uri=_CHART, alt=_ALT)
         st_space("v", "3vh")
-        with st_zoom(130):
+        with st_zoom(TUNING["punch_zoom"]):
             for line in T(_PUNCH, lang):
                 st_write(bs.punch, line, tag=t.div)
             st_write(bs.cite, citation(*_CITE_RULES), tag=t.div)

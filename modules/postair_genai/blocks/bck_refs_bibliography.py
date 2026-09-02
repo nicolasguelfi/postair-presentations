@@ -38,8 +38,8 @@ bs = BlockStyles
 
 #: Le marqueur vient du lexique partagé (« References », déjà bilingue) ; le
 #: titre et la sous-ligne restent propres à ce deck (lot structure : {"en"}).
-_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from"))}
-_LEAD = {"en": "every number and claim of this session, with its source"}
+_TITLE = {"en": ("Where all of this ", (s.project.titles.keyword, "comes from")), "fr": ("La séance et ", (s.project.titles.keyword, "ses sources"))}
+_LEAD = {"en": "every number and claim of this session, with its source", "fr": "chaque chiffre et chaque affirmation de cette séance, avec sa source"}
 
 
 def build(lang: str = "en", **_):

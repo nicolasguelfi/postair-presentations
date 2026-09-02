@@ -40,26 +40,26 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Good practices"}
+_MARKER = {"en": "Good practices", "fr": "Bonnes pratiques"}
 #: Le titre sur DEUX lignes (retouche NG 2026-09-02 — son ``\n`` d'intention
 #: rendu par deux écritures : ``st_write`` n'interprète pas le ``\n``,
 #: piège documenté au PLAYBOOK).
-_TITLE_L1 = {"en": "Good practices for the"}
-_TITLE_L2 = {"en": ((s.project.titles.keyword, "AI-AUGMENTED"), " STUDENT")}
+_TITLE_L1 = {"en": "Good practices for the", "fr": "Les bonnes pratiques de"}
+_TITLE_L2 = {"en": ((s.project.titles.keyword, "AI-AUGMENTED"), " STUDENT"), "fr": ((s.project.titles.keyword, "l’ÉTUDIANT AUGMENTÉ"), " PAR L’IA")}
 
-_TIP_TITLE = {"en": "This second half"}
+_TIP_TITLE = {"en": "This second half", "fr": "Cette seconde moitié"}
 _TIP = [
-    ({"en": "The turn"},
+    ({"en": "The turn", "fr": "Le tournant"},
      {"en": ("You now know what generative AI is and what it gets wrong — "
-             "everything from here is about USING it well as a student.")}),
-    ({"en": "The path"},
+             "everything from here is about USING it well as a student."), "fr": "Vous savez désormais ce qu’est l’IA générative et ce qu’elle rate — tout ce qui suit porte sur la manière de BIEN l’utiliser en tant qu’étudiant."}),
+    ({"en": "The path", "fr": "Le chemin"},
      {"en": ("Your data (read what you sign) · your brain (a muscle) · the "
              "guardrails · the tireless tutor · the exam stays human · "
              "careers transform · project manager of your assistants · "
-             "your posture.")}),
-    ({"en": "Where the rules live"},
+             "your posture."), "fr": "Vos données (lisez ce que vous signez) · votre cerveau (un muscle) · les garde-fous · le tuteur infatigable · l’examen reste humain · les carrières se transforment · chef de projet de vos assistants · votre posture."}),
+    ({"en": "Where the rules live", "fr": "Où vivent les règles"},
      {"en": ("The official UL guidelines are the session after Mistral — "
-             "this half gives you the reflexes they formalise.")}),
+             "this half gives you the reflexes they formalise."), "fr": "Les lignes directrices officielles de l’UL sont la session qui suit Mistral — cette moitié vous donne les réflexes qu’elles formalisent."}),
 ]
 
 #: La main de l'artiste (pattern TUNING) : budget hauteur de l'image héro.

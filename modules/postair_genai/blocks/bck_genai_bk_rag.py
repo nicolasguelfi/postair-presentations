@@ -36,39 +36,39 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "RAG"}
-_TITLE = {"en": ("Hallucinations: ", (s.project.titles.keyword, "the remedy"))}
+_MARKER = {"en": "RAG", "fr": "RAG"}
+_TITLE = {"en": ("Hallucinations: ", (s.project.titles.keyword, "the remedy")), "fr": ("Hallucinations : ", (s.project.titles.keyword, "le remède"))}
 _CITEKEYS = ["lewis2020-rag"]
 
 _STEPS = [
-    {"icon": "📁", "label": {"en": "YOUR documents"},
-     "line": {"en": "course notes · manuals · the truth you trust"}},
-    {"icon": "🔎", "label": {"en": "Search FIRST"},
-     "line": {"en": "the question retrieves the relevant passages"}},
-    {"icon": "✍️", "label": {"en": "Answer FROM them"},
-     "line": {"en": "grounded text · sources you can check"}},
+    {"icon": "📁", "label": {"en": "YOUR documents", "fr": "VOS documents"},
+     "line": {"en": "course notes · manuals · the truth you trust", "fr": "notes de cours · manuels · la vérité de confiance"}},
+    {"icon": "🔎", "label": {"en": "Search FIRST", "fr": "Chercher D’ABORD"},
+     "line": {"en": "the question retrieves the relevant passages", "fr": "la question retrouve les passages pertinents"}},
+    {"icon": "✍️", "label": {"en": "Answer FROM them", "fr": "Répondre À PARTIR d’eux"},
+     "line": {"en": "grounded text · sources you can check", "fr": "texte ancré · sources vérifiables"}},
 ]
 
 _PUNCH = {"en": ("fewer inventions — never zero",
-                 "the Mistral session builds one, live")}
+                 "the Mistral session builds one, live"), "fr": ("moins d’inventions — jamais zéro", "la session Mistral en construit un, en direct")}
 
-_TIP_TITLE = {"en": "RAG, precisely"}
+_TIP_TITLE = {"en": "RAG, precisely", "fr": "Le RAG, précisément"}
 _TOOLTIP = [
-    ({"en": "The name"},
+    ({"en": "The name", "fr": "Le nom"},
      {"en": ("Retrieval-Augmented Generation: retrieve first, generate from "
-             "what was retrieved — named in 2020, everywhere today.")}),
-    ({"en": "Why it works"},
+             "what was retrieved — named in 2020, everywhere today."), "fr": "Retrieval-Augmented Generation : retrouver d’abord, générer à partir de ce qui a été retrouvé — nommé en 2020, partout aujourd’hui."}),
+    ({"en": "Why it works", "fr": "Pourquoi ça marche"},
      {"en": ("G7's fabrications happen when the model completes from its "
              "training average. Anchoring the answer in retrieved passages "
-             "replaces « plausible » with « found ».")}),
-    ({"en": "The honest limit"},
+             "replaces « plausible » with « found »."), "fr": "Les fabrications de G7 surviennent quand le modèle complète depuis sa moyenne d’entraînement. Ancrer la réponse dans des passages retrouvés remplace « plausible » par « trouvé »."}),
+    ({"en": "The honest limit", "fr": "La limite honnête"},
      {"en": ("If retrieval misses the right passage, the model still invents. "
              "RAG shrinks the problem and makes it CHECKABLE (the sources are "
-             "shown) — it does not delete it.")}),
-    ({"en": "Where you meet it"},
+             "shown) — it does not delete it."), "fr": "Si la recherche manque le bon passage, le modèle invente encore. Le RAG réduit le problème et le rend VÉRIFIABLE (les sources sont affichées) — il ne le supprime pas."}),
+    ({"en": "Where you meet it", "fr": "Où vous le croisez"},
      {"en": ("Chat tools with « attach a file », enterprise assistants, and "
              "the course agent of the Mistral session — its « no sources » "
-             "failure is exactly this slide inverted.")}),
+             "failure is exactly this slide inverted."), "fr": "Les outils de chat avec « joindre un fichier », les assistants d’entreprise, et l’agent de cours de la session Mistral — sa panne « sans sources » est exactement cette slide inversée."}),
 ]
 
 

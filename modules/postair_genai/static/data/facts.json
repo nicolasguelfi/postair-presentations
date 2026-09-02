@@ -3,7 +3,8 @@
   "id": "postair-genai-facts",
   "version": 2,
   "languages": [
-   "en"
+   "en",
+   "fr"
   ],
   "default_language": "en",
   "note": "Hand-curated. Every claim verified at its source; sources carry ONLY citation keys — the printed sentence derives from references.bib (règle bib canonique)."
@@ -13,28 +14,36 @@
    "id": "justice",
    "icon": "⚖️",
    "label": {
-    "en": "The case file, read in full"
+    "en": "The case file, read in full",
+    "fr": "Le dossier, lu en entier"
    },
    "headline": {
-    "en": "−24.7 % crime, same jailing rate"
+    "en": "−24.7 % crime, same jailing rate",
+    "fr": "−24,7 % de criminalité, incarcération inchangée"
    },
    "headline_sub": {
-    "en": "New York bail decisions · algorithm's prediction > judge's"
+    "en": "New York bail decisions · algorithm's prediction > judge's",
+    "fr": "Libérations sous caution à New York · prédiction de l’algorithme > celle du juge"
    },
    "second": {
-    "en": "In the lab: the LLM follows PRECEDENT · real judges followed sympathy"
+    "en": "In the lab: the LLM follows PRECEDENT · real judges followed sympathy",
+    "fr": "Au laboratoire : le LLM suit le PRÉCÉDENT · les vrais juges suivaient la sympathie"
    },
    "counterpoint": {
-    "en": "Specialised ≠ better: commercial tool ≈ laypeople · 65 % vs 64 %"
+    "en": "Specialised ≠ better: commercial tool ≈ laypeople · 65 % vs 64 %",
+    "fr": "Spécialisé ≠ meilleur : outil commercial ≈ profanes · 65 % vs 64 %"
    },
    "message": {
-    "en": "Moods ≠ constancy"
+    "en": "Moods ≠ constancy",
+    "fr": "Humeurs ≠ constance"
    },
    "detail": {
-    "en": "Two solid results, one caution. On New York pre-trial release decisions, following a machine-learning risk prediction instead of the judge would cut crime by up to 24.7 % at an unchanged jailing rate — a policy simulation on real dossiers, not a deployment. A controlled experiment once run on 31 real US federal judges was replicated with GPT-4o judging the same full case file: the model follows precedent and ignores the defendant's sympathy — the judges did the opposite. Practitioner anecdote, from an essay that is not peer review: on the briefs alone, Claude decided 27 of 37 US Supreme Court cases the same way as the Court. And the famous \"AI predicts judges at 79 %\" figure classifies the text of ALREADY-written judgments; on genuinely future cases it drops to 58–68 %. Predicting a risk is not rendering justice — proportionality, dignity and the right to be heard stay human."
+    "en": "Two solid results, one caution. On New York pre-trial release decisions, following a machine-learning risk prediction instead of the judge would cut crime by up to 24.7 % at an unchanged jailing rate — a policy simulation on real dossiers, not a deployment. A controlled experiment once run on 31 real US federal judges was replicated with GPT-4o judging the same full case file: the model follows precedent and ignores the defendant's sympathy — the judges did the opposite. Practitioner anecdote, from an essay that is not peer review: on the briefs alone, Claude decided 27 of 37 US Supreme Court cases the same way as the Court. And the famous \"AI predicts judges at 79 %\" figure classifies the text of ALREADY-written judgments; on genuinely future cases it drops to 58–68 %. Predicting a risk is not rendering justice — proportionality, dignity and the right to be heard stay human.",
+    "fr": "Deux résultats solides, une mise en garde. Sur les décisions de libération avant procès à New York, suivre une prédiction de risque par apprentissage automatique au lieu du juge réduirait la criminalité jusqu’à 24,7 % à taux d’incarcération inchangé — une simulation de politique publique sur dossiers réels, pas un déploiement. Une expérience contrôlée menée sur 31 vrais juges fédéraux américains a été répliquée avec GPT-4o jugeant le même dossier complet : le modèle suit le précédent et ignore la sympathie qu’inspire le prévenu — les juges faisaient l’inverse. Anecdote de praticien, tirée d’un essai qui n’est pas une publication revue par les pairs : sur les seuls mémoires, Claude a tranché 27 des 37 affaires de la Cour suprême des États-Unis comme la Cour. Et le fameux « l’IA prédit les juges à 79 % » classe le texte de jugements DÉJÀ rédigés ; sur des affaires réellement futures, il tombe à 58–68 %. Prédire un risque n’est pas rendre la justice — la proportionnalité, la dignité et le droit d’être entendu restent humains."
    },
    "anecdote": {
-    "en": "On the briefs alone: 27/37 Supreme Court cases like the Court · essay, not a proof"
+    "en": "On the briefs alone: 27/37 Supreme Court cases like the Court · essay, not a proof",
+    "fr": "Sur les seuls mémoires : 27/37 affaires de la Cour suprême comme la Cour · un essai, pas une preuve"
    },
    "anecdote_source": {
     "citekeys": [
@@ -62,10 +71,12 @@
   {
    "id": "wef-outlook",
    "claim": {
-    "en": "Employers surveyed across 55 economies expect 39 % of core skills to change by 2030, with analytical thinking and AI literacy topping the rising list."
+    "en": "Employers surveyed across 55 economies expect 39 % of core skills to change by 2030, with analytical thinking and AI literacy topping the rising list.",
+    "fr": "Les employeurs interrogés dans 55 économies s’attendent à ce que 39 % des compétences clés changent d’ici 2030, la pensée analytique et la littératie en IA en tête de la liste montante."
    },
    "short": {
-    "en": "55 economies · 39 % of core skills change → 2030"
+    "en": "55 economies · 39 % of core skills change → 2030",
+    "fr": "55 économies · 39 % des compétences clés changent → 2030"
    },
    "source": {
     "citekeys": [

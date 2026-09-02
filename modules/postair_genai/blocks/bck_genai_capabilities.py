@@ -42,44 +42,44 @@ bs = BlockStyles
 _CAPABILITIES = [
     {
         "icon": "✍️",
-        "label": {"en": "Write"},
-        "example": {"en": "Writing: ~40 % faster (controlled trial)"},
+        "label": {"en": "Write", "fr": "Écrire"},
+        "example": {"en": "Writing: ~40 % faster (controlled trial)", "fr": "Écriture : ~40 % plus rapide (essai contrôlé)"},
         "citekeys": ["noy-zhang-2023"],
     },
     {
         "icon": "🌍",
-        "label": {"en": "Translate"},
-        "example": {"en": "~100 languages · Lëtzebuergesch: imperfect"},
+        "label": {"en": "Translate", "fr": "Traduire"},
+        "example": {"en": "~100 languages · Lëtzebuergesch: imperfect", "fr": "~100 langues · Lëtzebuergesch : imparfait"},
         "citekeys": [],
     },
     {
         "icon": "💻",
-        "label": {"en": "Code"},
-        "example": {"en": "Sentence → program · explains others' code"},
+        "label": {"en": "Code", "fr": "Coder"},
+        "example": {"en": "Sentence → program · explains others' code", "fr": "Phrase → programme · explique le code des autres"},
         "citekeys": [],
     },
     {
         "icon": "📚",
-        "label": {"en": "Summarise"},
-        "example": {"en": "60 pages → 1 · risk: THE nuance lost"},
+        "label": {"en": "Summarise", "fr": "Résumer"},
+        "example": {"en": "60 pages → 1 · risk: THE nuance lost", "fr": "60 pages → 1 · risque : LA nuance perdue"},
         "citekeys": [],
     },
     {
         "icon": "🎨",
-        "label": {"en": "Create media"},
-        "example": {"en": "Text → image / music / video · this deck: 100 % generated"},
+        "label": {"en": "Create media", "fr": "Créer des médias"},
+        "example": {"en": "Text → image / music / video · this deck: 100 % generated", "fr": "Texte → image / musique / vidéo · ces slides : 100 % générées"},
         "citekeys": [],
     },
     {
         "icon": "🧩",
-        "label": {"en": "Reason\n(a bit)"},
-        "example": {"en": "Reasoning ↑ fast · unverified: fragile"},
+        "label": {"en": "Reason\n(a bit)", "fr": "Raisonner\n(un peu)"},
+        "example": {"en": "Reasoning ↑ fast · unverified: fragile", "fr": "Raisonnement ↑ rapide · non vérifié : fragile"},
         "citekeys": [],
     },
     {
         "icon": "⚡",
-        "label": {"en": "Act — agents"},
-        "example": {"en": "Agents = tools in a loop → Mistral session"},
+        "label": {"en": "Act — agents", "fr": "Agir — agents"},
+        "example": {"en": "Agents = tools in a loop → Mistral session", "fr": "Agents = des outils en boucle → session Mistral"},
         "citekeys": [],
         "accent": True,   # LA carte ambre — le teaser de la session Mistral.
     },
@@ -87,21 +87,21 @@ _CAPABILITIES = [
 
 # ── Un exemple par faculté (panneau uniquement, plan G6) ────────────────────
 _FACULTY_EXAMPLES = [
-    ({"en": "Science & engineering"},
+    ({"en": "Science & engineering", "fr": "Sciences & ingénierie"},
      {"en": ("Code assistants draft, test and explain programs — the FSTM way in: "
-             "build with it, then break it to understand it.")}),
-    ({"en": "Law, economics, finance"},
+             "build with it, then break it to understand it."), "fr": "Les assistants de code rédigent, testent et expliquent des programmes — la porte d’entrée FSTM : construire avec, puis casser pour comprendre."}),
+    ({"en": "Law, economics, finance", "fr": "Droit, économie, finance"},
      {"en": ("Contract review and case-law search accelerate massively — and G7 "
-             "shows why a jurist verifies every citation it returns.")}),
-    ({"en": "Humanities, education, social sciences"},
+             "shows why a jurist verifies every citation it returns."), "fr": "La revue de contrats et la recherche de jurisprudence s’accélèrent massivement — et G7 montre pourquoi un juriste vérifie chaque citation qu’elle retourne."}),
+    ({"en": "Humanities, education, social sciences", "fr": "Humanités, éducation, sciences sociales"},
      {"en": ("Transcription, translation and thematic coding of interviews — the "
-             "analysis and the interpretation stay the researcher's.")}),
+             "analysis and the interpretation stay the researcher's."), "fr": "Transcription, traduction et codage thématique des entretiens — l’analyse et l’interprétation restent celles du chercheur."}),
 ]
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
-_MARKER = {"en": "What it can do"}
-_TITLE = {"en": ("What it ", (s.project.titles.keyword, "can do"), " today")}
-_TIP_TITLE = {"en": "One dated example each"}
+_MARKER = {"en": "What it can do", "fr": "Ce qu’elle sait faire"}
+_TITLE = {"en": ("What it ", (s.project.titles.keyword, "can do"), " today"), "fr": ("Ce qu’elle ", (s.project.titles.keyword, "sait faire"), " aujourd’hui")}
+_TIP_TITLE = {"en": "One dated example each", "fr": "Un exemple daté pour chacune"}
 
 
 def build(lang: str = "en", **_):

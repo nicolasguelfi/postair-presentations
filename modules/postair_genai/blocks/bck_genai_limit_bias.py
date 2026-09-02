@@ -60,16 +60,16 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Le revers ───────────────────────────────────────────────────────────────
-_MARKER = {"en": "Bias"}
+_MARKER = {"en": "Bias", "fr": "Biais"}
 _ICON = "⚖️"
-_LABEL = {"en": "Trained on WHOSE world?"}
-_MESSAGE = {"en": "Mostly the English-speaking, Western web"}
-_PUNCH = {"en": "≈ 93 % of GPT-3's training words: English"}
+_LABEL = {"en": "Trained on WHOSE world?", "fr": "Entraînée sur le monde de QUI ?"}
+_MESSAGE = {"en": "Mostly the English-speaking, Western web", "fr": "Surtout le web occidental et anglophone"}
+_PUNCH = {"en": "≈ 93 % of GPT-3's training words: English", "fr": "≈ 93 % des mots d’entraînement de GPT-3 : en anglais"}
 #: LA maxime de NG, projetée en corail (remplace la ligne « mismatch »,
 #: demande NG 2026-09-02 — l'ancienne formulation vit au panneau) ; les
 #: mesures d'alignement qui la fondent gardent leurs codes visibles dessous.
 _MAXIM = {"en": ("Beware of “marketing bias” — the AI is not always aligned "
-                 "with its sellers' claims")}
+                 "with its sellers' claims"), "fr": "Méfiez-vous du « biais marketing » — l’IA n’est pas toujours alignée sur les promesses de ses vendeurs"}
 _CITE_PUNCH = ["brown2020-gpt3"]
 _CITE_MAXIM = ["santurkar2023-opinions", "cao2023-culture"]
 
@@ -77,29 +77,29 @@ _TOOLTIP = [
     # L'entrée d'ouverture — la phrase de NG (variante B validée 2026-09-02) :
     # le biais vit dans l'écart entre la prétention commerciale et la cible
     # réelle de l'outil, pas dans les poids (fidèles à leur corpus).
-    ({"en": "Marketing bias"},
+    ({"en": "Marketing bias", "fr": "Le biais marketing"},
      {"en": ("The pitch says « the world »; the corpus says « the English-"
              "speaking web » — the gap is the bias. Not a bias for an "
              "American reader — a mismatch for a Chinese, Japanese or "
-             "Iranian one.")}),
-    ({"en": "The primary number — documented, not speculative"},
+             "Iranian one."), "fr": "Le discours commercial dit « le monde » ; le corpus dit « le web anglophone » — l’écart est le biais. Pas un biais pour un lecteur américain — un décalage pour un lecteur chinois, japonais ou iranien."}),
+    ({"en": "The primary number — documented, not speculative", "fr": "Le chiffre primaire — documenté, pas spéculatif"},
      {"en": ("92.65 % of GPT-3's training words were English — OpenAI's own "
              "dataset statistics, published with the paper. Recent frontier "
              "corpora are less documented publicly; that opacity is itself "
-             "worth saying on stage.")}),
-    ({"en": "Culture, measured"},
+             "worth saying on stage."), "fr": "92,65 % des mots d’entraînement de GPT-3 étaient en anglais — les statistiques de corpus d’OpenAI elle-même, publiées avec l’article. Les corpus de frontière récents sont moins documentés publiquement ; cette opacité mérite elle-même d’être dite sur scène."}),
+    ({"en": "Culture, measured", "fr": "La culture, mesurée"},
      {"en": ("On value surveys, aligned models answer closest to US/Western "
              "respondents and diverge from Chinese or Japanese answers "
              "(Hofstede-style probes); on opinion polls, they reflect some "
-             "populations far more than others.")}),
-    ({"en": "Feel it locally"},
+             "populations far more than others."), "fr": "Sur les enquêtes de valeurs, les modèles alignés répondent au plus près des répondants américains et occidentaux et divergent des réponses chinoises ou japonaises (sondes de type Hofstede) ; sur les sondages d’opinion, ils reflètent certaines populations bien plus que d’autres."}),
+    ({"en": "Feel it locally", "fr": "Ressentez-le localement"},
      {"en": ("Ask the same question in Luxembourgish, then in English, and "
              "compare depth and accuracy — under-represented languages get "
-             "the leftovers of the training corpus.")}),
-    ({"en": "Same story, earlier slide"},
+             "the leftovers of the training corpus."), "fr": "Posez la même question en luxembourgeois, puis en anglais, et comparez profondeur et exactitude — les langues sous-représentées reçoivent les restes du corpus d’entraînement."}),
+    ({"en": "Same story, earlier slide", "fr": "Même histoire, slide plus tôt"},
      {"en": ("The opening deck's detector slide (61 % of non-native English "
              "essays flagged as « AI ») is the same data imbalance, seen "
-             "from the student's side.")}),
+             "from the student's side."), "fr": "La slide des détecteurs du deck d’ouverture (61 % des essais de non-natifs de l’anglais signalés « IA ») est le même déséquilibre de données, vu du côté de l’étudiant."}),
 ]
 
 # ── L'image papercut ────────────────────────────────────────────────────────

@@ -58,37 +58,37 @@ _DUO_ORB = Style(f"font-size: 2.6vw; color: {AMBER}; vertical-align: middle;",
 #: des cartes : health, law, science.
 _CAREERS = [
     {
-        "faculty": {"en": "Medicine & health"},
-        "pair": {"en": "the clinician + AI"},
+        "faculty": {"en": "Medicine & health", "fr": "Médecine & santé"},
+        "pair": {"en": "the clinician + AI", "fr": "le clinicien + IA"},
         "detail": {"en": ("Imaging triage, protein structures, paperwork — and a "
-                          "human who decides, explains and carries responsibility.")},
+                          "human who decides, explains and carries responsibility."), "fr": "Tri d’imagerie, structures de protéines, paperasse — et un humain qui décide, explique et porte la responsabilité."},
     },
     {
-        "faculty": {"en": "Law, economics, finance"},
-        "pair": {"en": "the jurist + AI"},
+        "faculty": {"en": "Law, economics, finance", "fr": "Droit, économie, finance"},
+        "pair": {"en": "the jurist + AI", "fr": "le juriste + IA"},
         "detail": {"en": ("Research and drafting accelerate; judgement, strategy "
-                          "and accountability do not delegate.")},
+                          "and accountability do not delegate."), "fr": "La recherche et la rédaction s’accélèrent ; le jugement, la stratégie et la responsabilité ne se délèguent pas."},
     },
     {
-        "faculty": {"en": "Science & engineering"},
-        "pair": {"en": "the researcher + AI"},
+        "faculty": {"en": "Science & engineering", "fr": "Sciences & ingénierie"},
+        "pair": {"en": "the researcher + AI", "fr": "le chercheur + IA"},
         "detail": {"en": ("Hypothesis search, code, literature triage — and the "
-                          "experiment, the proof and the doubt stay yours.")},
+                          "experiment, the proof and the doubt stay yours."), "fr": "Recherche d’hypothèses, code, tri de la littérature — et l’expérience, la preuve et le doute restent à vous."},
     },
 ]
 
 # ── La ligne-cadre (forme courte projetée ; phrase complète au survol) ──────
 #: Le chiffre et sa phrase viennent du fait partagé ``jobs``/``wef-outlook``
 #: de facts.json — une seule vérité pour les deux slides qui le projettent.
-_FRAME_CLAIM = {"en": "Transformation, not disappearance"}
-_FRAME_RISING = {"en": "Fastest-rising skill: JUDGING what the AI produced"}
+_FRAME_CLAIM = {"en": "Transformation, not disappearance", "fr": "Transformation, pas disparition"}
+_FRAME_RISING = {"en": "Fastest-rising skill: JUDGING what the AI produced", "fr": "La compétence qui monte le plus vite : JUGER ce que l’IA a produit"}
 
-_MARKER = {"en": "Your jobs"}
-_TITLE = {"en": ("And for your ", (s.project.titles.keyword, "future jobs"), "?")}
-_TIP_TITLE = {"en": "What the evidence says"}
-_TIP_DURABLE = ({"en": "The durable skills"},
+_MARKER = {"en": "Your jobs", "fr": "Vos métiers"}
+_TITLE = {"en": ("And for your ", (s.project.titles.keyword, "future jobs"), "?"), "fr": ("Et pour vos ", (s.project.titles.keyword, "futurs métiers"), " ?")}
+_TIP_TITLE = {"en": "What the evidence says", "fr": "Ce que disent les preuves"}
+_TIP_DURABLE = ({"en": "The durable skills", "fr": "Les compétences durables"},
                 {"en": ("Critical thinking, domain expertise, ethics: piloting "
-                        "an AI requires knowing the field better than it does.")})
+                        "an AI requires knowing the field better than it does."), "fr": "Esprit critique, expertise du domaine, éthique : piloter une IA exige de connaître le champ mieux qu’elle."})
 
 
 def build(lang: str = "en", **_):
@@ -122,10 +122,13 @@ def build(lang: str = "en", **_):
                              (_DUO_HUMAN, "👤"), (_DUO_PLUS, " + "),
                              (_DUO_ORB, "✦"), tag=t.div)
                     st_write(bs.pair, T(c["pair"], lang), tag=t.div)
-        st_space("v", "2vh")
-        # Télégraphique (NG 2026-08-13) : la phrase-cadre complète vit dans
-        # l'infobulle ; l'écran porte la forme courte.
-        st_write(bs.frame, T(_FRAME_CLAIM, lang), " · ", text(wef["short"], lang), " ",
-                 citation(*citekeys(wef)), tag=t.div)
         st_space("v", "1vh")
-        st_write(bs.rising, T(_FRAME_RISING, lang), tag=t.div)
+        # Télégraphique (NG 2026-08-13) : la phrase-cadre complète vit dans
+        # l'infobulle ; l'écran porte la forme courte. Pied à zoom 90 (porte
+        # projection 2026-09-02 : la ligne ambre repliée en deux débordait
+        # de ×1.08 à 1920×1080).
+        with st_zoom(90):
+            st_write(bs.frame, T(_FRAME_CLAIM, lang), " · ", text(wef["short"], lang), " ",
+                     citation(*citekeys(wef)), tag=t.div)
+            st_space("v", "1vh")
+            st_write(bs.rising, T(_FRAME_RISING, lang), tag=t.div)

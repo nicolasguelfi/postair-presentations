@@ -40,38 +40,48 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Skills 2030"}
-_TITLE = {"en": ("Learn ", (s.project.titles.keyword, "what"), ", then?")}
+_MARKER = {"en": "Skills 2030", "fr": "Compétences 2030"}
+_TITLE = {"en": ("Learn ", (s.project.titles.keyword, "what"), ", then?"), "fr": ("Apprendre ", (s.project.titles.keyword, "quoi"), ", alors ?")}
 _CITEKEYS = ["dondi2021-skills"]
 
 _FAMILIES = [
-    {"icon": "🧠", "label": {"en": "Cognitive"},
-     "line": {"en": "critical thinking · structured problems · storytelling"}},
-    {"icon": "💻", "label": {"en": "Digital"},
-     "line": {"en": "literacy · data · cybersecurity reflexes"}},
-    {"icon": "🤝", "label": {"en": "Interpersonal"},
-     "line": {"en": "teamwork · empathy · mobilising people"}},
-    {"icon": "🚀", "label": {"en": "Self-leadership"},
-     "line": {"en": "learning to learn · grit · coping with uncertainty"}},
+    {"icon": "🧠", "label": {"en": "Cognitive", "fr": "Cognitives"},
+     "line": {"en": "critical thinking · structured problems · storytelling", "fr": "esprit critique · problèmes structurés · narration"}},
+    {"icon": "💻", "label": {"en": "Digital", "fr": "Numériques"},
+     "line": {"en": "literacy · data · cybersecurity reflexes", "fr": "littératie numérique · données · réflexes de cybersécurité"}},
+    {"icon": "🤝", "label": {"en": "Interpersonal", "fr": "Interpersonnelles"},
+     "line": {"en": "teamwork · empathy · mobilising people", "fr": "travail d’équipe · empathie · mobiliser les autres"}},
+    {"icon": "🚀", "label": {"en": "Self-leadership", "fr": "Pilotage de soi"},
+     "line": {"en": "learning to learn · grit · coping with uncertainty", "fr": "apprendre à apprendre · ténacité · vivre avec l’incertitude"}},
 ]
 
-_PUNCH = {"en": ("the durable core: what the machine does NOT do",)}
+_PUNCH = {"en": ("the durable core: what the machine does NOT do",), "fr": ("le noyau durable : ce que la machine ne fait PAS",)}
 
-_TIP_TITLE = {"en": "The study, precisely"}
+_TIP_TITLE = {"en": "The study, precisely", "fr": "L’étude, précisément"}
 _TOOLTIP = [
-    ({"en": "The source"},
+    ({"en": "The source", "fr": "La source"},
      {"en": ("McKinsey 2021: 18 000 respondents, 15 countries, 56 elementary "
              "skills (« DELTAs ») grouped in these four families — a "
-             "consultancy survey, not peer-reviewed, dated on stage.")}),
-    ({"en": "How it links to G10"},
+             "consultancy survey, not peer-reviewed, dated on stage."), "fr": "McKinsey 2021 : 18 000 répondants, 15 pays, 56 compétences élémentaires (« DELTAs ») regroupées en ces quatre familles — une enquête de cabinet, non revue par les pairs, datée sur scène."}),
+    ({"en": "How it links to G10", "fr": "Le lien avec G10"},
      {"en": ("The careers slide says HOW MUCH changes (WEF: 39 % of core "
              "skills by 2030); this one says TOWARD WHAT. One number there, "
-             "four directions here.")}),
-    ({"en": "The AI twist"},
+             "four directions here."), "fr": "La slide carrières dit COMBIEN ça change (WEF : 39 % des compétences clés d’ici 2030) ; celle-ci dit VERS QUOI. Un chiffre là-bas, quatre directions ici."}),
+    ({"en": "The AI twist", "fr": "La leçon IA"},
      {"en": ("Written before ChatGPT, the study aged tellingly: the four "
              "families held, the software lists did not — bet on the "
-             "families, rent the tools.")}),
+             "families, rent the tools."), "fr": "Écrite avant ChatGPT, l’étude a vieilli de façon parlante : les quatre familles ont tenu, les listes de logiciels non — misez sur les familles, louez les outils."}),
 ]
+
+
+# ── La main de l'artiste ────────────────────────────────────────────────────
+#: ``cols`` : les 4 familles sur UNE rangée (mesuré porte projection
+#: 2026-09-02 : le 2×2 de ``balanced(4)`` débordait de ×1.23 à 1920×1080) —
+#: plancher 21 % = 4 colonnes max, plancher 260px = repli responsive en
+#: fenêtre étroite, même mécanique que ``balanced``.
+TUNING = {
+    "cols": "repeat(auto-fit, minmax(max(260px, 21%), 1fr))",
+}
 
 
 def build(lang: str = "en", **_):
@@ -88,7 +98,7 @@ def build(lang: str = "en", **_):
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
         st_space("v", s.project.spacing.title_gap)
-        with st_grid(cols=s.project.grids.balanced(len(_FAMILIES)), gap="1.2vw",
+        with st_grid(cols=TUNING["cols"], gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for f in _FAMILIES:

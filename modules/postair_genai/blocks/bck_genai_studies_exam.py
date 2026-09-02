@@ -55,9 +55,9 @@ _EXAM_PROMPT = (
 # décision d'auteur par-dessus). Les \n des feuilles = vraies coupures
 # (une écriture par ligne, piège st_write du PLAYBOOK).
 _DONT = [
-    {"en": "The exam tests YOUR skill — Not the AI"},
-    {"en": "Skip the effort → the skill never forms"},
-    {"en": "94 % UK use it (also) for the good\nBUT bad usage has\ngrown by 300% since 2024"},
+    {"en": "The exam tests YOUR skill — Not the AI", "fr": "L’examen évalue VOTRE compétence — Pas l’IA"},
+    {"en": "Skip the effort → the skill never forms", "fr": "Esquiver l’effort → la compétence ne se forme jamais"},
+    {"en": "94 % UK use it (also) for the good\nBUT bad usage has\ngrown by 300% since 2024", "fr": "94 % au Royaume-Uni l’utilisent (aussi) pour le bien\nMAIS le mauvais usage a\ncrû de 300 % depuis 2024"},
 ]
 _DONT_CITEKEYS = ["hepi-survey-2026"]
 
@@ -68,28 +68,28 @@ _DONT_COLOURS = [s.project.colors.primary, s.project.colors.keyword,
                  s.project.colors.coral]
 
 # ── Le paradoxe — LE message de la slide (formulation NG, grow/shrink) ──────
-_PARADOX = {"en": "Learn WITH it → you grow\nlet it REPLACE you\n→ you shrink"}
+_PARADOX = {"en": "Learn WITH it → you grow\nlet it REPLACE you\n→ you shrink", "fr": "Apprenez AVEC elle → vous grandissez\nlaissez-la vous REMPLACER\n→ vous rétrécissez"}
 
-_MARKER = {"en": "The exam"}
-_TITLE = {"en": ("The exam stays ", (s.project.titles.keyword, "human"))}
-_TIP_TITLE = {"en": "Tutor, not ghostwriter"}
+_MARKER = {"en": "The exam", "fr": "L’examen"}
+_TITLE = {"en": ("The exam stays ", (s.project.titles.keyword, "human")), "fr": ("L’examen reste ", (s.project.titles.keyword, "humain"))}
+_TIP_TITLE = {"en": "Tutor, not ghostwriter", "fr": "Tuteur, pas prête-plume"}
 _TOOLTIP = [
-    ({"en": "How to prove the work is yours"},
+    ({"en": "How to prove the work is yours", "fr": "Comment prouver que le travail est le vôtre"},
      {"en": ("Graders look at your PROCESS: drafts, prompts, versions, "
-             "choices. Keep them — they are your signature.")}),
-    ({"en": "The paradox, in full"},
+             "choices. Keep them — they are your signature."), "fr": "Les correcteurs regardent votre PROCESSUS : brouillons, prompts, versions, choix. Conservez-les — ils sont votre signature."}),
+    ({"en": "The paradox, in full", "fr": "Le paradoxe, en entier"},
      {"en": ("The same tool that multiplies learning when it assists you "
              "cancels it when it replaces you. The exam room is where the "
-             "difference shows.")}),
-    ({"en": "The numbers, precisely"},
+             "difference shows."), "fr": "Le même outil qui multiplie l’apprentissage quand il vous assiste l’annule quand il vous remplace. La salle d’examen est l’endroit où la différence se voit."}),
+    ({"en": "The numbers, precisely", "fr": "Les chiffres, précisément"},
      {"en": ("HEPI 2026 (1054 UK undergraduates): 94 % use generative AI in "
              "some form; directly pasting AI text into GRADED work rose from "
              "3 % (2024) to 8 % (2025) to 12 % (2026) — that is the "
-             "« +300 % » on screen, a fourfold rise.")}),
-    ({"en": "Why exams stay AI-free"},
+             "« +300 % » on screen, a fourfold rise."), "fr": "HEPI 2026 (1 054 étudiants de licence britanniques) : 94 % utilisent l’IA générative sous une forme ou une autre ; coller directement du texte d’IA dans un travail NOTÉ est passé de 3 % (2024) à 8 % (2025) puis 12 % (2026) — c’est le « +300 % » à l’écran, une multiplication par quatre."}),
+    ({"en": "Why exams stay AI-free", "fr": "Pourquoi les examens restent sans IA"},
      {"en": ("Assessment is being redesigned in three regimes — AI-free, "
              "AI-assisted, AI-integrated. The AI-free room measures what "
-             "remains when the tool is gone.")}),
+             "remains when the tool is gone."), "fr": "L’évaluation se repense en trois régimes — sans IA, assistée par l’IA, intégrant l’IA. La salle sans IA mesure ce qui reste quand l’outil disparaît."}),
 ]
 
 # ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─

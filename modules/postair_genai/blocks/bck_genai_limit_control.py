@@ -37,14 +37,14 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Le revers ───────────────────────────────────────────────────────────────
-_MARKER = {"en": "Control"}
+_MARKER = {"en": "Control", "fr": "Contrôle"}
 _ICON = "🏛️"
-_LABEL = {"en": "Who controls the models?"}
-_MESSAGE = {"en": "Frontier models\n=\na handful of companies"}
-_PUNCH = {"en": "EU sovereignty → Mistral"}
+_LABEL = {"en": "Who controls the models?", "fr": "Qui contrôle les modèles ?"}
+_MESSAGE = {"en": "Frontier models\n=\na handful of companies", "fr": "Modèles de frontière\n=\nune poignée d’entreprises"}
+_PUNCH = {"en": "EU sovereignty → Mistral", "fr": "Souveraineté de l’UE → Mistral"}
 _DETAIL = {"en": ("A handful of companies train the frontier models. What Europe "
                   "builds itself is a sovereignty question — the Mistral session is "
-                  "part of the answer.")}
+                  "part of the answer."), "fr": "Une poignée d’entreprises entraînent les modèles de frontière. Ce que l’Europe construit elle-même est une question de souveraineté — la session Mistral fait partie de la réponse."}
 
 # ── L'image papercut ────────────────────────────────────────────────────────
 _IMAGE = "genai_control"

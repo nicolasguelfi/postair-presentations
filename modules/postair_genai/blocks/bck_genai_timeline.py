@@ -67,59 +67,59 @@ def _dot_html(colour: str) -> str:
 _MILESTONES = [
     {
         "year": "1950",
-        "label": {"en": "The Turing test"},
+        "label": {"en": "The Turing test", "fr": "Le test de Turing"},
         "detail": {"en": ("Can a machine hold a conversation indistinguishable from "
-                          "a human's? The question that started the field.")},
+                          "a human's? The question that started the field."), "fr": "Une machine peut-elle tenir une conversation impossible à distinguer de celle d’un humain ? La question qui a fondé le domaine."},
         "citekeys": ["turing1950-mind"],
     },
     {
         "year": "1956",
-        "label": {"en": "The name: « AI »"},
+        "label": {"en": "The name: « AI »", "fr": "Le nom : « IA »"},
         "detail": {"en": ("A summer workshop at Dartmouth coins the term "
-                          "« artificial intelligence » — and predicts fast progress.")},
+                          "« artificial intelligence » — and predicts fast progress."), "fr": "Un atelier d’été à Dartmouth forge le terme « intelligence artificielle » — et prédit des progrès rapides."},
         "citekeys": ["mccarthy1955-dartmouth"],
     },
     {
         "year": "1974–1993",
-        "label": {"en": "Two AI winters"},
+        "label": {"en": "Two AI winters", "fr": "Deux hivers de l’IA"},
         "detail": {"en": ("Twice, promises outran results and funding collapsed. The "
-                          "field learned humility the hard way.")},
+                          "field learned humility the hard way."), "fr": "Deux fois, les promesses ont dépassé les résultats et les financements se sont effondrés. Le domaine a appris l’humilité à ses dépens."},
         "citekeys": ["lighthill1973-survey"],
     },
     {
         "year": "2012",
-        "label": {"en": "Deep learning works"},
+        "label": {"en": "Deep learning works", "fr": "Le deep learning marche"},
         "detail": {"en": ("AlexNet crushes the ImageNet vision contest: neural "
-                          "networks plus GPUs plus data finally deliver.")},
+                          "networks plus GPUs plus data finally deliver."), "fr": "AlexNet écrase le concours de vision ImageNet : réseaux de neurones plus GPU plus données tiennent enfin leurs promesses."},
         "citekeys": ["krizhevsky2012-alexnet"],
     },
     {
         "year": "2017",
-        "label": {"en": "Transformers"},
+        "label": {"en": "Transformers", "fr": "Transformers"},
         "detail": {"en": ("« Attention Is All You Need » — the architecture every "
-                          "current large language model is built on.")},
+                          "current large language model is built on."), "fr": "« Attention Is All You Need » — l’architecture sur laquelle est bâti chaque grand modèle de langue actuel."},
         "citekeys": ["vaswani2017-attention"],
     },
     {
         "year": "2022",
-        "label": {"en": "ChatGPT"},
+        "label": {"en": "ChatGPT", "fr": "ChatGPT"},
         "detail": {"en": ("An estimated 100 million users two months after launch — "
-                          "the fastest-adopted consumer application of its time.")},
+                          "the fastest-adopted consumer application of its time."), "fr": "Environ 100 millions d’utilisateurs estimés deux mois après le lancement — l’application grand public la plus vite adoptée de son époque."},
         "citekeys": ["hu2023-fastest"],
     },
     {
         "year": "2026",
-        "label": {"en": "The year of agents"},
+        "label": {"en": "The year of agents", "fr": "L’année des agents"},
         "detail": {"en": ("Models that use tools in a loop to pursue a goal — the "
-                          "frontier you will see live in the Mistral session.")},
+                          "frontier you will see live in the Mistral session."), "fr": "Des modèles qui utilisent des outils en boucle pour poursuivre un but — la frontière que vous verrez en direct dans la session Mistral."},
         "citekeys": [],
     },
 ]
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
-_MARKER = {"en": "70 years"}
-_TITLE = {"en": ((s.project.titles.keyword, "Seventy years"), " in 7 dates")}
-_TIP_TITLE = {"en": "The milestones, one sentence each"}
+_MARKER = {"en": "70 years", "fr": "70 ans"}
+_TITLE = {"en": ((s.project.titles.keyword, "Seventy years"), " in 7 dates"), "fr": ((s.project.titles.keyword, "Soixante-dix ans"), " en 7 dates")}
+_TIP_TITLE = {"en": "The milestones, one sentence each", "fr": "Les jalons, une phrase chacun"}
 
 
 def build(lang: str = "en", **_):

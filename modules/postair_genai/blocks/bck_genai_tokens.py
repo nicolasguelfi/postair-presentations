@@ -51,26 +51,32 @@ _SENTENCE = {"en": (
     (s.project.colors.amber, " is"),
     (s.project.colors.primary, " a"),
     (s.project.colors.muted, " ____"),
+), "fr": (
+    (s.project.colors.primary, "Luxem"),
+    (s.project.colors.keyword, "bourg"),
+    (s.project.colors.amber, " est"),
+    (s.project.colors.primary, " un"),
+    (s.project.colors.muted, " ____"),
 )}
-_MARKER = {"en": "Tokens"}
-_TITLE = {"en": ("It reads in ", (s.project.titles.keyword, "tokens"))}
-_CAPTION = {"en": "never letters · never words · fragments, each one a NUMBER"}
-_PUNCH = {"en": ("1 token ≈ 4 characters ≈ ¾ of a word",)}
+_MARKER = {"en": "Tokens", "fr": "Jetons"}
+_TITLE = {"en": ("It reads in ", (s.project.titles.keyword, "tokens")), "fr": ("Elle lit en ", (s.project.titles.keyword, "jetons"))}
+_CAPTION = {"en": "never letters · never words · fragments, each one a NUMBER", "fr": "jamais des lettres · jamais des mots · des fragments, chacun un NOMBRE"}
+_PUNCH = {"en": ("1 token ≈ 4 characters ≈ ¾ of a word",), "fr": ("1 jeton ≈ 4 caractères ≈ ¾ de mot",)}
 
-_TIP_TITLE = {"en": "Tokens, precisely"}
+_TIP_TITLE = {"en": "Tokens, precisely", "fr": "Les jetons, précisément"}
 _TOOLTIP = [
-    ({"en": "The split"},
+    ({"en": "The split", "fr": "Le découpage"},
      {"en": ("Real tokenizers cut « Luxembourg » into 2–3 pieces; the exact "
-             "split varies per model — the one projected is illustrative.")}),
-    ({"en": "Why fragments"},
+             "split varies per model — the one projected is illustrative."), "fr": "Les vrais tokenizers coupent « Luxembourg » en 2–3 morceaux ; le découpage exact varie selon le modèle — celui projeté est illustratif."}),
+    ({"en": "Why fragments", "fr": "Pourquoi des fragments"},
      {"en": ("A fixed vocabulary of ~100 000 fragments covers every language "
-             "and any new word — even « Schwëtzebuerg » gets pieces.")}),
-    ({"en": "Numbers, not text"},
+             "and any new word — even « Schwëtzebuerg » gets pieces."), "fr": "Un vocabulaire fixe d’environ 100 000 fragments couvre toutes les langues et n’importe quel mot nouveau — même « Schwëtzebuerg » reçoit ses morceaux."}),
+    ({"en": "Numbers, not text", "fr": "Des nombres, pas du texte"},
      {"en": ("Each fragment has an index in the vocabulary; the model computes "
-             "on those numbers. All of G4's probabilities are per-token.")}),
-    ({"en": "Why you should care"},
+             "on those numbers. All of G4's probabilities are per-token."), "fr": "Chaque fragment a un index dans le vocabulaire ; le modèle calcule sur ces nombres. Toutes les probabilités de G4 sont par jeton."}),
+    ({"en": "Why you should care", "fr": "Pourquoi ça vous concerne"},
      {"en": ("Pricing, context limits (« 128k tokens »), and some silly "
-             "mistakes (counting letters in a word) all come from tokens.")}),
+             "mistakes (counting letters in a word) all come from tokens."), "fr": "La tarification, les limites de contexte (« 128k tokens ») et certaines erreurs bêtes (compter les lettres d’un mot) viennent toutes des jetons."}),
 ]
 
 

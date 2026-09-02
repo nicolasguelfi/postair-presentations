@@ -62,41 +62,41 @@ def _gauge_html(fill: str) -> str:
 #: source dédiée — sa liste de citekeys est vide.
 _SLIDERS = [
     {
-        "label": {"en": "Data"},
-        "value": {"en": "≈ the public web"},
+        "label": {"en": "Data", "fr": "Données"},
+        "value": {"en": "≈ the public web", "fr": "≈ le web public"},
         "detail": {"en": ("Training corpora sample most of the accessible public "
-                          "web, plus books and code.")},
+                          "web, plus books and code."), "fr": "Les corpus d’entraînement échantillonnent l’essentiel du web public accessible, plus des livres et du code."},
         "citekeys": [],
     },
     {
-        "label": {"en": "Compute"},
-        "value": {"en": "×2.4 per year"},
+        "label": {"en": "Compute", "fr": "Calcul"},
+        "value": {"en": "×2.4 per year", "fr": "×2,4 par an"},
         "detail": {"en": ("The training compute cost of frontier models has grown "
                           "about 2.4× per year since 2016 — the largest runs cost "
-                          "tens to hundreds of millions of euros.")},
+                          "tens to hundreds of millions of euros."), "fr": "Le coût de calcul d’entraînement des modèles de pointe croît d’environ 2,4× par an depuis 2016 — les plus gros entraînements coûtent des dizaines à des centaines de millions d’euros."},
         "citekeys": ["cottier2024-costs"],
     },
     {
-        "label": {"en": "Energy"},
-        "value": {"en": "≈ 1.5 % → ×2 by 2030"},
+        "label": {"en": "Energy", "fr": "Énergie"},
+        "value": {"en": "≈ 1.5 % → ×2 by 2030", "fr": "≈ 1,5 % → ×2 d’ici 2030"},
         "detail": {"en": ("Data centres used about 1.5 % of world electricity in "
                           "2024; that could more than double by 2030, with AI as "
-                          "the main driver.")},
+                          "the main driver."), "fr": "Les centres de données ont consommé environ 1,5 % de l’électricité mondiale en 2024 ; cela pourrait plus que doubler d’ici 2030, l’IA en étant le principal moteur."},
         "citekeys": ["iea2025-energy"],
     },
 ]
 
 # ── L'émergence — la revendication ET son contrepoint, tous deux sourcés ────
-_EMERGENCE_CLAIM = {"en": "Scale → capabilities NOBODY programmed"}
+_EMERGENCE_CLAIM = {"en": "Scale → capabilities NOBODY programmed", "fr": "L’échelle → des capacités que PERSONNE n’a programmées"}
 _EMERGENCE_DETAIL = {"en": ("Abilities like multi-step arithmetic or translation "
                             "appear abruptly past certain scales — « emergent "
-                            "abilities ».")}
-_EMERGENCE_COUNTERPOINT = {"en": "« mirage » debate open — measurement artefact?"}
+                            "abilities »."), "fr": "Des aptitudes comme l’arithmétique en plusieurs étapes ou la traduction apparaissent brutalement au-delà de certaines échelles — les « capacités émergentes »."}
+_EMERGENCE_COUNTERPOINT = {"en": "« mirage » debate open — measurement artefact?", "fr": "débat « mirage » ouvert — artefact de mesure ?"}
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
-_MARKER = {"en": "Scale"}
-_TITLE = {"en": ((s.project.titles.keyword, "Scale"), " changes everything")}
-_TIP_TITLE = {"en": "Orders of magnitude"}
+_MARKER = {"en": "Scale", "fr": "Échelle"}
+_TITLE = {"en": ((s.project.titles.keyword, "Scale"), " changes everything"), "fr": ((s.project.titles.keyword, "L’échelle"), " change tout")}
+_TIP_TITLE = {"en": "Orders of magnitude", "fr": "Ordres de grandeur"}
 #: La source de la revendication ET celle du contrepoint — l'honnêteté est
 #: la ligne du deck.
 _EMERGENCE_CITEKEYS = ["wei2022-emergent", "schaeffer2023-mirage"]

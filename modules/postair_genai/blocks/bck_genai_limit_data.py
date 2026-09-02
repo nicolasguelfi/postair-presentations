@@ -56,32 +56,32 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Le revers ───────────────────────────────────────────────────────────────
-_MARKER = {"en": "Your data"}
+_MARKER = {"en": "Your data", "fr": "Vos données"}
 _ICON = "🔐"
-_LABEL = {"en": "Your data is the raw material"}
-_MESSAGE = {"en": ("Consumer chats\n- free or paid -\ntrain the model\nby DEFAULT")}
-_PUNCH = {"en": "Read what you sign\npersonal / sensitive = OUT"}
+_LABEL = {"en": "Your data is the raw material", "fr": "Vos données sont la matière première"}
+_MESSAGE = {"en": ("Consumer chats\n- free or paid -\ntrain the model\nby DEFAULT"), "fr": "Les chats grand public\n- gratuits ou payants -\nentraînent le modèle\npar DÉFAUT"}
+_PUNCH = {"en": "Read what you sign\npersonal / sensitive = OUT", "fr": "Lisez ce que vous signez\npersonnel / sensible = DEHORS"}
 _CITEKEYS = ["openai2026-datause", "google2026-gemini-privacy"]
 
 _TOOLTIP = [
-    ({"en": "OpenAI, primary source"},
+    ({"en": "OpenAI, primary source", "fr": "OpenAI, source primaire"},
      {"en": ("Personal accounts — Free, Go, Plus AND Pro — train the models "
              "by default; opt-out lives in the privacy portal, Temporary "
              "Chat is excluded. API and enterprise offers do NOT train by "
-             "default. Checked 2026-09-02.")}),
-    ({"en": "Google, primary source"},
+             "default. Checked 2026-09-02."), "fr": "Les comptes personnels — Free, Go, Plus ET Pro — entraînent les modèles par défaut ; le retrait (opt-out) se règle dans le portail de confidentialité, le Temporary Chat est exclu. Les offres API et entreprise n’entraînent PAS par défaut. Vérifié le 2026-09-02."}),
+    ({"en": "Google, primary source", "fr": "Google, source primaire"},
      {"en": ("Consumer Gemini conversations can be read by human reviewers "
              "and used to improve the models; reviewed content is kept up to "
              "three years. Google's own warning: do not enter confidential "
              "information you would not want a reviewer to see. Checked "
-             "2026-09-02.")}),
-    ({"en": "Free ≠ sold — the honest divide"},
+             "2026-09-02."), "fr": "Les conversations Gemini grand public peuvent être lues par des relecteurs humains et utilisées pour améliorer les modèles ; le contenu relu est conservé jusqu’à trois ans. L’avertissement de Google lui-même : ne saisissez pas d’informations confidentielles que vous ne voudriez pas montrer à un relecteur. Vérifié le 2026-09-02."}),
+    ({"en": "Free ≠ sold — the honest divide", "fr": "Gratuit ≠ vendu — la vraie ligne de partage"},
      {"en": ("« Free means you are the product » is a cliché, wrong both "
              "ways: paid consumer tiers train by default too, and some free "
              "offers fund themselves without monetising users. The real "
              "divide is CONSUMER versus ENTERPRISE/API contract — which is "
              "why the rule is « read what you sign », not « avoid free ». "
-             "Marketing bias, again: check the claims.")}),
+             "Marketing bias, again: check the claims."), "fr": "« Si c’est gratuit, c’est vous le produit » est un cliché, faux dans les deux sens : les offres grand public payantes entraînent aussi par défaut, et certaines offres gratuites se financent sans monétiser leurs utilisateurs. La vraie ligne de partage est le contrat GRAND PUBLIC contre ENTREPRISE/API — c’est pourquoi la règle est « lisez ce que vous signez », pas « évitez le gratuit ». Biais marketing, encore : vérifiez les affirmations."}),
 ]
 
 # ── L'image papercut ────────────────────────────────────────────────────────

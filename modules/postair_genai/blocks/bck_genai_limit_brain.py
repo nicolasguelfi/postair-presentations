@@ -41,15 +41,15 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Le revers ───────────────────────────────────────────────────────────────
-_MARKER = {"en": "Your brain"}
+_MARKER = {"en": "Your brain", "fr": "Votre cerveau"}
 _ICON = "🧠"
-_LABEL = {"en": "The brain is a muscle"}
-_MESSAGE = {"en": "Effort delegated = muscle melted"}
-_PUNCH = {"en": "EEG: brain connectivity ↓\nmemory of YOUR OWN text ↓"}
+_LABEL = {"en": "The brain is a muscle", "fr": "Le cerveau est un muscle"}
+_MESSAGE = {"en": "Effort delegated = muscle melted", "fr": "Effort délégué = muscle fondu"}
+_PUNCH = {"en": "EEG: brain connectivity ↓\nmemory of YOUR OWN text ↓", "fr": "EEG : connectivité cérébrale ↓\nmémoire de VOTRE PROPRE texte ↓"}
 _DETAIL = {"en": ("In an EEG study, students writing essays with an LLM showed "
                   "weaker brain connectivity and remembered their own text less — "
                   "delegation has a cognitive price. Assessment is being redesigned "
-                  "around that fact: AI-free, AI-assisted, AI-integrated.")}
+                  "around that fact: AI-free, AI-assisted, AI-integrated."), "fr": "Dans une étude EEG, des étudiants rédigeant des essais avec un LLM ont montré une connectivité cérébrale plus faible et se souvenaient moins de leur propre texte — la délégation a un prix cognitif. L’évaluation se repense autour de ce fait : sans IA, assistée par l’IA, intégrant l’IA."}
 _CITEKEYS = ["kosmyna2025-cognitive-debt", "dec2025-assessment"]
 
 # ── L'image papercut ────────────────────────────────────────────────────────

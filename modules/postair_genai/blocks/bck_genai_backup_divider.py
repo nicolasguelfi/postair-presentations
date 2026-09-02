@@ -32,9 +32,9 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "— Backup —"}
-_WORD = {"en": ((s.project.titles.keyword, "BACKUP"), " slides")}
-_HINT = {"en": "extra depth · opened on demand, never presented"}
+_MARKER = {"en": "— Backup —", "fr": "— Réserve —"}
+_WORD = {"en": ((s.project.titles.keyword, "BACKUP"), " slides"), "fr": ((s.project.titles.keyword, "RÉSERVE"), " de slides")}
+_HINT = {"en": "extra depth · opened on demand, never presented", "fr": "approfondissements · ouverts à la demande, jamais présentés"}
 
 
 def build(lang: str = "en", **_):

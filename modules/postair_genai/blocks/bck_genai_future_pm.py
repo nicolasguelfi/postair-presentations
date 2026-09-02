@@ -60,27 +60,27 @@ _HERO_PROMPT = (
 )
 
 # ── La place de l'humain (message projeté ; phrase complète au survol) ──────
-_MARKER = {"en": "Your place"}
-_TITLE = {"en": ("All ", (s.project.titles.keyword, "project managers"))}
-_LABEL = {"en": "You will all be project managers"}
+_MARKER = {"en": "Your place", "fr": "Votre place"}
+_TITLE = {"en": ("All ", (s.project.titles.keyword, "project managers")), "fr": ("Tous ", (s.project.titles.keyword, "chefs de projet"))}
+_LABEL = {"en": "You will all be project managers", "fr": "Vous serez tous chefs de projet"}
 _MESSAGE = {"en": ("Generative assistants → professional production · your "
-                   "place: DIRECT · JUDGE · OWN IT")}
+                   "place: DIRECT · JUDGE · OWN IT"), "fr": "Assistants génératifs → production professionnelle · votre place : DIRIGER · JUGER · ASSUMER"}
 #: La maxime dans les deux langues — l'anglaise en ambre porte le message,
 #: l'originale française de l'auteur se lit telle quelle.
-_PUNCH = {"en": "How do you have it done, if you do not know how to do it?"}
+_PUNCH = {"en": "How do you have it done, if you do not know how to do it?", "fr": "Comment faire faire, si nous ne savons pas faire ?"}
 #: PAS une feuille : la formule ORIGINALE de l'auteur, projetée telle quelle
 #: dans les deux langues (comme un nom propre — les données ne se traduisent
 #: pas).
 _PUNCH_ORIGINAL = "« Comment faire faire, si nous ne savons pas faire ? »"
 _ANSWER = {"en": ("You can only direct what you can judge → learn the craft "
-                  "DURING your studies")}
-_TIP_HEAD = {"en": "Why this is the hard part"}
+                  "DURING your studies"), "fr": "On ne dirige que ce qu’on sait juger → apprenez le métier PENDANT vos études"}
+_TIP_HEAD = {"en": "Why this is the hard part", "fr": "Pourquoi c’est la partie difficile"}
 #: La suite LOCALE de la phrase du survol — le chiffre WEF et sa phrase
 #: viennent du fait partagé ``jobs``/``wef-outlook`` de facts.json.
 _DETAIL_LOCAL = {"en": ("Directing an assistant that produces in seconds "
                         "requires exactly what a degree builds: knowing the "
                         "domain well enough to specify, to judge the output, "
-                        "and to take responsibility for it.")}
+                        "and to take responsibility for it."), "fr": "Diriger un assistant qui produit en quelques secondes exige exactement ce qu’un diplôme construit : connaître le domaine assez bien pour spécifier, juger le résultat et en assumer la responsabilité."}
 
 
 def build(lang: str = "en", **_):
@@ -111,6 +111,10 @@ def build(lang: str = "en", **_):
             st_space("v", "1vh")
             with st_block(s.project.cards.amber):
                 st_write(bs.punch, T(_PUNCH, lang), tag=t.div)
-                st_write(bs.punch_original, _PUNCH_ORIGINAL, tag=t.div)
+                # La caption « formule originale » ne s'affiche que si elle
+                # DIFFÈRE de la maxime projetée — en FR la feuille EST
+                # l'originale, la répéter serait un doublon (i18n 2026-09-02).
+                if T(_PUNCH, lang) not in _PUNCH_ORIGINAL:
+                    st_write(bs.punch_original, _PUNCH_ORIGINAL, tag=t.div)
             st_space("v", "1vh")
             st_write(bs.answer, T(_ANSWER, lang), tag=t.div)

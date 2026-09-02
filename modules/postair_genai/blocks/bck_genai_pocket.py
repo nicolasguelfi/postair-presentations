@@ -57,35 +57,35 @@ _POCKET_PROMPT = (
 _ITEMS = [
     {
         "icon": "⌨️",
-        "label": {"en": "Autocomplete"},
+        "label": {"en": "Autocomplete", "fr": "Autocomplétion"},
         "detail": {"en": ("Your keyboard predicts your next word — a small language "
-                          "model, running on your phone.")},
+                          "model, running on your phone."), "fr": "Votre clavier prédit votre prochain mot — un petit modèle de langue, qui tourne sur votre téléphone."},
     },
     {
         "icon": "📷",
         # « Photo filters » était moins couvrant (retouche NG 2026-09-01).
-        "label": {"en": "Photo & video tools"},
+        "label": {"en": "Photo & video tools", "fr": "Outils photo & vidéo"},
         "detail": {"en": ("Portrait mode, night mode, face unlock, video "
                           "stabilisation: neural networks process every shot "
-                          "you take.")},
+                          "you take."), "fr": "Mode portrait, mode nuit, déverrouillage par le visage, stabilisation vidéo : des réseaux de neurones traitent chacune de vos prises de vue."},
     },
     {
         "icon": "🎬",
-        "label": {"en": "Recommendations"},
+        "label": {"en": "Recommendations", "fr": "Recommandations"},
         "detail": {"en": ("What you watch, hear and scroll next is ranked by "
-                          "prediction models trained on billions of choices.")},
+                          "prediction models trained on billions of choices."), "fr": "Ce que vous regarderez, écouterez et ferez défiler ensuite est classé par des modèles de prédiction entraînés sur des milliards de choix."},
     },
     {
         "icon": "🌍",
-        "label": {"en": "Translation"},
+        "label": {"en": "Translation", "fr": "Traduction"},
         "detail": {"en": ("Instant translation between ~100 languages runs on the "
-                          "same Transformer architecture as chatbots.")},
+                          "same Transformer architecture as chatbots."), "fr": "La traduction instantanée entre ~100 langues repose sur la même architecture Transformer que les chatbots."},
     },
     {
         "icon": "💬",
-        "label": {"en": "Assistants"},
+        "label": {"en": "Assistants", "fr": "Assistants"},
         "detail": {"en": ("ChatGPT, Copilot, Le Chat: the newcomers — the first AI "
-                          "you TALK to.")},
+                          "you TALK to."), "fr": "ChatGPT, Copilot, Le Chat : les nouveaux venus — la première IA à qui l’on PARLE."},
     },
 ]
 
@@ -97,23 +97,23 @@ _ITEMS = [
 #: désormais la charnière telle que les notes d'orateur la disent — exister
 #: vs écrire la suite — et les exemples concrets vivent au survol, en phrases
 #: complètes (les cinq cartes au-dessus portent déjà le vécu).
-_CLASSIC_HEAD = {"en": "Classic AI"}
-_CLASSIC = {"en": "Classic AI = picks among what EXISTS"}
+_CLASSIC_HEAD = {"en": "Classic AI", "fr": "IA classique"}
+_CLASSIC = {"en": "Classic AI = picks among what EXISTS", "fr": "IA classique = choisit parmi ce qui EXISTE"}
 _CLASSIC_TIP = {"en": ("Predictive and classifying AI: it ranks your feed, "
                        "recognises the face that unlocks your phone, filters "
                        "spam — always scoring or selecting something that "
-                       "already exists, never writing anything new.")}
-_GENERATIVE_HEAD = {"en": "Generative AI"}
-_GENERATIVE = {"en": "Generative AI = WRITES the next thing"}
+                       "already exists, never writing anything new."), "fr": "L’IA prédictive et classificatrice : elle classe votre fil, reconnaît le visage qui déverrouille votre téléphone, filtre le spam — toujours en notant ou en sélectionnant quelque chose qui existe déjà, sans jamais rien écrire de nouveau."}
+_GENERATIVE_HEAD = {"en": "Generative AI", "fr": "IA générative"}
+_GENERATIVE = {"en": "Generative AI = WRITES the next thing", "fr": "IA générative = ÉCRIT la suite"}
 _GENERATIVE_TIP = {"en": ("Generative AI produces new content — text, images, "
                           "sound, code — by predicting what comes next: the "
                           "mechanism of the Predict slide, a few minutes "
-                          "ahead.")}
+                          "ahead."), "fr": "L’IA générative produit du contenu nouveau — texte, images, son, code — en prédisant ce qui vient ensuite : le mécanisme de la slide « Prédire », dans quelques minutes."}
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
-_MARKER = {"en": "In your pocket"}
-_TITLE = {"en": ("Already in ", (s.project.titles.keyword, "your pocket"))}
-_TIP_TITLE = {"en": "Two kinds of AI"}
+_MARKER = {"en": "In your pocket", "fr": "Dans votre poche"}
+_TITLE = {"en": ("Already in ", (s.project.titles.keyword, "your pocket")), "fr": ("Déjà dans ", (s.project.titles.keyword, "votre poche"))}
+_TIP_TITLE = {"en": "Two kinds of AI", "fr": "Deux familles d’IA"}
 
 
 def build(lang: str = "en", **_):

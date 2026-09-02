@@ -39,32 +39,32 @@ bs = BlockStyles
 #: Réglages datés (2026-09-01) ; ratio mesuré Pillow sur le fichier versionné.
 TUNING = {"chart_vh": 56, "chart_ratio": 1.636}
 
-_MARKER = {"en": "Compute bill"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "training bill"))}
+_MARKER = {"en": "Compute bill", "fr": "Facture de calcul"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "training bill")), "fr": ("La ", (s.project.titles.keyword, "facture d’entraînement"))}
 _CHART = "images/trainings/compute_owid.png"
 _ALT = ("Our World in Data chart of training compute, annotated: GPT-3 about "
         "5 million dollars, GPT-4 about 100 million")
-_PUNCH = {"en": ("GPT-3 ≈ 5 M$ · GPT-4 ≈ 100 M$ (est.)",)}
+_PUNCH = {"en": ("GPT-3 ≈ 5 M$ · GPT-4 ≈ 100 M$ (est.)",), "fr": ("GPT-3 ≈ 5 M$ · GPT-4 ≈ 100 M$ (est.)",)}
 _CITEKEYS = ["cottier2024-costs"]
 
-_TIP_TITLE = {"en": "The orders of magnitude"}
+_TIP_TITLE = {"en": "The orders of magnitude", "fr": "Les ordres de grandeur"}
 _TOOLTIP = [
-    ({"en": "The chart"},
+    ({"en": "The chart", "fr": "Le graphique"},
      {"en": ("Computation used to train notable AI systems (Our World in "
              "Data, CC-BY), annotated for the AISE trainings — log scale: "
-             "every gridline is ×10.")}),
-    ({"en": "The teaching image"},
+             "every gridline is ×10."), "fr": "Le calcul utilisé pour entraîner les systèmes d’IA notables (Our World in Data, CC-BY), annoté pour les formations AISE — échelle logarithmique : chaque ligne de la grille vaut ×10."}),
+    ({"en": "The teaching image", "fr": "L’image d’enseignement"},
      {"en": ("GPT-4's training compute (~10²⁵ FLOP) is on the order of six "
              "billion years of one human calculating by hand — an order of "
-             "magnitude, not an accounting line.")}),
-    ({"en": "Reconciliation with Scale"},
+             "magnitude, not an accounting line."), "fr": "Le calcul d’entraînement de GPT-4 (~10²⁵ FLOP) est de l’ordre de six milliards d’années d’un humain calculant à la main — un ordre de grandeur, pas une ligne comptable."}),
+    ({"en": "Reconciliation with Scale", "fr": "Réconciliation avec Scale"},
      {"en": ("The Scale slide projects the SLOPE (×2.4 per year since 2016, "
              "sourced); this chart shows two POINTS on that slope. Same "
-             "story, one truth.")}),
-    ({"en": "Energy"},
+             "story, one truth."), "fr": "La slide Scale projette la PENTE (×2,4 par an depuis 2016, sourcée) ; ce graphique montre deux POINTS de cette même pente. Même histoire, une seule vérité."}),
+    ({"en": "Energy", "fr": "Énergie"},
      {"en": ("The sourced number lives on the Scale slide (IEA 2025): data "
              "centres ≈ 1.5 % of world electricity in 2024, possibly more "
-             "than double by 2030 — AI as the main driver.")}),
+             "than double by 2030 — AI as the main driver."), "fr": "Le chiffre sourcé vit sur la slide Scale (IEA 2025) : les centres de données ≈ 1,5 % de l’électricité mondiale en 2024, peut-être plus du double d’ici 2030 — l’IA en moteur principal."}),
 ]
 
 

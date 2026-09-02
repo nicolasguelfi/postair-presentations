@@ -35,36 +35,36 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "4 approaches"}
-_TITLE = {"en": ("Four ways to ", (s.project.titles.keyword, "improve a model"))}
+_MARKER = {"en": "4 approaches", "fr": "4 approches"}
+_TITLE = {"en": ("Four ways to ", (s.project.titles.keyword, "improve a model")), "fr": ("Quatre façons d’", (s.project.titles.keyword, "améliorer un modèle"))}
 
 _APPROACHES = [
-    {"icon": "💬", "label": {"en": "Prompt engineering"},
-     "line": {"en": "ask better · free · minutes"}},
-    {"icon": "📚", "label": {"en": "RAG"},
-     "line": {"en": "add YOUR documents · cheap · hours"}},
-    {"icon": "🔧", "label": {"en": "Fine-tuning"},
-     "line": {"en": "retrain on your examples · costly · weeks"}},
-    {"icon": "🏗️", "label": {"en": "Specialised model"},
-     "line": {"en": "build for one domain · heavy · months"}},
+    {"icon": "💬", "label": {"en": "Prompt engineering", "fr": "Prompt engineering"},
+     "line": {"en": "ask better · free · minutes", "fr": "mieux demander · gratuit · minutes"}},
+    {"icon": "📚", "label": {"en": "RAG", "fr": "RAG"},
+     "line": {"en": "add YOUR documents · cheap · hours", "fr": "ajouter VOS documents · peu coûteux · heures"}},
+    {"icon": "🔧", "label": {"en": "Fine-tuning", "fr": "Fine-tuning"},
+     "line": {"en": "retrain on your examples · costly · weeks", "fr": "réentraîner sur vos exemples · coûteux · semaines"}},
+    {"icon": "🏗️", "label": {"en": "Specialised model", "fr": "Modèle spécialisé"},
+     "line": {"en": "build for one domain · heavy · months", "fr": "construire pour un domaine · lourd · mois"}},
 ]
 
-_PUNCH = {"en": ("most real needs stop at the first two",)}
+_PUNCH = {"en": ("most real needs stop at the first two",), "fr": ("la plupart des vrais besoins s’arrêtent aux deux premières",)}
 
-_TIP_TITLE = {"en": "Choosing, precisely"}
+_TIP_TITLE = {"en": "Choosing, precisely", "fr": "Choisir, précisément"}
 _TOOLTIP = [
-    ({"en": "The gradient"},
+    ({"en": "The gradient", "fr": "Le gradient"},
      {"en": ("Left to right: rising cost, rising specialisation, falling "
              "generality. Start left; move right only when measured quality "
-             "says so.")}),
-    ({"en": "Choose based on"},
+             "says so."), "fr": "De gauche à droite : coût croissant, spécialisation croissante, généralité décroissante. Commencez à gauche ; n’allez à droite que lorsque la qualité mesurée l’exige."}),
+    ({"en": "Choose based on", "fr": "Choisir selon"},
      {"en": ("Result quality needed · domain specificity · dataset quality "
              "and size · resources · development time — the AISE criteria "
-             "grid, five questions before any chantier.")}),
-    ({"en": "Where the deck stands"},
+             "grid, five questions before any chantier."), "fr": "Qualité de résultat requise · spécificité du domaine · qualité et taille du jeu de données · ressources · délai de développement — la grille de critères AISE, cinq questions avant tout chantier."}),
+    ({"en": "Where the deck stands", "fr": "Où se situe le deck"},
      {"en": ("The Mistral session lives entirely in the first two columns: "
              "a well-framed prompt plus your course documents — the 80/20 of "
-             "this whole map.")}),
+             "this whole map."), "fr": "La session Mistral vit entièrement dans les deux premières colonnes : un prompt bien cadré plus vos documents de cours — le 80/20 de toute cette carte."}),
 ]
 
 

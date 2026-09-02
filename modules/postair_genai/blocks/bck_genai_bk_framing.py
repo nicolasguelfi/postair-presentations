@@ -37,37 +37,37 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Framing"}
-_TITLE = {"en": ("Same question, ", (s.project.titles.keyword, "two answers"))}
+_MARKER = {"en": "Framing", "fr": "Cadrage"}
+_TITLE = {"en": ("Same question, ", (s.project.titles.keyword, "two answers")), "fr": ("Même question, ", (s.project.titles.keyword, "deux réponses"))}
 
 _PAIR = [
-    {"prompt": {"en": "« Is communism GOOD for humanity? »"},
-     "answer": {"en": "a confident, structured case FOR"}},
-    {"prompt": {"en": "« Is communism BAD for humanity? »"},
-     "answer": {"en": "a confident, structured case AGAINST"}},
+    {"prompt": {"en": "« Is communism GOOD for humanity? »", "fr": "« Le communisme est-il BON pour l’humanité ? »"},
+     "answer": {"en": "a confident, structured case FOR", "fr": "un plaidoyer POUR, assuré et structuré"}},
+    {"prompt": {"en": "« Is communism BAD for humanity? »", "fr": "« Le communisme est-il MAUVAIS pour l’humanité ? »"},
+     "answer": {"en": "a confident, structured case AGAINST", "fr": "un plaidoyer CONTRE, assuré et structuré"}},
 ]
 
 _PUNCH = {"en": ("it completes YOUR framing — it does not weigh truth",
-                 "verify against sources, never against the AI")}
+                 "verify against sources, never against the AI"), "fr": ("il complète VOTRE cadrage — il ne pèse pas la vérité", "vérifier aux sources, jamais auprès de l’IA")}
 
-_TIP_TITLE = {"en": "The experiment, precisely"}
+_TIP_TITLE = {"en": "The experiment, precisely", "fr": "L’expérience, précisément"}
 _TOOLTIP = [
-    ({"en": "What was run"},
+    ({"en": "What was run", "fr": "Ce qui a été exécuté"},
      {"en": ("The two prompts, same model, same session (AISE trainings, "
              "2023-24) — each answer argues the direction of the question, "
-             "with equal confidence.")}),
-    ({"en": "Why"},
+             "with equal confidence."), "fr": "Les deux prompts, même modèle, même session (formations AISE, 2023-24) — chaque réponse plaide dans le sens de la question, avec la même assurance."}),
+    ({"en": "Why", "fr": "Pourquoi"},
      {"en": ("Prediction again: the most probable continuation of « is X "
              "good? » is a case for X. Assistant tuning adds agreeableness — "
-             "models tend to follow the user's lead.")}),
-    ({"en": "Same family of surprises"},
+             "models tend to follow the user's lead."), "fr": "Encore la prédiction : la suite la plus probable de « X est-il bon ? » est un plaidoyer pour X. Le réglage en assistant ajoute de la complaisance — les modèles tendent à suivre la direction de l’utilisateur."}),
+    ({"en": "Same family of surprises", "fr": "La même famille de surprises"},
      {"en": ("Temperature (G4's panel) makes answers differ between runs; "
              "framing makes them differ by QUESTION. Neither is a bug — both "
-             "are the mechanism.")}),
-    ({"en": "Where it returns"},
+             "are the mechanism."), "fr": "La température (panneau de G4) fait varier les réponses d’une exécution à l’autre ; le cadrage les fait varier selon la QUESTION. Ni l’un ni l’autre n’est un bug — les deux sont le mécanisme."}),
+    ({"en": "Where it returns", "fr": "Où cela revient"},
      {"en": ("The Mistral session replays this mechanic on a neutral course "
              "topic (error n°3: believing without checking) — same lesson, "
-             "student-sized.")}),
+             "student-sized."), "fr": "La session Mistral rejoue cette mécanique sur un sujet de cours neutre (erreur n°3 : croire sans vérifier) — même leçon, à taille d’étudiant."}),
 ]
 
 

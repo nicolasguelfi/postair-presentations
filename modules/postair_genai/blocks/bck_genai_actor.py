@@ -58,24 +58,24 @@ _HORIZON_PROMPT = (
 #: bouton ou un écran de l'application sumvadis — « retake the survey » est
 #: une phrase du deck, pas un intitulé d'interface : feuilles simples, pas de
 #: ``screen()``.
-_MARKER = {"en": "Actor"}
-_TITLE = {"en": ((s.project.titles.keyword, "Actor"), ", not spectator")}
-_VERBS = [{"en": "Stay informed"}, {"en": "Test things"}, {"en": "Keep doubting"}]
-_QUOTE = {"en": "The revolution is here. Your posture is your compass."}
+_MARKER = {"en": "Actor", "fr": "Acteur"}
+_TITLE = {"en": ((s.project.titles.keyword, "Actor"), ", not spectator"), "fr": ((s.project.titles.keyword, "Acteur"), ", pas spectateur")}
+_VERBS = [{"en": "Stay informed", "fr": "Restez informés"}, {"en": "Test things", "fr": "Testez les choses"}, {"en": "Keep doubting", "fr": "Gardez le doute"}]
+_QUOTE = {"en": "The revolution is here. Your posture is your compass.", "fr": "La révolution est là. Votre posture est votre boussole."}
 #: Les trois compagnons — demandés par leur NOM au cast gelé.
 _MASCOTS = ["Kuri", "Solyo", "Lento"]
-_MASCOT_WHY = {"en": "Curiosity · optimism · prudence — three postures, together"}
-_TIP_TITLE = {"en": "Your posture is your compass"}
+_MASCOT_WHY = {"en": "Curiosity · optimism · prudence — three postures, together", "fr": "Curiosité · optimisme · prudence — trois postures, ensemble"}
+_TIP_TITLE = {"en": "Your posture is your compass", "fr": "Votre posture est votre boussole"}
 _TIP = [
-    ({"en": "The nine axes"},
+    ({"en": "The nine axes", "fr": "Les neuf axes"},
      {"en": ("Trust, optimism, rationality — speed, openness, control — "
              "centralisation, altruism, transhumanism. Your radar from this "
-             "morning.")}),
-    ({"en": "Not frozen"},
+             "morning."), "fr": "Confiance, optimisme, rationalité — vitesse, ouverture, contrôle — centralisation, altruisme, transhumanisme. Votre radar de ce matin."}),
+    ({"en": "Not frozen", "fr": "Pas figée"},
      {"en": ("A posture is a position, not an identity: it moves when the "
-             "evidence moves. Retake the survey in a year.")}),
+             "evidence moves. Retake the survey in a year."), "fr": "Une posture est une position, pas une identité : elle bouge quand les preuves bougent. Refaites le questionnaire dans un an."}),
 ]
-_TIP_COMPANIONS = {"en": "Three companions"}
+_TIP_COMPANIONS = {"en": "Three companions", "fr": "Trois compagnons"}
 _CITEKEYS = ["guelfi-postair"]
 
 # ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─

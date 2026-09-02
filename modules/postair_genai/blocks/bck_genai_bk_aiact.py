@@ -36,40 +36,40 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "AI Act"}
-_TITLE = {"en": ("Regulated? ", (s.project.titles.keyword, "Yes — by risk"))}
+_MARKER = {"en": "AI Act", "fr": "AI Act"}
+_TITLE = {"en": ("Regulated? ", (s.project.titles.keyword, "Yes — by risk")), "fr": ("Régulé ? ", (s.project.titles.keyword, "Oui — par le risque"))}
 _CITEKEYS = ["eu2024-aiact"]
 
 #: La carte ambre porte le niveau qui concerne la salle (éducation).
 _LEVELS = [
-    {"accent": False, "level": {"en": "🚫 Unacceptable → BANNED"},
-     "line": {"en": "social scoring · manipulative systems"}},
-    {"accent": True, "level": {"en": "⚠️ High-risk → strict obligations"},
-     "line": {"en": "EDUCATION & exams · hiring · justice · critical infrastructure"}},
-    {"accent": False, "level": {"en": "✅ Minimal → transparency at most"},
-     "line": {"en": "chatbots, filters, games — say it is an AI, and go"}},
+    {"accent": False, "level": {"en": "🚫 Unacceptable → BANNED", "fr": "🚫 Inacceptable → INTERDIT"},
+     "line": {"en": "social scoring · manipulative systems", "fr": "notation sociale · systèmes manipulateurs"}},
+    {"accent": True, "level": {"en": "⚠️ High-risk → strict obligations", "fr": "⚠️ Haut risque → obligations strictes"},
+     "line": {"en": "EDUCATION & exams · hiring · justice · critical infrastructure", "fr": "ÉDUCATION & examens · recrutement · justice · infrastructures critiques"}},
+    {"accent": False, "level": {"en": "✅ Minimal → transparency at most", "fr": "✅ Minimal → transparence au plus"},
+     "line": {"en": "chatbots, filters, games — say it is an AI, and go", "fr": "chatbots, filtres, jeux — dire que c’est une IA, et voilà"}},
 ]
 
-_PUNCH = {"en": ("education is a HIGH-RISK sector — your university knows",)}
+_PUNCH = {"en": ("education is a HIGH-RISK sector — your university knows",), "fr": ("l’éducation est un secteur à HAUT RISQUE — votre université le sait",)}
 
-_TIP_TITLE = {"en": "The Act, precisely"}
+_TIP_TITLE = {"en": "The Act, precisely", "fr": "L’AI Act, précisément"}
 _TOOLTIP = [
-    ({"en": "The text"},
+    ({"en": "The text", "fr": "Le texte"},
      {"en": ("Regulation (EU) 2024/1689, adopted June 2024 — the first "
              "horizontal AI law in the world; the pyramid comes from its "
-             "articles 5-6 and annex III.")}),
-    ({"en": "The calendar"},
+             "articles 5-6 and annex III."), "fr": "Règlement (UE) 2024/1689, adopté en juin 2024 — la première loi horizontale sur l’IA au monde ; la pyramide vient de ses articles 5-6 et de son annexe III."}),
+    ({"en": "The calendar", "fr": "Le calendrier"},
      {"en": ("Staged application: bans since February 2025, general-purpose "
              "model duties since August 2025, most high-risk obligations "
-             "2026-2027.")}),
-    ({"en": "Why « education »"},
+             "2026-2027."), "fr": "Application échelonnée : interdictions depuis février 2025, obligations des modèles à usage général depuis août 2025, l’essentiel des obligations haut risque en 2026-2027."}),
+    ({"en": "Why « education »", "fr": "Pourquoi « éducation »"},
      {"en": ("Systems that grade you, admit you, or proctor your exams can "
              "change your life — annex III lists them with hiring, credit, "
-             "justice and borders.")}),
-    ({"en": "And the university?"},
+             "justice and borders."), "fr": "Les systèmes qui vous notent, vous admettent ou surveillent vos examens peuvent changer votre vie — l’annexe III les liste avec le recrutement, le crédit, la justice et les frontières."}),
+    ({"en": "And the university?", "fr": "Et l’université ?"},
      {"en": ("What UL expects from students is the guidelines deck, later "
              "today — the law binds providers and deployers, the charter "
-             "binds YOU.")}),
+             "binds YOU."), "fr": "Ce que l’UL attend des étudiants, c’est le deck guidelines, plus tard aujourd’hui — la loi oblige fournisseurs et déployeurs, la charte VOUS oblige."}),
 ]
 
 
@@ -93,9 +93,11 @@ def build(lang: str = "en", **_):
                 with st_zoom(125):
                     st_write(bs.level, T(lvl["level"], lang), tag=t.div)
                     st_write(bs.line, T(lvl["line"], lang), tag=t.div)
-            st_space("v", "1.5vh")
-        st_space("v", "2vh")
-        with st_zoom(130):
+            st_space("v", "1vh")
+        st_space("v", "1vh")
+        # Zoom 130 → 110 et espaces resserrés (porte projection 2026-09-02 :
+        # débordement ×1.05 à 1920×1080) — même calibre que moral-machine.
+        with st_zoom(110):
             for line in T(_PUNCH, lang):
                 st_write(bs.punch, line, tag=t.div)
             st_write(bs.cite, citation(*_CITEKEYS), tag=t.div)

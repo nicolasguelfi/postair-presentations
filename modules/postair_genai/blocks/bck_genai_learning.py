@@ -79,17 +79,17 @@ _VISUALS = {
 }
 
 # ── Les feuilles {en} du bloc ───────────────────────────────────────────────
-_MARKER = {"en": "Learning"}
-_TITLE = {"en": ("Let's play: ", (s.project.titles.keyword, "how old am I?"))}
-_T1_LINE = {"en": "You never met me — yet you CAN guess"}
+_MARKER = {"en": "Learning", "fr": "Apprentissage"}
+_TITLE = {"en": ("Let's play: ", (s.project.titles.keyword, "how old am I?")), "fr": ("Jouons : ", (s.project.titles.keyword, "quel âge ai-je ?"))}
+_T1_LINE = {"en": "You never met me — yet you CAN guess", "fr": "Vous ne m’avez jamais vu — pourtant vous SAVEZ deviner"}
 _T2_HEAD = {"en": ("The machine plays the same game — ",
-                   (s.project.titles.keyword, "dials"), " on the wires")}
-_T3_HEAD = {"en": ("First try: ", (s.project.titles.keyword, "245 years old"))}
-_T3_LINE = {"en": "truth: 60 — wrong, and NOT by a little"}
+                   (s.project.titles.keyword, "dials"), " on the wires"), "fr": ("La machine joue au même jeu — des ", (s.project.titles.keyword, "molettes"), " sur les fils")}
+_T3_HEAD = {"en": ("First try: ", (s.project.titles.keyword, "245 years old")), "fr": ("Premier essai : ", (s.project.titles.keyword, "245 ans"))}
+_T3_LINE = {"en": "truth: 60 — wrong, and NOT by a little", "fr": "vérité : 60 — faux, et PAS de peu"}
 _T4_HEAD = {"en": ("Every dial, nudged the right way = ",
-                   (s.project.titles.keyword, "back-propagation"))}
-_T5_HEAD = {"en": ("Second try: ", (s.project.titles.keyword, "35"), " — closer")}
-_PUNCH = {"en": ("error → correction → repeat", "millions of examples later: it works")}
+                   (s.project.titles.keyword, "back-propagation")), "fr": ("Chaque molette, poussée dans le bon sens = ", (s.project.titles.keyword, "rétro-propagation"))}
+_T5_HEAD = {"en": ("Second try: ", (s.project.titles.keyword, "35"), " — closer"), "fr": ("Deuxième essai : ", (s.project.titles.keyword, "35"), " — plus près")}
+_PUNCH = {"en": ("error → correction → repeat", "millions of examples later: it works"), "fr": ("erreur → correction → recommencer", "des millions d’exemples plus tard : ça marche")}
 
 _ALT = {
     "crowd": "A photo of the speaker, a small crowd of stick figures, age: ???",
@@ -101,27 +101,27 @@ _ALT = {
 }
 
 # ── Le panneau « the idea, precisely » ──────────────────────────────────────
-_TIP_TITLE = {"en": "The idea, precisely"}
+_TIP_TITLE = {"en": "The idea, precisely", "fr": "L’idée, précisément"}
 _TOOLTIP = [
-    ({"en": "Encode"},
+    ({"en": "Encode", "fr": "Encoder"},
      {"en": ("A picture (or a text) becomes numbers — here one single number, "
-             "7. Real systems use thousands of them per input.")}),
-    ({"en": "Weights (the dials)"},
+             "7. Real systems use thousands of them per input."), "fr": "Une image (ou un texte) devient des nombres — ici un seul nombre, 7. Les systèmes réels en utilisent des milliers par entrée."}),
+    ({"en": "Weights (the dials)", "fr": "Les poids (les molettes)"},
      {"en": ("Every wire carries a number that multiplies what passes through. "
              "The example network has 6 weights; a large language model has "
-             "hundreds of BILLIONS.")}),
-    ({"en": "Error"},
+             "hundreds of BILLIONS."), "fr": "Chaque fil porte un nombre qui multiplie ce qui le traverse. Le réseau de l’exemple a 6 poids ; un grand modèle de langue en a des centaines de MILLIARDS."}),
+    ({"en": "Error", "fr": "L’erreur"},
      {"en": ("Predicted 245, truth 60: the gap is measured, not judged. "
-             "The machine never « knows » it is wrong — it computes a distance.")}),
-    ({"en": "Back-propagation"},
+             "The machine never « knows » it is wrong — it computes a distance."), "fr": "Prédit : 245, vérité : 60 — l’écart est mesuré, pas jugé. La machine ne « sait » jamais qu’elle se trompe : elle calcule une distance."}),
+    ({"en": "Back-propagation", "fr": "La rétro-propagation"},
      {"en": ("The error flows backwards through the network and every weight "
              "is nudged in the direction that reduces it. Rumelhart, Hinton "
              "and Williams made it practical in 1986 — it still trains "
-             "every model you use today.")}),
-    ({"en": "At scale"},
+             "every model you use today."), "fr": "L’erreur remonte le réseau à rebours et chaque poids est poussé dans le sens qui la réduit. Rumelhart, Hinton et Williams l’ont rendue praticable en 1986 — elle entraîne encore chaque modèle que vous utilisez aujourd’hui."}),
+    ({"en": "At scale", "fr": "À l’échelle"},
      {"en": ("Nudge billions of dials on billions of examples: nobody writes "
              "rules, the rules emerge from the corrections. That is machine "
-             "« learning » — and the next slide plays it on words.")}),
+             "« learning » — and the next slide plays it on words."), "fr": "Poussez des milliards de molettes sur des milliards d’exemples : personne n’écrit de règles, les règles émergent des corrections. C’est cela, l’« apprentissage » machine — et la slide suivante le joue sur les mots."}),
 ]
 
 

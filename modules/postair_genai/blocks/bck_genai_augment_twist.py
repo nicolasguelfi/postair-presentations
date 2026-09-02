@@ -59,24 +59,24 @@ _HERO_PROMPT = (
 # ── Le fait (ex-entrée « twist » de la section augment) ─────────────────────
 #: Jamais projeté, gardé pour la vérifiabilité — l'identifiant d'origine de
 #: l'entrée : twist ; son pictogramme d'origine : 🤝.
-_MARKER = {"en": "The twist"}
-_TITLE = {"en": ("The ", (s.project.titles.keyword, "twist"))}
-_LABEL = {"en": "The twist: the tool alone is not enough"}
+_MARKER = {"en": "The twist", "fr": "Le retournement"}
+_TITLE = {"en": ("The ", (s.project.titles.keyword, "twist")), "fr": ("Le ", (s.project.titles.keyword, "retournement"))}
+_LABEL = {"en": "The twist: the tool alone is not enough", "fr": "Le retournement : l’outil seul ne suffit pas"}
 _BARS = [
-    {"who": {"en": "AI alone"}, "value": "92 %", "tone": "amber"},
-    {"who": {"en": "Physician alone"}, "value": "74 %", "tone": "blue"},
-    {"who": {"en": "Physician + AI"}, "value": "76 %", "tone": "teal"},
+    {"who": {"en": "AI alone", "fr": "IA seule"}, "value": "92 %", "tone": "amber"},
+    {"who": {"en": "Physician alone", "fr": "Médecin seul"}, "value": "74 %", "tone": "blue"},
+    {"who": {"en": "Physician + AI", "fr": "Médecin + IA"}, "value": "76 %", "tone": "teal"},
 ]
-_MESSAGE = {"en": "Same tool · same doctors · +2 points → collaborating is LEARNED"}
+_MESSAGE = {"en": "Same tool · same doctors · +2 points → collaborating is LEARNED", "fr": "Même outil · mêmes médecins · +2 points → collaborer, ça S’APPREND"}
 _LOYALTY = {"en": ("Randomized clinical trial · 50 physicians with their usual "
-                   "tools · peer-reviewed, 2024")}
+                   "tools · peer-reviewed, 2024"), "fr": "Essai clinique randomisé · 50 médecins avec leurs outils habituels · relu par les pairs, 2024"}
 _DETAIL = {"en": ("In a randomized clinical trial, GPT-4 alone scored a median 92 % "
                   "on diagnostic reasoning across six complex clinical vignettes; "
                   "50 physicians using their conventional resources scored 74 % — "
                   "and the physicians GIVEN GPT-4 scored only 76 %. Handing over "
                   "the tool changed almost nothing: knowing how to work with it is "
                   "a skill in itself, which is exactly what these study years are "
-                  "for.")}
+                  "for."), "fr": "Dans un essai clinique randomisé, GPT-4 seul a obtenu une médiane de 92 % en raisonnement diagnostique sur six vignettes cliniques complexes ; 50 médecins utilisant leurs ressources habituelles ont obtenu 74 % — et les médecins ÉQUIPÉS de GPT-4 n’ont obtenu que 76 %. Remettre l’outil n’a presque rien changé : savoir travailler avec lui est une compétence en soi, exactement ce à quoi servent ces années d’études."}
 _CITEKEYS = ["goh2024llm"]
 
 

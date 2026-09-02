@@ -64,40 +64,40 @@ def _bar_html(share: float, idx: int) -> str:
 #: La MÊME feuille sert les deux temps — la phrase répétée au temps 2 est
 #: identique par construction.
 _SENTENCE = {"en": ("« Luxembourg is a ",
-                    (s.project.titles.keyword, "____"), " »")}
+                    (s.project.titles.keyword, "____"), " »"), "fr": ("« Le Luxembourg est un ", (s.project.titles.keyword, "____"), " »")}
 #: ``share`` pilote la largeur de barre, ``prob`` est l'étiquette projetée.
 _CANDIDATES = [
-    {"word": {"en": "country"}, "prob": "78 %", "share": 0.78},
-    {"word": {"en": "grand duchy"}, "prob": "12 %", "share": 0.12},
-    {"word": {"en": "cheese"}, "prob": "0.1 %", "share": 0.001},
+    {"word": {"en": "country", "fr": "pays"}, "prob": "78 %", "share": 0.78},
+    {"word": {"en": "grand duchy", "fr": "grand-duché"}, "prob": "12 %", "share": 0.12},
+    {"word": {"en": "cheese", "fr": "fromage"}, "prob": "0.1 %", "share": 0.001},
 ]
 #: Trois LIGNES, jamais un ``\n`` : ``st_write`` ne l'interprète pas (piège
 #: documenté au PLAYBOOK) — la feuille porte un tuple, une écriture par ligne.
 _PUNCH = {"en": ("Predict the next word", "= the WHOLE goal",
-                 "at scale: enormous")}
+                 "at scale: enormous"), "fr": ("Prédire le prochain mot", "= TOUT l’objectif", "à l’échelle : énorme")}
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
-_MARKER = {"en": "Predict"}
-_TITLE = {"en": ("The trick: ", (s.project.titles.keyword, "predict the next word"))}
+_MARKER = {"en": "Predict", "fr": "Prédire"}
+_TITLE = {"en": ("The trick: ", (s.project.titles.keyword, "predict the next word")), "fr": ("L’astuce : ", (s.project.titles.keyword, "prédire le prochain mot"))}
 
 # ── Le glossaire du panneau « What is really happening » ────────────────────
-_TIP_TITLE = {"en": "What is really happening"}
+_TIP_TITLE = {"en": "What is really happening", "fr": "Ce qui se passe vraiment"}
 _TOOLTIP = [
-    ({"en": "Tokens"},
+    ({"en": "Tokens", "fr": "Les tokens"},
      {"en": ("The model reads and writes in fragments of words (tokens), a few "
-             "characters each. « Luxembourg » is 2–3 tokens.")}),
-    ({"en": "Probabilities"},
+             "characters each. « Luxembourg » is 2–3 tokens."), "fr": "Le modèle lit et écrit par fragments de mots (les tokens), de quelques caractères chacun. « Luxembourg », c’est 2–3 tokens."}),
+    ({"en": "Probabilities", "fr": "Les probabilités"},
      {"en": ("For every next token the model scores its whole vocabulary and samples "
-             "among the most probable — learned from billions of pages of text.")}),
-    ({"en": "Temperature"},
+             "among the most probable — learned from billions of pages of text."), "fr": "Pour chaque token suivant, le modèle note tout son vocabulaire et tire parmi les plus probables — appris sur des milliards de pages de texte."}),
+    ({"en": "Temperature", "fr": "La température"},
      {"en": ("A dial on the sampling: low = always the safest word, high = more "
              "surprising choices. Same question, different answers — by design, not "
-             "by bug.")}),
-    ({"en": "Predicting vs understanding"},
+             "by bug."), "fr": "Un curseur sur le tirage : bas = toujours le mot le plus sûr, haut = des choix plus surprenants. Même question, réponses différentes — par conception, pas par bug."}),
+    ({"en": "Predicting vs understanding", "fr": "Prédire vs comprendre"},
      {"en": ("To predict well at this scale, models build internal representations "
              "of grammar, facts and reasoning patterns. Whether that deserves the "
              "word « understanding » is an open scientific debate — honest people "
-             "disagree.")}),
+             "disagree."), "fr": "Pour bien prédire à cette échelle, les modèles construisent des représentations internes de la grammaire, des faits et des schémas de raisonnement. Que cela mérite le mot « comprendre » est un débat scientifique ouvert — des gens honnêtes sont en désaccord."}),
 ]
 
 

@@ -36,42 +36,42 @@ bs = BlockStyles
 _TAKEAWAYS = [
     {
         "n": "1",
-        "short": {"en": "Predicting ≠ knowing"},
+        "short": {"en": "Predicting ≠ knowing", "fr": "Prédire ≠ savoir"},
         "detail": {"en": ("A language model produces the plausible next word. "
-                          "Fluency is not truth.")},
+                          "Fluency is not truth."), "fr": "Un modèle de langue produit le prochain mot plausible. La fluidité n’est pas la vérité."},
     },
     {
         "n": "2",
-        "short": {"en": "Verify everything that matters"},
-        "detail": {"en": "Names · numbers · references → check at the source"},
+        "short": {"en": "Verify everything that matters", "fr": "Vérifier tout ce qui compte"},
+        "detail": {"en": "Names · numbers · references → check at the source", "fr": "Noms · chiffres · références → vérifier à la source"},
     },
     {
         "n": "3",
-        "short": {"en": "A learning tool, not a replacement"},
-        "detail": {"en": "It explains · it never learns IN YOUR PLACE"},
+        "short": {"en": "A learning tool, not a replacement", "fr": "Un outil pour apprendre, pas un remplaçant"},
+        "detail": {"en": "It explains · it never learns IN YOUR PLACE", "fr": "Il explique · il n’apprend jamais À VOTRE PLACE"},
     },
     {
         "n": "4",
-        "short": {"en": "Your posture is yours"},
-        "detail": {"en": "9 axes · no right answer · not choosing = choosing"},
+        "short": {"en": "Your posture is yours", "fr": "Votre posture vous appartient"},
+        "detail": {"en": "9 axes · no right answer · not choosing = choosing", "fr": "9 axes · pas de bonne réponse · ne pas choisir = choisir"},
     },
 ]
 
-_MARKER = {"en": "Takeaways"}
-_TITLE = {"en": ("Four things to ", (s.project.titles.keyword, "take home"))}
-_TIP_TITLE = {"en": "To go further"}
+_MARKER = {"en": "Takeaways", "fr": "À retenir"}
+_TITLE = {"en": ("Four things to ", (s.project.titles.keyword, "take home")), "fr": ("Quatre choses à ", (s.project.titles.keyword, "emporter"))}
+_TIP_TITLE = {"en": "To go further", "fr": "Pour aller plus loin"}
 _TIP = [
-    ({"en": "At UL"},
+    ({"en": "At UL", "fr": "À l’UL"},
      {"en": ("Computer science and AI courses, the university's AI learning "
-             "resources, and the guidelines session right after Mistral.")}),
-    ({"en": "Beyond UL"},
+             "resources, and the guidelines session right after Mistral."), "fr": "Les cours d’informatique et d’IA, les ressources d’apprentissage de l’IA de l’université, et la session sur les lignes directrices juste après Mistral."}),
+    ({"en": "Beyond UL", "fr": "Au-delà de l’UL"},
      {"en": ("Open MOOCs on machine learning fundamentals, and accessible "
              "reads on how language models work — ask, the speaker has "
-             "favourites.")}),
-    ({"en": "The session's sources"},
+             "favourites."), "fr": "Des MOOC ouverts sur les fondements de l’apprentissage automatique, et des lectures accessibles sur le fonctionnement des modèles de langue — demandez, l’orateur a ses favoris."}),
+    ({"en": "The session's sources", "fr": "Les sources de la session"},
      {"en": ("Every number and claim of this session is on the References "
              "page at the end of this document — hover any citation code to "
-             "see its source.")}),
+             "see its source."), "fr": "Chaque chiffre et chaque affirmation de cette session figurent sur la page Références à la fin de ce document — survolez un code de citation pour voir sa source."}),
 ]
 
 

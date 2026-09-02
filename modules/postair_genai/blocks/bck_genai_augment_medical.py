@@ -61,18 +61,18 @@ _HERO_PROMPT = (
 # ── Le fait (ex-entrée « medical » de la section augment) ───────────────────
 #: Jamais projeté, gardé pour la vérifiabilité — l'identifiant d'origine de
 #: l'entrée : medical ; son pictogramme d'origine : 🩺.
-_LABEL = {"en": "The diagnosis: 85 % vs 20 %"}
+_LABEL = {"en": "The diagnosis: 85 % vs 20 %", "fr": "Le diagnostic : 85 % vs 20 %"}
 _AI_VALUE = "85.5 %"
-_AI_LABEL = {"en": "Specialised AI orchestrator"}
+_AI_LABEL = {"en": "Specialised AI orchestrator", "fr": "Orchestrateur IA spécialisé"}
 _HUMAN_VALUE = "20 %"
-_HUMAN_LABEL = {"en": "21 experienced physicians"}
-_MESSAGE = {"en": "Medicine's hardest cases · specialised AI ≫ unaided doctor"}
+_HUMAN_LABEL = {"en": "21 experienced physicians", "fr": "21 médecins expérimentés"}
+_MESSAGE = {"en": "Medicine's hardest cases · specialised AI ≫ unaided doctor", "fr": "Les cas les plus durs de la médecine · IA spécialisée ≫ médecin sans aide"}
 #: La ligne de loyauté EN CLAIR : les conditions de l'étude font partie du
 #: message, pas des notes de bas de page.
 _LOYALTY = {"en": ("304 NEJM clinical puzzles · physicians without internet or "
-                   "colleagues · preprint, 2025")}
+                   "colleagues · preprint, 2025"), "fr": "304 énigmes cliniques du NEJM · médecins sans internet ni collègues · préprint, 2025"}
 _CONFIRM = {"en": ("Confirmed in live dialogue: AMIE > GPs · 7/9 multimodal axes · "
-                   "blinded RCT — actors, not patients")}
+                   "blinded RCT — actors, not patients"), "fr": "Confirmé en dialogue réel : AMIE > généralistes · 7/9 axes multimodaux · essai randomisé en aveugle — des acteurs, pas des patients"}
 _CONFIRM_CITEKEYS = ["saab2025-amie"]
 _DETAIL = {"en": ("Microsoft's MAI-DxO orchestrator solved 304 New England Journal "
                   "of Medicine clinicopathological puzzles sequentially — ordering "
@@ -81,8 +81,8 @@ _DETAIL = {"en": ("Microsoft's MAI-DxO orchestrator solved 304 New England Journ
                   "Honest framing: these are the hardest published cases in "
                   "medicine, the physicians were deprived of internet, textbooks "
                   "and colleagues, and the study is a 2025 preprint, not yet "
-                  "peer-reviewed.")}
-_AMIE_HEAD = {"en": "The multimodal check — AMIE"}
+                  "peer-reviewed."), "fr": "L’orchestrateur MAI-DxO de Microsoft a résolu séquentiellement 304 énigmes clinicopathologiques du New England Journal of Medicine — en prescrivant les examens un par un — et a atteint 80 à 85,5 % de diagnostics corrects ; 21 médecins expérimentés, sur les mêmes cas, ont obtenu environ 20 % en moyenne. Cadrage honnête : ce sont les cas publiés les plus difficiles de la médecine, les médecins étaient privés d’internet, de manuels et de collègues, et l’étude est un préprint de 2025, pas encore relu par les pairs."}
+_AMIE_HEAD = {"en": "The multimodal check — AMIE", "fr": "La contre-épreuve multimodale — AMIE"}
 _AMIE_DETAIL = {"en": ("AMIE, the Google DeepMind research agent: in a randomized, "
                        "BLINDED OSCE-style study, the multimodal agent built on "
                        "Gemini 2.0 Flash held full diagnostic conversations over 105 scenarios "
@@ -98,12 +98,12 @@ _AMIE_DETAIL = {"en": ("AMIE, the Google DeepMind research agent: in a randomize
                        "conclusion: further research is needed before real-world "
                        "translation — a prospective consented study in a real "
                        "clinical setting (Beth Israel Deaconess Medical Center) is "
-                       "underway.")}
+                       "underway."), "fr": "AMIE, l’agent de recherche de Google DeepMind : dans une étude randomisée EN AVEUGLE de type OSCE, l’agent multimodal construit sur Gemini 2.0 Flash a mené des conversations diagnostiques complètes sur 105 scénarios — en interprétant des photos de peau prises au smartphone, des ECG et des documents cliniques en PDF — et a été jugé par des spécialistes supérieur aux médecins de premier recours sur 7 des 9 axes multimodaux et 29 des 32 axes non multimodaux, exactitude diagnostique comprise. Les hypothèses de travail des auteurs eux-mêmes : des ACTEURS, pas de vrais patients ; des consultations par messagerie écrite, un médium inhabituel pour les médecins, qui masque les indices non verbaux ; un jeu de scénarios qui sous-représente à la fois la complexité des vraies données multimodales et l’expertise des cliniciens. Leur conclusion verbatim : des recherches supplémentaires sont nécessaires avant une transposition au monde réel — une étude prospective avec consentement en milieu clinique réel (Beth Israel Deaconess Medical Center) est en cours."}
 _CITEKEYS = ["nori2025sequential"]
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
-_MARKER = {"en": "Diagnosis"}
-_TITLE = {"en": ("The diagnosis: ", (s.project.titles.keyword, "85 % vs 20 %"))}
+_MARKER = {"en": "Diagnosis", "fr": "Diagnostic"}
+_TITLE = {"en": ("The diagnosis: ", (s.project.titles.keyword, "85 % vs 20 %")), "fr": ("Le diagnostic : ", (s.project.titles.keyword, "85 % vs 20 %"))}
 
 
 def build(lang: str = "en", **_):

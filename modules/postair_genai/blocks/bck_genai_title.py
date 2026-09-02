@@ -38,24 +38,24 @@ _HERO_PROMPT = (
 )
 
 # ── Les feuilles {en} du bloc (structure i18n, lot C genaipat 2026-09-01) ────
-_MARKER = {"en": "GenAI"}
-_TOC_LABEL = {"en": "GenAI intro"}
-_TITLE = {"en": ("Introduction to AI & ", (s.project.titles.keyword, "Generative AI"))}
-_SUBTITLE = {"en": "70 years in 30 minutes"}
-_TIP_TITLE = {"en": "This session"}
+_MARKER = {"en": "GenAI", "fr": "IA générative"}
+_TOC_LABEL = {"en": "GenAI intro", "fr": "Intro IA générative"}
+_TITLE = {"en": ("Introduction to AI & ", (s.project.titles.keyword, "Generative AI")), "fr": ("Introduction à l’IA & à l’", (s.project.titles.keyword, "IA générative"))}
+_SUBTITLE = {"en": "70 years in 30 minutes", "fr": "70 ans en 30 minutes"}
+_TIP_TITLE = {"en": "This session", "fr": "Cette séance"}
 _TIP = [
-    ({"en": "The promise"},
+    ({"en": "The promise", "fr": "La promesse"},
      {"en": ("In thirty minutes: where this technology comes "
              "from, how it actually works, what it can do, what it gets "
-             "wrong, and what that changes for your studies and careers.")}),
-    ({"en": "What we will NOT cover"},
+             "wrong, and what that changes for your studies and careers."), "fr": "En trente minutes : d’où vient cette technologie, comment elle fonctionne vraiment, ce qu’elle sait faire, ce qu’elle rate, et ce que cela change pour vos études et vos carrières."}),
+    ({"en": "What we will NOT cover", "fr": "Ce que nous ne couvrirons PAS"},
      {"en": ("The mathematics, and how training "
              "works in detail. Both are taught at UL — computer science "
-             "courses, and the university's AI learning resources.")}),
-    ({"en": "How it connects"},
+             "courses, and the university's AI learning resources."), "fr": "Les mathématiques, et le détail du fonctionnement de l’entraînement. Les deux s’enseignent à l’UL — les cours d’informatique et les ressources d’apprentissage de l’IA de l’université."}),
+    ({"en": "How it connects", "fr": "Comment tout s’enchaîne"},
      {"en": ("The morning gave you the nine axes and your "
              "own posture. This afternoon gives you the technology those "
-             "postures are ABOUT — then Mistral hands-on, then the rules.")}),
+             "postures are ABOUT — then Mistral hands-on, then the rules."), "fr": "La matinée vous a donné les neuf axes et votre propre posture. Cet après-midi vous donne la technologie sur laquelle ces postures PORTENT — puis la pratique avec Mistral, puis les règles."}),
 ]
 
 # ── La main de l'artiste (pattern TUNING debates, revue genaipat 2026-09-01) ─

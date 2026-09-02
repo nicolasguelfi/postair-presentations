@@ -52,8 +52,8 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "The film"}
-_HINT = {"en": "▶ play · sound on"}
+_MARKER = {"en": "The film", "fr": "Le film"}
+_HINT = {"en": "▶ play · sound on", "fr": "▶ lecture · son activé"}
 
 
 def build(lang: str = "en", **_):

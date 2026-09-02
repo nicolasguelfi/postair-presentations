@@ -37,14 +37,14 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Your tutor"}
-_TITLE = {"en": ("A ", (s.project.titles.keyword, "tireless tutor"), ", 24/7")}
-_TIP_TITLE = {"en": "Recommended uses"}
-_TIP_GUIDE = ({"en": "What the guidelines recommend"},
+_MARKER = {"en": "Your tutor", "fr": "Votre tuteur"}
+_TITLE = {"en": ("A ", (s.project.titles.keyword, "tireless tutor"), ", 24/7"), "fr": ("Un ", (s.project.titles.keyword, "tuteur infatigable"), ", 24/7")}
+_TIP_TITLE = {"en": "Recommended uses", "fr": "Usages recommandés"}
+_TIP_GUIDE = ({"en": "What the guidelines recommend", "fr": "Ce que recommandent les lignes directrices"},
               {"en": ("Clarification, training material, study plans, "
                       "brainstorming — the UL guidelines session details every "
-                      "recommended use.")})
-_TIP_FOUR = {"en": "The four uses on screen"}
+                      "recommended use."), "fr": "Clarification, matériel d’entraînement, plans de révision, brainstorming — la session sur les lignes directrices de l’UL détaille chaque usage recommandé."})
+_TIP_FOUR = {"en": "The four uses on screen", "fr": "Les quatre usages à l’écran"}
 
 _DESK_PROMPT = (
     AI_PREFIX
@@ -58,10 +58,10 @@ _DESK_PROMPT = (
 
 # ── Les quatre usages recommandés — ce que l'IA fait POUR l'apprentissage ───
 _DO = [
-    {"en": "Concepts endlessly explained"},
-    {"en": "Quizzes + flashcards\nfrom YOUR notes"},
-    {"en": "Outlines & first drafts\n→ the thinking stays yours"},
-    {"en": "A tireless language partner"},
+    {"en": "Concepts endlessly explained", "fr": "Des concepts expliqués sans fin"},
+    {"en": "Quizzes + flashcards\nfrom YOUR notes", "fr": "Quiz + cartes mémoire\ndepuis VOS notes"},
+    {"en": "Outlines & first drafts\n→ the thinking stays yours", "fr": "Plans & premiers jets\n→ la pensée reste la vôtre"},
+    {"en": "A tireless language partner", "fr": "Un partenaire de langue infatigable"},
 ]
 
 #: Une couleur de palette par usage (demande NG 2026-09-02) — les quatre

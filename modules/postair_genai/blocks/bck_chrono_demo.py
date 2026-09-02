@@ -40,7 +40,7 @@ bs = BlockStyles
 #: Réglages datés (2026-09-01) : la liste de durées de la DÉMO — courte à
 #: dessein. Un deck consommateur portera SA liste dans SON bloc.
 TUNING = {
-    "steps": [({"en": "Read"}, 1), ({"en": "Discuss"}, 0.5), ({"en": "Vote"}, 1)],
+    "steps": [({"en": "Read", "fr": "Lire"}, 1), ({"en": "Discuss", "fr": "Discuter"}, 0.5), ({"en": "Vote", "fr": "Voter"}, 1)],
     # Le temps 1 laisse la grille COMPACTE par défaut (3 → 2×2 avec un trou,
     # spécification NG 2026-09-02 : remplissage gauche→droite, haut→bas) ;
     # le temps 2 force la rangée (1, 3) — la démo montre les deux régimes.
@@ -51,37 +51,37 @@ TUNING = {
     "scale": 1.0,
 }
 
-_MARKER = {"en": "Chrono (demo)"}
-_TITLE = {"en": ("Countdown rack — ", (s.project.titles.keyword, "chain"))}
-_TITLE_PAR = {"en": ("Countdown rack — ", (s.project.titles.keyword, "parallel"))}
-_LINE_CHAIN = {"en": "one card runs at a time · each zero launches the next · ▶ ⏸ ↺ per card"}
-_LINE_PAR = {"en": "independent cards · ▶ Start launches ALL · ▶ ⏸ ↺ per card"}
+_MARKER = {"en": "Chrono (demo)", "fr": "Chrono (démo)"}
+_TITLE = {"en": ("Countdown rack — ", (s.project.titles.keyword, "chain")), "fr": ("Comptes à rebours — ", (s.project.titles.keyword, "chaîne"))}
+_TITLE_PAR = {"en": ("Countdown rack — ", (s.project.titles.keyword, "parallel")), "fr": ("Comptes à rebours — ", (s.project.titles.keyword, "parallèle"))}
+_LINE_CHAIN = {"en": "one card runs at a time · each zero launches the next · ▶ ⏸ ↺ per card", "fr": "une seule carte court à la fois · chaque zéro lance la suivante · ▶ ⏸ ↺ par carte"}
+_LINE_PAR = {"en": "independent cards · ▶ Start launches ALL · ▶ ⏸ ↺ per card", "fr": "cartes indépendantes · ▶ Start les lance TOUTES · ▶ ⏸ ↺ par carte"}
 
-_TIP_TITLE = {"en": "The widget, precisely"}
+_TIP_TITLE = {"en": "The widget, precisely", "fr": "Le widget, précisément"}
 _TOOLTIP = [
-    ({"en": "Generic"},
+    ({"en": "Generic", "fr": "Générique"},
      {"en": ("st_countdown_rack(s, steps, mode, key=…, grid=(rows, cols)) in "
              "shared_widgets — steps is a list of (label, minutes), fractions "
              "allowed (0.5 = 30 s). grid fixes the N×P geometry (cards fill "
              "left-to-right, top-to-bottom, holes allowed); omitted = the "
              "smallest compact grid with the biggest cells. Everything "
-             "resizes to the cell.")}),
-    ({"en": "Per-card buttons"},
+             "resizes to the cell."), "fr": "st_countdown_rack(s, steps, mode, key=…, grid=(rows, cols)) dans shared_widgets — steps est une liste de (libellé, minutes), fractions permises (0,5 = 30 s). grid fixe la géométrie N×P (les cartes se placent de gauche à droite, de haut en bas, trous permis) ; omis = la plus petite grille compacte avec les plus grandes cellules. Tout se redimensionne à la cellule."}),
+    ({"en": "Per-card buttons", "fr": "Boutons par carte"},
      {"en": ("▶ starts or resumes · ⏸ pauses · ↺ resets that counter to its "
              "full duration. In chain mode only ONE card runs at a time (▶ "
              "pauses the others) and a zero starts the next unfinished card; "
-             "in parallel mode cards are independent.")}),
-    ({"en": "Global buttons"},
+             "in parallel mode cards are independent."), "fr": "▶ démarre ou reprend · ⏸ met en pause · ↺ ramène ce compteur à sa durée pleine. En mode chaîne, UNE seule carte court à la fois (▶ met les autres en pause) et un zéro démarre la carte suivante non finie ; en mode parallèle, les cartes sont indépendantes."}),
+    ({"en": "Global buttons", "fr": "Boutons globaux"},
      {"en": ("▶ Start launches the first unfinished card (chain) or all of "
              "them (parallel); ↺ Reset restores the whole row. Nothing runs "
-             "before a click — the clock never counts during instructions.")}),
-    ({"en": "At zero"},
+             "before a click — the clock never counts during instructions."), "fr": "▶ Start lance la première carte non finie (chaîne) ou toutes (parallèle) ; ↺ Reset restaure la rangée entière. Rien ne court avant un clic — l’horloge ne compte jamais pendant les consignes."}),
+    ({"en": "At zero", "fr": "À zéro"},
      {"en": ("The INITIAL duration in translucent red — same width as every "
-             "other state, colour alone says « done », in both modes.")}),
-    ({"en": "To relocate"},
+             "other state, colour alone says « done », in both modes."), "fr": "La durée INITIALE en rouge translucide — même largeur que tous les autres états, la couleur seule dit « fini », dans les deux modes."}),
+    ({"en": "To relocate", "fr": "À déménager"},
      {"en": ("This demo lives in the genai backup annex only while the "
              "consumer deck is unnamed — moving it is one thin block in that "
-             "deck plus one book line.")}),
+             "deck plus one book line."), "fr": "Cette démo ne vit dans l’annexe backup de genai que tant que le deck consommateur n’est pas nommé — la déplacer, c’est un bloc mince dans ce deck plus une ligne de book."}),
 ]
 
 
