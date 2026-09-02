@@ -36,7 +36,7 @@ UL-supported tools in the guidelines session.
 
 from postair_lang import T
 from shared_widgets import st_info_tooltip
-from streamtex import st_block, st_grid, st_marker, st_space, st_write
+from streamtex import st_block, st_grid, st_marker, st_space, st_write, st_zoom
 from streamtex.enums import Tags as t
 
 from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
