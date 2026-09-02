@@ -15,7 +15,7 @@ from pathlib import Path
 import blocks
 from postair_lang import current_lang
 import streamlit as st
-from postair_display import SCALE
+from postair_display import SCALE, postair_profiles
 import streamtex as stx
 import streamtex.styles as sts
 from custom.refs import config as refs_config
@@ -214,6 +214,10 @@ st_book(
     zoom=100,
     # Auditorium base: 30pt body base ⇒ bullets ≈60pt, slide titles ≈80pt,
     # heroes ≈120pt (all DS tokens follow via var(--stx-scale-K)).
+    # Profils de secours de salle (planche ecran2 profils=p1, NG
+    # 2026-09-02) : « Default » reste actif au démarrage (rendu
+    # inchangé) ; Laptop/Salle étroite = zoom global en un geste.
+    presentation_profiles=postair_profiles(),
     scale=SCALE,  # base amphi 30pt + rétrécissements mobiles renforcés (postair_display)
     doc_version=_doc_version,
     pdf_config=PDF,

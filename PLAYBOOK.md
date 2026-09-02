@@ -146,6 +146,17 @@ uv run python _project/tools/build_screens_vocabulary.py --work-order
 
 ## 5. Déployer
 
+**AVANT tout push : la porte de projection** (règle R-écran, NG 2026-09-02) —
+`uv run python _project/tools/check_projection.py` rend chaque module modifié
+aux deux références (1920×1080 projecteur, 1728×1117 portable), échoue sur
+débordement par arrêt clavier et dépose les captures sous
+`_project/projection/` pour l'œil. Incrémentale (manifest par bloc) : elle ne
+re-mesure que ce qui a changé depuis sa dernière application — `--all` pour
+tout reprendre. Elle ne tourne PAS dans `check_all` : c'est la porte
+d'avant-push, pas de mise au point. En séance, une salle inattendue se règle
+au panneau latéral (profils « Laptop » / « Salle étroite » — zoom global en
+un geste, zéro slide éditée).
+
 **Push sur `main` = production** (workflow « Deploy to Hetzner » → Coolify,
 les 6 services). Le workflow est **séquentiel pur** : un build à la fois,
 attente du statut terminal — le lot de 4 d'origine tuait le serveur de build
