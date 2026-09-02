@@ -71,7 +71,7 @@ _CAREERS = [
     },
     {
         "faculty": {"en": "Science & engineering", "fr": "Sciences & ingénierie"},
-        "pair": {"en": "the researcher + AI", "fr": "le chercheur + IA"},
+        "pair": {"en": "the scientist + AI", "fr": "le scientifique + IA"},
         "detail": {"en": ("Hypothesis search, code, literature triage — and the "
                           "experiment, the proof and the doubt stay yours."), "fr": "Recherche d’hypothèses, code, tri de la littérature — et l’expérience, la preuve et le doute restent à vous."},
     },
@@ -118,6 +118,8 @@ def build(lang: str = "en", **_):
                     st_space("v", "0.6vh")
                     # Silhouette humaine + orbe côte à côte (plan G10) : le
                     # duo est le visuel de la carte, pas une décoration.
+                    st_write(_DUO_LINE,
+                             (_DUO_HUMAN, "👤"), (_DUO_PLUS, " + "))
                     st_write(_DUO_LINE,
                              (_DUO_HUMAN, "👤"), (_DUO_PLUS, " + "),
                              (_DUO_ORB, "✦"), tag=t.div)

@@ -71,13 +71,23 @@ _DO_COLOURS = [s.project.colors.primary, s.project.colors.keyword,
 
 #: Lien par usage (demande NG 2026-09-02) : le partenaire de langue pointe
 #: vers le projet « Liliane — English tutor » de NG. ``no_link_decor`` garde
-#: la couleur et la casse du texte intactes (pas de bleu-lien, pas de
-#: soulignement) ; la cible suit le LinkConfig de la librairie (externe =
-#: nouvel onglet — le deck reste à l'écran en séance).
+#: la couleur et la casse du texte intactes (pas de bleu-lien) ; le
+#: SOULIGNEMENT revient par ``_LINK_UNDERLINE`` (retouche NG 2026-09-02 :
+#: « qu'on sache que c'est un hyperlien, sans changer la couleur ») ; la
+#: cible suit le LinkConfig de la librairie (externe = nouvel onglet — le
+#: deck reste à l'écran en séance).
 _DO_LINKS = [
     "", "", "",
     "https://chatgpt.com/g/g-p-6a84214cf5dc819181847a8e3fee3493-liliane-english-tutor/project?tab=sources",
 ]
+
+#: Le trait sous la puce-lien — la couleur du texte est héritée, seul le
+#: soulignement s'ajoute (décalé d'un cran pour ne pas barrer les jambages).
+_LINK_UNDERLINE = Style(
+    "text-decoration: underline; text-underline-offset: 0.18em; "
+    "text-decoration-thickness: 0.06em;",
+    "genai_tutor_link_underline",
+)
 
 
 def build(lang: str = "en", **_):
@@ -109,11 +119,15 @@ def build(lang: str = "en", **_):
                 with st_zoom(150):
                     # Une écriture PAR ligne : ``st_write`` n'interprète pas
                     # le ``\n`` (piège documenté au PLAYBOOK) — les puces
-                    # multilignes obtiennent ainsi leur vraie coupure.
+                    # multilignes obtiennent ainsi leur vraie coupure. La
+                    # puce-lien porte le soulignement, couleur inchangée.
+                    style = bs.item + colour
+                    if link:
+                        style = style + _LINK_UNDERLINE
                     first, *rest = T(item, lang).split("\n")
-                    st_write(bs.item + colour, "▸ ", first, tag=t.div,
+                    st_write(style, "▸ ", first, tag=t.div,
                              link=link, no_link_decor=True)
                     for line in rest:
-                        st_write(bs.item + colour, line, tag=t.div,
+                        st_write(style, line, tag=t.div,
                                  link=link, no_link_decor=True)
                     st_space("v", "1vh")

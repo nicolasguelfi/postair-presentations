@@ -78,7 +78,7 @@ _CAPABILITIES = [
     },
     {
         "icon": "⚡",
-        "label": {"en": "Act — agents", "fr": "Agir — agents"},
+        "label": {"en": "Act\n(agents)", "fr": "Agir\n(agents)"},
         "example": {"en": "Agents = tools in a loop → Mistral session", "fr": "Agents = des outils en boucle → session Mistral"},
         "citekeys": [],
         "accent": True,   # LA carte ambre — le teaser de la session Mistral.
