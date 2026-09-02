@@ -50,7 +50,10 @@ bs = BlockStyles
 _DUO_LINE = Style("text-align: center; padding: 0.6vh 0;", "genai_duo_line")
 _DUO_HUMAN = Style("font-size: 3.2vw;", "genai_duo_human")
 _DUO_PLUS = Style(f"font-size: 2vw; color: {TEXT};", "genai_duo_plus")
-_DUO_ORB = Style(f"font-size: 2.6vw; color: {AMBER}; vertical-align: middle;",
+#: ✦ doublé (2.6 → 5.2vw, demande NG 2026-09-02) — la taille d'un fragment
+#: se règle par SON style, jamais par un st_zoom englobant (qui zoomerait le
+#: bloc entier sur sa propre ligne).
+_DUO_ORB = Style(f"font-size: 5.2vw; color: {AMBER}; vertical-align: middle;",
                  "genai_duo_orb")
 
 # ── Les trois duos par faculté (carte projetée ; détail au survol) ──────────
@@ -118,8 +121,6 @@ def build(lang: str = "en", **_):
                     st_space("v", "0.6vh")
                     # Silhouette humaine + orbe côte à côte (plan G10) : le
                     # duo est le visuel de la carte, pas une décoration.
-                    st_write(_DUO_LINE,
-                             (_DUO_HUMAN, "👤"), (_DUO_PLUS, " + "))
                     st_write(_DUO_LINE,
                              (_DUO_HUMAN, "👤"), (_DUO_PLUS, " + "),
                              (_DUO_ORB, "✦"), tag=t.div)

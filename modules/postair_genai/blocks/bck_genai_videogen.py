@@ -93,6 +93,15 @@ _TOOLTIP = [
 ]
 
 
+#: Cellule-colonne alignée par le haut : les deux années sur la même ligne,
+#: les deux vidéos qui démarrent à la même hauteur (clips carré + large).
+_CELL_TOP = Style(
+    "display: flex; flex-direction: column; align-items: center; "
+    "justify-content: flex-start;",
+    "genai_videogen_cell_top",
+)
+
+
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     year = s.project.titles.subtitle + s.project.colors.keyword + s.center_txt + s.bold
@@ -117,8 +126,13 @@ def build(lang: str = "en", **_):
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
         st_space("v", s.project.spacing.title_gap)
+        # Cellules alignées par le HAUT (NG 2026-09-02) : avec un clip carré
+        # et un clip large, le centrage vertical décalait années et vidéos.
+        # La cellule est une COLONNE flex : le vertical se règle par
+        # justify-content (flex-start), align-items: center garde le
+        # centrage horizontal — grid_cell_top (pensé rangée) ne suffit pas.
         with st_grid(cols="50% 50%", gap="1.5vw",
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
+                     cell_styles=_CELL_TOP) as g:
             for clip in _CLIPS:
                 with g.cell():
                     with st_zoom(140):
