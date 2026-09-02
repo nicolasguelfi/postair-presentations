@@ -37,8 +37,3 @@ modules/*/static/media/figures/
 modules/*/static/media/captures/
 modules/*/static/media/figure-videos/
 _ARCHIVE/
-
-# Sources ScreenFlow du film transformers (3 Go, 2026-09-02) — les sources de
-# montage ne vont JAMAIS en git ; le master diffusé (static/video/*.mp4, 36 Mo)
-# est versionné, lui (exception assumée du dépôt).
-modules/postair_genai/static/images/transformers/
