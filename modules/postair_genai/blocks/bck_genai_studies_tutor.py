@@ -58,18 +58,23 @@ _DESK_PROMPT = (
 
 # ── Les quatre usages recommandés — ce que l'IA fait POUR l'apprentissage ───
 _DO = [
-    {"en": "Concepts explained until they CLICK · 24/7"},
-    {"en": "Quizzes + flashcards from YOUR notes"},
-    {"en": "Outlines & first drafts → the thinking stays yours"},
+    {"en": "Concepts endlessly explained"},
+    {"en": "Quizzes + flashcards\nfrom YOUR notes"},
+    {"en": "Outlines & first drafts\n→ the thinking stays yours"},
     {"en": "A tireless language partner"},
 ]
+
+#: Une couleur de palette par usage (demande NG 2026-09-02) — les quatre
+#: accents du DS dans l'ordre : bleu électrique, teal, ambre, corail.
+_DO_COLOURS = [s.project.colors.primary, s.project.colors.keyword,
+               s.project.colors.amber, s.project.colors.coral]
 
 
 def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(150),g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -81,8 +86,8 @@ def build(lang: str = "en", **_):
                          " · ".join(T(d, lang) for d in _DO)),
                     ],
                 )
-        st_space("v", s.project.spacing.title_gap)
-        with hero_split(s, image=lambda: staged_hero_image(
+        st_space("v", "3vh")
+        with hero_split(s, ratio=37, image=lambda: staged_hero_image(
                 "genai_desk", _DESK_PROMPT, "images/genai_desk_fallback.svg",
                 alt_ready=("Papercut student desk with open notebook, book stack, "
                            "and an amber orb lighting the page while the student "
@@ -90,5 +95,13 @@ def build(lang: str = "en", **_):
                 alt_fallback=("Papercut desk, silhouette writing, amber orb hovering "
                               "over the notebook"),
                 variant="sq")):
-            for item in _DO:
-                st_write(bs.item, "▸ ", T(item, lang), tag=t.div)
+            for item, colour in zip(_DO, _DO_COLOURS):
+                with st_zoom(150):
+                    # Une écriture PAR ligne : ``st_write`` n'interprète pas
+                    # le ``\n`` (piège documenté au PLAYBOOK) — les puces
+                    # multilignes obtiennent ainsi leur vraie coupure.
+                    first, *rest = T(item, lang).split("\n")
+                    st_write(bs.item + colour, "▸ ", first, tag=t.div)
+                    for line in rest:
+                        st_write(bs.item + colour, line, tag=t.div)
+                    st_space("v", "1vh")
