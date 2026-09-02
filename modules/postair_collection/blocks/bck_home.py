@@ -53,9 +53,12 @@ class BlockStyles:
     # dans l'adresse du deck ouvert. L'anglais garde l'accent ambre (langue
     # par défaut du jour), le français prend le bleu de cadrage — un seul
     # accent focal par carte, règle R5.
+    #: Libellé = le NOM DE LA LANGUE seul, en gros (NG 2026-09-02) — le
+    #: « Open/Ouvrir · » est tombé, la langue est toute l'information.
     _button = (
         "display:block;box-sizing:border-box;padding:1.2vh 1vw;flex:1 1 0;"
         "text-align:center;border-radius:0.8vh;text-decoration:none;font-weight:700;"
+        "font-size:clamp(15px, 1.2vw, 24px);"
     )
     button_css = {
         "en": _button + "background:#F39C12;color:#1A1A2E;",
@@ -75,13 +78,12 @@ def _card(project: dict, lang: str) -> None:
         st_space("v", "0.6vh")
         st_write(bs.card_desc, T(project["description"], lang), tag=t.div)
         st_space("v", "1vh")
-        # Un bouton par langue : le libellé de chaque bouton est DANS sa
-        # langue (le hub est lisible par un francophone avant même d'être
-        # traduit) et son lien porte ``?lang=``.
+        # Un bouton par langue, libellé = le NOM de la langue seul
+        # (« English », « Français » — NG 2026-09-02) ; le lien porte
+        # ``?lang=``. Le ``button_label`` du toml n'est plus affiché.
         links = "".join(
             f'<a href="{with_lang(project["url"], code)}" target="_blank" rel="noopener" '
-            f'style="{bs.button_css[code]}">{T(project["button_label"], code)} · '
-            f'{NAMES[code]}</a>'
+            f'style="{bs.button_css[code]}">{NAMES[code]}</a>'
             for code in LANGS)
         st_html(f'<div style="{bs.buttons_row}">{links}</div>')
 
