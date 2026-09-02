@@ -7,12 +7,14 @@ message : le même « prédire le prochain morceau », appliqué à d'autres
 matières. La vidéo n'est pas ici : elle est le crescendo de la slide
 suivante (2023 → 2025).
 
-Les preuves sont des ARTEFACTS des formations AISE de NG (réutilisation
-autorisée 2026-09-01) : la chanson générée « L'Intelligence Artificielle »
-(Suno, 2024) et le podcast généré depuis des notes de cours (NotebookLM,
-9 minutes) — des captures d'interface, pas des images générées : pas de
-pastille DD-35. La carte Image porte le héros de CE deck (généré par IA,
-sidecar ``ai_generated``) : pastille DD-35 posée.
+Retouche NG (2026-09-02, capture : les cartes Music/Voice passaient sous le
+pli) : les cartes n'affichent PLUS ni média ni sous-titre — une icône et un
+mot, au plus gros, les quatre cartes tiennent dans la fenêtre. Les PREUVES
+(les visuels de ce deck, la chanson Suno 2024 « L'Intelligence
+Artificielle », le podcast NotebookLM de 9 minutes) sont racontées au
+panneau ℹ️ et portées par l'orateur ; les captures restent versionnées sous
+``static/images/trainings/`` (le backup « podcast » du plan Mistral s'en
+sert).
 
 Le FAIT vit ici (règle NG 2026-08-18) : les noms d'outils et les dates
 vivent dans le panneau, jamais projetés en gros — la slide dit le mécanisme,
@@ -33,46 +35,27 @@ from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
 
-from postair_pack.components.ai_mark import dd35_overlay
-
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     icon = s.project.titles.subtitle + s.center_txt
     label = s.project.body.bullet + s.center_txt + s.bold
-    line = s.project.body.caption + s.center_txt
     punch = s.project.titles.subtitle + s.project.colors.amber + s.center_txt
 
 
 bs = BlockStyles
 
-#: Réglages datés (2026-09-01) : hauteur des médias de carte.
-TUNING = {"card_media_vh": 26}
+#: Réglages datés (retouche NG 2026-09-02 : les cartes perdent leurs médias
+#: et sous-titres — icône + mot, au plus gros, les 4 cartes tiennent dans la
+#: fenêtre ; les preuves vivent au panneau ℹ️).
+TUNING = {"icon_zoom": 300, "label_zoom": 220, "card_air_vh": 3}
 
-# ── Les quatre matières — icône, étiquette, preuve, une ligne ───────────────
-#: ``uri`` vide = carte sans média (le texte se prouve tout seul : le deck).
-#: ``ratio`` mesuré Pillow sur le fichier versionné ; ``ai`` = pastille DD-35.
+# ── Les quatre matières — une icône, un mot ─────────────────────────────────
 _CARDS = [
-    {
-        "icon": "✍️", "label": {"en": "Text"},
-        "uri": "", "ratio": 1.0, "ai": False,
-        "line": {"en": "next token — you just played it"},
-    },
-    {
-        "icon": "🖼️", "label": {"en": "Image"},
-        "uri": "images/managed/genai_hero_sq.webp", "ratio": 1.0, "ai": True,
-        "line": {"en": "every visual of this deck"},
-    },
-    {
-        "icon": "🎵", "label": {"en": "Music"},
-        "uri": "images/trainings/multimodal_music.png", "ratio": 0.739, "ai": False,
-        "line": {"en": "a generated French chanson (2024)"},
-    },
-    {
-        "icon": "🎙️", "label": {"en": "Voice"},
-        "uri": "images/trainings/multimodal_podcast.png", "ratio": 2.519, "ai": False,
-        "line": {"en": "a 9-minute podcast, from course notes"},
-    },
+    {"icon": "✍️", "label": {"en": "Text"}},
+    {"icon": "🖼️", "label": {"en": "Image"}},
+    {"icon": "🎵", "label": {"en": "Music"}},
+    {"icon": "🎙️", "label": {"en": "Voice"}},
 ]
 
 _MARKER = {"en": "Multimodal"}
@@ -115,26 +98,18 @@ def build(lang: str = "en", **_):
         with st_grid(cols=s.project.grids.balanced(len(_CARDS)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
+            # Icône + mot, au plus gros (retouche NG 2026-09-02) : ni média
+            # ni sous-titre dans les cartes — les preuves (visuels du deck,
+            # chanson Suno, podcast NotebookLM) sont racontées au panneau.
             for c in _CARDS:
                 with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.icon, c["icon"], tag=t.div)
-                    st_write(bs.label, T(c["label"], lang), tag=t.div)
+                    st_space("v", f"{TUNING['card_air_vh']}vh")
+                    with st_zoom(TUNING["icon_zoom"]):
+                        st_write(bs.icon, c["icon"], tag=t.div)
                     st_space("v", "1.5vh")
-                    if c["uri"]:
-                        with st_block(s.project.containers.media_stage(
-                                c["ratio"], TUNING["card_media_vh"])):
-                            st_image(s.project.cards.media_center, uri=c["uri"],
-                                     alt=T(c["line"], lang),
-                                     overlay=dd35_overlay(c["ai"]))
-                    else:
-                        # La carte Texte n'a pas de média : sa preuve est la
-                        # phrase à trou jouée deux slides plus tôt.
-                        st_space("v", "4vh")
-                        with st_zoom(160):
-                            st_write(bs.icon, "«", " ____ ", "»", tag=t.div)
-                        st_space("v", "4vh")
-                    st_space("v", "1.5vh")
-                    st_write(bs.line, T(c["line"], lang), tag=t.div)
+                    with st_zoom(TUNING["label_zoom"]):
+                        st_write(bs.label, T(c["label"], lang), tag=t.div)
+                    st_space("v", f"{TUNING['card_air_vh']}vh")
         st_space("v", "4vh")
         with st_zoom(130):
             for line in T(_PUNCH, lang):
