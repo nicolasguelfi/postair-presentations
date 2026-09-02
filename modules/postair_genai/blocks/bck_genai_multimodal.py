@@ -45,10 +45,11 @@ class BlockStyles:
 
 bs = BlockStyles
 
-#: Réglages datés (retouche NG 2026-09-02 : les cartes perdent leurs médias
-#: et sous-titres — icône + mot, au plus gros, les 4 cartes tiennent dans la
-#: fenêtre ; les preuves vivent au panneau ℹ️).
-TUNING = {"icon_zoom": 300, "label_zoom": 220, "card_air_vh": 3}
+#: Réglages datés (retouche NG 2026-09-02 : icône + mot, ajustés au SIMPLE
+#: ``st_zoom`` — consigne NG : pas de mécanique lourde, deux nombres à
+#: tourner). Contrainte : titre + DEUX rangées de cartes sous le pli —
+#: v1 300/220 débordait (capture NG), redescendu à l'œil le même jour.
+TUNING = {"icon_zoom": 170, "label_zoom": 140, "card_air_vh": 1.5}
 
 # ── Les quatre matières — une icône, un mot ─────────────────────────────────
 _CARDS = [
