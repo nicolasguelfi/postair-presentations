@@ -154,6 +154,15 @@ def _measure(html: Path, width: int, height: int, wanted_slugs: set[str] | None,
             "try { localStorage.setItem('stx-sidebar', 'hidden'); } catch (e) {}")
         page.goto(html.as_uri(), wait_until="load")
         page.wait_for_timeout(600)   # polices + runtimes d'export
+        # Toutes les images DOIVENT être peintes avant la mesure : une image
+        # pas encore chargée rend un « dernier pixel peint » trop court et un
+        # verdict FAUX VERT (constaté sur error-delegating, 2026-09-03).
+        try:
+            page.wait_for_function(
+                "Array.from(document.images).every(i => i.complete)",
+                timeout=10_000)
+        except Exception:
+            pass  # au pire on mesure l'état courant — jamais bloquer la porte
         info = page.evaluate("""() => {
             const ms = [...document.querySelectorAll('[id^="stx-marker-"]')]
               .map(e => ({id: e.id,
