@@ -92,7 +92,9 @@ def st_feature_matrix(s, cols, rows, lang: str = "en", *,
                                   T(head_hover, lang) if head_hover else ""))
             with g.cell():
                 st_space("v", "0.1vh")
-            # ── Une ligne par outil ─────────────────────────────────────────
+            # ── Une ligne par outil : l'ICÔNE SEULE quand elle existe, le nom
+            # sinon (remarque NG 2026-09-03) — le détail de la ligne vit dans
+            # le ⓘ, dont le titre EST le nom de l'outil.
             for row in rows:
                 with g.cell():
                     icon = row.get("icon", "")
@@ -104,23 +106,30 @@ def st_feature_matrix(s, cols, rows, lang: str = "en", *,
                                  uri=icon, alt=row["name"])
                     elif icon:
                         st_html(_span(_CELL_CSS, icon))
-                    st_html(_span(_NAME_CSS, row["name"],
-                                  T(row["hover"], lang) if row.get("hover") else ""))
+                    else:
+                        st_html(_span(_NAME_CSS, row["name"],
+                                      T(row["hover"], lang) if row.get("hover") else ""))
                 for cell in row["cells"]:
                     sym, hover = cell if isinstance(cell, tuple) else (cell, None)
+                    # Une cellule porteuse d'unités est une FEUILLE {en, fr}
+                    # (remarque NG 2026-09-03 : « 512 Mo » fuyait en anglais).
+                    sym = T(sym, lang) if isinstance(sym, dict) else sym
                     if sym and sym not in used:
                         used.append(sym)
                     with g.cell():
                         st_html(_span(_CELL_CSS, sym,
                                       T(hover, lang) if hover else ""))
                 with g.cell():
-                    # Le ⓘ de la ligne : le détail complet, sources comprises.
-                    st_info_tooltip(title=row["name"],
-                                    entries=[(T(h, lang), T(b, lang))
-                                             for h, b in row.get("details", [])])
+                    # Le ⓘ de la ligne : résumé (l'ex-hover du nom) + détail.
+                    entries = ([(row["name"], T(row["hover"], lang))]
+                               if row.get("hover") else [])
+                    entries += [(T(h, lang), T(b, lang))
+                                for h, b in row.get("details", [])]
+                    st_info_tooltip(title=row["name"], entries=entries)
         if legend:
             st_space("v", "1.5vh")
             parts = [f"{sym} {T(label, lang)}"
-                     for sym, label in SYMBOLS if sym in used]
+                     for sym, label in SYMBOLS
+                     if any(sym in u for u in used)]
             if parts:
                 st_html(_span(_LEGEND_CSS, " · ".join(parts)))

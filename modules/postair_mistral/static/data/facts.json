@@ -515,14 +515,20 @@
       }
      },
      {
-      "sym": "512 Mo/f",
+      "sym": {
+       "en": "512 MB/f",
+       "fr": "512 Mo/f"
+      },
       "hover": {
        "en": "512 MB per file · 2 M tokens per text file · CSV ~50 MB · images 20 MB",
        "fr": "512 Mo par fichier · 2 M tokens par fichier texte · CSV ~50 Mo · images 20 Mo"
       }
      },
      {
-      "sym": "≈8 000 c ❓",
+      "sym": {
+       "en": "≈8,000 ch ❓",
+       "fr": "≈8 000 c ❓"
+      },
       "hover": {
        "en": "~8,000 characters circulates in the editor — not reconfirmed word-for-word on an official page",
        "fr": "~8 000 caractères circule dans l'éditeur — non reconfirmé mot à mot sur une page officielle"
@@ -560,7 +566,10 @@
       }
      },
      {
-      "sym": "100 Mo/f",
+      "sym": {
+       "en": "100 MB/f",
+       "fr": "100 Mo/f"
+      },
       "hover": {
        "en": "100 MB per file (videos 2 GB); free plan has sliding rate limits",
        "fr": "100 Mo par fichier (vidéos 2 Go) ; le gratuit a des limites glissantes"
@@ -605,7 +614,10 @@
       }
      },
      {
-      "sym": "15 Go 💰",
+      "sym": {
+       "en": "15 GB 💰",
+       "fr": "15 Go 💰"
+      },
       "hover": {
        "en": "Up to 15 GB of Libraries on Pro (PDF, images, CSV, Office)",
        "fr": "Jusqu'à 15 Go de Libraries en Pro (PDF, images, CSV, Office)"
@@ -702,7 +714,10 @@
       }
      },
      {
-      "sym": "8 000 c",
+      "sym": {
+       "en": "8,000 ch",
+       "fr": "8 000 c"
+      },
       "hover": {
        "en": "8,000 characters for declarative agent instructions — documented on Microsoft Learn",
        "fr": "8 000 caractères pour les instructions d'agent déclaratif — documenté sur Microsoft Learn"
@@ -740,7 +755,10 @@
       }
      },
      {
-      "sym": "5 Go / 30 M c",
+      "sym": {
+       "en": "5 GB / 30 M ch",
+       "fr": "5 Go / 30 M c"
+      },
       "hover": {
        "en": "5 GB or 30 million characters combined, all sources — confirmed on creator docs",
        "fr": "5 Go ou 30 millions de caractères toutes sources confondues — confirmé sur les docs creator"
@@ -876,7 +894,7 @@
    {
     "id": "grok",
     "name": "Grok Voice",
-    "icon": "",
+    "icon": "images/brands/grok.svg",
     "ratio": 1.0,
     "hover": {
      "en": "Real-time speech-to-speech, free tier — 13+ with parental consent 13-17",
@@ -1101,7 +1119,10 @@
       }
      },
      {
-      "sym": "0 € · 12 mois",
+      "sym": {
+       "en": "€0 · 12 mo",
+       "fr": "0 € · 12 mois"
+      },
       "hover": {
        "en": "Then ~8 €/mo — auto-converts unless cancelled; claim before 2026-12-31",
        "fr": "Puis ~8 €/mois — bascule automatique sauf annulation ; à réclamer avant le 31-12-2026"
@@ -1146,7 +1167,10 @@
       }
      },
      {
-      "sym": "5,99 €/mois",
+      "sym": {
+       "en": "€5.99/mo",
+       "fr": "5,99 €/mois"
+      },
       "hover": {
        "en": "Instead of 14.99 € — 12 months max, new accounts, institutional email",
        "fr": "Au lieu de 14,99 € — 12 mois max, nouveaux comptes, email institutionnel"
@@ -1191,7 +1215,10 @@
       }
      },
      {
-      "sym": "4 mois puis ~23 €",
+      "sym": {
+       "en": "4 mo then ~€23",
+       "fr": "4 mois puis ~23 €"
+      },
       "hover": {
        "en": "Card required; renews at 20 $/mo + VAT",
        "fr": "Carte requise ; renouvellement à 20 $/mois + TVA"
@@ -1221,8 +1248,8 @@
    {
     "id": "perplexity",
     "name": "Perplexity",
-    "icon": "",
-    "ratio": 1.0,
+    "icon": "images/brands/perplexity.svg",
+    "ratio": 4.16,
     "hover": {
      "en": "Education Pro at half price — figures not directly verifiable",
      "fr": "Education Pro à moitié prix — chiffres non vérifiables en direct"
@@ -1236,7 +1263,10 @@
       }
      },
      {
-      "sym": "≈10 $/mois ❓",
+      "sym": {
+       "en": "≈$10/mo ❓",
+       "fr": "≈10 $/mois ❓"
+      },
       "hover": {
        "en": "Official help pages blocked to robots — figures from indexed snippets only",
        "fr": "Pages d'aide officielles bloquées aux robots — chiffres tirés des extraits indexés"
@@ -1326,7 +1356,10 @@
       }
      },
      {
-      "sym": "0 €",
+      "sym": {
+       "en": "€0",
+       "fr": "0 €"
+      },
       "hover": {
        "en": "Via the student account; note: free student Office A1 does NOT include Microsoft 365 Copilot",
        "fr": "Via le compte étudiant ; noter : l'Office A1 étudiant gratuit N'INCLUT PAS Microsoft 365 Copilot"

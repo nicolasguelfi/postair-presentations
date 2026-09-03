@@ -54,7 +54,7 @@ _SHOTS = _REPO / "_project" / "projection"
 
 _MODULES = ["postair_opening", "postair_survey", "postair_debates",
             "postair_genai", "postair_mistral", "postair_guidelines",
-            "postair_handsup", "postair_waves"]
+            "postair_handsup", "postair_waves", "postair_closing"]
 
 #: Les références de calibrage — la vérité vit dans postair_display ; copiées
 #: ici en repli si l'import échoue hors venv.

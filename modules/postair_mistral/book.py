@@ -146,6 +146,7 @@ st_book(
         blocks.bck_mistral_backup_divider, # seuil « — Backup — »
         blocks.bck_mistral_bk_rag,         # bk · le POURQUOI derrière l'erreur 1 (ragm7)
         blocks.bck_mistral_bk_podcast,     # bk · d'autres outils, même méthode (podcast)
+        blocks.bck_mistral_bk_vibe_demo,   # bk · secours démo — Vibe en images (anim1)
         blocks.bck_mistral_bk_services_create,   # SV2 · créer TON agent (matrice)
         blocks.bck_mistral_bk_services_feed,     # SV3 · le nourrir de ton cours (matrice)
         blocks.bck_mistral_bk_services_voice,    # SV4 · lui parler (matrice voix)

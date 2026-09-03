@@ -60,6 +60,7 @@ MODULES = {
     "genai": {"path": "modules/postair_genai", "port": 8514},
     "mistral": {"path": "modules/postair_mistral", "port": 8519},
     "guidelines": {"path": "modules/postair_guidelines", "port": 8515},
+    "closing": {"path": "modules/postair_closing", "port": 8520},
     "handsup": {"path": "modules/postair_handsup", "port": 8517},
     "waves": {"path": "modules/postair_waves", "port": 8518},
 }

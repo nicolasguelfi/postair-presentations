@@ -38,9 +38,9 @@ class BlockStyles:
 
 bs = BlockStyles
 
-_MARKER = {"en": "Three doors", "fr": "Trois portes"}
-_TITLE = {"en": ("One method · ", (s.project.titles.keyword, "three doors")), "fr": ("Une méthode · ", (s.project.titles.keyword, "trois portes"))}
-_LINE = {"en": "your agents live in every environment — open yours", "fr": "vos agents vivent dans chaque environnement — ouvrez le vôtre"}
+_MARKER = {"en": "Three+ doors", "fr": "Trois+ portes"}
+_TITLE = {"en": ("One method · ", (s.project.titles.keyword, "three+ doors")), "fr": ("Une méthode · ", (s.project.titles.keyword, "trois+ portes"))}
+_LINE = {"en": "Learn the tools and adapt your agent to your environment.", "fr": "Apprenez les outils et adaptez votre agent à votre environnement."}
 _OPEN = {"en": "Open", "fr": "Ouvrir"}
 
 #: Le socle commun des boutons — même gabarit que ``buttons.action_big`` du
@@ -126,8 +126,8 @@ def build(lang: str = "en", **_):
                              for door in _DOORS] + [
                         (T(_TIP_NOTE[0], lang), T(_TIP_NOTE[1], lang))],
                 )
-        st_space("v", s.project.spacing.title_gap)
-        with st_zoom(110):
+        st_space("v", "3vh")
+        with st_zoom(140):
             st_write(bs.line, T(_LINE, lang), tag=t.div)
         st_space("v", "8vh")
         # 2 lignes × 3 colonnes FIXES (repeat(3, 1fr), pas d'auto-fit) : un

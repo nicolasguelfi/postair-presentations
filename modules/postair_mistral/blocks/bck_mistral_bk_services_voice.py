@@ -16,7 +16,6 @@ spoken answers. Grok: free, but 13+ with parental consent up to 17.
 # @guideline: postair-minimal
 
 from custom.facts import section
-from custom.refs import citation
 from custom.styles import Styles as s
 from postair_lang import T, TF
 from postair_matrix import st_feature_matrix
@@ -28,6 +27,7 @@ from streamtex.enums import Tags as t
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
     caption = s.project.body.caption + s.center_txt
+    volatile = s.project.body.caption + s.project.colors.coral + s.center_txt + s.bold
 
 
 bs = BlockStyles
@@ -40,9 +40,7 @@ _COLS = [
     ({"en": "Camera/screen", "fr": "Caméra/écran"}, None),
     ({"en": "Free", "fr": "Gratuit"}, None),
 ]
-_SOURCES = {"en": "official pages · verified 2026-09-03 ", "fr": "pages officielles · vérifié le 2026-09-03 "}
-_CITEKEYS = ["openai-voice-2026", "gemini-live-2026", "xai-grok-2026",
-             "mscopilot-voice-2026", "claude-voice-2026", "mistral-voice-2026"]
+_SUB = {"en": "HIGHLY VOLATILE — RECHECK!", "fr": "HAUTEMENT VOLATILE — REVÉRIFIEZ !"}
 
 _TIP_TITLE = {"en": "Reading this map", "fr": "Lire cette carte"}
 _TOOLTIP = [
@@ -90,8 +88,8 @@ def build(lang: str = "en", **_):
                     title=T(_TIP_TITLE, lang),
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        with st_zoom(115):
+            st_write(bs.volatile, T(_SUB, lang), tag=t.div)
+        st_space("v", "2.5vh")
         st_feature_matrix(s, _COLS, _rows(), lang,
                           zoom=TUNING["matrix_zoom"], logo_vh=TUNING["logo_vh"])
-        st_space("v", "2vh")
-        st_write(bs.caption, T(_SOURCES, lang), citation(*_CITEKEYS), tag=t.div)

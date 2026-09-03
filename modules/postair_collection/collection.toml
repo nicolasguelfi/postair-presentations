@@ -78,16 +78,27 @@ button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
 project_url = "https://postair-guidelines.streamtex.org"
 order = 6
 
+# Ajouté le 2026-09-03 (planche anim1, dlh=? — décision NG) : le module de
+# CLÔTURE de la conférence — la slide DLH y vit, NG y ajoutera d'autres
+# slides. Service Coolify + STX_URL_CLOSING à créer au déploiement.
+[projects.closing]
+title = { en = "Closing", fr = "Clôture" }
+description = { en = "before you go — keep learning: the Digital Learning Hub and what to take home", fr = "avant de partir — continuer d'apprendre : le Digital Learning Hub et ce qu'on emporte" }
+emoji = "🏁"
+button_label = { en = "Open the deck", fr = "Ouvrir le deck" }
+project_url = "https://postair-closing.streamtex.org"
+order = 7
+
 # Ajouté le 2026-08-26 (ss12-bics-svd-stx-revolutions). HORS AGENDA officiel
 # pour l'instant : la position dans l'agenda du jour est une décision NG —
-# order 6 = après la clôture, avant le deck de secours, ajustable ici seul.
+# après la clôture, avant le deck de secours, ajustable ici seul.
 [projects.waves]
 title = { en = "The seventeen waves of revolutions", fr = "Les dix-sept vagues de révolutions" }
 description = { en = "16 revolutions crossed · every crisis opened and overcome · the 17th is yours", fr = "16 révolutions traversées · chaque crise ouverte et surmontée · la 17e est la vôtre" }
 emoji = "🌊"
 button_label = { en = "Open the bank", fr = "Ouvrir la banque" }
 project_url = "https://postair-waves.streamtex.org"
-order = 7
+order = 8
 
 # HORS AGENDA — deck de SECOURS (plan-postair_handsup, NG 2026-08-23) : le
 # sondage à main levée si le système tombe. Order élevé à dessein : dernier

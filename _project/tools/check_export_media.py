@@ -126,6 +126,12 @@ def _whitelist_hashes(module: str) -> dict[str, str]:
             # Écrans réels de l'application, matérialisés depuis le catalogue
             # gelé (build_survey_captures.py) — non IA par nature.
             out[_sha(p)] = f"capture d'écran du parcours ({rel})"
+        elif rel.startswith("images/slideshows/"):
+            # Le tiroir des DIAPORAMAS (postair_slideshow, planche anim1
+            # 2026-09-03) : des captures d'écran par contrat — comme
+            # media/captures/, non IA par nature. Une image générée n'a
+            # rien à faire ici : elle passe par le circuit managé + DD-35.
+            out[_sha(p)] = f"capture de diaporama ({rel})"
     manifest = _REPO / "modules" / module / "static" / "data" / "content.json"
     if manifest.exists():
         data = json.loads(manifest.read_text(encoding="utf-8"))
