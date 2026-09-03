@@ -23,8 +23,8 @@ DEFAULTS = {
     "rack_vh": 62,           # place verticale totale, % de fenêtre
     "scale": 1.0,            # zoom fin du contenu des cellules
     "alarm": "bell",         # bell · beep · chime · gong · "off"
-    "alarm_volume": 0.6,     # [0, 1] perceptif
-    "alarm_duration": None,  # secondes ]0, 60] — None = un motif
+    "alarm_volume": 1.,     # [0, 1] perceptif
+    "alarm_duration": 6,  # secondes ]0, 60] — None = un motif
 }
 
 #: La main de NG — surcharges de CETTE slide (éditables à chaud, rerun).

@@ -99,15 +99,17 @@ def build(lang: str = "en", **_):
                             + [(T(_PROMPTS_HEAD, lang), T(_PROMPTS_TIP, lang)),
                                (T(_ANNEX_HEAD, lang), T(_ANNEX_NOTE, lang))],
                 )
-        st_space("v", s.project.spacing.title_gap)
-        with st_grid(cols=s.project.grids.balanced(len(_ITEMS)), gap="1vw",
+        #st_space("v", "2vh")
+        with st_grid(cols=s.project.grids.balanced(len(_ITEMS)), gap="0vh 1vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for item in _ITEMS:
                 with g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.number, item["n"], tag=t.div)
-                    st_write(bs.short, T(item["short"], lang), tag=t.div)
-        st_space("v", "2.5vh")
+                    with st_zoom(110):
+                        st_write(bs.number, item["n"], tag=t.div)
+                    with st_zoom(140):
+                        st_write(bs.short, T(item["short"], lang), tag=t.div)
+        st_space("v", "1.5vh")
         st_write(bs.example, T(_EXAMPLE, lang), tag=t.div)
         st_write(bs.cite, T(_CITE_LINE, lang),
-                 citation(*_CITEKEYS), tag=t.div)
+                 citation(*_CITEKEYS, inline=True), tag=t.div)

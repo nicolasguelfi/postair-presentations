@@ -121,7 +121,7 @@ TUNING: dict = {
     },
     "arguments_b": {
         "zoom": None,                  # auto : min(240, palier 130/120/110 selon le titre le plus long) ; un absolu passe outre le plafond
-        "zoom_scale": None,
+        "zoom_scale": 0.9,
         "badge_scale": None,           # facteur du badge de nature (None = taille du DS)
     },
 }

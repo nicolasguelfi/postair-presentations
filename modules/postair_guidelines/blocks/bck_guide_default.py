@@ -54,8 +54,8 @@ _VERBATIM = ("In the absence of explicit course directives, students MAY use "  
              "generative AI to support their learning — within academic "
              "integrity, transparency, and respect of third-party rights.")
 _CAVEATS = [
-    {"en": "The syllabus PRIMES · a course can restrict or forbid",
-     "fr": "Le syllabus PRIME · un cours peut restreindre ou interdire"},
+    {"en": "The syllabus PRIMES\ncourse can restrict or forbid",
+     "fr": "Le syllabus PRIME\nun cours peut restreindre ou interdire"},
     {"en": "In doubt → ask BEFORE",
      "fr": "Dans le doute → demander AVANT"},
 ]
@@ -100,7 +100,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(130),g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -115,22 +115,22 @@ def build(lang: str = "en", **_):
         st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche, LA règle
         # verbatim boxée à droite — elle était coupée à mi-phrase sous le pli.
-        with hero_split(s, zoom=92, image=lambda: hero_image(
+        with hero_split(s, ratio=40, zoom=92, image=lambda: hero_image(
                 "guide_greenlight", _GREEN_PROMPT,
                 "images/guide_greenlight_fallback.svg",
                 alt_ready=("Papercut traffic light with one big green light beside "
                            "a road, a silhouette walking past confidently"),
                 alt_fallback=("Papercut green light beside a road"),
                 variant="sq")):
-            with st_block(s.project.cards.blue):
+            with st_zoom(110),st_block(s.project.cards.blue):
                 st_write(bs.verbatim, "« ", _VERBATIM, " » ",
                          citation(*_CITEKEYS), tag=t.div)
             st_space("v", "0.5vh")
-            for caveat in _CAVEATS:
-                st_write(bs.caveat, T(caveat, lang), tag=t.div)
-            st_space("v", "0.5vh")
-            kuri = mascot("Kuri")
-            st_image(s.project.cards.media_center, width="min(7vw, 13vh)",
-                     uri=kuri["image"], alt="Kuri, the curiosity mascot",
-                     overlay=dd35_overlay())
-            st_write(bs.mascot_name, kuri["name"], tag=t.div)
+            with st_zoom(140):
+                for caveat in _CAVEATS:
+                    st_write(bs.caveat, T(caveat, lang), tag=t.div)
+#            st_space("v", "0.5vh")
+#            kuri = mascot("Kuri")
+#            st_image(s.project.cards.media_center, width="min(7vw, 13vh)",
+#                     uri=kuri["image"], alt="Kuri, the curiosity mascot",
+#                     overlay=dd35_overlay())

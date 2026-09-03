@@ -112,15 +112,15 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="80% 12% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(130), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
-            with g.cell():
+            with st_zoom(110), g.cell():
                 guardo = mascot("Guardo")
                 st_image(s.project.cards.media_center, width="5.5vw",
                          uri=guardo["image"], alt="Guardo, the control mascot, benevolent guardian",
                          overlay=dd35_overlay())
-                st_write(bs.mascot_name, guardo["name"], tag=t.div)
+
             with g.cell():
                 st_info_tooltip(
                     title=T(_TIP_TITLE, lang),
@@ -128,13 +128,22 @@ def build(lang: str = "en", **_):
                               T(c["detail"], lang)) for c in _CARDS]
                             + [(T(_FOOTER_HEAD, lang), T(_FOOTER, lang))],
                 )
-        st_space("v", s.project.spacing.title_gap)
-        with st_grid(cols=s.project.grids.balanced(len(_CARDS)), gap="1vw",
-                     grid_style=s.project.grids.stretch,
-                     cell_styles=s.project.containers.grid_cell_centered) as g:
-            for c in _CARDS:
-                with g.cell(), st_block(s.project.cards.coral):
-                    st_write(bs.icon, c["icon"], tag=t.div)
-                    st_write(bs.short, T(c["short"], lang), tag=t.div)
-        st_space("v", "2.5vh")
-        st_write(bs.footer, T(_CLOSE, lang), citation(*_CITEKEYS), tag=t.div)
+        st_space("v", "2vh")
+        # Deux rangées explicites (main NG 2026-09-03) : 3 cartes puis 2.
+        for row in (_CARDS[:3], _CARDS[3:]):
+            with st_grid(cols=len(row), gap="1vw 3vh",
+                         grid_style=s.project.grids.stretch,
+                         cell_styles=s.project.containers.grid_cell_centered) as g:
+                for c in row:
+                    with g.cell(), st_block(s.project.cards.coral):
+                        st_write(s.center_txt,
+                                (bs.icon + Style("zoom:150%;", "redline_icon_zoom"), c["icon"]),
+                                (bs.short + Style("zoom:220%; margin-left:0.5em;", "redline_short_zoom"),
+                                T(c["short"], lang)),
+                                tag=t.div)
+            st_space("v", "2vh")
+
+        st_space("v", "0.5vh")
+        with st_zoom(200):
+            st_write(bs.footer, T(_CLOSE, lang), tag=t.div)
+        st_write(bs.cite, citation(*_CITEKEYS), tag=t.div)

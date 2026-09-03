@@ -110,7 +110,7 @@ def build(lang: str = "en", **_):
                             + [(T(_FRAME_CLAIM, lang), text(wef["claim"], lang)),
                                (T(_TIP_DURABLE[0], lang), T(_TIP_DURABLE[1], lang))],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "1vh")
         with st_grid(cols=s.project.grids.balanced(len(_CAREERS)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
@@ -125,13 +125,13 @@ def build(lang: str = "en", **_):
                              (_DUO_HUMAN, "👤"), (_DUO_PLUS, " + "),
                              (_DUO_ORB, "✦"), tag=t.div)
                     st_write(bs.pair, T(c["pair"], lang), tag=t.div)
-        st_space("v", "1vh")
+        st_space("v", "3vh")
         # Télégraphique (NG 2026-08-13) : la phrase-cadre complète vit dans
         # l'infobulle ; l'écran porte la forme courte. Pied à zoom 90 (porte
         # projection 2026-09-02 : la ligne ambre repliée en deux débordait
         # de ×1.08 à 1920×1080).
         with st_zoom(130):
             st_write(bs.frame, T(_FRAME_CLAIM, lang), " · ", text(wef["short"], lang), " ",
-                     citation(*citekeys(wef)), tag=t.div)
-            st_space("v", "1vh")
+                     citation(*citekeys(wef),inline=True), tag=t.div)
+            st_space("v", "3vh")
             st_write(bs.rising, T(_FRAME_RISING, lang), tag=t.div)

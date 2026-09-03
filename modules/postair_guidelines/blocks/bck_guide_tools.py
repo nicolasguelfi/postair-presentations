@@ -90,7 +90,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(130), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -103,14 +103,14 @@ def build(lang: str = "en", **_):
                         *[(T(_LBL_EQUITY, lang), T(e, lang)) for e in _EQUITY],
                     ],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "2vh")
         hero_image(
             "guide_bubble", _BUBBLE_PROMPT, "images/guide_bubble_fallback.svg",
             alt_ready=("Papercut protected bubble sheltering a small campus and an "
                        "amber orb, open windy sky with flying documents outside"),
             alt_fallback=("Papercut bubble protecting a campus, documents flying away "
                           "outside"),
-            width="58%",
+            width="55%",
         )
         st_space("v", "1.5vh")
         st_write(bs.accent, T(_ACCENT, lang), tag=t.div)

@@ -72,8 +72,8 @@ _LEVELS = [
                        "d'apprentissage évalué lui-même. Hallucinations, citations "
                        "fabriquées, excès de confiance.")}},
 ]
-_FRAME = {"en": "Risk level ↑ = verification ↑ · never a ban",
-          "fr": "Niveau de risque ↑ = vérification ↑ · jamais une interdiction"}
+_FRAME = {"en": "Risk level ↑ = verification ↑",
+          "fr": "Niveau de risque ↑ = vérification ↑"}
 _CITEKEYS = ["i2tl2026-guidelines", "parmentier-vicens-2025"]
 #: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
 #: facts.json) : « Three risk levels ».
@@ -131,7 +131,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(130), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -142,11 +142,11 @@ def build(lang: str = "en", **_):
                             + [(T(_FRAME_HEAD, lang), T(_FRAME, lang)),
                                (T(_RED_HEAD, lang), T(_RED_CASE, lang))],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "2vh")
         # Gabarit par défaut (NG 2026-08-13) : le feu tricolore carré à gauche,
         # les trois niveaux EMPILÉS à droite — ils étaient coupés à 40 % sous
         # le pli, le contenu opérationnel de la slide.
-        with hero_split(s, image=lambda: hero_image(
+        with hero_split(s, ratio=40, image=lambda: hero_image(
                 "guide_traffic", _TRAFFIC_PROMPT, "images/guide_traffic_fallback.svg",
                 alt_ready=("Papercut traffic light with three big lights — green, "
                            "orange, red — three paper silhouettes looking up at it"),
@@ -155,9 +155,16 @@ def build(lang: str = "en", **_):
                 variant="sq")):
             for lv in _LEVELS:
                 with st_block(_WASH[lv["id"]]):
-                    st_write(bs.icon, lv["icon"], " ",
-                             (bs.label, T(lv["label"], lang)), tag=t.div)
-                    st_write(bs.line, T(lv["line"], lang), tag=t.div)
+                    st_write(s.center_txt,
+                            (bs.icon + Style("zoom:90%;", "risk_icon_zoom"), lv["icon"]),
+                            (bs.label + Style("zoom:160%; margin-left:0.6em;", "risk_label_zoom"),
+                            T(lv["label"], lang)),
+                            tag=t.div)
+                    with st_zoom(110):
+                        st_write(bs.line, T(lv["line"], lang), tag=t.div)
             st_space("v", "0.5vh")
-            st_write(bs.frame, T(_FRAME, lang), " ",
-                     citation(*_CITEKEYS), tag=t.div)
+            with st_zoom(120):
+                st_write(bs.frame, T(_FRAME, lang), tag=t.div)
+
+            with st_zoom(70):  
+                st_write(bs.frame, citation(*_CITEKEYS, inline=True), tag=t.div)
