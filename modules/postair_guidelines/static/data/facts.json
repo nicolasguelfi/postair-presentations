@@ -3,142 +3,176 @@
   "id": "postair-guidelines-facts",
   "version": 1,
   "languages": [
-   "en"
+   "en",
+   "fr"
   ],
   "default_language": "en",
   "note": "Hand-curated. Depuis la règle NG 2026-08-18 (« le fait vit dans son bloc »), ce fichier ne garde que le PARTAGÉ : la section ai_act, consommée par les deux slides AI Act (U9 et U9b). Les faits mono-slide vivent dans leurs blocs. Every tooltip cites its section; sources carry ONLY citation keys."
  },
  "ai_act": {
   "big": {
-   "en": "The course rules say if you MAY — the law says what you MUST declare"
+   "en": "The course rules say if you MAY — the law says what you MUST declare",
+   "fr": "Les règles du cours disent si vous POUVEZ — la loi dit ce que vous DEVEZ déclarer"
   },
   "since": {
-   "en": "Enforced since 2 Aug 2026 · AI Office + national authorities"
+   "en": "Enforced since 2 Aug 2026 · AI Office + national authorities",
+   "fr": "Appliqué depuis le 2 août 2026 · Bureau de l'IA + autorités nationales"
   },
   "cards": [
    {
     "icon": "🤖",
     "short": {
-     "en": "An AI declares itself"
+     "en": "An AI declares itself",
+     "fr": "Une IA se déclare"
     },
     "article": {
-     "en": "art. 50(1)"
+     "en": "art. 50(1)",
+     "fr": "art. 50(1)"
     },
     "detail": {
-     "en": "Chatbots and interactive AI systems must tell you that you are dealing with AI, not a human — unless it is obvious from context. Article 50(1): a duty of the system's provider, and your right as a user."
+     "en": "Chatbots and interactive AI systems must tell you that you are dealing with AI, not a human — unless it is obvious from context. Article 50(1): a duty of the system's provider, and your right as a user.",
+     "fr": "Les chatbots et systèmes d'IA interactifs doivent vous dire que vous avez affaire à une IA, pas à un humain — sauf si le contexte le rend évident. Article 50(1) : un devoir du fournisseur du système, et votre droit d'utilisateur."
     }
    },
    {
     "icon": "🎭",
     "short": {
-     "en": "« Deepfake » has a legal definition"
+     "en": "« Deepfake » has a legal definition",
+     "fr": "« Deepfake » a une définition légale"
     },
     "article": {
-     "en": "art. 3(60)"
+     "en": "art. 3(60)",
+     "fr": "art. 3(60)"
     },
     "detail": {
-     "en": "Article 3(60), verbatim: « AI-generated or manipulated image, audio or video content that resembles existing persons, objects, places, entities or events and would falsely appear to a person to be authentic or truthful. » NOT every generated image: a stylised illustration or an obviously synthetic diagram is not a deepfake. What you publish that IS one must be labelled as artificially generated (article 50(4)); for evidently artistic, creative or satirical works the disclosure may be limited so it does not hamper the work."
+     "en": "Article 3(60), verbatim: « AI-generated or manipulated image, audio or video content that resembles existing persons, objects, places, entities or events and would falsely appear to a person to be authentic or truthful. » NOT every generated image: a stylised illustration or an obviously synthetic diagram is not a deepfake. What you publish that IS one must be labelled as artificially generated (article 50(4)); for evidently artistic, creative or satirical works the disclosure may be limited so it does not hamper the work.",
+     "fr": "Article 3(60), verbatim : « contenu image, audio ou vidéo généré ou manipulé par IA qui ressemble à des personnes, objets, lieux, entités ou événements existants et qui paraîtrait à tort authentique ou véridique à une personne. » PAS toute image générée : une illustration stylisée ou un schéma manifestement synthétique n'est pas un deepfake. Ce que vous publiez qui en EST un doit être étiqueté comme généré artificiellement (article 50(4)) ; pour les œuvres manifestement artistiques, créatives ou satiriques, la mention peut être limitée pour ne pas gêner l'œuvre."
     }
    },
    {
     "icon": "🏷️",
     "short": {
-     "en": "Generated content is marked by design"
+     "en": "Generated content is marked by design",
+     "fr": "Le contenu généré est marqué d'origine"
     },
     "article": {
-     "en": "art. 50(2)"
+     "en": "art. 50(2)",
+     "fr": "art. 50(2)"
     },
     "detail": {
-     "en": "Article 50(2): providers of generative systems must mark outputs in a machine-readable format so AI-generated or altered content is detectable. The tools do it for you — your side of the duty is simple: never strip or conceal the mark, which is also the guidelines' red line on concealment. And if your tool does NOT mark? That is the tool provider's infringement, never yours — the law does not ask YOU to watermark anything. Your protection is your written disclosure and your kept prompts."
+     "en": "Article 50(2): providers of generative systems must mark outputs in a machine-readable format so AI-generated or altered content is detectable. The tools do it for you — your side of the duty is simple: never strip or conceal the mark, which is also the guidelines' red line on concealment. And if your tool does NOT mark? That is the tool provider's infringement, never yours — the law does not ask YOU to watermark anything. Your protection is your written disclosure and your kept prompts.",
+     "fr": "Article 50(2) : les fournisseurs de systèmes génératifs doivent marquer les sorties dans un format lisible par machine, pour que le contenu généré ou modifié par IA soit détectable. Les outils le font pour vous — votre part du devoir est simple : ne jamais retirer ni dissimuler la marque, qui est aussi la ligne rouge « dissimulation » des lignes directrices. Et si votre outil ne marque PAS ? C'est le manquement du fournisseur de l'outil, jamais le vôtre — la loi ne vous demande PAS de tatouer quoi que ce soit. Votre protection : votre déclaration écrite et vos prompts conservés."
     }
    },
    {
     "icon": "📣",
     "short": {
-     "en": "You declare when you publish"
+     "en": "You declare when you publish",
+     "fr": "Vous déclarez quand vous publiez"
     },
     "article": {
-     "en": "art. 50(4)"
+     "en": "art. 50(4)",
+     "fr": "art. 50(4)"
     },
     "detail": {
-     "en": "Deployer duties, article 50(4): a deepfake you disseminate must be labelled; an AI-generated or manipulated TEXT published to inform the public on matters of public interest must disclose its artificial origin — unless a human has reviewed it and someone assumes editorial responsibility. Purely personal, non-professional use is outside the Regulation (article 2(10)) — but coursework you hand in or publish is not « purely personal »."
+     "en": "Deployer duties, article 50(4): a deepfake you disseminate must be labelled; an AI-generated or manipulated TEXT published to inform the public on matters of public interest must disclose its artificial origin — unless a human has reviewed it and someone assumes editorial responsibility. Purely personal, non-professional use is outside the Regulation (article 2(10)) — but coursework you hand in or publish is not « purely personal ».",
+     "fr": "Devoirs du déployeur, article 50(4) : un deepfake que vous diffusez doit être étiqueté ; un TEXTE généré ou manipulé par IA publié pour informer le public sur des sujets d'intérêt général doit déclarer son origine artificielle — sauf si un humain l'a relu et que quelqu'un en assume la responsabilité éditoriale. L'usage purement personnel et non professionnel est hors du règlement (article 2(10)) — mais un travail rendu ou publié n'est pas « purement personnel »."
     }
    }
   ],
   "punch": {
-   "en": "You BUILD a tool → you become a PROVIDER · emotion inference in education = FORBIDDEN (art. 5(1)(f))"
+   "en": "You BUILD a tool → you become a PROVIDER · emotion inference in education = FORBIDDEN (art. 5(1)(f))",
+   "fr": "Vous CONSTRUISEZ un outil → vous devenez FOURNISSEUR · l'inférence des émotions dans l'éducation = INTERDITE (art. 5(1)(f))"
   },
   "timeline": [
    {
     "when": {
-     "en": "2 August 2026"
+     "en": "2 August 2026",
+     "fr": "2 août 2026"
     },
     "what": {
-     "en": "IN FORCE — transparency (art. 50), enforcement of prohibitions (art. 5, applicable since 2 Feb 2025) and of general-purpose model duties (art. 53–55: documentation, copyright policy, training-data summaries)"
+     "en": "IN FORCE — transparency (art. 50), enforcement of prohibitions (art. 5, applicable since 2 Feb 2025) and of general-purpose model duties (art. 53–55: documentation, copyright policy, training-data summaries)",
+     "fr": "EN VIGUEUR — transparence (art. 50), application des interdictions (art. 5, applicables depuis le 2 février 2025) et des devoirs des modèles à usage général (art. 53–55 : documentation, politique de droit d'auteur, résumés des données d'entraînement)"
     },
     "short": {
-     "en": "IN FORCE · transparency art. 50 · prohibitions art. 5 · GPAI art. 53-55"
+     "en": "IN FORCE · transparency art. 50 · prohibitions art. 5 · GPAI art. 53-55",
+     "fr": "EN VIGUEUR · transparence art. 50 · interdictions art. 5 · GPAI art. 53-55"
     }
    },
    {
     "when": {
-     "en": "2 December 2027"
+     "en": "2 December 2027",
+     "fr": "2 décembre 2027"
     },
     "what": {
-     "en": "High-risk systems (Annex III) — including EDUCATION: admission, evaluation of learning outcomes, exam proctoring (postponed by the 2026 Omnibus)"
+     "en": "High-risk systems (Annex III) — including EDUCATION: admission, evaluation of learning outcomes, exam proctoring (postponed by the 2026 Omnibus)",
+     "fr": "Systèmes à haut risque (annexe III) — dont l'ÉDUCATION : admission, évaluation des acquis, surveillance d'examens (reporté par l'Omnibus 2026)"
     },
     "short": {
-     "en": "High-risk EDUCATION (annex III) — admission · grading · proctoring"
+     "en": "High-risk EDUCATION (annex III) — admission · grading · proctoring",
+     "fr": "Haut risque ÉDUCATION (annexe III) — admission · notation · surveillance"
     }
    },
    {
     "when": {
-     "en": "2 August 2028"
+     "en": "2 August 2028",
+     "fr": "2 août 2028"
     },
     "what": {
-     "en": "High-risk AI embedded in regulated products (Annex I)"
+     "en": "High-risk AI embedded in regulated products (Annex I)",
+     "fr": "IA à haut risque embarquée dans les produits réglementés (annexe I)"
     },
     "short": {
-     "en": "High-risk inside regulated products (annex I)"
+     "en": "High-risk inside regulated products (annex I)",
+     "fr": "Haut risque dans les produits réglementés (annexe I)"
     }
    }
   ],
   "faq": [
    {
     "q": {
-     "en": "Provider? Deployer? In plain words"
+     "en": "Provider? Deployer? In plain words",
+     "fr": "Fournisseur ? Déployeur ? En clair"
     },
     "a": {
-     "en": "The PROVIDER makes or distributes the AI tool (OpenAI, Mistral, the startup you found…). The DEPLOYER uses it under their own name for something that reaches other people. As a student you are usually a simple user; you act as a deployer when you PUBLISH what the AI made, and you become a provider the day you BUILD a tool that others use."
+     "en": "The PROVIDER makes or distributes the AI tool (OpenAI, Mistral, the startup you found…). The DEPLOYER uses it under their own name for something that reaches other people. As a student you are usually a simple user; you act as a deployer when you PUBLISH what the AI made, and you become a provider the day you BUILD a tool that others use.",
+     "fr": "Le FOURNISSEUR fabrique ou distribue l'outil d'IA (OpenAI, Mistral, la startup que vous avez trouvée…). Le DÉPLOYEUR l'utilise sous son propre nom pour quelque chose qui touche d'autres personnes. Étudiant, vous êtes le plus souvent simple utilisateur ; vous agissez en déployeur quand vous PUBLIEZ ce que l'IA a produit, et vous devenez fournisseur le jour où vous CONSTRUISEZ un outil que d'autres utilisent."
     }
    },
    {
     "q": {
-     "en": "My tool does not mark its images — must I add a mark? "
+     "en": "My tool does not mark its images — must I add a mark? ",
+     "fr": "Mon outil ne marque pas ses images — dois-je ajouter une marque ? "
     },
     "a": {
-     "en": "No. The machine-readable mark (art. 50(2)) is the TOOL provider's legal duty — you have neither the obligation nor the technical means to watermark content yourself. What is yours: (1) in coursework, ALWAYS say you used AI — the one-sentence disclosure of the guidelines, whatever the tool; (2) if you publish a deepfake, label it visibly (« AI-generated ») — a plain written mention is what the law expects from you; (3) never remove an existing mark. Good practice: prefer tools that signed the Code of Practice."
+     "en": "No. The machine-readable mark (art. 50(2)) is the TOOL provider's legal duty — you have neither the obligation nor the technical means to watermark content yourself. What is yours: (1) in coursework, ALWAYS say you used AI — the one-sentence disclosure of the guidelines, whatever the tool; (2) if you publish a deepfake, label it visibly (« AI-generated ») — a plain written mention is what the law expects from you; (3) never remove an existing mark. Good practice: prefer tools that signed the Code of Practice.",
+     "fr": "Non. La marque lisible par machine (art. 50(2)) est le devoir légal du fournisseur de l'OUTIL — vous n'avez ni l'obligation ni les moyens techniques de tatouer un contenu vous-même. Ce qui est à vous : (1) dans un travail de cours, TOUJOURS dire que vous avez utilisé l'IA — la déclaration d'une phrase des lignes directrices, quel que soit l'outil ; (2) si vous publiez un deepfake, étiquetez-le visiblement (« généré par IA ») — une mention écrite simple est ce que la loi attend de vous ; (3) ne retirez jamais une marque existante. Bonne pratique : préférez les outils signataires du code de bonnes pratiques."
     }
    },
    {
     "q": {
-     "en": "Does this apply to EVERY generated image?"
+     "en": "Does this apply to EVERY generated image?",
+     "fr": "Cela s'applique-t-il à TOUTE image générée ?"
     },
     "a": {
-     "en": "Three different rules, three different answers. Machine-readable marking: every generated output — but it is the tool's job, not yours. The visible « deepfake » label: ONLY content matching art. 3(60) — it resembles real people, places or events and could pass for authentic; a stylised illustration, a papercut scene or a diagram needs no legal label. The university disclosure: YES, every AI use in your coursework, whatever the content — that rule comes from the UL guidelines, not from the AI Act."
+     "en": "Three different rules, three different answers. Machine-readable marking: every generated output — but it is the tool's job, not yours. The visible « deepfake » label: ONLY content matching art. 3(60) — it resembles real people, places or events and could pass for authentic; a stylised illustration, a papercut scene or a diagram needs no legal label. The university disclosure: YES, every AI use in your coursework, whatever the content — that rule comes from the UL guidelines, not from the AI Act.",
+     "fr": "Trois règles différentes, trois réponses. Le marquage lisible par machine : toute sortie générée — mais c'est le travail de l'outil, pas le vôtre. L'étiquette visible « deepfake » : SEULEMENT le contenu qui correspond à l'art. 3(60) — il ressemble à des personnes, lieux ou événements réels et pourrait passer pour authentique ; une illustration stylisée, une scène papercut ou un schéma n'exigent aucune étiquette légale. La déclaration universitaire : OUI, tout usage d'IA dans vos travaux, quel que soit le contenu — cette règle vient des lignes directrices de l'UL, pas de l'AI Act."
     }
    },
    {
     "q": {
-     "en": "Does the label make the AI the author?"
+     "en": "Does the label make the AI the author?",
+     "fr": "L'étiquette fait-elle de l'IA l'auteur ?"
     },
     "a": {
-     "en": "No. The mark describes the PROCESS (art. 50: « artificially generated or manipulated »), never the authorship — like « photograph » does not credit the camera. Copyright law is a separate question, and it protects YOU: under EU law a work is protected when it reflects a human's own intellectual creation through free and creative choices (CJEU Infopaq, Painer) — your conception, direction, iterations and selection make you the author of an AI-assisted work; only content generated with no human creative input has no author at all (European Parliament resolution of 10 March 2026). The honest and legally accurate form is the DOUBLE mention: your name as author, « made with generative AI » as process — which is also this deck's own practice."
+     "en": "No. The mark describes the PROCESS (art. 50: « artificially generated or manipulated »), never the authorship — like « photograph » does not credit the camera. Copyright law is a separate question, and it protects YOU: under EU law a work is protected when it reflects a human's own intellectual creation through free and creative choices (CJEU Infopaq, Painer) — your conception, direction, iterations and selection make you the author of an AI-assisted work; only content generated with no human creative input has no author at all (European Parliament resolution of 10 March 2026). The honest and legally accurate form is the DOUBLE mention: your name as author, « made with generative AI » as process — which is also this deck's own practice.",
+     "fr": "Non. La marque décrit le PROCÉDÉ (art. 50 : « généré ou manipulé artificiellement »), jamais la paternité — comme « photographie » ne crédite pas l'appareil. Le droit d'auteur est une question distincte, et il VOUS protège : en droit de l'UE, une œuvre est protégée quand elle reflète la création intellectuelle propre d'un humain par des choix libres et créatifs (CJUE Infopaq, Painer) — votre conception, votre direction, vos itérations et votre sélection font de vous l'auteur d'une œuvre assistée par IA ; seul un contenu généré sans aucun apport créatif humain n'a pas d'auteur du tout (résolution du Parlement européen du 10 mars 2026). La forme honnête et juridiquement exacte est la DOUBLE mention : votre nom comme auteur, « réalisé avec IA générative » comme procédé — c'est aussi la pratique de ce document."
     }
    }
   ],
   "channels": {
-   "en": "Complaint Tool (art. 85, open to any natural or legal person) · downstream-provider channel (art. 89(2), for breaches of art. 53–55) · Whistleblower Tool. Over 180 organisations signed the Code of Practice on Transparency of AI-generated Content."
+   "en": "Complaint Tool (art. 85, open to any natural or legal person) · downstream-provider channel (art. 89(2), for breaches of art. 53–55) · Whistleblower Tool. Over 180 organisations signed the Code of Practice on Transparency of AI-generated Content.",
+   "fr": "Outil de plainte (art. 85, ouvert à toute personne physique ou morale) · canal des fournisseurs en aval (art. 89(2), pour les manquements aux art. 53–55) · outil lanceurs d'alerte. Plus de 180 organisations ont signé le code de bonnes pratiques sur la transparence des contenus générés par IA."
   },
   "source": {
    "citekeys": [

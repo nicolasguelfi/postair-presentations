@@ -13,6 +13,10 @@ le choix des citekeys s'éditent dans ce bloc. La phrase bibliographique reste
 dérivée de ``references.bib`` par ``citation()`` — clé inconnue = erreur
 bruyante.
 
+Conversion R-i18n (2026-09-03) : les textes projetés sont des feuilles
+{"en", "fr"} résolues par ``T()``/``TF()`` ; SPEAKER NOTES et ``alt=``
+restent EN.
+
 SPEAKER NOTES:
 Three minutes — this is the mental model they will reuse weekly. One level at
 a time: YOU are the source (green) · you explore and VERIFY (orange) · you
@@ -26,6 +30,7 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import hero_image
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -37,22 +42,38 @@ from postair_pack.components.hero_split import hero_split
 #: « label » et « line » sont projetés sur les cartes ; « detail » vit dans
 #: le tooltip ; « id » sélectionne le lavis sémantique.
 _LEVELS = [
-    {"id": "low", "icon": "🟢", "label": "LOW",
-     "line": "YOU are the source — the AI polishes",
-     "detail": ("You know the answer; the AI works on the surface: "
-                "proofreading, form, organising your own ideas.")},
-    {"id": "medium", "icon": "🟠", "label": "MODERATE",
-     "line": "You explore — and you VERIFY",
-     "detail": ("You are learning the topic: summaries and syntheses of "
-                "complex material help, but you check omissions, distortions "
-                "and inventions against reliable sources.")},
-    {"id": "high", "icon": "🔴", "label": "HIGH",
-     "line": "You delegate what you cannot verify",
-     "detail": ("You depend on the AI for claims you cannot check — or the "
-                "AI replaces the assessed learning objective itself. "
-                "Hallucinations, fabricated citations, overconfidence.")},
+    {"id": "low", "icon": "🟢",
+     "label": {"en": "LOW", "fr": "FAIBLE"},
+     "line": {"en": "YOU are the source — the AI polishes",
+              "fr": "VOUS êtes la source — l'IA polit"},
+     "detail": {"en": ("You know the answer; the AI works on the surface: "
+                       "proofreading, form, organising your own ideas."),
+                "fr": ("Vous connaissez la réponse ; l'IA travaille la surface : "
+                       "relecture, forme, organisation de vos propres idées.")}},
+    {"id": "medium", "icon": "🟠",
+     "label": {"en": "MODERATE", "fr": "MODÉRÉ"},
+     "line": {"en": "You explore — and you VERIFY",
+              "fr": "Vous explorez — et vous VÉRIFIEZ"},
+     "detail": {"en": ("You are learning the topic: summaries and syntheses of "
+                       "complex material help, but you check omissions, distortions "
+                       "and inventions against reliable sources."),
+                "fr": ("Vous découvrez le sujet : résumés et synthèses de matière "
+                       "complexe aident, mais vous contrôlez omissions, distorsions "
+                       "et inventions contre des sources fiables.")}},
+    {"id": "high", "icon": "🔴",
+     "label": {"en": "HIGH", "fr": "ÉLEVÉ"},
+     "line": {"en": "You delegate what you cannot verify",
+              "fr": "Vous déléguez ce que vous ne pouvez pas vérifier"},
+     "detail": {"en": ("You depend on the AI for claims you cannot check — or the "
+                       "AI replaces the assessed learning objective itself. "
+                       "Hallucinations, fabricated citations, overconfidence."),
+                "fr": ("Vous dépendez de l'IA pour des affirmations que vous ne "
+                       "pouvez pas contrôler — ou l'IA remplace l'objectif "
+                       "d'apprentissage évalué lui-même. Hallucinations, citations "
+                       "fabriquées, excès de confiance.")}},
 ]
-_FRAME = "Risk level ↑ = verification ↑ · never a ban"
+_FRAME = {"en": "Risk level ↑ = verification ↑ · never a ban",
+          "fr": "Niveau de risque ↑ = vérification ↑ · jamais une interdiction"}
 _CITEKEYS = ["i2tl2026-guidelines", "parmentier-vicens-2025"]
 #: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
 #: facts.json) : « Three risk levels ».
@@ -90,24 +111,36 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "Three levels", "fr": "Trois niveaux"}
+_TITLE = {"en": ("Reflex 3 — the ",
+                 (s.project.titles.keyword, "three risk levels")),
+          "fr": ("Réflexe 3 — les ",
+                 (s.project.titles.keyword, "trois niveaux de risque"))}
+_TIP_TITLE = {"en": "The levels (guidelines, section 4)",
+              "fr": "Les niveaux (lignes directrices, section 4)"}
+_FRAME_HEAD = {"en": "The frame", "fr": "Le cadre"}
+_RED_HEAD = {"en": "The red case that matters",
+             "fr": "Le cas rouge qui compte"}
+_RED_CASE = {"en": ("« The AI replaces the assessed learning objective » is "
+                    "always high risk — that is the one to remember."),
+             "fr": ("« L'IA remplace l'objectif d'apprentissage évalué » est "
+                    "toujours un risque élevé — c'est celui à retenir.")}
+
 
 def build(lang: str = "en", **_):
-    st_marker("Three levels")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Reflex 3 — the ",
-                         (s.project.titles.keyword, "three risk levels"),
-                         tag=t.div, toc_lvl="+1", label="Three levels")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="The levels (guidelines, section 4)",
-                    entries=[(f"{lv['icon']} {lv['label']} — {lv['line']}",
-                              lv["detail"]) for lv in _LEVELS]
-                            + [("The frame", _FRAME),
-                               ("The red case that matters", "« The AI replaces the "
-                                "assessed learning objective » is always high risk — "
-                                "that is the one to remember.")],
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(f"{lv['icon']} {T(lv['label'], lang)} — {T(lv['line'], lang)}",
+                              T(lv["detail"], lang)) for lv in _LEVELS]
+                            + [(T(_FRAME_HEAD, lang), T(_FRAME, lang)),
+                               (T(_RED_HEAD, lang), T(_RED_CASE, lang))],
                 )
         st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : le feu tricolore carré à gauche,
@@ -122,9 +155,9 @@ def build(lang: str = "en", **_):
                 variant="sq")):
             for lv in _LEVELS:
                 with st_block(_WASH[lv["id"]]):
-                    st_write(bs.icon, lv["icon"], " ", (bs.label, lv["label"]),
-                             tag=t.div)
-                    st_write(bs.line, lv["line"], tag=t.div)
+                    st_write(bs.icon, lv["icon"], " ",
+                             (bs.label, T(lv["label"], lang)), tag=t.div)
+                    st_write(bs.line, T(lv["line"], lang), tag=t.div)
             st_space("v", "0.5vh")
-            st_write(bs.frame, _FRAME, " ",
+            st_write(bs.frame, T(_FRAME, lang), " ",
                      citation(*_CITEKEYS), tag=t.div)

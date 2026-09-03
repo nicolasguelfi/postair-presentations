@@ -1,7 +1,8 @@
-"""postair_guidelines — the last two slots of the AI Day (UL guidelines 15'+3' AI Act + Closing 5').
+"""postair_guidelines — the UL guidelines slot of the AI Day (15' + 3' AI Act).
 
 Seventh document of the POSTAIR set. See _project/plans/plan-postair_guidelines.md —
-the plan ↔ block mapping is one to one (U1…U8, C1…C3), plus the References appendix.
+the plan ↔ block mapping is one to one (U1…U9), plus the References appendix.
+Les slides de clôture C1…C3 ont déménagé dans postair_closing (2026-09-03).
 Registre : descriptif et opérationnel — on explique les règles du document officiel
 (I²TL v1.0, 2026-02-16), on ne les commente pas.
 """
@@ -142,9 +143,9 @@ st_book(
         blocks.bck_guide_checklist,    # U8 · the final test, verbatim
         blocks.bck_guide_aiact,        # U9a · the AI Act — the law and its calendar
         blocks.bck_guide_aiact_you,    # U9b · the AI Act — you, concretely
-        blocks.bck_close_loop,         # C1 · the four things they now have
-        blocks.bck_close_next,         # C2 · the QR to the hub, what stays online
-        blocks.bck_close_thanks,       # C3 · mascot family photo, applause
+        # Les trois slides de clôture (loop, next, thanks) ont DÉMÉNAGÉ dans
+        # postair_closing (tâche 5, 2026-09-03) — la clôture du JOUR n'est pas
+        # la clôture de ce deck.
         blocks.bck_next_module,       # chaîne du jour — gros bouton vers le deck suivant
         blocks.bck_refs_bibliography,  # never presented; opened when challenged
     ],

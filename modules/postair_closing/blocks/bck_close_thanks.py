@@ -10,6 +10,10 @@ s'éditent dans ce bloc. La phrase bibliographique reste dérivée de
 ``references.bib`` par ``citation()``/``cite`` — clé inconnue = erreur
 bruyante (cette slide ne cite aucune source).
 
+Conversion R-i18n (2026-09-03) : tout texte projeté est une feuille
+``{"en", "fr"}`` résolue par ``T()``/``TF()`` de ``postair_lang`` ; les noms
+de mascottes restent des données du manifeste.
+
 SPEAKER NOTES:
 One minute, all energy. Read the line — « Welcome to the University of
 Luxembourg — make AI yours » — open your arms, let the room applaud the
@@ -19,6 +23,7 @@ mascots. Logistics of what follows (break, rooms) is said here if needed.
 
 from custom.styles import Styles as s
 from postair_data import axes, mascot
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -36,26 +41,40 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Le fait : la phrase de clôture et les crédits ───────────────────────────
-_BIG = "Welcome to the University of Luxembourg — make AI yours."
-_CREDITS = ("AI Day team · the POSTAIR study and its 55 figures · sumvadis "
-            "(the live survey) · 38 mascots, 100 % generative AI · built "
-            "with streamtex")
+_BIG = {"en": "Welcome to the University of Luxembourg — make AI yours.",
+        "fr": "Bienvenue à l’Université du Luxembourg — faites de l’IA la vôtre."}
+_CREDITS = {"en": ("AI Day team · the POSTAIR study and its 55 figures · sumvadis "
+                   "(the live survey) · 38 mascots, 100 % generative AI · built "
+                   "with streamtex"),
+            "fr": ("L’équipe de l’AI Day · l’étude POSTAIR et ses 55 figures · "
+                   "sumvadis (l’enquête live) · 38 mascottes, 100 % IA générative · "
+                   "réalisé avec streamtex")}
+
+_MARKER = {"en": "Thank you!", "fr": "Merci !"}
+_TITLE = {"en": ((s.project.titles.keyword, "Thank you"), "!"),
+          "fr": ((s.project.titles.keyword, "Merci"), " !")}
+_TIP_TITLE = {"en": "Credits", "fr": "Crédits"}
+_TIP_DAY_HEAD = {"en": "The day", "fr": "La journée"}
+_TIP_MASCOTS = ({"en": "The mascots", "fr": "Les mascottes"},
+                {"en": ("38 characters, 100 % generative AI, designed "
+                        "in the mascoties studio — each carries one pole of one axis."),
+                 "fr": ("38 personnages, 100 % IA générative, conçus au studio "
+                        "mascoties — chacun porte un pôle d’un axe.")})
 
 
 def build(lang: str = "en", **_):
-    st_marker("Thank you!")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, (s.project.titles.keyword, "Thank you"), "!",
-                         tag=t.div, toc_lvl="+1", label="Thank you!")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Credits",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("The day", _CREDITS),
-                        ("The mascots", "38 characters, 100 % generative AI, designed "
-                         "in the mascoties studio — each carries one pole of one axis."),
+                        (T(_TIP_DAY_HEAD, lang), T(_CREDITS, lang)),
+                        (T(_TIP_MASCOTS[0], lang), T(_TIP_MASCOTS[1], lang)),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -76,4 +95,4 @@ def build(lang: str = "en", **_):
                              overlay=dd35_overlay())
                     st_write(bs.name, member["mascot"], tag=t.div)
         st_space("v", "2vh")
-        st_write(bs.big, _BIG, tag=t.div)
+        st_write(bs.big, T(_BIG, lang), tag=t.div)

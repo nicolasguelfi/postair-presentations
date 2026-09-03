@@ -30,6 +30,7 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import hero_image
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -50,6 +51,12 @@ class BlockStyles:
 
 bs = BlockStyles
 
+#: « AI Act » reste « AI Act » en français : nom propre du règlement.
+_MARKER = {"en": "The AI Act", "fr": "L’AI Act"}
+_TITLE = {"en": ("The law above the rules — the ", (s.project.titles.keyword, "AI Act")), "fr": ("La loi au-dessus des règles — l’", (s.project.titles.keyword, "AI Act"))}
+_CHANNELS_HEAD = {"en": "Who enforces, where to complain", "fr": "Qui contrôle, où se plaindre"}
+_TIP_TITLE = {"en": "Applicable law, with the article numbers", "fr": "La loi applicable, avec les numéros d’article"}
+
 _AIACT_PROMPT = (
     AI_PREFIX
     + "A large open paper book of law on a paper pedestal, its pages cut from "
@@ -62,30 +69,29 @@ _AIACT_PROMPT = (
 
 
 def build(lang: str = "en", **_):
-    st_marker("The AI Act")
+    st_marker(T(_MARKER, lang))
     data = section("ai_act")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "The law above the rules — the ",
-                         (s.project.titles.keyword, "AI Act"),
-                         tag=t.div, toc_lvl="+1", label="The AI Act")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Applicable law, with the article numbers",
-                    entries=[(f"{c['icon']} {text(c['short'])} — {text(c['article'])}",
-                              text(c["detail"])) for c in data["cards"]]
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(f"{c['icon']} {text(c['short'], lang)} — {text(c['article'], lang)}",
+                              text(c["detail"], lang)) for c in data["cards"]]
                             # FAQ en langage non-spécialiste (exigence NG) : qui est
                             # fournisseur/déployeur, que faire si l'outil ne marque
                             # pas, et ce qui vaut pour TOUTE image générée.
-                            + [(f"❓ {text(f['q'])}", text(f["a"]))
+                            + [(f"❓ {text(f['q'], lang)}", text(f["a"], lang))
                                for f in data["faq"]]
-                            + [(f"📅 {text(tl['when'])}", text(tl["what"]))
+                            + [(f"📅 {text(tl['when'], lang)}", text(tl["what"], lang))
                                for tl in data["timeline"]]
-                            + [("Who enforces, where to complain", text(data["channels"]))],
+                            + [(T(_CHANNELS_HEAD, lang), text(data["channels"], lang))],
                 )
         st_space("v", "0.5vh")
-        st_write(bs.since, text(data["since"]), tag=t.div)
+        st_write(bs.since, text(data["since"], lang), tag=t.div)
         st_space("v", "1vh")
         # Découpage NG (2026-08-13) : cette slide porte LA LOI (le cadre et
         # son calendrier) ; « vous, concrètement » (les 4 cartes d'articles et
@@ -98,10 +104,10 @@ def build(lang: str = "en", **_):
                 alt_fallback=("Papercut law book with labelled amber orbs around it"),
                 variant="sq")):
             with st_block(s.project.cards.amber):
-                st_write(bs.big, text(data["big"]), tag=t.div)
+                st_write(bs.big, text(data["big"], lang), tag=t.div)
             st_space("v", "0.5vh")
             for tl in data["timeline"]:
-                st_write(bs.short, text(tl["when"]), " · ", text(tl["short"]),
+                st_write(bs.short, text(tl["when"], lang), " · ", text(tl["short"], lang),
                          tag=t.div)
             st_space("v", "0.5vh")
             st_write(bs.cite, citation(*citekeys(data)), tag=t.div)

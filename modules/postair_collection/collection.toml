@@ -71,7 +71,7 @@ project_url = "https://postair-mistral.streamtex.org"
 order = 5
 
 [projects.guidelines]
-title = { en = "The UL AI Guidelines — and Closing", fr = "Les lignes directrices IA de l'UL — et clôture" }
+title = { en = "The UL AI Guidelines", fr = "Les lignes directrices IA de l'UL" }
 description = { en = "permitted by default · say it · 3 risk levels · red lines · final test · AI Act", fr = "permis par défaut · le dire · 3 niveaux de risque · lignes rouges · test final · AI Act" }
 emoji = "📋"
 button_label = { en = "Open the deck", fr = "Ouvrir le deck" }

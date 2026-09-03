@@ -13,6 +13,8 @@ import tomllib
 from pathlib import Path
 
 import blocks
+from custom.refs import config as refs_config
+from custom.refs import sources as bib_sources
 from postair_lang import current_lang
 import streamlit as st
 from postair_display import SCALE, postair_profiles
@@ -111,14 +113,24 @@ PDF = PdfConfig(
 )
 
 # Reading order IS this list — it is the single source of truth for the deck.
+# Les trois slides de clôture (loop, next, thanks) viennent de
+# postair_guidelines (déménagement tâche 5, 2026-09-03) — la clôture du JOUR
+# vit ici, pas dans le dernier deck de contenu.
 st_book(
     [
         blocks.bck_closing_title,    # C1 · Closing — take the method home
-        blocks.bck_closing_dlh,      # C2 · Digital Learning Hub (diaporama)
+        blocks.bck_close_loop,       # C2 · the four things they now have
+        blocks.bck_closing_dlh,      # C3 · Digital Learning Hub (diaporama)
+        blocks.bck_close_next,       # C4 · the QR to the hub, what stays online
+        blocks.bck_close_thanks,     # C5 · mascot family photo, applause
         blocks.bck_next_module,      # chaîne du jour — boucle vers le suivant
     ],
     toc_config=toc,
     marker_config=marker_config,
+    # La bibliographie se charge PAR ``st_book``, jamais avant lui : il vide
+    # le registre au début de sa construction (règle bib canonique, CLAUDE.md).
+    bib_sources=bib_sources(),
+    bib_config=refs_config(),   # locale = langue projetée (0.7.26)
     # La langue projetée, passée à chaque build(lang) — plan-i18n D2.
     block_kwargs={"lang": current_lang()},
     paginate=True,

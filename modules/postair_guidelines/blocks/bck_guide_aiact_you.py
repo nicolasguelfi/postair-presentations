@@ -25,6 +25,7 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import hero_image
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -42,6 +43,12 @@ class BlockStyles:
 
 bs = BlockStyles
 
+#: « AI Act » reste « AI Act » en français : nom propre du règlement.
+_MARKER = {"en": "You, concretely", "fr": "Vous, concrètement"}
+_TITLE = {"en": ("The AI Act — ", (s.project.titles.keyword, "you, concretely")), "fr": ("L’AI Act — ", (s.project.titles.keyword, "vous, concrètement"))}
+_CHANNELS_HEAD = {"en": "Who enforces, where to complain", "fr": "Qui contrôle, où se plaindre"}
+_TIP_TITLE = {"en": "Plain-language answers, with the article numbers", "fr": "Des réponses en langage courant, avec les numéros d’article"}
+
 _TAGS_PROMPT = (
     AI_PREFIX
     + "A paper desk seen from above: four colourful paper parcels in a neat "
@@ -53,23 +60,22 @@ _TAGS_PROMPT = (
 
 
 def build(lang: str = "en", **_):
-    st_marker("You, concretely")
+    st_marker(T(_MARKER, lang))
     data = section("ai_act")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "The AI Act — ",
-                         (s.project.titles.keyword, "you, concretely"),
-                         tag=t.div, toc_lvl="+1", label="You, concretely")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Plain-language answers, with the article numbers",
-                    entries=[(f"❓ {text(f['q'])}", text(f["a"]))
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(f"❓ {text(f['q'], lang)}", text(f["a"], lang))
                              for f in data["faq"]]
-                            + [(f"{c['icon']} {text(c['short'])} — {text(c['article'])}",
-                                text(c["detail"])) for c in data["cards"]]
-                            + [("Who enforces, where to complain",
-                                text(data["channels"]))],
+                            + [(f"{c['icon']} {text(c['short'], lang)} — {text(c['article'], lang)}",
+                                text(c["detail"], lang)) for c in data["cards"]]
+                            + [(T(_CHANNELS_HEAD, lang),
+                                text(data["channels"], lang))],
                 )
         st_space("v", s.project.spacing.title_gap)
         with hero_split(s, zoom=88, image=lambda: hero_image(
@@ -80,8 +86,8 @@ def build(lang: str = "en", **_):
                 variant="sq")):
             for c in data["cards"]:
                 with st_block(s.project.cards.blue):
-                    st_write(bs.short, c["icon"], " ", text(c["short"]), "  ",
-                             (bs.article, text(c["article"])), tag=t.div)
+                    st_write(bs.short, c["icon"], " ", text(c["short"], lang), "  ",
+                             (bs.article, text(c["article"], lang)), tag=t.div)
             st_space("v", "0.5vh")
-            st_write(bs.punch, text(data["punch"]), " ",
+            st_write(bs.punch, text(data["punch"], lang), " ",
                      citation(*citekeys(data)), tag=t.div)

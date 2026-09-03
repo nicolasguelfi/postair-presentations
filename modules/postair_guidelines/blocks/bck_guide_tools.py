@@ -10,6 +10,9 @@ d'équité et le choix des citekeys s'éditent dans ce bloc. La phrase
 bibliographique reste dérivée de ``references.bib`` par ``citation()`` — clé
 inconnue = erreur bruyante.
 
+Conversion R-i18n (2026-09-03) : chaque texte projeté est une feuille
+``{"en", "fr"}`` résolue par ``T``/``TF``.
+
 SPEAKER NOTES:
 Two minutes. The image carries the model: inside the bubble, your data stays
 UL's; outside, it is the product. Say the equity rule out loud — if a course
@@ -22,6 +25,7 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import hero_image
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -37,15 +41,38 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Le fait : les outils soutenus par l'UL (guidelines, section 3, p.5) ─────
-_SUPPORTED = ("Copilot + UL account = THE supported choice · your data stays "
-              "in UL's M365")
-_UNIGPT = "UniGPT (internal, secure) · staff first"
-_OUTSIDE = "Outside → paid with your data · personal / sensitive = NEVER"
+_SUPPORTED = {"en": ("Copilot + UL account = THE supported choice · your "
+                     "data stays in UL's M365"),
+              "fr": ("Copilot + compte UL = LE choix soutenu · vos données "
+                     "restent dans le M365 de l’UL")}
+_UNIGPT = {"en": "UniGPT (internal, secure) · staff first",
+           "fr": "UniGPT (interne, sécurisé) · le personnel d’abord"}
+_OUTSIDE = {"en": "Outside → paid with your data · personal / sensitive = NEVER",
+            "fr": "Dehors → payé avec vos données · personnel / sensible = JAMAIS"}
 _EQUITY = [
-    "Course REQUIRES AI → a free path must exist",
-    "Conscientious objection → CAR committee",
+    {"en": "Course REQUIRES AI → a free path must exist",
+     "fr": "Un cours EXIGE l’IA → une voie gratuite doit exister"},
+    {"en": "Conscientious objection → CAR committee",
+     "fr": "Objection de conscience → comité CAR"},
 ]
 _CITEKEYS = ["i2tl2026-guidelines"]
+
+_MARKER = {"en": "UL tools", "fr": "Outils UL"}
+_TITLE = {"en": ("The tools ", (s.project.titles.keyword, "UL gives you")),
+          "fr": ("Les outils ", (s.project.titles.keyword,
+                                 "que l’UL vous donne"))}
+_TIP_TITLE = {"en": "Supported tools (guidelines, section 3, p.5)",
+              "fr": "Outils soutenus (lignes directrices, section 3, p.5)"}
+_LBL_COPILOT = {"en": "Microsoft Copilot (UL account)",
+                "fr": "Microsoft Copilot (compte UL)"}
+_LBL_PUBLIC = {"en": "Public tools", "fr": "Outils publics"}
+_LBL_EQUITY = {"en": "Equity", "fr": "Équité"}
+_ACCENT = {"en": "Copilot with your UL account — the supported choice",
+           "fr": "Copilot avec votre compte UL — le choix soutenu"}
+_LINE = {"en": ("Inside the bubble your data stays UL's · outside, it is "
+                "the product "),
+         "fr": ("Dans la bulle, vos données restent à l’UL · dehors, elles "
+                "sont le produit ")}
 #: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
 #: facts.json) : « The tools UL gives you ».
 
@@ -60,20 +87,20 @@ _BUBBLE_PROMPT = (
 
 
 def build(lang: str = "en", **_):
-    st_marker("UL tools")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "The tools ", (s.project.titles.keyword, "UL gives you"),
-                         tag=t.div, toc_lvl="+1", label="UL tools")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="Supported tools (guidelines, section 3, p.5)",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("Microsoft Copilot (UL account)", _SUPPORTED),
-                        ("UniGPT", _UNIGPT),
-                        ("Public tools", _OUTSIDE),
-                        *[("Equity", e) for e in _EQUITY],
+                        (T(_LBL_COPILOT, lang), T(_SUPPORTED, lang)),
+                        ("UniGPT", T(_UNIGPT, lang)),  # i18n: verbatim
+                        (T(_LBL_PUBLIC, lang), T(_OUTSIDE, lang)),
+                        *[(T(_LBL_EQUITY, lang), T(e, lang)) for e in _EQUITY],
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -86,7 +113,5 @@ def build(lang: str = "en", **_):
             width="58%",
         )
         st_space("v", "1.5vh")
-        st_write(bs.accent, "Copilot with your UL account — the supported choice",
-                 tag=t.div)
-        st_write(bs.line, "Inside the bubble your data stays UL's · outside, it is "
-                          "the product ", citation(*_CITEKEYS), tag=t.div)
+        st_write(bs.accent, T(_ACCENT, lang), tag=t.div)
+        st_write(bs.line, T(_LINE, lang), citation(*_CITEKEYS), tag=t.div)

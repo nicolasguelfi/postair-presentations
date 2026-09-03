@@ -22,6 +22,7 @@ from custom.prompts import AI_PREFIX, AI_SUFFIX_LANDSCAPE
 from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import hero_image
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -39,22 +40,26 @@ class BlockStyles:
 
 bs = BlockStyles
 
+_MARKER = {"en": "If suspected", "fr": "En cas de soupçon"}
+_TITLE = {"en": ("If misuse is ", (s.project.titles.keyword, "suspected")), "fr": ("Si un mésusage est ", (s.project.titles.keyword, "soupçonné"))}
+_TIP_TITLE = {"en": "The procedure (guidelines, section 4)", "fr": "La procédure (lignes directrices, section 4)"}
+
 # ── Le fait : la procédure en cas de soupçon (guidelines, section 4) ────────
 #: La ligne des garanties, projetée en quatre puces (split sur « · »).
-_LINE = ("Standard procedure · Solid evidence required · A detector alone "
-         "≠ proof · Your rights protected")
+_LINE = {"en": ("Standard procedure · Solid evidence required · A detector alone "
+                "≠ proof · Your rights protected"), "fr": ("Procédure standard · Des preuves solides exigées · Un détecteur seul ≠ preuve · Vos droits protégés")}
 #: « short » titre l'entrée du tooltip ; « detail » en est le corps.
 _CARDS = [
-    {"icon": "⚖️", "short": "Standard procedure",
-     "detail": ("The existing UL academic-conduct procedure applies — these "
-                "guidelines create no new tribunal.")},
-    {"icon": "🚫", "short": "Detection is not proof",
-     "detail": ("A presumed « AI detection » is not a sufficient basis: "
-                "detectors are unreliable and biased against non-native "
-                "writers.")},
-    {"icon": "🛡️", "short": "Your process protects you",
-     "detail": ("Drafts, prompts, versions: showing your process is your "
-                "best defence — one more reason to keep them.")},
+    {"icon": "⚖️", "short": {"en": "Standard procedure", "fr": "Procédure standard"},
+     "detail": {"en": ("The existing UL academic-conduct procedure applies — these "
+                       "guidelines create no new tribunal."), "fr": "La procédure disciplinaire existante de l'UL s'applique — ces lignes directrices ne créent aucun tribunal nouveau."}},
+    {"icon": "🚫", "short": {"en": "Detection is not proof", "fr": "Détecter n'est pas prouver"},
+     "detail": {"en": ("A presumed « AI detection » is not a sufficient basis: "
+                       "detectors are unreliable and biased against non-native "
+                       "writers."), "fr": "Une « détection d'IA » présumée n'est pas une base suffisante : les détecteurs sont peu fiables et biaisés contre les non-natifs."}},
+    {"icon": "🛡️", "short": {"en": "Your process protects you", "fr": "Votre processus vous protège"},
+     "detail": {"en": ("Drafts, prompts, versions: showing your process is your "
+                       "best defence — one more reason to keep them."), "fr": "Brouillons, prompts, versions : montrer votre processus est votre meilleure défense — une raison de plus de les garder."}},
 ]
 _CITEKEYS = ["i2tl2026-guidelines", "liang2023-bias", "giray-detectors-2026"]
 #: Jamais projeté, gardé pour la vérifiabilité (entrée « big » de l'ancien
@@ -71,16 +76,16 @@ _BALANCE_PROMPT = (
 
 
 def build(lang: str = "en", **_):
-    st_marker("If suspected")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "If misuse is ", (s.project.titles.keyword, "suspected"),
-                         tag=t.div, toc_lvl="+1", label="If suspected")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="The procedure (guidelines, section 4)",
-                    entries=[(f"{c['icon']} {c['short']}", c["detail"])
+                    title=T(_TIP_TITLE, lang),
+                    entries=[(f"{c['icon']} {T(c['short'], lang)}", T(c["detail"], lang))
                              for c in _CARDS],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -94,7 +99,7 @@ def build(lang: str = "en", **_):
                            "pan and documents in the other, calm sky"),
                 alt_fallback=("Papercut balanced scale of justice"),
                 variant="sq")):
-            for part in _LINE.split(" · "):
+            for part in T(_LINE, lang).split(" · "):
                 st_write(bs.line, "▸ ", part, tag=t.div)
             st_space("v", "0.5vh")
             st_write(bs.cite, citation(*_CITEKEYS), tag=t.div)

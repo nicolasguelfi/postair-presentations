@@ -9,6 +9,10 @@ l'anecdote et le choix des citekeys s'éditent dans ce bloc. La phrase
 bibliographique reste dérivée de ``references.bib`` par ``citation()`` — clé
 inconnue = erreur bruyante.
 
+Conversion R-i18n (2026-09-03) : chaque texte projeté est une feuille
+``{"en", "fr"}`` résolue par ``T``/``TF`` ; la règle encadrée reste verbatim
+(citation mot pour mot du document officiel, en anglais).
+
 SPEAKER NOTES:
 Two minutes. Read the verbatim rule slowly, once — this is the sentence 1500
 people must retain. Then the two caveats, in order: the course rules PRIME,
@@ -23,6 +27,7 @@ from custom.refs import citation
 from custom.styles import Styles as s
 from custom.visuals import hero_image
 from postair_data import mascot
+from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -43,17 +48,40 @@ bs = BlockStyles
 
 # ── Le fait : la règle par défaut (guidelines, section 2, p.4) ──────────────
 #: La phrase encadrée du document, copiée verbatim — c'est LA phrase que la
-#: salle doit retenir mot pour mot.
-_VERBATIM = ("In the absence of explicit course directives, students MAY use "
+#: salle doit retenir mot pour mot (document officiel en anglais, citée telle
+#: quelle dans les deux langues).
+_VERBATIM = ("In the absence of explicit course directives, students MAY use "  # i18n: verbatim
              "generative AI to support their learning — within academic "
              "integrity, transparency, and respect of third-party rights.")
 _CAVEATS = [
-    "The syllabus PRIMES · a course can restrict or forbid",
-    "In doubt → ask BEFORE",
+    {"en": "The syllabus PRIMES · a course can restrict or forbid",
+     "fr": "Le syllabus PRIME · un cours peut restreindre ou interdire"},
+    {"en": "In doubt → ask BEFORE",
+     "fr": "Dans le doute → demander AVANT"},
 ]
-_ANECDOTE = ("The default rule became permissive after the community "
-             "consultation — the openness is deliberate, not an oversight.")
+_ANECDOTE = {"en": ("The default rule became permissive after the community "
+                    "consultation — the openness is deliberate, not an "
+                    "oversight."),
+             "fr": ("La règle par défaut est devenue permissive après la "
+                    "consultation de la communauté — l’ouverture est "
+                    "délibérée, pas un oubli.")}
 _CITEKEYS = ["i2tl2026-guidelines"]
+
+_MARKER = {"en": "Permitted", "fr": "Permis"}
+_TITLE = {"en": ("Reflex 1 — by default: ",
+                 (s.project.titles.keyword, "permitted")),
+          "fr": ("Réflexe 1 — par défaut : ",
+                 (s.project.titles.keyword, "permis"))}
+_TIP_TITLE = {"en": "The default rule (guidelines, section 2, p.4)",
+              "fr": "La règle par défaut (lignes directrices, section 2, p.4)"}
+_LBL_BOXED = {"en": "The boxed rule, verbatim",
+              "fr": "La règle encadrée, verbatim"}
+_LBL_WHO = {"en": "Who can restrict it", "fr": "Qui peut la restreindre"}
+_WHO = {"en": ("A course can — explicitly, and with a pedagogical "
+               "justification. The syllabus always primes."),
+        "fr": ("Un cours le peut — explicitement, et avec une justification "
+               "pédagogique. Le syllabus prime toujours.")}
+_LBL_WHY = {"en": "Why it is permissive", "fr": "Pourquoi elle est permissive"}
 #: Jamais projeté, gardé pour la vérifiabilité (entrées « big » et « sub » de
 #: l'ancien facts.json) : « By default: PERMITTED » ·
 #: « the course rules always come first ».
@@ -69,21 +97,19 @@ _GREEN_PROMPT = (
 
 
 def build(lang: str = "en", **_):
-    st_marker("Permitted")
+    st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                st_write(bs.title, "Reflex 1 — by default: ",
-                         (s.project.titles.keyword, "permitted"),
-                         tag=t.div, toc_lvl="+1", label="Permitted")
+                st_write(bs.title, *TF(_TITLE, lang),
+                         tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
-                    title="The default rule (guidelines, section 2, p.4)",
+                    title=T(_TIP_TITLE, lang),
                     entries=[
-                        ("The boxed rule, verbatim", _VERBATIM),
-                        ("Who can restrict it", "A course can — explicitly, and with a "
-                         "pedagogical justification. The syllabus always primes."),
-                        ("Why it is permissive", _ANECDOTE),
+                        (T(_LBL_BOXED, lang), _VERBATIM),  # i18n: verbatim
+                        (T(_LBL_WHO, lang), T(_WHO, lang)),
+                        (T(_LBL_WHY, lang), T(_ANECDOTE, lang)),
                     ],
                 )
         st_space("v", s.project.spacing.title_gap)
@@ -101,7 +127,7 @@ def build(lang: str = "en", **_):
                          citation(*_CITEKEYS), tag=t.div)
             st_space("v", "0.5vh")
             for caveat in _CAVEATS:
-                st_write(bs.caveat, caveat, tag=t.div)
+                st_write(bs.caveat, T(caveat, lang), tag=t.div)
             st_space("v", "0.5vh")
             kuri = mascot("Kuri")
             st_image(s.project.cards.media_center, width="min(7vw, 13vh)",
