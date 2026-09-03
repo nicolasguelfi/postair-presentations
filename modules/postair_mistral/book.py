@@ -134,6 +134,7 @@ st_book(
         blocks.bck_mistral_demo_build,     # M5  · démo A : construire l'agent (live)
         blocks.bck_mistral_demo_use,       # M6  · démo B : l'agent au travail (live)
         blocks.bck_mistral_agent_doors,    # M6b · les trois portes — ouvrir SES agents
+        blocks.bck_mistral_services_map,   # SV1 · la carte des services (synthèse en flux)
         blocks.bck_mistral_err_sources,    # M7  · erreur 1 — sans sources, il invente ton cours
         blocks.bck_mistral_err_delegate,   # M8  · erreur 2 — tout déléguer, tu n'apprends rien
         blocks.bck_mistral_err_trust,      # M9  · erreur 3 — croire sans vérifier (cadrage)
@@ -145,6 +146,10 @@ st_book(
         blocks.bck_mistral_backup_divider, # seuil « — Backup — »
         blocks.bck_mistral_bk_rag,         # bk · le POURQUOI derrière l'erreur 1 (ragm7)
         blocks.bck_mistral_bk_podcast,     # bk · d'autres outils, même méthode (podcast)
+        blocks.bck_mistral_bk_services_create,   # SV2 · créer TON agent (matrice)
+        blocks.bck_mistral_bk_services_feed,     # SV3 · le nourrir de ton cours (matrice)
+        blocks.bck_mistral_bk_services_voice,    # SV4 · lui parler (matrice voix)
+        blocks.bck_mistral_bk_services_students, # SV5 · offres étudiantes (Luxembourg)
         blocks.bck_refs_bibliography,      # never presented; opened when challenged
     ],
     toc_config=toc,
