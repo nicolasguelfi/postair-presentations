@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-08-26",
+  "updated": "2026-09-03",
   "infrastructure": {
     "provider": "hetzner",
     "server": {
@@ -104,6 +104,15 @@
       "repo": "https://github.com/nicolasguelfi/postair-presentations",
       "branch": "main",
       "folder": "modules/postair_waves",
+      "serve_mode": "dual"
+    },
+    "postair-closing": {
+      "uuid": "ni6y6q06e0xqbio0afyu62m3",
+      "subdomain": "postair-closing",
+      "fqdn": "https://postair-closing.streamtex.org",
+      "repo": "https://github.com/nicolasguelfi/postair-presentations",
+      "branch": "main",
+      "folder": "modules/postair_closing",
       "serve_mode": "dual"
     }
   }

@@ -71,6 +71,7 @@ jobs:
             "postair-debates": {"folder": "modules/postair_debates", "uuid": "o655voa4o0r1gw9k1lhkujtg", "replicas": []},
             "postair-genai": {"folder": "modules/postair_genai", "uuid": "ki72ol1fqgno2g1rpi0t2m7o", "replicas": []},
             "postair-mistral": {"folder": "modules/postair_mistral", "uuid": "xkvxoqqby2vo2irwhgpcyt6q", "replicas": []},
+            "postair-closing": {"folder": "modules/postair_closing", "uuid": "ni6y6q06e0xqbio0afyu62m3", "replicas": []},
             "postair-collection": {"folder": "modules/postair_collection", "uuid": "g5hnjmauge8443965yywvijs", "replicas": []},
             "postair-guidelines": {"folder": "modules/postair_guidelines", "uuid": "cx1yh8ef3kyg1uf50m1w0wmi", "replicas": []},
             "postair-handsup": {"folder": "modules/postair_handsup", "uuid": "kjl03arps9ma13llrbtx8403", "replicas": []},
