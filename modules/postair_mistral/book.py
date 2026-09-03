@@ -66,7 +66,7 @@ st.set_page_config(
     page_title="AI DAY — Mistral & co.",
     page_icon="🎓",
     layout="wide",
-    initial_sidebar_state="auto",
+    initial_sidebar_state="collapsed",  # NG 2026-09-03 : lancement panneau FERMÉ (la projection dispose de toute la largeur)
 )
 
 sts.theme = dark

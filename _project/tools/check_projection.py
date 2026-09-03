@@ -19,9 +19,13 @@ les ``st_slide_break``) :
   dernier marqueur NOMMÉ qui le précède, et un bloc modifié fait re-mesurer
   TOUS ses intervalles.
 
-Verdicts par intervalle : hauteur ≤ hauteur de fenêtre × tolérance (défaut
-1.03 — l'espace des coupures FULL vit ENTRE les slides) ; défilement
-horizontal de page = échec global. Chaque intervalle mesuré est CAPTURÉ en
+Verdicts par intervalle (correctif NG 2026-09-03, deux biais tombés le même
+jour) : la mesure se fait PANNEAU LATÉRAL FERMÉ (la sidebar de l'export
+mangeait ~280 px de largeur et faisait replier le texte) et porte sur le
+DERNIER PIXEL PEINT de l'intervalle — texte, média, boîte à fond/bordure —
+jamais sur l'écart marqueur→marqueur (qui contient le blanc de fin de slide
+et les coupures FULL) : dernier pixel peint ≤ hauteur de fenêtre × tolérance
+(défaut 1.03) ; défilement horizontal de page = échec global. Chaque intervalle mesuré est CAPTURÉ en
 PNG sous ``_project/projection/<module>/<WxH>/`` pour la relecture d'œil.
 La page References est ignorée (liste longue par nature), l'annexe backup
 est mesurée comme le reste (elle se projette en séance).
@@ -138,6 +142,16 @@ def _measure(html: Path, width: int, height: int, wanted_slugs: set[str] | None,
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
         page = browser.new_page(viewport={"width": width, "height": height})
+        # Panneau latéral FERMÉ (correctif NG 2026-09-03) : la sidebar de
+        # l'export (~280 px) mangeait la largeur et faisait replier le texte —
+        # tout se mesurait plus haut qu'en projection réelle (constat NG,
+        # DevTools 1920×1080 : slide « 94 » verte panneau fermé, rouge à la
+        # porte). On pose la préférence AVANT le chargement : le runtime de
+        # l'export la lit et masque la sidebar, exactement comme un opérateur
+        # qui l'a refermée. Les books, eux, démarrent ``collapsed`` (même
+        # décision, même jour).
+        page.add_init_script(
+            "try { localStorage.setItem('stx-sidebar', 'hidden'); } catch (e) {}")
         page.goto(html.as_uri(), wait_until="load")
         page.wait_for_timeout(600)   # polices + runtimes d'export
         info = page.evaluate("""() => {
@@ -145,20 +159,61 @@ def _measure(html: Path, width: int, height: int, wanted_slugs: set[str] | None,
               .map(e => ({id: e.id,
                           top: e.getBoundingClientRect().top + window.scrollY}))
               .sort((a, b) => a.top - b.top);
-            // Les COUPURES (règle + espaceur) vivent ENTRE les contenus mais
-            // DANS l'intervalle marqueur→marqueur : leur hauteur hors-tout
-            // (marges comprises) se soustrait du verdict — sans quoi chaque
-            // slide porte un +150 px constant (constaté au premier run).
-            const brk = [...document.querySelectorAll(
-                '.stx-slide-break-rule, .stx-slide-break-spacer')]
-              .map(e => {
-                const r = e.getBoundingClientRect();
-                const cs = getComputedStyle(e);
-                return {top: r.top + window.scrollY,
-                        outer: r.height + parseFloat(cs.marginTop || 0)
-                                        + parseFloat(cs.marginBottom || 0)};
-              });
-            return {markers: ms, breaks: brk,
+            // Le verdict porte sur le DERNIER PIXEL PEINT de l'intervalle,
+            // pas sur l'écart marqueur→marqueur (correctif NG 2026-09-03) :
+            // l'ancienne soustraction des seules coupures laissait dans la
+            // mesure le blanc de fin de slide (conteneurs pleine hauteur,
+            // marges) — la slide « 94 » d'opening sortait ×1.21 alors qu'elle
+            // TIENT à l'écran. Est « peint » : une feuille avec du texte, un
+            // média, ou une boîte avec fond/bordure visibles ; les éléments
+            // fixed/sticky (pagination) et la chrome de coupure sont exclus.
+            const tops = ms.map(m => m.top);
+            const best = new Array(Math.max(tops.length, 1)).fill(0);
+            const isBreak = e => e.closest(
+                '.stx-slide-break-rule, .stx-slide-break-spacer,' +
+                ' .stx-slide-break-spacer-before');
+            for (const e of document.body.querySelectorAll('*')) {
+              const cs = getComputedStyle(e);
+              if (cs.position === 'fixed' || cs.position === 'sticky') continue;
+              if (cs.visibility === 'hidden' || cs.display === 'none') continue;
+              if (isBreak(e)) continue;
+              const r = e.getBoundingClientRect();
+              if (r.height === 0 || r.width === 0) continue;
+              const media = /^(IMG|VIDEO|CANVAS|SVG|IFRAME)$/.test(e.tagName);
+              const text = e.childElementCount === 0
+                           && e.textContent.trim().length > 0;
+              const boxed = (cs.backgroundColor !== 'rgba(0, 0, 0, 0)'
+                             && parseFloat(cs.opacity) > 0)
+                            || parseFloat(cs.borderTopWidth) > 0
+                            || parseFloat(cs.borderLeftWidth) > 0;
+              if (!media && !text && !boxed) continue;
+              // Un élément rogné par un ancêtre (overflow hidden/clip/auto —
+              // les chiffres des racks de chronos dépassent DANS leur carte)
+              // ne peint que jusqu'au bord de cet ancêtre : on clippe.
+              let clip = r.bottom;
+              for (let a = e.parentElement; a && a !== document.body;
+                   a = a.parentElement) {
+                const ov = getComputedStyle(a).overflowY;
+                if (ov === 'hidden' || ov === 'clip' || ov === 'auto'
+                    || ov === 'scroll') {
+                  clip = Math.min(clip, a.getBoundingClientRect().bottom);
+                }
+              }
+              const bottom = clip + window.scrollY;
+              // L'intervalle du haut de l'élément décide de l'attribution —
+              // un conteneur qui traverse une coupure est ignoré (son fond
+              // s'étendrait sur la slide suivante et fausserait tout).
+              const top = r.top + window.scrollY;
+              let idx = -1;
+              for (let k = 0; k < tops.length; k++) {
+                if (tops[k] <= top + 1) idx = k; else break;
+              }
+              if (idx < 0) continue;
+              const ceiling = idx + 1 < tops.length ? tops[idx + 1] : Infinity;
+              if (bottom > ceiling + 1) continue;  // traverse l'intervalle
+              if (bottom - tops[idx] > best[idx]) best[idx] = bottom - tops[idx];
+            }
+            return {markers: ms, painted: best,
                     docH: document.documentElement.scrollHeight,
                     docW: document.documentElement.scrollWidth};
         }""")
@@ -180,11 +235,7 @@ def _measure(html: Path, width: int, height: int, wanted_slugs: set[str] | None,
             if wanted_slugs is not None and owner not in wanted_slugs:
                 continue
             top = m["top"]
-            bottom = (markers[i + 1]["top"] if i + 1 < len(markers)
-                      else info["docH"])
-            chrome = sum(b["outer"] for b in info["breaks"]
-                         if top <= b["top"] < bottom)
-            h = bottom - top - chrome
+            h = info["painted"][i]
             page.evaluate(f"window.scrollTo(0, {int(top)})")
             page.wait_for_timeout(120)
             shot = shots_dir / f"{i:02d}-{owner[:40]}-t{owner_seq}.png"
