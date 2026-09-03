@@ -53,7 +53,11 @@ bs = BlockStyles
 #: ``(1, 4)`` pour la rangée linéaire ; ``rack_vh`` = la place verticale
 #: TOTALE de la matrice en % de fenêtre (le levier proportionnel) ;
 #: ``scale`` = zoom fin du contenu des cellules.
-TUNING = {"grid": None, "rack_vh": 62, "scale": 1.0}
+#: alarm/alarm_volume : cloche de fin (QCM NG 2026-09-03) — les racks
+#: démarrent EN SOURDINE (défaut du widget), NG arme celui qu'il veut par
+#: la cloche 🔔 à côté des boutons globaux (choix mémorisé par rack).
+TUNING = {"grid": None, "rack_vh": 62, "scale": 1.0,
+          "alarm": "bell", "alarm_volume": 0.6}
 
 # ── Les feuilles {en, fr} du bloc (opening est bilingue) ────────────────────
 _MARKERS = [
@@ -150,4 +154,6 @@ def build_timer_slide(index: int, lang: str = "en") -> None:
         st_space("v", s.project.spacing.title_gap)
         st_countdown_rack(s, steps, mode="chain", key=_KEYS[index],
                           grid=TUNING["grid"], rack_vh=TUNING["rack_vh"],
-                          scale=TUNING["scale"])
+                          scale=TUNING["scale"],
+                          alarm=TUNING["alarm"],
+                          alarm_volume=TUNING["alarm_volume"])

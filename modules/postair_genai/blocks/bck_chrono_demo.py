@@ -100,7 +100,9 @@ _TOOLTIP = [
              "(0–1, perceptual); a third element in a step overrides both for "
              "that card (« off » mutes it). Browsers unlock audio on a click "
              "only — any button of the rack arms it. Here: bell on the chain, "
-             "chime on the parallel row, Discuss muted, Vote a full-volume gong."), "fr": "Son optionnel au zéro — silence par défaut. alarm= choisit un timbre synthétisé en WebAudio (cloche, bip, carillon, gong — aucun fichier audio, la salle est hors réseau), alarm_volume= règle l’intensité (0–1, perceptive) ; un troisième élément d’un pas surcharge les deux pour cette carte (« off » la rend muette). Le navigateur ne débloque le son qu’au clic — n’importe quel bouton du rack l’arme. Ici : cloche sur la chaîne, carillon sur la rangée parallèle, Discuter muette, Voter en gong plein volume."}),
+             "chime on the parallel row, Discuss muted, Vote a full-volume "
+             "gong. An alarmed rack starts MUTED: the 🔔 next to the global "
+             "buttons arms it (remembered per rack, with a sound preview)."), "fr": "Son optionnel au zéro — silence par défaut. alarm= choisit un timbre synthétisé en WebAudio (cloche, bip, carillon, gong — aucun fichier audio, la salle est hors réseau), alarm_volume= règle l’intensité (0–1, perceptive) ; un troisième élément d’un pas surcharge les deux pour cette carte (« off » la rend muette). Le navigateur ne débloque le son qu’au clic — n’importe quel bouton du rack l’arme. Ici : cloche sur la chaîne, carillon sur la rangée parallèle, Discuter muette, Voter en gong plein volume. Un rack alarmé démarre EN SOURDINE : la cloche 🔔 à côté des boutons globaux l’arme (mémorisé par rack, avec un aperçu sonore)."}),
     ({"en": "To relocate", "fr": "À déménager"},
      {"en": ("This demo lives in the genai backup annex only while the "
              "consumer deck is unnamed — moving it is one thin block in that "

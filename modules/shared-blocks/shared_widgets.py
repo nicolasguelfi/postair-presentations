@@ -150,7 +150,8 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                       ends_at_label: str = "ends at",
                       start_all_label: str = "▶ Start", reset_all_label: str = "↺ Reset",
                       height: int | None = None, scale: float = 1.0,
-                      alarm: str | None = None, alarm_volume: float = 0.6) -> None:
+                      alarm: str | None = None, alarm_volume: float = 0.6,
+                      alarm_muted: bool = True) -> None:
     """Une rangée de comptes à rebours sur une VRAIE grille streamtex.
 
     Décisions NG (planche chrono ``archi=p1 moteur=p1 commande=p1
@@ -227,6 +228,13 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
       le contexte (unique, sur le document parent), le relais de chaîne
       hérite du déblocage. Sans alarme, la sortie HTML est BYTE-IDENTIQUE à
       l'existant (contrat baseline i18n).
+    - **Sourdine + 🔔 (NG 2026-09-03, QCM)** : un rack ALARMÉ démarre EN
+      SOURDINE (``alarm_muted=True`` par défaut — « muted partout, je choisis
+      laquelle activer manuellement ») et porte une cloche 🔔/🔕 à côté des
+      boutons globaux : clic = armer/couper, choix MÉMORISÉ par rack
+      (localStorage du parent, clé ``cdr-alarm-muted-<key>``) — il survit aux
+      reruns et au rechargement de la répétition. Armer joue un APERÇU bref
+      du timbre : le geste confirme le son ET débloque l'autoplay.
     """
     if mode not in ("chain", "parallel"):
         raise ValueError(f"mode inconnu : {mode!r} — « chain » ou « parallel »")
@@ -360,7 +368,23 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     # n'écrivant le code qu'à UN endroit Python. Chaîne ORDINAIRE (pas une
     # f-string) : accolades JS simples, rien n'y est interpolé.
     if rack_alarmed:
+        # Sourdine par rack (NG 2026-09-03) : clé localStorage du PARENT —
+        # l'état survit aux reruns d'iframes et au rechargement de la page.
+        bus_js += f"""
+  var MKEY = 'cdr-alarm-muted-' + {rack_id};
+  var DEFAULT_MUTED = {json.dumps(bool(alarm_muted))};
+"""
         bus_js += """\
+  function alarmMuted() {
+    try {
+      var v = P.localStorage.getItem(MKEY);
+      if (v !== null) return v === '1';
+    } catch (e) {}
+    return DEFAULT_MUTED;
+  }
+  function setAlarmMuted(m) {
+    try { P.localStorage.setItem(MKEY, m ? '1' : '0'); } catch (e) {}
+  }
   // ── Alarme de fin (NG 2026-09-02) ── UN AudioContext par page, créé par
   // le constructeur du PARENT (P.AudioContext) et rangé sur P.__cdrAudio :
   // il survit aux iframes reconstruites au rerun (contrat __cdrBus) et
@@ -397,8 +421,9 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     o.connect(g); g.connect(out);
     o.start(t0); o.stop(t0 + atk + decay + 0.05);
   }
-  function ring(sp) {
+  function ring(sp, force) {
     if (!sp || sp.vol <= 0) return;
+    if (!force && alarmMuted()) return;   // sourdine du rack (NG 2026-09-03)
     var a = P.__cdrAudio;
     if (!a) return;
     try {
@@ -470,6 +495,35 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     ring_pause = "if (isDone()) ring(ALARM);\n    " if rack_alarmed else ""
 
     # ── Les boutons globaux — un petit fragment au-dessus de la grille ──────
+    # La cloche 🔔/🔕 (NG 2026-09-03) : l'interrupteur de sourdine du rack —
+    # présent seulement quand le rack est alarmé (contrat byte-identique).
+    # Armer joue un APERÇU bref du premier timbre armé : le geste confirme le
+    # son ET débloque l'autoplay dans la même intention.
+    if rack_alarmed:
+        _first = next(sp for _l, _m, sp in norm if sp)
+        _preview = {"sound": _first["sound"], "vol": min(_first["vol"], 0.35)}
+        alarm_btn = (f'\n  <button class="cdr-alarm-toggle" '
+                     f'style="font-size:{2.0 * scale:.2f}vw;background:transparent;'
+                     f'border:0.12vw solid {MUTED};border-radius:0.7vw;'
+                     f'padding:0.22em 0.55em;cursor:pointer;line-height:1;">🔕</button>')
+        alarm_btn_js = f"""
+  var bell = root.querySelector('.cdr-alarm-toggle');
+  var PREVIEW = {json.dumps(_preview)};
+  function paintBell() {{
+    bell.textContent = alarmMuted() ? '🔕' : '🔔';
+    bell.style.opacity = alarmMuted() ? '0.55' : '1';
+  }}
+  paintBell();
+  bell.addEventListener('click', function () {{
+    var m = !alarmMuted();
+    setAlarmMuted(m);
+    paintBell();
+    if (!m) {{ armAudio(); setTimeout(function () {{ ring(PREVIEW, true); }}, 60); }}
+  }});
+"""
+    else:
+        alarm_btn = ""
+        alarm_btn_js = ""
     st_html(f"""
 <div id="{dom}-all" style="display:flex;gap:1.2vw;justify-content:center;align-items:center;
             height:100%;font-family:'Source Sans Pro',sans-serif;">
@@ -478,7 +532,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
           border-radius:0.7vw;padding:0.3em 1.4em;cursor:pointer;">{start_all_label}</button>
   <button class="cdr-all-reset" style="font-size:{1.6 * scale:.2f}vw;font-weight:700;
           color:{MUTED};background:transparent;border:0.12vw solid {MUTED};
-          border-radius:0.7vw;padding:0.3em 1.1em;cursor:pointer;">{reset_all_label}</button>
+          border-radius:0.7vw;padding:0.3em 1.1em;cursor:pointer;">{reset_all_label}</button>{alarm_btn}
 </div>
 <script>
 (function () {{
@@ -500,7 +554,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
   }});
   root.querySelector('.cdr-all-reset').addEventListener('click', function () {{
     Object.keys(rack.cards).forEach(function (i) {{ rack.cards[i].reset(); }});
-  }});
+  }});{alarm_btn_js}
 }})();
 </script>
 """, height=int(72 * scale))
