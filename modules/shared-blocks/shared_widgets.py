@@ -238,6 +238,11 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
       (armer s'il en reste une en sourdine, sinon tout couper) ; son glyphe
       dit « tout armé » 🔔 / « pas tout » 🔕. Armer (local ou global) joue un
       APERÇU bref du timbre : le geste confirme le son ET débloque l'autoplay.
+    - **Valeur ÉDITABLE (NG 2026-09-03)** : double-clic sur les chiffres —
+      « 40 » = 40 min, « 40:30 » = 40 min 30 s ; Entrée (ou clic ailleurs)
+      applique, Échap annule ; un chrono en course repart de la nouvelle
+      valeur, un chrono fini REVIT ; ``TOTAL`` ne change pas — ↺ revient
+      toujours à la durée d'origine du pas.
     """
     if mode not in ("chain", "parallel"):
         raise ValueError(f"mode inconnu : {mode!r} — « chain » ou « parallel »")
@@ -510,10 +515,13 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
         #: Les indices des cartes ALARMÉES — la cloche globale n'agit que sur
         #: elles (une carte « off » reste muette, comme son pas le demande).
         _aidx = [i for i, (_l, _m, sp) in enumerate(norm) if sp]
+        # Même GABARIT que ▶ Start (remarque NG 2026-09-03 : la cloche a la
+        # taille des boutons de sa ligne) — seule la couleur reste discrète.
         alarm_btn = (f'\n  <button class="cdr-alarm-toggle" '
-                     f'style="font-size:{2.0 * scale:.2f}vw;background:transparent;'
-                     f'border:0.12vw solid {MUTED};border-radius:0.7vw;'
-                     f'padding:0.22em 0.55em;cursor:pointer;line-height:1;">🔕</button>')
+                     f'style="font-size:{2.0 * scale:.2f}vw;font-weight:700;'
+                     f'background:transparent;'
+                     f'border:0.16vw solid {MUTED};border-radius:0.7vw;'
+                     f'padding:0.3em 0.8em;cursor:pointer;line-height:1.25;">🔕</button>')
         alarm_btn_js = f"""
   var bell = root.querySelector('.cdr-alarm-toggle');
   var PREVIEW = {json.dumps(_preview)};
@@ -597,11 +605,12 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
             # est alarmé — un pas « off » n'a rien à armer ; les racks muets
             # restent byte-identiques (fragments vides).
             if rack_alarmed and norm[i][2]:
+                # Même GABARIT que ▶ ⏸ ↺ de la ligne (remarque NG 2026-09-03).
                 card_bell = (
                     f'\n    <button class="cdr-bell" '
-                    f'style="font-size:min({4.8 * scale:.2f}vw, {9 * scale:.2f}vh);'
-                    f'background:transparent;border:min(0.25vw, 0.6vh) solid {MUTED};'
-                    f'border-radius:1.2vw;padding:0.1em 0.45em;cursor:pointer;'
+                    f'style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);'
+                    f'background:transparent;border:min(0.35vw, 0.8vh) solid {MUTED};'
+                    f'border-radius:1.2vw;padding:0.1em 0.6em;cursor:pointer;'
                     f'line-height:1;">\U0001F515</button>')
                 card_bell_js = """
   var bell = root.querySelector('.cdr-bell');
@@ -665,6 +674,47 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
   var digits = root.querySelector('.cdr-digits');
   var at = root.querySelector('.cdr-at');
   var remaining = TOTAL, endAt = null, timer = null;
+  // ── Édition de la valeur (NG 2026-09-03) : DOUBLE-CLIC sur les chiffres —
+  // « 40 » = 40 min, « 40:30 » = 40 min 30 s ; Entrée/clic ailleurs applique,
+  // Échap annule ; un chrono en course repart de la nouvelle valeur, un
+  // chrono FINI revit (le zéro rouge s'édite aussi). TOTAL ne change pas :
+  // ↺ Reset revient toujours à la durée d'origine.
+  var editing = false;
+  function parseTime(v) {{
+    var pm = String(v).trim().match(/^(\\d{{1,3}})(?::([0-5]?\\d))?$/);
+    if (!pm) return null;
+    var ps = parseInt(pm[1], 10) * 60 + (pm[2] ? parseInt(pm[2], 10) : 0);
+    return ps > 0 ? ps : null;
+  }}
+  digits.style.cursor = 'pointer';
+  digits.addEventListener('dblclick', function () {{
+    if (editing) return;
+    var wasRunning = endAt !== null;
+    if (wasRunning) pause();
+    editing = true;
+    var cur = fmt(Math.ceil(remaining > 0 ? remaining : TOTAL));
+    digits.innerHTML = '<input class="cdr-edit" value="' + cur + '" ' +
+      'style="font-size:0.55em;width:4.6ch;text-align:center;' +
+      'background:transparent;color:inherit;border:none;' +
+      'border-bottom:0.06em solid currentColor;outline:none;' +
+      'font-weight:inherit;font-family:inherit;letter-spacing:inherit;">';
+    var inp = digits.querySelector('.cdr-edit');
+    inp.focus(); inp.select();
+    function done(apply) {{
+      if (!editing) return;
+      editing = false;
+      var ns = apply ? parseTime(inp.value) : null;
+      if (ns !== null) remaining = ns;
+      paint();
+      if (wasRunning && remaining > 0) start();
+    }}
+    inp.addEventListener('keydown', function (ev) {{
+      if (ev.key === 'Enter') done(true);
+      else if (ev.key === 'Escape') done(false);
+      ev.stopPropagation();
+    }});
+    inp.addEventListener('blur', function () {{ done(true); }});
+  }});
   // Auto-dimensionnement (rack_vh, ligne NG chronoh vertical=p1) : le cadran
   // pose SA hauteur = DIAL_VH % de la fenêtre parente — iframe même origine
   // en app (window.frameElement), hauteur vh CSS directe en export.
@@ -690,6 +740,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
   }}
   function isDone() {{ return remaining <= 0; }}
   function paint() {{
+    if (editing) return;   // l'input d'édition ne se fait pas écraser
     if (isDone()) {{
       // État zéro SANS coche (ligne NG chronocheck zero=p1, 2026-09-02) :
       // la durée INITIALE en rouge translucide — même nombre de caractères
