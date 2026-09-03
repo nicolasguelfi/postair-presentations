@@ -228,13 +228,16 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
       le contexte (unique, sur le document parent), le relais de chaîne
       hérite du déblocage. Sans alarme, la sortie HTML est BYTE-IDENTIQUE à
       l'existant (contrat baseline i18n).
-    - **Sourdine + 🔔 (NG 2026-09-03, QCM)** : un rack ALARMÉ démarre EN
-      SOURDINE (``alarm_muted=True`` par défaut — « muted partout, je choisis
-      laquelle activer manuellement ») et porte une cloche 🔔/🔕 à côté des
-      boutons globaux : clic = armer/couper, choix MÉMORISÉ par rack
-      (localStorage du parent, clé ``cdr-alarm-muted-<key>``) — il survit aux
-      reruns et au rechargement de la répétition. Armer joue un APERÇU bref
-      du timbre : le geste confirme le son ET débloque l'autoplay.
+    - **Sourdine + 🔔 (NG 2026-09-03, QCM puis précision)** : un rack ALARMÉ
+      démarre EN SOURDINE (``alarm_muted=True`` par défaut) et CHAQUE carte
+      alarmée porte sa cloche 🔔/🔕 à côté de ses boutons ▶ ⏸ ↺ — clic =
+      armer/couper CETTE carte, choix MÉMORISÉ par carte (localStorage du
+      parent, clé ``cdr-alarm-muted-<key>-<i>``, survit aux reruns et au
+      rechargement). La cloche GLOBALE à côté de ▶ Start / ↺ Reset suit la
+      même logique que ces boutons : elle agit sur TOUTES les cartes alarmées
+      (armer s'il en reste une en sourdine, sinon tout couper) ; son glyphe
+      dit « tout armé » 🔔 / « pas tout » 🔕. Armer (local ou global) joue un
+      APERÇU bref du timbre : le geste confirme le son ET débloque l'autoplay.
     """
     if mode not in ("chain", "parallel"):
         raise ValueError(f"mode inconnu : {mode!r} — « chain » ou « parallel »")
@@ -368,22 +371,24 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     # n'écrivant le code qu'à UN endroit Python. Chaîne ORDINAIRE (pas une
     # f-string) : accolades JS simples, rien n'y est interpolé.
     if rack_alarmed:
-        # Sourdine par rack (NG 2026-09-03) : clé localStorage du PARENT —
-        # l'état survit aux reruns d'iframes et au rechargement de la page.
+        # Sourdine PAR CARTE (NG 2026-09-03, précision : « chaque chronomètre
+        # a son alarme ») : une clé localStorage du PARENT par carte — l'état
+        # survit aux reruns d'iframes et au rechargement de la page. La cloche
+        # GLOBALE agit sur toutes (même logique que ▶ Start / ↺ Reset).
         bus_js += f"""
-  var MKEY = 'cdr-alarm-muted-' + {rack_id};
+  var MBASE = 'cdr-alarm-muted-' + {rack_id} + '-';
   var DEFAULT_MUTED = {json.dumps(bool(alarm_muted))};
 """
         bus_js += """\
-  function alarmMuted() {
+  function alarmMuted(i) {
     try {
-      var v = P.localStorage.getItem(MKEY);
+      var v = P.localStorage.getItem(MBASE + i);
       if (v !== null) return v === '1';
     } catch (e) {}
     return DEFAULT_MUTED;
   }
-  function setAlarmMuted(m) {
-    try { P.localStorage.setItem(MKEY, m ? '1' : '0'); } catch (e) {}
+  function setAlarmMuted(i, m) {
+    try { P.localStorage.setItem(MBASE + i, m ? '1' : '0'); } catch (e) {}
   }
   // ── Alarme de fin (NG 2026-09-02) ── UN AudioContext par page, créé par
   // le constructeur du PARENT (P.AudioContext) et rangé sur P.__cdrAudio :
@@ -421,9 +426,9 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     o.connect(g); g.connect(out);
     o.start(t0); o.stop(t0 + atk + decay + 0.05);
   }
-  function ring(sp, force) {
+  function ring(sp, idx, force) {
     if (!sp || sp.vol <= 0) return;
-    if (!force && alarmMuted()) return;   // sourdine du rack (NG 2026-09-03)
+    if (!force && alarmMuted(idx)) return;  // sourdine de LA carte (NG 2026-09-03)
     var a = P.__cdrAudio;
     if (!a) return;
     try {
@@ -487,12 +492,12 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     # ring() APRÈS paint() et AVANT le relais de chaîne : les DEUX modes
     # passent par cette branche, et un start() du relais qui jetterait
     # n'empêcherait pas la sonnerie.
-    ring_tick = "\n      ring(ALARM);" if rack_alarmed else ""
+    ring_tick = "\n      ring(ALARM, IDX);" if rack_alarmed else ""
     # ⏸ dans la fenêtre de 250 ms après expiration : le clamp pose 0 sans
     # passer par tick — le temps EST écoulé, le zéro sonne. Pas de double
     # sonnerie : la branche zéro de tick pose endAt=null avant, donc pause()
     # sort en tête sans repasser ici.
-    ring_pause = "if (isDone()) ring(ALARM);\n    " if rack_alarmed else ""
+    ring_pause = "if (isDone()) ring(ALARM, IDX);\n    " if rack_alarmed else ""
 
     # ── Les boutons globaux — un petit fragment au-dessus de la grille ──────
     # La cloche 🔔/🔕 (NG 2026-09-03) : l'interrupteur de sourdine du rack —
@@ -502,6 +507,9 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     if rack_alarmed:
         _first = next(sp for _l, _m, sp in norm if sp)
         _preview = {"sound": _first["sound"], "vol": min(_first["vol"], 0.35)}
+        #: Les indices des cartes ALARMÉES — la cloche globale n'agit que sur
+        #: elles (une carte « off » reste muette, comme son pas le demande).
+        _aidx = [i for i, (_l, _m, sp) in enumerate(norm) if sp]
         alarm_btn = (f'\n  <button class="cdr-alarm-toggle" '
                      f'style="font-size:{2.0 * scale:.2f}vw;background:transparent;'
                      f'border:0.12vw solid {MUTED};border-radius:0.7vw;'
@@ -509,16 +517,30 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
         alarm_btn_js = f"""
   var bell = root.querySelector('.cdr-alarm-toggle');
   var PREVIEW = {json.dumps(_preview)};
-  function paintBell() {{
-    bell.textContent = alarmMuted() ? '🔕' : '🔔';
-    bell.style.opacity = alarmMuted() ? '0.55' : '1';
+  var AIDX = {json.dumps(_aidx)};
+  function allArmed() {{
+    for (var k = 0; k < AIDX.length; k++) if (alarmMuted(AIDX[k])) return false;
+    return true;
   }}
+  function paintBell() {{
+    var on = allArmed();
+    bell.textContent = on ? '\\uD83D\\uDD14' : '\\uD83D\\uDD15';
+    bell.style.opacity = on ? '1' : '0.55';
+  }}
+  rack.paintGlobalBell = paintBell;
   paintBell();
+  // Même logique que ▶ Start / ↺ Reset globaux : la cloche globale agit sur
+  // TOUTES les cartes alarmées — armer si au moins une est en sourdine,
+  // sinon tout couper (NG 2026-09-03).
   bell.addEventListener('click', function () {{
-    var m = !alarmMuted();
-    setAlarmMuted(m);
+    var arm = !allArmed();
+    AIDX.forEach(function (i) {{
+      setAlarmMuted(i, !arm);
+      var c = rack.cards[i];
+      if (c && c.paintBell) c.paintBell();
+    }});
     paintBell();
-    if (!m) {{ armAudio(); setTimeout(function () {{ ring(PREVIEW, true); }}, 60); }}
+    if (arm) {{ armAudio(); setTimeout(function () {{ ring(PREVIEW, -1, true); }}, 60); }}
   }});
 """
     else:
@@ -571,6 +593,37 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
             # null pour une carte muette : ring(null) se tait.
             card_alarm_var = (f"\n  var ALARM = {json.dumps(norm[i][2])};"
                               if rack_alarmed else "")
+            # La cloche de LA carte (NG 2026-09-03) : seulement quand ce pas
+            # est alarmé — un pas « off » n'a rien à armer ; les racks muets
+            # restent byte-identiques (fragments vides).
+            if rack_alarmed and norm[i][2]:
+                card_bell = (
+                    f'\n    <button class="cdr-bell" '
+                    f'style="font-size:min({4.8 * scale:.2f}vw, {9 * scale:.2f}vh);'
+                    f'background:transparent;border:min(0.25vw, 0.6vh) solid {MUTED};'
+                    f'border-radius:1.2vw;padding:0.1em 0.45em;cursor:pointer;'
+                    f'line-height:1;">\U0001F515</button>')
+                card_bell_js = """
+  var bell = root.querySelector('.cdr-bell');
+  function paintBell() {
+    var m = alarmMuted(IDX);
+    bell.textContent = m ? '\\uD83D\\uDD15' : '\\uD83D\\uDD14';
+    bell.style.opacity = m ? '0.55' : '1';
+  }
+  rack.cards[IDX].paintBell = paintBell;
+  paintBell();
+  bell.addEventListener('click', function () {
+    var m = !alarmMuted(IDX);
+    setAlarmMuted(IDX, m);
+    paintBell();
+    if (rack.paintGlobalBell) rack.paintGlobalBell();
+    if (!m) { armAudio(); setTimeout(function () {
+      ring({sound: ALARM.sound, vol: Math.min(ALARM.vol, 0.35)}, IDX, true); }, 60); }
+  });
+"""
+            else:
+                card_bell = ""
+                card_bell_js = ""
             with g.cell(), st_block(s.project.cards.blue):
                 # MAXIMISATION (NG 2026-09-02) : l'étiquette vit DANS le
                 # cadran et tout le contenu remplit la cellule — chaque
@@ -599,7 +652,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">⏸</button>
     <button class="cdr-zero" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{MUTED};background:transparent;border:min(0.35vw, 0.8vh) solid {MUTED};
-            border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">↺</button>
+            border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">↺</button>{card_bell}
     <span class="cdr-at" style="font-size:min({4.5 * scale:.2f}vw, {8 * scale:.2f}vh);
           color:{MUTED};white-space:nowrap;">&nbsp;</span>
   </div>
@@ -703,7 +756,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
   rack.cards[IDX] = {{start: start, pause: pause, reset: reset, isDone: isDone}};
   root.querySelector('.cdr-go').addEventListener('click', start);
   root.querySelector('.cdr-halt').addEventListener('click', pause);
-  root.querySelector('.cdr-zero').addEventListener('click', reset);
+  root.querySelector('.cdr-zero').addEventListener('click', reset);{card_bell_js}
   paint();
 }})();
 </script>
