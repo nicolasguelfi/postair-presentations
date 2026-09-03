@@ -70,14 +70,12 @@ _TIP_SETTINGS = ({"en": "Mistral privacy settings", "fr": "Réglages de confiden
                          "sign-up — and re-check after big product updates, "
                          "defaults move."), "fr": "Les réglages du Chat comprennent un opt-out de l’usage de vos conversations pour l’entraînement. Vérifiez-le une fois à l’inscription — et revérifiez après les grosses mises à jour produit, les défauts bougent."})
 
-#: La gardienne du cast gelé — nommée, jamais un chemin de fichier.
-_GUARD = "Serro"
 
 # ── La main de l'artiste ────────────────────────────────────────────────────
 #: Resserrée (porte projection 2026-09-02 : ×1.34/×1.52 aux deux références —
 #: la pire slide du module) : mascotte réduite, cartes à 90, icônes à 110.
 TUNING = {
-    "card_zoom": 85,
+    "card_zoom": 130,
     "mascot_width": "min(9vw, 16vh)",
 }
 
@@ -85,7 +83,6 @@ TUNING = {
 def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     charter = fact("charter", "data")
-    guard = mascot(_GUARD)
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with st_zoom(150), g.cell():
@@ -102,14 +99,9 @@ def build(lang: str = "en", **_):
         # Serro EN COLONNE à gauche des règles (porte projection 2026-09-02 :
         # le rang mascotte au-dessus des cartes portait la slide à ×1.21 à
         # 1728 — la gardienne garde son clin d'œil, sans coûter un étage).
-        with st_grid(cols="14% 28% 28% 28%", gap="1vw",
+        with st_grid(cols="33% 33% 33%", gap="1vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
-                st_image(s.project.cards.media_center, width=TUNING["mascot_width"],
-                         uri=guard["image"], alt=f"Mascot {guard['name']}",
-                         overlay=dd35_overlay())
-                st_write(bs.mascot_name, guard["name"], tag=t.div)
             for rule in _RULES:
                 with g.cell(), st_block(s.project.cards.coral):
                     with st_zoom(110):
@@ -120,6 +112,6 @@ def build(lang: str = "en", **_):
                         st_space("v", "0.8vh")
                         st_write(bs.line, T(rule["line"], lang), tag=t.div)
         st_space("v", "1.5vh")
-        with st_zoom(90):
+        with st_zoom(120):
             st_write(bs.punch, text(charter["short"], lang), " ",
                      citation(*citekeys(charter)), tag=t.div)

@@ -73,7 +73,7 @@ _TOOLTIP = [
 
 # ── La main de l'artiste ────────────────────────────────────────────────────
 TUNING = {
-    "card_zoom": 110,
+    "card_zoom": 160,
 }
 
 
@@ -81,7 +81,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with st_zoom(150), g.cell():
+            with st_zoom(120), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():

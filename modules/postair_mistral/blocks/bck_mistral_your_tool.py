@@ -123,7 +123,8 @@ def build(lang: str = "en", **_):
                             variant="sq", stage_vh=TUNING["hero_vh"])):
             for item in _ITEMS:
                 st_space("v", "2vh")
-                st_write(bs.item, "▸ ", T(item, lang), tag=t.div)
+                with st_zoom(130):
+                    st_write(bs.item, "▸ ", T(item, lang), tag=t.div)
             st_space("v", "4vh")
             with st_zoom(150):
                 st_write(bs.punch, T(_PUNCH, lang), " ", tag=t.div)

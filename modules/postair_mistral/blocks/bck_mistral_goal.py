@@ -79,7 +79,7 @@ _TOOLTIP = [
 TUNING = {
     #: Colonnes du schéma : carte · flèche · carte · flèche · carte.
     "cols": "30% 5% 30% 5% 30%",
-    "card_zoom": 110,
+    "card_zoom": 150,
 }
 
 

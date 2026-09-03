@@ -56,7 +56,7 @@ TUNING = {
     #: Le rappel réutilise la rangée unique de la slide méthode, en plus
     #: compact (pas de ligne de détail : les quatre mots seuls).
     "cols": "repeat(auto-fit, minmax(max(260px, 21%), 1fr))",
-    "card_zoom": 110,
+    "card_zoom": 150,
 }
 
 

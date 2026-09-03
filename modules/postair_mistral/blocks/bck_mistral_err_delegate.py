@@ -77,8 +77,8 @@ _TIP_REVERSAL = ({"en": "Turn the temptation into a use", "fr": "Retourner la te
 #: zoom de colonne d'un cran.
 TUNING = {
     "ratio": 44,
-    "hero_vh": 48,
-    "column_zoom": 90,
+    "hero_vh": 60,
+    "column_zoom": 120,
 }
 
 _MASTERY_CITEKEYS = ["kosmyna2025-cognitive-debt"]

@@ -73,7 +73,7 @@ _TIP_RIGHTS_TAIL = {"en": " Your own notes: always. The professor's slides: ask 
 
 # ── La main de l'artiste ────────────────────────────────────────────────────
 TUNING = {
-    "card_zoom": 110,
+    "card_zoom": 130,
 }
 
 
@@ -112,6 +112,6 @@ def build(lang: str = "en", **_):
         # L'avertissement reste GROS (geste NG) mais borné (porte projection
         # 2026-09-02 : ×1.09/×1.17 — le 250 débordait aux deux références).
         st_space("v", "1.5vh")
-        with st_zoom(180):
+        with st_zoom(200):
             st_write(bs.warn, T(_WARN, lang), " ",
                      citation(*citekeys(charter)), tag=t.div)

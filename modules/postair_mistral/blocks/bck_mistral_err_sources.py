@@ -81,7 +81,7 @@ _TOOLTIP = [
 #: Resserrée (porte projection 2026-09-02 : ×1.12/×1.15 avec le 130) —
 #: cartes à 110, en-têtes/verdicts à 110.
 TUNING = {
-    "card_zoom": 105,
+    "card_zoom": 130,
 }
 
 
