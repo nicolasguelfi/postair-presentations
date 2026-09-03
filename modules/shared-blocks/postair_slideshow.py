@@ -44,9 +44,20 @@ _FADE_S = 0.8
 
 
 def _folder_path(folder: str) -> Path:
-    """Le dossier sur disque — le conteneur comme le lancement local font
-    ``cd`` dans le module, ``static/`` est donc sous le répertoire courant."""
-    return Path.cwd() / "static" / folder
+    """Le dossier sur disque, via le registre ``set_static_sources`` du book.
+
+    ⚠ Jamais ``Path.cwd()`` seul : ``run-postair`` lance depuis la RACINE du
+    dépôt quand le conteneur fait ``cd`` dans le module (constaté par NG au
+    premier lancement, 2026-09-03) — seules les sources statiques déclarées
+    par le book disent où vit ``static/``.
+    """
+    from streamtex import get_static_sources
+    candidates = [Path(src) / folder for src in get_static_sources()]
+    for c in candidates:
+        if c.is_dir():
+            return c
+    # Repli (harnais de test sans book) : le répertoire courant.
+    return candidates[0] if candidates else Path.cwd() / "static" / folder
 
 
 def slideshow_images(folder: str) -> list[Path]:
