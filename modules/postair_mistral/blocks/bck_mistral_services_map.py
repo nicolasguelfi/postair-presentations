@@ -58,14 +58,14 @@ _TIP_TITLE = {"en": "The three tiers, precisely", "fr": "Les trois niveaux, pré
 _TOOLTIP = [
     ({"en": "✅ Free", "fr": "✅ Gratuit"},
      {"en": ("Every platform of the day has a working free tier: Gems creation, "
-             "Claude Projects (5), Poe bots, ChatGPT usage, Vibe chat. Limits "
-             "are quotas and model access, not the method."), "fr": "Chaque plateforme du jour a un gratuit qui marche : création de Gems, Projects Claude (5), bots Poe, usage de ChatGPT, chat Vibe. Les limites sont des quotas et des modèles, pas la méthode."}),
+             "Claude Projects (5), Perplexity Projects, ChatGPT usage, Vibe "
+             "chat. Limits are quotas and model access, not the method."), "fr": "Chaque plateforme du jour a un gratuit qui marche : création de Gems, Projects Claude (5), Projects Perplexity, usage de ChatGPT, chat Vibe. Les limites sont des quotas et des modèles, pas la méthode."}),
     ({"en": "🎓 Student", "fr": "🎓 Étudiant"},
      {"en": ("The two real deals for THIS room: Google — one free year of AI "
              "Plus, Luxembourg eligible (SheerID + school email, before "
              "2026-12-31, then 4.99 €/month); Mistral — Vibe Pro at $5.99/month "
-             "for verified students AND teachers. OpenAI's student offers are "
-             "US-only."), "fr": "Les deux vraies offres pour CETTE salle : Google — un an d'AI Plus offert, Luxembourg éligible (SheerID + email d'école, avant le 31-12-2026, puis 4,99 €/mois) ; Mistral — Vibe Pro à 5,99 $/mois pour étudiants ET enseignants vérifiés. Les offres OpenAI sont USA uniquement."}),
+             "for verified students AND teachers; Perplexity — Education Pro $10/month "
+             "(SheerID) with Learn Mode. OpenAI's student offers are US-only."), "fr": "Les deux vraies offres pour CETTE salle : Google — un an d'AI Plus offert, Luxembourg éligible (SheerID + email d'école, avant le 31-12-2026, puis 4,99 €/mois) ; Mistral — Vibe Pro à 5,99 $/mois pour étudiants ET enseignants vérifiés ; Perplexity — Education Pro 10 $/mois (SheerID) avec Learn Mode. Les offres OpenAI sont USA uniquement."}),
     ({"en": "💰 Paid", "fr": "💰 Payant"},
      {"en": ("Reference prices (verified 2026-09-03): Google AI Pro "
              "20.99 €/month in Luxembourg (read directly), AI Plus 4.99 €; "
@@ -90,7 +90,8 @@ TUNING = {
 #: l'ordre et la liste ne sont écrits qu'une fois (facts.json).
 def _logo_row():
     return [(p["icon"], p.get("ratio", 1.0), p["name"], p.get("url", ""))
-            for p in section("services")["create"]]
+            for p in section("services")["create"]
+            if p.get("shown", True)]  # poe1 m1 : masquage par la donnée
 
 
 def build(lang: str = "en", **_):

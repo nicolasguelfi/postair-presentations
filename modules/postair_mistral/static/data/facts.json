@@ -519,7 +519,76 @@
       }
      ]
     ],
-    "url": "https://poe.com/"
+    "url": "https://poe.com/",
+    "shown": false
+   },
+   {
+    "id": "perplexity",
+    "name": "Perplexity",
+    "product": "Projects",
+    "icon": "images/brands/perplexity.svg",
+    "ratio": 4.16,
+    "url": "https://www.perplexity.ai/",
+    "shown": true,
+    "hover": {
+     "en": "Projects (ex-Spaces, renamed summer 2026): persistent workspaces — instructions, files, connected tools",
+     "fr": "Projects (ex-Spaces, renommés à l'été 2026) : espaces persistants — instructions, fichiers, outils connectés"
+    },
+    "cells": [
+     {
+      "sym": "✅",
+      "hover": {
+       "en": "Projects can be created on the free plan (concordant secondary sources + the official plans article lists no such exclusion); free file quotas are tight",
+       "fr": "Les Projects se créent en gratuit (sources secondaires concordantes + l'article officiel des plans ne liste pas cette exclusion) ; quotas de fichiers serrés"
+      }
+     },
+     {
+      "sym": "🎓",
+      "hover": {
+       "en": "Education Pro $10/month with SheerID verification (official plans article, dated snapshot Aug 18 2026) — includes Learn Mode: flashcards, quizzes, progress tracking",
+       "fr": "Education Pro 10 $/mois avec vérification SheerID (article officiel des plans, snapshot daté du 18-08-2026) — inclut Learn Mode : flashcards, quiz, suivi de progression"
+      }
+     },
+     {
+      "sym": "✅",
+      "hover": {
+       "en": "Pro $20/month (official pricing snapshot Aug 27 2026): 50 files per Project, unlimited Pro searches",
+       "fr": "Pro 20 $/mois (snapshot officiel du pricing, 27-08-2026) : 50 fichiers par Project, recherches Pro illimitées"
+      }
+     }
+    ],
+    "details": [
+     [
+      {
+       "en": "What a Project is",
+       "fr": "Ce qu'est un Project"
+      },
+      {
+       "en": "A persistent, shareable workspace: conversations, files, custom instructions (up to 8,000 characters), connected tools and built-up context — read in the browser on the official help article (July 30 2026). Spaces were renamed Projects between June 3 and July 4 2026 (dated snapshots).",
+       "fr": "Un espace persistant et partageable : conversations, fichiers, instructions personnalisées (jusqu'à 8 000 caractères), outils connectés et contexte accumulé — lu au navigateur sur l'article d'aide officiel (30-07-2026). Les Spaces sont devenus Projects entre le 3 juin et le 4 juillet 2026 (snapshots datés)."
+      }
+     ],
+     [
+      {
+       "en": "Learn Mode",
+       "fr": "Learn Mode"
+      },
+      {
+       "en": "Search optimised for active learning — step-by-step explanations, interactive flashcards, quizzes, progress tracking. Free, but the toggle only appears for SheerID-VERIFIED students (official article, snapshot July 31 2026).",
+       "fr": "La recherche optimisée pour apprendre — explications pas à pas, flashcards interactives, quiz, suivi de progression. Gratuit, mais le bouton n'apparaît que pour les étudiants VÉRIFIÉS SheerID (article officiel, snapshot du 31-07-2026)."
+      }
+     ],
+     [
+      {
+       "en": "Source",
+       "fr": "Source"
+      },
+      {
+       "en": "perplexity.ai blocks robots; the Projects article was read in a real browser; plans/pricing/files via dated archive.org snapshots. See services-sources.md.",
+       "fr": "perplexity.ai bloque les robots ; l'article Projects a été lu au navigateur réel ; plans/pricing/fichiers via snapshots archive.org datés. Voir services-sources.md."
+      }
+     ]
+    ]
    }
   ],
   "feed": [
@@ -815,7 +884,74 @@
       }
      ]
     ],
-    "url": "https://poe.com/"
+    "url": "https://poe.com/",
+    "shown": false
+   },
+   {
+    "id": "perplexity",
+    "name": "Perplexity",
+    "icon": "images/brands/perplexity.svg",
+    "ratio": 4.16,
+    "url": "https://www.perplexity.ai/",
+    "shown": true,
+    "hover": {
+     "en": "Project files: persistent, shared with members; audio/video transcribed automatically",
+     "fr": "Fichiers de Project : persistants, partagés avec les membres ; audio/vidéo transcrits automatiquement"
+    },
+    "cells": [
+     {
+      "sym": {
+       "en": "50 f 💰",
+       "fr": "50 f 💰"
+      },
+      "hover": {
+       "en": "Pro: up to 50 files per Project (Max/Enterprise: 500-5,000) — official Projects FAQ, dated snapshot; free plan: ~3 uploads/day (concordant secondary sources, no official per-Project figure)",
+       "fr": "Pro : jusqu'à 50 fichiers par Project (Max/Enterprise : 500-5 000) — FAQ officielle Projects, snapshot daté ; gratuit : ~3 fichiers/jour (secondaires concordants, aucun chiffre officiel par Project)"
+      }
+     },
+     {
+      "sym": {
+       "en": "40 MB/f",
+       "fr": "40 Mo/f"
+      },
+      "hover": {
+       "en": "« File size is limited to 40 MB for all file types » — official File Uploads article (updated July 16 2026, dated snapshot); the Projects FAQ still says 50 MB for paid — 40 is the most recent and general figure. Audio and video are transcribed automatically",
+       "fr": "« La taille est limitée à 40 Mo pour tous les types » — article officiel File Uploads (mis à jour le 16-07-2026, snapshot daté) ; la FAQ Projects dit encore 50 Mo en payant — 40 est le chiffre le plus récent et général. Audio et vidéo transcrits automatiquement"
+      }
+     },
+     {
+      "sym": {
+       "en": "8,000 ch",
+       "fr": "8 000 c"
+      },
+      "hover": {
+       "en": "Project instructions: up to 8,000 characters — official article READ IN THE BROWSER (July 30 2026). One of only two platforms documenting its instruction size (with Copilot)",
+       "fr": "Instructions de Project : jusqu'à 8 000 caractères — article officiel LU AU NAVIGATEUR (30-07-2026). L'une des deux seules plateformes à documenter sa taille d'instruction (avec Copilot)"
+      }
+     }
+    ],
+    "details": [
+     [
+      {
+       "en": "Free-plan reality",
+       "fr": "La réalité du gratuit"
+      },
+      {
+       "en": "Official plans article (snapshot Aug 18 2026): free = « Basic file uploads (limited) », 3 Pro Searches/day; the ~3 files/day figure comes from concordant secondary sources. No official cap on the NUMBER of Projects anywhere — none shown.",
+       "fr": "Article officiel des plans (snapshot 18-08-2026) : gratuit = « Basic file uploads (limited) », 3 recherches Pro/jour ; le ~3 fichiers/jour vient de secondaires concordants. Aucun plafond officiel du NOMBRE de Projects nulle part — rien d'affiché."
+      }
+     ],
+     [
+      {
+       "en": "Source",
+       "fr": "Source"
+      },
+      {
+       "en": "Official help articles via real browser + dated archive.org snapshots (July-Aug 2026). See services-sources.md.",
+       "fr": "Articles d'aide officiels via navigateur réel + snapshots archive.org datés (07-08/2026). Voir services-sources.md."
+      }
+     ]
+    ]
    }
   ],
   "voice": [
@@ -1302,29 +1438,32 @@
     "icon": "images/brands/perplexity.svg",
     "ratio": 4.16,
     "hover": {
-     "en": "Site fully robot-blocked — nothing verifiable directly; the 2025 « free Pro year » promo is GONE",
-     "fr": "Site totalement bloqué aux robots — rien de vérifiable en direct ; la promo « 1 an de Pro gratuit » de 2025 a DISPARU"
+     "en": "Education Pro $10/month via SheerID — official plans article, dated snapshot (Aug 18 2026); includes Learn Mode",
+     "fr": "Education Pro 10 $/mois via SheerID — article officiel des plans, snapshot daté (18-08-2026) ; inclut Learn Mode"
     },
     "cells": [
      {
-      "sym": "🎓 ❓",
+      "sym": "🎓",
       "hover": {
-       "en": "Current official page (dated snapshot): « unlock access to Comet and Perplexity Pro at a discount » — no price, no duration shown; the 2025 free-year promo is expired",
-       "fr": "Page officielle actuelle (snapshot daté) : « accès à Comet et Perplexity Pro à prix réduit » — ni prix ni durée affichés ; la promo année-gratuite de 2025 est expirée"
+       "en": "« Education Pro ($10/mo with verification from SheerID) » — everything in Pro + Learn Mode (flashcards, quizzes); any email accepted, SheerID verifies the student status; auto-applied discount",
+       "fr": "« Education Pro (10 $/mois avec vérification SheerID) » — tout le Pro + Learn Mode (flashcards, quiz) ; toute adresse email acceptée, SheerID vérifie le statut étudiant ; rabais auto-appliqué"
       }
      },
      {
-      "sym": "❓",
+      "sym": {
+       "en": "$10/mo",
+       "fr": "10 $/mois"
+      },
       "hover": {
-       "en": "~-50% via SheerID claimed by concordant third parties only — unverifiable at the source (403)",
-       "fr": "~-50 % via SheerID selon des tiers concordants seulement — invérifiable à la source (403)"
+       "en": "Half of Pro ($20, official pricing snapshot Aug 27 2026) + one free Pro month after verification (concordant secondary sources). The old free-year referral promo ENDED on May 31 2026",
+       "fr": "La moitié du Pro (20 $, snapshot officiel du pricing 27-08-2026) + un mois de Pro offert après vérification (secondaires concordants). L'ancienne promo parrainage-année-gratuite s'est ARRÊTÉE le 31-05-2026"
       }
      },
      {
-      "sym": "❓",
+      "sym": "✅ ❓",
       "hover": {
-       "en": "SheerID covers European universities; EU eligibility not proven on a directly read page",
-       "fr": "SheerID couvre les universités européennes ; éligibilité UE non prouvée sur une page lue directement"
+       "en": "No published country restriction; SheerID covers European universities and accepts manual proof — but the live site blocks robots, so not re-readable directly",
+       "fr": "Aucune restriction pays publiée ; SheerID couvre les universités européennes et accepte une preuve manuelle — mais le site vivant bloque les robots, donc non relisible en direct"
       }
      }
     ],

@@ -40,9 +40,13 @@
 
 ## Le registre — passe 2 adversariale du 2026-09-03
 
-Méthodes : **[D]** page officielle lue en direct · **[W]** archive Wayback
-DATÉE d'une page officielle · **[I]** extraits indexés seulement · **[T]**
-vérité terrain (compte réel) · **[?]** invérifiable ce jour.
+Méthodes : **[D]** page officielle lue en direct · **[P]** page officielle
+rendue au NAVIGATEUR Playwright (passe certains murs anti-bot — le Help
+Center Perplexity, pas ses autres pages) · **[W]** archive Wayback DATÉE
+d'une page officielle (se tire par curl quand le fetch est bloqué) · **[S]**
+sources secondaires récentes CONCORDANTES (2+) — admises par NG (poe1,
+2026-09-03) quand [D]/[P]/[W] échouent · **[I]** extraits indexés seulement ·
+**[T]** vérité terrain (compte réel) · **[?]** invérifiable ce jour.
 
 ### SV2 — Créer un agent (`services.create`)
 
@@ -53,7 +57,8 @@ vérité terrain (compte réel) · **[?]** invérifiable ce jour.
 | Mistral Vibe / agents | gratuit ❌ ; **Pro ET Team ✅** (« available on Le Chat Pro and Team plans », « Custom subagents ») ; Enterprise : custom agents | [D] | mistral.ai/news/mistral-vibe-2-0/ · /news/vibe-remote-agents-mistral-medium-3-5/ · /pricing |
 | Claude / Projects | gratuit ✅ 5 max ; payant ✅ illimité + RAG ×10 | [D] | support.claude.com/en/articles/9517075 · /11473015 |
 | Copilot / agents | école ⚠️ : Agent Builder sans licence = instructions + web public, **fichiers embarqués ❌** (facturation/licence) | [D] | learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites (table de licence) |
-| Poe / bots | création ✅ (aucune restriction de plan dans la doc) | [D] | creator.poe.com/docs/prompt-bots/how-to-create-a-prompt-bot |
+| Poe / bots | **MASQUÉE** (`shown: false`, poe1 — données conservées) : création ✅ | [D] | creator.poe.com/docs/prompt-bots/how-to-create-a-prompt-bot |
+| Perplexity / Projects | gratuit ✅ (création — secondaires concordants + silence des exclusions officielles) ; 🎓 Education Pro 10 $/mois SheerID ; Pro 20 $ ✅ ; renommés Spaces→Projects été 2026 (snapshots 03-06 vs 04-07) | [P]+[W]+[S] | article Projects (navigateur) · plans (W 21-08) · pricing (W 27-08) |
 
 ### SV3 — Nourrir l'agent (`services.feed`)
 
@@ -64,7 +69,8 @@ vérité terrain (compte réel) · **[?]** invérifiable ce jour.
 | Vibe | gratuit ⚠️ ; **volume ❓ — « 15 Go Pro » PÉRIMÉ** (pricing actuel : seul chiffre Team 30 Go/util.) ; instruction ❓ | [D] | mistral.ai/pricing |
 | Claude | contexte ⚠️ ; RAG 💰 (×10, payant) ; instruction ❓ (non documentée) | [D] | support.claude.com/en/articles/11473015 |
 | Copilot | **20 sources de connaissance** (fichiers embarqués = 💰) ; instruction **8 000 c CONFIRMÉ** (+ description 1 000, nom 30) | [D] | learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-build |
-| Poe | 5 Go / 30 M caractères | [D] | creator.poe.com (même page) |
+| Poe | **MASQUÉE** (`shown: false`) : 5 Go / 30 M caractères | [D] | creator.poe.com (même page) |
+| Perplexity | Pro 50 f/Project (Max 500, Ent. 5 000) 💰 ; gratuit ~3 f/jour [S] (aucun chiffre officiel par Project — rien d'affiché) ; **40 Mo/f** (File Uploads, maj 16-07 — la FAQ Projects dit 50 Mo payant, 40 = le plus récent) ; **instruction 8 000 c** [P] — 2e plateforme documentée avec Copilot ; audio/vidéo transcrits | [P]+[W]+[S] | File Uploads (W 22-07) · FAQ Projects (W 04-07) · article Projects (navigateur) |
 
 ### SV4 — La voix (`services.voice`)
 
@@ -86,7 +92,7 @@ vérité terrain (compte réel) · **[?]** invérifiable ce jour.
 | Google | 🎓 12 mois AI Plus ; **puis 4,99 €/mois (page LUXEMBOURG lue en direct — l'ancien « ~8 € » était faux)** ; SheerID + email école + moyen de paiement ; re-vérif ~annuelle (≤4 ans) ; avant 31-12-2026 ; Luxembourg ✅ | [D] | gemini.google/lu/students/ · support.google.com/googleone/answer/17422238 · blog.google |
 | Mistral | 🎓 **5,99 $/mois** (14,99 $ plein ; € non lu en direct) ; 12 mois ; email institutionnel OBLIGATOIRE ; **comptes existants acceptés** (« nouveaux comptes » = faux) ; **enseignants aussi** | [D] | mistral.ai/pricing · help.mistral.ai/en/articles/698530 |
 | OpenAI | 🎓 US-only ❌ Luxembourg (« eligible U.S. degree-granting institutions », 4 mois de Plus, avant 31-10) | [W] 26-08 | chatgpt.com/students/2026/ (snapshot officiel) |
-| Perplexity | 🎓 ❓ — site en 403 ; page actuelle (snapshot 07-05) : « Pro at a discount », SANS prix ; **la promo « 1 an gratuit » (été 2025) est EXPIRÉE** ; ~-50 % = tiers seulement | [W]/[I] | perplexity.ai/students (snapshots 2026-05-07 et 2025-08-23) |
+| Perplexity | 🎓 **Education Pro 10 $/mois SheerID — OFFICIEL par snapshot daté** (article plans maj 18-08-2026) + un mois Pro offert [S] ; **Learn Mode** (flashcards/quiz) gratuit pour étudiants VÉRIFIÉS (article officiel, W 31-07) ; promo parrainage-année-gratuite TERMINÉE le 31-05-2026 [S concordants] ; Luxembourg : aucune restriction publiée, SheerID accepte toute adresse ✅ ❓ | [W]+[S] | plans (W 21-08) · Learn Mode (W 31-07) · pricing (W 27-08) |
 | Claude | ❌ individuel (« university-wide plan for institutions ») ; Pro 17 $ annuel / 20 $ mensuel | [D] | claude.com/solutions/education · /pricing |
 | uni.lu / Copilot | **✅ CONFIRMÉ — le ❓ est tombé** : « The UL provides Microsoft Copilot as its official supported chatbot… guarantees the confidentiality of any data entered » (Guidelines GenAI sept. 2025, VRAE/Rectorat, **PDF lu en entier**) ; A1 gratuit n'inclut pas Copilot (add-on institutionnel, A1 = prérequis éligible) | [D] PDF + [D] MS | uni.lu/wp-content/uploads/sites/9/2025/09/22084834/guidelines-use-generative-ai-tools-for-learning-and-teaching-2025-09.pdf · learn.microsoft.com/…/microsoft-365-copilot-licensing |
 
@@ -100,8 +106,16 @@ vérité terrain (compte réel) · **[?]** invérifiable ce jour.
 | ChatGPT Plus **20 $ + TVA locale** (montant € non vérifiable en direct) | [W]/[I] | pricing géolocalisé, live en 403 |
 | Perplexity Pro ~20 $ ❓ | [I] | site en 403 |
 
+### Leçon poe1 (2026-09-03)
+
+- **Playwright passe certains murs** : le Help Center Perplexity rend au
+  navigateur réel (l'article Projects s'y lit) quand curl/WebFetch prennent
+  403 — mais Cloudflare tient sur le reste du domaine.
+- **archive.org se tire par curl** quand WebFetch y est bloqué — et deux
+  snapshots datés ENCADRENT un changement (renommage Spaces→Projects).
+
 ## Preuves d'archive conservées (scratchpads de session, 2026-09-03)
 
 `gpt-create-wb.html`, `file-uploads-wb.html`, `gpts-faq-wb2.html`,
 `unilu-guidelines.pdf`, `chatgpt-students-2026.html`, `pplx-students`,
-`pplx-aug25.html` — les fichiers bruts des lectures datées de la passe 2.
+`pplx-aug25.html`, `pplx-projects.txt` — les fichiers bruts des lectures datées des passes 2 et poe1.

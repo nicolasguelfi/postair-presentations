@@ -82,7 +82,8 @@ def _rows():
              "url": p.get("url", ""), "icon_vh": p.get("icon_vh"),
              "cells": [(c["sym"], c.get("hover")) for c in p["cells"]],
              "details": [(h, b) for h, b in p["details"]]}
-            for p in section("services")["create"]]
+            for p in section("services")["create"]
+            if p.get("shown", True)]  # poe1 m1 : masquage par la donnée
 
 
 def build(lang: str = "en", **_):
