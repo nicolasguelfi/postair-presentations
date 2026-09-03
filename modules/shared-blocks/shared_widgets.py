@@ -151,7 +151,8 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                       start_all_label: str = "▶ Start", reset_all_label: str = "↺ Reset",
                       height: int | None = None, scale: float = 1.0,
                       alarm: str | None = None, alarm_volume: float = 0.6,
-                      alarm_muted: bool = True) -> None:
+                      alarm_muted: bool = True,
+                      alarm_duration: float | None = None) -> None:
     """Une rangée de comptes à rebours sur une VRAIE grille streamtex.
 
     Décisions NG (planche chrono ``archi=p1 moteur=p1 commande=p1
@@ -238,6 +239,11 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
       (armer s'il en reste une en sourdine, sinon tout couper) ; son glyphe
       dit « tout armé » 🔔 / « pas tout » 🔕. Armer (local ou global) joue un
       APERÇU bref du timbre : le geste confirme le son ET débloque l'autoplay.
+    - **Durée d'alarme (NG 2026-09-03)** : ``alarm_duration`` (secondes,
+      ]0, 60], ``None`` = un seul motif — le défaut) fait RÉPÉTER le motif du
+      timbre jusqu'à couvrir la durée puis coupe proprement ; surcharge par
+      pas via ``{"alarm": …, "volume": …, "duration": …}``. Les aperçus
+      d'armement restent courts (un motif).
     - **Valeur ÉDITABLE (NG 2026-09-03)** : double-clic sur les chiffres —
       « 40 » = 40 min, « 40:30 » = 40 min 30 s ; Entrée (ou clic ailleurs)
       applique, Échap annule ; un chrono en course repart de la nouvelle
@@ -262,10 +268,16 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     if not isinstance(alarm_volume, (int, float)) or not 0.0 <= alarm_volume <= 1.0:
         raise ValueError(
             f"st_countdown_rack : alarm_volume {alarm_volume!r} hors [0, 1]")
+    if alarm_duration is not None and (
+            not isinstance(alarm_duration, (int, float))
+            or not 0 < alarm_duration <= 60):
+        raise ValueError(
+            f"st_countdown_rack : alarm_duration {alarm_duration!r} hors "
+            f"]0, 60] secondes (None = un seul motif du timbre)")
     global_sound = None if alarm in (None, "off") else alarm
 
     def _resolve_alarm(spec, i):
-        """Le réglage RÉSOLU d'une carte : {"sound", "vol"} ou None (muette).
+        """Le réglage RÉSOLU d'une carte : {"sound", "vol"[, "dur"]} ou None.
 
         Le 3ᵉ élément d'un pas surcharge le global — la config vit à CÔTÉ de
         la durée dans le TUNING de l'appelant et survit aux réordonnancements
@@ -274,6 +286,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
         (ou se tairait) en séance, le pire moment pour le découvrir.
         """
         sound, vol = global_sound, float(alarm_volume)
+        dur = float(alarm_duration) if alarm_duration is not None else None
         if spec is None:
             pass
         elif isinstance(spec, str):
@@ -283,12 +296,12 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                     f"{', '.join(_ALARM_SOUNDS)} ou « off »")
             sound = None if spec == "off" else spec
         elif isinstance(spec, dict):
-            unknown = set(spec) - {"alarm", "volume"}
+            unknown = set(spec) - {"alarm", "volume", "duration"}
             if unknown:
                 raise ValueError(
                     f"st_countdown_rack : pas #{i}, clé(s) d'alarme "
-                    f"inconnue(s) {sorted(unknown)!r} — « alarm » et/ou "
-                    f"« volume »")
+                    f"inconnue(s) {sorted(unknown)!r} — « alarm », « volume » "
+                    f"et/ou « duration »")
             if "alarm" in spec:
                 cand = spec["alarm"]
                 if cand in (None, "off"):
@@ -307,6 +320,15 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                         f"st_countdown_rack : pas #{i}, volume {cand!r} "
                         f"hors [0, 1]")
                 vol = float(cand)
+            if "duration" in spec:
+                cand = spec["duration"]
+                if cand is not None and (
+                        not isinstance(cand, (int, float))
+                        or not 0 < cand <= 60):
+                    raise ValueError(
+                        f"st_countdown_rack : pas #{i}, duration {cand!r} "
+                        f"hors ]0, 60] secondes (None = un seul motif)")
+                dur = float(cand) if cand is not None else None
         else:
             raise ValueError(
                 f"st_countdown_rack : pas #{i}, 3ᵉ élément de type "
@@ -315,7 +337,10 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
         # Volume nul = mutisme : le JS ne reçoit alors AUCUN spec.
         if sound is None or vol <= 0:
             return None
-        return {"sound": sound, "vol": vol}
+        out = {"sound": sound, "vol": vol}
+        if dur is not None:
+            out["dur"] = dur
+        return out
 
     norm = []  # triplets (étiquette, minutes, spec) — spec = dict ou None
     for i, step in enumerate(steps):
@@ -444,6 +469,19 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
       // pow(1.6) : l'oreille est logarithmique, le curseur devient honnête.
       master.gain.value = Math.pow(sp.vol, 1.6) * (TRIM[sp.sound] || 0.5);
       master.connect(a.destination);
+      // Durée d'alarme (NG 2026-09-03) : le MOTIF du timbre se RÉPÈTE
+      // jusqu'à couvrir sp.dur (étirer une enveloppe sonnerait faux), puis
+      // le maître s'éteint proprement à la durée demandée. Sans dur : un
+      // seul motif (comportement d'origine).
+      var PERIOD = {bell: 1.2, beep: 0.9, chime: 1.8, gong: 3.0};
+      var per = PERIOD[sp.sound] || 1.2;
+      var reps = sp.dur ? Math.min(60, Math.max(1, Math.ceil(sp.dur / per))) : 1;
+      if (sp.dur) {
+        master.gain.setValueAtTime(master.gain.value, t0 + sp.dur);
+        master.gain.exponentialRampToValueAtTime(0.0001, t0 + sp.dur + 0.2);
+      }
+      for (var rp = 0; rp < reps; rp++) {
+      var tk = t0 + rp * per;
       if (sp.sound === 'beep') {
         // Trois carrés brefs au passe-bas 3 kHz : le carré nu agresse la
         // sono, le filtre garde le mordant sans les harmoniques criardes.
@@ -451,15 +489,15 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
         lp.type = 'lowpass'; lp.frequency.value = 3000;
         lp.connect(master);
         for (var b = 0; b < 3; b++) {
-          vc(a, lp, 'square', 1046.5, t0 + b * 0.22, 0.01, 1.0, 0.12);
+          vc(a, lp, 'square', 1046.5, tk + b * 0.22, 0.01, 1.0, 0.12);
         }
       } else if (sp.sound === 'chime') {
         // Carillon : arpège C5–E5–G5 en triangle, doublé d'une octave
         // sinus discrète — le timbre « fin de tour » sans dureté.
         var notes = [523.25, 659.25, 783.99];
         for (var c = 0; c < notes.length; c++) {
-          vc(a, master, 'triangle', notes[c], t0 + c * 0.18, 0.01, 0.8, 1.2);
-          vc(a, master, 'sine', notes[c] * 2, t0 + c * 0.18, 0.01, 0.25, 0.9);
+          vc(a, master, 'triangle', notes[c], tk + c * 0.18, 0.01, 0.8, 1.2);
+          vc(a, master, 'sine', notes[c] * 2, tk + c * 0.18, 0.01, 0.25, 0.9);
         }
       } else if (sp.sound === 'gong') {
         // Gong : six partiels INHARMONIQUES sur 98 Hz derrière un passe-bas
@@ -467,20 +505,21 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
         // s'éteignant, comme le vrai.
         var lp2 = a.createBiquadFilter();
         lp2.type = 'lowpass';
-        lp2.frequency.setValueAtTime(1200, t0);
-        lp2.frequency.exponentialRampToValueAtTime(300, t0 + 2.5);
+        lp2.frequency.setValueAtTime(1200, tk);
+        lp2.frequency.exponentialRampToValueAtTime(300, tk + 2.5);
         lp2.connect(master);
         var gp = [1.0, 1.52, 2.01, 2.66, 3.22, 4.16];
         for (var p2 = 0; p2 < gp.length; p2++) {
-          vc(a, lp2, 'sine', 98 * gp[p2], t0, 0.02, 0.9 / (1 + p2 * 0.4), 2.5);
+          vc(a, lp2, 'sine', 98 * gp[p2], tk, 0.02, 0.9 / (1 + p2 * 0.4), 2.5);
         }
       } else {
         // Cloche (défaut) : quatre partiels inharmoniques sur 660 Hz,
         // frappe brève — les rapports non entiers font le « métal ».
         var bp = [1.0, 2.0, 2.92, 4.07];
         for (var p3 = 0; p3 < bp.length; p3++) {
-          vc(a, master, 'sine', 660 * bp[p3], t0, 0.005, 0.9 / (1 + p3 * 0.6), 0.9);
+          vc(a, master, 'sine', 660 * bp[p3], tk, 0.005, 0.9 / (1 + p3 * 0.6), 0.9);
         }
+      }
       }
     } catch (e) {}
   }
@@ -627,6 +666,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     paintBell();
     if (rack.paintGlobalBell) rack.paintGlobalBell();
     if (!m) { armAudio(); setTimeout(function () {
+      // Aperçu COURT : un seul motif, jamais la durée configurée.
       ring({sound: ALARM.sound, vol: Math.min(ALARM.vol, 0.35)}, IDX, true); }, 60); }
   });
 """
@@ -693,11 +733,14 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     if (wasRunning) pause();
     editing = true;
     var cur = fmt(Math.ceil(remaining > 0 ? remaining : TOTAL));
+    // La boîte de saisie DOIT contenir « MM:SS » entier (capture NG
+    // 2026-09-03 : 4.6ch + interlettrage hérité rognaient les chiffres) —
+    // police réduite, largeur large, interlettrage neutre, boîte bornée.
     digits.innerHTML = '<input class="cdr-edit" value="' + cur + '" ' +
-      'style="font-size:0.55em;width:4.6ch;text-align:center;' +
-      'background:transparent;color:inherit;border:none;' +
-      'border-bottom:0.06em solid currentColor;outline:none;' +
-      'font-weight:inherit;font-family:inherit;letter-spacing:inherit;">';
+      'style="font-size:0.5em;width:7ch;max-width:96%;box-sizing:border-box;' +
+      'text-align:center;background:transparent;color:inherit;border:none;' +
+      'border-bottom:0.06em solid currentColor;outline:none;padding:0;' +
+      'font-weight:inherit;font-family:inherit;letter-spacing:normal;">';
     var inp = digits.querySelector('.cdr-edit');
     inp.focus(); inp.select();
     function done(apply) {{

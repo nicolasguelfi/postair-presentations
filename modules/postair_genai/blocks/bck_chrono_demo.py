@@ -49,10 +49,15 @@ TUNING = {
     # « Alarm » de _TOOLTIP (libellé validé NG, planche auditj6 2026-09-02).
     "steps": [({"en": "Read", "fr": "Lire"}, 1),
               ({"en": "Discuss", "fr": "Discuter"}, 0.5, "off"),
-              ({"en": "Vote", "fr": "Voter"}, 1, {"alarm": "gong", "volume": 1.0})],
+              ({"en": "Vote", "fr": "Voter"}, 1,
+               {"alarm": "gong", "volume": 1.0, "duration": 6})],
     "alarm_chain": "bell",
     "alarm_parallel": "chime",
     "alarm_volume": 0.6,
+    #: Durée d'alarme GLOBALE (NG 2026-09-03) : None = un seul motif du
+    #: timbre ; en secondes ]0, 60], le motif se répète jusqu'à la durée.
+    #: Vote la surcharge à 6 s (le gong insiste) — la démo montre le levier.
+    "alarm_duration": None,
     # Le temps 1 laisse la grille COMPACTE par défaut (3 → 2×2 avec un trou,
     # spécification NG 2026-09-02 : remplissage gauche→droite, haut→bas) ;
     # le temps 2 force la rangée (1, 3) — la démo montre les deux régimes.
@@ -101,8 +106,10 @@ _TOOLTIP = [
              "that card (« off » mutes it). Browsers unlock audio on a click "
              "only — any button of the rack arms it. Here: bell on the chain, "
              "chime on the parallel row, Discuss muted, Vote a full-volume "
-             "gong. An alarmed rack starts MUTED: the 🔔 next to the global "
-             "buttons arms it (remembered per rack, with a sound preview)."), "fr": "Son optionnel au zéro — silence par défaut. alarm= choisit un timbre synthétisé en WebAudio (cloche, bip, carillon, gong — aucun fichier audio, la salle est hors réseau), alarm_volume= règle l’intensité (0–1, perceptive) ; un troisième élément d’un pas surcharge les deux pour cette carte (« off » la rend muette). Le navigateur ne débloque le son qu’au clic — n’importe quel bouton du rack l’arme. Ici : cloche sur la chaîne, carillon sur la rangée parallèle, Discuter muette, Voter en gong plein volume. Un rack alarmé démarre EN SOURDINE : la cloche 🔔 à côté des boutons globaux l’arme (mémorisé par rack, avec un aperçu sonore)."}),
+             "gong, ringing for 6 seconds (alarm_duration= repeats the timbre's motif "
+             "until the requested length — None plays it once). An alarmed rack "
+             "starts MUTED: the 🔔 on each card arms IT, the global 🔔 arms them "
+             "all (remembered, with a sound preview)."), "fr": "Son optionnel au zéro — silence par défaut. alarm= choisit un timbre synthétisé en WebAudio (cloche, bip, carillon, gong — aucun fichier audio, la salle est hors réseau), alarm_volume= règle l’intensité (0–1, perceptive) ; un troisième élément d’un pas surcharge les deux pour cette carte (« off » la rend muette). Le navigateur ne débloque le son qu’au clic — n’importe quel bouton du rack l’arme. Ici : cloche sur la chaîne, carillon sur la rangée parallèle, Discuter muette, Voter en gong plein volume pendant 6 secondes (alarm_duration= répète le motif du timbre jusqu'à la durée demandée — None le joue une fois). Un rack alarmé démarre EN SOURDINE : la cloche 🔔 de chaque carte l'arme, la globale les arme toutes (mémorisé, avec un aperçu sonore)."}),
     ({"en": "To relocate", "fr": "À déménager"},
      {"en": ("This demo lives in the genai backup annex only while the "
              "consumer deck is unnamed — moving it is one thin block in that "
@@ -138,7 +145,8 @@ def build(lang: str = "en", **_):
         st_countdown_rack(s, steps, mode="chain", key="genai-demo-chain",
                           rack_vh=TUNING["rack_vh"], scale=TUNING["scale"],
                           alarm=TUNING["alarm_chain"],
-                          alarm_volume=TUNING["alarm_volume"])
+                          alarm_volume=TUNING["alarm_volume"],
+                          alarm_duration=TUNING["alarm_duration"])
     st_slide_break(marker_hidden=True)
     # ── Temps 2 : le mode parallèle, en rangée forcée (1, 3) ────────────────
     with st_block(s.project.containers.page_fill_top):
@@ -147,4 +155,5 @@ def build(lang: str = "en", **_):
                           grid=TUNING["grid_parallel"],
                           rack_vh=TUNING["rack_vh"], scale=TUNING["scale"],
                           alarm=TUNING["alarm_parallel"],
-                          alarm_volume=TUNING["alarm_volume"])
+                          alarm_volume=TUNING["alarm_volume"],
+                          alarm_duration=TUNING["alarm_duration"])

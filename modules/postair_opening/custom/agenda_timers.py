@@ -57,7 +57,8 @@ bs = BlockStyles
 #: démarrent EN SOURDINE (défaut du widget), NG arme celui qu'il veut par
 #: la cloche 🔔 à côté des boutons globaux (choix mémorisé par rack).
 TUNING = {"grid": None, "rack_vh": 62, "scale": 1.0,
-          "alarm": "bell", "alarm_volume": 0.6}
+          "alarm": "bell", "alarm_volume": 0.6,
+          "alarm_duration": None}  # secondes ]0,60] — None = un motif
 
 # ── Les feuilles {en, fr} du bloc (opening est bilingue) ────────────────────
 _MARKERS = [
@@ -156,4 +157,5 @@ def build_timer_slide(index: int, lang: str = "en") -> None:
                           grid=TUNING["grid"], rack_vh=TUNING["rack_vh"],
                           scale=TUNING["scale"],
                           alarm=TUNING["alarm"],
-                          alarm_volume=TUNING["alarm_volume"])
+                          alarm_volume=TUNING["alarm_volume"],
+                          alarm_duration=TUNING["alarm_duration"])
