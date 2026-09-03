@@ -136,15 +136,15 @@
     "icon": "images/brands/chatgpt.svg",
     "ratio": 1.0,
     "hover": {
-     "en": "GPTs: use is open to everyone — CREATION is closed to all consumer plans",
-     "fr": "GPTs : l'usage est ouvert à tous — la CRÉATION est fermée à tout le grand public"
+     "en": "GPTs: everyone USES them; NEW creation is in flux — official doc closed it to personal plans on ~Aug 16, yet the presenter's Plus account still creates (Sep 3)",
+     "fr": "GPTs : tout le monde les UTILISE ; la CRÉATION est en bascule — la doc officielle l'a fermée aux comptes perso le ~16-08, mais le compte Plus du présentateur crée encore (03-09)"
     },
     "cells": [
      {
       "sym": "⚠️",
       "hover": {
-       "en": "Use existing GPTs: yes. Create: no — reserved to Business/Enterprise/Edu workspaces",
-       "fr": "Utiliser les GPTs existants : oui. Créer : non — réservé aux espaces Business/Enterprise/Edu"
+       "en": "Free plan: use existing GPTs, no creation",
+       "fr": "Gratuit : utiliser les GPTs existants, pas de création"
       }
      },
      {
@@ -155,25 +155,22 @@
       }
      },
      {
-      "sym": {
-       "en": "❌ solo · ✅ org",
-       "fr": "❌ solo · ✅ orga"
-      },
+      "sym": "⚠️ ❓",
       "hover": {
-       "en": "Even individual Plus (~€23) and Pro do NOT create GPTs — creation is a Business/Enterprise/Edu workspace feature (official help article, high confidence)",
-       "fr": "Même Plus (~23 €) et Pro individuels NE créent PAS de GPTs — la création est une fonction des espaces Business/Enterprise/Edu (article d'aide officiel, confiance haute)"
+       "en": "Official article (dated archive, ~Aug 16 2026): « New GPT creation and publishing are not available on personal ChatGPT accounts, including Free, Go, Plus, and Pro » — editing existing GPTs stays allowed. GROUND TRUTH: the presenter's Plus account still creates (Sep 3) — progressive rollout likely. Retest before the session.",
+       "fr": "Article officiel (archive datée, ~16-08-2026) : « la création et la publication de nouveaux GPTs ne sont pas disponibles sur les comptes personnels, Free, Go, Plus et Pro compris » — l'édition des GPTs existants reste permise. VÉRITÉ TERRAIN : le compte Plus du présentateur crée encore (03-09) — déploiement progressif probable. À re-tester avant la séance."
       }
      }
     ],
     "details": [
      [
       {
-       "en": "Creation",
-       "fr": "Création"
+       "en": "Creation — in flux",
+       "fr": "Création — en bascule"
       },
       {
-       "en": "Creating/publishing GPTs is closed to ALL personal plans (Free, Go, Plus, Pro) — it is a Business/Enterprise/Edu workspace feature. Using existing GPTs stays open, free plan included.",
-       "fr": "La création/publication de GPTs est fermée à TOUS les plans personnels (Free, Go, Plus, Pro) — c'est une fonction des espaces Business/Enterprise/Edu. L'usage des GPTs existants reste ouvert, plan gratuit compris."
+       "en": "Until ~Aug 16 2026 the official FAQ said « Creating or editing GPTs requires a paid subscription » (Plus created). The article updated ~Aug 16 closes NEW creation to ALL personal plans and keeps editing of existing GPTs. The presenter's Plus account still creates as of Sep 3 — the two are compatible only if the rollout is progressive.",
+       "fr": "Jusqu'au ~16-08-2026 la FAQ officielle disait « créer ou éditer des GPTs demande un abonnement payant » (Plus créait). L'article mis à jour ~16-08 ferme la création de NOUVEAUX GPTs à TOUS les comptes perso et maintient l'édition des existants. Le compte Plus du présentateur crée encore au 03-09 — compatible seulement si le déploiement est progressif."
       }
      ],
      [
@@ -182,8 +179,8 @@
        "fr": "Quotas du gratuit"
       },
       {
-       "en": "3 file uploads per day in conversations; reduced message quotas and models.",
-       "fr": "3 fichiers par jour en conversation ; quotas de messages et modèles réduits."
+       "en": "3 file uploads per day in conversations (dated archive of the official FAQ).",
+       "fr": "3 fichiers par jour en conversation (archive datée de la FAQ officielle)."
       }
      ],
      [
@@ -192,11 +189,12 @@
        "fr": "Source"
       },
       {
-       "en": "OpenAI Help — Creating and editing GPTs; Free tier FAQ (checked 2026-09-03).",
-       "fr": "Aide OpenAI — Creating and editing GPTs ; FAQ du gratuit (consulté le 2026-09-03)."
+       "en": "help.openai.com blocks robots — read via DATED Wayback archives (Aug 11 vs Aug 25 versions) + presenter's ground truth Sep 3. See services-sources.md.",
+       "fr": "help.openai.com bloque les robots — lu via archives Wayback DATÉES (versions du 11-08 vs 25-08) + vérité terrain du présentateur 03-09. Voir services-sources.md."
       }
      ]
-    ]
+    ],
+    "url": "https://openai.com/chatgpt/"
    },
    {
     "id": "gemini",
@@ -262,7 +260,8 @@
        "fr": "Support Google — Get started with Gems ; pages de l'offre étudiante (consulté le 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://gemini.google/"
    },
    {
     "id": "vibe",
@@ -292,8 +291,8 @@
      {
       "sym": "✅",
       "hover": {
-       "en": "Pro 14.99 €/mo — agents, long-horizon tasks",
-       "fr": "Pro 14,99 €/mois — agents, tâches longues"
+       "en": "Vibe agents on Pro AND Team plans (« available on Le Chat Pro and Team plans », « Custom subagents » — official announcements read directly); custom agents also under Enterprise",
+       "fr": "Les agents Vibe sur les plans Pro ET Team (« available on Le Chat Pro and Team plans », « Custom subagents » — annonces officielles lues en direct) ; custom agents aussi côté Enterprise"
       }
      }
     ],
@@ -314,8 +313,8 @@
        "fr": "Agents"
       },
       {
-       "en": "The pricing page reserves agents to Pro; the documented custom agents live in Vibe Code (CLI, TOML files) — there is no GPT-store-like builder in the chat app.",
-       "fr": "La page pricing réserve les agents au Pro ; les agents personnalisés documentés vivent dans Vibe Code (CLI, fichiers TOML) — pas de builder façon GPT store dans l'app de chat."
+       "en": "The current pricing page no longer says « Upgrade to Pro for agents »; the official Vibe 2.0 and remote-agents announcements place Vibe and custom subagents on Pro, Team (and Enterprise). No agent creation documented on the free plan.",
+       "fr": "La page pricing actuelle ne dit plus « Upgrade to Pro for agents » ; les annonces officielles Vibe 2.0 et remote-agents placent Vibe et les subagents personnalisés sur Pro, Team (et Enterprise). Aucune création d'agents documentée en gratuit."
       }
      ],
      [
@@ -328,7 +327,8 @@
        "fr": "mistral.ai/products/vibe, mistral.ai/pricing (lus directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://mistral.ai/products/vibe/"
    },
    {
     "id": "claude",
@@ -384,7 +384,8 @@
        "fr": "support.claude.com — What are Projects ; RAG for Projects ; claude.com/pricing (lus directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://claude.com/"
    },
    {
     "id": "copilot",
@@ -400,8 +401,8 @@
      {
       "sym": "⚠️",
       "hover": {
-       "en": "With a school account, Copilot Chat's Agent Builder is free for instructions + public web; tenant data is paid",
-       "fr": "Avec un compte école, l'Agent Builder de Copilot Chat est gratuit pour instructions + web public ; les données du tenant sont payantes"
+       "en": "School account, Copilot Chat without license: agents grounded on instructions + public web — but EMBEDDED FILES as knowledge are NOT included (pay-as-you-go or full license)",
+       "fr": "Compte école, Copilot Chat sans licence : agents ancrés sur instructions + web public — mais les FICHIERS EMBARQUÉS en connaissance ne sont PAS inclus (facturation ou licence complète)"
       }
      },
      {
@@ -440,13 +441,14 @@
        "fr": "Microsoft Learn — Agents for Copilot ; Agent Builder ; microsoft.com/education (consulté le 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://copilot.microsoft.com/"
    },
    {
     "id": "poe",
     "name": "Poe",
     "product": "Prompt Bots",
-    "icon": "",
+    "icon": "images/brands/poe.svg",
     "ratio": 1.0,
     "hover": {
      "en": "Poe (Quora): bot creation open to free users; paid buys compute points",
@@ -478,12 +480,32 @@
     "details": [
      [
       {
+       "en": "What Poe is",
+       "fr": "Ce qu'est Poe"
+      },
+      {
+       "en": "Quora's multi-model chat: one subscription, many models (GPT, Claude, Gemini, Llama…) — bots are prompt+knowledge wrappers you create and share.",
+       "fr": "Le chat multi-modèles de Quora : un abonnement, plusieurs modèles (GPT, Claude, Gemini, Llama…) — les bots sont des enveloppes prompt+connaissance que l'on crée et partage."
+      }
+     ],
+     [
+      {
        "en": "Creation",
        "fr": "Création"
       },
       {
-       "en": "Free users create bots; daily free points reset every 24 h (exact amount unpublished).",
-       "fr": "Les comptes gratuits créent des bots ; points gratuits quotidiens remis à zéro toutes les 24 h (montant exact non publié)."
+       "en": "Bot creation open via poe.com/create_bot (web and mobile); the official docs put no plan restriction on creating.",
+       "fr": "Création ouverte via poe.com/create_bot (web et mobile) ; la doc officielle ne pose aucune restriction de plan sur la création."
+      }
+     ],
+     [
+      {
+       "en": "Economics",
+       "fr": "Économie"
+      },
+      {
+       "en": "Free accounts get daily compute points (reset every 24 h, exact amount unpublished); paid buys more points — premium models drain them fast.",
+       "fr": "Les comptes gratuits ont des points de calcul quotidiens (remis à zéro toutes les 24 h, montant non publié) ; le payant achète des points — les modèles premium les consomment vite."
       }
      ],
      [
@@ -492,11 +514,12 @@
        "fr": "Source"
       },
       {
-       "en": "creator.poe.com docs (fetched directly, 2026-09-03).",
-       "fr": "Docs creator.poe.com (lues directement, 2026-09-03)."
+       "en": "creator.poe.com docs (read directly, 2026-09-03).",
+       "fr": "Docs creator.poe.com (lues en direct, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://poe.com/"
    }
   ],
   "feed": [
@@ -511,10 +534,13 @@
     },
     "cells": [
      {
-      "sym": "20 f",
+      "sym": {
+       "en": "10-20 f ❓",
+       "fr": "10-20 f ❓"
+      },
       "hover": {
-       "en": "20 knowledge files per GPT (free plan: 3 uploads/day in conversations)",
-       "fr": "20 fichiers de connaissance par GPT (gratuit : 3 fichiers/jour en conversation)"
+       "en": "TWO official pages contradict each other: « up to 10 files per GPT » (File Uploads FAQ) vs « up to 20 files » (Creating GPTs) — both read in dated archives",
+       "fr": "DEUX pages officielles se contredisent : « jusqu'à 10 fichiers par GPT » (File Uploads FAQ) vs « jusqu'à 20 fichiers » (Creating GPTs) — lues en archives datées"
       }
      },
      {
@@ -528,13 +554,10 @@
       }
      },
      {
-      "sym": {
-       "en": "≈8,000 ch ❓",
-       "fr": "≈8 000 c ❓"
-      },
+      "sym": "❓",
       "hover": {
-       "en": "~8,000 characters circulates in the editor — not reconfirmed word-for-word on an official page",
-       "fr": "~8 000 caractères circule dans l'éditeur — non reconfirmé mot à mot sur une page officielle"
+       "en": "The ~8,000-character figure is community lore — absent from both official articles (checked in full)",
+       "fr": "Le chiffre ~8 000 caractères est communautaire — absent des deux articles officiels (vérifiés en entier)"
       }
      }
     ],
@@ -549,7 +572,8 @@
        "fr": "Aide OpenAI — Knowledge in GPTs ; File Uploads FAQ (consulté le 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://openai.com/chatgpt/"
    },
    {
     "id": "gemini",
@@ -597,7 +621,8 @@
        "fr": "Support Google — Get started with Gems ; Upload files (consulté le 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://gemini.google/"
    },
    {
     "id": "vibe",
@@ -617,13 +642,10 @@
       }
      },
      {
-      "sym": {
-       "en": "15 GB 💰",
-       "fr": "15 Go 💰"
-      },
+      "sym": "❓",
       "hover": {
-       "en": "Up to 15 GB of Libraries on Pro (PDF, images, CSV, Office)",
-       "fr": "Jusqu'à 15 Go de Libraries en Pro (PDF, images, CSV, Office)"
+       "en": "OUTDATED since the Vibe revamp: the current pricing publishes no Free/Pro storage figure (only Team: 30 GB/user); the old « 15 GB Pro Libraries » belongs to the former Le Chat",
+       "fr": "PÉRIMÉ depuis la refonte Vibe : le pricing actuel ne publie aucun stockage Free/Pro (seul chiffre : Team 30 Go/utilisateur) ; l'ancien « 15 Go Libraries Pro » appartenait au Le Chat d'avant"
       }
      },
      {
@@ -645,7 +667,8 @@
        "fr": "mistral.ai/products/vibe ; pricing (lus directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://mistral.ai/products/vibe/"
    },
    {
     "id": "claude",
@@ -690,7 +713,8 @@
        "fr": "support.claude.com — Projects ; RAG for Projects (lus directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://claude.com/"
    },
    {
     "id": "copilot",
@@ -703,10 +727,13 @@
     },
     "cells": [
      {
-      "sym": "20 f",
+      "sym": {
+       "en": "20 src",
+       "fr": "20 src"
+      },
       "hover": {
-       "en": "20 embedded files + 4 public URLs (school account, Agent Builder)",
-       "fr": "20 fichiers embarqués + 4 URL publiques (compte école, Agent Builder)"
+       "en": "Up to 20 knowledge sources (Agent Builder, Microsoft Learn read directly) — embedded file content requires pay-as-you-go or a full license",
+       "fr": "Jusqu'à 20 sources de connaissance (Agent Builder, Microsoft Learn lu en direct) — les fichiers embarqués exigent facturation ou licence complète"
       }
      },
      {
@@ -722,8 +749,8 @@
        "fr": "8 000 c"
       },
       "hover": {
-       "en": "8,000 characters for declarative agent instructions — documented on Microsoft Learn",
-       "fr": "8 000 caractères pour les instructions d'agent déclaratif — documenté sur Microsoft Learn"
+       "en": "8,000 characters for agent instructions — CONFIRMED, Microsoft Learn read directly (2026-09-03)",
+       "fr": "8 000 caractères pour les instructions d'agent — CONFIRMÉ, Microsoft Learn lu en direct (2026-09-03)"
       }
      }
     ],
@@ -738,12 +765,13 @@
        "fr": "Microsoft Learn — Agent Builder : add knowledge ; declarative agent instructions (consulté le 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://copilot.microsoft.com/"
    },
    {
     "id": "poe",
     "name": "Poe",
-    "icon": "",
+    "icon": "images/brands/poe.svg",
     "ratio": 1.0,
     "hover": {
      "en": "The most generous free knowledge base",
@@ -786,7 +814,8 @@
        "fr": "creator.poe.com — prompt bots (lues directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://poe.com/"
    }
   ],
   "voice": [
@@ -796,42 +825,36 @@
     "icon": "images/brands/chatgpt.svg",
     "ratio": 1.0,
     "hover": {
-     "en": "Real-time voice for everyone; the new Live option is full-duplex",
-     "fr": "Voix temps réel pour tous ; la nouvelle option Live est full-duplex"
+     "en": "GPT-Live (July 2026): full-duplex voice — the System Card was read directly; surface names and quotas come from indexed snippets",
+     "fr": "GPT-Live (juillet 2026) : voix full-duplex — la System Card a été lue en direct ; noms de modes et quotas viennent d'extraits indexés"
     },
     "cells": [
      {
       "sym": "✅",
       "hover": {
-       "en": "Native spoken conversation (multimodal models)",
-       "fr": "Conversation parlée native (modèles multimodaux)"
+       "en": "« GPT-Live-1 mini will be the default model for free users » — official System Card, read directly",
+       "fr": "« GPT-Live-1 mini sera le modèle par défaut des comptes gratuits » — System Card officielle, lue en direct"
       }
      },
      {
-      "sym": {
-       "en": "✅ · Live",
-       "fr": "✅ · Live"
-      },
+      "sym": "✅",
       "hover": {
-       "en": "The Live option listens and speaks at the same time (natural interruptions) — official article title; classic mode is turn-based",
-       "fr": "L'option Live écoute et parle en même temps (interruptions naturelles) — titre de l'article officiel ; le mode classique est en tour par tour"
+       "en": "« Full-duplex: they can listen and respond continuously instead of waiting for a turn to end » — official System Card, read directly",
+       "fr": "« Full-duplex : écoute et répond en continu au lieu d'attendre la fin d'un tour » — System Card officielle, lue en direct"
       }
      },
      {
-      "sym": "💰",
+      "sym": "💰 ❓",
       "hover": {
-       "en": "Video/screen share: subscribers only, mobile apps, daily quota — and not in Live mode",
-       "fr": "Caméra/écran : abonnés seulement, apps mobiles, quota quotidien — et pas en mode Live"
+       "en": "Camera/screen: subscribers, mobile apps, not yet in GPT-Live (« soon ») — indexed snippets only (help pages robot-blocked), and explicitly transitional",
+       "fr": "Caméra/écran : abonnés, apps mobiles, pas encore en GPT-Live (« soon ») — extraits indexés seulement (pages d'aide bloquées), et explicitement transitoire"
       }
      },
      {
-      "sym": {
-       "en": "✅ · Live ❓",
-       "fr": "✅ · Live ❓"
-      },
+      "sym": "✅ ❓",
       "hover": {
-       "en": "Classic voice free ~2 h/day; FREE access to full-duplex Live: claimed by indexed official snippets only — page robot-blocked, unverifiable",
-       "fr": "Voix classique gratuite ~2 h/jour ; l'accès GRATUIT au Live full-duplex : extraits indexés seulement — page bloquée aux robots, invérifiable"
+       "en": "Voice included for free (System Card, direct); QUOTAS unpublished — « limited access per rolling 24 h » is indexed-only; the old « ~2 h/day » figure was a mix-up (2 h = max session length) and was removed",
+       "fr": "Vocal inclus en gratuit (System Card, direct) ; QUOTAS non publiés — « accès limité par 24 h glissantes » n'est qu'indexé ; l'ancien « ~2 h/jour » était un télescopage (2 h = durée max d'une session) et a été retiré"
       }
      }
     ],
@@ -846,7 +869,8 @@
        "fr": "Aide OpenAI — ChatGPT Voice ; Voice FAQ (pages officielles via index — fetch direct bloqué ; consulté le 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://openai.com/chatgpt/"
    },
    {
     "id": "gemini",
@@ -875,15 +899,15 @@
      {
       "sym": "✅",
       "hover": {
-       "en": "Camera AND screen share, free, mobile apps only (no web)",
-       "fr": "Caméra ET partage d'écran, gratuits, apps mobiles seulement (pas de web)"
+       "en": "Camera AND screen share free on mobile; not in the gemini.google.com web app — BUT Live works on desktop via Gemini in Chrome (18+, official page read directly)",
+       "fr": "Caméra ET partage d'écran gratuits sur mobile ; pas dans la web app gemini.google.com — MAIS Live marche sur ordinateur via Gemini dans Chrome (18+, page officielle lue en direct)"
       }
      },
      {
       "sym": "✅",
       "hover": {
-       "en": "Included in the free plan (compute limits refreshed every 5 h)",
-       "fr": "Inclus au plan gratuit (limites rafraîchies toutes les 5 h)"
+       "en": "Free plan; limits refresh every 5 h UP TO a weekly cap (official page, direct). Camera+screen free since I/O, May 2025",
+       "fr": "Gratuit ; limites rafraîchies toutes les 5 h JUSQU'À un plafond hebdomadaire (page officielle, directe). Caméra+écran gratuits depuis l'I/O, mai 2025"
       }
      }
     ],
@@ -898,7 +922,8 @@
        "fr": "Support et blog Google — Gemini Live (lus directement, 2026-09-03). 40+ langues, français compris."
       }
      ]
-    ]
+    ],
+    "url": "https://gemini.google/"
    },
    {
     "id": "grok",
@@ -906,36 +931,36 @@
     "icon": "images/brands/grok.svg",
     "ratio": 1.0,
     "hover": {
-     "en": "Real-time speech-to-speech, free tier — 13+ with parental consent 13-17",
-     "fr": "Speech-to-speech temps réel, gratuit — 13 ans min, accord parental 13-17"
+     "en": "x.ai and grok.com fully robot-blocked: NOTHING is directly confirmable — App Store listing (read directly) corroborates voice + live camera",
+     "fr": "x.ai et grok.com totalement bloqués aux robots : RIEN n'est confirmable en direct — la fiche App Store (lue en direct) corrobore voix + caméra live"
     },
     "cells": [
      {
-      "sym": "✅",
+      "sym": "✅ ❓",
       "hover": {
-       "en": "Low-latency speech-to-speech (Grok Voice models)",
-       "fr": "Speech-to-speech basse latence (modèles Grok Voice)"
+       "en": "Real-time voice: claimed on x.ai (indexed) + « Talk to Grok using your voice » on the official App Store listing (read directly)",
+       "fr": "Voix temps réel : revendiquée sur x.ai (indexé) + « Talk to Grok using your voice » sur la fiche App Store officielle (lue en direct)"
       }
      },
      {
-      "sym": "⚠️",
+      "sym": "❓",
       "hover": {
-       "en": "« Natural turn-taking » claimed; full-duplex not explicitly documented",
-       "fr": "« Tours de parole naturels » revendiqués ; full-duplex non documenté explicitement"
+       "en": "« Natural turn-taking » claimed in indexed snippets only; full-duplex never stated officially",
+       "fr": "« Tours de parole naturels » revendiqués en extraits indexés seulement ; full-duplex jamais affirmé officiellement"
       }
      },
      {
-      "sym": "⚠️",
+      "sym": "⚠️ ❓",
       "hover": {
-       "en": "Camera yes (« point your camera »); screen share unverifiable",
-       "fr": "Caméra oui (« point your camera ») ; partage d'écran invérifiable"
+       "en": "« Voice Mode with Live Camera » on the App Store listing (direct); screen share unverifiable",
+       "fr": "« Voice Mode avec Live Camera » sur la fiche App Store (direct) ; partage d'écran invérifiable"
       }
      },
      {
-      "sym": "✅",
+      "sym": "✅ ❓",
       "hover": {
-       "en": "Free tier with its own limits; 13+ (parental consent 13-17)",
-       "fr": "Gratuit avec ses limites ; 13 ans min (accord parental 13-17)"
+       "en": "Free tier claimed (indexed), NO published limit figures anywhere; 13+ with parental consent 13-17 (ToS via index; App Store rates it 16+)",
+       "fr": "Gratuit revendiqué (indexé), AUCUN chiffre de limite publié ; 13 ans min avec accord parental 13-17 (CGU via index ; l'App Store classe 16+)"
       }
      }
     ],
@@ -950,7 +975,8 @@
        "fr": "Pages produit/FAQ x.ai (via index — fetch direct bloqué ; consulté le 2026-09-03). Français : voix multilingues, pas de liste officielle."
       }
      ]
-    ]
+    ],
+    "url": "https://x.ai/grok"
    },
    {
     "id": "copilot",
@@ -979,8 +1005,8 @@
      {
       "sym": "💰",
       "hover": {
-       "en": "Copilot Vision (screen on Windows/Edge, camera on mobile) requires Microsoft 365 subscription",
-       "fr": "Copilot Vision (écran Windows/Edge, caméra mobile) exige un abonnement Microsoft 365"
+       "en": "Copilot Vision (screen on Windows/Edge, camera on mobile) requires Microsoft 365 Personal, Family or Premium — official support page, read directly",
+       "fr": "Copilot Vision (écran Windows/Edge, caméra mobile) exige Microsoft 365 Personal, Family ou Premium — page support officielle, lue en direct"
       }
      },
      {
@@ -1002,7 +1028,8 @@
        "fr": "support.microsoft.com — Copilot Voice ; Copilot Vision (lus directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://copilot.microsoft.com/"
    },
    {
     "id": "claude",
@@ -1017,8 +1044,8 @@
      {
       "sym": "✅",
       "hover": {
-       "en": "Spoken conversations (beta), mobile-optimised + desktop/web",
-       "fr": "Conversations parlées (bêta), mobile optimisé + desktop/web"
+       "en": "Spoken conversations (beta) on mobile, DESKTOP and web — since July 2026 with Opus/Sonnet and connected tools",
+       "fr": "Conversations parlées (bêta) sur mobile, ORDINATEUR et web — depuis juillet 2026 avec Opus/Sonnet et les outils connectés"
       }
      },
      {
@@ -1038,8 +1065,8 @@
      {
       "sym": "✅",
       "hover": {
-       "en": "All plans, Free included — counts toward normal usage limits; French in multilingual beta",
-       "fr": "Tous les plans, gratuit compris — décompté des quotas normaux ; français en bêta multilingue"
+       "en": "All plans, Free included (Free uses Haiku, one connected tool); counts toward normal usage limits; French in the 11-language beta list",
+       "fr": "Tous les plans, gratuit compris (le gratuit utilise Haiku, un seul outil connecté) ; décompté des quotas normaux ; français dans la liste bêta des 11 langues"
       }
      }
     ],
@@ -1054,7 +1081,8 @@
        "fr": "support.claude.com — Use voice mode (lu directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://claude.com/"
    },
    {
     "id": "vibe",
@@ -1098,15 +1126,26 @@
     "details": [
      [
       {
+       "en": "Note",
+       "fr": "Note"
+      },
+      {
+       "en": "Voxtral TTS exists on the Mistral platform (« Try it now in Mistral Studio or in Le Chat », March 2026) — but no official page says the Voice mode answers OUT LOUD; the documented mode is dictation.",
+       "fr": "Voxtral TTS existe côté plateforme Mistral (« Try it now in Mistral Studio or in Le Chat », mars 2026) — mais aucune page officielle ne dit que le Voice mode répond À VOIX HAUTE ; le mode documenté est la dictée."
+      }
+     ],
+     [
+      {
        "en": "Source",
        "fr": "Source"
       },
       {
-       "en": "docs.mistral.ai — voice mode; Voxtral pages (fetched directly, 2026-09-03).",
-       "fr": "docs.mistral.ai — voice mode ; pages Voxtral (lues directement, 2026-09-03)."
+       "en": "docs.mistral.ai — voice mode (read directly, 2026-09-03).",
+       "fr": "docs.mistral.ai — voice mode (lu en direct, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://mistral.ai/products/vibe/"
    }
   ],
   "students": [
@@ -1133,15 +1172,15 @@
        "fr": "0 € · 12 mois"
       },
       "hover": {
-       "en": "Then ~8 €/mo — auto-converts unless cancelled; claim before 2026-12-31",
-       "fr": "Puis ~8 €/mois — bascule automatique sauf annulation ; à réclamer avant le 31-12-2026"
+       "en": "Then 4.99 €/month (gemini.google/lu — the LUXEMBOURG page, read directly); payment method required at sign-up; re-verification about every 12 months, up to 4 years",
+       "fr": "Puis 4,99 €/mois (gemini.google/lu — la page LUXEMBOURG, lue en direct) ; moyen de paiement exigé à l'inscription ; re-vérification ~annuelle, jusqu'à 4 ans"
       }
      },
      {
       "sym": "✅",
       "hover": {
-       "en": "Luxembourg in the supported countries; SheerID + school email",
-       "fr": "Luxembourg dans les pays supportés ; SheerID + email d'école"
+       "en": "Luxembourg in the country selector of the official offer page (read directly); exclusions: Albania, Bolivia, Canada, HK, Macau, Tunisia (+US=Pro); SheerID + school email, claim before 2026-12-31",
+       "fr": "Luxembourg dans le sélecteur de pays de la page officielle de l'offre (lue en direct) ; exclusions : Albanie, Bolivie, Canada, HK, Macao, Tunisie (+USA=Pro) ; SheerID + email d'école, avant le 31-12-2026"
       }
      }
     ],
@@ -1156,7 +1195,8 @@
        "fr": "blog.google + support.google.com, offre étudiante (lus directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://one.google.com/ai-student"
    },
    {
     "id": "mistral",
@@ -1164,25 +1204,25 @@
     "icon": "images/brands/mistral.svg",
     "ratio": 1.42,
     "hover": {
-     "en": "European editor, student price on Pro",
-     "fr": "Éditeur européen, tarif étudiant sur le Pro"
+     "en": "European editor; student AND teacher price on Vibe Pro",
+     "fr": "Éditeur européen ; tarif étudiant ET enseignant sur Vibe Pro"
     },
     "cells": [
      {
       "sym": "🎓",
       "hover": {
-       "en": "Vibe Pro for verified students",
-       "fr": "Vibe Pro pour étudiants vérifiés"
+       "en": "Vibe Pro for verified students AND teachers (official help article title)",
+       "fr": "Vibe Pro pour étudiants ET enseignants vérifiés (titre de l'article d'aide officiel)"
       }
      },
      {
       "sym": {
-       "en": "€5.99/mo",
-       "fr": "5,99 €/mois"
+       "en": "$5.99/mo",
+       "fr": "5,99 $/mois"
       },
       "hover": {
-       "en": "Instead of 14.99 € — 12 months max, new accounts, institutional email",
-       "fr": "Au lieu de 14,99 € — 12 mois max, nouveaux comptes, email institutionnel"
+       "en": "Official price 5.99 $/month (instead of 14.99 $) — the € amount could not be read directly; 12 months max; institutional email REQUIRED (Gmail/Outlook refused); existing accounts accepted",
+       "fr": "Prix officiel 5,99 $/mois (au lieu de 14,99 $) — le montant en € n'a pas pu être lu en direct ; 12 mois max ; email institutionnel OBLIGATOIRE (Gmail/Outlook refusés) ; comptes existants acceptés"
       }
      },
      {
@@ -1204,7 +1244,8 @@
        "fr": "mistral.ai/pricing (lu directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://mistral.ai/pricing/"
    },
    {
     "id": "openai",
@@ -1252,7 +1293,8 @@
        "fr": "Articles étudiants help.openai.com (pages officielles via index ; consulté le 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://openai.com/chatgpt/pricing/"
    },
    {
     "id": "perplexity",
@@ -1260,25 +1302,22 @@
     "icon": "images/brands/perplexity.svg",
     "ratio": 4.16,
     "hover": {
-     "en": "Education Pro at half price — figures not directly verifiable",
-     "fr": "Education Pro à moitié prix — chiffres non vérifiables en direct"
+     "en": "Site fully robot-blocked — nothing verifiable directly; the 2025 « free Pro year » promo is GONE",
+     "fr": "Site totalement bloqué aux robots — rien de vérifiable en direct ; la promo « 1 an de Pro gratuit » de 2025 a DISPARU"
     },
     "cells": [
      {
       "sym": "🎓 ❓",
       "hover": {
-       "en": "Education Pro ~10 $/mo (50% off) + free Pro month; a « 1 free year » promo circulates — unverified",
-       "fr": "Education Pro ~10 $/mois (-50 %) + un mois de Pro offert ; une promo « 1 an gratuit » circule — non vérifiée"
+       "en": "Current official page (dated snapshot): « unlock access to Comet and Perplexity Pro at a discount » — no price, no duration shown; the 2025 free-year promo is expired",
+       "fr": "Page officielle actuelle (snapshot daté) : « accès à Comet et Perplexity Pro à prix réduit » — ni prix ni durée affichés ; la promo année-gratuite de 2025 est expirée"
       }
      },
      {
-      "sym": {
-       "en": "≈$10/mo ❓",
-       "fr": "≈10 $/mois ❓"
-      },
+      "sym": "❓",
       "hover": {
-       "en": "Official help pages blocked to robots — figures from indexed snippets only",
-       "fr": "Pages d'aide officielles bloquées aux robots — chiffres tirés des extraits indexés"
+       "en": "~-50% via SheerID claimed by concordant third parties only — unverifiable at the source (403)",
+       "fr": "~-50 % via SheerID selon des tiers concordants seulement — invérifiable à la source (403)"
       }
      },
      {
@@ -1300,7 +1339,8 @@
        "fr": "perplexity.ai/students + centre d'aide (via index ; consulté le 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://www.perplexity.ai/"
    },
    {
     "id": "claude",
@@ -1345,7 +1385,8 @@
        "fr": "claude.com/solutions/education ; pricing (lus directement, 2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://claude.com/"
    },
    {
     "id": "unilu",
@@ -1353,15 +1394,15 @@
     "icon": "images/brands/copilot.svg",
     "ratio": 1.0,
     "hover": {
-     "en": "Your @uni.lu account — Copilot is the University-supported chatbot (to be confirmed)",
-     "fr": "Ton compte @uni.lu — Copilot est le chatbot soutenu par l'Université (à confirmer)"
+     "en": "Copilot IS the University's official supported chatbot — the official PDF was read in full",
+     "fr": "Copilot EST le chatbot officiellement soutenu par l'Université — le PDF officiel a été lu en entier"
     },
     "cells": [
      {
-      "sym": "⚠️ ❓",
+      "sym": "✅",
       "hover": {
-       "en": "Indexed uni.lu pages present Copilot as the officially supported chatbot (data privacy) — exact wording not re-readable (site behind a WAF)",
-       "fr": "Les pages uni.lu indexées présentent Copilot comme le chatbot officiellement soutenu (confidentialité des données) — texte exact non relisible (site derrière un WAF)"
+       "en": "« The UL provides Microsoft Copilot as its official supported chatbot. We encourage all students and staff members to use this tool, as it guarantees the confidentiality of any data entered » — UL GenAI Guidelines, Sept. 2025 (VRAE, validated by the Rectorate), PDF read in full",
+       "fr": "« The UL provides Microsoft Copilot as its official supported chatbot. We encourage all students and staff members to use this tool, as it guarantees the confidentiality of any data entered » — Guidelines IA générative de l'UL, sept. 2025 (VRAE, validées par le Rectorat), PDF lu en entier"
       }
      },
      {
@@ -1370,8 +1411,8 @@
        "fr": "0 €"
       },
       "hover": {
-       "en": "Via the student account; note: free student Office A1 does NOT include Microsoft 365 Copilot",
-       "fr": "Via le compte étudiant ; noter : l'Office A1 étudiant gratuit N'INCLUT PAS Microsoft 365 Copilot"
+       "en": "Via the student account; data stays in the university's M365 environment. Note: free student Office A1 does not INCLUDE Copilot — the add-on is an institutional purchase (A1 is an eligible prerequisite)",
+       "fr": "Via le compte étudiant ; les données restent dans l'environnement M365 de l'université. Noter : l'Office A1 étudiant gratuit n'INCLUT pas Copilot — l'add-on est un achat institutionnel (A1 est un prérequis éligible)"
       }
      },
      {
@@ -1385,15 +1426,16 @@
     "details": [
      [
       {
-       "en": "Caution",
-       "fr": "Prudence"
+       "en": "The official position",
+       "fr": "La position officielle"
       },
       {
-       "en": "uni.lu is behind an anti-bot wall: the claim comes from indexed official pages (news + Sept. 2025 AI guidelines PDF). Displayed with ❓ per the « ? » policy.",
-       "fr": "uni.lu est derrière un mur anti-bot : l'affirmation vient de pages officielles indexées (news + PDF guidelines IA de sept. 2025). Affiché avec ❓ selon la politique « ? »."
+       "en": "The Sept. 2025 « Guidelines on the use of Generative AI tools for learning and teaching » (VRAE, validated by the Rectorate) name Microsoft Copilot as the official supported chatbot, for data-confidentiality reasons. uni.lu web pages block robots — the PDF itself was retrieved from the official uni.lu URL and read in full (2026-09-03).",
+       "fr": "Les « Guidelines on the use of Generative AI tools for learning and teaching » de sept. 2025 (VRAE, validées par le Rectorat) nomment Microsoft Copilot comme chatbot officiellement soutenu, pour la confidentialité des données. Les pages web uni.lu bloquent les robots — le PDF lui-même a été récupéré à l'URL officielle uni.lu et lu en entier (2026-09-03)."
       }
      ]
-    ]
+    ],
+    "url": "https://www.uni.lu/"
    }
   ]
  }

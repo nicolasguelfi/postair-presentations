@@ -59,13 +59,21 @@ _TOOLTIP = [
 # ── La main de l'artiste ────────────────────────────────────────────────────
 TUNING = {
     "matrix_zoom": 105,
-    "logo_vh": 6,
+    "logo_vh": 8,
+    # tune1 (NG 2026-09-03) — head_zoom: en-têtes (global, % ; par colonne
+    # via un dict {"head", "hover", "zoom"} dans _COLS) ; col_widths:
+    # largeurs CSS des colonnes de features (None = égales) ; legend_zoom:
+    # la légende, découplée du zoom de la matrice.
+    "head_zoom": 100,
+    "col_widths": None,
+    "legend_zoom": 100,
 }
 
 
 def _rows():
     return [{"name": p["name"], "icon": p.get("icon", ""),
              "icon_ratio": p.get("ratio", 1.0), "hover": p.get("hover"),
+             "url": p.get("url", ""), "icon_vh": p.get("icon_vh"),
              "cells": [(c["sym"], c.get("hover")) for c in p["cells"]],
              "details": [(h, b) for h, b in p["details"]]}
             for p in section("services")["feed"]]
@@ -83,8 +91,11 @@ def build(lang: str = "en", **_):
                     title=T(_TIP_TITLE, lang),
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
-        with st_zoom(115):
+        with st_zoom(250):
             st_write(bs.volatile, T(_SUB, lang), tag=t.div)
         st_space("v", "2.5vh")
         st_feature_matrix(s, _COLS, _rows(), lang,
-                          zoom=TUNING["matrix_zoom"], logo_vh=TUNING["logo_vh"])
+                          zoom=TUNING["matrix_zoom"], logo_vh=TUNING["logo_vh"],
+                          head_zoom=TUNING["head_zoom"],
+                          col_widths=TUNING["col_widths"],
+                          legend_zoom=TUNING["legend_zoom"])

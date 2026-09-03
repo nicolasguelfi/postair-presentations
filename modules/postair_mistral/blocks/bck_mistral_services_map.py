@@ -47,7 +47,7 @@ _TIERS = [
     {"head": {"en": "🎓 Student", "fr": "🎓 Étudiant"},
      "line": {"en": "your school email is worth money", "fr": "votre email d'école vaut de l'argent"}},
     {"head": {"en": "💰 Paid", "fr": "💰 Payant"},
-     "line": {"en": "≈ 6-23 €/month — comfort, not the method", "fr": "≈ 6-23 €/mois — le confort, pas la méthode"}},
+     "line": {"en": "≈ 5-21 €/month — comfort, not the method", "fr": "≈ 5-21 €/mois — le confort, pas la méthode"}},
 ]
 
 _PUNCH = {"en": "the method is free — the comfort is not", "fr": "la méthode est gratuite — le confort, pas toujours"}
@@ -63,12 +63,15 @@ _TOOLTIP = [
     ({"en": "🎓 Student", "fr": "🎓 Étudiant"},
      {"en": ("The two real deals for THIS room: Google — one free year of AI "
              "Plus, Luxembourg eligible (SheerID + school email, before "
-             "2026-12-31); Mistral — Vibe Pro at 5.99 €/month for verified "
-             "students. OpenAI's student offers are US-only."), "fr": "Les deux vraies offres pour CETTE salle : Google — un an d'AI Plus offert, Luxembourg éligible (SheerID + email d'école, avant le 31-12-2026) ; Mistral — Vibe Pro à 5,99 €/mois pour étudiants vérifiés. Les offres OpenAI sont USA uniquement."}),
+             "2026-12-31, then 4.99 €/month); Mistral — Vibe Pro at $5.99/month "
+             "for verified students AND teachers. OpenAI's student offers are "
+             "US-only."), "fr": "Les deux vraies offres pour CETTE salle : Google — un an d'AI Plus offert, Luxembourg éligible (SheerID + email d'école, avant le 31-12-2026, puis 4,99 €/mois) ; Mistral — Vibe Pro à 5,99 $/mois pour étudiants ET enseignants vérifiés. Les offres OpenAI sont USA uniquement."}),
     ({"en": "💰 Paid", "fr": "💰 Payant"},
-     {"en": ("Reference prices in Europe: Vibe Pro 14.99 € (student 5.99 €), "
-             "Google AI Pro 21.99 €, ChatGPT Plus ≈ 23 € incl. VAT, Claude Pro "
-             "17-20 $. Paid buys bigger quotas, contexts and file bases."), "fr": "Prix de référence en Europe : Vibe Pro 14,99 € (étudiant 5,99 €), Google AI Pro 21,99 €, ChatGPT Plus ≈ 23 € TTC, Claude Pro 17-20 $. Le payant achète des quotas, des contextes et des bases de fichiers plus grands."}),
+     {"en": ("Reference prices (verified 2026-09-03): Google AI Pro "
+             "20.99 €/month in Luxembourg (read directly), AI Plus 4.99 €; "
+             "Vibe Pro $14.99 (student $5.99); Claude Pro $17-20; ChatGPT "
+             "Plus $20 + VAT (€ amount not directly verifiable). Paid buys "
+             "quotas, contexts and file bases."), "fr": "Prix de référence (vérifiés le 2026-09-03) : Google AI Pro 20,99 €/mois au Luxembourg (lu en direct), AI Plus 4,99 € ; Vibe Pro 14,99 $ (étudiant 5,99 $) ; Claude Pro 17-20 $ ; ChatGPT Plus 20 $ + TVA (montant € non vérifiable en direct). Le payant achète des quotas, des contextes et des bases de fichiers plus grands."}),
     ({"en": "Why the date matters", "fr": "Pourquoi la date compte"},
      {"en": ("Everything here was verified on official pages on 2026-09-03 — "
              "and can change next month. A ❓ anywhere means: not verifiable "
@@ -86,7 +89,7 @@ TUNING = {
 #: La rangée de logos suit les plateformes de la section ``create`` du gel —
 #: l'ordre et la liste ne sont écrits qu'une fois (facts.json).
 def _logo_row():
-    return [(p["icon"], p.get("ratio", 1.0), p["name"])
+    return [(p["icon"], p.get("ratio", 1.0), p["name"], p.get("url", ""))
             for p in section("services")["create"]]
 
 
@@ -120,14 +123,17 @@ def build(lang: str = "en", **_):
         logos = _logo_row()
         with st_grid(cols=f"repeat({len(logos)}, 1fr)", gap="1vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            for icon, ratio, name in logos:
+            for icon, ratio, name, url in logos:
                 with g.cell():
+                    # Logo CLIQUABLE vers la page de l'outil (NG 2026-09-03),
+                    # nouvel onglet (LinkConfig external_target).
                     if icon:
                         st_image(s.project.cards.media_center,
                                  width=f"min({ratio * TUNING['logo_vh']:.1f}vh, 12vw)",
-                                 uri=icon, alt=name)
+                                 uri=icon, alt=name, link=url, hover=False)
                     else:
-                        st_write(bs.tier, name, tag=t.div)  # i18n: verbatim
+                        st_write(bs.tier, name, tag=t.div,  # i18n: verbatim
+                                 link=url, no_link_decor=True)
         st_space("v", "4vh")
         with st_zoom(TUNING["punch_zoom"]):
             st_write(bs.punch, T(_PUNCH, lang), tag=t.div)
