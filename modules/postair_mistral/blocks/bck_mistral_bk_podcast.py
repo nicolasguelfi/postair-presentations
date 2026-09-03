@@ -4,7 +4,8 @@ Annexe backup derrière le récap (plan M11, ``podcast``) : le cas NotebookLM
 des formations — un podcast de 9 minutes généré depuis des notes de cours.
 Assume le message M2 recadré : un outil Google dans une session Mistral & co.,
 disclaimer d'usage. Démo audio JAMAIS en direct (son de salle) : la capture du
-lecteur seulement (``multimodal_podcast.png``, copyright NG, copie versionnée
+lecteur seulement (``multimodal_podcast_screenshot.png`` — le suffixe fait
+reconnaître la capture par la porte DD-35, copyright NG, copie versionnée
 de l'illustration du deck genai — exception assumée du dépôt, les
 illustrations de ces présentations restent en git).
 
@@ -86,7 +87,7 @@ def build(lang: str = "en", **_):
         # d'écran n'est pas une image générée : pas de pastille DD-35.
         with st_block(s.project.containers.media_stage(TUNING["ratio"], TUNING["stage_vh"])):
             st_image(s.project.cards.media_center, width="100%",
-                     uri="images/trainings/multimodal_podcast.png",
+                     uri="images/trainings/multimodal_podcast_screenshot.png",
                      alt="NotebookLM player: a nine-minute podcast generated from course notes")
         st_space("v", "1vh")
         st_write(bs.caption, T(_CAPTION, lang), tag=t.div)

@@ -133,6 +133,7 @@ st_book(
         blocks.bck_mistral_method,         # M4  · la méthode en 5 étapes — LA slide à photographier
         blocks.bck_mistral_demo_build,     # M5  · démo A : construire l'agent (live)
         blocks.bck_mistral_demo_use,       # M6  · démo B : l'agent au travail (live)
+        blocks.bck_mistral_agent_doors,    # M6b · les trois portes — ouvrir SES agents
         blocks.bck_mistral_err_sources,    # M7  · erreur 1 — sans sources, il invente ton cours
         blocks.bck_mistral_err_delegate,   # M8  · erreur 2 — tout déléguer, tu n'apprends rien
         blocks.bck_mistral_err_trust,      # M9  · erreur 3 — croire sans vérifier (cadrage)
