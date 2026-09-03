@@ -53,10 +53,18 @@ _LEGEND_CSS = ("font-size: calc(var(--stx-scale-8, 20pt) * 0.85); color: #95A5A6
                "text-align: center;")
 
 
+#: Le 🎓 sur pastille claire (remarque NG 2026-09-03 : le chapeau noir se
+#: perd sur le thème sombre) — appliqué APRÈS échappement, sûr par
+#: construction.
+_GRAD_CHIP = ('<span style="display:inline-block;background:#F2EEE6;'
+              'border-radius:0.45em;padding:0 0.14em;line-height:1.2;">🎓</span>')
+
+
 def _span(css: str, text: str, hover: str = "") -> str:
     """Un fragment ``st_html`` : texte échappé + détail au survol (title)."""
     title = f' title="{_html.escape(hover, quote=True)}"' if hover else ""
-    return f'<div style="{css}"{title}>{_html.escape(text)}</div>'
+    body = _html.escape(text).replace("🎓", _GRAD_CHIP)
+    return f'<div style="{css}"{title}>{body}</div>'
 
 
 def st_feature_matrix(s, cols, rows, lang: str = "en", *,

@@ -109,7 +109,10 @@ def build(lang: str = "en", **_):
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for tier in _TIERS:
                 with st_zoom(TUNING["card_zoom"]), g.cell(), st_block(s.project.cards.blue):
-                    st_write(bs.tier, T(tier["head"], lang), tag=t.div)
+                    # Via la matrice partagée : le 🎓 sort sur pastille claire
+                    # (remarque NG 2026-09-03 — invisible en sombre sinon).
+                    from postair_matrix import _span
+                    st_html(_span(str(bs.tier), T(tier["head"], lang)))
                     st_space("v", "0.5vh")
                     st_write(bs.line, T(tier["line"], lang), tag=t.div)
         st_space("v", "4vh")

@@ -155,10 +155,13 @@
       }
      },
      {
-      "sym": "⚠️",
+      "sym": {
+       "en": "❌ solo · ✅ org",
+       "fr": "❌ solo · ✅ orga"
+      },
       "hover": {
-       "en": "Even Plus (~23 €/mo) and Pro do NOT create GPTs — workspace plans only",
-       "fr": "Même Plus (~23 €/mois) et Pro ne créent PAS de GPTs — plans workspace seulement"
+       "en": "Even individual Plus (~€23) and Pro do NOT create GPTs — creation is a Business/Enterprise/Edu workspace feature (official help article, high confidence)",
+       "fr": "Même Plus (~23 €) et Pro individuels NE créent PAS de GPTs — la création est une fonction des espaces Business/Enterprise/Edu (article d'aide officiel, confiance haute)"
       }
      }
     ],
@@ -805,10 +808,13 @@
       }
      },
      {
-      "sym": "✅",
+      "sym": {
+       "en": "✅ · Live",
+       "fr": "✅ · Live"
+      },
       "hover": {
-       "en": "Live option: listens and speaks at the same time — natural interruptions",
-       "fr": "Option Live : écoute et parle en même temps — interruptions naturelles"
+       "en": "The Live option listens and speaks at the same time (natural interruptions) — official article title; classic mode is turn-based",
+       "fr": "L'option Live écoute et parle en même temps (interruptions naturelles) — titre de l'article officiel ; le mode classique est en tour par tour"
       }
      },
      {
@@ -819,10 +825,13 @@
       }
      },
      {
-      "sym": "✅",
+      "sym": {
+       "en": "✅ · Live ❓",
+       "fr": "✅ · Live ❓"
+      },
       "hover": {
-       "en": "Free: ~2 h/day of classic voice; limited Live access per 24 h",
-       "fr": "Gratuit : ~2 h/jour de voix classique ; accès Live limité par 24 h"
+       "en": "Classic voice free ~2 h/day; FREE access to full-duplex Live: claimed by indexed official snippets only — page robot-blocked, unverifiable",
+       "fr": "Voix classique gratuite ~2 h/jour ; l'accès GRATUIT au Live full-duplex : extraits indexés seulement — page bloquée aux robots, invérifiable"
       }
      }
     ],

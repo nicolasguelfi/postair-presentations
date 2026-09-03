@@ -34,7 +34,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from streamtex import Style, st_block, st_html, st_image
+from streamtex import st_html
 
 #: Les extensions acceptées dans un dossier de diaporama.
 _EXTS = {".png", ".jpg", ".jpeg", ".webp"}
@@ -102,6 +102,14 @@ def st_slideshow(folder: str, dwell_s: float = 4.0, stage_vh: int = 66,
                  alt: str = "") -> None:
     """Le diaporama : les images de ``static/<folder>`` en fondu, en boucle.
 
+    UN SEUL fragment ``st_html`` porte scène + images + keyframes (leçon du
+    premier lancement NG, 2026-09-03) : composé d'éléments Streamlit séparés,
+    la scène voyait sa hauteur écrasée à 0 par les conteneurs de Streamlit et
+    ``st_image`` inlinait les fichiers trouvés en base64 (370 Ko par slide,
+    contre la règle « servis, jamais inlinés »). Ici les ``src`` sont des
+    URLs ``app/static/…`` — servies par ``enableStaticServing`` dans l'app,
+    et MATÉRIALISÉES par l'export (streamtex ≥ 0.7.29, correctif #48).
+
     :param folder: dossier relatif au ``static/`` du module, p.ex.
         ``"images/slideshows/dlh"`` — les fichiers y sont lus À CHAQUE
         affichage (déposer une image suffit).
@@ -110,56 +118,51 @@ def st_slideshow(folder: str, dwell_s: float = 4.0, stage_vh: int = 66,
     :param stage_vh: hauteur de la scène en vh — LE levier de taille (R4d).
     :param alt: préfixe du texte alternatif (défaut : le nom du dossier).
     """
+    import html as _html
+
     files = slideshow_images(folder)
     dwell = _durations(_folder_path(folder), files, dwell_s)
     ratio = _ratio(files[0])
     uid = abs(hash((folder, len(files)))) % 100_000
     alt = alt or folder.rstrip("/").split("/")[-1]
 
-    stage = Style(
-        f"position: relative; height: {stage_vh}vh; "
-        f"width: min(100%, {stage_vh * ratio:.1f}vh); overflow: hidden; "
-        f"margin-left: auto; margin-right: auto;",
-        f"postair_slideshow_stage_{uid}",
-    )
+    stage_css = (f"position: relative; height: {stage_vh}vh; "
+                 f"width: min(100%, {stage_vh * ratio:.1f}vh); "
+                 f"overflow: hidden; margin: 0 auto;")
     layer_css = ("position: absolute; inset: 0; width: 100%; height: 100%; "
                  "object-fit: contain; margin: 0;")
-
-    if len(files) == 1:
-        with st_block(stage):
-            st_image(Style(layer_css, f"postair_slideshow_{uid}_0"),
-                     uri=f"{folder}/{files[0].name}", alt=f"{alt} — 1/1")
-        return
 
     # ── Les keyframes : chaque image a sa fenêtre d'opacité sur le cycle. ──
     total = sum(dwell)
     pct = lambda t: max(0.0, min(100.0, t / total * 100))  # noqa: E731
     css: list[str] = []
     start = 0.0
-    for i, d in enumerate(dwell):
-        a, b = pct(start - _FADE_S), pct(start)
-        c, e = pct(start + d), pct(start + d + _FADE_S)
-        if i == 0:
-            # La première image est déjà visible à 0 % et revient par le
-            # fondu de fin de cycle — la boucle est sans couture.
-            frames = (f"0% {{opacity: 1;}} {c:.3f}% {{opacity: 1;}} "
-                      f"{e:.3f}% {{opacity: 0;}} "
-                      f"{pct(total - _FADE_S):.3f}% {{opacity: 0;}} "
-                      f"100% {{opacity: 1;}}")
-        else:
-            frames = (f"0% {{opacity: 0;}} {a:.3f}% {{opacity: 0;}} "
-                      f"{b:.3f}% {{opacity: 1;}} {c:.3f}% {{opacity: 1;}} "
-                      f"{min(e, 100.0):.3f}% {{opacity: 0;}} 100% {{opacity: 0;}}")
-        css.append(f"@keyframes postair-ss-{uid}-{i} {{ {frames} }}")
-        start += d
-    st_html("<style>" + "\n".join(css) + "</style>")
+    if len(files) > 1:
+        for i, d in enumerate(dwell):
+            a, b = pct(start - _FADE_S), pct(start)
+            c, e = pct(start + d), pct(start + d + _FADE_S)
+            if i == 0:
+                # La première image est déjà visible à 0 % et revient par le
+                # fondu de fin de cycle — la boucle est sans couture.
+                frames = (f"0% {{opacity: 1;}} {c:.3f}% {{opacity: 1;}} "
+                          f"{e:.3f}% {{opacity: 0;}} "
+                          f"{pct(total - _FADE_S):.3f}% {{opacity: 0;}} "
+                          f"100% {{opacity: 1;}}")
+            else:
+                frames = (f"0% {{opacity: 0;}} {a:.3f}% {{opacity: 0;}} "
+                          f"{b:.3f}% {{opacity: 1;}} {c:.3f}% {{opacity: 1;}} "
+                          f"{min(e, 100.0):.3f}% {{opacity: 0;}} 100% {{opacity: 0;}}")
+            css.append(f"@keyframes postair-ss-{uid}-{i} {{ {frames} }}")
+            start += d
 
-    with st_block(stage):
-        for i, f in enumerate(files):
-            st_image(
-                Style(layer_css +
-                      f" animation: postair-ss-{uid}-{i} {total:.2f}s "
-                      f"linear infinite;",
-                      f"postair_slideshow_{uid}_{i}"),
-                uri=f"{folder}/{f.name}",
-                alt=f"{alt} — {i + 1}/{len(files)}")
+    imgs: list[str] = []
+    for i, f in enumerate(files):
+        anim = (f" animation: postair-ss-{uid}-{i} {total:.2f}s linear infinite;"
+                if len(files) > 1 else "")
+        imgs.append(
+            f'<img src="app/static/{folder}/{f.name}" '
+            f'alt="{_html.escape(alt, quote=True)} — {i + 1}/{len(files)}" '
+            f'style="{layer_css}{anim}">')
+    style_tag = f"<style>{chr(10).join(css)}</style>" if css else ""
+    st_html(f'{style_tag}<div class="postair-slideshow" '
+            f'style="{stage_css}">{"".join(imgs)}</div>')
