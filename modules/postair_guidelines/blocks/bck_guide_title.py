@@ -77,7 +77,7 @@ _STRUCTURE = {"en": ("1 Introduction (p.3) · 2 Guidelines for learning (p.4) "
                      "et de façon responsable (p.6) · 5 Lignes directrices "
                      "pour l’enseignement (p.9) · 6 Adaptation de "
                      "l’évaluation (p.12) · 7 Ressources (p.16) · Annexe 1 "
-                     "avertissements (p.18) · Annexe 2 check-list étudiante "
+                     "mentions types (p.18) · Annexe 2 check-list étudiante "
                      "(p.19). Cette session couvre les sections "
                      "étudiantes : 2, 3, 4 et les deux annexes.")}
 _CITEKEYS = ["i2tl2026-guidelines"]
