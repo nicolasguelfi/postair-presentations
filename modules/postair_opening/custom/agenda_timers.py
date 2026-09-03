@@ -57,8 +57,8 @@ bs = BlockStyles
 #: démarrent EN SOURDINE (défaut du widget), NG arme celui qu'il veut par
 #: la cloche 🔔 à côté des boutons globaux (choix mémorisé par rack).
 TUNING = {"grid": None, "rack_vh": 62, "scale": 1.0,
-          "alarm": "bell", "alarm_volume": 0.6,
-          "alarm_duration": None}  # secondes ]0,60] — None = un motif
+          "alarm": "bell", "alarm_volume": 1.0,
+          "alarm_duration": 6}  # secondes ]0,60] — None = un motif
 
 # ── Les feuilles {en, fr} du bloc (opening est bilingue) ────────────────────
 _MARKERS = [
@@ -137,8 +137,14 @@ def _sets(lang: str):
 _KEYS = ["opening-timers-p1", "opening-timers-break", "opening-timers-p2"]
 
 
-def build_timer_slide(index: int, lang: str = "en") -> None:
-    """La slide de chronos ``index`` (0 = avant-pause, 1 = pause, 2 = après)."""
+def build_timer_slide(index: int, lang: str = "en",
+                      tuning: dict | None = None) -> None:
+    """La slide de chronos ``index`` (0 = avant-pause, 1 = pause, 2 = après).
+
+    ``tuning`` : le dict RÉSOLU par le bloc appelant (``st_tuning`` —
+    defaults/local du bloc + json optionnel). ``None`` = filet ``_FALLBACK``.
+    """
+    TUNING = tuning if tuning is not None else _FALLBACK
     steps = _sets(lang)[index]
     st_marker(T(_MARKERS[index], lang))
     with st_block(s.project.containers.page_fill_top):

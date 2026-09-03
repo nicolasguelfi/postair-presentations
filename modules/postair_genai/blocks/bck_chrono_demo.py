@@ -26,6 +26,7 @@ bell on the chain, chime/gong across the parallel row, Discuss stays muted.
 
 from custom.styles import Styles as s
 from postair_lang import T, TF
+from postair_tuning import st_tuning
 from shared_widgets import st_countdown_rack, st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
@@ -38,35 +39,29 @@ class BlockStyles:
 
 bs = BlockStyles
 
-#: Réglages datés (2026-09-01) : la liste de durées de la DÉMO — courte à
-#: dessein. Un deck consommateur portera SA liste dans SON bloc.
-TUNING = {
-    # Alarme (NG 2026-09-02) : le 3e élément OPTIONNEL d'un pas surcharge le
-    # global — un timbre (str), « off » (carte muette), ou {"alarm": …,
-    # "volume": …}. La démo montre les trois régimes : héritage · mutisme ·
-    # surcharge ; cloche sur la chaîne, carillon sur la parallèle, gong sur
-    # Vote. Défaut du widget = silence. Documentation projetée : l'entrée
-    # « Alarm » de _TOOLTIP (libellé validé NG, planche auditj6 2026-09-02).
-    "steps": [({"en": "Read", "fr": "Lire"}, 1),
-              ({"en": "Discuss", "fr": "Discuter"}, 0.5, "off"),
-              ({"en": "Vote", "fr": "Voter"}, 1,
-               {"alarm": "gong", "volume": 1.0, "duration": 6})],
+#: La liste de durées de la DÉMO — une DONNÉE du bloc (courte à dessein,
+#: sheets + surcharges par pas : héritage · mutisme « off » · gong 6 s plein
+#: volume sur Vote). Un deck consommateur portera SA liste dans SON bloc.
+_STEPS = [({"en": "Read", "fr": "Lire"}, 1),
+          ({"en": "Discuss", "fr": "Discuter"}, 0.5, "off"),
+          ({"en": "Vote", "fr": "Voter"}, 1,
+           {"alarm": "gong", "volume": 1.0, "duration": 6})]
+
+#: Les RÉGLAGES (chparam2, NG 2026-09-03) : DEFAULTS = le schéma sûr ; LOCAL
+#: = la main de NG, pris au prochain rerun (les bck_* se rechargent à
+#: chaud) ; étage json optionnel data/chrono-demo.json, relu à chaque
+#: affichage. alarm_duration 6 s = retouche NG du jour, conservée. grid : le
+#: temps 1 reste compact (3 → 2×2 avec un trou), le temps 2 force (1, 3).
+DEFAULTS = {
     "alarm_chain": "bell",
     "alarm_parallel": "chime",
-    "alarm_volume": 0.6,
-    #: Durée d'alarme GLOBALE (NG 2026-09-03) : None = un seul motif du
-    #: timbre ; en secondes ]0, 60], le motif se répète jusqu'à la durée.
-    #: Vote la surcharge à 6 s (le gong insiste) — la démo montre le levier.
-    "alarm_duration": None,
-    # Le temps 1 laisse la grille COMPACTE par défaut (3 → 2×2 avec un trou,
-    # spécification NG 2026-09-02 : remplissage gauche→droite, haut→bas) ;
-    # le temps 2 force la rangée (1, 3) — la démo montre les deux régimes.
-    # Trio de leviers (chronoh leviers=p1) : grid · rack_vh (place verticale
-    # totale, % de fenêtre) · scale (zoom fin du contenu).
+    "alarm_volume": 0.6,   # [0, 1] perceptif
+    "alarm_duration": 6,   # secondes ]0, 60] — None = un motif (main NG)
     "grid_parallel": (1, 3),
     "rack_vh": 62,
     "scale": 1.0,
 }
+LOCAL = {}
 
 _MARKER = {"en": "Chrono (demo)", "fr": "Chrono (démo)"}
 _TITLE = {"en": ("Countdown rack — ", (s.project.titles.keyword, "chain")), "fr": ("Comptes à rebours — ", (s.project.titles.keyword, "chaîne"))}
@@ -135,7 +130,8 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     # La résolution i18n ne touche que l'étiquette : le 3e élément éventuel
     # d'un pas est de la CONFIG d'alarme, pas du texte projeté — il traverse.
-    steps = [(T(step[0], lang), *step[1:]) for step in TUNING["steps"]]
+    TUNING = st_tuning(DEFAULTS, local=LOCAL, json_path="data/chrono-demo.json")
+    steps = [(T(step[0], lang), *step[1:]) for step in _STEPS]
     # ── Temps 1 : le mode chaîne ────────────────────────────────────────────
     # `key` unique par rangée — l'export inline les deux temps dans le même
     # document, deux rangées sans clé partageraient leur bus.
