@@ -48,10 +48,14 @@ _ITEMS = [
      "fr": "L’enquête live d’aujourd’hui → un outil qui continue d’évoluer"},
     {"en": "Volunteers welcome · tests, feedback, ideas",
      "fr": "Volontaires bienvenus · essais, retours, idées"},
-    {"en": "Scan → your email is already written · one tap to send",
-     "fr": "Scannez → votre e-mail est déjà écrit · un geste pour l’envoyer"},
+    {"en": "Historical figures — verification and enquiries",
+     "fr": "Personnages historiques — vérification et enquêtes"},
 ]
 _MAIL_ADDR = "contact@sumvadis.ai"  # i18n: verbatim
+#: Une couleur du DS par item (retouche NG 2026-09-04) — le trio de la
+#: journée sur fond navy : teal · ambre · corail, dans l'ordre des lignes.
+_ITEM_COLORS = [s.project.colors.keyword, s.project.colors.amber,
+                s.project.colors.coral]
 #: Le payload des QR — DOCUMENTATION du contenu gelé dans les PNG versionnés
 #: (qr_volunteer_en.png / qr_volunteer_fr.png). Regénération :
 #:   mailto:contact@sumvadis.ai?subject=Volunteer%20Declaration&body=<corps>
@@ -81,8 +85,8 @@ _TIP_MAIL = ({"en": "The QR", "fr": "Le QR"},
                      "« Volunteer Declaration » · un court texte standard). "
                      "Rien ne part tant que vous n’appuyez pas sur "
                      "Envoyer.")})
-_HINT = {"en": "your email opens pre-filled — just press Send",
-         "fr": "votre e-mail s’ouvre pré-rempli — appuyez sur Envoyer"}
+_HINT = {"en": "Scan & Send",
+         "fr": "Scannez & Envoyez"}
 
 
 def build(lang: str = "en", **_):
@@ -94,12 +98,13 @@ def build(lang: str = "en", **_):
         with st_grid(cols="10% 82% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 unio = mascot("Unio")
-                st_image(s.project.cards.media_center, width="6vw",
+                with st_zoom(150):
+                    st_image(s.project.cards.media_center, width="10vw",
                          uri=unio["image"],
-                         alt="Unio, the altruism mascot, welcoming volunteers",
-                         overlay=dd35_overlay())
+                         alt="Unio, the altruism mascot, welcoming volunteers")
             with g.cell():
-                st_write(bs.title, *TF(_TITLE, lang),
+                with st_zoom(160):
+                    st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
                 st_info_tooltip(
@@ -109,20 +114,23 @@ def build(lang: str = "en", **_):
                         (T(_TIP_MAIL[0], lang), T(_TIP_MAIL[1], lang)),
                     ],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "1vh")
         # Même gabarit que la slide du hub : le QR géant à gauche, les
         # lignes à droite ; sous 520 px le QR passe au-dessus.
-        with st_grid(cols="55% 45%", breakpoint="520px",
+        with st_grid(cols="45% 55%", breakpoint="520px",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 # QR versionné, UN PAR LANGUE (le corps du mail est localisé).
-                st_image(s.project.cards.media_center, width="18vw",
+                st_image(s.project.cards.media_center, width="25vw",
                          uri=f"images/qr/qr_volunteer_{lang}.png",
                          alt="QR code opening a pre-filled volunteer email to "
                              "contact@sumvadis.ai (subject: Volunteer Declaration)")
-                st_write(bs.mail, _MAIL_ADDR, tag=t.div)
-                st_write(bs.hint, T(_HINT, lang), tag=t.div)
+                #st_write(bs.mail, _MAIL_ADDR, tag=t.div)
+                with st_zoom(260):
+                    st_write(bs.hint, T(_HINT, lang), tag=t.div)
             with g.cell():
-                for item in _ITEMS:
-                    st_write(bs.item, "▸ ", T(item, lang), tag=t.div)
+                for item, color in zip(_ITEMS, _ITEM_COLORS):
+                    with st_zoom(120):
+                        st_write(bs.item + color, "▸ ", T(item, lang),
+                                 tag=t.div)
                     st_space("v", "1vh")
