@@ -31,10 +31,10 @@ _SUBTITLE = {"en": "take the method home — and keep learning", "fr": "emportez
 def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
-        st_space("v", "28vh")
-        with st_zoom(160):
+        st_space("v", "20vh")
+        with st_zoom(250):
             st_write(bs.title, *TF(_TITLE, lang),
                      tag=t.div, toc_lvl="1", label=T(_MARKER, lang))
         st_space("v", "6vh")
-        with st_zoom(110):
+        with st_zoom(160):
             st_write(bs.subtitle, T(_SUBTITLE, lang), tag=t.div)

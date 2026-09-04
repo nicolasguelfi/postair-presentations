@@ -107,7 +107,7 @@ def build(lang: str = "en", **_):
         st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : le campus carré à gauche, les
         # quatre acquis EMPILÉS à droite — la 2e rangée était coupée au pli.
-        with hero_split(s, image=lambda: hero_image(
+        with hero_split(s, ratio=40, image=lambda: hero_image(
                 "guide_loop", _LOOP_PROMPT, "images/guide_loop_fallback.svg",
                 alt_ready=("Papercut campus at midday under a radiant amber sun, "
                            "silhouettes walking out carrying lanterns"),
@@ -116,8 +116,9 @@ def build(lang: str = "en", **_):
                 variant="sq")):
             for step in _STEPS:
                 with st_block(s.project.cards.blue):
-                    st_write(bs.label, step["icon"], "  ", T(step["label"], lang),
+                    with st_zoom(150):
+                        st_write(bs.label, step["icon"], "  ", T(step["label"], lang),
                              tag=t.div)
             st_space("v", "0.5vh")
             st_write(bs.big, T(_BIG, lang),
-                     citation(*_CITEKEYS), tag=t.div)
+                     citation(*_CITEKEYS,inline=True), tag=t.div)

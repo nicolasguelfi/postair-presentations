@@ -66,7 +66,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(180), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -77,9 +77,9 @@ def build(lang: str = "en", **_):
                         (T(_TIP_MASCOTS[0], lang), T(_TIP_MASCOTS[1], lang)),
                     ],
                 )
-        st_space("v", s.project.spacing.title_gap)
-        st_write(bs.confetti, "🎉 🎊 🎉", tag=t.div)
-        st_space("v", "0.5vh")
+        st_space("v", "4vh")
+        #st_write(bs.confetti, "🎉 🎊 🎉", tag=t.div)
+        #st_space("v", "0.5vh")
         # La photo de famille : 9 axes × 2 pôles (bestiaire) + les 2 modérateurs.
         family = axes("animals")
         crew = [family[n][side]for n in sorted(family) for side in ("accel", "decel")]
@@ -88,11 +88,12 @@ def build(lang: str = "en", **_):
         with st_grid(cols=10, gap="0.5vw",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for member in crew:
-                with g.cell():
+                with st_zoom(110), g.cell():
                     st_image(s.project.cards.media_center, width="6vw",
                              uri=member["image"],
                              alt=f"Mascot {member['mascot']}",
                              overlay=dd35_overlay())
                     st_write(bs.name, member["mascot"], tag=t.div)
-        st_space("v", "2vh")
-        st_write(bs.big, T(_BIG, lang), tag=t.div)
+        st_space("v", "1vh")
+        with st_zoom(160):
+            st_write(bs.big, T(_BIG, lang), tag=t.div)

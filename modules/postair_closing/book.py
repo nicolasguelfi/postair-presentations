@@ -121,8 +121,9 @@ st_book(
         blocks.bck_closing_title,    # C1 · Closing — take the method home
         blocks.bck_close_loop,       # C2 · the four things they now have
         blocks.bck_closing_dlh,      # C3 · Digital Learning Hub (diaporama)
-        blocks.bck_close_next,       # C4 · the QR to the hub, what stays online
-        blocks.bck_close_thanks,     # C5 · mascot family photo, applause
+        #blocks.bck_close_next,       # C4 · the QR to the hub, what stays online
+        blocks.bck_close_volunteer,  # C5 · call for volunteers — QR mailto pré-rempli (NG 2026-09-04)
+        blocks.bck_close_thanks,     # C6 · mascot family photo, applause
         blocks.bck_next_module,      # chaîne du jour — boucle vers le suivant
     ],
     toc_config=toc,

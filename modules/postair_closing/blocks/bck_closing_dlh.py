@@ -49,13 +49,13 @@ TUNING = {
 def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
-        with st_zoom(150):
+        with st_zoom(120):
             st_write(bs.title, *TF(_TITLE, lang),
                      tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
-        st_space("v", "2vh")
-        with st_zoom(110):
+        with st_zoom(100):
             st_write(bs.subtitle, T(_SUBTITLE, lang), tag=t.div)
-        st_space("v", "4vh")
-        st_slideshow("images/slideshows/dlh",
+        st_space("v", "1vh")
+        with st_zoom(120):
+            st_slideshow("images/slideshows/dlh",
                      dwell_s=TUNING["dwell_s"], stage_vh=TUNING["stage_vh"],
                      alt="Digital Learning Hub website")
