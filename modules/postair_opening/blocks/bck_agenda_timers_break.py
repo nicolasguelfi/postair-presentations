@@ -19,7 +19,7 @@ from postair_tuning import st_tuning
 
 #: Le SCHÉMA et les valeurs sûres de CETTE slide (clés et types attendus).
 DEFAULTS = {
-    "grid": None,            # None = grille compacte ; (rows, cols) sinon
+    "grid": (1, 3),          # horloge en tête (NG 2026-09-04) — rangées × colonnes
     "rack_vh": 62,           # place verticale totale, % de fenêtre
     "scale": 1.0,            # zoom fin du contenu des cellules
     "alarm": "bell",         # bell · beep · chime · gong · "off"

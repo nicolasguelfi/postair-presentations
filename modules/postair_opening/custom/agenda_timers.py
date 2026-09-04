@@ -78,6 +78,11 @@ _TITLES = [
 #: quinze minutes de pause, cinq de re-accueil).
 _BREAK_LABELS = [{"en": "Break", "fr": "Pause"},
                  {"en": "Re-welcome", "fr": "Re-accueil"}]
+#: L'horloge murale en TÊTE de chaque rangée (NG 2026-09-04, chronotypes) :
+#: type "clock" sans cible — carte LIBRE, toujours vivante, jamais une porte
+#: de la chaîne ; la ville (Luxembourg) s'affiche d'elle-même dans le pied.
+_CLOCK_LABEL = {"en": "Now", "fr": "Maintenant"}
+_CLOCK_STEP = {"type": "clock", "tz": "Europe/Luxembourg"}
 
 _TIP_TITLE = {"en": "How these timers work", "fr": "Comment marchent ces chronos"}
 _TIP = [
@@ -97,6 +102,11 @@ _TIP = [
              "three slides follow."),
       "fr": ("Séances et durées viennent de l'agenda (postair_event.AGENDA) — "
              "changez le programme là-bas et ces trois slides suivent.")}),
+    ({"en": "The clock", "fr": "L'horloge"},
+     {"en": ("The first card is the wall clock (Europe/Luxembourg) — always "
+             "running, never a step of the chain."),
+      "fr": ("La première carte est l'horloge murale (Europe/Luxembourg) — "
+             "toujours vivante, jamais une étape de la chaîne.")}),
     ({"en": "Local only", "fr": "Local seulement"},
      {"en": ("Everything runs in THIS browser: no server state, no effect on "
              "any other computer showing the deck."),
@@ -127,10 +137,14 @@ def _sets(lang: str):
         raise ValueError(
             f"l'entrée pause {brk[1]!r} porte {len(break_minutes)} durée(s), "
             f"{len(_BREAK_LABELS)} étiquette(s) déclarées — les accorder ici")
+    clock = (T(_CLOCK_LABEL, lang), None, dict(_CLOCK_STEP))
     return [
-        [(session, first_minutes(duration)) for session, duration, _k in before],
-        [(T(label, lang), m) for label, m in zip(_BREAK_LABELS, break_minutes)],
-        [(session, first_minutes(duration)) for session, duration, _k in after],
+        [clock] + [(session, first_minutes(duration))
+                   for session, duration, _k in before],
+        [clock] + [(T(label, lang), m)
+                   for label, m in zip(_BREAK_LABELS, break_minutes)],
+        [clock] + [(session, first_minutes(duration))
+                   for session, duration, _k in after],
     ]
 
 
