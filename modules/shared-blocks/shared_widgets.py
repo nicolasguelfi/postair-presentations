@@ -252,6 +252,22 @@ __RELAY__
   root.querySelector('.cdr-zero').addEventListener('click', reset);
 """
 
+_FIT_JS = """
+  var FITF = __FITF__;  // borne de largeur : px de police par px d'iframe
+  function fitDigits() {
+    try {
+      var H = root.clientHeight; if (!H) return;
+      var extra = 0;
+      Array.prototype.forEach.call(root.children, function (ch) {
+        if (ch !== digits) extra += ch.offsetHeight;
+      });
+      var avail = Math.max(30, (H - extra) * 0.92);
+      var bound = FITF * root.clientWidth;
+      digits.style.fontSize = Math.min(avail, bound) + 'px';
+    } catch (e) {}
+  }
+"""
+
 _CLOCK_JS = """
   var armed = false, fired = false;
   var FMT = null;
@@ -297,7 +313,7 @@ __RELAY__
 
 
 def _emit_stopwatch_card(s, *, dom, i, target, label, scale, lsc, dw,
-                         ends_scale, dig_vh, height, bus_js,
+                         ends_scale, dig_vh, fit_js, height, bus_js,
                          card_alarm_var, card_arm, card_bell, card_bell_js,
                          ring, relay_js, since_label, fixed_px, dial_vh):
     """La carte CROISSANT — mêmes cadran/boutons que le rebours, sens inversé."""
@@ -356,6 +372,10 @@ def _emit_stopwatch_card(s, *, dom, i, target, label, scale, lsc, dw,
     }} catch (e) {{}}
   }}
   if (!FIXED) {{ fit(); try {{ P.addEventListener('resize', fit); }} catch (e) {{}} }}
+{fit_js}
+  fitDigits();
+  try {{ P.addEventListener('resize', fitDigits); }} catch (e) {{}}
+  setTimeout(fitDigits, 300);
 {body}{card_bell_js}
   paint();
 }})();
@@ -364,7 +384,7 @@ def _emit_stopwatch_card(s, *, dom, i, target, label, scale, lsc, dw,
 
 
 def _emit_clock_card(s, *, dom, i, ttime, tz, city, label, scale, lsc, dw,
-                     ends_scale, dig_vh, height,
+                     ends_scale, dig_vh, fit_js, height,
                      bus_js, card_alarm_var, card_arm, card_bell,
                      card_bell_js, ring, relay_js, fixed_px, dial_vh):
     """La carte HORLOGE — l'heure du fuseau, toujours vivante ; heure cible
@@ -416,6 +436,10 @@ def _emit_clock_card(s, *, dom, i, ttime, tz, city, label, scale, lsc, dw,
     }} catch (e) {{}}
   }}
   if (!FIXED) {{ fit(); try {{ P.addEventListener('resize', fit); }} catch (e) {{}} }}
+{fit_js}
+  fitDigits();
+  try {{ P.addEventListener('resize', fitDigits); }} catch (e) {{}}
+  setTimeout(fitDigits, 300);
 {body}{card_bell_js}
 }})();
 </script>
@@ -1070,11 +1094,8 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
             lscale_eff = _lsc if _lsc is not None else label_scale
             lsc = lscale_eff * scale
             dw = (_dw if _dw is not None else digits_width)
-            lab_lines = 2 if len(str(label)) > max(6, 24 / lscale_eff) else 1
-            dig_vh = max(20.0, 92 - 10 * lscale_eff * lab_lines
-                         - 8 * ends_scale - 14)
-            dig_vh_clock = max(20.0, 92 - 10 * lscale_eff * lab_lines
-                               - 8 * ends_scale)
+            dig_vh = max(20.0, 92 - 10 * lscale_eff - 8 * ends_scale - 14)
+            dig_vh_clock = max(20.0, 92 - 10 * lscale_eff - 8 * ends_scale)
             # Le spec de CETTE carte descend en JSON (garde d'injection) —
             # null pour une carte muette : ring(null) se tait.
             card_alarm_var = (f"\n  var ALARM = {json.dumps(norm[i][-1])};"
@@ -1112,12 +1133,15 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
             else:
                 card_bell = ""
                 card_bell_js = ""
+            fit_js = _FIT_JS.replace("__FITF__",
+                                     f"{0.376 * dw * scale / 100:.5f}")
             with g.cell(), st_block(s.project.cards.blue):
                 if kind == "stopwatch":
                     _emit_stopwatch_card(
                         s, dom=dom, i=i, target=secs[i], label=label,
                         scale=scale, lsc=lsc, dw=dw, ends_scale=ends_scale,
-                        dig_vh=dig_vh, height=height, bus_js=bus_js,
+                        dig_vh=dig_vh, fit_js=fit_js, height=height,
+                        bus_js=bus_js,
                         card_alarm_var=card_alarm_var, card_arm=card_arm,
                         card_bell=card_bell, card_bell_js=card_bell_js,
                         ring=bool(rack_alarmed and norm[i][-1]),
@@ -1129,6 +1153,8 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                         s, dom=dom, i=i, ttime=ttime, tz=tz, city=city,
                         label=label, scale=scale, lsc=lsc, dw=dw,
                         ends_scale=ends_scale, dig_vh=dig_vh_clock,
+                        fit_js=_FIT_JS.replace(
+                            "__FITF__", f"{0.235 * dw * scale / 100:.5f}"),
                         height=height,
                         bus_js=bus_js, card_alarm_var=card_alarm_var,
                         card_arm=card_arm, card_bell=card_bell,
@@ -1244,6 +1270,10 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     }} catch (e) {{}}
   }}
   if (!FIXED) {{ fit(); try {{ P.addEventListener('resize', fit); }} catch (e) {{}} }}
+{fit_js}
+  fitDigits();
+  try {{ P.addEventListener('resize', fitDigits); }} catch (e) {{}}
+  setTimeout(fitDigits, 300);
   function fmt(sec) {{
     var m = Math.floor(sec / 60), s2 = Math.floor(sec) % 60;
     return String(m).padStart(2, '0') + ':' + String(s2).padStart(2, '0');
