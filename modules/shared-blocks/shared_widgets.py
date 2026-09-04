@@ -236,13 +236,13 @@ __RELAY__
     elapsed = Math.max(0, (Date.now() - startAt) / 1000);
     startAt = null;
     if (timer) { clearInterval(timer); timer = null; }
-    at.innerHTML = '&nbsp;';
+    at.textContent = '';
     paint();
   }
   function reset() {
     if (timer) { clearInterval(timer); timer = null; }
     elapsed = 0; startAt = null; fired = false;
-    at.innerHTML = '&nbsp;';
+    at.textContent = '';
     paint();
   }
   rack.cards[IDX] = {start: start, pause: pause, reset: reset,
@@ -254,18 +254,42 @@ __RELAY__
 
 _FIT_JS = """
   var FITF = __FITF__;  // borne de largeur : px de police par px d'iframe
+  // Ajustement ROBUSTE (NG 2026-09-04) : point fixe (3 passes max — la
+  // taille posée peut redistribuer le layout), re-mesure sur TOUT
+  // changement de géométrie (ResizeObserver sur le cadran et ses lignes),
+  // après le chargement des polices (le wrap des étiquettes bouge alors),
+  // et quelques rappels temporisés en ceinture.
   function fitDigits() {
     try {
       var H = root.clientHeight; if (!H) return;
-      var extra = 0;
-      Array.prototype.forEach.call(root.children, function (ch) {
-        if (ch !== digits) extra += ch.offsetHeight;
-      });
-      var avail = Math.max(30, (H - extra) * 0.92);
-      var bound = FITF * root.clientWidth;
-      digits.style.fontSize = Math.min(avail, bound) + 'px';
+      for (var it = 0; it < 3; it++) {
+        var extra = 0;
+        Array.prototype.forEach.call(root.children, function (ch) {
+          if (ch !== digits) extra += ch.offsetHeight;
+        });
+        var avail = Math.max(30, (H - extra) * 0.94);
+        var bound = FITF * root.clientWidth;
+        var next = Math.min(avail, bound);
+        var cur = parseFloat(digits.style.fontSize) || 0;
+        digits.style.fontSize = next + 'px';
+        if (Math.abs(next - cur) < 1) break;
+      }
     } catch (e) {}
   }
+  try {
+    if (window.ResizeObserver) {
+      var __ro = new ResizeObserver(function () { fitDigits(); });
+      __ro.observe(root);
+      Array.prototype.forEach.call(root.children, function (ch) {
+        if (ch !== digits) __ro.observe(ch);
+      });
+    }
+  } catch (e) {}
+  try {
+    if (document.fonts && document.fonts.ready)
+      document.fonts.ready.then(function () { fitDigits(); });
+  } catch (e) {}
+  [100, 400, 1000, 2000].forEach(function (d) { setTimeout(fitDigits, d); });
 """
 
 _CLOCK_JS = """
@@ -336,7 +360,7 @@ def _emit_stopwatch_card(s, *, dom, i, target, label, scale, lsc, dw,
        font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{MUTED};
        font-variant-numeric:tabular-nums;white-space:nowrap;"></div>
   <div class="cdr-at" style="font-size:min({4.5 * ends_scale * scale:.2f}vw, {8 * ends_scale * scale:.2f}vh);
-       color:{MUTED};white-space:nowrap;">&nbsp;</div>
+       color:{MUTED};white-space:nowrap;"></div>
   <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">
     <button class="cdr-go" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{AMBER};background:transparent;border:min(0.35vw, 0.8vh) solid {AMBER};
@@ -410,7 +434,7 @@ def _emit_clock_card(s, *, dom, i, ttime, tz, city, label, scale, lsc, dw,
        font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{AMBER};
        font-variant-numeric:tabular-nums;white-space:nowrap;"></div>
   <div class="cdr-at" style="font-size:min({4.5 * ends_scale * scale:.2f}vw, {8 * ends_scale * scale:.2f}vh);
-       color:{MUTED};white-space:nowrap;">&nbsp;</div>{foot_row}
+       color:{MUTED};white-space:nowrap;"></div>{foot_row}
 </div>
 <script>
 (function () {{
@@ -1183,7 +1207,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
        font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{MUTED};
        font-variant-numeric:tabular-nums;white-space:nowrap;"></div>
   <div class="cdr-at" style="font-size:min({4.5 * ends_scale * scale:.2f}vw, {8 * ends_scale * scale:.2f}vh);
-       color:{MUTED};white-space:nowrap;">&nbsp;</div>
+       color:{MUTED};white-space:nowrap;"></div>
   <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">
     <button class="cdr-go" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{AMBER};background:transparent;border:min(0.35vw, 0.8vh) solid {AMBER};
@@ -1289,7 +1313,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
       // ligne maximisée des deux côtés, capture NG).
       digits.innerHTML = '<span style="color:{CRITICAL};opacity:0.45;">' +
         fmt(TOTAL) + '</span>';
-      at.innerHTML = '&nbsp;';
+      at.textContent = '';
       return;
     }}
     digits.textContent = fmt(Math.ceil(remaining));
@@ -1328,13 +1352,13 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     remaining = Math.max(0, (endAt - Date.now()) / 1000);
     endAt = null;
     if (timer) {{ clearInterval(timer); timer = null; }}
-    at.innerHTML = '&nbsp;';
+    at.textContent = '';
     {ring_pause}paint();
   }}
   function reset() {{
     if (timer) {{ clearInterval(timer); timer = null; }}
     remaining = TOTAL; endAt = null;
-    at.innerHTML = '&nbsp;';
+    at.textContent = '';
     paint();
   }}
   rack.cards[IDX] = {{start: start, pause: pause, reset: reset, isDone: isDone{reg_free}}};
