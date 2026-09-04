@@ -144,10 +144,279 @@ def st_countdown(minutes: int, label: str = "Back in", height: int = 340,
 _ALARM_SOUNDS = ("bell", "beep", "chime", "gong")
 
 
+#: ── Gabarits des TYPES non-rebours (NG 2026-09-04, planche chronotypes) ────
+#: Émis UNIQUEMENT dans un rack typé — le gabarit rebours d'origine reste
+#: byte-identique pour les racks 100 % rebours (contrat baseline). JS en
+#: chaînes ORDINAIRES : accolades réelles, les valeurs descendent par
+#: json.dumps/format sur des jetons __X__ (garde d'injection).
+
+_STOPWATCH_JS = """
+  var elapsed = 0, startAt = null, timer = null, fired = false;
+  var editing = false;
+  function parseTime(v) {
+    var pm = String(v).trim().match(/^(\\d{1,3})(?::([0-5]?\\d))?$/);
+    if (!pm) return null;
+    var ps = parseInt(pm[1], 10) * 60 + (pm[2] ? parseInt(pm[2], 10) : 0);
+    return ps >= 0 ? ps : null;
+  }
+  digits.style.cursor = 'pointer';
+  digits.addEventListener('dblclick', function () {
+    if (editing) return;
+    var wasRunning = startAt !== null;
+    if (wasRunning) pause();
+    editing = true;
+    var cur = fmt(Math.floor(elapsed));
+    digits.innerHTML = '<input class="cdr-edit" value="' + cur + '" ' +
+      'style="font-size:0.5em;width:7ch;max-width:96%;box-sizing:border-box;' +
+      'text-align:center;background:transparent;color:inherit;border:none;' +
+      'border-bottom:0.06em solid currentColor;outline:none;padding:0;' +
+      'font-weight:inherit;font-family:inherit;letter-spacing:normal;">';
+    var inp = digits.querySelector('.cdr-edit');
+    inp.focus(); inp.select();
+    function done(apply) {
+      if (!editing) return;
+      editing = false;
+      var ns = apply ? parseTime(inp.value) : null;
+      if (ns !== null) { elapsed = ns; fired = TARGET > 0 && elapsed >= TARGET; }
+      paint();
+      if (wasRunning) start();
+    }
+    inp.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter') done(true);
+      else if (ev.key === 'Escape') done(false);
+      ev.stopPropagation();
+    });
+    inp.addEventListener('blur', function () { done(true); });
+  });
+  function fmt(sec) {
+    var m = Math.floor(sec / 60), s2 = Math.floor(sec) % 60;
+    return String(m).padStart(2, '0') + ':' + String(s2).padStart(2, '0');
+  }
+  function isDone() { return TARGET > 0 ? fired : false; }
+  function paint() {
+    if (editing) return;
+    digits.textContent = fmt(Math.floor(elapsed));
+    if (TARGET > 0 && fired) {
+      digits.style.color = '__CRITICAL__'; digits.style.opacity = '0.45';
+    } else {
+      digits.style.opacity = '1';
+      digits.style.color = (startAt !== null) ? '__AMBER__' : '__MUTED__';
+    }
+  }
+  function tick() {
+    if (startAt === null) return;
+    elapsed = (Date.now() - startAt) / 1000;
+    if (TARGET > 0 && !fired && elapsed >= TARGET) {
+      // Cible atteinte : couleur accomplie + timbre + relais — et le
+      // croissant CONTINUE de monter (le surtemps se lit — Q3b).
+      fired = true;
+      paint();__RING__
+__RELAY__
+      return;
+    }
+    paint();
+  }
+  function start() {
+    if (startAt !== null) return;
+    if (rack.mode === 'chain' && !FREE) {
+      Object.keys(rack.cards).forEach(function (j) {
+        if (Number(j) !== IDX && !rack.cards[j].free) rack.cards[j].pause();
+      });
+    }
+    startAt = Date.now() - elapsed * 1000;
+    var since = new Date(startAt);
+    at.textContent = __SINCE__ + ' ' +
+      String(since.getHours()).padStart(2, '0') + ':' +
+      String(since.getMinutes()).padStart(2, '0');
+    timer = setInterval(tick, 250);
+    paint();
+  }
+  function pause() {
+    if (startAt === null) return;
+    elapsed = Math.max(0, (Date.now() - startAt) / 1000);
+    startAt = null;
+    if (timer) { clearInterval(timer); timer = null; }
+    at.innerHTML = '&nbsp;';
+    paint();
+  }
+  function reset() {
+    if (timer) { clearInterval(timer); timer = null; }
+    elapsed = 0; startAt = null; fired = false;
+    at.innerHTML = '&nbsp;';
+    paint();
+  }
+  rack.cards[IDX] = {start: start, pause: pause, reset: reset,
+                     isDone: isDone, free: FREE ? true : false};
+  root.querySelector('.cdr-go').addEventListener('click', start);
+  root.querySelector('.cdr-halt').addEventListener('click', pause);
+  root.querySelector('.cdr-zero').addEventListener('click', reset);
+"""
+
+_CLOCK_JS = """
+  var armed = false, fired = false;
+  var FMT = null;
+  try {
+    FMT = new Intl.DateTimeFormat('en-GB', {timeZone: TZ, hour12: false,
+      hour: '2-digit', minute: '2-digit', second: '2-digit'});
+  } catch (e) {}
+  function nowStr() {
+    try { if (FMT) return FMT.format(new Date()); } catch (e) {}
+    return new Date().toTimeString().slice(0, 8);
+  }
+  function isDone() { return FREE ? false : fired; }
+  function paint() {
+    digits.textContent = nowStr();
+    if (!FREE && fired) {
+      digits.style.color = '__CRITICAL__'; digits.style.opacity = '0.45';
+    } else {
+      digits.style.opacity = '1'; digits.style.color = '__AMBER__';
+    }
+  }
+  function tick() {
+    paint();
+    if (!FREE && armed && !fired) {
+      // Réveil (Q3/Q3c) : comparaison « HH:MM » dans LE fuseau — une heure
+      // déjà passée à l'activation déclenche immédiatement, la séance ne se
+      // bloque jamais.
+      if (nowStr().slice(0, 5) >= TTIME) {
+        fired = true;
+        paint();__RING__
+__RELAY__
+      }
+    }
+  }
+  function start() { if (!FREE && !armed) { armed = true; tick(); } }
+  function pause() {}
+  function reset() { armed = false; fired = false; paint(); }
+  rack.cards[IDX] = {start: start, pause: pause, reset: reset,
+                     isDone: isDone, free: FREE ? true : false};
+  setInterval(tick, 250);
+  at.textContent = CITY + (TTIME ? ' \u00b7 \u2192 ' + TTIME : '');
+  paint();
+"""
+
+
+def _emit_stopwatch_card(s, *, dom, i, target, label, scale, height, bus_js,
+                         card_alarm_var, card_arm, card_bell, card_bell_js,
+                         ring, relay_js, since_label, fixed_px, dial_vh):
+    """La carte CROISSANT — mêmes cadran/boutons que le rebours, sens inversé."""
+    body = (_STOPWATCH_JS
+            .replace("__CRITICAL__", CRITICAL)
+            .replace("__AMBER__", AMBER)
+            .replace("__MUTED__", MUTED)
+            .replace("__SINCE__", json.dumps(since_label))
+            .replace("__RING__", "\n      ring(ALARM, IDX);" if ring else "")
+            .replace("__RELAY__", relay_js))
+    st_html(f"""
+<div id="{dom}-c{i}" style="display:flex;flex-direction:column;align-items:center;
+            justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
+            overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
+  <div class="cdr-label" style="font-size:min({8 * scale:.2f}vw, {10 * scale:.2f}vh);
+       font-weight:700;line-height:1.1;color:{TEXT};text-align:center;white-space:nowrap;
+       max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
+  <div class="cdr-digits" style="font-size:min({32 * scale:.2f}vw, {66 * scale:.2f}vh);
+       font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{MUTED};
+       white-space:nowrap;"></div>
+  <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">
+    <button class="cdr-go" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
+            color:{AMBER};background:transparent;border:min(0.35vw, 0.8vh) solid {AMBER};
+            border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">▶</button>
+    <button class="cdr-halt" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
+            color:{PRIMARY};background:transparent;border:min(0.35vw, 0.8vh) solid {PRIMARY};
+            border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">⏸</button>
+    <button class="cdr-zero" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
+            color:{MUTED};background:transparent;border:min(0.35vw, 0.8vh) solid {MUTED};
+            border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">↺</button>{card_bell}
+    <span class="cdr-at" style="font-size:min({4.5 * scale:.2f}vw, {8 * scale:.2f}vh);
+          color:{MUTED};white-space:nowrap;">&nbsp;</span>
+  </div>
+</div>
+<script>
+(function () {{
+{bus_js}
+  var IDX = {i}, TARGET = {target}, FREE = {1 if target == 0 else 0};{card_alarm_var}
+  var root = document.getElementById('{dom}-c{i}');{card_arm}
+  var digits = root.querySelector('.cdr-digits');
+  var at = root.querySelector('.cdr-at');
+  if (window.frameElement) {{
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }}
+  var FIXED = {1 if fixed_px else 0}, DIAL_VH = {dial_vh:.2f};
+  function fit() {{
+    try {{
+      var fe = window.frameElement;
+      if (fe) {{ fe.style.height = Math.round(P.innerHeight * DIAL_VH / 100) + 'px'; }}
+      else {{ root.style.height = DIAL_VH + 'vh'; }}
+    }} catch (e) {{}}
+  }}
+  if (!FIXED) {{ fit(); try {{ P.addEventListener('resize', fit); }} catch (e) {{}} }}
+{body}{card_bell_js}
+  paint();
+}})();
+</script>
+""", height=height)
+
+
+def _emit_clock_card(s, *, dom, i, ttime, tz, city, label, scale, height,
+                     bus_js, card_alarm_var, card_arm, card_bell,
+                     card_bell_js, ring, relay_js, fixed_px, dial_vh):
+    """La carte HORLOGE — l'heure du fuseau, toujours vivante ; heure cible
+    optionnelle = un réveil (porte de chaîne). Sans boutons ▶ ⏸ ↺ ni édition ;
+    la ville s'affiche dans le pied (Q4). Chiffres à 8 caractères : la police
+    descend de 32→20 vw pour tenir la même cellule."""
+    body = (_CLOCK_JS
+            .replace("__CRITICAL__", CRITICAL)
+            .replace("__AMBER__", AMBER)
+            .replace("__RING__", "\n        ring(ALARM, IDX);" if ring else "")
+            .replace("__RELAY__", relay_js))
+    st_html(f"""
+<div id="{dom}-c{i}" style="display:flex;flex-direction:column;align-items:center;
+            justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
+            overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
+  <div class="cdr-label" style="font-size:min({8 * scale:.2f}vw, {10 * scale:.2f}vh);
+       font-weight:700;line-height:1.1;color:{TEXT};text-align:center;white-space:nowrap;
+       max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
+  <div class="cdr-digits" style="font-size:min({20 * scale:.2f}vw, {41 * scale:.2f}vh);
+       font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{AMBER};
+       white-space:nowrap;"></div>
+  <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">{card_bell}
+    <span class="cdr-at" style="font-size:min({4.5 * scale:.2f}vw, {8 * scale:.2f}vh);
+          color:{MUTED};white-space:nowrap;">&nbsp;</span>
+  </div>
+</div>
+<script>
+(function () {{
+{bus_js}
+  var IDX = {i}, TTIME = {json.dumps(ttime)}, TZ = {json.dumps(tz)};
+  var CITY = {json.dumps(city)}, FREE = {1 if ttime is None else 0};{card_alarm_var}
+  var root = document.getElementById('{dom}-c{i}');{card_arm}
+  var digits = root.querySelector('.cdr-digits');
+  var at = root.querySelector('.cdr-at');
+  if (window.frameElement) {{
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }}
+  var FIXED = {1 if fixed_px else 0}, DIAL_VH = {dial_vh:.2f};
+  function fit() {{
+    try {{
+      var fe = window.frameElement;
+      if (fe) {{ fe.style.height = Math.round(P.innerHeight * DIAL_VH / 100) + 'px'; }}
+      else {{ root.style.height = DIAL_VH + 'vh'; }}
+    }} catch (e) {{}}
+  }}
+  if (!FIXED) {{ fit(); try {{ P.addEventListener('resize', fit); }} catch (e) {{}} }}
+{body}{card_bell_js}
+}})();
+</script>
+""", height=height)
+
+
 def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                       *, key: str, grid: tuple[int, int] | None = None,
                       rack_vh: float = 62,
                       ends_at_label: str = "ends at",
+                      since_label: str = "since",
                       start_all_label: str = "▶ Start", reset_all_label: str = "↺ Reset",
                       height: int | None = None, scale: float = 1.0,
                       alarm: str | None = None, alarm_volume: float = 0.6,
@@ -244,6 +513,24 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
       timbre jusqu'à couvrir la durée puis coupe proprement ; surcharge par
       pas via ``{"alarm": …, "volume": …, "duration": …}``. Les aperçus
       d'armement restent courts (un motif).
+    - **TYPES (NG 2026-09-04, planche chronotypes)** : le dict d'un pas
+      porte ``"type"`` — ``"countdown"`` (défaut), ``"stopwatch"``
+      (croissant), ``"clock"`` (horloge, ``"tz"`` IANA obligatoire,
+      ``"city"`` déduite du fuseau sinon surchargée). La 2ᵉ case du pas est
+      LA CIBLE : minutes (rebours, toujours ; croissant, optionnelle) ou
+      « HH:MM » (horloge-réveil, optionnelle). Chaîne : les cartes À FIN
+      sont des PORTES (la chaîne les attend — une seule porte active à la
+      fois) ; les cartes LIBRES (croissant/horloge sans cible) ne bloquent
+      jamais — l'activation les traverse en cascade jusqu'à la porte
+      suivante incluse, et elles courent jusqu'à un geste manuel (Q3a). Le
+      croissant à cible CONTINUE de monter après elle, en couleur accomplie
+      (Q3b — le surtemps se lit) ; un réveil dont l'heure est déjà passée
+      relaie immédiatement (Q3c). L'horloge est toujours vivante, sans
+      boutons ni édition (``Intl`` du navigateur, hors réseau OK) ; sa
+      ville s'affiche dans le pied (Q4). Une alarme sur une carte SANS fin
+      est une erreur bruyante ; ``since_label`` légende l'heure de DÉBUT
+      d'un croissant. Rack 100 % rebours ⇒ sortie BYTE-IDENTIQUE (même
+      contrat baseline que l'alarme).
     - **Valeur ÉDITABLE (NG 2026-09-03)** : double-clic sur les chiffres —
       « 40 » = 40 min, « 40:30 » = 40 min 30 s ; Entrée (ou clic ailleurs)
       applique, Échap annule ; un chrono en course repart de la nouvelle
@@ -342,23 +629,106 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
             out["dur"] = dur
         return out
 
-    norm = []  # triplets (étiquette, minutes, spec) — spec = dict ou None
+    # ── Les TYPES de chronomètre (NG 2026-09-04, planche chronotypes) ───────
+    # Un pas = (étiquette, CIBLE[, dict]) ; le dict porte "type" ("countdown"
+    # défaut · "stopwatch" · "clock"), "tz"/"city" (horloge) et la config
+    # d'alarme. Sémantique de chaîne : les cartes À FIN (rebours ; croissant à
+    # cible ; horloge à heure cible) sont des PORTES — la chaîne les attend ;
+    # les cartes LIBRES (croissant/horloge sans cible) ne bloquent jamais :
+    # l'activation les traverse en cascade jusqu'à la porte suivante incluse.
+    _KINDS = ("countdown", "stopwatch", "clock")
+
+    def _split_type(spec, i):
+        """Extrait (kind, tz, city, reste-pour-l'alarme) du 3ᵉ élément."""
+        if not isinstance(spec, dict):
+            return "countdown", None, None, spec
+        unknown = set(spec) - {"alarm", "volume", "duration",
+                               "type", "tz", "city"}
+        if unknown:
+            raise ValueError(
+                f"st_countdown_rack : pas #{i}, clé(s) inconnue(s) "
+                f"{sorted(unknown)!r} — « type », « tz », « city », "
+                f"« alarm », « volume » et/ou « duration »")
+        kind = spec.get("type", "countdown")
+        if kind not in _KINDS:
+            raise ValueError(
+                f"st_countdown_rack : pas #{i}, type inconnu {kind!r} — "
+                f"{', '.join(_KINDS)}")
+        tz, city = spec.get("tz"), spec.get("city")
+        if (tz is not None or city is not None) and kind != "clock":
+            raise ValueError(
+                f"st_countdown_rack : pas #{i}, « tz »/« city » n'ont de "
+                f"sens que pour type=\"clock\"")
+        rest = {k: v for k, v in spec.items()
+                if k in ("alarm", "volume", "duration")}
+        return kind, tz, city, (rest or None)
+
+    norm = []  # (étiquette, kind, total_secs, ttime, tz, city, spec-alarme)
     for i, step in enumerate(steps):
         if len(step) == 2:
-            label, minutes = step
+            label, cible = step
             spec = None
         elif len(step) == 3:
-            label, minutes, spec = step
+            label, cible, spec = step
         else:
             raise ValueError(
                 f"st_countdown_rack : pas #{i} de longueur {len(step)} — "
-                f"attendu (étiquette, minutes) ou (étiquette, minutes, "
-                f"alarme)")
-        norm.append((label, minutes, _resolve_alarm(spec, i)))
+                f"attendu (étiquette, cible) ou (étiquette, cible, dict)")
+        kind, tz, city, aspec = _split_type(spec, i)
+        ttime = None
+        if kind == "clock":
+            if not tz or not isinstance(tz, str):
+                raise ValueError(
+                    f"st_countdown_rack : pas #{i}, une horloge exige "
+                    f"« tz » (identifiant IANA, ex. \"Europe/Luxembourg\")")
+            import zoneinfo
+            try:
+                zoneinfo.ZoneInfo(tz)
+            except Exception:
+                raise ValueError(
+                    f"st_countdown_rack : pas #{i}, fuseau inconnu {tz!r} "
+                    f"(identifiant IANA attendu)") from None
+            if cible is not None:
+                m2 = re.fullmatch(r"([01]?\d|2[0-3]):([0-5]\d)", str(cible))
+                if not m2:
+                    raise ValueError(
+                        f"st_countdown_rack : pas #{i}, heure cible "
+                        f"{cible!r} — format « HH:MM » (24 h) ou None")
+                ttime = f"{int(m2.group(1)):02d}:{m2.group(2)}"
+            city = city if city is not None else tz.split("/")[-1].replace("_", " ")
+            total = 0
+        elif kind == "stopwatch":
+            if cible is not None and (
+                    not isinstance(cible, (int, float)) or cible <= 0):
+                raise ValueError(
+                    f"st_countdown_rack : pas #{i}, cible {cible!r} — "
+                    f"minutes > 0 ou None (croissant libre)")
+            total = max(1, round(cible * 60)) if cible is not None else 0
+        else:
+            if not isinstance(cible, (int, float)) or cible <= 0:
+                raise ValueError(
+                    f"st_countdown_rack : pas #{i}, durée {cible!r} — "
+                    f"un compte à rebours exige des minutes > 0")
+            total = max(1, round(cible * 60))
+        # Une carte SANS fin ne sonne jamais : une alarme explicitement posée
+        # dessus est une erreur bruyante ; l'alarme GLOBALE du rack, elle, ne
+        # s'y applique simplement pas (pas de cloche, pas de timbre).
+        has_end = (kind == "countdown" or (kind == "stopwatch" and total > 0)
+                   or (kind == "clock" and ttime is not None))
+        resolved = _resolve_alarm(aspec, i)
+        if aspec is not None and not has_end:
+            raise ValueError(
+                f"st_countdown_rack : pas #{i}, alarme sur un "
+                f"{kind} SANS cible — elle ne sonnerait jamais")
+        if not has_end:
+            resolved = None
+        norm.append((label, kind, total, ttime, tz, city, resolved))
     #: Le contrat cardinal : rack muet ⇒ TOUS les fragments d'alarme valent
     #: "" et le HTML émis est BYTE-IDENTIQUE à l'existant — c'est ce qui
     #: protège les baselines i18n des decks qui n'opinent pas (opening).
-    rack_alarmed = any(sp for _l, _m, sp in norm)
+    rack_alarmed = any(st_[-1] for st_ in norm)
+    #: Même contrat pour les TYPES : rack 100 % rebours ⇒ scripts inchangés.
+    rack_typed = any(st_[1] != "countdown" for st_ in norm)
     from streamtex import st_block, st_grid
 
     rack_id = json.dumps(key)
@@ -383,7 +753,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
         # Première peinture avant l'auto-mesure (référence fenêtre 1080 px) ;
         # le script du cadran se recale aussitôt sur la fenêtre réelle.
         height = int(round(dial_vh * 10.8))
-    secs = [max(1, round(minutes * 60)) for _label, minutes, _sp in norm]
+    secs = [st_[2] for st_ in norm]
     # Racine DOM unique par rangée : l'export inline tout dans UN document.
     dom = "cdr-" + re.sub(r"[^a-zA-Z0-9_-]", "-", key)
 
@@ -543,17 +913,44 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     # sort en tête sans repasser ici.
     ring_pause = "if (isDone()) ring(ALARM, IDX);\n    " if rack_alarmed else ""
 
+    # ── Portes vs libres (rack TYPÉ seulement — sinon textes d'origine, le
+    # contrat byte-identique tient au caractère près) ────────────────────────
+    if rack_typed:
+        relay_js = """      if (rack.mode === 'chain') {
+        var ids = Object.keys(rack.cards).map(Number).sort(function (a, b) { return a - b; });
+        for (var k = 0; k < ids.length; k++) {
+          if (ids[k] <= IDX) continue;
+          var c = rack.cards[ids[k]];
+          if (c.free) { c.start(); continue; }
+          if (!c.isDone()) { c.start(); break; }
+        }
+      }"""
+        pause_line = ("if (Number(j) !== IDX && !rack.cards[j].free) "
+                      "rack.cards[j].pause();")
+        reg_free = ", free: false"
+    else:
+        relay_js = """      if (rack.mode === 'chain') {
+        var ids = Object.keys(rack.cards).map(Number).sort(function (a, b) { return a - b; });
+        for (var k = 0; k < ids.length; k++) {
+          if (ids[k] > IDX && !rack.cards[ids[k]].isDone()) {
+            rack.cards[ids[k]].start(); break;
+          }
+        }
+      }"""
+        pause_line = "if (Number(j) !== IDX) rack.cards[j].pause();"
+        reg_free = ""
+
     # ── Les boutons globaux — un petit fragment au-dessus de la grille ──────
     # La cloche 🔔/🔕 (NG 2026-09-03) : l'interrupteur de sourdine du rack —
     # présent seulement quand le rack est alarmé (contrat byte-identique).
     # Armer joue un APERÇU bref du premier timbre armé : le geste confirme le
     # son ET débloque l'autoplay dans la même intention.
     if rack_alarmed:
-        _first = next(sp for _l, _m, sp in norm if sp)
+        _first = next(st_[-1] for st_ in norm if st_[-1])
         _preview = {"sound": _first["sound"], "vol": min(_first["vol"], 0.35)}
         #: Les indices des cartes ALARMÉES — la cloche globale n'agit que sur
         #: elles (une carte « off » reste muette, comme son pas le demande).
-        _aidx = [i for i, (_l, _m, sp) in enumerate(norm) if sp]
+        _aidx = [i for i, st_ in enumerate(norm) if st_[-1]]
         # Même GABARIT que ▶ Start (remarque NG 2026-09-03 : la cloche a la
         # taille des boutons de sa ligne) — seule la couleur reste discrète.
         alarm_btn = (f'\n  <button class="cdr-alarm-toggle" '
@@ -593,6 +990,16 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     else:
         alarm_btn = ""
         alarm_btn_js = ""
+    if rack_typed:
+        chain_start_js = """for (var k = 0; k < ids.length; k++) {
+        var c = rack.cards[ids[k]];
+        if (c.free) { c.start(); continue; }
+        if (!c.isDone()) { c.start(); break; }
+      }"""
+    else:
+        chain_start_js = """for (var k = 0; k < ids.length; k++) {
+        if (!rack.cards[ids[k]].isDone()) { rack.cards[ids[k]].start(); break; }
+      }"""
     st_html(f"""
 <div id="{dom}-all" style="display:flex;gap:1.2vw;justify-content:center;align-items:center;
             height:100%;font-family:'Source Sans Pro',sans-serif;">
@@ -616,9 +1023,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     if (rack.mode === 'parallel') {{
       ids.forEach(function (i) {{ if (!rack.cards[i].isDone()) rack.cards[i].start(); }});
     }} else {{
-      for (var k = 0; k < ids.length; k++) {{
-        if (!rack.cards[ids[k]].isDone()) {{ rack.cards[ids[k]].start(); break; }}
-      }}
+      {chain_start_js}
     }}
   }});
   root.querySelector('.cdr-all-reset').addEventListener('click', function () {{
@@ -635,15 +1040,15 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     with st_grid(cols=f"repeat({cols}, minmax(0, 1fr))", gap="1.2vw",
                  grid_style=s.project.grids.stretch,
                  cell_styles=s.project.containers.grid_cell_centered) as g:
-        for i, (label, _minutes, _sp) in enumerate(norm):
+        for i, (label, kind, _total, ttime, tz, city, _sp) in enumerate(norm):
             # Le spec de CETTE carte descend en JSON (garde d'injection) —
             # null pour une carte muette : ring(null) se tait.
-            card_alarm_var = (f"\n  var ALARM = {json.dumps(norm[i][2])};"
+            card_alarm_var = (f"\n  var ALARM = {json.dumps(norm[i][-1])};"
                               if rack_alarmed else "")
             # La cloche de LA carte (NG 2026-09-03) : seulement quand ce pas
             # est alarmé — un pas « off » n'a rien à armer ; les racks muets
             # restent byte-identiques (fragments vides).
-            if rack_alarmed and norm[i][2]:
+            if rack_alarmed and norm[i][-1]:
                 # Même GABARIT que ▶ ⏸ ↺ de la ligne (remarque NG 2026-09-03).
                 card_bell = (
                     f'\n    <button class="cdr-bell" '
@@ -674,6 +1079,27 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                 card_bell = ""
                 card_bell_js = ""
             with g.cell(), st_block(s.project.cards.blue):
+                if kind == "stopwatch":
+                    _emit_stopwatch_card(
+                        s, dom=dom, i=i, target=secs[i], label=label,
+                        scale=scale, height=height, bus_js=bus_js,
+                        card_alarm_var=card_alarm_var, card_arm=card_arm,
+                        card_bell=card_bell, card_bell_js=card_bell_js,
+                        ring=bool(rack_alarmed and norm[i][-1]),
+                        relay_js=relay_js, since_label=since_label,
+                        fixed_px=fixed_px, dial_vh=dial_vh)
+                    continue
+                if kind == "clock":
+                    _emit_clock_card(
+                        s, dom=dom, i=i, ttime=ttime, tz=tz, city=city,
+                        label=label, scale=scale, height=height,
+                        bus_js=bus_js, card_alarm_var=card_alarm_var,
+                        card_arm=card_arm, card_bell=card_bell,
+                        card_bell_js=card_bell_js,
+                        ring=bool(rack_alarmed and norm[i][-1]),
+                        relay_js=relay_js, fixed_px=fixed_px,
+                        dial_vh=dial_vh)
+                    continue
                 # MAXIMISATION (NG 2026-09-02) : l'étiquette vit DANS le
                 # cadran et tout le contenu remplit la cellule — chaque
                 # taille est un clamp min(vw, vh) de l'iframe dont les
@@ -805,14 +1231,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
       remaining = 0; endAt = null;
       clearInterval(timer); timer = null;
       paint();{ring_tick}
-      if (rack.mode === 'chain') {{
-        var ids = Object.keys(rack.cards).map(Number).sort(function (a, b) {{ return a - b; }});
-        for (var k = 0; k < ids.length; k++) {{
-          if (ids[k] > IDX && !rack.cards[ids[k]].isDone()) {{
-            rack.cards[ids[k]].start(); break;
-          }}
-        }}
-      }}
+{relay_js}
       return;
     }}
     paint();
@@ -822,7 +1241,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     if (rack.mode === 'chain') {{
       // Une seule carte court : ▶ ici met les autres en pause.
       Object.keys(rack.cards).forEach(function (j) {{
-        if (Number(j) !== IDX) rack.cards[j].pause();
+        {pause_line}
       }});
     }}
     endAt = Date.now() + remaining * 1000;
@@ -847,7 +1266,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     at.innerHTML = '&nbsp;';
     paint();
   }}
-  rack.cards[IDX] = {{start: start, pause: pause, reset: reset, isDone: isDone}};
+  rack.cards[IDX] = {{start: start, pause: pause, reset: reset, isDone: isDone{reg_free}}};
   root.querySelector('.cdr-go').addEventListener('click', start);
   root.querySelector('.cdr-halt').addEventListener('click', pause);
   root.querySelector('.cdr-zero').addEventListener('click', reset);{card_bell_js}
