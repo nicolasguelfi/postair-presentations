@@ -24,7 +24,11 @@ DEFAULTS = {
     "scale": 1.0,            # zoom fin du contenu des cellules
     "alarm": "bell",         # bell · beep · chime · gong · "off"
     "alarm_volume": 0.6,     # [0, 1] perceptif
-    "alarm_duration": None,  # secondes ]0, 60] — None = un motif
+    "alarm_duration": 6,  # secondes ]0, 60] — None = un motif
+    "label_scale": 2.0,      # taille des noms de cartes (retour NG 2026-09-04)
+    "ends_scale": 2.0,       # taille de « ends at HH:MM » sous les chiffres
+    "digits_width": 80,      # largeur des chiffres, % de la cellule (100 = bord à bord)
+    "clock_width": 100,      # idem pour L'HORLOGE seule — l'heure au plus grand
 }
 
 #: La main de NG — surcharges de CETTE slide (éditables à chaud, rerun).

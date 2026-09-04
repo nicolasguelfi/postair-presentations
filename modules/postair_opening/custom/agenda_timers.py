@@ -137,7 +137,7 @@ def _sets(lang: str):
         raise ValueError(
             f"l'entrée pause {brk[1]!r} porte {len(break_minutes)} durée(s), "
             f"{len(_BREAK_LABELS)} étiquette(s) déclarées — les accorder ici")
-    clock = (T(_CLOCK_LABEL, lang), None, dict(_CLOCK_STEP))
+    clock = (T(_CLOCK_LABEL, lang), None, dict(_CLOCK_STEP))  # width injectée par build_timer_slide
     return [
         [clock] + [(session, first_minutes(duration))
                    for session, duration, _k in before],
@@ -173,9 +173,18 @@ def build_timer_slide(index: int, lang: str = "en",
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", s.project.spacing.title_gap)
+        # L'heure la plus grande possible (retour NG 2026-09-04) : la carte
+        # horloge reçoit SA largeur de chiffres (clock_width, 100 = bord à
+        # bord de la cellule) ; les autres leviers de lisibilité descendent
+        # du TUNING du bloc.
+        if steps and isinstance(steps[0][-1], dict) and steps[0][-1].get("type") == "clock":
+            steps[0][-1]["width"] = TUNING["clock_width"]
         st_countdown_rack(s, steps, mode="chain", key=_KEYS[index],
                           grid=TUNING["grid"], rack_vh=TUNING["rack_vh"],
                           scale=TUNING["scale"],
                           alarm=TUNING["alarm"],
                           alarm_volume=TUNING["alarm_volume"],
-                          alarm_duration=TUNING["alarm_duration"])
+                          alarm_duration=TUNING["alarm_duration"],
+                          label_scale=TUNING["label_scale"],
+                          ends_scale=TUNING["ends_scale"],
+                          digits_width=TUNING["digits_width"])

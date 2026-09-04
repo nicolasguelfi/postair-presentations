@@ -296,7 +296,8 @@ __RELAY__
 """
 
 
-def _emit_stopwatch_card(s, *, dom, i, target, label, scale, height, bus_js,
+def _emit_stopwatch_card(s, *, dom, i, target, label, scale, lsc, dw,
+                         ends_scale, dig_vh, height, bus_js,
                          card_alarm_var, card_arm, card_bell, card_bell_js,
                          ring, relay_js, since_label, fixed_px, dial_vh):
     """La carte CROISSANT — mêmes cadran/boutons que le rebours, sens inversé."""
@@ -311,12 +312,14 @@ def _emit_stopwatch_card(s, *, dom, i, target, label, scale, height, bus_js,
 <div id="{dom}-c{i}" style="display:flex;flex-direction:column;align-items:center;
             justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
             overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
-  <div class="cdr-label" style="font-size:min({8 * scale:.2f}vw, {10 * scale:.2f}vh);
+  <div class="cdr-label" style="font-size:min({8 * lsc:.2f}vw, {10 * lsc:.2f}vh);
        font-weight:700;line-height:1.1;color:{TEXT};text-align:center;white-space:nowrap;
        max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
-  <div class="cdr-digits" style="font-size:min({32 * scale:.2f}vw, {66 * scale:.2f}vh);
+  <div class="cdr-digits" style="font-size:min({0.4 * dw * scale:.2f}vw, {dig_vh * scale:.2f}vh);
        font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{MUTED};
        white-space:nowrap;"></div>
+  <div class="cdr-at" style="font-size:min({4.5 * ends_scale * scale:.2f}vw, {8 * ends_scale * scale:.2f}vh);
+       color:{MUTED};white-space:nowrap;">&nbsp;</div>
   <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">
     <button class="cdr-go" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{AMBER};background:transparent;border:min(0.35vw, 0.8vh) solid {AMBER};
@@ -327,8 +330,6 @@ def _emit_stopwatch_card(s, *, dom, i, target, label, scale, height, bus_js,
     <button class="cdr-zero" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{MUTED};background:transparent;border:min(0.35vw, 0.8vh) solid {MUTED};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">↺</button>{card_bell}
-    <span class="cdr-at" style="font-size:min({4.5 * scale:.2f}vw, {8 * scale:.2f}vh);
-          color:{MUTED};white-space:nowrap;">&nbsp;</span>
   </div>
 </div>
 <script>
@@ -358,13 +359,16 @@ def _emit_stopwatch_card(s, *, dom, i, target, label, scale, height, bus_js,
 """, height=height)
 
 
-def _emit_clock_card(s, *, dom, i, ttime, tz, city, label, scale, height,
+def _emit_clock_card(s, *, dom, i, ttime, tz, city, label, scale, lsc, dw,
+                     ends_scale, dig_vh, height,
                      bus_js, card_alarm_var, card_arm, card_bell,
                      card_bell_js, ring, relay_js, fixed_px, dial_vh):
     """La carte HORLOGE — l'heure du fuseau, toujours vivante ; heure cible
     optionnelle = un réveil (porte de chaîne). Sans boutons ▶ ⏸ ↺ ni édition ;
     la ville s'affiche dans le pied (Q4). Chiffres à 8 caractères : la police
     descend de 32→20 vw pour tenir la même cellule."""
+    foot_row = (f'\n  <div style="display:flex;align-items:center;'
+                f'gap:min(2vw, 4vh);">{card_bell}\n  </div>' if card_bell else "")
     body = (_CLOCK_JS
             .replace("__CRITICAL__", CRITICAL)
             .replace("__AMBER__", AMBER)
@@ -374,16 +378,14 @@ def _emit_clock_card(s, *, dom, i, ttime, tz, city, label, scale, height,
 <div id="{dom}-c{i}" style="display:flex;flex-direction:column;align-items:center;
             justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
             overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
-  <div class="cdr-label" style="font-size:min({8 * scale:.2f}vw, {10 * scale:.2f}vh);
+  <div class="cdr-label" style="font-size:min({8 * lsc:.2f}vw, {10 * lsc:.2f}vh);
        font-weight:700;line-height:1.1;color:{TEXT};text-align:center;white-space:nowrap;
        max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
-  <div class="cdr-digits" style="font-size:min({20 * scale:.2f}vw, {41 * scale:.2f}vh);
+  <div class="cdr-digits" style="font-size:min({0.25 * dw * scale:.2f}vw, {dig_vh * scale:.2f}vh);
        font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{AMBER};
        white-space:nowrap;"></div>
-  <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">{card_bell}
-    <span class="cdr-at" style="font-size:min({4.5 * scale:.2f}vw, {8 * scale:.2f}vh);
-          color:{MUTED};white-space:nowrap;">&nbsp;</span>
-  </div>
+  <div class="cdr-at" style="font-size:min({4.5 * ends_scale * scale:.2f}vw, {8 * ends_scale * scale:.2f}vh);
+       color:{MUTED};white-space:nowrap;">&nbsp;</div>{foot_row}
 </div>
 <script>
 (function () {{
@@ -421,7 +423,10 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                       height: int | None = None, scale: float = 1.0,
                       alarm: str | None = None, alarm_volume: float = 0.6,
                       alarm_muted: bool = True,
-                      alarm_duration: float | None = None) -> None:
+                      alarm_duration: float | None = None,
+                      label_scale: float = 2.0,
+                      ends_scale: float = 2.0,
+                      digits_width: float = 80.0) -> None:
     """Une rangée de comptes à rebours sur une VRAIE grille streamtex.
 
     Décisions NG (planche chrono ``archi=p1 moteur=p1 commande=p1
@@ -641,14 +646,21 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     def _split_type(spec, i):
         """Extrait (kind, tz, city, reste-pour-l'alarme) du 3ᵉ élément."""
         if not isinstance(spec, dict):
-            return "countdown", None, None, spec
+            return "countdown", None, None, None, None, spec
         unknown = set(spec) - {"alarm", "volume", "duration",
-                               "type", "tz", "city"}
+                               "type", "tz", "city", "label_scale", "width"}
         if unknown:
             raise ValueError(
                 f"st_countdown_rack : pas #{i}, clé(s) inconnue(s) "
                 f"{sorted(unknown)!r} — « type », « tz », « city », "
-                f"« alarm », « volume » et/ou « duration »")
+                f"« label_scale », « width », « alarm », « volume » et/ou "
+                f"« duration »")
+        for k2 in ("label_scale", "width"):
+            v2 = spec.get(k2)
+            if v2 is not None and (
+                    not isinstance(v2, (int, float)) or not 0 < v2 <= 100):
+                raise ValueError(
+                    f"st_countdown_rack : pas #{i}, {k2} {v2!r} hors ]0, 100]")
         kind = spec.get("type", "countdown")
         if kind not in _KINDS:
             raise ValueError(
@@ -661,9 +673,10 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                 f"sens que pour type=\"clock\"")
         rest = {k: v for k, v in spec.items()
                 if k in ("alarm", "volume", "duration")}
-        return kind, tz, city, (rest or None)
+        return (kind, tz, city, spec.get("label_scale"), spec.get("width"),
+                (rest or None))
 
-    norm = []  # (étiquette, kind, total_secs, ttime, tz, city, spec-alarme)
+    norm = []  # (étiquette, kind, total, ttime, tz, city, lscale, dwidth, spec-alarme)
     for i, step in enumerate(steps):
         if len(step) == 2:
             label, cible = step
@@ -674,7 +687,7 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
             raise ValueError(
                 f"st_countdown_rack : pas #{i} de longueur {len(step)} — "
                 f"attendu (étiquette, cible) ou (étiquette, cible, dict)")
-        kind, tz, city, aspec = _split_type(spec, i)
+        kind, tz, city, lsc_card, width_card, aspec = _split_type(spec, i)
         ttime = None
         if kind == "clock":
             if not tz or not isinstance(tz, str):
@@ -722,7 +735,8 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                 f"{kind} SANS cible — elle ne sonnerait jamais")
         if not has_end:
             resolved = None
-        norm.append((label, kind, total, ttime, tz, city, resolved))
+        norm.append((label, kind, total, ttime, tz, city,
+                     lsc_card, width_card, resolved))
     #: Le contrat cardinal : rack muet ⇒ TOUS les fragments d'alarme valent
     #: "" et le HTML émis est BYTE-IDENTIQUE à l'existant — c'est ce qui
     #: protège les baselines i18n des decks qui n'opinent pas (opening).
@@ -1040,7 +1054,13 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     with st_grid(cols=f"repeat({cols}, minmax(0, 1fr))", gap="1.2vw",
                  grid_style=s.project.grids.stretch,
                  cell_styles=s.project.containers.grid_cell_centered) as g:
-        for i, (label, kind, _total, ttime, tz, city, _sp) in enumerate(norm):
+        for i, (label, kind, _total, ttime, tz, city,
+                _lsc, _dw, _sp) in enumerate(norm):
+            lscale_eff = _lsc if _lsc is not None else label_scale
+            lsc = lscale_eff * scale
+            dw = (_dw if _dw is not None else digits_width)
+            dig_vh = max(20.0, 92 - 10 * lscale_eff - 8 * ends_scale - 14)
+            dig_vh_clock = max(20.0, 92 - 10 * lscale_eff - 8 * ends_scale)
             # Le spec de CETTE carte descend en JSON (garde d'injection) —
             # null pour une carte muette : ring(null) se tait.
             card_alarm_var = (f"\n  var ALARM = {json.dumps(norm[i][-1])};"
@@ -1082,7 +1102,8 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                 if kind == "stopwatch":
                     _emit_stopwatch_card(
                         s, dom=dom, i=i, target=secs[i], label=label,
-                        scale=scale, height=height, bus_js=bus_js,
+                        scale=scale, lsc=lsc, dw=dw, ends_scale=ends_scale,
+                        dig_vh=dig_vh, height=height, bus_js=bus_js,
                         card_alarm_var=card_alarm_var, card_arm=card_arm,
                         card_bell=card_bell, card_bell_js=card_bell_js,
                         ring=bool(rack_alarmed and norm[i][-1]),
@@ -1092,7 +1113,9 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
                 if kind == "clock":
                     _emit_clock_card(
                         s, dom=dom, i=i, ttime=ttime, tz=tz, city=city,
-                        label=label, scale=scale, height=height,
+                        label=label, scale=scale, lsc=lsc, dw=dw,
+                        ends_scale=ends_scale, dig_vh=dig_vh_clock,
+                        height=height,
                         bus_js=bus_js, card_alarm_var=card_alarm_var,
                         card_arm=card_arm, card_bell=card_bell,
                         card_bell_js=card_bell_js,
@@ -1112,12 +1135,14 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
 <div id="{dom}-c{i}" style="display:flex;flex-direction:column;align-items:center;
             justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
             overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
-  <div class="cdr-label" style="font-size:min({8 * scale:.2f}vw, {10 * scale:.2f}vh);
+  <div class="cdr-label" style="font-size:min({8 * lsc:.2f}vw, {10 * lsc:.2f}vh);
        font-weight:700;line-height:1.1;color:{TEXT};text-align:center;white-space:nowrap;
        max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
-  <div class="cdr-digits" style="font-size:min({32 * scale:.2f}vw, {66 * scale:.2f}vh);
+  <div class="cdr-digits" style="font-size:min({0.4 * dw * scale:.2f}vw, {dig_vh * scale:.2f}vh);
        font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{MUTED};
        white-space:nowrap;"></div>
+  <div class="cdr-at" style="font-size:min({4.5 * ends_scale * scale:.2f}vw, {8 * ends_scale * scale:.2f}vh);
+       color:{MUTED};white-space:nowrap;">&nbsp;</div>
   <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">
     <button class="cdr-go" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{AMBER};background:transparent;border:min(0.35vw, 0.8vh) solid {AMBER};
@@ -1128,8 +1153,6 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
     <button class="cdr-zero" style="font-size:min({6.5 * scale:.2f}vw, {12 * scale:.2f}vh);
             color:{MUTED};background:transparent;border:min(0.35vw, 0.8vh) solid {MUTED};
             border-radius:1.2vw;padding:0.1em 0.9em;cursor:pointer;">↺</button>{card_bell}
-    <span class="cdr-at" style="font-size:min({4.5 * scale:.2f}vw, {8 * scale:.2f}vh);
-          color:{MUTED};white-space:nowrap;">&nbsp;</span>
   </div>
 </div>
 <script>
