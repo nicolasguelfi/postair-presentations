@@ -119,7 +119,7 @@ def build(lang: str = "en", **_):
                 guardo = mascot("Guardo")
                 st_image(s.project.cards.media_center, width="5.5vw",
                          uri=guardo["image"], alt="Guardo, the control mascot, benevolent guardian",
-                         overlay=dd35_overlay())
+                         overlay=dd35_overlay(scale=0.5))
 
             with g.cell():
                 st_info_tooltip(

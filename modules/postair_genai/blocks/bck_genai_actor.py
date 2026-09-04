@@ -101,7 +101,7 @@ def _companion(name: str) -> None:
     m = mascot(name)
     st_image(s.project.cards.media_center, width=TUNING["mascot_width"],
              uri=m["image"], alt=f"Mascot {m['name']}",
-             overlay=dd35_overlay())
+             overlay=dd35_overlay(scale=0.5))
     st_write(bs.mascot_name, m["name"], tag=t.div)
 
 

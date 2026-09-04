@@ -92,7 +92,7 @@ def build(lang: str = "en", **_):
                     st_image(s.project.cards.media_center, width="6vw",
                              uri=member["image"],
                              alt=f"Mascot {member['mascot']}",
-                             overlay=dd35_overlay())
+                             overlay=dd35_overlay(scale=0.5))
                     st_write(bs.name, member["mascot"], tag=t.div)
         st_space("v", "1vh")
         with st_zoom(160):

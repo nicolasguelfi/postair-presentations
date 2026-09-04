@@ -95,5 +95,5 @@ def build(lang: str = "en", **_):
                     st_image(s.project.cards.media_center, width="min(8vw, 15vh)",
                              uri=pole["image"],
                              alt=f"{pole['mascot']}, mascot of the {pole['label']} posture",
-                             overlay=dd35_overlay())
+                             overlay=dd35_overlay(scale=0.5))
                     st_write(bs.mascot_name, pole["mascot"], tag=t.div)
