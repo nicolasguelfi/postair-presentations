@@ -41,17 +41,30 @@ DD35_CSS = (
 
 
 def dd35_overlay(marked: bool = True, label: str = "AI",
-                 position: str = "bottom-right") -> MediaOverlay | None:
+                 position: str = "bottom-right",
+                 scale: float = 1.0) -> MediaOverlay | None:
     """Le ``MediaOverlay`` DD-35 pour ``st_image(overlay=…)`` — ``None`` sinon.
 
     Le drapeau de données décide (``ai_generated``/``is_synthetic``), jamais le
     bloc. Depuis la 0.7.23 la pastille est rendue DANS la boîte de l'image
     (zoom d'éditeur compris, barre « Edit Image » exclue) : plus aucun calcul
-    de décalage ni de variante haute côté consommateur.
+    de décalage ni de variante haute côté consommateur. L'ancre est TOUJOURS
+    le coin de la boîte de l'image (bas-droite par défaut).
+
+    :param scale: facteur de taille de la pastille (NG 2026-09-04) — la base
+        ``clamp`` est calibrée pour un hero d'amphi ; sur un petit média
+        (mascotte à 6vw…) elle mange l'image : ``scale=0.6`` la ramène à
+        l'échelle. Ne touche que la TAILLE — couleurs et alpha restent la
+        convention DD-35 vérifiée par le gate sumvadis.
     """
     if not marked:
         return None
-    return MediaOverlay(text=f"✦ {label}", position=position, css=DD35_CSS,
+    css = DD35_CSS
+    if scale != 1.0:
+        css = css.replace(
+            "font-size: clamp(11px, 1.05vw, 22px);",
+            f"font-size: calc(clamp(11px, 1.05vw, 22px) * {scale});")
+    return MediaOverlay(text=f"✦ {label}", position=position, css=css,
                         aria_label="AI-generated media (art. 50 EU AI Act "
                                    "disclosure)")
 
