@@ -29,6 +29,7 @@ from custom.styles import Styles as s
 from postair_data import film_clip
 from postair_lang import T
 from streamtex import *
+from streamtex import st_video
 from streamtex.enums import Tags as t
 
 from postair_pack.components.ai_mark import ai_marked
@@ -59,6 +60,6 @@ def build(lang: str = "en", **_):
             # st.video needs a real file path: the media folder is deliberately
             # NOT a static source, so it cannot be resolved through them.
             with ai_marked(fit=False, top=True):
-                st_video(str(_MEDIA / film_clip("host-reveal", lang)), autoplay=True)
+                st_video(str(_MEDIA / film_clip("host-reveal", lang)), autoplay=True, )
         with st_block(s.project.containers.media_hint_overlay):
             st_write(bs.hint, T(_HINT, lang), tag=t.div)
