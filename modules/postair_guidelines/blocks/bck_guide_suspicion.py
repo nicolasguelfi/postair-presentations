@@ -79,7 +79,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(160), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -92,7 +92,7 @@ def build(lang: str = "en", **_):
         # Gabarit par défaut (NG 2026-08-13) : balance carrée à gauche, les
         # quatre garanties EMPILÉES à droite (le pavé d'une seule ligne se
         # lisait comme un paragraphe).
-        with hero_split(s, image=lambda: hero_image(
+        with hero_split(s, ratio=40, image=lambda: hero_image(
                 "guide_balance", _BALANCE_PROMPT,
                 "images/guide_balance_fallback.svg",
                 alt_ready=("Papercut balanced scale of justice, an amber orb in one "
@@ -100,6 +100,7 @@ def build(lang: str = "en", **_):
                 alt_fallback=("Papercut balanced scale of justice"),
                 variant="sq")):
             for part in T(_LINE, lang).split(" · "):
-                st_write(bs.line, "▸ ", part, tag=t.div)
+                with st_zoom(160):
+                    st_write(bs.line, "▸ ", part, tag=t.div)
             st_space("v", "0.5vh")
             st_write(bs.cite, citation(*_CITEKEYS), tag=t.div)

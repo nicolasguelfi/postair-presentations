@@ -46,8 +46,8 @@ bs = BlockStyles
 _ITEMS = [
     {"en": "The live survey you used today → a tool that keeps evolving",
      "fr": "L’enquête live d’aujourd’hui → un outil qui continue d’évoluer"},
-    {"en": "Volunteers welcome · tests, feedback, ideas",
-     "fr": "Volontaires bienvenus · essais, retours, idées"},
+    {"en": "Volunteers welcome · tests, feedback, ideas, ...",
+     "fr": "Volontaires bienvenus · essais, retours, idées, ..."},
     {"en": "Historical figures — verification and enquiries",
      "fr": "Personnages historiques — vérification et enquêtes"},
 ]
@@ -117,11 +117,12 @@ def build(lang: str = "en", **_):
         st_space("v", "1vh")
         # Même gabarit que la slide du hub : le QR géant à gauche, les
         # lignes à droite ; sous 520 px le QR passe au-dessus.
-        with st_grid(cols="45% 55%", breakpoint="520px",
+        with st_grid(cols="40% 60%", breakpoint="520px",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 # QR versionné, UN PAR LANGUE (le corps du mail est localisé).
-                st_image(s.project.cards.media_center, width="25vw",
+                with st_zoom(100):
+                    st_image(s.project.cards.media_center, width="30vw",
                          uri=f"images/qr/qr_volunteer_{lang}.png",
                          alt="QR code opening a pre-filled volunteer email to "
                              "contact@sumvadis.ai (subject: Volunteer Declaration)")
@@ -130,7 +131,7 @@ def build(lang: str = "en", **_):
                     st_write(bs.hint, T(_HINT, lang), tag=t.div)
             with g.cell():
                 for item, color in zip(_ITEMS, _ITEM_COLORS):
-                    with st_zoom(120):
+                    with st_zoom(140):
                         st_write(bs.item + color, "▸ ", T(item, lang),
                                  tag=t.div)
                     st_space("v", "1vh")

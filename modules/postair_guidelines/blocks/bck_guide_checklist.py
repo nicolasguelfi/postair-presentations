@@ -30,8 +30,8 @@ from streamtex.enums import Tags as t
 
 class BlockStyles:
     title = s.project.titles.slide_title + s.center_txt
-    item = s.project.body.bullet + s.center_txt
-    final = s.project.titles.subtitle + s.project.colors.amber + s.center_txt + s.bold
+    item = s.project.body.bullet
+    final = s.project.titles.subtitle + s.project.colors.amber + s.bold
     cite = s.project.body.caption + s.center_txt
 
 
@@ -74,7 +74,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(130), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -87,7 +87,8 @@ def build(lang: str = "en", **_):
                 )
         st_space("v", s.project.spacing.title_gap)
         for item in _ITEMS:
-            st_write(bs.item, "☐  ", T(item, lang), tag=t.div)
+            with st_zoom(120):
+                st_write(bs.item, "☐  ", T(item, lang), tag=t.div)
             st_space("v", "0.6vh")
         st_space("v", "2vh")
         st_write(bs.final, "☑  ", _FINAL, tag=t.div)

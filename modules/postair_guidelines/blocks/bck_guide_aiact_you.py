@@ -78,7 +78,7 @@ def build(lang: str = "en", **_):
                                 text(data["channels"], lang))],
                 )
         st_space("v", s.project.spacing.title_gap)
-        with hero_split(s, zoom=88, image=lambda: hero_image(
+        with hero_split(s, ratio=30, image=lambda: hero_image(
                 "guide_tags", _TAGS_PROMPT, "images/guide_aiact_fallback.svg",
                 alt_ready=("Papercut parcels in a column, each with a visible paper "
                            "tag, an amber orb and a stamp beside them"),

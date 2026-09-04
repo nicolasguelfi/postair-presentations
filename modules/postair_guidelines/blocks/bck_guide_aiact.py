@@ -73,10 +73,13 @@ def build(lang: str = "en", **_):
     data = section("ai_act")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(130), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
-            with g.cell():
+                st_space("v", "0.5vh")
+                st_write(bs.since, text(data["since"], lang), tag=t.div)
+
+            with st_zoom(130), g.cell():
                 st_info_tooltip(
                     title=T(_TIP_TITLE, lang),
                     entries=[(f"{c['icon']} {text(c['short'], lang)} — {text(c['article'], lang)}",
@@ -90,24 +93,24 @@ def build(lang: str = "en", **_):
                                for tl in data["timeline"]]
                             + [(T(_CHANNELS_HEAD, lang), text(data["channels"], lang))],
                 )
-        st_space("v", "0.5vh")
-        st_write(bs.since, text(data["since"], lang), tag=t.div)
+
         st_space("v", "1vh")
         # Découpage NG (2026-08-13) : cette slide porte LA LOI (le cadre et
         # son calendrier) ; « vous, concrètement » (les 4 cartes d'articles et
         # le punch fournisseur) a SA slide, juste après.
-        with hero_split(s, image=lambda: hero_image(
+        with hero_split(s, ratio=35, image=lambda: hero_image(
                 "guide_aiact", _AIACT_PROMPT, "images/guide_aiact_fallback.svg",
                 alt_ready=("Papercut open book of law on a pedestal, small amber "
                            "orbs around it each carrying a visible paper tag, "
                            "silhouettes watching"),
                 alt_fallback=("Papercut law book with labelled amber orbs around it"),
                 variant="sq")):
-            with st_block(s.project.cards.amber):
+            with st_zoom(130), st_block(s.project.cards.amber):
                 st_write(bs.big, text(data["big"], lang), tag=t.div)
             st_space("v", "0.5vh")
             for tl in data["timeline"]:
-                st_write(bs.short, text(tl["when"], lang), " · ", text(tl["short"], lang),
+                with st_zoom(120):
+                    st_write(bs.short, text(tl["when"], lang), " · ", text(tl["short"], lang),
                          tag=t.div)
             st_space("v", "0.5vh")
             st_write(bs.cite, citation(*citekeys(data)), tag=t.div)
