@@ -24,10 +24,13 @@ already written, just press Send. No commitment, no spam — a declaration.
 # @guideline: postair-minimal
 
 from custom.styles import Styles as s
+from postair_data import mascot
 from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
 from streamtex.enums import Tags as t
+
+from postair_pack.components.ai_mark import dd35_overlay
 
 
 class BlockStyles:
@@ -85,7 +88,16 @@ _HINT = {"en": "your email opens pre-filled — just press Send",
 def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
-        with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
+        # Rangée de titre à TROIS colonnes (retouche NG 2026-09-04) : la
+        # mascotte à gauche rend la slide accueillante — Unio, le pôle
+        # altruisme de l'axe 8 : LE geste du volontariat.
+        with st_grid(cols="10% 82% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
+            with g.cell():
+                unio = mascot("Unio")
+                st_image(s.project.cards.media_center, width="6vw",
+                         uri=unio["image"],
+                         alt="Unio, the altruism mascot, welcoming volunteers",
+                         overlay=dd35_overlay())
             with g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
