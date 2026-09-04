@@ -313,11 +313,12 @@ def _emit_stopwatch_card(s, *, dom, i, target, label, scale, lsc, dw,
             justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
             overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
   <div class="cdr-label" style="font-size:min({8 * lsc:.2f}vw, {10 * lsc:.2f}vh);
-       font-weight:700;line-height:1.1;color:{TEXT};text-align:center;white-space:nowrap;
-       max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
-  <div class="cdr-digits" style="font-size:min({0.4 * dw * scale:.2f}vw, {dig_vh * scale:.2f}vh);
+       font-weight:700;line-height:1.1;color:{TEXT};text-align:center;
+       max-width:96%;overflow:hidden;text-overflow:ellipsis;
+       display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{label}</div>
+  <div class="cdr-digits" style="font-size:min({0.376 * dw * scale:.2f}vw, {dig_vh * scale:.2f}vh);
        font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{MUTED};
-       white-space:nowrap;"></div>
+       font-variant-numeric:tabular-nums;white-space:nowrap;"></div>
   <div class="cdr-at" style="font-size:min({4.5 * ends_scale * scale:.2f}vw, {8 * ends_scale * scale:.2f}vh);
        color:{MUTED};white-space:nowrap;">&nbsp;</div>
   <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">
@@ -342,6 +343,9 @@ def _emit_stopwatch_card(s, *, dom, i, target, label, scale, lsc, dw,
   if (window.frameElement) {{
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.height = '100%';
+    document.body.style.height = '100%';
+    document.body.style.margin = '0';
   }}
   var FIXED = {1 if fixed_px else 0}, DIAL_VH = {dial_vh:.2f};
   function fit() {{
@@ -379,11 +383,12 @@ def _emit_clock_card(s, *, dom, i, ttime, tz, city, label, scale, lsc, dw,
             justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
             overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
   <div class="cdr-label" style="font-size:min({8 * lsc:.2f}vw, {10 * lsc:.2f}vh);
-       font-weight:700;line-height:1.1;color:{TEXT};text-align:center;white-space:nowrap;
-       max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
-  <div class="cdr-digits" style="font-size:min({0.25 * dw * scale:.2f}vw, {dig_vh * scale:.2f}vh);
+       font-weight:700;line-height:1.1;color:{TEXT};text-align:center;
+       max-width:96%;overflow:hidden;text-overflow:ellipsis;
+       display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{label}</div>
+  <div class="cdr-digits" style="font-size:min({0.235 * dw * scale:.2f}vw, {dig_vh * scale:.2f}vh);
        font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{AMBER};
-       white-space:nowrap;"></div>
+       font-variant-numeric:tabular-nums;white-space:nowrap;"></div>
   <div class="cdr-at" style="font-size:min({4.5 * ends_scale * scale:.2f}vw, {8 * ends_scale * scale:.2f}vh);
        color:{MUTED};white-space:nowrap;">&nbsp;</div>{foot_row}
 </div>
@@ -398,6 +403,9 @@ def _emit_clock_card(s, *, dom, i, ttime, tz, city, label, scale, lsc, dw,
   if (window.frameElement) {{
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.height = '100%';
+    document.body.style.height = '100%';
+    document.body.style.margin = '0';
   }}
   var FIXED = {1 if fixed_px else 0}, DIAL_VH = {dial_vh:.2f};
   function fit() {{
@@ -1031,6 +1039,9 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
   if (window.frameElement) {{
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.height = '100%';
+    document.body.style.height = '100%';
+    document.body.style.margin = '0';
   }}
   root.querySelector('.cdr-all-start').addEventListener('click', function () {{
     var ids = Object.keys(rack.cards).sort(function (a, b) {{ return a - b; }});
@@ -1059,8 +1070,11 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
             lscale_eff = _lsc if _lsc is not None else label_scale
             lsc = lscale_eff * scale
             dw = (_dw if _dw is not None else digits_width)
-            dig_vh = max(20.0, 92 - 10 * lscale_eff - 8 * ends_scale - 14)
-            dig_vh_clock = max(20.0, 92 - 10 * lscale_eff - 8 * ends_scale)
+            lab_lines = 2 if len(str(label)) > max(6, 24 / lscale_eff) else 1
+            dig_vh = max(20.0, 92 - 10 * lscale_eff * lab_lines
+                         - 8 * ends_scale - 14)
+            dig_vh_clock = max(20.0, 92 - 10 * lscale_eff * lab_lines
+                               - 8 * ends_scale)
             # Le spec de CETTE carte descend en JSON (garde d'injection) —
             # null pour une carte muette : ring(null) se tait.
             card_alarm_var = (f"\n  var ALARM = {json.dumps(norm[i][-1])};"
@@ -1136,11 +1150,12 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
             justify-content:space-evenly;height:100%;padding:0.5vh 0;box-sizing:border-box;
             overflow:hidden;font-family:'Source Sans Pro',sans-serif;color:{TEXT};">
   <div class="cdr-label" style="font-size:min({8 * lsc:.2f}vw, {10 * lsc:.2f}vh);
-       font-weight:700;line-height:1.1;color:{TEXT};text-align:center;white-space:nowrap;
-       max-width:96%;overflow:hidden;text-overflow:ellipsis;">{label}</div>
-  <div class="cdr-digits" style="font-size:min({0.4 * dw * scale:.2f}vw, {dig_vh * scale:.2f}vh);
+       font-weight:700;line-height:1.1;color:{TEXT};text-align:center;
+       max-width:96%;overflow:hidden;text-overflow:ellipsis;
+       display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{label}</div>
+  <div class="cdr-digits" style="font-size:min({0.376 * dw * scale:.2f}vw, {dig_vh * scale:.2f}vh);
        font-weight:900;letter-spacing:0.04em;line-height:1.0;color:{MUTED};
-       white-space:nowrap;"></div>
+       font-variant-numeric:tabular-nums;white-space:nowrap;"></div>
   <div class="cdr-at" style="font-size:min({4.5 * ends_scale * scale:.2f}vw, {8 * ends_scale * scale:.2f}vh);
        color:{MUTED};white-space:nowrap;">&nbsp;</div>
   <div style="display:flex;align-items:center;gap:min(2vw, 4vh);">
@@ -1216,6 +1231,9 @@ def st_countdown_rack(s, steps: list[tuple], mode: str = "chain",
   if (window.frameElement) {{
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.height = '100%';
+    document.body.style.height = '100%';
+    document.body.style.margin = '0';
   }}
   var FIXED = {1 if fixed_px else 0}, DIAL_VH = {dial_vh:.2f};
   function fit() {{
