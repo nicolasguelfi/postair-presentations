@@ -39,7 +39,7 @@ def build(lang: str = "en", **_):
         "09-res-radar",
         "Mobile screen of the personal nine-axis posture radar, dark theme",
         [(_cite(T(h, lang), lang), _cite(T(d, lang), lang)) for h, d in _MESSAGES],
-        zoomImage=190,
-        zoomText=140,
+        zoomImage=180,
+        zoomText=130,
         lang=lang
     )

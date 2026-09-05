@@ -33,6 +33,6 @@ def build(lang: str = "en", **_):
         zoomText=140,
         device="mobile",
         landscape=False,
-        crop=(0, 0, 45, 0),
+        crop=(0, 0, 46, 0),
         lang=lang
     )

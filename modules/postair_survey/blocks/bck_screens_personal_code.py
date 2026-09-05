@@ -39,6 +39,6 @@ def build(lang: str = "en", **_):
         "share and download actions, dark theme",
         [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
         zoomImage=200,
-        zoomText=140,
+        zoomText=130,
         lang=lang
     )

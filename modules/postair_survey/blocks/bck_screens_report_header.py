@@ -47,7 +47,7 @@ def build(lang: str = "en", **_):
         tooltip=(T(_TIP_TITLE, lang),
                  [(ui("anonymous_by_design", lang), T(_TIP_ANON, lang)),
                   (T(_TIP_BELOW[0], lang), T(_TIP_BELOW[1], lang))]),
-        zoomImage=150,
+        zoomImage=140,
         zoomText=110,
         lang=lang
     )

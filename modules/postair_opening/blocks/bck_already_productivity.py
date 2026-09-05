@@ -86,10 +86,11 @@ def build(lang: str = "en", **_):
                             T(_CLAIM, lang) + ".", T(_POPULATION, lang) + ".",
                             T(_TREND, lang), T(_FRESHNESS, lang),
                             T(_COUNTERPOINT_LONG, lang), T(_CAVEAT, lang)]))])
-            st_space("v", s.project.spacing.title_gap)
+            st_space("v", "3vh")
             st_write(bs.value, T(_VALUE, lang), tag=t.div)
             st_space("v", "1vh")
-            st_write(bs.claim, T(_CLAIM, lang), tag=t.div)
+            with st_zoom(90):
+                st_write(bs.claim, T(_CLAIM, lang), tag=t.div)
             st_space("v", "2vh")
             st_write(bs.counterpoint, T(_COUNTERPOINT, lang), tag=t.div)
             st_space("v", "1vh")

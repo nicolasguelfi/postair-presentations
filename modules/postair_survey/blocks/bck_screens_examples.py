@@ -30,7 +30,7 @@ def build(lang: str = "en", **_):
         "15-res-exemples",
         "Mobile screen of the report's campaign examples section, dark theme",
         [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
-        zoomImage=190,
+        zoomImage=180,
         zoomText=140,
         device="mobile",
         landscape=False,

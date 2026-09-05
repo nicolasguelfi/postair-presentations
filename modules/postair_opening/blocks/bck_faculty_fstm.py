@@ -39,7 +39,7 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Réglages de la slide ────────────────────────────────────────────────────
-_TITLE_ZOOM = 115   # le sigle en titre
+_TITLE_ZOOM = 160   # le sigle en titre
 _RATIO = 35         # part de largeur de la colonne image, en %
 _ZOOM = 125         # st_zoom de la colonne des constats
 
@@ -132,7 +132,7 @@ def build(lang: str = "en", **_):
                             variant="sq", width="100%")):
             for ex in _EXAMPLES:
                 st_write(bs.headline, "▸ ",
-                         T(ex["headline"], lang) + " " + citation(*ex["citekeys"]),
+                         T(ex["headline"], lang) + " " + citation(*ex["citekeys"], inline=True),
                          tag=t.div)
             st_space("v", "0.5vh")
             st_write(bs.reserve, text(no_faculty_data()["headline"], lang), tag=t.div)

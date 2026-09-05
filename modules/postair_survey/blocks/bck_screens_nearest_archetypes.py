@@ -29,10 +29,10 @@ def build(lang: str = "en", **_):
         "12-res-profils",
         "Mobile screen of the report's nearest profiles section, dark theme",
         [(T(h, lang), T(d, lang)) for h, d in _MESSAGES],
-        zoomImage=160,
+        zoomImage=200,
         zoomText=140,
         device="mobile",
         landscape=False,
-        crop=(0, 0, 27, 0),
+        crop=(0, 0, 53, 0),
         lang=lang
     )
