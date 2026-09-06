@@ -38,11 +38,11 @@ _TIPS = [
      s.project.cards.blue, s.project.colors.primary),
     ({"en": "Wifi struggling?", "fr": "Le wifi rame ?"}, {"en": "Wifi OFF → mobile data", "fr": "Wifi coupé → données mobiles"},
      s.project.cards.amber, s.project.colors.amber),
-    ({"en": "Finished early?", "fr": "Déjà fini ?"}, {"en": "Read the six archetype descriptions", "fr": "Lisez les six descriptions d'archétypes"},
+    ({"en": "Finished early?", "fr": "Déjà fini ?"}, {"en": "Enjoy archetypes, mascots, figures ...", "fr": "Profitez des archétypes, mascottes, figures ..."},
      s.project.cards.teal, s.project.colors.keyword),
     ({"en": "Lost the page?", "fr": "Page perdue ?"}, {"en": "Reopen it — your answers are saved", "fr": "Rouvrez-la — vos réponses sont enregistrées"},
      s.project.cards.blue, s.project.colors.success),
-    ({"en": "Battery low?", "fr": "Batterie à plat ?"}, {"en": "Pair up with a neighbour and share one", "fr": "Mettez-vous à deux sur un appareil"},
+    ({"en": "Battery low?", "fr": "Batterie à plat ?"}, {"en": "Borrow a phone, one at a time", "fr": "Empruntez un téléphone, chacun son tour"},
      s.project.cards.coral, s.project.colors.critical),
     ({"en": "Something else?", "fr": "Autre chose ?"}, {"en": "Raise a hand → we come to you", "fr": "Levez la main → on vient à vous"},
      s.project.cards.coral, s.project.colors.coral),
@@ -62,7 +62,8 @@ _TIP = [
     ({"en": "Nothing is lost", "fr": "Rien ne se perd"},
      {"en": ("Answers are stored on the device as they are given. "
              "Closing the page, losing the network or running out of battery costs "
-             "the current statement at worst — reopening the same link resumes."), "fr": "Les réponses sont stockées sur l'appareil au fur et à mesure. Fermer la page, perdre le réseau ou tomber en panne de batterie coûte au pire l'énoncé en cours — rouvrir le même lien reprend où on en était."}),
+             "the current statement at worst — reopening the same link on the same "
+             "device resumes."), "fr": "Les réponses sont stockées sur l'appareil au fur et à mesure. Fermer la page, perdre le réseau ou tomber en panne de batterie coûte au pire l'énoncé en cours — rouvrir le même lien sur le même appareil reprend où on en était."}),
     ({"en": "Nothing to install", "fr": "Rien à installer"},
      {"en": ("It runs in the browser. Anyone being sent to an "
              "app store is on the wrong address."), "fr": "Ça tourne dans le navigateur. Si quelqu'un atterrit sur un app store, il n'est pas à la bonne adresse."}),
@@ -72,7 +73,9 @@ _TIP = [
              "amphitheatre becomes a loud one within two minutes."), "fr": "Entre le premier et le dernier à finir, l'écart est grand. Donnez aux plus rapides les descriptions d'archétypes à lire — un amphi désœuvré devient bruyant en deux minutes."}),
     ({"en": "Sharing a device", "fr": "Partager un appareil"},
      {"en": ("One answer per person, in turn. Two people "
-             "answering as one produce a profile that describes nobody."), "fr": "Une réponse par personne, à tour de rôle. Deux personnes qui répondent comme une seule produisent un profil qui ne décrit personne."}),
+             "answering as one produce a profile that describes nobody. The "
+             "second person taps “Start over” on the welcome screen; the first "
+             "notes their 12-letter code before lending."), "fr": "Une réponse par personne, à tour de rôle. Deux personnes qui répondent comme une seule produisent un profil qui ne décrit personne. Le second appuie sur « Recommencer à zéro » à l'accueil ; le premier note son code de 12 lettres avant de prêter."}),
     ({"en": "If it goes badly wrong", "fr": "Si ça tourne vraiment mal"},
      {"en": ("Pause the campaign from the admin console "
              "first, diagnose after. Resuming is instant, and a paused campaign "

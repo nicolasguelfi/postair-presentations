@@ -63,7 +63,8 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                  zoomText: int = 100,
                  crop: tuple[float, float, float, float] | None = None,
                  split: tuple[int, int] | None = None,
-                 image_width: str | None = None) -> None:
+                 image_width: str | None = None,
+                 card_padding: str | None = None) -> None:
     """Le corps d'une slide écran : titre (+ tooltip), capture, cartes.
 
     ``title_parts`` suit la convention ``st_write`` (chaînes et couples
@@ -92,7 +93,14 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
     capture paysage a besoin de la place). ``image_width`` surcharge de même
     la largeur de la capture dans sa colonne (défaut : ``CAPTURE_WIDTH`` ou
     ``CAPTURE_WIDTH_DESKTOP`` selon ``device``). Sans effet en ``landscape``.
+
+    ``card_padding`` (NG 2026-09-06) : rembourrage CSS des cartes de messages
+    (``"1vh 1.5vw"`` = moitié du jeton ``cards.blue`` en haut et en bas) ;
+    ``None`` = le jeton tel quel. Le réglage vit dans le bloc, comme
+    ``zoomText`` — le jeton partagé ne bouge pas.
     """
+    card = (s.project.cards.blue + f"padding: {card_padding};"
+            if card_padding else s.project.cards.blue)
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
@@ -114,7 +122,7 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                          grid_style=s.project.grids.stretch,
                          cell_styles=s.project.containers.grid_cell_top) as g:
                 for head_text, detail_text in messages:
-                    with g.cell(), st_block(s.project.cards.blue):
+                    with g.cell(), st_block(card):
                         with st_zoom(zoomText):
                             st_write(_Styles.head, head_text, tag=t.div)
                             st_write(_Styles.detail, detail_text, tag=t.div)
@@ -134,7 +142,7 @@ def screen_slide(title_parts, slug: str, alt: str, messages, *,
                     st_write(_Styles.legend, caption, tag=t.div)
             with g.cell(), st_block(s.project.containers.column_stack):
                 for head_text, detail_text in messages:
-                    with st_block(s.project.cards.blue):
+                    with st_block(card):
                         with st_zoom(zoomText):
                             st_write(_Styles.head, head_text, tag=t.div)
                             st_write(_Styles.detail, detail_text, tag=t.div)

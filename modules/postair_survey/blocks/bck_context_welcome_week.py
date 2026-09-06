@@ -47,7 +47,7 @@ _LOGO_WIDTH = "min(22vw, 30vh)"
 #: (``entertaining_survey``) ; les trois autres lignes sont propres à celle-ci.
 _MESSAGES = [
     ("🎡", bs.headline, "entertaining_survey"),
-    ("🔬", bs.message, {"en": "Your first participation in an academic research study :) !!", "fr": "Votre première participation à une recherche universitaire :) !!"}),
+    ("🔬", bs.message, {"en": "Your first participation in an academic research study 😊", "fr": "Votre première participation à une recherche universitaire 😊"}),
     ("🎭", bs.message, {"en": "Anonymous and on a voluntary basis.", "fr": "Anonyme et volontaire."}),
     ("🔞", bs.caveat, {"en": "If less than 18 years old, participation is not considered for research.", "fr": "Moins de 18 ans : la participation n'est pas prise en compte pour la recherche."}),
 ]

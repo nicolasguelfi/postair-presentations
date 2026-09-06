@@ -20,10 +20,20 @@ from custom.styles import Styles as s
 from postair_i18n import screen, ui
 from postair_lang import T, TF
 from streamtex import *
+from streamtex.styles import Style
 
 
 _MARKER = {"en": "A statement", "fr": "Un énoncé"}
-_TITLE = {"en": ("A statement, ", (s.project.titles.keyword, "six levels"), ", help"), "fr": ("Un énoncé, ", (s.project.titles.keyword, "six niveaux"), ", une aide")}
+#: « une aide » ET le libellé cité dans le VIOLET du bouton d'aide de
+#: l'application (NG 2026-09-06) — la couleur renvoie au lien
+#: « C’est-à-dire ? » de la capture. Ce libellé est CITÉ du gel des écrans
+#: (DD-113, ``screen``), jamais recopié : le titre se construit donc par
+#: langue, dans ``_title``.
+_HELP = Style("color: #8782FF; font-weight: 700;", "pa_title_help_purple")
+_TITLE = {"en": ("A statement, ", (s.project.titles.keyword, "six levels"), ", ",
+                 (_HELP, "“{hint}”"), " for ", (_HELP, "help")),
+          "fr": ("Un énoncé, ", (s.project.titles.keyword, "six niveaux"), ", ",
+                 (_HELP, "«{nb}{hint}{nb}»"), " pour ", (_HELP, "une aide"))}
 _MESSAGES = [
     ({"en": "No right answer", "fr": "Pas de bonne réponse"},
      {"en": ("A portrait, not a test — nothing is scored as correct, and "
@@ -53,15 +63,23 @@ _TIP_HELP = {"en": ("Every statement has a help button: clarification, anchors "
 
 
 def _cite(text: str, lang: str) -> str:
-    """Le bouton « Sans opinion » est CITÉ tel que l'application le nomme
-    (gel sumvadis, DD-113) — jamais recopié dans la feuille."""
-    return text.format(no_opinion=screen("04-question", "action", lang), nb="\u00a0")
+    """Les boutons « Sans opinion » et « C’est-à-dire ? » sont CITÉS tels que
+    l'application les nomme (gel sumvadis, DD-113) — jamais recopiés dans
+    la feuille."""
+    return text.format(no_opinion=screen("04-question", "action", lang),
+                       hint=screen("04-question", "hint", lang), nb="\u00a0")
+
+
+def _title(lang: str) -> tuple:
+    """Les fragments du titre, le libellé du bouton d'aide résolu par langue."""
+    return tuple((frag[0], _cite(frag[1], lang)) if isinstance(frag, tuple)
+                 else _cite(frag, lang) for frag in TF(_TITLE, lang))
 
 
 def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     screen_slide(
-        TF(_TITLE, lang),
+        _title(lang),
         "04-question",
         "Desktop screen of the survey journey: one statement with its six "
         "agreement levels and the help button, dark theme",
@@ -76,8 +94,10 @@ def build(lang: str = "en", **_):
         # un incident transitoire du service média, résolu côté sumvadis.
         device="mobile-complet",
         landscape=False,
-        zoomImage=130,
-        zoomText=120,
-        crop=(0, 0, 15, 0),
+        zoomImage=140,
+        zoomText=130,
+        crop=(18, 0, 13, 0),
+        # Cartes à demi-rembourrage vertical (NG 202r6-09-06, capture FR).
+        card_padding="1vh 1.5vw",
         lang=lang
     )
