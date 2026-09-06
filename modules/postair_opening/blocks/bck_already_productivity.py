@@ -1,4 +1,12 @@
-"""Already here 2/4 — −40 % de temps, +18 % de qualité (série « A revolution already here »).
+"""Already here 2/4 — +48 % → −17 % (série « A revolution already here »).
+
+Recadrage NG 2026-09-06 : la ligne géante porte le BASCULEMENT de Bastani et
+al. (PNAS 2025) — +48 % de réussite aux exercices avec le tuteur GPT-4, −17 %
+à l'examen une fois retiré — en vert/rouge (jetons success/critical). JAMAIS
+de delta unique (−35, −65) : les deux chiffres ont des baselines différentes,
+aucune publication ne porte leur somme. Le −40 % de temps (Noy & Zhang,
+Science 2023) descend dans la ligne claim ; l'attribution nomme les DEUX
+revues.
 
 Composition de série (ex-gabarit ``already_slide``, NG 2026-08-13) : la valeur
 en très grand (ambre — LE point focal), la lecture télégraphique, le
@@ -36,22 +44,30 @@ bs = BlockStyles
 
 _ZOOM = 130
 
-# ── Le fait (source primaire, vérifiée 2026-08-02) ──────────────────────────
-_VALUE = {"en": "−40 %", "fr": "−40 %"}
-_CLAIM = {"en": "time on the task, and 18 % higher output quality, with generative AI", "fr": "de temps sur la tâche, et 18 % de qualité en plus, avec l'IA générative"}
-_COUNTERPOINT = {"en": "and 17 % lower once it is taken away", "fr": "et 17 % de moins quand on la retire"}
-_ATTRIBUTION = {"en": "Science, July 2023", "fr": "Science, juillet 2023"}
-#: La source du chiffre PUIS celle du contrepoint — un chiffre projeté sans
-#: la publication qui le nuance serait un chiffre arrangé. Population du
-#: contrepoint (jamais projetée, gardée pour la vérifiabilité) : nearly 1,000
-#: high-school mathematics students in Turkey, field experiment (vérifié
-#: 2026-08-02).
+# ── Le fait (sources primaires, re-vérifiées 2026-09-06 sur les abstracts :
+# les chiffres projetés sont EXACTEMENT ceux des publications) ───────────────
+_VALUE = {"en": "+48 %  →  −17 %", "fr": "+48 %  →  −17 %"}
+#: La ligne géante s'affiche en FRAGMENTS colorés (vert success / rouge
+#: critical, la flèche en blanc) — _VALUE reste la chaîne complète pour le
+#: marqueur, le label TOC et la clé du tooltip. La flèche porte le
+#: basculement : JAMAIS de delta unique (−35, −65) — baselines différentes
+#: (exercices vs examen), aucune publication ne porte leur somme.
+_CLAIM = {"en": "−40 % time on the task, and 48 % higher scores, with AI", "fr": "−40 % de temps sur la tâche, et +48 % de réussite, avec l'IA"}
+_COUNTERPOINT = {"en": "but 17 % lower once it is taken away", "fr": "mais 17 % de moins quand on la retire"}
+_ATTRIBUTION = {"en": "Science 2023 · PNAS 2025", "fr": "Science 2023 · PNAS 2025"}  # fr==en assumé : whitelist i18n (noms de revues)
+#: Les deux sources, chacune pour SES chiffres : −40 % = Noy & Zhang
+#: (Science 2023) ; +48 % / −17 % = Bastani et al. (PNAS 2025) — réussite aux
+#: exercices AVEC le tuteur GPT-4, puis examen final APRÈS retrait, chaque
+#: écart mesuré contre le groupe témoin.
 _CITEKEYS = ["noy-zhang-2023", "bastani-guardrails-2025"]
 
 # ── Le panneau « Where this figure comes from » ─────────────────────────────
-_POPULATION = {"en": ("453 college-educated professionals in a pre-registered "
-               "randomised controlled trial on occupation-specific writing "
-               "tasks; half given ChatGPT"), "fr": "453 professionnels diplômés du supérieur, dans un essai contrôlé randomisé préenregistré sur des tâches d'écriture propres à leur métier ; la moitié équipée de ChatGPT"}
+_POPULATION = {"en": ("−40 %: 453 college-educated professionals in a "
+               "pre-registered randomised controlled trial on "
+               "occupation-specific writing tasks, half given ChatGPT "
+               "(Science 2023). +48 % → −17 %: nearly 1,000 high-school "
+               "mathematics students in Turkey, field experiment with a "
+               "GPT-4 tutor (PNAS 2025)"), "fr": "−40 % : 453 professionnels diplômés du supérieur, dans un essai contrôlé randomisé préenregistré sur des tâches d'écriture propres à leur métier, la moitié équipée de ChatGPT (Science 2023). +48 % → −17 % : près de 1 000 lycéens en mathématiques, en Turquie, expérience de terrain avec un tuteur GPT-4 (PNAS 2025)"}
 _TREND = {"en": ("The gain was largest for the weakest writers, compressing the "
           "spread between workers"), "fr": "Le gain a été le plus fort chez les rédacteurs les plus faibles, resserrant les écarts entre travailleurs"}
 _FRESHNESS = {"en": ("Three years old, and kept deliberately: it remains the "
@@ -76,7 +92,8 @@ def build(lang: str = "en", **_):
             with st_grid(cols="92% 8%",
                          cell_styles=s.project.containers.grid_cell_centered) as g:
                 with g.cell():
-                    st_write(bs.title, ui("already_here", lang),
+                    with st_zoom(90):
+                        st_write(bs.title, ui("already_here", lang),
                              (s.project.titles.keyword, T(_ATTRIBUTION, lang)),
                              tag=t.div, toc_lvl="+1", label=T(_VALUE, lang))
                 with g.cell():
@@ -87,7 +104,12 @@ def build(lang: str = "en", **_):
                             T(_TREND, lang), T(_FRESHNESS, lang),
                             T(_COUNTERPOINT_LONG, lang), T(_CAVEAT, lang)]))])
             st_space("v", "3vh")
-            st_write(bs.value, T(_VALUE, lang), tag=t.div)
+            gain, loss = (part.strip() for part in T(_VALUE, lang).split("→"))
+            st_write(bs.value,
+                     (s.project.colors.success, gain),
+                     (s.project.colors.text, " → "),
+                     (s.project.colors.critical, loss),
+                     tag=t.div)
             st_space("v", "1vh")
             with st_zoom(90):
                 st_write(bs.claim, T(_CLAIM, lang), tag=t.div)
