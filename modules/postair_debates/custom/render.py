@@ -517,7 +517,11 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
         # d'ouvrir un onglet — quitter le deck en séance était le vrai risque.
         # Streaming pur : `preload="none"` + Range du CDN, rien n'est
         # embarqué dans l'image (les 54 masters pèsent 612 Mo).
-        video = media.get("video")
+        # La piste suit la LANGUE PROJETÉE (NG 2026-09-06, règle R-i18n —
+        # même geste que les vagues) : ``videos[lang]`` du gel, repli sur la
+        # piste gelée ``video`` (celle de la langue du gel) si elle manque.
+        # ``?lang=fr`` jouait l'anglais : ``video`` est gelé en EN.
+        video = (media.get("videos") or {}).get(lang) or media.get("video")
         with st_block(s.project.containers.media_stage(p_ratio, round(75 * kp))):
             w = portrait_width or "100%"
             if video:
