@@ -119,13 +119,18 @@ TUNING: dict = {
         "zoom": None,
         "zoom_scale": None,
     },
-    # « And today for AI? » (grille 2+1 des arguments).
-    "arguments_a": {
+    # « Et aujourd'hui pour l'IA ? » = DEUX slides, une par pôle (pas les trois
+    # cartes) : arguments_a = la slide de Individualisme, arguments_b = celle de
+    # Altruisme. Sur une slide, les 3 cartes partagent UN SEUL zoom (règle NG
+    # 2026-08-30 : même taille de texte partout) — pas de réglage par carte.
+    # zoom absolu (ex. 120) OU zoom_scale (facteur sur l'auto ; laisser zoom à
+    # None) ; badge_scale ne touche que le badge de nature.
+    "arguments_a": {                # Individualisme (accélérateur)
         "zoom": None,                  # auto : min(240, palier 130/120/110 selon le titre le plus long) ; un absolu passe outre le plafond
         "zoom_scale": None,
         "badge_scale": None,           # facteur du badge de nature (None = taille du DS)
     },
-    "arguments_b": {
+    "arguments_b": {                # Altruisme (ralentisseur)
         "zoom": None,                  # auto : min(240, palier 130/120/110 selon le titre le plus long) ; un absolu passe outre le plafond
         "zoom_scale": 0.9,
         "badge_scale": None,           # facteur du badge de nature (None = taille du DS)
