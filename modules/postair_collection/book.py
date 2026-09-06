@@ -93,8 +93,8 @@ st_book(
     paginate=False,
     view_modes=[ViewMode.CONTINUOUS],
     banner=BannerConfig.hidden(),
-    page_width=100,
-    zoom=100,
+    page_width=80,
+    zoom=60,
     doc_version=_doc_version,
     pdf_config=PDF,
 )

@@ -48,6 +48,6 @@ def build(lang: str = "en", **_):
                  [(ui("anonymous_by_design", lang), T(_TIP_ANON, lang)),
                   (T(_TIP_BELOW[0], lang), T(_TIP_BELOW[1], lang))]),
         zoomImage=140,
-        zoomText=110,
+        zoomText=125,
         lang=lang
     )
