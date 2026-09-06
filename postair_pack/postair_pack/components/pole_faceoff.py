@@ -23,7 +23,8 @@ __component_meta__ = {
 }
 
 
-def pole_faceoff(sides, design_system, mascot_width: str = "min(15vw, 30vh)") -> None:
+def pole_faceoff(sides, design_system, mascot_width: str = "min(15vw, 30vh)",
+                 mark_scale: float = 1.0) -> None:
     """Render the two poles of one axis, face to face.
 
     Parameters
@@ -32,6 +33,8 @@ def pole_faceoff(sides, design_system, mascot_width: str = "min(15vw, 30vh)") ->
         ``effect``, ``mascot`` and ``image``.
     design_system: a POSTAIR-protocol design system.
     mascot_width: CSS width of each mascot.
+    mark_scale: facteur de taille de la pastille ✦AI (DD-35, ``scale=`` de
+        ``dd35_overlay`` — NG 2026-09-06) ; même levier que ``axis_stack``.
     """
     ds = design_system
     with st_grid(cols="1fr 0.4fr 1fr", gap="1vw",
@@ -48,5 +51,5 @@ def pole_faceoff(sides, design_system, mascot_width: str = "min(15vw, 30vh)") ->
                              side["label"], tag=t.div)
                     st_image(ds.cards.media_center, width=mascot_width, uri=side["image"],
                              alt=f"{side['mascot']} — mascot of the {side['label']} posture",
-                        overlay=dd35_overlay())
+                        overlay=dd35_overlay(scale=mark_scale))
                     st_write(ds.body.mascot_name, side["mascot"], tag=t.div)

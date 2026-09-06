@@ -24,7 +24,7 @@ __component_meta__ = {
 
 
 def axis_stack(axis: dict, design_system, image_width: str = "min(12.8vw, 20.8vh)",
-               compact: bool = False) -> None:
+               compact: bool = False, mark_scale: float = 1.0) -> None:
     """Render one axis column.
 
     Parameters
@@ -37,6 +37,9 @@ def axis_stack(axis: dict, design_system, image_width: str = "min(12.8vw, 20.8vh
     compact: étiquettes de pôle bornées plus bas (NG 2026-08-13) — pour les
         grilles serrées (neuf cartes) où le plancher 16pt cassait les mots
         en césures sauvages (« Opennes-s », « Rationalit-y »).
+    mark_scale: facteur de taille de la pastille ✦AI (DD-35, ``scale=`` de
+        ``dd35_overlay`` — NG 2026-09-06) : sur les mascottes réduites d'une
+        slide de registre, ``0.5`` évite que la pastille mange l'image.
     """
     ds = design_system
     label_pair = ((ds.body.pole_label_accel_compact, ds.body.pole_label_compact)
@@ -49,5 +52,5 @@ def axis_stack(axis: dict, design_system, image_width: str = "min(12.8vw, 20.8vh
                 st_write(label_style, pole["label"], tag=t.div)
                 st_image(ds.cards.media_center, width=image_width, uri=pole["image"],
                          alt=f"{pole['mascot']} — mascot of the {pole['label']} posture",
-                    overlay=dd35_overlay())
+                    overlay=dd35_overlay(scale=mark_scale))
                 st_write(ds.body.mascot_name, pole["mascot"], tag=t.div)

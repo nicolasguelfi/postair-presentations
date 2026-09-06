@@ -25,7 +25,7 @@ __component_meta__ = {
 
 def pole_identity(mascots, statements, design_system,
                   mascot_width="min(13vw, 24vh)",
-                  statement_zoom: int = 100) -> None:
+                  statement_zoom: int = 100, mark_scale: float = 1.0) -> None:
     """Render the identity body of one pole.
 
     Parameters
@@ -40,6 +40,8 @@ def pole_identity(mascots, statements, design_system,
     statement_zoom: ``st_zoom`` factor of the statements column (100 =
         neutral) — the per-deck size lever, set by the caller (hero_split
         contract: tuned per slide, never a central config).
+    mark_scale: facteur de taille de la pastille ✦AI (DD-35, ``scale=`` de
+        ``dd35_overlay`` — NG 2026-09-06) ; même levier que ``axis_stack``.
     """
     ds = design_system
     with st_grid(cols="34% 66%", gap="2vw",
@@ -50,7 +52,7 @@ def pole_identity(mascots, statements, design_system,
             for m, width in zip(mascots, widths):
                 st_image(ds.cards.media_center, width=width, uri=m["image"],
                          alt=f"{m['mascot']} — mascot of the {m['label']} posture",
-                    overlay=dd35_overlay())
+                    overlay=dd35_overlay(scale=mark_scale))
                 st_write(ds.body.mascot_name, m["mascot"], tag=t.div)
         with g.cell():
             with st_zoom(statement_zoom):

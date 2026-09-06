@@ -114,7 +114,8 @@ def _register_slide(code: str, subtitle: str, lang: str) -> None:
             for axis in axes_here:
                 with g.cell():
                     with st_zoom(115):
-                        axis_stack(axis, DS, image_width="min(10vw, 13.5vh)")
+                        axis_stack(axis, DS, image_width="min(10vw, 13.5vh)",
+                                   mark_scale=0.5)
 
 
 def build(lang: str = "en", **_):
