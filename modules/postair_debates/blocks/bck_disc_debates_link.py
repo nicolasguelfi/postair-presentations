@@ -62,17 +62,15 @@ _TITLE = {"en": ("Next ... ", (s.project.titles.keyword, "HANDS ON")), "fr": ("B
 _TIP_TITLE = {"en": "Navigating the debates bank", "fr": "Naviguer dans la banque des débats"}
 _TIP_PLAN = ({"en": "The plan", "fr": "Le plan"},
              {"en": ("Two or three axes — the ones where this room splits, read on the "
-                     "results page. Name them out loud before opening the first; two axes "
-                     "done properly beat five rushed."), "fr": "Deux ou trois axes — ceux sur lesquels cette salle se divise, lus sur la page des résultats. Nommez-les à voix haute avant d'ouvrir le premier ; deux axes bien menés valent mieux que cinq bâclés."})
+                     "results page; two axes done properly beat five rushed."), "fr": "Deux ou trois axes — ceux sur lesquels cette salle se divise, lus sur la page des résultats ; deux axes bien menés valent mieux que cinq bâclés."})
 _TIP_OFFERS = ({"en": "What each pole offers", "fr": "Ce qu'offre chaque pôle"},
-               {"en": ("What the pole claims and its three survey statements; three "
-                       "historical figures who defended it, with a portrait, a sourced "
-                       "quotation and a presentation video; three sourced contemporary "
-                       "arguments; then the two poles face to face."), "fr": "Ce que le pôle affirme et ses trois énoncés du sondage ; trois figures historiques qui l'ont défendu, avec un portrait, une citation sourcée et une vidéo de présentation ; trois arguments contemporains sourcés ; puis les deux pôles face à face."})
+               {"en": ("First the two poles and their three survey statements, then the debate "
+                       "on stage; then, per pole, the waves of history that chose it, three "
+                       "historical figures who defended it — portrait, sourced quotation, "
+                       "presentation video — and three sourced contemporary arguments."), "fr": "D'abord les deux pôles et leurs trois énoncés du sondage, puis le débat sur scène ; ensuite, pour chaque pôle, les vagues de l'histoire qui l'ont choisi, trois figures historiques qui l'ont défendu — portrait, citation sourcée, vidéo de présentation — et trois arguments contemporains sourcés."})
 _TIP_BOTH = ({"en": "Both sides, always", "fr": "Les deux camps, toujours"},
-             {"en": ("The material is symmetrical. Never open one pole without its opposite "
-                     "— the room must hear the two best cases, not the one the speaker "
-                     "prefers."), "fr": "Le matériau est symétrique. N'ouvrez jamais un pôle sans son opposé — la salle doit entendre les deux meilleurs plaidoyers, pas celui que l'orateur préfère."})
+             {"en": ("The material is symmetrical: every pole has its opposite, with the same "
+                     "kinds of material, and the room hears both."), "fr": "Le matériau est symétrique : chaque pôle a son opposé, avec les mêmes sortes de matériau, et la salle entend les deux."})
 
 
 def build(lang: str = "en", **_):

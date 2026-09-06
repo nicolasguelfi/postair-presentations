@@ -1,8 +1,10 @@
 """Openness ⇄ Resistance — the two poles, their figures, their arguments.
 
-Seven sub-slides rendered by ``custom.render.axis_slides``: for each pole its
-identity and three survey statements, the three historical figures who held
-it, and three sourced contemporary arguments; then the two poles face to face.
+Up to thirteen sub-slides rendered by ``custom.render.axis_slides`` (rhythm
+NG 2026-08-31): the two pole identities with their three survey statements,
+the debate stage, then per pole the waves that chose it (if any), the three
+historical figures who held it (or the absence slide) and three sourced
+contemporary arguments. The closing face-off is retired.
 Nothing on these slides is written here — everything comes from the frozen
 manifest.
 
@@ -28,17 +30,21 @@ from custom.render import axis_slides
 # - Chaque paramètre absolu a un jumeau facteur `*_scale` qui multiplie le
 #   calcul auto — MAIS l'absolu a priorité : pour utiliser un facteur,
 #   remettre l'absolu correspondant à None.
-# - a = pôle accélérateur, b = ralentisseur ; waves_* ne se rend que si le
+# - a = pôle ACCÉLÉRATEUR = Ouverture (Openness), b = pôle RALENTISSEUR = Résistance
+#   (Resistance) ; waves_* ne se rend que si le
 #   gel porte des vagues pour ce pôle. Détail : docstring d'axis_slides.
 TUNING: dict = {
-    # Identité (les 3 énoncés + les 2 mascottes du pôle).
-    "identity_a": {
+    # Identité = la slide des 3 QUESTIONS du sondage (les cartes d'énoncés) + les
+    # 2 mascottes du pôle. Réduire les cartes de texte : statement_zoom_scale
+    # (ex. 0.85 = calcul auto ×0,85) ou statement_zoom absolu (ex. 95) —
+    # l'absolu prime, le laisser à None pour que le facteur agisse.
+    "identity_a": {                 # Ouverture (accélérateur)
         "statement_zoom": None,        # auto : 116 (≤6 lignes) / 106 (≤8) / 98
         "statement_zoom_scale": None,  # ex. 1.15 = calcul auto ×1,15
         "mascot_vh": 27.0,             # hauteur des 2 mascottes (vh)
         "mascot_vh_scale": None,
     },
-    "identity_b": {
+    "identity_b": {                 # Résistance (ralentisseur)
         "statement_zoom": None,        # auto : 116 (≤6 lignes) / 106 (≤8) / 98
         "statement_zoom_scale": None,  # ex. 1.15 = calcul auto ×1,15
         "mascot_vh": 27.0,             # hauteur des 2 mascottes (vh)

@@ -28,6 +28,14 @@ AGENDA = [
 # volontairement PAS de la date — un code devinable serait un code que la salle
 # de la veille peut essayer. Ils doivent correspondre exactement aux campagnes
 # créées dans la console /admin de sumvadis.
+#: Titres de séance PROJETÉS, par langue (planche tooldeb I5, 2026-09-06) : les
+#: chaînes de l'AGENDA restent les clés (EN), les decks affichent la feuille.
+SESSION_TITLES = {
+    "Introduction to AI & Generative AI": {"en": "Introduction to AI & Generative AI", "fr": "Introduction à l'IA et à l'IA générative"},
+    "Using models & agents to study": {"en": "Using models & agents to study", "fr": "Étudier avec les modèles et les agents"},
+    "The UL AI guidelines": {"en": "The UL AI guidelines", "fr": "Les lignes directrices IA de l'UL"},
+}
+
 DAYS = [
     ("BEFORE AIDAY", "650001"),
     ("Tuesday 8 September", "201048"),

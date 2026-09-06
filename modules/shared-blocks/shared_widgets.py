@@ -85,6 +85,7 @@ def st_info_tooltip(title: str, entries: list[tuple[str, str]], **kw):
 
 
 def st_countdown(minutes: int, label: str = "Back in", height: int = 340,
+                 resume_label: str = "we resume at",
                  scale: float = 1.0) -> None:
     """A live break countdown, readable from the back of an amphitheatre.
 
@@ -120,7 +121,7 @@ def st_countdown(minutes: int, label: str = "Back in", height: int = 340,
   var out = document.getElementById('stx-countdown');
   var at = document.getElementById('stx-countdown-at');
   var back = new Date(end);
-  at.textContent = 'we resume at ' +
+  at.textContent = {json.dumps(resume_label)} + ' ' +
     String(back.getHours()).padStart(2, '0') + ':' +
     String(back.getMinutes()).padStart(2, '0');
   function tick() {{

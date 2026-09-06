@@ -18,7 +18,7 @@ from __future__ import annotations
 
 from custom.styles import Styles as s
 from postair_data import mascot
-from postair_event import AGENDA
+from postair_event import AGENDA, SESSION_TITLES
 from postair_lang import T, TF
 from shared_widgets import st_info_tooltip
 from streamtex import *
@@ -44,11 +44,11 @@ _TIP = [
      {"en": ("What a large language model is doing when it answers: prediction, not "
              "knowledge — and why that explains both the usefulness and the confident "
              "mistakes."), "fr": "Ce que fait un grand modèle de langage quand il répond : de la prédiction, pas du savoir — et pourquoi cela explique à la fois l'utilité et les erreurs affirmées avec aplomb."}),
-    ({"en": "Practice", "fr": "En pratique"},
+    ({"en": "See it in practice", "fr": "Voir en pratique"},
      {"en": ("A revision agent built live with Mistral, including the anti-patterns: the "
              "agent that flatters, the one that invents sources, the one that does the work "
              "you needed to do yourself."), "fr": "Un agent pour réviser vos cours, construit en direct avec Mistral, avec les pièges à éviter : l'agent qui flatte, celui qui invente des sources, celui qui fait le travail que vous deviez faire vous-même."}),
-    ({"en": "The rules", "fr": "Les règles"},
+    ({"en": "The rules of the game", "fr": "Les règles du jeu"},
      {"en": ("The university's AI charter: permitted by default, the syllabus prevails, "
              "disclose your use, three risk levels, ten red lines — and the test that "
              "decides the rest: can you defend it out loud?"), "fr": "La charte IA de l'université : autorisé par défaut, le syllabus prime, déclarez votre usage, trois niveaux de risque, dix lignes rouges — et le test qui tranche le reste : pouvez-vous le défendre à voix haute ?"}),
@@ -111,5 +111,5 @@ def build(lang: str = "en", **_):
             for session, duration in second:
                 with g.cell(), st_block(s.project.cards.blue):
                     st_write(bs.promise, T(_PROMISE[session], lang), tag=t.div)
-                    st_write(bs.session, session, tag=t.div)
+                    st_write(bs.session, T(SESSION_TITLES.get(session, {"en": session, "fr": session}), lang), tag=t.div)
                     st_write(bs.duration, duration, tag=t.div)

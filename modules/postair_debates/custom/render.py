@@ -16,6 +16,7 @@ sub-slide still breaks so PageDown advances one screen at a time.
 from __future__ import annotations
 
 import json
+import re
 from functools import lru_cache
 from pathlib import Path
 
@@ -51,6 +52,67 @@ from postair_pack.components.ai_mark import DD35_CSS, dd35_overlay
 from postair_pack.components.argument_card import argument_card
 from postair_pack.components.hero_split import hero_split
 from postair_pack.components.pole_faceoff import pole_faceoff
+
+
+def _t(node, lang: str | None) -> str:
+    """Un champ du gel qui peut être une chaîne (ancien schéma) OU une feuille
+    ``{en, fr}`` (schéma 2026-09-06 : name, origin, wave, person, presentation,
+    epoch) — résolu par langue, jamais projeté brut (planche tooldeb T5/T6)."""
+    if isinstance(node, dict):
+        return text(node, lang)
+    return node or ""
+
+
+@lru_cache(maxsize=1)
+def _bib_short() -> dict[str, str]:
+    """clé BibTeX du gel → « Auteur, année » lisible (planche tooldeb T7) :
+    les citekeys bruts des ancres (``tesla1926-colliers``) deviennent
+    « (Tesla, 1926) » pour la salle. Lu dans references.bib GELÉ, jamais
+    dans le hub."""
+    path = Path(__file__).parent.parent / "static" / "data" / "references.bib"
+    out: dict[str, str] = {}
+    if not path.exists():
+        return out
+    for block in path.read_text(encoding="utf-8").split("\n@")[1:]:
+        m = re.match(r"\w+\{([^,]+),", block)
+        if not m:
+            continue
+        key = m.group(1).strip()
+        au = re.search(r"\n\s*author\s*=\s*\{(.*)\},?\n", block)
+        yr = re.search(r"\n\s*year\s*=\s*\{?(\d{4})", block)
+        if not au:
+            continue
+        first = re.split(r"\s+and\s+", au.group(1))[0].strip("{} ")
+        # « Nom, Prénom » ou « Prénom Nom » → le nom seul ; institution telle quelle.
+        surname = first.split(",")[0].strip() if "," in first else first.split(" ")[-1]
+        surname = surname.strip("{}")
+        out[key] = f"{surname}, {yr.group(1)}" if yr else surname
+    return out
+
+
+_CITEKEY = re.compile(r"\b([a-z][a-z-]*\d{4}[a-z0-9-]*)\b")
+
+
+def _plain_refs(prose: str) -> str:
+    """Remplace chaque citekey du gel par « (Auteur, année) » ; une clé
+    inconnue reste telle quelle (bruyante à la relecture, jamais inventée)."""
+    short = _bib_short()
+    return _CITEKEY.sub(lambda m: f"({short[m.group(1)]})" if m.group(1) in short else m.group(0), prose)
+
+
+_CONFIDENCE = {"high": {"en": "high", "fr": "élevée"},
+               "medium": {"en": "medium", "fr": "moyenne"},
+               "low": {"en": "low", "fr": "faible"}}
+
+#: Ce qu'est chaque nature d'argument, en clair (planche tooldeb T2) — le badge
+#: est le plus gros texte de la carte et n'était expliqué nulle part.
+_NATURE_DEFS = {
+    "policy": {"en": "a decision by a public authority", "fr": "une décision d'une autorité publique"},
+    "case": {"en": "a dated, observed fact", "fr": "un fait daté, observé"},
+    "quote": {"en": "what a person said, documented", "fr": "ce qu'une personne a dit, documenté"},
+    "historical": {"en": "a precedent from a past technology", "fr": "un précédent d'une technique passée"},
+    "tradition": {"en": "an established practice", "fr": "une pratique établie"},
+}
 from postair_pack.components.pole_identity import pole_identity
 
 
@@ -111,6 +173,7 @@ _UI = {
                            "legitimate position, held and argued by people whose names are "
                            "in the history of technology."), "fr": "{pole} — la posture qui {effect} sur l'axe {axis}. C'est une position légitime, tenue et défendue par des gens dont le nom est dans l'histoire des techniques."},
     "axis_pole": {"en": "{axis} — {pole}", "fr": "{axis} — {pole}"},
+    "axis_pole_short": {"en": "{pole}", "fr": "{pole}"},
     "axis_effect": {"en": "{axis} · {effect}", "fr": "{axis} · {effect}"},
     # _pole_banner
     "no_champion": {"en": ("No figure in this study champions this pole. These are the three "
@@ -121,43 +184,54 @@ _UI = {
     "disagrees": {"en": "disagrees", "fr": "n'est pas d'accord"},
     "no_answer": {"en": "did not answer", "fr": "n'a pas répondu"},
     "stance_line": {"en": "“{statement}” — {name} {stance}", "fr": "« {statement} » — {name} {stance}"},
-    "stance_score": {"en": " ({response}/5)", "fr": " ({response}/5)"},
+    "stance_score": {"en": " ({response} out of 5)", "fr": " ({response} sur 5)"},
     "points_toward": {"en": ", which points to {pole}.", "fr": ", ce qui pointe vers {pole}."},
     "points_away": {"en": (", which points AWAY from {pole} — the figure is here on its "
                            "overall score for the axis, not on this statement."), "fr": ", ce qui pointe À L'OPPOSÉ de {pole} — la figure est ici pour son score global sur l'axe, pas pour cet énoncé."},
     "evidence": {"en": "Evidence: {anchor}.", "fr": "Preuve : {anchor}."},
     "transposed": {"en": "Transposed to AI: {transposition}.", "fr": "Transposé à l'IA : {transposition}."},
     "confidence": {"en": "Confidence of the inference: {confidence}.", "fr": "Confiance dans l'inférence : {confidence}."},
-    "why_pole": {"en": "Why this pole — {item}", "fr": "Pourquoi ce pôle — {item}"},
+    "why_pole": {"en": "Why this pole — statement {k} of {n}", "fr": "Pourquoi ce pôle — énoncé {k} sur {n}"},
     # _figure
+    "gloss": {"en": "The quotation, in plain words", "fr": "La citation, en clair"},
     "who": {"en": "Who — and why {name}", "fr": "Qui — et pourquoi {name}"},
     "epoch": {"en": "In the society of their time", "fr": "Dans la société de son temps"},
     "name_dates": {"en": "{name} ({dates})", "fr": "{name} ({dates})"},
-    "figure_meta": {"en": "{origin} · {wave} · score {score} on this axis.", "fr": "{origin} · {wave} · score {score} sur cet axe."},
+    "figure_meta": {"en": "{origin} · {wave} · position {score}/100 on this axis (0 = {left}, 100 = {right}).", "fr": "{origin} · {wave} · position {score}/100 sur cet axe (0 = {left}, 100 = {right})."},
     "video": {"en": "Video", "fr": "Vidéo"},
     "video_player": {"en": ("The portrait IS the player: press play and the video runs in "
                             "its frame — full screen and back, without leaving the deck. "), "fr": "Le portrait EST le lecteur : lancez la lecture et la vidéo tourne dans son cadre — plein écran et retour, sans quitter le deck. "},
     "video_talk": {"en": ("It is an AI-generated talking portrait — synthetic face and "
                           "voice, built from documented sources. "), "fr": "C'est un portrait parlant généré par IA — visage et voix synthétiques, construits à partir de sources documentées. "},
-    "video_live": {"en": ("A living person is never made to speak by generative AI: "
-                          "the author presents the figure on camera. "), "fr": "Jamais l'IA générative ne fait parler une personne vivante : l'auteur présente la figure face caméra. "},
-    "video_rules": {"en": "The provenance rules are on the Provenance slide, at the start.", "fr": "Les règles de provenance sont sur la slide Provenance, au début."},
-    "reference_text": {"en": ("The quotation is verbatim and verified; its citation code "
-                              "opens the full reference on hover, and the References page "
-                              "lists them all."), "fr": "La citation est verbatim et vérifiée ; son code de citation ouvre la référence complète au survol, et la page Références les liste toutes."},
+    # I2 (NG 2026-09-06) : la vidéo « presented » est présentée par l'orateur
+    # face caméra, figure vivante OU non (Berg, Ōe, Einstein) ; la règle sur les
+    # personnes vivantes ne s'affiche que pour une figure vivante.
+    "video_live": {"en": "The speaker presents the figure on camera — no synthetic face or voice. ", "fr": "L'orateur présente la figure face caméra — ni visage ni voix synthétiques. "},
+    "video_living_rule": {"en": "A living person is never made to speak by generative AI. ", "fr": "Jamais l'IA générative ne fait parler une personne vivante. "},
+    "video_rules": {"en": "The ✦ AI mark on an image means it was generated or altered by AI.", "fr": "La pastille ✦ AI sur une image signifie qu'elle a été générée ou modifiée par IA."},
+    "reference_text": {"en": ("The quotation is word for word and verified. The code in brackets "
+                              "names the published SOURCE (author or publisher, year) — not always "
+                              "the person speaking. In the app, hovering the code opens the full "
+                              "reference; the References page lists them all."), "fr": "La citation est mot pour mot et vérifiée. Le code entre parenthèses désigne la SOURCE publiée (auteur ou éditeur, année), pas toujours la personne qui parle. Dans l'application, survoler le code ouvre la référence complète ; la page Références les liste toutes."},
     "full_reference": {"en": "Full reference", "fr": "Référence complète"},
     "before_us": {"en": "Before us — ", "fr": "Avant nous — "},
     "figure_pole": {"en": "{name} — {pole}", "fr": "{name} — {pole}"},
     "figure_stance": {"en": "{axis} · {pole} · {effect}", "fr": "{axis} · {pole} · {effect}"},
+    "figure_stance_short": {"en": "{pole} · {effect}", "fr": "{pole} · {effect}"},
     "quote": {"en": "“{quote}”", "fr": "« {quote} »"},
     # _arguments
-    "symmetry": {"en": "Symmetry", "fr": "Symétrie"},
-    "symmetry_text": {"en": ("The opposite pole has its own three arguments, of the same "
-                             "three natures. Never open this slide without the other one — "
-                             "the room must hear both best cases."), "fr": "Le pôle opposé a ses trois propres arguments, des trois mêmes natures. N'ouvrez jamais cette slide sans l'autre — la salle doit entendre les deux meilleurs plaidoyers."},
-    "paraphrase": {"en": "Paraphrase or verbatim", "fr": "Paraphrase ou verbatim"},
-    "paraphrase_text": {"en": ("A card carrying a quotation gives it verbatim; the others are "
-                               "documented paraphrases of a sourced position."), "fr": "Une carte qui porte une citation la donne verbatim ; les autres sont des paraphrases documentées d'une position sourcée."},
+    # Réécrits le 2026-09-06 (planche tooldeb T2/T3) : les entrées fixes
+    # affirmaient le faux (« mêmes trois natures », « une carte qui porte une
+    # citation la donne verbatim ») et portaient une consigne d'orateur.
+    "natures": {"en": "The natures of the cards", "fr": "Les natures des cartes"},
+    "nature_line": {"en": "{nature}: {definition}", "fr": "{nature} : {definition}"},
+    "symmetry": {"en": "The other side", "fr": "L'autre camp"},
+    "symmetry_text": {"en": "The opposite pole, {other}, has its own three sourced arguments on its own slide; the room hears both.", "fr": "Le pôle opposé, {other}, a ses trois propres arguments sourcés sur sa propre slide ; la salle entend les deux."},
+    "paraphrase": {"en": "Paraphrase or quotation?", "fr": "Résumé ou citation ?"},
+    "paraphrase_text": {"en": ("No card title is a quotation: each is a documented paraphrase of "
+                               "a sourced position. The exact words are in the source (code in "
+                               "brackets); the deck's only word-for-word quotations are the figures' "
+                               "sentences, in quotation marks, on the “Before us” slides."), "fr": "Aucun titre de carte n'est une citation : chacun résume une position documentée. Les mots exacts sont dans la source (code entre parenthèses) ; les seules citations mot pour mot du deck sont les phrases des figures, entre guillemets, sur les slides « Avant nous »."},
     "today_title": {"en": ("And today for ", (s.project.titles.keyword, "AI"), "? — "), "fr": ("Et aujourd'hui pour l'", (s.project.titles.keyword, "IA"), " ? — ")},
     "today_tip": {"en": "Contemporary arguments for {pole}", "fr": "Arguments contemporains pour {pole}"},
     # _debate_stage (NG 2026-08-31) — la scène du débat, une par axe.
@@ -166,14 +240,18 @@ _UI = {
     "stage_tip_title": {"en": "Running the debate of this axis", "fr": "Mener le débat de cet axe"},
     "stage_floor": ({"en": "Taking the floor", "fr": "Prendre la parole"},
                     {"en": ("Raise your hand; take the microphone; say why you favour "
-                            "the pole on screen — one argument, thirty seconds."), "fr": "Levez la main ; prenez le micro ; dites pourquoi vous défendez le pôle à l'écran — un argument, trente secondes."}),
+                            "the pole on screen — one argument, kept short. No stopwatch: "
+                            "a round ends when both sides have been heard."), "fr": "Levez la main ; prenez le micro ; dites pourquoi vous défendez le pôle à l'écran — un argument, court. Pas de chronomètre : un tour se termine quand les deux camps ont été entendus."}),
+    "stage_mascots": {"en": "The characters on stage", "fr": "Les personnages sur scène"},
+    "stage_mascot_line": {"en": "{name} ({pole})", "fr": "{name} ({pole})"},
+    "stage_voxo": {"en": "{name} — the moderator, at the microphone: she gives the floor and defends no pole.", "fr": "{name} — la modératrice, au micro : elle donne la parole et ne défend aucun pôle."},
     "stage_synthesis": ({"en": "The two sentences", "fr": "Les deux phrases"},
                         {"en": ("Each side shows the pole's synthetic statement — the one "
                                 "sentence of the quick poll. The material of the axis "
                                 "(waves, figures, arguments) comes AFTER the debate."), "fr": "Chaque côté montre l'énoncé synthétique du pôle — la phrase du sondage rapide. Le matériau de l'axe (vagues, figures, arguments) vient APRÈS le débat."}),
     "stage_both": ({"en": "Both sides, always", "fr": "Les deux camps, toujours"},
-                   {"en": ("Give the floor alternately — the room must hear the two best "
-                           "cases, not the one the speaker prefers."), "fr": "Donnez la parole en alternance — la salle doit entendre les deux meilleurs plaidoyers, pas celui que l'orateur préfère."}),
+                   {"en": ("The floor alternates between the two sides: the room hears the two "
+                           "best cases, not one."), "fr": "La parole alterne entre les deux camps : la salle entend les deux meilleurs plaidoyers, pas un seul."}),
     # _absence — le pôle sans champion (décision A NG 2026-08-31 + audit hub).
     "absence_title": {"en": ("Before us — ", (s.project.titles.keyword, "no one"), "?"), "fr": ("Avant nous... ", (s.project.titles.keyword, "personne"), " ?")},
     "absence_text": {"en": ("No major figure — of the {n} in this study — can be classed on "
@@ -269,7 +347,10 @@ def _identity(pole: dict, lang: str | None, *,
     entries.append((ui("mascots", lang),
                     " · ".join(f"{m['mascot']}: {m.get('description') or m['label']}"
                                for m in both)))
-    _header([pole_name], T(_UI["axis_pole"], lang).format(axis=axis_name, pole=pole_name),
+    # Forme courte quand l'axe et le pôle sont homonymes (« Optimism — Optimism »
+    # se lisait comme un bug — planche tooldeb T10).
+    _header([pole_name], T(_UI["axis_pole_short" if axis_name == pole_name else "axis_pole"], lang)
+            .format(axis=axis_name, pole=pole_name),
             entries, label=pole_name, toc_lvl="1")
     st_write(rs.subtitle,
              T(_UI["axis_effect"], lang).format(axis=axis_name, effect=_effect(pole, lang)),
@@ -318,6 +399,7 @@ _WAVES_UI = {
                  "medium": {"en": "moderate match", "fr": "rapprochement moyen"},
                  "weak": {"en": "weak match — best approximation", "fr": "rapprochement faible — meilleure approximation"}},
     "open": {"en": "click to open the wave", "fr": "cliquer pour ouvrir la vague"},
+    "rank": {"en": "Rank", "fr": "Rang"},
 }
 
 
@@ -375,7 +457,10 @@ def _waves(pole: dict, lang: str | None, *,
     for w in waves:
         just = w.get("justification") or {}
         strength = T(_WAVES_UI["strength"].get(w.get("strength"), {"en": "", "fr": ""}), lang)
-        entries.append((f"{w['order']} · {text(w['name'], lang)} ({text(w['period'], lang)})"
+        # Le RANG annoncé par l'entrée précédente, jamais le numéro de la vague
+        # dans le deck des vagues (tooldeb T9).
+        entries.append((f"{T(_WAVES_UI['rank'], lang)} {w.get('rank', w['order'])} · "
+                        f"{text(w['name'], lang)} ({text(w['period'], lang)})"
                         + (f" — {strength}" if strength else ""),
                         just.get(lang) or just.get("fr") or just.get("en") or ""))
     _header([T(_WAVES_UI["title_before"], lang), (s.project.titles.keyword, pole_name)],
@@ -418,6 +503,13 @@ def _pole_banner(pole: dict, lang: str | None) -> None:
                 st_write(rs.banner, T(_UI["no_champion"], lang), tag=t.div)
 
 
+def _alive(f: dict) -> bool:
+    """Figure vivante = dates « 1964- » (pas de seconde année). Le gel ne porte
+    pas de drapeau : la date est la seule donnée (I2, 2026-09-06)."""
+    dates = str(f.get("dates") or "")
+    return bool(dates) and not re.search(r"\d\s*-\s*-?\d", dates) and dates.rstrip().endswith("-")
+
+
 def _why_here(f: dict, pole_name: str, lang: str | None) -> list[tuple[str, str]]:
     """Pourquoi CETTE figure est sur CE pôle — dans les mots du hub.
 
@@ -431,24 +523,29 @@ def _why_here(f: dict, pole_name: str, lang: str | None) -> list[tuple[str, str]
     une seconde vérité — la règle du tuyau amont l'interdit.
     """
     out = []
-    for r in (f["quote"].get("reasoning") or []):
+    reasoning = f["quote"].get("reasoning") or []
+    for k, r in enumerate(reasoning, start=1):
         statement = text(r.get("statement"), lang) or ""
         response = r.get("response")
         stance = T(_UI[("agrees" if isinstance(response, int) and response >= 3
                         else "disagrees") if response is not None else "no_answer"], lang)
-        parts = [T(_UI["stance_line"], lang).format(statement=statement, name=f["name"],
+        parts = [T(_UI["stance_line"], lang).format(statement=statement, name=_t(f["name"], lang),
                                                     stance=stance)]
         if isinstance(response, int):
             parts[0] += T(_UI["stance_score"], lang).format(response=response)
         parts[0] += T(_UI["points_toward" if r.get("direction") == "toward"
                           else "points_away"], lang).format(pole=pole_name)
+        # Planche tooldeb T7 (NG 2026-09-06) : plus de code d'item ni de citekey
+        # brut devant la salle — « énoncé k sur n », clés → (Auteur, année),
+        # confiance traduite. La PROSE des ancres reste celle du hub (citool B).
         if r.get("anchor"):
-            parts.append(T(_UI["evidence"], lang).format(anchor=r["anchor"]))
+            parts.append(T(_UI["evidence"], lang).format(anchor=_plain_refs(r["anchor"])))
         if r.get("transposition"):
-            parts.append(T(_UI["transposed"], lang).format(transposition=r["transposition"]))
+            parts.append(T(_UI["transposed"], lang).format(transposition=_plain_refs(r["transposition"])))
         if r.get("confidence"):
-            parts.append(T(_UI["confidence"], lang).format(confidence=r["confidence"]))
-        out.append((T(_UI["why_pole"], lang).format(item=r["item"]), " ".join(parts)))
+            conf = T(_CONFIDENCE.get(r["confidence"], {"en": r["confidence"], "fr": r["confidence"]}), lang)
+            parts.append(T(_UI["confidence"], lang).format(confidence=conf))
+        out.append((T(_UI["why_pole"], lang).format(k=k, n=len(reasoning)), " ".join(parts)))
     return out
 
 
@@ -465,29 +562,41 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
     sur les dix-huit exemplaires du gabarit.
     """
     pole_name = text(pole["pole"], lang)
+    name = _t(f["name"], lang)
     # En tête du tooltip : QUI est cette figure (demande NG 2026-08-14 —
     # pourquoi elle, sa révolution, son rôle dans la société de l'époque).
     # Les deux textes sont la ``presentation`` et la ``biography.place``
-    # éditoriales du hub, gelées telles quelles — jamais rédigés ici.
-    who = ([(T(_UI["who"], lang).format(name=f["name"]), f["presentation"])]
-           if f.get("presentation") else [])
-    if f.get("epoch"):
-        who.append((T(_UI["epoch"], lang), f["epoch"]))
+    # éditoriales du hub, gelées en feuilles {en, fr} (tooldeb T6, 2026-09-06 :
+    # le gel jetait le français que le hub possède) — jamais rédigés ici.
+    presentation, epoch = _t(f.get("presentation"), lang), _t(f.get("epoch"), lang)
+    # EN TÊTE (NG 2026-09-06) : la citation expliquée — ses implicites, son
+    # contexte, et en quoi elle soutient le pôle — là où la salle regarde après
+    # avoir lu la phrase. Texte du hub (debate_gloss), jamais rédigé ici.
+    gloss = _t(f["quote"].get("gloss"), lang)
+    who = ([(T(_UI["gloss"], lang), gloss)] if gloss else [])
+    who += ([(T(_UI["who"], lang).format(name=name), presentation)] if presentation else [])
+    if epoch:
+        who.append((T(_UI["epoch"], lang), epoch))
+    # L'échelle du score (tooldeb T9) : 0 = pôle gauche, 100 = pôle droit.
+    sides = {p["side"]: text(p["pole"], lang) for p in axis_poles(pole["axis"])}
     entries = who + _why_here(f, pole_name, lang) + [
-               (T(_UI["name_dates"], lang).format(name=f["name"], dates=f.get("dates", "")),
-                T(_UI["figure_meta"], lang).format(origin=f.get("origin", ""),
-                                                   wave=f.get("wave", ""), score=f["score"])),
+               (T(_UI["name_dates"], lang).format(name=name, dates=f.get("dates", "")),
+                T(_UI["figure_meta"], lang).format(origin=_t(f.get("origin"), lang),
+                                                   wave=_t(f.get("wave"), lang), score=f["score"],
+                                                   left=sides.get("left", ""), right=sides.get("right", ""))),
                (T(_UI["video"], lang),
                 T(_UI["video_player"], lang)
-                + T(_UI["video_talk" if (f.get("media") or {}).get("video_kind") == "talk"
-                        else "video_live"], lang)
+                + (T(_UI["video_talk"], lang)
+                   if (f.get("media") or {}).get("video_kind") == "talk"
+                   else T(_UI["video_live"], lang)
+                   + (T(_UI["video_living_rule"], lang) if _alive(f) else ""))
                 + T(_UI["video_rules"], lang)),
                (ui("reference", lang), T(_UI["reference_text"], lang))]
     full = f["quote"].get("reference_full")
     if full and full != f["quote"].get("reference"):
         entries.append((T(_UI["full_reference"], lang), full))
     _header([T(_UI["before_us"], lang), (s.project.titles.keyword, pole_name)],
-            T(_UI["figure_pole"], lang).format(name=f["name"], pole=pole_name), entries)
+            T(_UI["figure_pole"], lang).format(name=name, pole=pole_name), entries)
     # Bandeau _pole_banner retiré (NG Q2b 2026-08-31) : avec la règle « banc
     # partiel » (trio de préférence, sinon deux, sinon une), un champion réel
     # n'est plus « la voix la plus proche » — le texte du bandeau serait faux,
@@ -527,25 +636,26 @@ def _figure(pole: dict, f: dict, index: int, lang: str | None, *,
             if video:
                 st_poster_video(
                     video, f"app/static/media/{media.get('portrait')}",
-                    alt=f"Presentation video of {f['name']}",
+                    alt=f"Presentation video of {name}",
                     width=w,
                     ai_marked=bool(media.get("video_ai")
                                    or media.get("video_kind") == "talk"))
                 return
             st_image(DS.cards.media_center, width=w,
                      uri=media.get("portrait"),
-                     alt=f"Portrait of {f['name']}",
+                     alt=f"Portrait of {name}",
                 overlay=dd35_overlay(media.get("portrait_ai", False)))
 
     # Colonnes 40 % image / 60 % texte (NG 2026-08-31 soir) — le défaut 50/50
     # du gabarit coupait la slide en deux.
     with hero_split(s, zoom=zoom, image=_portrait, ratio=40):
-        st_write(rs.figure_name, f["name"], tag=t.div)
+        st_write(rs.figure_name, name, tag=t.div)
         st_write(rs.figure_meta,
-                 " · ".join(x for x in (f.get("dates"), f.get("origin"),
-                                        f.get("wave")) if x), tag=t.div)
+                 " · ".join(x for x in (f.get("dates"), _t(f.get("origin"), lang),
+                                        _t(f.get("wave"), lang)) if x), tag=t.div)
         st_write(rs.figure_stance,
-                 T(_UI["figure_stance"], lang).format(
+                 T(_UI["figure_stance_short" if text(pole["axis_name"], lang) == pole_name
+                       else "figure_stance"], lang).format(
                      axis=text(pole["axis_name"], lang), pole=pole_name,
                      effect=_effect(pole, lang)), tag=t.div)
         st_space("v", "1vh")
@@ -583,17 +693,6 @@ def _arguments(pole: dict, lang: str | None, *,
                zoom_scale: float | None = None,
                badge_scale: float | None = None) -> None:
     pole_name = text(pole["pole"], lang)
-    # Attribution COURTE à l'écran (« Andrew Ng ») — la titulature complète
-    # (« co-founder of Google Brain, professor at Stanford ») vit au tooltip.
-    entries = [(text(a["title"], lang),
-                " — ".join(x for x in (a.get("person"),
-                                       text(a.get("text"), lang) or "") if x))
-               for a in pole["arguments"]]
-    entries.append((T(_UI["symmetry"], lang), T(_UI["symmetry_text"], lang)))
-    entries.append((T(_UI["paraphrase"], lang), T(_UI["paraphrase_text"], lang)))
-    _header([*TF(_UI["today_title"], lang), pole_name],
-            T(_UI["today_tip"], lang).format(pole=pole_name), entries)
-    st_space("v", "1vh")
     # Grille 2+1 (NG 2026-08-30) : rangée 1 = public policy | public statement,
     # rangée 2 = concrete case pleine largeur — trois colonnes faisaient trois
     # cartes étroites et la moitié de l'écran vide ; une longue ligne par
@@ -602,6 +701,50 @@ def _arguments(pole: dict, lang: str | None, *,
     order = {"policy": 0, "quote": 1, "case": 2, "historical": 2, "tradition": 2}
     args = sorted(pole["arguments"], key=lambda a: order.get(a["category"], 3))
     top, bottom = args[:2], args[2:]
+
+    def _nature(a: dict) -> str:
+        return T(_NATURES.get(a["category"], {"en": a["category"] or ""}), lang)
+
+    def _person_short(a: dict) -> str | None:
+        # Attribution COURTE à l'écran (« Andrew Ng ») — la titulature complète
+        # (« co-founder of Google Brain, professor at Stanford ») vit au tooltip.
+        return _t(a.get("person"), lang).split(",")[0].strip() or None
+
+    def _position(a: dict) -> str:
+        # La phrase de position, pas le brief du modérateur : les premières
+        # phrases du texte du hub jusqu'à ~300 caractères, coupées à une
+        # frontière de phrase (tooldeb T2 — le survol tenait deux hauteurs).
+        body = text(a.get("text"), lang) or ""
+        out = ""
+        for sentence in re.split(r"(?<=[.!?])\s+", body):
+            if out and len(out) + len(sentence) > 300:
+                break
+            out = f"{out} {sentence}".strip()
+        return out
+
+    # Le tooltip (tooldeb T2, NG 2026-09-06 — « uniquement les slides And today
+    # for AI ») : les entrées suivent l'ORDRE DES CARTES (elles suivaient l'ordre
+    # du gel : la 3e carte était la 2e entrée), chacune est titrée par sa nature
+    # et sa personne (le mot du badge devient cherchable), et une entrée
+    # d'ouverture dit ce que sont les natures.
+    entries = [(T(_UI["natures"], lang),
+                " · ".join(T(_UI["nature_line"], lang).format(
+                    nature=_nature(a), definition=T(_NATURE_DEFS.get(a["category"], {"en": ""}), lang))
+                    for a in args))]
+    for a in args:
+        who = _person_short(a) or citation_or(a.get("reference") or a.get("citekey") or "")
+        person_full = _t(a.get("person"), lang)
+        body = text(a["title"], lang).rstrip(".") + ". " + _position(a)
+        if person_full and person_full.split(",")[0].strip() not in body:
+            body = f"{person_full} — {body}"
+        entries.append((f"{_nature(a)} — {who}", body))
+    entries.append((T(_UI["paraphrase"], lang), T(_UI["paraphrase_text"], lang)))
+    other = next((text(p["pole"], lang) for p in axis_poles(pole["axis"])
+                  if p["side"] != pole["side"]), "")
+    entries.append((T(_UI["symmetry"], lang), T(_UI["symmetry_text"], lang).format(other=other)))
+    _header([*TF(_UI["today_title"], lang), pole_name],
+            T(_UI["today_tip"], lang).format(pole=pole_name), entries)
+    st_space("v", "1vh")
 
     badge_style = rs.nature_badge if badge_scale is None else (
         s.project.titles.subtitle + s.project.titles.keyword
@@ -613,8 +756,7 @@ def _arguments(pole: dict, lang: str | None, *,
         # La ligne de source est le code de citation natif — carte complète
         # au survol — avec repli sur la chaîne du manifeste si la clé n'était
         # pas gelée.
-        person_short = (a.get("person") or "").split(",")[0].strip() or None
-        argument_card(a, DS, text(a["title"], lang), person=person_short,
+        argument_card(a, DS, text(a["title"], lang), person=_person_short(a),
                       badge_style=badge_style, person_style=rs.person,
                       nature=T(_NATURES.get(a["category"], {"en": a["category"] or ""}), lang),
                       source_html=citation_or(
@@ -675,10 +817,23 @@ def _debate_stage(both: list[dict], lang: str | None, *,
     a, d = (text(p["pole"], lang) for p in both)
     axis_name = text(both[0]["axis_name"], lang)
     label = T(_UI["faceoff_label"], lang).format(left=a, right=d)
+    # Les personnages nommés à l'écran, enfin expliqués (tooldeb T11) : les
+    # mascottes des deux pôles (nom, pôle — la tagline du studio est en
+    # français seul, elle n'est donnée qu'en FR) et Voxo, la modératrice.
+    voxo = mascot("Voxo")
+    cast = []
+    for p in both:
+        for m in mascots(p):
+            line = T(_UI["stage_mascot_line"], lang).format(name=m["mascot"], pole=text(p["pole"], lang))
+            if lang == "fr" and m.get("description"):
+                line += f" : {m['description']}"
+            cast.append(line)
+    cast.append(T(_UI["stage_voxo"], lang).format(name=voxo["name"]))
     entries = [
         (T(_UI["stage_floor"][0], lang), T(_UI["stage_floor"][1], lang)),
         (T(_UI["stage_synthesis"][0], lang), T(_UI["stage_synthesis"][1], lang)),
         (T(_UI["stage_both"][0], lang), T(_UI["stage_both"][1], lang)),
+        (T(_UI["stage_mascots"], lang), " · ".join(cast)),
     ]
     # Forme courte quand l'axe est homonyme d'un pôle (Trust, Centralisation,
     # Transhumanisme…) : « Trust — Trust / … » doublonne et prend deux lignes.

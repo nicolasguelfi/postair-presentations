@@ -51,11 +51,15 @@ _MASCOT = "Kuri"
 _MARKER = {"en": "Break", "fr": "Pause"}
 _LABEL = {"en": "Break", "fr": "Pause"}
 _TIP_TITLE = {"en": "After the break", "fr": "Après la pause"}
+#: Les deux textes du compte à rebours (I5, 2026-09-06) — ils étaient les
+#: défauts anglais du widget, projetés tels quels dans le deck FR.
+_BACK_IN = {"en": "Back in", "fr": "Reprise dans"}
+_RESUME_AT = {"en": "we resume at", "fr": "reprise à"}
 _TIP = [
     ({"en": "Introduction to AI & Generative AI", "fr": "Introduction à l'IA et à l'IA générative"},
      {"en": ("How a large language model actually works, what it can and cannot do, "
              "and why it makes things up with such confidence."), "fr": "Comment un grand modèle de langage fonctionne vraiment, ce qu'il sait et ne sait pas faire, et pourquoi il invente avec tant d'assurance."}),
-    ({"en": "Using Mistral models & agents to study", "fr": "Étudier avec les modèles et agents Mistral"},
+    ({"en": "Using models & agents to study", "fr": "Étudier avec les modèles et les agents"},
      {"en": ("Building a revision agent step by step — including the mistakes that "
              "make one useless."), "fr": "Construire un agent de révision pas à pas — y compris les erreurs qui le rendent inutile."}),
     ({"en": "The UL AI guidelines", "fr": "Les lignes directrices IA de l'UL"},
@@ -107,4 +111,5 @@ def build(lang: str = "en", **_):
                 # `scale` est LE levier de taille : le widget est une iframe dimensionnée
                 # en vw, un st_zoom autour serait inerte (R-zoom). La hauteur ne
                 # fait que loger les chiffres agrandis.
-                st_countdown(_break_minutes(), height=620, scale=1.8)
+                st_countdown(_break_minutes(), height=620, scale=1.8,
+                             label=T(_BACK_IN, lang), resume_label=T(_RESUME_AT, lang))

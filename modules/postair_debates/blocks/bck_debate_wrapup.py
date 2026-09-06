@@ -67,14 +67,14 @@ _TIP_CORPUS_TEXT = {"en": ("{postures} postures, {figures} figures of the study 
                            "seventeen technological waves — printing, steam, electricity, the "
                            "atom, the network — and {arguments} sourced contemporary arguments. "
                            "{reused} figures defend two different poles, which is exactly as "
-                           "inconsistent as real people are."), "fr": "{postures} postures, {figures} figures de l'étude issues de dix-sept vagues technologiques — l'imprimerie, la vapeur, l'électricité, l'atome, le réseau — et {arguments} arguments contemporains sourcés. {reused} figures défendent deux pôles différents, exactement aussi inconséquentes que les vraies personnes."}
+                           "inconsistent as real people are."), "fr": "{postures} postures, {figures} figures de l'étude issues de dix-sept vagues technologiques — l'imprimerie, la vapeur, l'électricité, l'atome, le réseau — et {arguments} arguments contemporains sourcés. {reused} figures défendent deux pôles différents, exactement aussi incohérentes que les vraies personnes."}
 _TIP_QUOTES = ({"en": "The quotations", "fr": "Les citations"},
                {"en": ("Verbatim and verified against primary sources. Where a reference is "
                        "still being established, the card says so."), "fr": "Verbatim et vérifiées sur les sources primaires. Quand une référence est encore en cours d'établissement, la carte le dit."})
 _TIP_ARGS = ({"en": "The arguments", "fr": "Les arguments"},
              {"en": ("Drawn from the debate material of the study, of three natures — a "
                      "public policy, a concrete case, a public statement — so no pole is "
-                     "defended from a single angle."), "fr": "Tirés du matériau de débat de l'étude, de trois natures — une politique publique, un cas concret, une parole publique — pour qu'aucun pôle ne soit défendu sous un seul angle."})
+                     "defended from a single angle."), "fr": "Tirés du matériau de débat de l'étude, de trois natures — une politique publique, un cas concret, une déclaration publique — pour qu'aucun pôle ne soit défendu sous un seul angle."})
 _TIP_TYPED = ({"en": "Nothing typed here", "fr": "Rien n'est écrit ici"},
               {"en": ("Every name, quotation, reference and argument on these slides is "
                       "regenerated from the study. A correction upstream reaches the deck by "

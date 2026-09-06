@@ -296,7 +296,11 @@ def figure_video_catalogue(names: tuple[str, ...]) -> list[tuple[str, str]]:
     seen: dict[str, dict] = {}
     for pole in data["poles"]:
         for fig in pole["figures"]:
-            seen.setdefault(fig["name"], fig)
+            # Le nom du gel est une feuille {en, fr} depuis le 2026-09-06 (tooldeb
+            # T5) : chaque forme (« Plato », « Platon ») indexe la figure.
+            forms = list(fig["name"].values()) if isinstance(fig["name"], dict) else [fig["name"]]
+            for form in forms:
+                seen.setdefault(form, fig)
     entries = []
     for name in names:
         if name not in seen:

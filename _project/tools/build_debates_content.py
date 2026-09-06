@@ -626,6 +626,12 @@ class Hub:
                 "citekeys": bibkeys,
                 "curated": bool(match), "curated_by": how, "documents": items,
                 "editorial": bool(choice),
+                # « La citation, en clair » (NG 2026-09-06) : le gloss éditorial du
+                # couple figure × pôle — ce que dit la phrase, ses implicites, et
+                # en quoi elle soutient le pôle — rédigé DANS le hub
+                # (editorial/<id>.json, debate_gloss["<axe>/<côté>"] = {en, fr}).
+                "gloss": _sheet((self.editorial.get(fid, {}).get("debate_gloss") or {})
+                                .get(f"{axis}/{side}")),
                 "reasoning": self.reasoning(fid, items, axis, side),
                 "anchored": any(_anchored(q["text"],
                                           (self.annotations.get(fid, {}).get(i) or {}).get("anchor"))
@@ -709,17 +715,17 @@ class Hub:
                     break
                 if e["category"] != category or any(p["category"] == category for p in picked):
                     continue
-                if e["person"] and e["person"] in speakers:
+                if _en(e["person"]) and _en(e["person"]) in speakers:
                     continue
                 picked.append(e)
-                speakers.add(e["person"] or "")
+                speakers.add(_en(e["person"]) or "")
         for e in pool:                                   # top up if a category was absent
             if len(picked) == k:
                 break
-            if e in picked or (e["person"] and e["person"] in speakers):
+            if e in picked or (_en(e["person"]) and _en(e["person"]) in speakers):
                 continue
             picked.append(e)
-            speakers.add(e["person"] or "")
+            speakers.add(_en(e["person"]) or "")
         return picked, len(pool)
 
 
@@ -809,15 +815,17 @@ def build(hub: Hub) -> dict:
                 return {
                     "id": fid, "name": f["name"], "dates": f.get("dates"),
                     "origin": f.get("origin"), "stance": f.get("stance"),
-                    "wave": (hub.wave.get(f.get("wave"), {}).get("name") or {}).get("en"),
+                    # Feuilles {en, fr} (tooldeb T6, 2026-09-06) : le gel ne jette
+                    # plus le français que le hub possède ; le deck résout par langue.
+                    "wave": _sheet(hub.wave.get(f.get("wave"), {}).get("name")),
                     "score": round(100 - distance if side == "right" else distance),
                     # La présentation éditoriale (pourquoi cette figure,
                     # sa révolution, sa posture) et sa place dans la
                     # société de l'époque — demande NG 2026-08-14 : le
                     # tooltip de chaque slide figure doit rappeler qui
                     # elle est. Rédigé DANS le hub, jamais ici.
-                    "presentation": (editorial.get("presentation") or {}).get("en"),
-                    "epoch": ((editorial.get("biography") or {}).get("place") or {}).get("en"),
+                    "presentation": _sheet(editorial.get("presentation")),
+                    "epoch": _sheet((editorial.get("biography") or {}).get("place")),
                     "quote": quote, "media": assets,
                 }
 
@@ -912,6 +920,22 @@ _CATEGORY_FR = {"quote": "parole publique", "case": "cas concret",
                 "tradition": "tradition"}
 
 
+def _sheet(node) -> dict | str | None:
+    """Une feuille {en, fr} du hub gelée telle quelle (fr compris — tooldeb T6) ;
+    une chaîne reste une chaîne (ancien schéma, tolérée)."""
+    if isinstance(node, dict):
+        return {k: v for k, v in node.items() if k in ("en", "fr") and v}
+    return node
+
+
+def _en(node) -> str:
+    """La valeur anglaise d'un champ chaîne-ou-feuille — pour les clés de
+    dédoublonnage et les rapports (jamais pour le deck, qui résout par langue)."""
+    if isinstance(node, dict):
+        return node.get("en") or ""
+    return node or ""
+
+
 def _clip(text: str | None, n: int = 150) -> str:
     text = " ".join((text or "").split())
     return text if len(text) <= n else text[:n].rsplit(" ", 1)[0] + "…"
@@ -940,20 +964,20 @@ def report(data: dict) -> str:
         if pole.get("no_champion"):
             out += ["", "> **AUCUN CHAMPION** — moins de trois figures éligibles du bon côté",
                     "> de la médiane : le deck assume l'absence à l'écran. Les plus proches : "
-                    + ", ".join(f"{c['name']} ({c['score']})" for c in pole.get("closest", []))
+                    + ", ".join(f"{_en(c['name'])} ({c['score']})" for c in pole.get("closest", []))
                     + ".", ""]
         out += ["", "| Figure | Score | Citation | Référence |", "|---|--:|---|---|"]
         for f in pole["figures"]:
             q = f["quote"]
             mark = "" if q["curated"] else " ¹"
             ref = q["reference"] or "⚠️ *à résoudre depuis le dossier*"
-            out.append(f"| **{f['name']}**{mark}<br>*{f['origin']}, {f['dates']}* | {f['score']} "
+            out.append(f"| **{_en(f['name'])}**{mark}<br>*{_en(f['origin'])}, {f['dates']}* | {f['score']} "
                        f"| « {_clip(q['en'])} » | {_clip(ref, 90)} |")
         out += ["", "| Argument aujourd'hui | Nature | Porte-parole | Source |", "|---|---|---|---|"]
         for a in pole["arguments"]:
             out.append(f"| {_clip(a['title']['en'], 80)} "
                        f"| {_CATEGORY_FR.get(a['category'], a['category'])} "
-                       f"| {_clip(a['person'] or '—', 45)} "
+                       f"| {_clip(_en(a['person']) or '—', 45)} "
                        f"| {_clip(a['reference'] or a['citekey'] or '—', 70)} |")
         out += ["", f"*Réservoir : {pole['argument_pool']} arguments sourcés pour ce pôle.*", ""]
     out += ["---", "",
@@ -996,7 +1020,7 @@ def work_order(data: dict) -> str:
            f"> Instrument v{data['instrument_version']} · matériau de débat v{data['debate_version']}",
            ""]
     for f, pole, q, needs in rows:
-        out += [f"## {f['name']} (`{f['id']}`) — {', '.join(needs)}",
+        out += [f"## {_en(f['name'])} (`{f['id']}`) — {', '.join(needs)}",
                 f"- {f['origin']}, {f['dates']} · axe **{pole['axis']}**, "
                 f"pôle **{pole['pole']['abbr']['en']}** · documente {', '.join(q['documents'])}",
                 f"- vérification actuelle : {q['verification'] or '—'}",

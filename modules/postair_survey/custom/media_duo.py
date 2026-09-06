@@ -116,7 +116,10 @@ def _figure_video(name: str, lang: str = "en") -> str:
     data = json.loads(_DEBATES_CONTENT.read_text(encoding="utf-8"))
     for pole in data["poles"]:
         for f in pole.get("figures", []):
-            if f["name"] == name:
+            # Nom gelé en feuille {en, fr} depuis le 2026-09-06 (tooldeb T5) :
+            # la figure répond à chacune de ses formes (« Plato », « Platon »).
+            forms = list(f["name"].values()) if isinstance(f["name"], dict) else [f["name"]]
+            if name in forms:
                 url = (f["media"].get("videos") or {}).get(lang) or f["media"][_ROLE]
                 local = _MEDIA / "figure-videos" / "__".join(url.split("/")[-2:])
                 if not local.exists():

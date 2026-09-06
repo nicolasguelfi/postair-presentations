@@ -69,6 +69,12 @@ _TITLE = {"en": ("Where does ", (s.project.titles.keyword, "this room"), " split
 _LABEL = {"en": "Results", "fr": "Résultats"}
 _BUTTON = {"en": "Open the results", "fr": "Ouvrir les résultats"}
 _TIP_TITLE = {"en": "Reading the dashboard", "fr": "Lire le tableau de bord"}
+#: Ce qu'il y a SUR la slide (I5, 2026-09-06) : le tooltip ne parlait que de
+#: la page qu'on ouvre, jamais des quatre boutons projetés.
+_TIP_BUTTONS = ({"en": "The four buttons", "fr": "Les quatre boutons"},
+                {"en": ("One button per session day (the first one is the rehearsal campaign): "
+                        "it opens the live results dashboard of that day's survey; the date under "
+                        "the action is the session it belongs to."), "fr": "Un bouton par jour de séance (le premier est la campagne de répétition) : il ouvre le tableau de bord des résultats du sondage de ce jour ; la date sous l'action est celle de la séance."})
 _TIP_RADAR = {"en": ("The average profile of the cohort on the nine axes, "
                      "with optional overlays: nearest archetype, nearest great figure."), "fr": "Le profil moyen de la cohorte sur les neuf axes, avec des calques optionnels : archétype le plus proche, grande figure la plus proche."}
 _TIP_POSTURES = ({"en": "Postures per axis", "fr": "Postures par axe"},
@@ -103,6 +109,7 @@ def build(lang: str = "en", **_):
                 st_info_tooltip(
                     title=T(_TIP_TITLE, lang),
                     entries=[
+                        (T(_TIP_BUTTONS[0], lang), T(_TIP_BUTTONS[1], lang)),
                         (ui("room_radar", lang), T(_TIP_RADAR, lang)),
                         (T(_TIP_POSTURES[0], lang), T(_TIP_POSTURES[1], lang)),
                         (T(_TIP_ARCHETYPES[0], lang), T(_TIP_ARCHETYPES[1], lang)),
