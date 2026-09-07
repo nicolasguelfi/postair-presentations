@@ -141,6 +141,7 @@ st_book(
         blocks.bck_genai_prediction,     # G4  · THE pedagogical slide: predict
         blocks.bck_genai_tokens,         # G4c · la phrase en jetons (slide éclair)
         blocks.bck_genai_predict_film,   # G4b · the mechanism, animated (full screen)
+        blocks.bck_genai_sampling,       # G4d · temperature × top-k : four draws, one blank (NG 2026-09-07)
         blocks.bck_genai_scale,          # G5  · data + compute + energy, emergence
         blocks.bck_genai_multimodal,     # G5b · texte · image · son — un mécanisme
         blocks.bck_genai_videogen,       # G5c · deux ans de vidéo générée, côte à côte

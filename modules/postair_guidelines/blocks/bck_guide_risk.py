@@ -131,7 +131,7 @@ def build(lang: str = "en", **_):
     st_marker(T(_MARKER, lang))
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with st_zoom(130), g.cell():
+            with st_zoom(120), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -160,7 +160,7 @@ def build(lang: str = "en", **_):
                             (bs.label + Style("zoom:160%; margin-left:0.6em;", "risk_label_zoom"),
                             T(lv["label"], lang)),
                             tag=t.div)
-                    with st_zoom(110):
+                    with st_zoom(105):
                         st_write(bs.line, T(lv["line"], lang), tag=t.div)
             st_space("v", "0.5vh")
             with st_zoom(120):

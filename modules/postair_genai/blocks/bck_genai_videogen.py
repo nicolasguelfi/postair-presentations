@@ -117,7 +117,7 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(140), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -145,7 +145,7 @@ def build(lang: str = "en", **_):
                     with st_block(s.project.containers.media_stage(clip["ratio"], 42)):
                         with ai_marked(fit=False, top=True):
                             st_video(str(_VIDEO_DIR / _clip_file(clip, lang)),
-                                     loop=True, autoplay=True)
+                                     loop=True, autoplay=True, muted=True)
                     st_space("v", "1vh")
                     st_write(bs.line, T(clip["line"], lang), tag=t.div)
         st_space("v", "3vh")

@@ -57,7 +57,7 @@ _EXAM_PROMPT = (
 _DONT = [
     {"en": "The exam tests YOUR skill — Not the AI", "fr": "L’examen évalue VOTRE compétence — Pas l’IA"},
     {"en": "Skip the effort → the skill never forms", "fr": "Esquiver l’effort → la compétence ne se forme jamais"},
-    {"en": "94 % UK use it (also) for the good\nBUT bad usage has\ngrown by 300% since 2024", "fr": "94 % au Royaume-Uni l’utilisent (aussi) pour le bien\nMAIS le mauvais usage a\ncrû de 300 % depuis 2024"},
+    {"en": "94 % UK use it (also) for the good BUT bad usage has grown by 300% since 2024", "fr": "94 % au Royaume-Uni l’utilisent (aussi) pour le bien MAIS le mauvais usage a crû de 300 % depuis 2024"},
 ]
 _DONT_CITEKEYS = ["hepi-survey-2026"]
 
@@ -101,7 +101,7 @@ TUNING = {
     "zoom": 92,
     #: Largeur de la colonne image en % (demande NG 2026-09-02) : l'image
     #: d'examen se resserre à 35 %, le texte respire sur les 65 % restants.
-    "ratio": 35,
+    "ratio": 30,
 }
 
 
@@ -117,7 +117,7 @@ def build(lang: str = "en", **_):
                     title=T(_TIP_TITLE, lang),
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "2vh")
         with hero_split(s, ratio=TUNING["ratio"], zoom=TUNING["zoom"],
                         image=lambda: staged_hero_image(
                 "genai_exam", _EXAM_PROMPT, "images/genai_exam_fallback.svg",
@@ -138,7 +138,7 @@ def build(lang: str = "en", **_):
                         prefix = ("▸ ",) if j == 0 else ()
                         very_last = (i == len(_DONT) - 1
                                      and j == len(lines) - 1)
-                        cite = ((" ", citation(*_DONT_CITEKEYS))
+                        cite = ((" ", citation(*_DONT_CITEKEYS,inline=True))
                                 if very_last else ())
                         st_write(bs.item + colour, *prefix, line, *cite,
                                  tag=t.div)

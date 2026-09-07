@@ -100,7 +100,7 @@ def build(lang: str = "en", **_):
                 alt_fallback=("Papercut balanced scale of justice"),
                 variant="sq")):
             for part in T(_LINE, lang).split(" · "):
-                with st_zoom(160):
+                with st_zoom(150):
                     st_write(bs.line, "▸ ", part, tag=t.div)
             st_space("v", "0.5vh")
             st_write(bs.cite, citation(*_CITEKEYS), tag=t.div)

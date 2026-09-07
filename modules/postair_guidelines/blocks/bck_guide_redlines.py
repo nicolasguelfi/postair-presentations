@@ -138,7 +138,7 @@ def build(lang: str = "en", **_):
                     with g.cell(), st_block(s.project.cards.coral):
                         st_write(s.center_txt,
                                 (bs.icon + Style("zoom:150%;", "redline_icon_zoom"), c["icon"]),
-                                (bs.short + Style("zoom:220%; margin-left:0.5em;", "redline_short_zoom"),
+                                (bs.short + Style("zoom:200%; margin-left:0.5em;", "redline_short_zoom"),
                                 T(c["short"], lang)),
                                 tag=t.div)
             st_space("v", "2vh")

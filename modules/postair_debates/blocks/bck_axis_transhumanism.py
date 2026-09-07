@@ -45,7 +45,7 @@ TUNING: dict = {
     },
     "identity_b": {                 # Humanisme (ralentisseur)
         "statement_zoom": None,        # auto : 116 (≤6 lignes) / 106 (≤8) / 98
-        "statement_zoom_scale": None,  # ex. 1.15 = calcul auto ×1,15
+        "statement_zoom_scale": 0.95,  # ex. 1.15 = calcul auto ×1,15
         "mascot_vh": 27.0,             # hauteur des 2 mascottes (vh)
         "mascot_vh_scale": None,
     },

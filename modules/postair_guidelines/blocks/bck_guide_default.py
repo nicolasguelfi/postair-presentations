@@ -112,7 +112,7 @@ def build(lang: str = "en", **_):
                         (T(_LBL_WHY, lang), T(_ANECDOTE, lang)),
                     ],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "3vh")
         # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche, LA règle
         # verbatim boxée à droite — elle était coupée à mi-phrase sous le pli.
         with hero_split(s, ratio=40, zoom=92, image=lambda: hero_image(

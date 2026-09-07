@@ -107,7 +107,7 @@ def build(lang: str = "en", **_):
                     title=T(_TIP_TITLE, lang),
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TOOLTIP],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "2vh")
         # Le schéma : l'agent au centre en AMBRE (le seul accent focal, R5),
         # entrées et sorties en cadrage bleu.
         with st_grid(cols=TUNING["cols"], gap="0",

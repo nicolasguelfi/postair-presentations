@@ -88,11 +88,10 @@ def build(lang: str = "en", **_):
                     entries=[(T(h, lang), T(d, lang)) for h, d in _TIP],
                 )
         st_space("v", "1vh")
-        with st_grid(cols=s.project.grids.balanced(len(_TAKEAWAYS)), gap="1vw",
-                     grid_style=s.project.grids.stretch,
+        with st_grid(cols=s.project.grids.balanced(len(_TAKEAWAYS)), gap="1vw 2vh",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for item in _TAKEAWAYS:
-                with st_zoom(120),g.cell(), st_block(s.project.cards.blue):
+                with st_zoom(112),g.cell(), st_block(s.project.cards.blue):
                     st_write(bs.number, item["n"], tag=t.div)
                     with st_zoom(120):
                         st_write(bs.short, T(item["short"], lang), tag=t.div)

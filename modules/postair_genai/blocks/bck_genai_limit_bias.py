@@ -122,7 +122,7 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(120), g.cell():
                 st_write(bs.title, _ICON, " ",
                          (s.project.titles.keyword, T(_LABEL, lang)),
                          tag=t.div, toc_lvl="+1", label=T(_LABEL, lang))

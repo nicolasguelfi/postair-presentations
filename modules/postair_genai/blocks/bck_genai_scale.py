@@ -119,13 +119,13 @@ def build(lang: str = "en", **_):
                                 T(_EMERGENCE_DETAIL, lang) + " "
                                 + T(_EMERGENCE_COUNTERPOINT, lang))],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "2vh")
         with st_grid(cols=s.project.grids.balanced(len(_SLIDERS)), gap="1.2vw",
                      grid_style=s.project.grids.stretch,
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             for i, sl in enumerate(_SLIDERS):
                 with g.cell(), st_block(s.project.cards.blue):
-                    with st_zoom(160):
+                    with st_zoom(150):
                         st_write(bs.gauge_label, T(sl["label"], lang), tag=t.div)
                     st_space("v", "3vh")
                     # La jauge : un rail sombre, un remplissage teal qui avance.
@@ -149,7 +149,7 @@ def build(lang: str = "en", **_):
                 f'<path d="M0 96 C 240 92, 330 88, 390 78 C 440 68, 470 20, 560 12" '
                 f'fill="none" stroke="{AMBER}" stroke-width="6" stroke-linecap="round"/>'
                 f'</svg></div>')
-        with st_zoom(130):
+        with st_zoom(120):
             st_write(bs.claim, T(_EMERGENCE_CLAIM, lang), " ",
                  citation(*_EMERGENCE_CITEKEYS), tag=t.div)
             st_write(bs.counter, T(_EMERGENCE_COUNTERPOINT, lang), tag=t.div)

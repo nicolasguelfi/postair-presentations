@@ -95,5 +95,5 @@ def build(lang: str = "en", **_):
                              overlay=dd35_overlay(scale=0.5))
                     st_write(bs.name, member["mascot"], tag=t.div)
         st_space("v", "1vh")
-        with st_zoom(160):
+        with st_zoom(150):
             st_write(bs.big, T(_BIG, lang), tag=t.div)

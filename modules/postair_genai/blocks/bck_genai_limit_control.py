@@ -62,7 +62,7 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
-            with g.cell():
+            with st_zoom(120), g.cell():
                 st_write(bs.title, _ICON, " ",
                          (s.project.titles.keyword, T(_LABEL, lang)),
                          tag=t.div, toc_lvl="+1", label=T(_LABEL, lang))
@@ -73,10 +73,10 @@ def build(lang: str = "en", **_):
         st_space("v", s.project.spacing.title_gap)
         # Gabarit par défaut (NG 2026-08-13) : image carrée à gauche ~50 %,
         # message + punch empilés à droite — plus rien sous le pli.
-        with hero_split(s, image=lambda: staged_hero_image(
+        with hero_split(s, ratio=40, image=lambda: staged_hero_image(
                 _IMAGE, prompt, _FALLBACK, alt_ready=_ALT, alt_fallback=_ALT,
                 variant="sq")):
             with st_zoom(150):
                 st_write(bs.message, T(_MESSAGE, lang), tag=t.div)
-                st_space("v", "1vh")
+                st_space("v", "2vh")
                 st_write(bs.punch, T(_PUNCH, lang), tag=t.div)

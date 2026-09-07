@@ -90,7 +90,7 @@ def build(lang: str = "en", **_):
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
-                with st_zoom(130):
+                with st_zoom(115):
                     st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
             with g.cell():
@@ -100,7 +100,7 @@ def build(lang: str = "en", **_):
                              for c in _CLAIMS]
                             + [(T(_EXHIBIT_HEAD, lang), T(_CASE_VERDICT, lang))],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "4vh")
         # La pièce à conviction : une « référence » très convenable — et fausse.
         with st_block(s.project.cards.coral):
             st_write(bs.fake, "« ", _CASE_QUOTE, " »", tag=t.div)

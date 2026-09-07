@@ -116,7 +116,7 @@ def build(lang: str = "en", **_):
                               "over the notebook"),
                 variant="sq")):
             for item, colour, link in zip(_DO, _DO_COLOURS, _DO_LINKS):
-                with st_zoom(150):
+                with st_zoom(140):
                     # Une écriture PAR ligne : ``st_write`` n'interprète pas
                     # le ``\n`` (piège documenté au PLAYBOOK) — les puces
                     # multilignes obtiennent ainsi leur vraie coupure. La
