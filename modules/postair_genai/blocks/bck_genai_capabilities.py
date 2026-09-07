@@ -122,7 +122,7 @@ def build(lang: str = "en", **_):
                             + [(T(h, lang), T(d, lang))
                                for h, d in _FACULTY_EXAMPLES],
                 )
-        st_space("v", s.project.spacing.title_gap)
+        st_space("v", "s.project.spacing.title_gap")
         # Sept cartes sur une grille équilibrée ; « agents » est LA carte ambre.
         with st_grid(cols=s.project.grids.balanced(len(_CAPABILITIES)), gap="1vw",
                      grid_style=s.project.grids.stretch,

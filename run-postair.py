@@ -18,6 +18,17 @@ chaîne devient vrai. Sans ``--html``, ce lien retombe silencieusement sur
 l'app (Streamlit sert tout chemin inconnu). L'export est un INSTANTANÉ du
 lancement : les éditions à chaud n'y apparaissent pas.
 
+En fin de script, le hub s'ouvre dans le **Chrome de projection** (demande NG
+2026-09-07) : une instance dédiée lancée avec
+``--autoplay-policy=no-user-gesture-required`` — les vidéos en ``autoplay``
+partent AVEC le son sans geste (le film de genai, les clips de l'écran
+d'attente). Le drapeau ne vaut que pour une instance NEUVE : un simple
+``open`` réutiliserait le Chrome déjà ouvert, sans le drapeau. D'où le profil
+séparé (``~/.postair-chrome``, hors Dropbox, machine-locale comme le venv) :
+la seconde instance démarre même si le Chrome habituel tourne, et une
+relance du script ne fait qu'y ajouter un onglet. Sans Chrome sur le poste,
+repli sur le navigateur par défaut, en le disant.
+
 Usage :
     uv run python run-postair.py                     # tout (collection comprise)
     uv run python run-postair.py opening genai      # un sous-ensemble
@@ -75,6 +86,20 @@ HTML_DIR = LOG_DIR / "static-html"
 
 #: Les langues exportées — celles de ``postair_lang.LANGS`` (plan-i18n D3).
 EXPORT_LANGS = ("en", "fr")
+
+#: Le drapeau Chrome de la projection (PLAYBOOK §1) et le profil dédié qui le
+#: rend effectif même quand le Chrome habituel est déjà ouvert.
+CHROME_FLAGS = ("--autoplay-policy=no-user-gesture-required",)
+CHROME_PROFILE = Path.home() / ".postair-chrome"
+#: Où chercher le binaire, par plateforme — le premier présent gagne.
+CHROME_CANDIDATES = (
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/Applications/Chromium.app/Contents/MacOS/Chromium",
+    "/usr/bin/google-chrome", "/usr/bin/google-chrome-stable", "/usr/bin/chromium",
+    "/usr/bin/chromium-browser",
+    r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+    r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+)
 
 
 def _html_url(name: str, lang: str = "{lang}") -> str:
@@ -264,6 +289,26 @@ def export_html(selected: list[str]) -> None:
                 print(f"ÉCHEC — voir {log_file}")
 
 
+def open_projection_browser(url: str) -> None:
+    """Ouvre ``url`` dans le Chrome de projection — instance dédiée, drapeau
+    d'autoplay sonore, profil hors Dropbox. Repli : navigateur par défaut."""
+    chrome = next((c for c in CHROME_CANDIDATES if Path(c).exists()), None)
+    if chrome is None:
+        print("Chrome introuvable — ouverture dans le navigateur par défaut "
+              "(l'autoplay SONORE des vidéos n'y est pas garanti).")
+        webbrowser.open(url)
+        return
+    CHROME_PROFILE.mkdir(parents=True, exist_ok=True)
+    cmd = [chrome, f"--user-data-dir={CHROME_PROFILE}", *CHROME_FLAGS,
+           "--no-first-run", "--no-default-browser-check", url]
+    log_file = LOG_DIR / "chrome-projection.log"
+    with open(log_file, "a") as lf:
+        subprocess.Popen(cmd, stdout=lf, stderr=subprocess.STDOUT,
+                         start_new_session=True)
+    print(f"Chrome de projection : {url}  ({' '.join(CHROME_FLAGS)}, "
+          f"profil {CHROME_PROFILE})")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -273,7 +318,8 @@ def main() -> None:
     ap.add_argument("--kill", action="store_true",
                     help="arrête les documents POSTAIR (ciblé par port — ne touche "
                          "ni run-manuals ni les autres opérateurs)")
-    ap.add_argument("--no-browser", action="store_true", help="n'ouvre pas le navigateur")
+    ap.add_argument("--no-browser", action="store_true",
+                    help="n'ouvre pas le Chrome de projection en fin de script")
     ap.add_argument("--html", action="store_true",
                     help="génère et sert les exports statiques (port 8510) — le lien "
                          "« static HTML version: local » de la chaîne devient vrai ; "
@@ -343,7 +389,7 @@ def main() -> None:
 
     if not args.no_browser:
         first = "collection" if "collection" in processes else next(iter(processes))
-        webbrowser.open(f"http://localhost:{MODULES[first]['port']}")
+        open_projection_browser(f"http://localhost:{MODULES[first]['port']}")
 
 
 if __name__ == "__main__":

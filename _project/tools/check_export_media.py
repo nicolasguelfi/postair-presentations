@@ -15,6 +15,9 @@ La liste blanche n'est jamais tenue à la main :
 - les SVG versionnés (repli dessiné, radars, pictos) ;
 - les QR codes et captures d'écran d'application (``images/qr/``, tout
   fichier ``*screenshot*``) ;
+- les vidéos d'AUTEUR déclarées par un sidecar ``<fichier>.provenance.json``
+  (``{"authored": true, "kind": "screen recording", …}``) — enregistrements
+  d'écran, montages ; jamais un média généré ;
 - les médias de figures dont le manifeste gelé dit ``portrait_ai: false``
   (personnes vivantes photographiées — le hub décide, jamais ici).
 
@@ -132,6 +135,20 @@ def _whitelist_hashes(module: str) -> dict[str, str]:
             # media/captures/, non IA par nature. Une image générée n'a
             # rien à faire ici : elle passe par le circuit managé + DD-35.
             out[_sha(p)] = f"capture de diaporama ({rel})"
+        elif p.suffix.lower() in (".mp4", ".webm", ".mov") and \
+                p.with_name(p.name + ".provenance.json").exists():
+            # Vidéo d'AUTEUR déclarée (NG 2026-09-07) : un sidecar
+            # ``<fichier>.provenance.json`` à côté du fichier, portant
+            # ``{"authored": true, …}`` — enregistrement d'écran, montage
+            # ScreenFlow — dit que le média n'est pas généré. Sans sidecar,
+            # une vidéo ne passe que marquée : la porte reste fermée par
+            # défaut. (Avant cette règle, le film de genai ne passait que
+            # par la PROXIMITÉ des pastilles de la slide suivante.)
+            side = json.loads(p.with_name(p.name + ".provenance.json")
+                              .read_text(encoding="utf-8"))
+            if side.get("authored") is True:
+                out[_sha(p)] = (f"vidéo d'auteur déclarée ({rel} — "
+                                f"{side.get('kind', 'provenance')})")
     manifest = _REPO / "modules" / module / "static" / "data" / "content.json"
     if manifest.exists():
         data = json.loads(manifest.read_text(encoding="utf-8"))

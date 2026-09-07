@@ -26,7 +26,10 @@ uv run python _project/tools/check_all.py                                       
   `check_blocks_build.py <module>`) donne le bloc fautif et l'erreur exacte en
   quelques secondes — plus rapide que les logs.
 - **Projection** : Chrome dédié lancé avec
-  `--autoplay-policy=no-user-gesture-required` (autoplay + son des vidéos) ;
+  `--autoplay-policy=no-user-gesture-required` (autoplay + son des vidéos) —
+  `run-postair.py` le lance lui-même en fin de script sur le hub (instance à
+  profil séparé `~/.postair-chrome`, sinon le drapeau n'agit pas sur un Chrome
+  déjà ouvert ; `--no-browser` pour s'en passer ; NG 2026-09-07) ;
   conception en fenêtre 16:9 (responsive 1920×1080) ; passer une fois sur
   toutes les slides avant la séance (caches, vidéos, QR).
 - L'orateur **choisit le jour** dans le sélecteur de la slide de participation

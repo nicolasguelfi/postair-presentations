@@ -133,6 +133,8 @@ st_book(
         blocks.bck_mistral_method,         # M4  · la méthode en 5 étapes — LA slide à photographier
         blocks.bck_mistral_demo_build,     # M5  · démo A : construire l'agent (live)
         blocks.bck_mistral_demo_use,       # M6  · démo B : l'agent au travail (live)
+        blocks.bck_mistral_demo_steps,     # M6a · la démo en captures, une par arrêt clavier — dossier de la langue (NG 2026-09-07)
+        blocks.bck_mistral_demo_chatgpt,   # M6c · la même méthode dans ChatGPT — vidéo d'auteur par langue (NG 2026-09-07)
         blocks.bck_mistral_agent_doors,    # M6b · les trois portes — ouvrir SES agents
         blocks.bck_mistral_services_map,   # SV1 · la carte des services (synthèse en flux)
         blocks.bck_mistral_err_sources,    # M7  · erreur 1 — sans sources, il invente ton cours
@@ -146,7 +148,8 @@ st_book(
         blocks.bck_mistral_backup_divider, # seuil « — Backup — »
         blocks.bck_mistral_bk_rag,         # bk · le POURQUOI derrière l'erreur 1 (ragm7)
         blocks.bck_mistral_bk_podcast,     # bk · d'autres outils, même méthode (podcast)
-        blocks.bck_mistral_bk_vibe_demo,   # bk · secours démo — Vibe en images (anim1)
+        blocks.bck_mistral_bk_demo_loop_fr,  # bk · secours démo — la série FR en boucle (NG 2026-09-07)
+        blocks.bck_mistral_bk_demo_loop_en,  # bk · secours démo — la série EN en boucle (NG 2026-09-07)
         blocks.bck_mistral_bk_services_create,   # SV2 · créer TON agent (matrice)
         blocks.bck_mistral_bk_services_feed,     # SV3 · le nourrir de ton cours (matrice)
         blocks.bck_mistral_bk_services_voice,    # SV4 · lui parler (matrice voix)

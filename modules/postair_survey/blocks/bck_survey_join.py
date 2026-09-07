@@ -30,7 +30,8 @@ day in the selector BEFORE you turn to the room; the slide shows nothing usable
 until you do. For an ad-hoc campaign, pick « Custom code… » and type the code —
 the QR appears as you type; check it on YOUR phone before sending the room to
 it. Scan the QR or type the short URL, then the code of the day. Anonymous,
-20-40 minutes, phone OR laptop. No device? Pair up. If the venue wifi
+20-40 minutes, phone OR laptop. Read the Wi-Fi line out loud once (network
+WELCOME2026, password WELCOME_2026). No device? Pair up. If the venue wifi
 struggles, switch to 4G.
 """
 # @guideline: postair-minimal
@@ -77,6 +78,13 @@ class BlockStyles:
     code = s.project.ds.stage.code_giant
     code_masked = s.project.ds.stage.code_masked
     hint = s.project.body.body + s.center_txt
+    wifi = s.project.body.body + s.project.colors.muted + s.center_txt
+    wifi_value = s.project.colors.keyword + s.bold
+    # Le mot de passe en ROUGE (jeton critical) et son underscore plus gros :
+    # depuis le dernier rang, « _ » se confond avec un espace (NG 2026-09-07).
+    wifi_password = s.project.colors.critical + s.bold
+    wifi_underscore = wifi_password + Style(
+        "font-size: 1.5em; line-height: 0.6;", "survey_wifi_underscore")
 
 
 bs = BlockStyles
@@ -90,6 +98,13 @@ _QR_PLACEHOLDER = {"en": "QR code", "fr": "code QR"}
 #: Le titre du tooltip (« Anonymous by design ») vient du lexique.
 _HINT = {"en": ((s.project.titles.keyword, "anonymous"),
                 "  ·  20-40 min  ·  phone or laptop"), "fr": ((s.project.titles.keyword, "anonyme"), "  ·  20-40 min  ·  téléphone ou ordinateur")}
+#: Le rappel Wi-Fi de l'amphi (demande NG 2026-09-07) : nom du réseau et mot
+#: de passe, en clair sous le texte de droite — la salle les lit depuis le
+#: dernier rang au moment de se connecter. Données, jamais traduites.
+_WIFI_SSID = "WELCOME2026"  # i18n: verbatim
+_WIFI_PASSWORD = "WELCOME_2026"  # i18n: verbatim
+_WIFI_LABEL = {"en": "Wi-Fi", "fr": "Wi-Fi"}
+_WIFI_PASSWORD_LABEL = {"en": "password", "fr": "mot de passe"}
 _TIP = [
     ({"en": "Your result is yours", "fr": "Votre résultat est à vous"},
      {"en": ("Your personal radar is computed ON your "
@@ -105,7 +120,10 @@ _TIP = [
      {"en": ("Pair up with a neighbour — one answer per person "
              "though: your posture, not a committee's."), "fr": "Mettez-vous à deux avec la personne d'à côté — mais une réponse par personne : votre posture, pas celle d'un comité."}),
     ({"en": "Network", "fr": "Réseau"},
-     {"en": "If the venue wifi is slow, switch your phone to 4G.", "fr": "Si le wifi de la salle est lent, passez votre téléphone en 4G."}),
+     {"en": ("Venue Wi-Fi: network WELCOME2026, password WELCOME_2026 — "
+             "shown under the code. If it is slow, switch your phone to 4G."),
+      "fr": ("Wi-Fi de la salle : réseau WELCOME2026, mot de passe WELCOME_2026 — "
+             "affichés sous le code. S'il est lent, passez votre téléphone en 4G.")}),
     ({"en": "Keep your code", "fr": "Gardez votre code"},
      {"en": ("At the end the app gives you a personal code to "
              "retrieve your result later at app.sumvadis.ai/r."), "fr": "À la fin, l'application vous donne un code personnel pour retrouver votre résultat plus tard sur app.sumvadis.ai/r."}),
@@ -187,3 +205,16 @@ def build(lang: str = "en", **_):
                              link=join_url(code), no_link_decor=True)
                     st_write(bs.code, code, tag=t.div)
                 st_write(bs.hint, *TF(_HINT, lang), tag=t.div)
+                # Le rappel Wi-Fi, tout en bas du texte, dans les DEUX états.
+                st_space("v", "2vh")
+                # Deux lignes, jamais une : la ligne unique se repliait avec
+                # « password » orphelin en bout de ligne (capture 2026-09-07).
+                # Zoom 200 : retouche NG du même jour.
+                with st_zoom(200):
+                    st_write(bs.wifi, T(_WIFI_LABEL, lang), " ",
+                             (bs.wifi_value, _WIFI_SSID), tag=t.div)
+                    before, sep, after = _WIFI_PASSWORD.partition("_")
+                    st_write(bs.wifi, T(_WIFI_PASSWORD_LABEL, lang), " ",
+                             (bs.wifi_password, before),
+                             (bs.wifi_underscore, sep),
+                             (bs.wifi_password, after), tag=t.div)

@@ -1,0 +1,10 @@
+{
+  "authored": true,
+  "kind": "screen recording",
+  "by": "Nicolas Guelfi",
+  "recorded": "2026-09-07",
+  "language": "en",
+  "source": "sumvadis-central/data/images/screenshots/ChatGPT/charles-chagpt-EN.mp4",
+  "processing": "ffmpeg 2026-09-07 — cut 4 s, scale 1920, highpass 90 Hz + lowpass 12 kHz + afftdn, loudnorm two-pass I=-16 TP=-1.5",
+  "ai_generated": false
+}

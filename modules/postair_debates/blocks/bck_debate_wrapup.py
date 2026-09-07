@@ -56,7 +56,7 @@ _POINTS = [
      {"en": "every hand raised, every microphone taken", "fr": "chaque main levée, chaque micro pris"}),
     ("Voxo",
      {"en": ("Every point of view was ", (s.project.titles.keyword, "heard")), "fr": ("Chaque point de vue a été ", (s.project.titles.keyword, "entendu"))},
-     {"en": "for and against, on each pole", "fr": "pour et contre, sur chaque pôle"}),
+     {"en": "for and against", "fr": "pour et contre"}),
     ("Sardo",
      {"en": ("All of them live in ", (s.project.titles.keyword, "society")), "fr": ("Tous existent dans la ", (s.project.titles.keyword, "société"))},
      {"en": "side by side — this room is a fair sample", "fr": "côte à côte — cette salle en est un échantillon"}),

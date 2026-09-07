@@ -73,7 +73,7 @@ def build(lang: str = "en", **_):
     data = section("ai_act")
     with st_block(s.project.containers.page_fill_top):
         with st_grid(cols="92% 8%", cell_styles=s.project.containers.grid_cell_centered) as g:
-            with st_zoom(130), g.cell():
+            with st_zoom(120), g.cell():
                 st_write(bs.title, *TF(_TITLE, lang),
                          tag=t.div, toc_lvl="+1", label=T(_MARKER, lang))
                 st_space("v", "0.5vh")
@@ -94,7 +94,7 @@ def build(lang: str = "en", **_):
                             + [(T(_CHANNELS_HEAD, lang), text(data["channels"], lang))],
                 )
 
-        st_space("v", "1vh")
+        st_space("v", "5vh")
         # Découpage NG (2026-08-13) : cette slide porte LA LOI (le cadre et
         # son calendrier) ; « vous, concrètement » (les 4 cartes d'articles et
         # le punch fournisseur) a SA slide, juste après.
