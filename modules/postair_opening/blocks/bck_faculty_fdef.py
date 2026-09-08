@@ -39,7 +39,7 @@ class BlockStyles:
 bs = BlockStyles
 
 # ── Réglages de la slide ────────────────────────────────────────────────────
-_TITLE_ZOOM = 120   # le sigle en titre
+_TITLE_ZOOM = 160   # le sigle en titre
 _RATIO = 35         # part de largeur de la colonne image, en %
 _ZOOM = 115         # st_zoom de la colonne des constats
 

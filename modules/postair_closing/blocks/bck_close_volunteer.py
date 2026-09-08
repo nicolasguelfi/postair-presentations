@@ -47,12 +47,12 @@ bs = BlockStyles
 
 # ── Le fait : l'appel, volontairement flou ──────────────────────────────────
 _ITEMS = [
-    {"en": "The live survey you used today → a tool that keeps evolving",
-     "fr": "L’enquête live d’aujourd’hui → un outil qui continue d’évoluer"},
-    {"en": "Unpaid volunteers welcome · tests, feedback, ideas, ...",
-     "fr": "Bénévoles bienvenus · essais, retours, idées, ..."},
-    {"en": "Historical figures — verification and enquiries",
-     "fr": "Personnages historiques — vérification et enquêtes"},
+    {"en": "A tool that keeps evolving",
+     "fr": "Un outil qui continue d’évoluer"},
+    {"en": "Verifications, feedback, ideas, ...",
+     "fr": "Vérifications, retours, idées, ..."},
+    {"en": "nicolas.guelfi@uni.lu",
+     "fr": "nicolas.guelfi@uni.lu"},
 ]
 _MAIL_ADDR = "contact@sumvadis.ai"  # i18n: verbatim
 #: Une couleur du DS par item (retouche NG 2026-09-04) — le trio de la
@@ -77,8 +77,8 @@ _ITEM_COLORS = [s.project.colors.keyword, s.project.colors.amber,
 _MARKER = {"en": "Volunteers", "fr": "Volontaires"}
 #: « unpaid » EXPLICITE dans le titre (demande NG 2026-09-07) : l'appel est
 #: bénévole, la salle ne doit pas lire une offre de job étudiant.
-_TITLE = {"en": ("Call for ", (s.project.titles.keyword, "unpaid volunteers")),
-          "fr": ("Appel à ", (s.project.titles.keyword, "volontaires bénévoles"))}
+_TITLE = {"en": ("Call for ", (s.project.titles.keyword, "Volunteers")),
+          "fr": ("Appel à ", (s.project.titles.keyword, "Bénévoles"))}
 _TIP_TITLE = {"en": "What this is", "fr": "De quoi il s’agit"}
 _TIP_STUDY = ({"en": "The study", "fr": "L’étude"},
               {"en": ("Today's survey belongs to a study with a double "
@@ -128,10 +128,10 @@ def build(lang: str = "en", **_):
                         (T(_TIP_MAIL[0], lang), T(_TIP_MAIL[1], lang)),
                     ],
                 )
-        st_space("v", "1vh")
+        st_space("v", "5vh")
         # Même gabarit que la slide du hub : le QR géant à gauche, les
         # lignes à droite ; sous 520 px le QR passe au-dessus.
-        with st_grid(cols="40% 60%", breakpoint="520px",
+        with st_grid(cols="35% 65%", breakpoint="520px",
                      cell_styles=s.project.containers.grid_cell_centered) as g:
             with g.cell():
                 # QR versionné, UN PAR LANGUE (le corps du mail est localisé).
@@ -142,11 +142,11 @@ def build(lang: str = "en", **_):
                              "email to contact@sumvadis.ai (subject: Unpaid "
                              "volunteer application)")
                 #st_write(bs.mail, _MAIL_ADDR, tag=t.div)
-                with st_zoom(260):
+                with st_zoom(200):
                     st_write(bs.hint, T(_HINT, lang), tag=t.div)
             with g.cell():
                 for item, color in zip(_ITEMS, _ITEM_COLORS):
-                    with st_zoom(140):
+                    with st_zoom(180):
                         st_write(bs.item + color, "▸ ", T(item, lang),
                                  tag=t.div)
                     st_space("v", "1vh")

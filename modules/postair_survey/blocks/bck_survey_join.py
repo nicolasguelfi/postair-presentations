@@ -120,9 +120,9 @@ _TIP = [
      {"en": ("Pair up with a neighbour — one answer per person "
              "though: your posture, not a committee's."), "fr": "Mettez-vous à deux avec la personne d'à côté — mais une réponse par personne : votre posture, pas celle d'un comité."}),
     ({"en": "Network", "fr": "Réseau"},
-     {"en": ("Venue Wi-Fi: network WELCOME2026, password WELCOME_2026 — "
+     {"en": ("Venue Wi-Fi: network WELCOME2026, password WELCOME_2026 (or Welcome_2026)— "
              "shown under the code. If it is slow, switch your phone to 4G."),
-      "fr": ("Wi-Fi de la salle : réseau WELCOME2026, mot de passe WELCOME_2026 — "
+      "fr": ("Wi-Fi de la salle : réseau WELCOME2026, mot de passe WELCOME_2026 (ou Welcome_2026) — "
              "affichés sous le code. S'il est lent, passez votre téléphone en 4G.")}),
     ({"en": "Keep your code", "fr": "Gardez votre code"},
      {"en": ("At the end the app gives you a personal code to "

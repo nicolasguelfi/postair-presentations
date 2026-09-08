@@ -2,9 +2,9 @@
   "authored": true,
   "kind": "screen recording",
   "by": "Nicolas Guelfi",
-  "recorded": "2026-09-07",
+  "recorded": "2026-09-08",
   "language": "en",
-  "source": "sumvadis-central/data/images/screenshots/ChatGPT/charles-chagpt-EN.mp4",
-  "processing": "ffmpeg 2026-09-07 — cut 4 s, scale 1920, highpass 90 Hz + lowpass 12 kHz + afftdn, loudnorm two-pass I=-16 TP=-1.5",
+  "source": "sumvadis-central/data/videos/Language-tutor/charles-EN.mp4",
+  "processing": "ffmpeg 2026-09-08 — no cut (ScreenFlow export), 1920×1080 kept, 15 fps, highpass 90 Hz + lowpass 12 kHz + afftdn, loudnorm two-pass I=-16 TP=-1.5 (source peaks above 0 dBTP → dynamic mode), 108 s",
   "ai_generated": false
 }
