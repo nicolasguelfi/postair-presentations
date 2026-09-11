@@ -7,7 +7,7 @@ this repo, **one Coolify service per module**, each selecting its module via the
 
 ## Infrastructure
 
-- Server: Hetzner `streamtex-prod` (cax21, fsn1) — `138.199.148.59`
+- Server: Hetzner `streamtex-prod` (**cax31** — 8 vCPU ARM · 16 GB · 160 GB, measured 2026-09-11 via hcloud; the docs used to say cax21, fsn1) — `138.199.148.59`
 - Coolify: `https://coolify.streamtex.org` — project **postair** (`h13ylxrgkghvllh9znzzu1fk`)
 - DNS: wildcard `*.streamtex.org` (Cloudflare, SSL full strict)
 - State: `.stx-deploy.json` (versioned, no secrets) · secrets in `.stx-deploy.env` (gitignored)
@@ -57,7 +57,7 @@ proposé (vérifié).
 `.github/workflows/hetzner-deploy.yml`: it waits for the required streamtex
 version on PyPI (`.stx-version`), detects which modules changed, and triggers
 only the affected Coolify services (all of them when a shared file changes).
-Builds go in batches of 4 with a 300 s pause — the cax21 freezes beyond that.
+Builds go in batches of 4 with a 300 s pause — the server (a cax21 at the time) froze beyond that; kept on the cax31.
 
 Required GitHub secret: `COOLIFY_API_TOKEN` (already set).
 

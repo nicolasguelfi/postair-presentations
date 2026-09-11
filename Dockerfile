@@ -83,27 +83,12 @@ ENV FOLDER="modules/postair_opening"
 RUN mkdir -p /app/static-html && \
     echo 'return 302 /html/;' > /app/static-html/.nginx-redirect.conf
 
-# Pre-warm the page cache for every module so the first visitor loads instantly
-# — ONCE PER LANGUAGE: since streamtex 0.7.26 the paginated cache is keyed by
-# block_kwargs ({"lang": …} gets its own TOC/markers, page_cache-<fp8>.json).
-RUN for dir in modules/postair_*/; do \
-        for lang in en fr; do \
-            echo "Warming up cache ($lang) for $dir ..." && \
-            (cd "$dir" && STX_LANG=$lang uv run stx cache warmup .) || true; \
-        done; \
-    done
-
-# Pre-generate static HTML for every module, ONE EXPORT PER LANGUAGE
-# (plan-i18n D3, 2026-08-28) : /html/en/ and /html/fr/ — the public reads
-# the static export, and a Streamlit widget never survives an export, so the
-# language must be a build parameter (STX_LANG, read by postair_lang and, since
-# streamtex 0.7.26, by the exporter itself for <html lang>).
-RUN for dir in modules/postair_*/; do \
-        for lang in en fr; do \
-            echo "Exporting HTML ($lang) for $dir ..." && \
-            (cd "$dir" && STX_LANG=$lang uv run stx export html --output /app/static-html/$lang/ .) || true; \
-        done; \
-    done
+# Régime d'images (2026-09-11, décision d'auteur) : plus AUCUN réchauffage de
+# cache ni export HTML à la construction. L'entrypoint efface et régénère les
+# deux, pour le seul module servi (FOLDER), à CHAQUE démarrage — les couches
+# de construction étaient jetées avant la première visite (mesuré : 2,6 Go par
+# image, 87 Go sur le serveur pour rien). Le cache reste chaud dès la première
+# visite : c'est le démarrage qui le garantit, pas l'image.
 
 # STX_SERVE_MODE controls which services start (set at runtime by Coolify)
 ENV STX_SERVE_MODE="dual"
