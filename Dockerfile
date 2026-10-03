@@ -22,10 +22,11 @@ ARG SOURCE_COMMIT=unknown
 # postair_pack is a LOCAL pack resolved via [tool.uv.sources] (path) — it is
 # copied before uv sync, so sources stay ENABLED (unlike ai4se6d, which used
 # --no-sources: our only source entry is the in-repo pack, streamtex itself
-# comes from PyPI). --upgrade-package streamtex still forces latest PyPI.
+# comes from PyPI) at the version recorded in uv.lock — the one tested locally
+# (no --upgrade-package: it installed the latest PyPI release, untested here).
 COPY .stx-version pyproject.toml uv.lock ./
 COPY postair_pack/ ./postair_pack/
-RUN uv sync --no-dev --upgrade-package streamtex && \
+RUN uv sync --no-dev && \
     uv pip install rich jinja2
 
 # Pas de Chromium ici (décision NG 2026-08-24) : l'export PDF est une
