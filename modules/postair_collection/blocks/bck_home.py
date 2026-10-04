@@ -18,7 +18,7 @@ from pathlib import Path
 
 from custom.styles import Styles as s
 from postair_chain import leaf
-from postair_lang import LANGS, NAMES, T, with_lang
+from postair_lang import LANGS, NAMES, T, TF, with_lang
 from streamtex import *
 from streamtex.enums import Tags as t
 
@@ -69,6 +69,14 @@ class BlockStyles:
 
 bs = BlockStyles
 
+# Feuilles bilingues (règle R-i18n) — « AI Day » est un nom propre, identique
+# en français (liste blanche) ; « deck » reste « deck » (brief de traduction).
+_MARKER = {"en": "AI Day", "fr": "AI Day"}
+_TITLE = {"en": ("AI DAY — the ", (s.project.titles.keyword, "presentations")),
+          "fr": ("AI DAY — les ", (s.project.titles.keyword, "présentations"))}
+_FOOTER = {"en": "one service per deck · this hub only links",
+           "fr": "un service par deck · ce hub ne fait que relier"}
+
 
 def _card(project: dict, lang: str) -> None:
     # Compact (NG 2026-08-13) : emoji EN LIGNE avec le titre — quatre cartes
@@ -89,11 +97,11 @@ def _card(project: dict, lang: str) -> None:
 
 
 def build(lang: str = "en", **_):
-    st_marker("AI Day")
+    st_marker(T(_MARKER, lang))
     meta = _CONFIG.get("collection", {})
     with st_block(s.project.containers.page_fill_top):
-        st_write(bs.title, "AI DAY — the ", (s.project.titles.keyword, "presentations"),
-                 tag=t.div, toc_lvl="1", label="AI Day")
+        st_write(bs.title, *TF(_TITLE, lang),
+                 tag=t.div, toc_lvl="1", label=T(_MARKER, lang))
         st_space("v", "0.5vh")
         st_write(bs.subtitle, T(leaf(meta.get("description", "")), lang), tag=t.div)
         st_space("v", "2vh")
@@ -108,5 +116,4 @@ def build(lang: str = "en", **_):
         st_space("v", "3vh")
         # « Mistral joins the day it exists » est tombé le 2026-09-02 : le
         # module postair_mistral existe et porte sa carte ci-dessus.
-        st_write(bs.footer,
-                 "one service per deck · this hub only links", tag=t.div)
+        st_write(bs.footer, T(_FOOTER, lang), tag=t.div)
