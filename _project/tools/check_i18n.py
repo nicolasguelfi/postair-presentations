@@ -305,7 +305,16 @@ class _Inventory(ast.NodeVisitor):
             if _is_text(node.value):
                 self.bare.append((node.lineno, node.value[:60]))
         elif isinstance(node, ast.JoinedStr):
-            self.bare.append((node.lineno, "f-string à examiner"))
+            # Une f-string n'est nue que par son TEXTE : ses morceaux littéraux
+            # (« {T(label)} {n} » ne porte que des espaces) ou une constante de
+            # texte interpolée. Un T(...) interpolé est traduit ; une donnée
+            # (nombre, champ d'un dict) ne se traduit pas.
+            if any(isinstance(v, ast.Constant) and isinstance(v.value, str)
+                   and _is_text(v.value) for v in node.values):
+                self.bare.append((node.lineno, "f-string à examiner"))
+            for v in node.values:
+                if isinstance(v, ast.FormattedValue):
+                    self._scan(v.value)
         elif isinstance(node, (ast.Tuple, ast.List)):
             for e in node.elts:
                 self._scan(e)
