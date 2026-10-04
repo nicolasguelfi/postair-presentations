@@ -2,9 +2,9 @@
  "metadata": {
   "_doc": "GÉNÉRÉ par _project/tools/build_screens_vocabulary.py — ne jamais éditer : régénérer. sumvadis est la vérité (DD-113).",
   "source": "packages/core/assets/ecrans/vocabulaire.json",
-  "source_version": 1,
-  "source_sha256": "77d49d07eb77bff7778f005616667f9bb3fbfbf2d8eb0aa70f4618b045b71f0a",
-  "sumvadis_commit": "5252091",
+  "source_version": 2,
+  "source_sha256": "e57795c6fc4e83434a02e5b46dd391a95acb7595329205efd81a5a2f3bbad3e0",
+  "sumvadis_commit": "9ac80e8",
   "languages": [
    "en",
    "fr",
@@ -29,9 +29,9 @@
    },
    "hint": {
     "key": "joinHint",
-    "en": "Enter the 6-digit code displayed on the screen.",
-    "fr": "Saisissez le code à 6 chiffres affiché à l’écran.",
-    "de": "Geben Sie den 6-stelligen Code ein, der auf dem Bildschirm angezeigt wird."
+    "en": "Enter the code displayed on the screen.",
+    "fr": "Saisissez le code affiché à l’écran.",
+    "de": "Geben Sie den Code ein, der auf dem Bildschirm angezeigt wird."
    }
   },
   "02-accueil-campagne": {
