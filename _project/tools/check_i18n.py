@@ -76,10 +76,10 @@ I18N_PENDING = {
     # lot 2 : debates sorti le 2026-08-30 (tag i18n/postair_debates-done) ;
     # lot 3 : genai sorti le 2026-09-03 (relecture NG planche prep1, tag
     # i18n/postair_genai-done — l'exception Varghese porte « i18n: verbatim ») ;
-    # collection sorti le 2026-10-04 (planche collection, tag
-    # i18n/postair_collection-done) ;
-    # les autres quand leur anglais sera fini (tag en-final/<module>)
-    "postair_guidelines",
+    # guidelines : tag i18n/postair_guidelines-done posé le 2026-09-03 mais
+    # resté ici par oubli, retiré le 2026-10-04 ; collection sorti le
+    # 2026-10-04 (planche collection, tag i18n/postair_collection-done).
+    # Plus aucun module en attente.
 }
 
 #: Les appels dont les chaînes sont projetées.
