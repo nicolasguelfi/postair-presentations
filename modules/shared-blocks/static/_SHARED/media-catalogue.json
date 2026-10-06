@@ -1,491 +1,491 @@
 {
  "_doc": "GÉNÉRÉ par _project/tools/sync_media.py --freeze depuis mascoties/shared/cartes/cartes-design.json. Ne pas éditer à la main. Ce fichier ne contient que des URL content-adressées : les octets, eux, sont matérialisés au build et ne sont jamais versionnés.",
  "source": "mascoties/shared/cartes/cartes-design.json",
- "design_version": "2.4.0",
+ "design_version": "3.3.0",
  "mascots": [
   {
    "file": "axis-01-animals-left-self-reliance-solo.webp",
-   "url": "https://media.sumvadis.ai/axis-01-animals-left-self-reliance-solo/82db7a5c.webp"
+   "url": "https://media.sumvadis.ai/axis-01-animals-left-self-reliance-solo/aa3cccd0.webp"
   },
   {
    "file": "axis-01-animals-right-trust-fido.webp",
-   "url": "https://media.sumvadis.ai/axis-01-animals-right-trust-fido/7d6f5cd5.webp"
+   "url": "https://media.sumvadis.ai/axis-01-animals-right-trust-fido/0013b904.webp"
   },
   {
    "file": "axis-01-objects-left-self-reliance-nordo.webp",
-   "url": "https://media.sumvadis.ai/axis-01-objects-left-self-reliance-nordo/f7c49284.webp"
+   "url": "https://media.sumvadis.ai/axis-01-objects-left-self-reliance-nordo/eae04216.webp"
   },
   {
    "file": "axis-01-objects-right-trust-buzo.webp",
-   "url": "https://media.sumvadis.ai/axis-01-objects-right-trust-buzo/ba5a87fc.webp"
+   "url": "https://media.sumvadis.ai/axis-01-objects-right-trust-buzo/90866c35.webp"
   },
   {
    "file": "axis-02-animals-left-pessimism-nimbo.webp",
-   "url": "https://media.sumvadis.ai/axis-02-animals-left-pessimism-nimbo/a3244d12.webp"
+   "url": "https://media.sumvadis.ai/axis-02-animals-left-pessimism-nimbo/18139fc5.webp"
   },
   {
    "file": "axis-02-animals-right-optimism-solyo.webp",
-   "url": "https://media.sumvadis.ai/axis-02-animals-right-optimism-solyo/586a0b24.webp"
+   "url": "https://media.sumvadis.ai/axis-02-animals-right-optimism-solyo/b8ad2638.webp"
   },
   {
    "file": "axis-02-objects-left-pessimism-vido.webp",
-   "url": "https://media.sumvadis.ai/axis-02-objects-left-pessimism-vido/1450c6a1.webp"
+   "url": "https://media.sumvadis.ai/axis-02-objects-left-pessimism-vido/b9e9f172.webp"
   },
   {
    "file": "axis-02-objects-right-optimism-pleno.webp",
-   "url": "https://media.sumvadis.ai/axis-02-objects-right-optimism-pleno/0a0920d5.webp"
+   "url": "https://media.sumvadis.ai/axis-02-objects-right-optimism-pleno/8f85ef40.webp"
   },
   {
    "file": "axis-03-animals-left-emotion-pathos.webp",
-   "url": "https://media.sumvadis.ai/axis-03-animals-left-emotion-pathos/ac549fe3.webp"
+   "url": "https://media.sumvadis.ai/axis-03-animals-left-emotion-pathos/c3ab251c.webp"
   },
   {
    "file": "axis-03-animals-right-rationality-logos.webp",
-   "url": "https://media.sumvadis.ai/axis-03-animals-right-rationality-logos/3d87666f.webp"
+   "url": "https://media.sumvadis.ai/axis-03-animals-right-rationality-logos/1043338f.webp"
   },
   {
    "file": "axis-03-objects-left-emotion-cardo.webp",
-   "url": "https://media.sumvadis.ai/axis-03-objects-left-emotion-cardo/1e7ae78a.webp"
+   "url": "https://media.sumvadis.ai/axis-03-objects-left-emotion-cardo/afc8bd36.webp"
   },
   {
    "file": "axis-03-objects-right-rationality-ratio.webp",
-   "url": "https://media.sumvadis.ai/axis-03-objects-right-rationality-ratio/58484455.webp"
+   "url": "https://media.sumvadis.ai/axis-03-objects-right-rationality-ratio/085154e8.webp"
   },
   {
    "file": "axis-04-animals-left-prudence-lento.webp",
-   "url": "https://media.sumvadis.ai/axis-04-animals-left-prudence-lento/49006be2.webp"
+   "url": "https://media.sumvadis.ai/axis-04-animals-left-prudence-lento/acd2e740.webp"
   },
   {
    "file": "axis-04-animals-right-speed-rapo.webp",
-   "url": "https://media.sumvadis.ai/axis-04-animals-right-speed-rapo/0f352eb0.webp"
+   "url": "https://media.sumvadis.ai/axis-04-animals-right-speed-rapo/3714ecb8.webp"
   },
   {
    "file": "axis-04-objects-left-prudence-bici.webp",
-   "url": "https://media.sumvadis.ai/axis-04-objects-left-prudence-bici/ecfe06fb.webp"
+   "url": "https://media.sumvadis.ai/axis-04-objects-left-prudence-bici/cff14d28.webp"
   },
   {
    "file": "axis-04-objects-right-speed-veloz.webp",
-   "url": "https://media.sumvadis.ai/axis-04-objects-right-speed-veloz/60113fee.webp"
+   "url": "https://media.sumvadis.ai/axis-04-objects-right-speed-veloz/cdf83d4e.webp"
   },
   {
    "file": "axis-05-animals-left-resistance-piko.webp",
-   "url": "https://media.sumvadis.ai/axis-05-animals-left-resistance-piko/9ac9d5d7.webp"
+   "url": "https://media.sumvadis.ai/axis-05-animals-left-resistance-piko/bd4410f9.webp"
   },
   {
    "file": "axis-05-animals-right-openness-kuri.webp",
-   "url": "https://media.sumvadis.ai/axis-05-animals-right-openness-kuri/a5f629a4.webp"
+   "url": "https://media.sumvadis.ai/axis-05-animals-right-openness-kuri/b9c6dae0.webp"
   },
   {
    "file": "axis-05-objects-left-resistance-muro.webp",
-   "url": "https://media.sumvadis.ai/axis-05-objects-left-resistance-muro/cc15bd27.webp"
+   "url": "https://media.sumvadis.ai/axis-05-objects-left-resistance-muro/2a6be68d.webp"
   },
   {
    "file": "axis-05-objects-right-openness-flora.webp",
-   "url": "https://media.sumvadis.ai/axis-05-objects-right-openness-flora/82390af7.webp"
+   "url": "https://media.sumvadis.ai/axis-05-objects-right-openness-flora/cb291a39.webp"
   },
   {
    "file": "axis-06-animals-left-freedom-libero.webp",
-   "url": "https://media.sumvadis.ai/axis-06-animals-left-freedom-libero/839babd2.webp"
+   "url": "https://media.sumvadis.ai/axis-06-animals-left-freedom-libero/bb97d2fc.webp"
   },
   {
    "file": "axis-06-animals-right-control-guardo.webp",
-   "url": "https://media.sumvadis.ai/axis-06-animals-right-control-guardo/edcfba8b.webp"
+   "url": "https://media.sumvadis.ai/axis-06-animals-right-control-guardo/2c473fdb.webp"
   },
   {
    "file": "axis-06-objects-left-freedom-campo.webp",
-   "url": "https://media.sumvadis.ai/axis-06-objects-left-freedom-campo/5217666b.webp"
+   "url": "https://media.sumvadis.ai/axis-06-objects-left-freedom-campo/9cf693a9.webp"
   },
   {
    "file": "axis-06-objects-right-control-serro.webp",
-   "url": "https://media.sumvadis.ai/axis-06-objects-right-control-serro/0baf3542.webp"
+   "url": "https://media.sumvadis.ai/axis-06-objects-right-control-serro/a9a9ad92.webp"
   },
   {
    "file": "axis-07-animals-left-decentralisation-sardo.webp",
-   "url": "https://media.sumvadis.ai/axis-07-animals-left-decentralisation-sardo/a3eac1f9.webp"
+   "url": "https://media.sumvadis.ai/axis-07-animals-left-decentralisation-sardo/fa77c27c.webp"
   },
   {
    "file": "axis-07-animals-right-centralisation-balo.webp",
-   "url": "https://media.sumvadis.ai/axis-07-animals-right-centralisation-balo/46717ab0.webp"
+   "url": "https://media.sumvadis.ai/axis-07-animals-right-centralisation-balo/be10678c.webp"
   },
   {
    "file": "axis-07-objects-left-decentralisation-reto.webp",
-   "url": "https://media.sumvadis.ai/axis-07-objects-left-decentralisation-reto/0f14a6d7.webp"
+   "url": "https://media.sumvadis.ai/axis-07-objects-left-decentralisation-reto/efdc39cd.webp"
   },
   {
    "file": "axis-07-objects-right-centralisation-astro.webp",
-   "url": "https://media.sumvadis.ai/axis-07-objects-right-centralisation-astro/342d7604.webp"
+   "url": "https://media.sumvadis.ai/axis-07-objects-right-centralisation-astro/5e3195c8.webp"
   },
   {
    "file": "axis-08-animals-left-individualism-ego.webp",
-   "url": "https://media.sumvadis.ai/axis-08-animals-left-individualism-ego/0ebfec23.webp"
+   "url": "https://media.sumvadis.ai/axis-08-animals-left-individualism-ego/82d3e603.webp"
   },
   {
    "file": "axis-08-animals-right-altruism-unio.webp",
-   "url": "https://media.sumvadis.ai/axis-08-animals-right-altruism-unio/564b0f09.webp"
+   "url": "https://media.sumvadis.ai/axis-08-animals-right-altruism-unio/23c7c896.webp"
   },
   {
    "file": "axis-08-objects-left-individualism-mio.webp",
-   "url": "https://media.sumvadis.ai/axis-08-objects-left-individualism-mio/07212437.webp"
+   "url": "https://media.sumvadis.ai/axis-08-objects-left-individualism-mio/bd18e6ef.webp"
   },
   {
    "file": "axis-08-objects-right-altruism-dono.webp",
-   "url": "https://media.sumvadis.ai/axis-08-objects-right-altruism-dono/05e1d216.webp"
+   "url": "https://media.sumvadis.ai/axis-08-objects-right-altruism-dono/1190c720.webp"
   },
   {
    "file": "axis-09-animals-left-humanism-vita.webp",
-   "url": "https://media.sumvadis.ai/axis-09-animals-left-humanism-vita/079733e5.webp"
+   "url": "https://media.sumvadis.ai/axis-09-animals-left-humanism-vita/d3c873b3.webp"
   },
   {
    "file": "axis-09-animals-right-transhumanism-ultra.webp",
-   "url": "https://media.sumvadis.ai/axis-09-animals-right-transhumanism-ultra/bc9baf22.webp"
+   "url": "https://media.sumvadis.ai/axis-09-animals-right-transhumanism-ultra/a5d3f783.webp"
   },
   {
    "file": "axis-09-objects-left-humanism-verso.webp",
-   "url": "https://media.sumvadis.ai/axis-09-objects-left-humanism-verso/814e36fb.webp"
+   "url": "https://media.sumvadis.ai/axis-09-objects-left-humanism-verso/e37a137f.webp"
   },
   {
    "file": "axis-09-objects-right-transhumanism-silico.webp",
-   "url": "https://media.sumvadis.ai/axis-09-objects-right-transhumanism-silico/fbe8c826.webp"
+   "url": "https://media.sumvadis.ai/axis-09-objects-right-transhumanism-silico/43076743.webp"
   },
   {
    "file": "moderator-animals-medio.webp",
-   "url": "https://media.sumvadis.ai/moderator-animals-medio/fb027024.webp"
+   "url": "https://media.sumvadis.ai/moderator-animals-medio/b54ac739.webp"
   },
   {
    "file": "moderator-objects-voxo.webp",
-   "url": "https://media.sumvadis.ai/moderator-objects-voxo/9f7e2f05.webp"
+   "url": "https://media.sumvadis.ai/moderator-objects-voxo/876a0b0b.webp"
   }
  ],
  "clips": [
   {
    "file": "axis-01-animals-left-self-reliance-solo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-01-animals-left-self-reliance-solo/clip-en-f7c290f8.mp4"
+   "url": "https://media.sumvadis.ai/axis-01-animals-left-self-reliance-solo/clip-en-7a00ce21.mp4"
   },
   {
    "file": "axis-01-animals-left-self-reliance-solo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-01-animals-left-self-reliance-solo/clip-fr-8da0a1ad.mp4"
+   "url": "https://media.sumvadis.ai/axis-01-animals-left-self-reliance-solo/clip-fr-22481438.mp4"
   },
   {
    "file": "axis-01-animals-right-trust-fido-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-01-animals-right-trust-fido/clip-en-1d4a0c1e.mp4"
+   "url": "https://media.sumvadis.ai/axis-01-animals-right-trust-fido/clip-en-5c4c4a68.mp4"
   },
   {
    "file": "axis-01-animals-right-trust-fido-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-01-animals-right-trust-fido/clip-fr-b02a3973.mp4"
+   "url": "https://media.sumvadis.ai/axis-01-animals-right-trust-fido/clip-fr-39ccda94.mp4"
   },
   {
    "file": "axis-01-objects-left-self-reliance-nordo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-01-objects-left-self-reliance-nordo/clip-en-ef2226df.mp4"
+   "url": "https://media.sumvadis.ai/axis-01-objects-left-self-reliance-nordo/clip-en-259ec2fe.mp4"
   },
   {
    "file": "axis-01-objects-left-self-reliance-nordo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-01-objects-left-self-reliance-nordo/clip-fr-4fe560a0.mp4"
+   "url": "https://media.sumvadis.ai/axis-01-objects-left-self-reliance-nordo/clip-fr-99363391.mp4"
   },
   {
    "file": "axis-01-objects-right-trust-buzo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-01-objects-right-trust-buzo/clip-en-1571ad27.mp4"
+   "url": "https://media.sumvadis.ai/axis-01-objects-right-trust-buzo/clip-en-57b48b6c.mp4"
   },
   {
    "file": "axis-01-objects-right-trust-buzo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-01-objects-right-trust-buzo/clip-fr-3acffcd6.mp4"
+   "url": "https://media.sumvadis.ai/axis-01-objects-right-trust-buzo/clip-fr-9ed5d248.mp4"
   },
   {
    "file": "axis-02-animals-left-pessimism-nimbo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-02-animals-left-pessimism-nimbo/clip-en-73c1cbfd.mp4"
+   "url": "https://media.sumvadis.ai/axis-02-animals-left-pessimism-nimbo/clip-en-06b9a683.mp4"
   },
   {
    "file": "axis-02-animals-left-pessimism-nimbo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-02-animals-left-pessimism-nimbo/clip-fr-d462c3fe.mp4"
+   "url": "https://media.sumvadis.ai/axis-02-animals-left-pessimism-nimbo/clip-fr-55a85a9f.mp4"
   },
   {
    "file": "axis-02-animals-right-optimism-solyo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-02-animals-right-optimism-solyo/clip-en-69cf3769.mp4"
+   "url": "https://media.sumvadis.ai/axis-02-animals-right-optimism-solyo/clip-en-a64f4f02.mp4"
   },
   {
    "file": "axis-02-animals-right-optimism-solyo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-02-animals-right-optimism-solyo/clip-fr-b0076f0c.mp4"
+   "url": "https://media.sumvadis.ai/axis-02-animals-right-optimism-solyo/clip-fr-96c7e194.mp4"
   },
   {
    "file": "axis-02-objects-left-pessimism-vido-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-02-objects-left-pessimism-vido/clip-en-0c5f873f.mp4"
+   "url": "https://media.sumvadis.ai/axis-02-objects-left-pessimism-vido/clip-en-af5c4dd4.mp4"
   },
   {
    "file": "axis-02-objects-left-pessimism-vido-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-02-objects-left-pessimism-vido/clip-fr-52494106.mp4"
+   "url": "https://media.sumvadis.ai/axis-02-objects-left-pessimism-vido/clip-fr-77e71da7.mp4"
   },
   {
    "file": "axis-02-objects-right-optimism-pleno-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-02-objects-right-optimism-pleno/clip-en-699d6b1a.mp4"
+   "url": "https://media.sumvadis.ai/axis-02-objects-right-optimism-pleno/clip-en-9442d710.mp4"
   },
   {
    "file": "axis-02-objects-right-optimism-pleno-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-02-objects-right-optimism-pleno/clip-fr-a0ed9dd1.mp4"
+   "url": "https://media.sumvadis.ai/axis-02-objects-right-optimism-pleno/clip-fr-de366504.mp4"
   },
   {
    "file": "axis-03-animals-left-emotion-pathos-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-03-animals-left-emotion-pathos/clip-en-430d0511.mp4"
+   "url": "https://media.sumvadis.ai/axis-03-animals-left-emotion-pathos/clip-en-79958514.mp4"
   },
   {
    "file": "axis-03-animals-left-emotion-pathos-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-03-animals-left-emotion-pathos/clip-fr-70e18d37.mp4"
+   "url": "https://media.sumvadis.ai/axis-03-animals-left-emotion-pathos/clip-fr-f6d3993f.mp4"
   },
   {
    "file": "axis-03-animals-right-rationality-logos-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-03-animals-right-rationality-logos/clip-en-1f0c3a9d.mp4"
+   "url": "https://media.sumvadis.ai/axis-03-animals-right-rationality-logos/clip-en-a728203f.mp4"
   },
   {
    "file": "axis-03-animals-right-rationality-logos-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-03-animals-right-rationality-logos/clip-fr-0ad49f44.mp4"
+   "url": "https://media.sumvadis.ai/axis-03-animals-right-rationality-logos/clip-fr-51dfe205.mp4"
   },
   {
    "file": "axis-03-objects-left-emotion-cardo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-03-objects-left-emotion-cardo/clip-en-5fde675f.mp4"
+   "url": "https://media.sumvadis.ai/axis-03-objects-left-emotion-cardo/clip-en-f00eda8f.mp4"
   },
   {
    "file": "axis-03-objects-left-emotion-cardo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-03-objects-left-emotion-cardo/clip-fr-4e463d28.mp4"
+   "url": "https://media.sumvadis.ai/axis-03-objects-left-emotion-cardo/clip-fr-50ed65aa.mp4"
   },
   {
    "file": "axis-03-objects-right-rationality-ratio-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-03-objects-right-rationality-ratio/clip-en-d6d9ed63.mp4"
+   "url": "https://media.sumvadis.ai/axis-03-objects-right-rationality-ratio/clip-en-d2046f35.mp4"
   },
   {
    "file": "axis-03-objects-right-rationality-ratio-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-03-objects-right-rationality-ratio/clip-fr-042e6485.mp4"
+   "url": "https://media.sumvadis.ai/axis-03-objects-right-rationality-ratio/clip-fr-59aa4617.mp4"
   },
   {
    "file": "axis-04-animals-left-prudence-lento-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-04-animals-left-prudence-lento/clip-en-5cf3fe77.mp4"
+   "url": "https://media.sumvadis.ai/axis-04-animals-left-prudence-lento/clip-en-bcea796b.mp4"
   },
   {
    "file": "axis-04-animals-left-prudence-lento-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-04-animals-left-prudence-lento/clip-fr-1c67fab1.mp4"
+   "url": "https://media.sumvadis.ai/axis-04-animals-left-prudence-lento/clip-fr-1028467c.mp4"
   },
   {
    "file": "axis-04-animals-right-speed-rapo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-04-animals-right-speed-rapo/clip-en-0bd9ff2c.mp4"
+   "url": "https://media.sumvadis.ai/axis-04-animals-right-speed-rapo/clip-en-04c36219.mp4"
   },
   {
    "file": "axis-04-animals-right-speed-rapo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-04-animals-right-speed-rapo/clip-fr-feb625f0.mp4"
+   "url": "https://media.sumvadis.ai/axis-04-animals-right-speed-rapo/clip-fr-14687cc0.mp4"
   },
   {
    "file": "axis-04-objects-left-prudence-bici-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-04-objects-left-prudence-bici/clip-en-cc7411d1.mp4"
+   "url": "https://media.sumvadis.ai/axis-04-objects-left-prudence-bici/clip-en-99c5fd4e.mp4"
   },
   {
    "file": "axis-04-objects-left-prudence-bici-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-04-objects-left-prudence-bici/clip-fr-a4aa2cfc.mp4"
+   "url": "https://media.sumvadis.ai/axis-04-objects-left-prudence-bici/clip-fr-8ba8f957.mp4"
   },
   {
    "file": "axis-04-objects-right-speed-veloz-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-04-objects-right-speed-veloz/clip-en-d31af817.mp4"
+   "url": "https://media.sumvadis.ai/axis-04-objects-right-speed-veloz/clip-en-91f9c9b6.mp4"
   },
   {
    "file": "axis-04-objects-right-speed-veloz-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-04-objects-right-speed-veloz/clip-fr-a56c0b88.mp4"
+   "url": "https://media.sumvadis.ai/axis-04-objects-right-speed-veloz/clip-fr-ba3dbe3c.mp4"
   },
   {
    "file": "axis-05-animals-left-resistance-piko-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-05-animals-left-resistance-piko/clip-en-19d8a573.mp4"
+   "url": "https://media.sumvadis.ai/axis-05-animals-left-resistance-piko/clip-en-ed47f3e8.mp4"
   },
   {
    "file": "axis-05-animals-left-resistance-piko-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-05-animals-left-resistance-piko/clip-fr-be2b66dd.mp4"
+   "url": "https://media.sumvadis.ai/axis-05-animals-left-resistance-piko/clip-fr-02faaa73.mp4"
   },
   {
    "file": "axis-05-animals-right-openness-kuri-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-05-animals-right-openness-kuri/clip-en-652c0b9f.mp4"
+   "url": "https://media.sumvadis.ai/axis-05-animals-right-openness-kuri/clip-en-2114858a.mp4"
   },
   {
    "file": "axis-05-animals-right-openness-kuri-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-05-animals-right-openness-kuri/clip-fr-7376c1f1.mp4"
+   "url": "https://media.sumvadis.ai/axis-05-animals-right-openness-kuri/clip-fr-5db9d868.mp4"
   },
   {
    "file": "axis-05-objects-left-resistance-muro-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-05-objects-left-resistance-muro/clip-en-2d7c2881.mp4"
+   "url": "https://media.sumvadis.ai/axis-05-objects-left-resistance-muro/clip-en-36b063f6.mp4"
   },
   {
    "file": "axis-05-objects-left-resistance-muro-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-05-objects-left-resistance-muro/clip-fr-4d2f50f4.mp4"
+   "url": "https://media.sumvadis.ai/axis-05-objects-left-resistance-muro/clip-fr-02411de8.mp4"
   },
   {
    "file": "axis-05-objects-right-openness-flora-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-05-objects-right-openness-flora/clip-en-2f9ab959.mp4"
+   "url": "https://media.sumvadis.ai/axis-05-objects-right-openness-flora/clip-en-c051c5a6.mp4"
   },
   {
    "file": "axis-05-objects-right-openness-flora-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-05-objects-right-openness-flora/clip-fr-db6407b3.mp4"
+   "url": "https://media.sumvadis.ai/axis-05-objects-right-openness-flora/clip-fr-787743a4.mp4"
   },
   {
    "file": "axis-06-animals-left-freedom-libero-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-06-animals-left-freedom-libero/clip-en-b98fd8dd.mp4"
+   "url": "https://media.sumvadis.ai/axis-06-animals-left-freedom-libero/clip-en-25e044d3.mp4"
   },
   {
    "file": "axis-06-animals-left-freedom-libero-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-06-animals-left-freedom-libero/clip-fr-7eae2071.mp4"
+   "url": "https://media.sumvadis.ai/axis-06-animals-left-freedom-libero/clip-fr-a3cee370.mp4"
   },
   {
    "file": "axis-06-animals-right-control-guardo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-06-animals-right-control-guardo/clip-en-ebdc5e35.mp4"
+   "url": "https://media.sumvadis.ai/axis-06-animals-right-control-guardo/clip-en-569dca03.mp4"
   },
   {
    "file": "axis-06-animals-right-control-guardo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-06-animals-right-control-guardo/clip-fr-2dee36a3.mp4"
+   "url": "https://media.sumvadis.ai/axis-06-animals-right-control-guardo/clip-fr-fc782dd6.mp4"
   },
   {
    "file": "axis-06-objects-left-freedom-campo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-06-objects-left-freedom-campo/clip-en-c58e474d.mp4"
+   "url": "https://media.sumvadis.ai/axis-06-objects-left-freedom-campo/clip-en-6c63452c.mp4"
   },
   {
    "file": "axis-06-objects-left-freedom-campo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-06-objects-left-freedom-campo/clip-fr-69e2118f.mp4"
+   "url": "https://media.sumvadis.ai/axis-06-objects-left-freedom-campo/clip-fr-6e977ee4.mp4"
   },
   {
    "file": "axis-06-objects-right-control-serro-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-06-objects-right-control-serro/clip-en-96d0424e.mp4"
+   "url": "https://media.sumvadis.ai/axis-06-objects-right-control-serro/clip-en-999e9b70.mp4"
   },
   {
    "file": "axis-06-objects-right-control-serro-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-06-objects-right-control-serro/clip-fr-25629c01.mp4"
+   "url": "https://media.sumvadis.ai/axis-06-objects-right-control-serro/clip-fr-ecd1405f.mp4"
   },
   {
    "file": "axis-07-animals-left-decentralisation-sardo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-07-animals-left-decentralisation-sardo/clip-en-8eca4f2d.mp4"
+   "url": "https://media.sumvadis.ai/axis-07-animals-left-decentralisation-sardo/clip-en-88cbbe42.mp4"
   },
   {
    "file": "axis-07-animals-left-decentralisation-sardo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-07-animals-left-decentralisation-sardo/clip-fr-55179d64.mp4"
+   "url": "https://media.sumvadis.ai/axis-07-animals-left-decentralisation-sardo/clip-fr-9c5b684f.mp4"
   },
   {
    "file": "axis-07-animals-right-centralisation-balo-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-07-animals-right-centralisation-balo/clip-en-17045045.mp4"
+   "url": "https://media.sumvadis.ai/axis-07-animals-right-centralisation-balo/clip-en-42f9eba7.mp4"
   },
   {
    "file": "axis-07-animals-right-centralisation-balo-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-07-animals-right-centralisation-balo/clip-fr-4fd0d99b.mp4"
+   "url": "https://media.sumvadis.ai/axis-07-animals-right-centralisation-balo/clip-fr-10cf00c1.mp4"
   },
   {
    "file": "axis-07-objects-left-decentralisation-reto-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-07-objects-left-decentralisation-reto/clip-en-12235109.mp4"
+   "url": "https://media.sumvadis.ai/axis-07-objects-left-decentralisation-reto/clip-en-41912351.mp4"
   },
   {
    "file": "axis-07-objects-left-decentralisation-reto-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-07-objects-left-decentralisation-reto/clip-fr-4e2c07fe.mp4"
+   "url": "https://media.sumvadis.ai/axis-07-objects-left-decentralisation-reto/clip-fr-87b25da4.mp4"
   },
   {
    "file": "axis-07-objects-right-centralisation-astro-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-07-objects-right-centralisation-astro/clip-en-bd433936.mp4"
+   "url": "https://media.sumvadis.ai/axis-07-objects-right-centralisation-astro/clip-en-5f2ac9e9.mp4"
   },
   {
    "file": "axis-07-objects-right-centralisation-astro-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-07-objects-right-centralisation-astro/clip-fr-ea963a81.mp4"
+   "url": "https://media.sumvadis.ai/axis-07-objects-right-centralisation-astro/clip-fr-36d2a418.mp4"
   },
   {
    "file": "axis-08-animals-left-individualism-ego-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-08-animals-left-individualism-ego/clip-en-8f198e84.mp4"
+   "url": "https://media.sumvadis.ai/axis-08-animals-left-individualism-ego/clip-en-15de9220.mp4"
   },
   {
    "file": "axis-08-animals-left-individualism-ego-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-08-animals-left-individualism-ego/clip-fr-8e3760a6.mp4"
+   "url": "https://media.sumvadis.ai/axis-08-animals-left-individualism-ego/clip-fr-a79ad22b.mp4"
   },
   {
    "file": "axis-08-animals-right-altruism-unio-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-08-animals-right-altruism-unio/clip-en-ec6e57f5.mp4"
+   "url": "https://media.sumvadis.ai/axis-08-animals-right-altruism-unio/clip-en-08fa016b.mp4"
   },
   {
    "file": "axis-08-animals-right-altruism-unio-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-08-animals-right-altruism-unio/clip-fr-36be0ff6.mp4"
+   "url": "https://media.sumvadis.ai/axis-08-animals-right-altruism-unio/clip-fr-eb83e2f5.mp4"
   },
   {
    "file": "axis-08-objects-left-individualism-mio-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-08-objects-left-individualism-mio/clip-en-f5ee203f.mp4"
+   "url": "https://media.sumvadis.ai/axis-08-objects-left-individualism-mio/clip-en-f8613f02.mp4"
   },
   {
    "file": "axis-08-objects-left-individualism-mio-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-08-objects-left-individualism-mio/clip-fr-f30bcb43.mp4"
+   "url": "https://media.sumvadis.ai/axis-08-objects-left-individualism-mio/clip-fr-50bf3962.mp4"
   },
   {
    "file": "axis-08-objects-right-altruism-dono-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-08-objects-right-altruism-dono/clip-en-c9e05667.mp4"
+   "url": "https://media.sumvadis.ai/axis-08-objects-right-altruism-dono/clip-en-37ea2903.mp4"
   },
   {
    "file": "axis-08-objects-right-altruism-dono-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-08-objects-right-altruism-dono/clip-fr-dbace0ac.mp4"
+   "url": "https://media.sumvadis.ai/axis-08-objects-right-altruism-dono/clip-fr-3b800198.mp4"
   },
   {
    "file": "axis-09-animals-left-humanism-vita-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-09-animals-left-humanism-vita/clip-en-ac09e60c.mp4"
+   "url": "https://media.sumvadis.ai/axis-09-animals-left-humanism-vita/clip-en-11619071.mp4"
   },
   {
    "file": "axis-09-animals-left-humanism-vita-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-09-animals-left-humanism-vita/clip-fr-948956fc.mp4"
+   "url": "https://media.sumvadis.ai/axis-09-animals-left-humanism-vita/clip-fr-7b9905f7.mp4"
   },
   {
    "file": "axis-09-animals-right-transhumanism-ultra-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-09-animals-right-transhumanism-ultra/clip-en-97d1ef26.mp4"
+   "url": "https://media.sumvadis.ai/axis-09-animals-right-transhumanism-ultra/clip-en-7ebfcdd8.mp4"
   },
   {
    "file": "axis-09-animals-right-transhumanism-ultra-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-09-animals-right-transhumanism-ultra/clip-fr-83306652.mp4"
+   "url": "https://media.sumvadis.ai/axis-09-animals-right-transhumanism-ultra/clip-fr-6a739d2a.mp4"
   },
   {
    "file": "axis-09-objects-left-humanism-verso-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-09-objects-left-humanism-verso/clip-en-ef1fd726.mp4"
+   "url": "https://media.sumvadis.ai/axis-09-objects-left-humanism-verso/clip-en-bdf51fa5.mp4"
   },
   {
    "file": "axis-09-objects-left-humanism-verso-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-09-objects-left-humanism-verso/clip-fr-90c17fcd.mp4"
+   "url": "https://media.sumvadis.ai/axis-09-objects-left-humanism-verso/clip-fr-81003e53.mp4"
   },
   {
    "file": "axis-09-objects-right-transhumanism-silico-en.mp4",
-   "url": "https://media.sumvadis.ai/axis-09-objects-right-transhumanism-silico/clip-en-712b33e9.mp4"
+   "url": "https://media.sumvadis.ai/axis-09-objects-right-transhumanism-silico/clip-en-c06582a1.mp4"
   },
   {
    "file": "axis-09-objects-right-transhumanism-silico-fr.mp4",
-   "url": "https://media.sumvadis.ai/axis-09-objects-right-transhumanism-silico/clip-fr-e829acc7.mp4"
+   "url": "https://media.sumvadis.ai/axis-09-objects-right-transhumanism-silico/clip-fr-e8a835ad.mp4"
   },
   {
    "file": "moderator-animals-medio-en.mp4",
-   "url": "https://media.sumvadis.ai/moderator-animals-medio/clip-en-181f267c.mp4"
+   "url": "https://media.sumvadis.ai/moderator-animals-medio/clip-en-4daf03f1.mp4"
   },
   {
    "file": "moderator-animals-medio-fr.mp4",
-   "url": "https://media.sumvadis.ai/moderator-animals-medio/clip-fr-6310cb93.mp4"
+   "url": "https://media.sumvadis.ai/moderator-animals-medio/clip-fr-2f596f4d.mp4"
   },
   {
    "file": "moderator-objects-voxo-en.mp4",
-   "url": "https://media.sumvadis.ai/moderator-objects-voxo/clip-en-b7a995ec.mp4"
+   "url": "https://media.sumvadis.ai/moderator-objects-voxo/clip-en-1aa7b6e4.mp4"
   },
   {
    "file": "moderator-objects-voxo-fr.mp4",
-   "url": "https://media.sumvadis.ai/moderator-objects-voxo/clip-fr-6fc24deb.mp4"
+   "url": "https://media.sumvadis.ai/moderator-objects-voxo/clip-fr-cece83b2.mp4"
   }
  ],
  "films": [
   {
    "file": "axes-intro-de.mp4",
-   "url": "https://media.sumvadis.ai/v/site/axes-intro__de/clip/20260822-212653.mp4"
+   "url": "https://media.sumvadis.ai/v/site/axes-intro__de/clip/20261006-141045.mp4"
   },
   {
    "file": "axes-intro-en.mp4",
-   "url": "https://media.sumvadis.ai/v/site/axes-intro__en/clip/20260822-212643.mp4"
+   "url": "https://media.sumvadis.ai/v/site/axes-intro__en/clip/20261006-141052.mp4"
   },
   {
    "file": "axes-intro-fr.mp4",
-   "url": "https://media.sumvadis.ai/v/site/axes-intro__fr/clip/20260822-212626.mp4"
+   "url": "https://media.sumvadis.ai/v/site/axes-intro__fr/clip/20261006-141059.mp4"
   },
   {
    "file": "host-reveal-de.mp4",
-   "url": "https://media.sumvadis.ai/v/site/host-reveal/clip/20260903-134227.mp4"
+   "url": "https://media.sumvadis.ai/v/site/host-reveal/clip/20261006-141105.mp4"
   },
   {
    "file": "host-reveal-en.mp4",
-   "url": "https://media.sumvadis.ai/v/site/host-reveal/clip/20260903-134227.mp4"
+   "url": "https://media.sumvadis.ai/v/site/host-reveal/clip/20261006-141105.mp4"
   },
   {
    "file": "host-reveal-fr.mp4",
-   "url": "https://media.sumvadis.ai/v/site/host-reveal/clip/20260903-134227.mp4"
+   "url": "https://media.sumvadis.ai/v/site/host-reveal/clip/20261006-141105.mp4"
   }
  ]
 }
